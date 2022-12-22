@@ -1,0 +1,24 @@
+var pairs =
+{
+"ocio":{"colorspace":1,"configuration":1,"silhouette":1}
+,"converts":{"colorspace":1}
+,"colorspace":{"using":1,"transform":1,"output":1}
+,"using":{"opencolorio":1}
+,"node":{"group":1}
+,"sets":{"path":1,"input":1,"output":1}
+,"path":{"global":1}
+,"global":{"ocio":1}
+,"configuration":{"file":1}
+,"file":{"default":1}
+,"default":{"ocio":1}
+,"silhouette":{"initially":1}
+,"initially":{"look":1}
+,"look":{"$sfx_ocio":1}
+,"$sfx_ocio":{"first":1}
+,"input":{"colorspace":1}
+,"output":{"colorspace":1}
+,"transform":{"direction":1}
+,"direction":{"input":1}
+,"inverts":{"colorspace":1}
+}
+;Search.control.loadWordPairs(pairs);

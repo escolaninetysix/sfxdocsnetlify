@@ -1,0 +1,24 @@
+var pairs =
+{
+"download":{"optics":1}
+,"optics":{"www.borisfx.com":1,"windows":1,"2022":1,"macintosh":1,"user":1}
+,"double-click":{"file":1,"optics":1}
+,"file":{"downloaded":1}
+,"downloaded":{"run":1}
+,"run":{"installation":1}
+,"installation":{"process":1}
+,"start":{"optics":1,"menu":1}
+,"windows":{"systems":1,"start":1}
+,"systems":{"selecting":1,"going":1}
+,"selecting":{"programs":1}
+,"programs":{"boris":1}
+,"boris":{"optics":1}
+,"2022":{"optics":1,"double-click":1}
+,"macintosh":{"systems":1}
+,"going":{"applications":1}
+,"applications":{"borisfx":1}
+,"borisfx":{"optics":1}
+,"user":{"interface":1}
+,"interface":{"opens":1}
+}
+;Search.control.loadWordPairs(pairs);

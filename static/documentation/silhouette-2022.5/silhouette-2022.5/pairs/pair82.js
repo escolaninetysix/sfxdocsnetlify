@@ -1,0 +1,19 @@
+var pairs =
+{
+"high":{"contrast":1}
+,"creates":{"extreme":1}
+,"extreme":{"high":1}
+,"contrast":{"image":1,"applied":1}
+,"node":{"group":1}
+,"select":{"preset":1}
+,"preset":{"choose":1}
+,"choose":{"presets":1}
+,"presets":{"tab":1}
+,"sets":{"amount":1,"mix":1}
+,"amount":{"contrast":1,"original":1}
+,"applied":{"scene":1}
+,"mix":{"amount":1}
+,"original":{"filtered":1}
+,"filtered":{"version":1}
+}
+;Search.control.loadWordPairs(pairs);

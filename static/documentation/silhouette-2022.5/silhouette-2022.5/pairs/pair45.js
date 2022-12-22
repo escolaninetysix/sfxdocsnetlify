@@ -1,0 +1,23 @@
+var pairs =
+{
+"removes":{"luminance":1}
+,"luminance":{"flickering":1}
+,"node":{"group":1}
+,"determines":{"reference":1}
+,"reference":{"frame":1,"image":1}
+,"frame":{"frames":1,"clip":1,"timeline":1}
+,"frames":{"matched":1}
+,"matched":{"flickering":1}
+,"flickering":{"removed":1}
+,"clip":{"defined":1,"used":1}
+,"defined":{"reference":1}
+,"image":{"button":1,"frame":1}
+,"button":{"used":1,"pressed":1}
+,"used":{"reference":1}
+,"first":{"frame":1}
+,"sets":{"amount":1,"reference":1}
+,"amount":{"deflickering":1}
+,"timeline":{"parked":1}
+,"parked":{"button":1}
+}
+;Search.control.loadWordPairs(pairs);

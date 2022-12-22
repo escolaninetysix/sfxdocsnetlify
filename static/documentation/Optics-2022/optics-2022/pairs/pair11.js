@@ -1,0 +1,20 @@
+var pairs =
+{
+"viewing":{"individual":1}
+,"individual":{"layers":1}
+,"apply":{"couple":1}
+,"couple":{"filters":1}
+,"filters":{"image":1}
+,"image":{"add":1,"thumbnail":1}
+,"add":{"layers":1}
+,"click":{"image":1,"top":1}
+,"thumbnail":{"layers":1}
+,"layers":{"window":1}
+,"window":{"display":1}
+,"display":{"layer":1}
+,"layer":{"viewer":1}
+,"finished":{"click":1}
+,"top":{"layer\u2019s":1}
+,"layer\u2019s":{"image":1}
+}
+;Search.control.loadWordPairs(pairs);

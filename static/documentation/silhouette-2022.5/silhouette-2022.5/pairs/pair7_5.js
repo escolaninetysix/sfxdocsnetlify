@@ -1,0 +1,26 @@
+var pairs =
+{
+"gpu":{"preference":1,"acceleration":1,"cpu":1}
+,"preference":{"determines":1,"doesn\u2019t":1}
+,"determines":{"whether":1}
+,"whether":{"gpu":1}
+,"acceleration":{"enabled":1,"based":1,"graphics":1,"setting":1}
+,"automatically":{"chooses":1}
+,"chooses":{"either":1}
+,"either":{"gpu":1}
+,"cpu":{"acceleration":1}
+,"based":{"graphics":1}
+,"graphics":{"card":1}
+,"forces":{"gpu":1,"cpu":1}
+,"card":{"capable":1}
+,"capable":{"gpu":1}
+,"setting":{"effect":1}
+,"note":{"gpu":1}
+,"doesn\u2019t":{"actually":1}
+,"actually":{"change":1}
+,"change":{"until":1}
+,"until":{"frame":1}
+,"frame":{"processing":1}
+,"processing":{"update":1}
+}
+;Search.control.loadWordPairs(pairs);

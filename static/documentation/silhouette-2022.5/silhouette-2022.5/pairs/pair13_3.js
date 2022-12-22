@@ -1,0 +1,24 @@
+var pairs =
+{
+"bump":{"distort":1}
+,"distorts":{"image":1}
+,"image":{"based":1}
+,"based":{"second":1}
+,"second":{"input\u2019s":1}
+,"input\u2019s":{"luminance":1}
+,"luminance":{"values":1}
+,"values":{"create":1}
+,"create":{"glass":1}
+,"glass":{"effect":1}
+,"effect":{"useful":1}
+,"useful":{"creating":1}
+,"creating":{"heat":1}
+,"heat":{"waves":1}
+,"node":{"group":1}
+,"sets":{"amount":1}
+,"amount":{"distortion":1}
+,"changes":{"angle":1}
+,"angle":{"distortion":1}
+,"smooths":{"distortion":1}
+}
+;Search.control.loadWordPairs(pairs);

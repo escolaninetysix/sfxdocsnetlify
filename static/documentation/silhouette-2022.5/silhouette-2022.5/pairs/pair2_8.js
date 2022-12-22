@@ -1,0 +1,19 @@
+var pairs =
+{
+"interval":{"minutes":1,"disable":1}
+,"sets":{"default":1}
+,"default":{"time":1}
+,"time":{"autosaving":1,"project":1}
+,"autosaving":{"project":1}
+,"project":{"interval":1,"saved":1,"folder":1}
+,"disable":{"autosave":1}
+,"maximum":{"backups":1}
+,"controls":{"backup":1}
+,"backup":{"files":1}
+,"files":{"created":1}
+,"created":{"time":1}
+,"saved":{"copy":1}
+,"copy":{"stored":1}
+,"stored":{"project":1}
+}
+;Search.control.loadWordPairs(pairs);
