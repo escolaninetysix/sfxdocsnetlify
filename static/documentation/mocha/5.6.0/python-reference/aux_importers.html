@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>8. aux_importers &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="index.html" />
+    <link rel="prev" title="7. aux_exporters" href="aux_exporters.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aux_exporters.html" title="7. aux_exporters"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">mocha 1.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-aux_importers"></span><div class="section" id="module-mocha.aux_importers">
+<span id="aux-importers"></span><h1>8. aux_importers<a class="headerlink" href="#module-mocha.aux_importers" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="mocha.aux_importers.SilhouetteImporter">
+<em class="property">class </em><tt class="descclassname">mocha.aux_importers.</tt><tt class="descname">SilhouetteImporter</tt><a class="headerlink" href="#mocha.aux_importers.SilhouetteImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Implements conversion from Silhouette projects/shapes to mocha project.</p>
+<dl class="method">
+<dt id="mocha.aux_importers.SilhouetteImporter.add_msg">
+<tt class="descname">add_msg</tt><span class="sig-paren">(</span><em>level</em>, <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_importers.SilhouetteImporter.add_msg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mocha.aux_importers.SilhouetteImporter.do_import">
+<tt class="descname">do_import</tt><span class="sig-paren">(</span><em>project=None</em>, <em>clip=None</em>, <em>view=View(0)</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_importers.SilhouetteImporter.do_import" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>project</strong> (<a class="reference internal" href="mocha/project/Project.html#mocha.project.Project" title="mocha.project.Project"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Project</span></tt></a>) &#8211; project instance or None if you want to create a new mocha project.</li>
+<li><strong>clip</strong> (<a class="reference internal" href="mocha/project/Clip.html#mocha.project.Clip" title="mocha.project.Clip"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Clip</span></tt></a>.) &#8211; clip instance or None.</li>
+<li><strong>view</strong> (<a class="reference internal" href="mocha/project/View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>.) &#8211; view instance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Performs underlying import operation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.aux_importers.SilhouetteImporter.error">
+<tt class="descname">error</tt><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_importers.SilhouetteImporter.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.aux_importers.SilhouetteImporter.messages">
+<tt class="descname">messages</tt><a class="headerlink" href="#mocha.aux_importers.SilhouetteImporter.messages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mocha.aux_importers.SilhouetteImporter.prepare_importing">
+<tt class="descname">prepare_importing</tt><span class="sig-paren">(</span><em>file_contents</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_importers.SilhouetteImporter.prepare_importing" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_contents</strong> (<em>str</em>) &#8211; SFX/FXS file contents</td>
+</tr>
+</tbody>
+</table>
+<p>Parses SFX/FXS contents.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mocha.aux_importers.SilhouetteImporter.read_props">
+<em class="property">static </em><tt class="descname">read_props</tt><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_importers.SilhouetteImporter.read_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mocha.aux_importers.SilhouetteImporter.warning">
+<tt class="descname">warning</tt><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_importers.SilhouetteImporter.warning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="aux_exporters.html"
+                        title="previous chapter">7. aux_exporters</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/aux_importers.txt"
+            >Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aux_exporters.html" title="7. aux_exporters"
+             >previous</a> |</li>
+        <li><a href="index.html">mocha 1.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

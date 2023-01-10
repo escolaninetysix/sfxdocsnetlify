@@ -1,0 +1,811 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: WipeWeave",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/WipeWeave.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="WipeWeave">
+     <h2>
+      S_WipeWeave
+     </h2>
+    </a>
+    Performs a wipe transition between two input clips
+  using a texture resembling perpendicular woven strands.  The Wipe
+  Amount parameter should be animated to control the transition
+  speed.
+  Increase the Grad Add parameter to make the timing of the weave
+  pattern move across the screen during the wipe.
+  Increase the Border Width parameter to draw a border at the
+  wipe transition edges.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/WipeWeave.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wipe Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -0.5 to 1.5.
+   <br/>
+   Determines the transition ratio between the From and To
+  inputs, and would normally be animated from 0 to 1 to perform a
+  complete transition.  The curve controlling this parameter can be adjusted
+  for more detailed control over the timing of the wipe.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Strands:
+   </b>
+   <i>
+    Popup menu,  Default: Grow
+   </i>
+   .
+   <br/>
+   The direction of the weave pattern transition.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Shrink:
+      </i>
+     </b>
+     The strands start large and shrink inwards.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Grow:
+       </i>
+      </b>
+      The strands start small and grow outwards.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the transition edges.  Larger values
+  will cause softer, less visible edges in the wipe pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   20,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The frequency of the weave pattern.  Increase for more
+  and smaller elements, or decrease for fewer and larger.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The relative length of the strands.  Increase
+  for longer thinner strands.  Decrease for shorter thicker strands.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   1 to 10.
+   <br/>
+   The number of summed layers of noise.  Each octave is twice
+the frequency and half the amplitude of the previous.  A single octave
+gives a smooth texture.  Adding octaves makes the result approach a
+fractal (1/f) noise texture.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Translation of the weave pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    H Speed X:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The horizontal speed of the horizontal strands.  If
+  non-zero, the horizontal strands will automatically crawl along
+  their lengths at this rate.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    V Speed Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The vertical speed of the vertical strands.  If
+  non-zero, the vertical strands will automatically crawl along their
+  lengths at this rate.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grad Add:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -10 to 10.
+   <br/>
+   If positive, a gradient will be added to the timing of
+  the transition pattern so it moves across the screen during the
+  wipe.  This parameter can be adjusted using the Wipe Widget if
+  enabled, but the value must be positive to make this widget
+  visible.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grad Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The direction of the wipe gradient in
+  counter-clockwise degrees.  This will have no effect unless Grad Add
+  is positive.  The Wipe Widget also allows adjusting this parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If positive, a colored border is drawn at the wipe
+  transition edges, using the border color, opacity, softness, and
+  shift parameters below.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.75 0 0].
+   <br/>
+   The color of the border.  This has no effect unless
+  Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The opacity of the border.  Decrease to make the
+  border transparent and allow the image under it to show through.
+  This has no effect unless Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The softness of the border edges.  This has no
+  effect unless Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the border ahead of or behind the
+  transition edge.  This has no effect unless Border Width is
+  positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Glow:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adds a glow along the border of the wipe. The value
+determines the brightness of the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the red glow width. If the red, green, and blue widths
+are all equal, the glow will match Glow Color. Otherwise it will have a fringe
+of varying color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the green glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the blue glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   The color of the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of noise to add to the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   0.1 to 20.
+   <br/>
+   The spatial frequency of the noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The speed with which the noise changes or boils over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Wipe:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Wipe Amount parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Shift:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface widget for
+  adjusting the Shift parameter, which translates the weave pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Glow Width:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   off.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Glow Width parameter.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../wipeline">
+       WipeLine
+      </a>
+      <br/>
+      <a href="../wipecircle">
+       WipeCircle
+      </a>
+      <br/>
+      <a href="../wiperectangle">
+       WipeRectangle
+      </a>
+      <br/>
+      <a href="../wipestar">
+       WipeStar
+      </a>
+      <br/>
+      <a href="../wipeclock">
+       WipeClock
+      </a>
+      <br/>
+      <a href="../wipewedge">
+       WipeWedge
+      </a>
+      <br/>
+      <a href="../wipedoublewedge">
+       WipeDoubleWedge
+      </a>
+      <br/>
+      <a href="../wipefourwedges">
+       WipeFourWedges
+      </a>
+      <br/>
+      <a href="../wipedots">
+       WipeDots
+      </a>
+      <br/>
+      <a href="../wipechecker">
+       WipeChecker
+      </a>
+      <br/>
+      <a href="../wipestripes">
+       WipeStripes
+      </a>
+      <br/>
+      <a href="../wiperings">
+       WipeRings
+      </a>
+      <br/>
+      <a href="../wipeblobs">
+       WipeBlobs
+      </a>
+      <br/>
+      <a href="../wipecells">
+       WipeCells
+      </a>
+      <br/>
+      <a href="../wipetiles">
+       WipeTiles
+      </a>
+      <br/>
+      <a href="../wipepixelate">
+       WipePixelate
+      </a>
+      <br/>
+      <a href="../wipediffuse">
+       WipeDiffuse
+      </a>
+      <br/>
+      <a href="../wipebubble">
+       WipeBubble
+      </a>
+      <br/>
+      <a href="../wipeclouds">
+       WipeClouds
+      </a>
+      <br/>
+      <a href="../wipemoire">
+       WipeMoire
+      </a>
+      <br/>
+      <a href="../wipeplasma">
+       WipePlasma
+      </a>
+      <br/>
+      <a href="../wipepointalize">
+       WipePointalize
+      </a>
+      <br/>
+      <a href="../wipeflux">
+       WipeFlux
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../textureweave">
+       TextureWeave
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

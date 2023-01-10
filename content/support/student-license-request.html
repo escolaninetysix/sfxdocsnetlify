@@ -1,0 +1,89 @@
+{
+"date": "2018-04-30T12:00:20.753Z",
+"description": "Students can request a free license by filling out the form on this page.",
+"title": "Request a Student License",
+"require_recaptcha_v3": "True"
+}
+<p>
+    If you would like to request a free one year student license for Sapphire, Continuum, Mocha Pro, and Silhouette,
+    please enter your information below. Once you have submitted this form, it will be sent to our customer service team
+    for approval. Please allow up to thirty days for your licenses to be sent.
+</p>
+<p>
+    <strong>Note: All files must be under 10 Mb in size and uploaded in PDF, JPEG, PNG, or TIFF Format. </strong>
+</p>
+<form id="student-license-request-form" enctype="multipart/form-data">
+    <div class="form-group"><label>First Name</label> <input name="firstName" class="form-control" type="text"
+            required /></div>
+    <div class="form-group"><label>Last Name</label> <input name="lastName" class="form-control" type="text" required />
+    </div>
+    <div class="form-group"><label>Academic Email</label> <input name="email" class="form-control" type="text"
+            required /></div>
+    <div class="form-group"><label>Name of School or University</label> <input name="schoolName" class="form-control"
+            type="text" required /></div>
+    <div class="form-group"><label>Address</label> <input name="address" class="form-control" type="text" required />
+    </div>
+    {{% country-state-dropdown %}}
+    <div class="form-group"><label>City</label> <input name="city" class="form-control" type="text" required /></div>
+    <div class="form-group"><label>Zip/Postal Code</label> <input name="zip" class="form-control" type="text"
+            required /></div>
+    <div class="form-group"><label>Upload an image of your valid Student Id</label>
+        <br />
+        <input type="file" name="studentId" id="idPhoto"
+            accept="application/pdf,image/jpeg,image/png,image/tiff,.pdf,.jpg,.jpeg,.png,.tiff" />
+    </div>
+    <div class="form-group"><label>Upload a copy of your current Class Schedule (Image or PDF)</label>
+        <br />
+        <input type="file" name="classSchedule" id="schedule"
+            accept="application/pdf,image/jpeg,image/png,image/tiff,.pdf,.jpg,.jpeg,.png,.tiff" />
+    </div>
+    <div class="g-recaptcha" data-sitekey="6Le-fEQUAAAAAKNX6zxewTeps8tnPgvzj7o1GfrI"></div>
+    <br />
+    <p>By submitting this form, you consent to us processing your student ID in order to verify your eligibility. For
+        details about how we safeguard this information, please see our <a href="{{< relref " privacy">}}">privacy
+            policy</a>.</p>
+    <div class="form-group"><button class="btn btn-lg" type="submit" id="submitButton">Submit</button></div>
+</form>
+<script>
+    $(function () {
+        $(document).ready(function () {
+            $('#student-license-request-form').submit(function (e) {
+                var form = $('#student-license-request-form')[0];
+                $('#submitButton').attr('disabled', 'disabled');
+                $('#submitButton').text('Submitting. . .');
+                e.preventDefault();
+                var data = new FormData(form);
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', { action: 'loginpage' })
+                    .then(function(token){
+                        data.set('g-recaptcha-response', token);
+                        $.ajax({
+                            type: 'POST',
+                            url: 'https://backend.borisfx.com/student',
+                            data: data,
+                            processData: false,
+                            contentType: false,
+                            success: function (res) {
+                                $('#submitButton').text('Case Submitted');
+                                window.location = '/support/student-confirmation?var1=' + res;
+                            },
+                            error: function (error) {
+                                if (error.status == 429) {
+                                    alert('Please wait 5 minutes before contacting us again.');
+                                }
+                                else if (error.status == 415) {
+                                    alert('File Type not supported. Please submit your files in either PDF, JPG, PNG, or TIFF format');
+                                }
+                                else {
+                                    alert('There was an error submitting your case. Please email student_licenses@borisfx.com');
+                                }
+                                $('#submitButton').removeAttr('disabled');
+                                $('#submitButton').text('Submit');
+                            },
+                        });
+                    });
+                });     
+            });
+        });
+    });
+</script>

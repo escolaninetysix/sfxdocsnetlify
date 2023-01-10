@@ -1,0 +1,22 @@
+{
+   "date": "2015-05-27T11:08:00-04:00",
+   "tags": [
+      "Continuum"
+   ],
+   "title": "BCC Installed but Not Applying in Final Cut Pro X"
+}
+
+<div id="FCPXTemplates" class="hidden-faq">
+<p><strong> Subject: </strong> BCC Installed but Not Applying in Final Cut Pro X</p>
+<p><strong> Issue </strong> :  When I apply a BCC effect in Final Cut Pro X, I see a red screen with a yellow triangle showing an “!” symbol.  The effect parameters load but the video is gone, and the effect does not appear either.</p>
+<p><strong> Cause </strong> :  When BCC loads within Final Cut Pro X, itʼs actually loading Motion Templates rather than the BCC effects themselves.  If this error comes up, either the Filters themselves, or the Motion Templates, are missing.</p>
+<p><strong> Steps to work around the issue: </strong></p>
+<ol>
+<li>Quit Final Cut Pro X and Motion 5, and Uninstall BCC FxPlug.</li>
+<li>As an Admin-level User, run the Disk Utility on the boot drive, and reinstall BCC FxPlug, making sure that the Plugins and Templates are set to install.</li>
+<li>In the Finder, check for the BCC plugs in the first directory below, and for BCC templates in the second directory below Macintosh HD :: Library :: Plug-Ins :: FxPlugMacintosh HD :: Users :: [ Current User/Home ] :: Movies :: Motion Templates</li>
+</ol>
+<p>If the files are located in the directories above, launch Final Cut Pro X again and the plugs should load successfully now.</p>
+<p>If the files are not in the directories above, Uninstall BCC again, go into the Terminal application, type in the following and hit Enter sudo chmod 777 “/Library/Application Support/”</p>
+<p>After this, Restart the Mac, reinstall BCC FxPlug, and the plugs should operate now.</p>
+</div>

@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.21. StreamInfo &#8212; mocha 8.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.22. UndoGroup" href="UndoGroup.html" />
+    <link rel="prev" title="2.20. RenderStabilizeOperation" href="RenderStabilizeOperation.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UndoGroup.html" title="2.22. UndoGroup"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="RenderStabilizeOperation.html" title="2.20. RenderStabilizeOperation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 8.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="streaminfo">
+<span id="id1"></span><h1><span class="section-number">2.21. </span>StreamInfo<a class="headerlink" href="#streaminfo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.21.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.21.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.StreamInfo.__repr__" title="mocha.project.StreamInfo.__repr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__repr__</span></code></a> ()</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.21.1.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.StreamInfo.end_frame" title="mocha.project.StreamInfo.end_frame"><code class="xref py py-attr docutils literal notranslate"><span class="pre">end_frame</span></code></a> [read-write] of long</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.StreamInfo.index_width" title="mocha.project.StreamInfo.index_width"><code class="xref py py-attr docutils literal notranslate"><span class="pre">index_width</span></code></a> [read-write] of long</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.StreamInfo.path" title="mocha.project.StreamInfo.path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">path</span></code></a> [read-write] of str</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.StreamInfo.prefix" title="mocha.project.StreamInfo.prefix"><code class="xref py py-attr docutils literal notranslate"><span class="pre">prefix</span></code></a> [read-write] of str</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.StreamInfo.start_frame" title="mocha.project.StreamInfo.start_frame"><code class="xref py py-attr docutils literal notranslate"><span class="pre">start_frame</span></code></a> [read-write] of long</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.StreamInfo.suffix" title="mocha.project.StreamInfo.suffix"><code class="xref py py-attr docutils literal notranslate"><span class="pre">suffix</span></code></a> [read-write] of str</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.21.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="more"></span><dl class="py class">
+<dt id="mocha.project.StreamInfo">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">StreamInfo</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">path=&quot;&quot;</em><span class="optional">[</span>, <em class="sig-param">prefix=&quot;&quot;</em><span class="optional">[</span>, <em class="sig-param">suffix=&quot;&quot;</em><span class="optional">[</span>, <em class="sig-param">start_frame=-1</em><span class="optional">[</span>, <em class="sig-param">end_frame=-1</em><span class="optional">[</span>, <em class="sig-param">index_width=0</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.StreamInfo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">StreamInfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">StreamInfo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.StreamInfo.__repr__">
+<code class="sig-prename descclassname">StreamInfo.</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.StreamInfo.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>unicode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.StreamInfo.path">
+<code class="sig-prename descclassname">StreamInfo.</code><code class="sig-name descname">path</code><a class="headerlink" href="#mocha.project.StreamInfo.path" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Absolute path to clip directory or first clip file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.StreamInfo.prefix">
+<code class="sig-prename descclassname">StreamInfo.</code><code class="sig-name descname">prefix</code><a class="headerlink" href="#mocha.project.StreamInfo.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Clip prefix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.StreamInfo.suffix">
+<code class="sig-prename descclassname">StreamInfo.</code><code class="sig-name descname">suffix</code><a class="headerlink" href="#mocha.project.StreamInfo.suffix" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Clip suffix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.StreamInfo.start_frame">
+<code class="sig-prename descclassname">StreamInfo.</code><code class="sig-name descname">start_frame</code><a class="headerlink" href="#mocha.project.StreamInfo.start_frame" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>long</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Start frame number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.StreamInfo.end_frame">
+<code class="sig-prename descclassname">StreamInfo.</code><code class="sig-name descname">end_frame</code><a class="headerlink" href="#mocha.project.StreamInfo.end_frame" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>long</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    End frame number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.StreamInfo.index_width">
+<code class="sig-prename descclassname">StreamInfo.</code><code class="sig-name descname">index_width</code><a class="headerlink" href="#mocha.project.StreamInfo.index_width" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>long</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Clip index width.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.21. StreamInfo</a><ul>
+<li><a class="reference internal" href="#synopsis">2.21.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.21.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.21.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.21.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="RenderStabilizeOperation.html"
+                        title="previous chapter"><span class="section-number">2.20. </span>RenderStabilizeOperation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="UndoGroup.html"
+                        title="next chapter"><span class="section-number">2.22. </span>UndoGroup</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UndoGroup.html" title="2.22. UndoGroup"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="RenderStabilizeOperation.html" title="2.20. RenderStabilizeOperation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 8.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2020, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

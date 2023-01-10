@@ -1,0 +1,1044 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: RackDefocus",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/RackDefocus.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="RackDefocus">
+     <h2>
+      S_RackDefocus
+     </h2>
+    </a>
+    Generates a defocused version of the source clip
+  using a 'circle of confusion' convolution.  This effect is often
+  preferable to a gaussian blur for simulating a real defocused camera
+  lens, because bright spots can be defocused into clean shapes
+  instead of being smoothed away.  The iris shape can be controlled
+  using Points, Pointiness and Rotate, and the Use Gamma parameter can
+  adjust the relative brightness of the blurred highlights.
+    <p>
+     In the Sapphire Blur+Sharpen category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.  The output of the effect is composited over this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Interpolate between the result and the Source input.  White areas
+use the result of the effect.  Black areas use the Source clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/RackDefocus.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Defocus Color
+   </i>
+   .
+   <br/>
+   Selects between full color or monochrome defocus.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Defocus Color:
+      </i>
+     </b>
+     defocuses all channels of the source input.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Defocus Mono:
+       </i>
+      </b>
+      makes the source monochrome and then
+  applies the defocus (faster).
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the defocus.  This parameter can be adjusted using the Defocus Width Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative height of the iris shape.  If it
+  is not 1, circles become ellipses, etc.
+  </dd>
+ </dl>
+ <h3>
+  Lens Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shape:
+   </b>
+   <i>
+    Popup menu,  Default: Circle
+   </i>
+   .
+   <br/>
+   Determines the shape of the simulated camera iris.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Circle:
+      </i>
+     </b>
+     round.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        3 sides:
+       </i>
+      </b>
+      triangle.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         4 sides:
+        </i>
+       </b>
+       square.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          5 sides:
+         </i>
+        </b>
+        pentagon.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           6 sides:
+          </i>
+         </b>
+         hexagon.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            7 sides:
+           </i>
+          </b>
+          etc.
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Shape:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Show the iris shape instead of the defocused image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Roundness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Modifies the shape of the simulated camera iris.  A
+  value of 1 produces a circle; 0 gives a flat-sided polygon with a
+  number of sides given by the Shape parameter.  Less than 0 causes
+  the sides to squeeze inward giving a star shape, while a value greater
+  than 1 causes the corners to squeeze inward, giving a flowery
+  shape. Has no effect if the Shape is set to Circle.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the iris shape.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bokeh:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Softens the outer edge of the iris shape, which gives a
+  softer look to the defocused highlights. A negative value darkens
+  the center of the iris shape, producing a ring-like defocus shape.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lens Noise:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to add noise to the iris shape, dirtying up the defocus a little.  Can make the result more realistic.  Turn up past 1 for a more stylistic result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   40,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The frequency of the added noise.  Ignored if Lens Noise is zero.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative horizontal frequency of the
+  added iris noise.  Increase to stretch it vertically or decrease to
+  stretch it horizontally.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The seed value for the added noise.  To make the noise
+  appear different on each frame, animate this to be different on each
+  frame.  The actual value doesn't matter; only that it's different.
+  </dd>
+ </dl>
+ <h3>
+  Other Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gauss Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If positive, a gaussian blur is also applied which
+  smooths out the edges of the shapes.  This might also darken the
+  highlights because Gamma is not considered in the gaussian blur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Values above 1 cause highlights in the source clip to
+  keep their brightness after the defocus is applied.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Boost Highlights:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount to increase the luma of the highlights in the source clip.
+  Increase this parameter to blow out the highlights without affecting the darks or mid-tones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Highlight Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.9,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The minimum luma value for highlights. Pixels brighter than this will be brightened according to the Boost Highlights parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chroma Distort:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds some chromatic aberration around the edges of
+  the image; red and blue wavelengths of light refract differently in
+  real lenses, producing fringes of color where the rays strike the
+  lens at oblique angles.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Fringing:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Color Fringing produces rings of color around
+  every object in the image by varying the focal distance for each
+  color channel.  It gives a different style of chromatic aberration
+  from Chroma Distort because it's not just in the image corners.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds this gray value to the darker regions of
+the result.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mix With Source:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Interpolates between the defocused result and the
+  original source.  Set this to 1 for the original source.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Reflect
+   </i>
+   .
+   <br/>
+   Determines the behavior when accessing areas outside the source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Black:
+      </i>
+     </b>
+     Areas outside the source image are treated as black, which can produce
+                     dark areas around the edges of the image.
+             Select this for fastest rendering.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Repeat:
+       </i>
+      </b>
+      Repeats the last pixel outside the border of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       Reflects the image outside the border.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Mask input channels are used to make a
+monochrome mask.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used, or if there is no
+valid Alpha channel the Red channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.  It has no effect unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.  This has no effect
+unless the Mask input is provided.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#title-key">
+  Apply To Title/Key
+ </a>
+ ,
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../defocusprism">
+       DefocusPrism
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../blur">
+       Blur
+      </a>
+      <br/>
+      <a href="../blurchannels">
+       BlurChannels
+      </a>
+      <br/>
+      <a href="../blurchroma">
+       BlurChroma
+      </a>
+      <br/>
+      <a href="../convolve">
+       Convolve
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

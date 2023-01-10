@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.1. Global functions &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.2. BezierContour" href="BezierContour.html" />
+    <link rel="prev" title="2. mocha.project" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="BezierContour.html" title="2.2. BezierContour"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2. mocha.project"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="global-functions">
+<h1>2.1. Global functions<a class="headerlink" href="#global-functions" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="#mocha.project.mocha.project.set_license_search_path" title="mocha.project.mocha.project.set_license_search_path"><tt class="xref py py-func docutils literal"><span class="pre">mocha.project.set_license_search_path()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.project.mocha.project.get_license_path" title="mocha.project.mocha.project.get_license_path"><tt class="xref py py-func docutils literal"><span class="pre">mocha.project.get_license_path()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.project.mocha.project.get_current_project" title="mocha.project.mocha.project.get_current_project"><tt class="xref py py-func docutils literal"><span class="pre">mocha.project.get_current_project()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.project.mocha.project.register_custom_tool_type" title="mocha.project.mocha.project.register_custom_tool_type"><tt class="xref py py-func docutils literal"><span class="pre">mocha.project.register_custom_tool_type()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.project.mocha.project.tool_instance" title="mocha.project.mocha.project.tool_instance"><tt class="xref py py-func docutils literal"><span class="pre">mocha.project.tool_instance()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.project.mocha.project.registered_tool_types" title="mocha.project.mocha.project.registered_tool_types"><tt class="xref py py-func docutils literal"><span class="pre">mocha.project.registered_tool_types()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.project.mocha.project.set_overlay_renderer" title="mocha.project.mocha.project.set_overlay_renderer"><tt class="xref py py-func docutils literal"><span class="pre">mocha.project.set_overlay_renderer()</span></tt></a></li>
+</ul>
+<div class="section" id="detailed-description">
+<h2>2.1.1. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mocha.project.mocha.project.set_license_search_path">
+<tt class="descclassname">mocha.project.</tt><tt class="descname">set_license_search_path</tt><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.mocha.project.set_license_search_path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>unicode</em>) &#8211; New license search path.</td>
+</tr>
+</tbody>
+</table>
+<p>Sets the current license directory path. By default it equals to installed mocha license path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.project.mocha.project.get_license_path">
+<tt class="descclassname">mocha.project.</tt><tt class="descname">get_license_path</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.mocha.project.get_license_path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">unicode</td>
+</tr>
+</tbody>
+</table>
+<p>Returns the current license directory path. By default it equals to installed mocha license path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.project.mocha.project.get_current_project">
+<tt class="descclassname">mocha.project.</tt><tt class="descname">get_current_project</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.mocha.project.get_current_project" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Project.html#mocha.project.Project" title="mocha.project.Project"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Project</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Returns the current open project. Use it only in init.py script to get the current open project.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.project.mocha.project.register_custom_tool_type">
+<tt class="descclassname">mocha.project.</tt><tt class="descname">register_custom_tool_type</tt><span class="sig-paren">(</span><em>tool_type</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.mocha.project.register_custom_tool_type" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.project.mocha.project.tool_instance">
+<tt class="descclassname">mocha.project.</tt><tt class="descname">tool_instance</tt><span class="sig-paren">(</span><em>tool_type</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.mocha.project.tool_instance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PyObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.project.mocha.project.registered_tool_types">
+<tt class="descclassname">mocha.project.</tt><tt class="descname">registered_tool_types</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.mocha.project.registered_tool_types" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PyObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.project.mocha.project.set_overlay_renderer">
+<tt class="descclassname">mocha.project.</tt><tt class="descname">set_overlay_renderer</tt><span class="sig-paren">(</span><em>arg__1</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.mocha.project.set_overlay_renderer" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.1. Global functions</a><ul>
+<li><a class="reference internal" href="#detailed-description">2.1.1. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">2. mocha.project</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="BezierContour.html"
+                        title="next chapter">2.2. BezierContour</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/GlobalFunctions.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="BezierContour.html" title="2.2. BezierContour"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="2. mocha.project"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

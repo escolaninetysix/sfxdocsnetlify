@@ -1,0 +1,949 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: EdgeFlash",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/EdgeFlash.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="EdgeFlash">
+     <h2>
+      EdgeFlash
+     </h2>
+    </a>
+    Adds a glow from the Front clip onto the Back clip, and
+  vice versa, then composites the Front over the Back.  This can be
+  used to make a composite look more natural with light flashing
+  between the layers as if exposed on film together.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Front:
+      </b>
+      The clip to use as foreground.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Back:
+      </b>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      Specifies the opacities of the Front clip.  Only the red
+  channel of this input is used.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/EdgeFlash.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Effect:
+   </b>
+   <i>
+    Popup menu,  Default: Original
+   </i>
+   .
+   <br/>
+   Select which processing method to use
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Original:
+      </i>
+     </b>
+     The original method
+     <br/>
+     <dd>
+      <b>
+       <i>
+        LightWrap:
+       </i>
+      </b>
+      An improved method that handles some edge conditions better
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Front Flash Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The amount of flashing from the Front onto the Back.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Back Flash Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The amount of flashing from the Back onto the Front.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flash Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The width of the flashing.  This parameter can be adjusted using the Flash Width Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Output:
+   </b>
+   <i>
+    Popup menu,  Default: Comp
+   </i>
+   .
+   <br/>
+   Selects between different output options.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Foreground:
+      </i>
+     </b>
+     outputs only the Front clip with flashing from the Back.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Background:
+       </i>
+      </b>
+      outputs only the Back clip with flashing from the Front.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Comp:
+        </i>
+       </b>
+       flashes both, composites the Front over the Back, and
+  outputs the result.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Comp Premult:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Enable this for a better composite if the Front
+  pixel values have been pre-multiplied by the Matte pixel values.
+  This is also known as an 'additive' composite.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Subpixel Widths:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Enables flashing by subpixel amounts.  Use this
+  for smoother animation of the flash width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Matte:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the output matte
+  are inverted.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Front Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the Front input by this value.  Increase for a
+  brighter result
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Front Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Adds this gray value to the darker regions of the Front input.
+  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Front Sat:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the color saturation of the Front input.  Increase
+  for more intense colors.  Set to 0 for monochrome.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Back Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the Back input by this value.  Increase for a
+  brighter result
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Back Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Adds this gray value to the darker regions of the Back input.
+  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Back Sat:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the color saturation of the Back input.  Increase
+  for more intense colors.  Set to 0 for monochrome.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shrink- Grow+:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Amount to grow the matte edges in
+  approximate pixels, or shrink if negative.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The resulting softness of the edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Post Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If positive, the result is blurred by this amount.
+  This is an alternative method for softening the edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Amplitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The amount of noise texture to add to the edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The width of the area at the matte edges where the
+  noise is included.  This has no effect unless Noise Amplitude is
+  positive
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   100,
+   <i>
+    Range:
+   </i>
+   0.1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The frequency of the noise.  Increase for finer grain
+  noise, decrease for coarser noise.  This has no effect unless Noise
+  Amplitude is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 to 10,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The number of summed layers of noise.  Each octave is
+  twice the frequency and half the magnitude of the previous.  This
+  has no effect unless Noise Amplitude is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.23,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The horizontal and vertical translation of
+  the noise texture.
+  </dd>
+ </dl>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../matteops">
+       MatteOps
+      </a>
+      <br/>
+      <a href="../matteopsmask">
+       MatteOpsMask
+      </a>
+      <br/>
+      <a href="../matteopscomp">
+       MatteOpsComp
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../blur">
+       Blur
+      </a>
+      <br/>
+      <a href="../edgeblur">
+       EdgeBlur
+      </a>
+      <br/>
+      <a href="../edgedetect">
+       EdgeDetect
+      </a>
+      <br/>
+      <a href="../glow">
+       Glow
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

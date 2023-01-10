@@ -1,0 +1,1530 @@
+{
+"title": ""
+}
+
+<style>
+    .info-label {
+        font-weight: 600 !important;
+    }
+    .anchor {
+        display: block;
+        position: relative;
+        top: 80px;
+        visibility: hidden;
+    }
+    .thumbnail {
+        height: inherit;
+        width: auto;
+    }
+    .thumbnail-container{
+        height:125px;
+        width: 222px;
+        overflow:hidden;
+    }
+    
+    .download-td{
+        vertical-align: middle!important;;
+        padding: .5rem .75rem!important;;
+    }
+</style>
+<div id="app" v-cloak>
+    <template v-if="show_account && !loaded">
+        <div class="container">
+            <div class="row">
+                <span>Loading. . .</span>
+            </div>
+        </div>
+    </template>
+    <template v-if="show_account && loaded">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12">
+                    <h3 v-show="user.firstName">${ user.firstName }'s Account</h3>
+                    <h3 v-else>My Account</h3>
+                    <hr />
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link nav-tab active" role="tab" href="javascript:void(0)" id="orders-tab" data-target="#orders" name="orders"
+                                @click="changeTab('orders')"> Orders </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-tab" role="tab" href="javascript:void(0)" id="licenses-tab" data-target="#licenses" name="licenses"
+                                @click="changeTab('licenses')">Licenses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-tab" role="tab" href="javascript:void(0)" id="downloads-tab" data-target="#downloads" name="downloads"
+                                @click="changeTab('downloads')">Download History</a>
+                        </li>
+                        <li class="nav-item" v-if="machines">
+                            <a class="nav-link nav-tab" role="tab" href="javascript:void(0)" data-target="#files" name="files"
+                                @click="changeTab('files')">License Files</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-tab" role="tab" href="javascript:void(0)" data-target="#cases" name="cases"
+                                @click="changeTab('cases')">Support Cases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-tab" role="tab" href="javascript:void(0)" data-target="#training" name="training"
+                                @click="changeTab('training')">Training</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-tab" role="tab" href="javascript:void(0)" data-target="#settings" name="settings"
+                                @click="changeTab('settings')">Account Info</a>
+                        </li><li class="nav-item">
+                            <a class="nav-link nav-tab" role="tab"  v-if="user.stripeCustomerId" href="/account/payment-methods" name="payment-methods">Payment Methods</a>
+                        </li>
+						 <li class="nav-item" v-if="login.administrator">
+                            <a class="nav-link nav-tab" role="tab" href="javascript:void(0)" data-target="#livestreams" name="livestreams"
+                                @click="changeTab('livestreams')">Live Stream</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-9 col-12 branded-box">
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="orders" role="tabpanel">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Date</th>
+                                        <th>Seller</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <template v-for="(o, index) in orders">
+                                    <tbody>
+                                        <tr :key="o.invoiceNum">
+                                                <td><a href="javascript:void(0)"
+                                                        @click="toggleCollapse(o.invoiceNum, index)">${ o.invoiceNum
+                                                        }</a> <span v-if="o.unpaid && !o.reseller">&nbsp;(Unpaid)</span></td>
+                                                <td>${ o.closeDate }</td>
+                                                <td v-if="o.reseller">${ o.reseller }</td>
+                                                <td v-else>Boris FX</td>
+                                                <td><a href="javascript:void(0)" v-show="!o.reseller"
+                                                        @click="getInvoice(o.invoiceNum)">Download Invoice</a></td>
+                                                <td><a :href="'/account/payment?id=' + o.paylinkId" v-if="o.unpaid && !o.reseller">Pay Invoice</a></td>
+                                                <td><a :id="o.invoiceNum" class="anchor" /></td>
+                                                
+                                        </tr>
+                                        <tr class="collapse" :ref="o.invoiceNum + '-' + index" :id="o.invoiceNum + '-items'">
+                                            <td colspan="4" class="oli-cell">
+                                                <div class="ml-4 pl-2" style="border-left: 1pt solid #BFBFBF;">
+                                                    <h6>Products</h6>
+                                                    <table class="oli-table w-100">
+                                                        <tbody>
+                                                            <tr v-for="li in o.lineItems">
+                                                                <td>
+                                                                    ${ li.productName }
+                                                                </td>
+                                                                <td>
+                                                                    ${ li.productSku }
+                                                                </td>
+                                                                <td>
+                                                                    ${ li.quantity }
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <h6>Licenses</h6>
+                                                    <table class="oli-table">
+                                                        <tbody>
+                                                            <tr v-for="c in o.contracts">
+                                                                <td>
+                                                                    <a role="tab" href="javascript:void(0)" @click="jumpToLicense(c.contractNumber)">${ c.serial }</a>
+                                                                </td>
+                                                                <td>
+                                                                    ${ c.family } — ${ c.host }
+                                                                </td>
+                                                                <td>
+                                                                    <span v-if="isSubscription(c) && isExpired(c)">Expired ${ c.formattedEndDate}</span>
+                                                                    <span v-else-if="c.contractType == 'Upgrade and Support' && isExpired(c)">Support Expired</span>
+                                                                    <span v-else-if="(isSubscription(c) && !willAutorenew(c)) || c.contractNumber == null">Expires ${ c.formattedEndDate }</span>
+                                                                    <span v-else-if="willAutorenew(c)">Renews ${ c.formattedEndDate }</span>
+                                                                    <span v-else>Support Ends ${ c.formattedEndDate }</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </template>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="licenses" role="tabpanel">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th colspan="99" class="float-right">
+                                            <div class="dropdown d-block">
+                                                <a href="#" class="dropdown-toggle mt-1" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Sort By
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"
+                                                        @click="sortLicenses('orderDate', 'family', false)">Order Date
+                                                        (Earliest)</a>
+                                                    <a class="dropdown-item" href="#"
+                                                    @click="sortLicenses('orderDate', 'family', true)">Order Date
+                                                    (Latest)</a>
+                                                    <a class="dropdown-item" href="#"
+                                                        @click="sortLicenses('endDate', 'family', false)">Contract End Date
+                                                        (Earliest)</a>
+                                                    <a class="dropdown-item" href="#"
+                                                        @click="sortLicenses('endDate', 'family', true)">Contract End Date
+                                                        (Latest)</a>
+                                                    <a class="dropdown-item" href="#"
+                                                        @click="sortLicenses('family', 'host', false)">Product</a>
+                                                    <a class="dropdown-item" href="#"
+                                                        @click="sortLicenses('host', 'family', false)">Host</a>
+                                                </div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="contract in contracts" :key="contract.contractNumber">
+                                        <td colspan="99">
+                                            <section :id="contract.contractNumber">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-12 col-lg-6">
+                                                            <span class="font-weight-bold">${ contract.family } — ${
+                                                                contract.host }</span>
+                                                        </div>
+                                                        <div class="col-12 col-lg-6">
+                                                            <span class="font-weight-bold" v-if="!contract.machineId">${ contract.serial }</span>
+                                                            <div v-else style="overflow-wrap: anywhere;">
+                                                                <span v-if="contract.machineType == 'Dongle'">Dongle Id - ${
+                                                                    contract.machineId }</span>
+                                                                <span v-else>Host Id - ${ contract.machineId }</span>
+                                                                <span>
+                                                                    <a href="#" @click="changeTab('#files')"> (Download
+                                                                        License File)</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 col-lg-6">
+                                                            <a href="javascript:void(0)" @click="jumpToOrder(contract.invoiceNum)">Invoice #${ contract.invoiceNum }</a><span> - Purchased ${ contract.orderDate}</span>
+                                                        </div>
+                                                        <div class="col-12 col-lg-6">
+                                                            <span v-if="contract.quantity > 1">Installs on ${
+                                                                contract.quantity } Systems</span>
+                                                            <span v-else>Installs on 1 System</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 col-lg-6">
+                                                            <span v-if="!contract.endDate">Permanent License</span>
+                                                            <span v-else-if="!contract.contractNumber">Temporary License (Expires ${contract.formattedEndDate})</span>
+                                                            <span v-else-if="isSubscription(contract) && isExpired(contract)">${subRecurrance(contract)} Subscription (Expired ${contract.formattedEndDate})</span>
+                                                            <span v-else-if="contract.contractType == 'Upgrade and Support' && isExpired(contract)">Perpetual (Support Lapsed)</span>
+                                                            <span
+                                                                v-else-if="(contract.contractType === 'Subscription' && !willAutorenew(contract)) || contract.contractNumber == null">${subRecurrance(contract)} Subscription
+                                                                (Expires ${ contract.formattedEndDate })</span>
+                                                            <span
+                                                                v-else-if="contract.contractType === 'Subscription' && willAutorenew(contract)">${subRecurrance(contract)} Subscription
+                                                                (Renews ${ contract.formattedEndDate })</span>
+                                                            <span
+                                                                v-else-if="contract.contractType === 'Upgrade and Support'">Perpetual
+                                                                (Support Ends ${ contract.formattedEndDate })</span>
+                                                            <span v-else>(Support Ends ${ contract.formattedEndDate })</span>
+                                                        </div>
+                                                        <div class="col-12 col-lg-6">
+                                                            <a :href="isExpired(contract) ? '/legacy-downloads' : getDownloadUrl(contract)">
+                                                                Download Installers
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 col-lg-6">&nbsp;</div>
+                                                        <div class="col-12 col-lg-6">
+                                                            <a href="javascript:void(0)"
+                                                                    @click="resetLicense(contract.serial)"
+                                                                    v-if="!contract.isFloating && !contract.machineId">
+                                                                    Reset License
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <span
+                                                                v-if="contract.isFloating || contract.isMultiKeyBundle || contract.machineId">Contact
+                                                                your Account Manager to Renew</span>
+                                                            <span
+                                                                v-else-if="hasFailedPayment(contract)">Payment Failed&nbsp;<a :href="'/account/payment?id=' + contract.subscription.renewalLinkId">(Renew)</a></span>
+                                                            <span v-else-if="willAutorenew(contract)">Will Renew
+                                                                Automatically <em>(Card ending in ${ contract.subscription.cardLastFour })</em><br/>
+                                                                <button class="btn"
+                                                                    @click="cancelSubscription(contract)">
+                                                                    ${ isSubscription(contract) ? 'Cancel Subscription' : 'Disable Auto-Renewal'}
+                                                            </button> 
+                                                                <button class="btn" @click="initScheduleModal(contract)">View Scheduled Payment</button></span>
+                                                            <button v-else-if="isExpired(contract) && contract.subscription" class="btn mr-2"
+                                                            @click="openReinstateModal(contract)">
+                                                                <span v-if="isSubscription(contract)">Renew Subscription</span>
+                                                                <span v-else-if="contract.renewalType == 'Standard'">Renew Support</span>
+                                                                <span v-else>Reinstate Support</span>
+                                                            </button>
+                                                            <button v-else-if="contract.subscription" class="btn mr-2"
+                                                            @click="handleRestoreButtonClick(contract)">${ isSubscription(contract) ? 'Restore Subscription' : 'Enable Auto-Renewal'}</button>
+                                                            <button v-else-if="contract.renewalSku" class="btn mr-2"
+                                                                
+                                                                @click="addToCart(contract.renewalSku, contract)">${ contract.renewalType == 'Standard' ? 'Renew Support' : 'Reinstate Support' }</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">&nbsp;</div>
+                                                    </div>
+                                                </div>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="downloads" role="tabpanel">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>Product Family</th>
+                                                <th>Host</th>
+                                                <th>Version Number</th>
+                                                <th>Operating System</th>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(d, index) in downloads">
+                                                <td class="download-td">${d.family}</td>
+                                                <td class="download-td">${d.host}</td>
+                                                <td class="download-td">${d.version}</td>
+                                                <td class="download-td">${d.platform}</td>
+                                                <td class="download-td"><button class="btn m-0" @click="handleDownload(index)">Download</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="files" role="tabpanel" v-if="machines">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table">
+                                        <tbody>
+                                            <template v-for="machine in machines" :key="machine.hostId">
+                                                <tr>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-lg-3" v-if="machine.hostId == 'dongles'">
+                                                                <p>Dongle-Locked Licenses</p>
+                                                                <p v-show="machine.serials.length > 1">(${
+                                                                    machine.serials.length } Licenses)</p>
+                                                                <p v-show="machine.serials.length == 1">(1 License)</p>
+                                                            </div>
+                                                            <div class="col-lg-3" v-else>
+                                                                <p>Host Id - ${ machine.hostId }</p>
+                                                                <p v-show="machine.serials.length > 1">(${
+                                                                    machine.serials.length } Licenses)</p>
+                                                                <p v-show="machine.serials.length == 1">(1 License)</p>
+                                                            </div>
+                                                            <div class="col-lg-3"><a href="#"
+                                                                    @click="getLicenseFile(machine.hostId)">Download
+                                                                    License File</a></div>
+                                                        </div>
+                                                        <hr />
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="cases" role="tabpanel">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped" v-if="supportCases">
+                                        <thead>
+                                            <tr>
+                                                <th>Date Opened</th>
+                                                <th>Case Number</th>
+                                                <th>Subject</th>
+                                                <th>Support Rep</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template v-for="c in supportCases">
+                                                <tr>
+                                                    <td>${ c.openedDate }</td>
+                                                    <td>${ c.caseNumber }</td>
+                                                    <td style="max-width: 50%;">${ c.subject }</td>
+                                                    <td>${ c.ownerName }</td>
+                                                    <td>${ c.status }</td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="training" role="tabpanel">
+                            <div v-if="!training">
+                                <p>loading. . .</p>
+                            </div>
+                            <div v-else-if="training.length > 0" class="mt-3">
+                                <h4>Purchased Videos</h4>
+                                <div class="row my-4" v-for="t in training" :key="t.name" >
+                                    <div class="col-lg-auto mx-4">
+                                        <div class="thumbnail-container">
+                                            <img class="thumbnail" :src="t.thumbnail || defaultTrainingThumbnail" class="mx-auto" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div>
+                                                    <h5 class="m-0"><a :href="t.url">${ t.name }</a></h5>
+                                                    <div>
+                                                        <a :href="t.url" v-if="t.url">View Training</a>
+                                                        <span v-if="t.url && (t.assets || t.downloadUrl)">&nbsp;|&nbsp;</span>
+                                                        <a :href="t.downloadUrl" v-if="t.downloadUrl">Download Content</a>
+                                                        <span v-if="t.downloadUrl && t.url && t.assets">&nbsp;|&nbsp;</span>
+                                                        <a :href="t.assets" v-if="t.assets">Download Assets</a>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span>${ t.description }</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <h5>You do not currently own any of our training products.</h5>
+                                <a href="/store">Purchase Training</a>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="settings" role="tabpanel">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3>Account Info</h3>
+                                    <form class="form">
+                                        <div class="form-group">
+                                            <label class="info-label">Name</label>
+                                            <div class="form-control-plaintext">${ user.firstName } ${ user.lastName }
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="info-label">Email</label>
+                                            <div class="form-control-plaintext">${ user.email }</div>
+                                            <div class="mt-2">
+                                                <a href="javascript:void(0)" data-toggle="modal"
+                                                    data-target="#email-modal" data-backdrop="static"
+                                                    data-keyboard="false">Update Email Address</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"
+                                            v-show="user.firstName + ' ' + user.lastName != user.company">
+                                            <label class="info-label">Company</label>
+                                            <div class="form-control-plaintext">${ user.company }</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="info-label">Invoicing</label>
+                                            <div class="form-control-plaintext" v-if="user.address">
+                                                <span v-if="user.address.street">${ user.address.street }<br /></span>
+                                                <span v-if="user.address.city">${ user.address.city }, </span>
+                                                <span v-if="user.address.stateCode">${ user.address.stateCode }</span>
+                                                <span v-if="user.address.postalCode">${ user.address.postalCode }</span>
+                                                <span
+                                                    v-if="user.address.city || user.address.stateCode || user.address.postalCode"><br /></span>
+                                                <span v-if="user.address.country">${ user.address.country }</span>
+                                            </div>
+                                            <div class="form-control-plaintext" v-else>
+                                                No Address Listed
+                                            </div>
+                                            <div class="mt-2">
+                                                <a href="javascript:void(0)" data-toggle="modal"
+                                                    data-target="#billing-info-modal" data-backdrop="static"
+                                                    data-keyboard="false">Update Invoicing Address</a>
+                                            </div>
+
+                                            <div class="form-group mt-2" v-if="user.address.countryCode != 'US'">
+                                                <label class="info-label">VAT Id Number</label>
+                                                <div v-show="!editVat">
+                                                    <span v-show="vat.number">${ vat.number }&nbsp;</span>
+                                                    <span v-show="!vat.number">None&nbsp;</span>
+                                                    <a class="font-weight-bold" href="javascript:void(0);" @click="enabledVatEdit">Modify</a>
+                                                </div>
+                                                <div class="input-group" v-show="editVat">
+                                                    <div class="input-group-addon" v-if="user.address.country">
+                                                        <span class="input-group-text">${user.address.countryCode}</span>
+                                                    </div>                            
+                                                    <input type="text" class="form-control" id="vat-number-input" v-model="vat.number" />
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button"
+                                                            style="font-size:1rem; margin-top:0;" v-on:click="validateVAT">Save</button>
+                                                    </div>
+                                                </div>  
+                                                <div><span v-show="vat.error" style="color:red;">${ vat.error }</span></div>  
+                                            </div>
+                                            <div class="mt-2" v-if="user.stripeCustomerId">
+                                                <a href="/account/payment-methods">
+                                                    Manage Payment Methods
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="info-label">Password</label>
+                                            <div class="form-control-plaintext>"><a href="#"
+                                                    @click="resetPassword">Reset Password</a></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+						 <div class="tab-pane" id="livestreams" role="tabpanel">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped" v-if="livestreamList">
+                                        <thead>
+                                            <tr>
+                                                <th>Thumb</th>
+                                                <th>Title</th>
+                                                <th>ID</th>
+                                                <th>Type</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template v-for="live in livestreamList">
+                                                <tr>
+                                                    <td><img class="mr-3" :src="live.snippet.thumbnails.default.url" width="72"></td>
+                                                    <td>${ live.snippet.title }</td>
+                                                    <td>${ live.id }</td>
+                                                    <td>${ live.kind }</td>
+                                                    <td>${ live.snippet.scheduledStartTime }</td>
+                                                    <td>
+                                                        <span v-if="live.id == active_livestream">Active</span>
+                                                        <span v-else>
+                                                            <button class="btn btn-continuum" @click="setActiveLivestream(live.id)">Choose</button>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" tabindex="-1" role="dialog" id="billing-info-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Invoicing Info</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            data-target="billing-info-modal" :disabled="lockModal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form" id="billing-info-form" @submit.prevent="updateBillingInfo">
+                        <div class="modal-body">
+                            <p><em>Note: if you are purchasing on behalf of a business, please enter your business's billing address.</em></p>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" style="margin: .5rem;" name="firstName"
+                                        placeholder="First Name" />
+                                    <input class="form-control" style="margin: .5rem;" name="lastName"
+                                        placeholder="Last Name" />
+                                </div>
+                                <input class="form-control" style="margin: .5rem;" name="company"
+                                    placeholder="Company" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" style="margin: .5rem;" name="address"
+                                    placeholder="Address" />
+                                <input class="form-control" style="margin: .5rem;" name="address2"
+                                    placeholder="Address 2 (Optional)" />
+                                <input class="form-control" style="margin: .5rem;" name="city" placeholder="City" />
+                                <input class="form-control" style="margin: .5rem;" name="zip"
+                                    placeholder="Zip/Postal Code" />
+                                <select class="form-control grouped-input" id="billing-country" name="country"
+                                    style="margin: .5rem;" @change="renderStates($event, $event.target.selectedIndex);"
+                                    required>
+                                    <option value="">Country</option>
+                                    <option v-for="c in countries" :value="c.code">${ c.name }</option>
+                                </select>
+                                <select class="form-control grouped-input" id="billing-state" name="state"
+                                    style="margin: .5rem;" v-if="states" required>
+                                    <option value="">State</option>
+                                    <option v-for="s in states" :value="s.code">${ s.name }</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="billing-info-form-submit" class="btn btn-primary"
+                                :disabled="lockModal">
+                                ${ lockModal ? 'Saving. . .' : 'Save Changes' }
+                            </button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                data-target="billing-info-modal" :disabled="lockModal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="email-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Biling Info</h5>
+                        <button type="button" class="close" data-dismiss="modal" data-target="#email-modal"
+                            aria-label="Close" :disabled="lockModal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form" id="email-form" @submit.prevent="updateEmail">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>New Email</label>
+                                <input class="form-control" name="email" />
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm New Email</label>
+                                <input class="form-control" name="confirmEmail" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="billing-info-form-submit" class="btn btn-primary"
+                                :disabled="lockModal">
+                                ${ lockModal ? 'Saving. . .' : 'Save Changes' }
+                            </button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                data-target="#email-modal" :disabled="lockModal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="reinstate-modal" tabindex="-1" role="dialog" aria-labelledby="reinstateModal" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">${isSubscription(reinstateModal.displayedContract) ? 'Renew Subscription' : 'Renew Upgrade & Support'}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p v-if="isSubscription(reinstateModal.displayedContract)">Renew your subscription for ${reinstateModal.displayedContract.serial}?</p>
+                  <p v-else>Renew your Upgrade & Support plan for ${reinstateModal.displayedContract.serial}?</p>
+                  
+                  <p><strong>${reinstateModal.subtotal} ${reinstateModal.currency}</strong> will immediately be charged to your payment method ending 
+                      in <strong>${reinstateModal.displayedContract.subscription.cardLastFour}</strong>. 
+                      You will then be charged <strong>${reinstateModal.standardRenewalCost} ${reinstateModal.currency}</strong> ${reinstateModal.recurrence}
+                      ${reinstateModal.isProrated ? ' starting ' + reinstateModal.displayedContract.subscription.scheduleEndDate : '' } 
+                  </p>
+                  <p v-show="reinstateModal.isProrated">
+                      <em>(This renewal has been prorated to match an existing scheduled payment)</em>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" @click="reinstateSubscription(reinstateModal.displayedContract)">Renew Subscription</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="schedule-modal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Scheduled Payment</h5>
+                        <button type="button" class="close" data-dismiss="modal" data-target="#schedule-modal" @click="resetScheduleModal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table" v-show="!scheduleModal.isResubscribe">
+                            <thead>
+                                <tr>
+                                    <th>Serial Number</th>
+                                    <th>Product</th>
+                                    <th>Qty</th>
+                                    <th>Renewal Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="contract in scheduleModal.displayedSchedule.contracts">
+                                    <td>${ contract.serial }</td>
+                                    <td>${ contract.product }</td>
+                                    <td>${ contract.qty }</td>
+                                    <td>$${ contract.renewalCost }</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p v-show="scheduleModal.isResubscribe">The payment method associated with this subscription no longer exists. Please select a new form of payment.</p>
+                        <hr />
+                        <div class="row justify-content-end" v-show="!scheduleModal.isResubscribe">
+                            <div class="col-3 text-right"><strong>Total: </strong></div>
+                            <div class="col-3">$${ scheduleModal.displayedSchedule.total }</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto pl-3 pr-2"><strong>Payment Date: </strong></div>
+                            <div class="col-auto">
+                                <span>${ scheduleModal.displayedSchedule.dateFormatted }&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="row" v-if="!scheduleModal.editPaymentMethod">
+                            <div class="col-auto pl-3 pr-2"><strong>Payment Method: </strong></div>
+                            <div class="col-auto">
+                                <span>Card Ending in ${ scheduleModal.displayedSchedule.cardLastFour }&nbsp;</span>
+                                <a href="javascript:void(0);" @click="toggleEditPaymentMethod">(Change)</a>
+                            </div>
+                        </div>
+                        <div class="row" v-else>
+                            <div class="col-auto pl-3 pr-2">
+                                <p><strong>Payment Method: </strong></p>
+                                <div class="input-group">
+                                    <select class="custom-select" ref="paymentMethodSelect" v-model="scheduleModal.newMethodId">
+                                        <option value="">--- Choose One ---</option>
+                                        <template v-for="card in paymentMethods">
+                                            <option :value="card.pmId">**** **** **** ${ card.lastFour } - ${ card.brand }</option>
+                                        </template>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary mt-0" style="font-size: 1rem;" 
+                                            @click="updateSchedulePaymentMethod">${ scheduleModal.isResubscribe ? 'Restore Subscription' : 'Save' }</button>
+                                    </div>
+                                </div>
+                                <br />
+                                <a href="/account/payment-methods?ref=account">Manage Payment Methods</a> | <a href="#" @click="toggleEditPaymentMethod">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </template>
+</div>
+<script src="/shopify.js"></script>
+<script>
+    var shopifyClient = ShopifyBuy.buildClient({
+        domain: 'borisfx.myshopify.com',
+        storefrontAccessToken: '3f231af7322de13fabe8e3e7ff3ef003',
+    });
+
+</script>
+{{% country-state-json %}}
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            activeTab: 'orders',
+            orders: [],
+            contracts: [],
+            bundles: [],
+            schedules: [],
+            downloads: [],
+            vat: {
+                number : '',
+                valid : false,
+                error : null
+            },
+            scheduleModal : {displayedSchedule: {}, selectedContract: {}, editPaymentMethod: false, isResubscribe: false, newMethodId : ''},
+            reinstateModal : {displayedContract: {subscription:{}}, isProrated: false, subtotal: '', recurrence: ''},
+            training: null,
+            defaultTrainingThumbnail: 'https://borisfx--c.um2.content.force.com/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=0684G00000EABEy&operationContext=CHATTER&contentId=05T4G00000gkAbq',
+            supportCases: [],
+            livestreamList: [],          
+			shopifyProds: undefined,
+            show_account: false,
+            singleUser: undefined,
+            loaded: false,
+            machines: [],
+            lockModal: false,
+            modalSubmitText: 'Save Changes',
+            login: Cookies.getJSON('bfx-login'),
+            user: {},
+            //For account info form
+            countries: countryJson,
+            states: undefined,
+			active_livestream: 'none',
+            editVat: false,
+            multihosts: {
+                'Sapphire' : {'Multi-host': ['Adobe', 'OFX', 'Avid'], 'Adobe/OFX': ['Adobe', 'OFX']},
+                'Continuum' : {
+                    'Multi-host': ['Adobe', 'Apple', 'OFX'], 
+                    'Multi-host + Avid' :['Adobe', 'Apple', 'OFX', 'Avid']
+                },
+                'Mocha' : {'Multi-host': ['Adobe', 'Avid', 'OFX']},
+                'Optics' : {'Multi-host': ['Adobe']},
+                'Silhouette' : {'Adobe/OFX' : ['Adobe', 'OFX']},
+                'Boris FX Suite' : {'Multi-host' : []}
+            }
+        },
+        created: function () {
+            var self = this;
+            window.location.hash = '#'
+            if (!self.login) {
+                window.location = '/account/login';
+                return;
+            }
+            if (!self.login.email_verified) {
+                window.location = '/account/verify-new';
+                return;
+            }
+            self.show_account = true;
+            self.shopifyProds = self.getShopifyProds();
+            self.getAccountInfo().then(function(){
+                self.loaded = true;
+            })
+        },
+        watch: {
+            activeTab: function(newValue){
+                if (newValue == 'training' && this.training == null){
+                    var self = this;
+                    axios.get('https://backend.borisfx.com/training/', 
+                        {auth: {username : self.login.email, password: self.login.token}}
+                    )
+                    .then(function(res){
+                        self.training = res.data;
+                    })
+                    .catch(function(err){
+                        if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                            return;
+                        }
+                        alert('Unable to obtain training. Please contact us at customerservice@borisfx.com for assistance.')
+                    })
+                }
+            }
+        },
+        methods: {
+            changeTab: function (selectedId) {
+                var $tab = $('.nav-tabs a[name="' + selectedId + '"]');
+                $tab.tab('show');
+                this.activeTab = selectedId;
+                return '';
+            },
+            toggleCollapse: function (InvoiceNum, liIndex) {
+                var key = InvoiceNum + '-' + liIndex;
+                var $row = $(this.$refs[InvoiceNum + '-' + liIndex][0]);
+                $row.collapse('toggle');
+            },
+            getShopifyProds: function () {
+                var prods = {}
+                shopifyClient.collection.fetchAllWithProducts(50).then(function (c) {
+                    for (var i in c) {
+                        var collection = c[i];
+                        for (var j in collection.products) {
+                            var product = collection.products[j];
+                            if(String(product.title).toLowerCase().includes('copy')) continue;
+                            if (product.variants == null) continue;
+                            for (var k in product.variants) {
+                                var v = product.variants[k];
+                                prods[v.sku] = v.id;
+                            }
+                        }
+                    }
+                });
+                return prods;
+            },
+            getAccountInfo: function () {
+                var self = this;
+                return new Promise(function (resolve, reject){
+                    axios.post('https://backend.borisfx.com/account', self.login, {auth: {username: self.login.email, password: self.login.token}})
+                    .then(function(res){
+                        var data = JSON.parse(res.data);
+                        self.user = {
+                            firstName: data.firstName,
+                            lastName: data.lastName,
+                            email: data.email,
+                            company: data.company,
+                            address: data.userAddress || {},
+                            accountId : data.accountId,
+                            leadId : data.leadId,
+                            stripeCustomerId: data.stripeCustomerId,
+                        }
+                        self.vat.number = data.vatNumber;
+                        self.orders = data.orders;
+                        for (var o of self.orders) {
+                            o.closeDate = self.formatDate(o.closeDate);
+                            o.unpaid = ['Closed Awaiting Payment', 'Payment Requested'].includes(o.stage);
+                        }
+                        self.contracts = data.licenses;
+                        for (var c of self.contracts) {
+                            if (c.endDate != null){
+                                c.formattedEndDate = self.formatDate(c.endDate);
+                                c.endDate = new Date(c.endDate);
+                            }
+                            c.orderDate = new Date(c.orderDate).toLocaleDateString();
+                        }
+                        self.sortLicenses('endDate', 'orderDate', true);
+                        self.supportCases = data.cases;
+                        for (var i in self.supportCases) {
+                            var d = new Date(self.supportCases[i].openedDate);
+                            self.supportCases[i].openedDate = d.toLocaleDateString();
+                        }
+                        self.bundles = data.bundles;
+                        for (var i in data.bundles) {
+                            const bundle = data.bundles[i];
+                            var bundleContract = {
+                                serial: bundle.serials.toString().replace(/,/g, ' + '),
+                                invoiceNum: bundle['invoiceNum'],
+                                contractNumber: bundle['contractNumber'],
+                                family: bundle['family'],
+                                contractType: bundle['contractType'],
+                                host: bundle['host'],
+                                quantity: bundle['quantity'],
+                                endDate: bundle['endDate'],
+                                isFloating: false,
+                                isMultiKeyBundle: true
+                            };
+                            bundleContract.formattedEndDate = self.formatDate(bundleContract.endDate);
+                            bundleContract.endDate = new Date(bundleContract.endDate);
+                            bundleContract.orderDate = new Date(bundle.orderDate).toLocaleDateString();
+                            self.contracts.push(bundleContract);
+                        }
+                        self.gatherSchedules();
+                        self.gatherOppSerials();
+                        self.singleUser = data.singleUser;
+                        self.getMachines();
+                        self.paymentMethods = data.paymentMethods;
+                        self.downloads = data.downloads || [];
+						
+                        if(self.login.administrator) {
+                            axios.get('https://backend.borisfx.com/youtubelists')
+                            .then(function(res) {
+                                var data = JSON.parse(JSON.stringify(res.data));
+                                self.active_livestream = data.active_livestream
+                                self.livestreamList = data.items;
+                            })
+                            .catch(function(err){
+                                console.log(err);
+                                alert('Unable to retrieve livestream list. Please contact us at customerservice@borisfx.com for assistance');
+                            });
+                        }
+
+                        resolve('resolved');
+                    })
+                    .catch(function(error){
+                        if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else{
+                            console.error(error)
+                            alert('There was an issue retrieving your account info. Please contact us at customerservice@borisfx.com for assistance.')
+                            reject('rejected');
+                        }
+                    })
+                });
+            },
+			getLivestreamList: function () {
+                axios.get('https://backend.borisfx.com/youtubelists')
+                .then(function(res) {
+                    var data = JSON.parse(res.data);
+                    self.livestreamList = data.items;
+                })
+                .catch(function(err){
+                    alert('Unable to retrieve livestream list. Please contact us at customerservice@borisfx.com for assistance');
+                });
+            },
+            renderStates: function (event, index) {
+                var i = index - 1;
+                var selectedCountry = this.countries[i];
+                this.state = '';
+                this.states = selectedCountry.states;
+            },
+            getMachines: function () {
+                var self = this;
+                var hostIds = {}
+                for (var key in self.contracts) {
+                    var contract = self.contracts[key],
+                        machineId;
+                    if (contract.machineId == null) {
+                        continue;
+                    } else if (contract.machineType == 'Dongle') {
+                        machineId = 'dongles'
+                    } else {
+                        machineId = contract.machineId;
+                    }
+                    var hostObject = hostIds[machineId];
+                    if (hostObject == null) {
+                        hostIds[machineId] = {
+                            hostId: machineId,
+                            serials: [contract.serial]
+                        };
+                    } else {
+                        hostObject.serials.push(contract.serial);
+                    }
+                }
+                if (Object.keys(hostIds).length > 0) {
+                    self.machines = hostIds;
+                }
+            },
+            formatDate: function(dateString){
+                var placeholderDate = new Date(dateString);
+                var calc = placeholderDate.getTime() + (placeholderDate.getTimezoneOffset() * 60000);
+                //Account for timezone adjustment
+                var d = new Date(calc);
+                return d.toLocaleDateString();
+            },
+            jumpToLicense : function(contractNumber) {
+                $('#licenses-tab').on('shown.bs.tab', function (e){
+                    window.location="#" + contractNumber;
+                    $('#licenses-tab').off('shown.bs.tab');
+                    licenseCell = document.getElementById(contractNumber).childNodes[0];
+                    licenseCell.style.backgroundColor = '#8fd2ef';
+                    window.setTimeout( function() {   
+                        Object.assign(licenseCell.style, {backgroundColor : 'white', transition: 'all .5s'});
+                        window.setTimeout( function () {licenseCell.style.transition = 'all 0s';}, 500)
+                    }, 250);
+                    
+                })
+                $('#licenses-tab').tab('show');
+            },
+            jumpToOrder : function(invoiceNumber) {
+                $('#orders-tab').on('shown.bs.tab', function (e){
+                    $('#orders-tab').off('shown.bs.tab');
+                    window.location.hash = '#' + invoiceNumber;
+                    $('#' + invoiceNumber + '-items').collapse('show');
+                    orderRow = document.getElementById(invoiceNumber).closest('tbody');
+                    orderRow.style.backgroundColor = '#8fd2ef';
+                    window.setTimeout( function() {   
+                        Object.assign(orderRow.style, {backgroundColor : 'white', transition: 'all .5s'});
+                        window.setTimeout( function () {orderRow.style.transition = 'all 0s';}, 500)
+                    }, 250);
+                })
+                $('#orders-tab').tab('show');
+            },
+            gatherOppSerials: function () {
+                var orderDict = {};
+                for (var order of this.orders) {
+                    order.contracts = [];
+                    orderDict[order.invoiceNum] = order;
+                }
+                for (var contract of this.contracts){
+                    var order = orderDict[contract.invoiceNum];
+                    if (!order) continue;
+                    order.contracts.push(contract);
+                }
+            },
+            gatherSchedules: function () {
+                var schedules = {};
+                for (var i = 0 ; i < this.contracts.length; i++){
+                    var contract = this.contracts[i]
+                    var subscription = contract.subscription
+                    if (!contract.subscription) continue;
+                    var scheduleContract = {
+                        serial : contract.serial,
+                        product : contract.family + ' - ' + contract.host,
+                        qty : contract.quantity,
+                        renewalCost : contract.renewalCost
+                    }
+
+                    schedule = schedules[subscription.scheduleId] || {
+                        scheduleId : subscription.scheduleId,
+                        contracts : [], 
+                        total: 0, 
+                        cardLastFour: subscription.cardLastFour, 
+                        date : contract.endDate,
+                        dateFormatted : this.formatDate(contract.endDate)
+                    };
+                    schedule.contracts.push(scheduleContract);
+                    schedule.total += parseFloat(scheduleContract.renewalCost);
+                    schedules[subscription.scheduleId] = schedule;
+                }
+                for (var key in schedules){
+                    var sched = schedules[key];
+                    sched.total = sched.total.toFixed(2);
+                }
+                this.schedules = schedules;
+            },
+            addToCart: function (sku, contract) {
+                var self = this;
+                var lineItems = [{
+                    variantId: self.shopifyProds[sku],
+                    quantity: parseInt(contract.quantity),
+                    customAttributes: [{
+                        key: 'Current Serial Number',
+                        value: contract.serial
+                    }]
+                }];
+                var checkoutId = Cookies.get('bfx-checkout-id')
+                var shouldCreateCheckout = true
+                if (checkoutId) {
+                    shopifyClient.checkout.fetch(checkoutId).then(function (checkout) {
+                        if (checkout.orderStatusUrl) {
+                            return
+                        } else {
+                            shouldCreateCheckout = false
+                            shopifyClient.checkout.addLineItems(checkout.id, lineItems).then(function () {
+                                window.location.href = '/store/cart'
+                            })
+                        }
+                    })
+                }
+                if (shouldCreateCheckout) {
+                    shopifyClient.checkout.create().then(function (checkout) {
+                        Cookies.set('bfx-checkout-id', checkout.id)
+                        shopifyClient.checkout.addLineItems(checkout.id, lineItems).then(function () {
+                            window.location.href = '/store/cart'
+                        })
+                    })
+                }
+            },
+            getInvoice: function (InvoiceNum) {
+                axios.get('https://backend.borisfx.com/invoice',{
+                    params: {'invoiceNumber' : InvoiceNum},
+                    responseType: 'blob'
+                })
+                .then(function(res) {
+                    var downloadURL = URL.createObjectURL(res.data);
+                    var downloadLink = document.createElement('a');
+                    var downloadName = 'bfx_invoice_' + InvoiceNum + '.pdf';
+
+                    downloadLink.style.display = 'none';
+                    document.body.appendChild(downloadLink);
+
+                    downloadLink.href = downloadURL;
+                    downloadLink.download = downloadName;
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                    return '';
+                })
+                .catch(function(err){
+                    alert('Unable to retrieve invoice. Please contact us at customerservice@borisfx.com for assistance');
+                    return ''
+                });
+            },
+			 setActiveLivestream: function(selected_id) {
+                var self = this;
+                var payload = {};
+                payload.update_id = selected_id;
+                axios.post('https://backend.borisfx.com/setactivelivestream', payload)
+                .then(function(res){
+                    if (res.data == 'error') alert('We were unable to update the active livestream. Please try again or contact us at customerservice@borisfx.com');
+                    self.active_livestream = res.data.active;
+                })
+                .catch(function(err){
+                    alert('We were unable to update the active livestream. Please try again or contact us at customerservice@borisfx.com');
+                });
+            },
+            getLicenseFile: function (hostId) {
+                var machine = this.machines[hostId];
+                axios({
+                    method: 'post',
+                    url: 'https://backend.borisfx.com/licfile', 
+                    data: machine,
+                    responseType: 'blob'
+                })
+                .then(function(res){
+                    var downloadURL = URL.createObjectURL(res.data);
+                    var downloadLink = document.createElement('a');
+                    var downloadName = 'borisfx_' + hostId + '.lic';
+
+                    downloadLink.style.display = 'none';
+                    document.body.appendChild(downloadLink);
+
+                    downloadLink.href = downloadURL;
+                    downloadLink.download = downloadName;
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                    return '';
+                })
+                .catch(function(err){
+                    alert('Unable to retrieve license file. Please contact us at customerservice@borisfx.com for assistance');
+                    return '';
+                })
+            },
+            resetPassword: function () {
+                var email = this.user.email;
+                axios.post('https://backend.borisfx.com/send_password_reset_email', {
+                    email: email,
+                })
+                .then(function (data) {
+                    alert('Please check your email for a link to reset your password.')
+                })
+                .catch(function (error) {
+                    alert('There was an error, please try again.');
+                });
+            },
+            updateBillingInfo: function () {
+                var self = this;
+                self.lockModal = true;
+                var form = $('#billing-info-form');
+                var formData = form.serializeArray();
+                var payload = {};
+                payload.email = self.user.email;
+                $(formData).each(function (index, input) {
+                    payload[input.name] = input.value;
+                });
+                axios.post('https://backend.borisfx.com/account/update', payload, { auth: { username: self.login.email, password: self.login.token } })
+                .then(function(res){
+                    if (res.data == 'error') alert('We were unable to update your account. Please try again or contact us at customerservice@borisfx.com');
+                    self.getAccountInfo().then(function(){
+                        $('#billing-info-modal').modal('hide');
+                        form[0].reset();
+                        self.lockModal = false;
+                    })
+                })
+                .catch(function(err){
+                    if (err.response != null && err.response.status == 403) {
+                        Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                        Cookies.set('redirect_url', window.location.href);
+                        window.location.href = '/account/login?session_expired=true';
+                    }
+                    else {
+                        alert('We were unable to update your account. Please try again or contact us at customerservice@borisfx.com');
+                        self.lockModal = false;
+                    }
+                });
+            },
+            enabledVatEdit: function (){
+                this.editVat = true;
+            },
+            validateVAT: function () {
+                var self = this;
+                var data = {
+                    userId : self.leadId == null ? self.user.accountId : self.user.leadId,
+                    userType : self.leadId == null ? 'Contact' : 'Lead',
+                    number : self.vat.number,
+                    country : self.user.address.countryCode
+                };
+                axios.post('https://backend.borisfx.com/checkout/check_vat', data)
+                .then(function (res) {
+                    var result = res.data;
+                    if (result.error == 'INVALID_INPUT') {
+                        self.vat.error = 'Invalid VAT Number. Please check your formatting.';
+                    }
+                    else if (result.error) {
+                        alert('Unable to verify VAT number. Please try again in a few minutes.');
+                    }
+                    else {
+                        self.vat.valid = result.valid;
+                        if(result.valid) self.vat.number = self.user.address.countryCode + result.vatNumber;
+                        self.editVat = !result.valid;
+                        self.vat.error = self.vat.valid ? undefined : 'No match found for given VAT Number. Please confirm your info and try again. (Tip: try removing your country code and any special characters)';
+                    }
+                });
+            },
+            updateEmail: function () {
+                var self = this;
+                var form = document.getElementById('email-form');
+                var formData = new FormData(form);
+                if (formData.get('email') != formData.get('confirmEmail')) {
+                    alert('Emails do not match. Please double check your info.');
+                    return;
+                };
+                var payload = { email: formData.get('email'), oldEmail: self.user.email };
+                axios.post('https://backend.borisfx.com/send_verification_email', payload)
+                .then(function (res){
+                    alert('Thank you for updating your email address. We have sent a verification email to ' + payload.email + '. Please use the link in this email to finalize your changes.');
+                    $('#email-modal').modal('hide');
+                    form.reset();
+                    self.lockModal = false;
+                })
+                .catch(function (err){
+                    alert('We were unable to update your account. Please try again or contact us at customerservice@borisfx.com');
+                    self.lockModal = false;
+                })
+            },
+            resetLicense: function (serial) {
+                var doReset = confirm('Release all activations for serial ' + serial + '? (This can only be done once in a 30 day period.)')
+                if (doReset) {
+                    axios.get('https://backend.borisfx.com/reset_license?serial=' + serial)
+                    .then(function (res){
+                        alert('Your license was reset successfully!')
+                    })
+                    .catch(function (err){
+                        if (xhr.status == 403) {
+                            alert('This license has already been reset in the last 30 days. Please contact us at customerservice@borisfx.com for assistance with this license.')
+                        }
+                        else if (xhr.status == 404) {
+                            alert('This license is unsupported. Please contact customerservice@borisfx.com for assistance with this license.')
+                        }
+                        else {
+                            alert('Something has gone wrong. Please try again or contact us at support@borisfx.com for assistance.')
+                        }
+                    })
+                }
+                return;
+            },
+            cancelSubscription: function (contract) {
+                var self = this;
+                var confirmText;
+                if (self.isSubscription(contract)){
+                    confirmText = 'Are you sure you wish to end your subscription?\n\(You will still have access to this license until the current subscription period ends.)';
+                }
+                else{
+                    confirmText = 'Are you sure you wish to disable auto-renewal for this license?'
+                }
+                if (confirm(confirmText)) {
+                    axios.get('https://backend.borisfx.com/subscription/cancel?id=' + contract.contractId)
+                    .then(function (res){
+                        var contractLabel = self.isSubscription(contract) ? 'Your subscription' : 'Auto-renewal'
+                        alert(contractLabel + ' has been cancelled successfully.');
+                        self.getAccountInfo();
+                    })
+                    .catch(function(err){
+                        alert('Unable to process cancellation. Please contact us at customerservice@borisfx.com to cancel your subscription.');
+                    })
+                }
+            },
+            handleRestoreButtonClick : function(contract){
+                if(!contract.subscription.cardLastFour){
+                    this.initScheduleModal(contract);
+                }
+                else{
+                    this.restoreSubscription(contract);
+                }
+            },
+            restoreSubscription: function (contract) {
+                var self = this;
+                if (confirm('Are you sure you wish to resubscribe? You will be charged on ' + contract.formattedEndDate)) {
+                    axios.get('https://backend.borisfx.com/subscription/restore?id=' + contract.contractId)
+                    .then(function(){
+                        var SuccessText;
+                        if (self.isSubscription(contract)){
+                            successText = 'Thank you for resubscribing! Your subscription has been restored successfully.';
+                        }
+                        else{
+                            successText = 'Thank you for resubscribing! Your Upgrade & Support will now renew automatically.';
+                        }
+                        alert(successText);
+                        self.getAccountInfo().then(function(result){
+                            $('#schedule-modal').modal('hide');
+                            self.resetScheduleModal();
+                        });
+                    })
+                    .catch(function(err){
+                        alert('Unable to process resubscription. Please contact us at customerservice@borisfx.com to restore your subscription.');
+                    });
+                }
+            },
+            updateSchedulePaymentMethod : function() {
+                var saveButton = event.target;
+                saveButton.disabled = true;
+                var self = this;
+                var modal = self.scheduleModal;
+                payload = {scheduleId : modal.displayedSchedule.scheduleId, cardId : modal.newMethodId}
+
+                axios.post('https://backend.borisfx.com/payment_schedule/update_method', payload)
+                .then(function(result){
+                    //Timeout allows Aynchronous Apex Trigger to run. 
+                    setTimeout(function(){
+                        if (modal.isResubscribe){
+                            self.restoreSubscription(modal.selectedContract);
+                        }
+                        else{
+                            self.getAccountInfo().then(function (){
+                                modal.displayedSchedule = self.schedules[payload.scheduleId]
+                                modal.editPaymentMethod = false;
+                                saveButton.disabled = false;
+                            })
+                        }
+                    }, 2000);
+                })
+                .catch(function(err){
+                    alert('Unable to update Payment Method. Please contact us at customerservice@borisfx.com for assistance.');
+                    saveButton.disabled = false;
+                });
+            },
+            openReinstateModal : function(contract){
+                modal = this.reinstateModal = {};
+                modal.displayedContract = contract;
+                modal.currency = contract.subscription.currencyCode;
+                modal.standardRenewalCost = contract.renewalCost.toFixed(2);
+                modal.recurrence = contract.subscription.duration == '30' ? 'monthly' : 'annually';
+                var scheduleDate = new Date(contract.subscription.scheduleEndDate);
+                if (['Active', 'Future'].includes(contract.subscription.scheduleStatus) && scheduleDate.getFullYear() < 2090){
+                    modal.subtotal = this.calculateProrate(contract);
+                    modal.isProrated = true;
+                }
+                else{
+                    modal.subtotal = contract.renewalType == 'Reinstatement' ? contract.legacyRenewalCost.toFixed(2) : contract.renewalCost.toFixed(2);
+                }
+                $('#reinstate-modal').modal('show');
+            },
+            calculateProrate : function(contract){
+                var sub = contract.subscription;
+                var today = new Date();
+                var proratedDate = new Date(sub.scheduleEndDate);
+                var proratePercentage = 1;
+                if (proratedDate > today){ 
+                    var daysBetween = Math.round((proratedDate-today)/(1000*60*60*24));
+                    proratePercentage = daysBetween/sub.duration;
+                }
+                var renewalCost = contract.renewalType == 'Reinstatement' ? contract.legacyRenewalCost : contract.renewalCost;
+                var newRate = (renewalCost * proratePercentage).toFixed(2);
+                return newRate;
+            },
+            sortLicenses(primary, secondary, isDesc) {
+                function compare(a, b) {
+                    let aVal = a[primary];
+                    let bVal = b[primary];
+
+                    let aSec = a[secondary];
+                    let bSec = b[secondary];
+
+                    if (primary == 'endDate' || primary == 'orderDate') {
+                        aVal = new Date(aVal);
+                        bVal = new Date(bVal);
+                    }
+
+                    let comparison = 0;
+
+                    if (aVal === bVal && aSec > bSec) {
+                        comparison = 1;
+                    } else if (aVal === bVal && aSec < bSec) {
+                        comparison = -1;
+                    } else if (aVal > bVal) {
+                        comparison = 1;
+                    } else if (aVal < bVal) {
+                        comparison = -1;
+                    }
+
+                    if (isDesc) {
+                        comparison = comparison * -1;
+                    }
+                    return comparison;
+                }
+                this.contracts.sort(compare);
+            },
+            initScheduleModal : function(contract){
+                if (!contract.subscription) return;
+                var schedId = contract.subscription.scheduleId;
+                this.scheduleModal.displayedSchedule = this.schedules[schedId];
+                this.scheduleModal.selectedContract = contract;
+                if (!contract.subscription.cardLastFour){
+                    this.scheduleModal.isResubscribe = true;
+                    this.scheduleModal.editPaymentMethod = true;
+                }
+                $('#schedule-modal').modal('show');
+            },
+            resetScheduleModal : function(){
+                this.scheduleModal = {displayedSchedule: {}, selectedContract: {}, editPaymentMethod: false, isResubscribe: false, newMethodId : ''};
+            },
+            reinstateSubscription : function(contract){
+                var saveButton = event.target;
+                saveButton.disabled = true;
+                var self = this;
+                axios.post('https://backend.borisfx.com/subscription/renew', {
+                    contractId : contract.contractId,
+                    renewalPrice : self.reinstateModal.subtotal
+                })
+                .then(function (res){    
+                    setTimeout(function(){
+                        self.getAccountInfo().then(function (){
+                            $('#reinstate-modal').modal('hide');
+                            saveButton.disabled = false;
+                        })
+                    }, 2000);
+                })
+                .catch(function (error){
+                    alert('error');
+                })
+            },
+            toggleEditPaymentMethod : function(){
+                this.scheduleModal.editPaymentMethod = !this.scheduleModal.editPaymentMethod;
+            },
+            isExpired : function(contract){
+                isExpired = (contract.endDate < new Date()) || this.hasFailedPayment(contract);
+                return isExpired;
+            },
+            isSubscription : function(contract){
+                return contract.contractType == 'Subscription'
+            },
+            hasFailedPayment : function(contract){
+                var sub = contract.subscription;
+                if (!sub) return false;
+                var statuses = ['Failed', '', null];
+                return statuses.includes(sub.scheduleStatus);
+            },
+            willAutorenew : function(contract){
+                return (contract.subscription && contract.subscription.isActive)
+            },
+            getDownloadUrl: function(contract){
+                var multihosts = this.multihosts;
+                var fam = contract.family;
+                var host = contract.host;
+                var allFamilies = fam.split('+');
+                var allHosts = [];
+                if (host.includes('Multi-host') || host == ('Adobe/OFX')){
+                    multis = multihosts[fam];
+                    if (multis != null) allHosts = multis[host];
+                }
+                else if (host == 'Standalone + Plugins'){
+                    allHosts = multihosts[fam]['Multi-host'];
+                    allHosts.push('Standalone');
+                }
+                else allHosts = [host];
+
+                var uri = '/downloads/?';
+                for (var i = 0 ; i < allFamilies.length ; i++){
+                    var prefix = (i == 0 ? 'product=' : encodeURIComponent('+'));
+                    var f = allFamilies[i].toLowerCase();
+                    if (f == 'mocha pro') f = 'mocha'
+                    uri += prefix + f.trim();
+                }
+                for (var i = 0 ; i < allHosts.length ; i++){
+                    var h = i == 0 ? '&host=' + allHosts[i] : encodeURIComponent('+' + allHosts[i]);
+                    uri += h.toLowerCase();
+                }
+                return uri;
+            },
+            subRecurrance: function(contract){
+                if (contract.subscription == null) return '';
+                return contract.subscription.duration == '30' ? 'Monthly' : 'Annual';
+            },
+            handleDownload : function(index){
+                var d = this.downloads[index];
+                payload = {
+                    email: this.login.email,
+                    product: d.family,
+                    platform: d.platform,
+                    version: d.version
+                }
+                axios.post('https://backend.borisfx.com/track', payload, { auth: { username: this.login.email, password: this.login.token } })
+                .then(function(res){
+                    window.location = d.url;
+                })
+                .catch(function(err){
+                    if (err.response != null && err.response.status == 403) {
+                        Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                        Cookies.set('redirect_url', window.location.href);
+                        window.location.href = '/account/login?session_expired=true';
+                        return;
+                    }
+                    else {
+                        console.error(err);
+                        window.location = d.url;
+                    }
+                })
+            }
+        },
+        computed: {       
+        }
+    });
+
+</script>

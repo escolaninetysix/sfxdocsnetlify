@@ -1,0 +1,244 @@
+
+== Rotoscoping Basics [[roto_basics]]
+
+NOTE: Some tools, parameters and techniques listed below may not be visible in Essentials mode. To see additional interface elements, switch to Classic mode. See the <<layouts, Layouts>> section for more information.
+
+=== The Art of Rotoscoping
+
+Most often a good matte requires a combination of both keying and rotoscoping techniques.
+
+Good rotoscoping artists often think like animators, reverse engineering the movements, the easing in and outs, the holds and overshoots of objects, and set their keyframes accordingly.
+
+In general, the fewer the keyframes, the better your mattes will look. Too many keyframes will cause the edges to 'chatter' and move unnaturally. Too few keyframes will cause the shapes to drift and lose definition. Finding the right number and placement of keyframes often comes with experience but there are a few things to keep in mind when rotoscoping.
+
+==== Traditional Roto Tips
+
+
+. There is no such thing as a perfect matte. Rotoscoping is an art form that takes into account the background image, the movement of the object, and the new elements to be composited in the background.
+. Try to start your shape at its most complex point in time, where it will need the most control points.
+. Break a complex shape into multiple simple shapes. If you are rotoscoping a humanoid form and an arm becomes visible, consider rotoscoping the arm as its own element, rather than adding extra points on the body that will serve no purpose when the arm is obscured.
+. Imagine you are the animator who created the shot. What would your dope sheet look like? No matter the medium, whether CG, live action or otherwise, most movements are rarely linear. They normally move in arcs; they normally accelerate in and out of stopped positions. Try and understand the mechanics behind how things are moving in your shot. This will help you to minimize keyframes.
+. Watch and study the shot before you start working. Where are the changes in directions? These will normally have keyframes. Where are the starts and stops? Are there camera moves that can be stabilized to make your work easier?
+. Don't be afraid to trash your work and start over. Beginning roto artists often make the mistake of trying to fix a flawed approach by adding more and more keyframes. Experienced roto artists learn to quickly identify an inferior approach and are unashamed to trash their work and start over, often many, many times. It is very difficult to get a good matte without a conscious effort to keep the keyframes to a minimum.
+
+
+=== Mocha Tracking and Roto
+
+While you can refine a shape you have tracked to do your rotoscoping, the recommended way is to do a rough shape to track something and then link your roto to that track.  This reduces the amount of work required when you are dealing with complex shapes, as you will not have to track and refine each shape as you go. It also means that if you have to retrack something you won't have to redo a lot of layers.  Another reason is reducing the amount of data needed in your project file.
+
+It also helps to remember that your spline shape is linked to your tracking data and not the other way around.
+
+For the following examples you can try out the tools using the BMW tutorial files
+available from http://cdn.borisfx.com/borisfx/store/clips/rotoscoping.zip
+
+
+==== Rotoscoping Workflow
+
+*1. Track the area you want to rotoscope*
+
+First of all you want to reduce as much manual work as possible by tracking.  In the example below, the front and side plane of the car is being tracked (For a more detailed coverage of tracking, see the Tracking Basics documentation).
+
+image:UserGuide/en_US/images/ICON_TrackPlaybar_001.jpg[width="60%"]
+
+*2. Turn off your tracking shape*
+
+Once you've tracked an area it can be useful to turn it's visibility off, as well as it's tracking cog (so it can't be accidentally retracked later).  This means the tracked shape will not be confused with any roto shapes you are making.
+
+*3. Start drawing your refined shapes*
+
+Once you have a track for a layer we recommend that you add a new layer to use for the actual roto spline, rather than refining the spline you used for the actual track as you might need to do more tracking with it later.
+
+
+image:UserGuide/en_US/images/roto_014.jpg[]
+
+image:UserGuide/en_US/images/Roto_DrawingTools_001.jpg[]
+
+
+Select the X spline or Bézier spline tool and draw a tight spline around the object you are rotoscoping. Ctrl/Cmd+drag the Bézier tangents if you wish to break them. You will see that a new layer is automatically created.
+
+
+*4. Link the new roto layer to your tracked layer*
+
+You don't want to track with this layer, so disable tracking for the layer by turning off the tracking button (the cog) for the layer in the Layer Properties panel.
+
+Rename the new layer and link it to the movement of your already tracked layer by selecting it from the  'Link to Track'  dropdown in the layer properties panel.
+
+
+
+image:UserGuide/en_US/images/Roto_LinkToTrack_001.jpg[]
+
+Your newly created roto spline will now follow the motion of the linked track.
+
+
+*5. Refine your roto*
+
+Now you have linked the rotoscoping layer to a track, you need to go over the timeline and make sure the roto is correctly animated.
+
+Often you will need to tweak your shape for it to fit correctly, adding new keyframes.  Autokey is on by default, so you just need to move along the timeline and adjust your points where necessary (keyframes turn up in the timeline as green dots).  The tracking data will help for the majority of the motion.
+
+image:UserGuide/en_US/images/Timeline_001.jpg[]
+
+You can also add additional shapes to the same layer using one of the "Add Spline to Layer" tools.  These are the drawing icons with the plus sign next to them ("+").
+
+image:UserGuide/en_US/images/Roto_DrawingTools_001.jpg[]
+
+You can cycle between each point on a spline with the keyboard shortcuts '{' and '}'.  This is useful for when you need to do minor adjustments across many points separately.
+
+
+*6. Feather your edges if necessary*
+
+Edges can be feathered either by dragging out feathers point by point using the edge pointer tools in the toolbar or by using the parameters in the Edge Properties panel.
+
+image:UserGuide/en_US/images/roto_017.jpg[]
+
+In the toolbar you have four different pointer tools:
+
+* The pointer tool with the 'B' will move both the inner and outer spline point (‘B' = ‘Both')
+* The 'I' pointer will only move the inner spline
+* The 'E' pointer will only move the outer spline point (‘E' = ‘Edge'). A feathered edge will occur between the inner and outer spline points
+* The 'A' pointer will remove either the inner or outer point depending on which is selected (‘A' = ‘Any')
+
+You can also use the Set button under Edge Properties to feather the edge at the selected point(s) an exact amount or use the Add button to increase/decrease the feather by the specified amount.
+
+image:UserGuide/en_US/images/Roto_EdgeProperties_001.jpg[]
+
+For example, if you deselect all points by clicking anywhere on the canvas you can then use the Set button to apply the default 3 pixel edge width. Because no points are selected the value is applied to all points on the current layer. You can then tweak the position of all spline points to ensure that the inner (red) spline is inside the edge and the outer (blue) spline is outside the edge.
+
+*7. Track additional sections as you go*
+
+In many instances one track will not be enough.  You may need to track more than one plane to drive different sets of roto.  In the car example, we have to track the front and the side to get an accurate track for each planar region to assist the roto effectively.
+
+In the case of organic shapes, like people, you will have to break your tracks down to handle the different movement between the torso and the arms etc.
+
+=== What's the Überkey?
+
+The Überkey is a powerful tool that allows you to offset the positions of control points without destroying their keyframe data.
+
+image:UserGuide/en_US/images/Roto_Uberkey_001.jpg[width="60%"]
+
+Use this tool with care, as it is not setting any keyframes per se, it is offsetting any and all keyframe data on the points you move while it is on. Überkey is very useful, but remember to turn it off again when you don't need it.  Use with care.
+
+Überkey affects only those frames between the timeline's In and Out point. If you wish to make adjustments to a particular range, set the In and Out points to that range.
+
+
+=== Translate, Rotate and Scale your Splines
+
+You can translate, rotate and scale selected points as a group by using the corresponding tools listed in the toolbar.
+
+
+image:UserGuide/en_US/images/ToolRotate_2x.jpg[]
+image:UserGuide/en_US/images/ToolScale_2x.jpg[]
+image:UserGuide/en_US/images/ToolTranslate_2x.jpg[]
+
+Or alternatively, use the transform tool to perform all of the above functions in the same tool:
+
+image:UserGuide/en_US/images/ToolTransform_2x.jpg[]
+
+
+=== Turning On and Off Points
+
+You can turn on and off individual points in a spline. When they are off, you can still see the points, they can still be animated, but they are not contributing mathematically to the spline. This allows you to have a complex spline only when you need it, rather than having to deal with superfluous points in parts of the shot when they are not needed.
+
+image:UserGuide/en_US/images/roto_028.jpg[]
+
+To turn off points, select the points on the spline and hit Shift+Delete. You will see the curve change shapes, but the points will remain.
+
+image:UserGuide/en_US/images/Roto_ActivatePoint_001.jpg[width="60%"]
+
+To turn a point back on, right-click on it and select `Point | Activate.`
+
+If the Autokey button is enabled, a keyframe will be created when you change a point's active status.
+
+
+=== Add Motion Blur [Mocha Pro Only]
+
+image:UserGuide/en_US/images/Roto_EdgeProperties_MotionBlur_001.jpg[width="60%"]
+
+You can use the movement of the individual spline points to determine motion blur. Any movement in the spline, whether through simple X/Y translation or by shape deformation will cause motion blur.
+
+You can control the amount of blur by changing the motion blur value in the Edge Properties panel.
+
+
+=== Changing the Matte Blend Mode
+
+Although not necessary in this example, note that you can change how mattes are blended in the Layer Properties panel. You may make each layer's matte Add or Subtract and you can also invert the matte.
+
+image:UserGuide/en_US/images/Roto_BlendMode_001.jpg[width="60%"]
+
+Note that this can't be keyframed and that these settings apply to the entire layer, not to individual splines of the same layer.
+
+
+=== Viewing your Mattes
+
+In the View Controls, several options are offered for viewing your mattes. The Matte drop down is has options to view all mattes, just the mattes you have selected or no mattes.
+
+image:UserGuide/en_US/images/ICON_Mattes_001.jpg[width="60%"]
+
+Select the Matte button and you will see your rotoscoped object against a flat background.
+
+
+=== Changing the Background Color
+
+You may wish to rotoscope against a particular color. Select View -> Canvas Color... and a color picker will allow you to choose a particular background color
+
+image:UserGuide/en_US/images/Roto_CanvasColor_001.jpg[width="40%"]
+
+=== Colorize your Matte Overlay
+
+When you have your Mattes turned on, you may choose for the matte to be filled with a color instead of cutting out the object, using Colorize.
+
+image:UserGuide/en_US/images/roto_034.jpg[]
+
+You can adjust the opacity of the color fill by changing the blend value to the right of the Colorize button.
+
+image:UserGuide/en_US/images/ICON_Colorise_001.jpg[]
+
+The color used by Colorize is derived from the Selected and Unselected properties of the Overlay Colors panel, which can be changed per layer.
+
+This is only a preview and will not affect how your mattes are rendered when exporting.
+
+
+=== Preview Rendered Mattes [Mocha Pro Only]
+
+In the View Controls panel, you will find a drop-down menu for selecting the clip to view.
+
+image:UserGuide/en_US/images/Roto_PreviewMattes_001.jpg[width="40%"]
+
+This allows you to view the actual rendered mattes, which can be especially useful when tweaking motion blur. The motion blur you normally see in your canvas is an OpenGL preview and can differ slightly from the actual render.
+
+If you'd like to see what the actual motion blur render looks like, switch to viewing the layer whose matte you wish to see.
+
+Because you can choose specific layers for export when you render, a render pass is created for each layer.
+
+image:UserGuide/en_US/images/roto_038.jpg[]
+
+Switch the View Clip drop-down back to your source clip to continue working with that clip.
+
+=== Open Splines
+
+If you want to draw open splines, you can simply hold shift when you right-click to finish the spline.  This will open the shape up.
+
+.Existing shapes can also be made open or closed:
+* You can open an existing shape using the Open Spline shortcut key (by default this is 'o')
+* You can close an existing shape using the Close Spline shortcut key (by default this is 'c')
+* Both the Open and Close shortcuts also work for finishing a spline rather than using Shift + Right-Click
+
+You can also right-click a spline and choose: Spline | Open/Close Spline
+
+
+=== Tips for Rotoscoping
+
+
+*Name your layers*
+
+Naming layers is very important to save yourself time later, especially if you are doing a heavy rotoscoping job.   Get into the habit of labeling each layer with specific names.
+
+
+*Turn off the splines and just work with points and the matte*
+
+If you are working on a tight roto it can sometimes be easier to turn the spline off and just see the matte with the control points.  To do this:
+
+. Select your layer and turn on the Mattes button (Show Layer Mattes)
+. Uncheck the Splines option in the 'Show Spline Tangents' dropdown
+
+If your other view options are at default settings you should now see the matte in the viewer with only the tangents and control points visible.

@@ -1,0 +1,122 @@
+== OpenColorIO (OCIO) Color Management [[OCIO]]
+
+== OCIO Color Management
+
+Mocha has extensive color management tools based on the Open Source Color Management framework called OpenColorIO (OCIO) .
+
+To see more on OCIO, please visit the OCIO website: https://opencolorio.org/
+
+=== A Brief Overview of Color Management
+
+Color management in Visual Effects is very important for maintaining consistency throughout a project.
+There are numerous footage sources of varying bit depths and color spaces. Equally, there are numerous software and hardware solutions for processing that footage.
+Industry standards (such as ACES) were put in place to make it easier to pass footage in and out of an application without losing the color information required to match other parts of the pipeline.
+
+=== Mocha in the Color Pipeline
+
+In order to match what is seen in the compositing or editing environment, Mocha can match the colorspace use by the host (in a plug-in environment) or can be configured to match the colorspace of supported software.
+
+Since Mocha often renders out a result (be it a Matte or a render in Mocha Pro) we need to make sure we are matching the original source Mocha is working with, otherwise the output will not match.
+
+=== Setting the Working Color Space
+
+NOTE: Mocha defaults to an OCIO configuration that matches the `nuke-default` configuration found in Nuke by The Foundry.
+
+To set a working colorspace, you can open the Viewer Preferences, which is located in the top right-hand corner of the viewer:
+
+image:UserGuide/en_US/images/ICON_ViewerControls_001.jpg[]
+
+Then, choose a role from the “Working Color Space” drop down that matches your current working space:
+
+image:UserGuide/en_US/images/viewer_preferences_dialog.jpg[width="40%"]
+
+These options default to the Mocha OCIO config file, but may show varied options if you are using a custom configuration file (ACES,for example).
+
+=== Setting the Display View color space
+
+To set a Display View colorspace, you can open the Viewer Preferences, which is located in the top right-hand corner of the viewer:
+
+image:UserGuide/en_US/images/ICON_ViewerControls_001.jpg[]
+
+Then choose a Display View type from the list in the drop down:
+
+image:UserGuide/en_US/images/viewer_preferences_display_view.jpg[width="40%"]
+
+
+=== Defining the Clip Color Space
+
+To set a Clip color space, go to the Clip Module and switch to the Color Space tab.
+
+You can then choose an option from the “Clip Color Space” drop down:
+
+image:UserGuide/en_US/images/ocio_clip_colorspace.jpg[]
+
+You can also convert the image Depth to float or 8-bit if so required:
+
+image:UserGuide/en_US/images/ocio_clip_colorspace_depth.jpg[]
+
+These options default to the Mocha OCIO config file, but may show varied options if you are using a custom configuration file.
+
+=== Defining the Overall Project Color Space
+
+You can define general color settings for the overall Project in the Project Settings dialog.
+
+This gives you all the colour settings in one place to setup the color workflow for clips, display and working space.
+
+ To access Project Settings, go to `File > Project Settings…`
+
+image:UserGuide/en_US/images/ocio_project_settings.jpg[]
+
+Here the Color Space section is divided into several sections:
+
+* *OCIO config:* Here you can change the OCIO config or reset back to the default.
+* *Working Color Space:* The color space or Role you want to work with
+* *Display View:* The color view you want to display, such as sRGB, Rec709 etc
+* *Clip Color space Mode:* This is either OCIO or Legacy, which is important if you are opening projects from an earlier version of Mocha.
+* *Default Color Spaces:* Here you can define what color space to set for clips at various bit depths.
+* *Depth conversion:* This lets you define if you want to convert clips by default to 8-bit or Float.
+
+=== Loading OpenColorIO configurations into Mocha Pro
+
+==== Loading via the Mocha interface
+You can load the path to a different config by accessing any of the config path options in Mocha.
+
+You can load a new config file path via:
+
+* The Color tab in Preferences (where you can set defaults)
+* The Viewer Preference dialog in the view controls
+* The Project settings of a specific project
+
+image:UserGuide/en_US/images/ocio_change_config.jpg[]
+
+Configuration files are usually named as `config.ocio` in the directory of the color standard you are working with.
+
+Changing the color configuration will automatically update the Working Space, clip space and Display View options.
+
+Clicking the "Reset" button will reset your color to the Mocha default configuration.
+
+==== OCIO Environment Variable
+You can define an `OCIO` environment variable on your system to point to a custom configuration.
+
+For example, if you wanted to use the default Nuke OCIO config, you could define:
+`export OCIO=$HOME/OCIO/nuke-default/config.ocio`
+
+Then run Mocha (or your plugin host) from the terminal after defining this variable.
+
+You could also set the OCIO environment variable system-wide using an appropriate OS-specific method (e.g. the Environment Variables dialog in Windows).
+If there is no config set, you should see the Mocha default configuration in the interface.
+
+If you set a valid config path, you should see the complete list of supported color spaces.
+
+Once set, the OCIO config will be saved with the project.
+
+=== Mocha OCIO inside Silhouette
+When using the Mocha plugin inside Silhouette, you don’t generally need to worry about setting a color space, as the plugin will try to inherit the current working color space that Silhouette is using.
+
+=== Setting Defaults for Color Space Workflow
+
+If you’re planning on being in a particular working space for ongoing projects, you can define defaults in Mocha Preferences under the Color tab:
+
+image:UserGuide/en_US/images/ocio_preferences_settings.jpg[]
+
+These map exactly like the controls in Project Settings, but will be assigned automatically when creating new projects.

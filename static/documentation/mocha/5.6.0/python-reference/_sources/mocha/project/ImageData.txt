@@ -1,0 +1,178 @@
+.. module:: mocha.project
+.. _ImageData:
+
+ImageData
+*********
+
+.. inheritance-diagram:: ImageData
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`__eq__<ImageData.__eq__>` (rhs)
+*    def :meth:`__ne__<ImageData.__ne__>` (rhs)
+*    def :meth:`flip<ImageData.flip>` ()
+*    def :meth:`flipped_pixels<ImageData.flipped_pixels>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`channel_type<ImageData.channel_type>` [read-write] of :class:`ChannelType`
+*    property :attr:`height<ImageData.height>` [read-write] of int
+*    property :attr:`pixel_format<ImageData.pixel_format>` [read-write] of :class:`PixelFormat`
+*    property :attr:`pixels<ImageData.pixels>` [read-write] of array.array
+*    property :attr:`width<ImageData.width>` [read-write] of int
+
+
+Detailed Description
+--------------------
+
+
+    
+    Main class for access to main image data fields.
+    
+
+
+.. class:: ImageData()
+
+
+
+
+
+
+
+
+.. class:: ImageData(ImageData)
+
+
+    :type ImageData: :class:`mocha.project.ImageData`
+
+
+
+
+
+
+
+    :type ImageData: :class:`mocha.project.ImageData`
+
+
+
+.. method:: ImageData.flip()
+
+
+
+
+
+    
+    Vertically flips the image in-place.
+    
+    .. deprecated:: 5.5.2
+       Use 3rd party libs for images flipping
+    
+
+
+
+.. method:: ImageData.flipped_pixels()
+
+
+    :rtype: :class:`PyObject`
+
+
+
+    
+    Returns a flipped upside-down copy of the pixel buffer.
+    
+    .. deprecated:: 5.5.2
+       Use 3rd party libs for images flipping
+    
+
+
+
+.. method:: ImageData.__ne__(rhs)
+
+
+    :type rhs: :class:`mocha.project.ImageData`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: ImageData.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.ImageData`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. attribute:: ImageData.pixels
+
+
+    :type: array.array
+    :access: read-write    
+    Provides access to a pixel buffer.
+    
+    **IMPORTANT** The getter returns a weak reference to the array instance as
+    mocha owns the pixel buffer exclusively. Do not store the effective array reference anywhere because
+    despite the reference counter value mocha kills the array instance as soon as the corresponding internal
+    image structure gets destroyed.
+    
+    The setter accepts a normal array reference, acquires it immediately and to avoid dangling references
+    makes the array reference variable to point to the None object unless it's an rvalue.
+    
+
+
+
+.. attribute:: ImageData.width
+
+
+    :type: int
+    :access: read-write    
+    Provides access to the image width value.
+    
+
+
+
+.. attribute:: ImageData.height
+
+
+    :type: int
+    :access: read-write    
+    Provides access to the image height value.
+    
+
+
+
+.. attribute:: ImageData.pixel_format
+
+
+    :type: :class:`mocha.project.PixelFormat`
+    :access: read-write    
+    Provides access to the pixel format.
+    
+
+
+
+.. attribute:: ImageData.channel_type
+
+
+    :type: :class:`mocha.project.ChannelType`
+    :access: read-write    
+    Provides access to the image channel type.
+    
+
+
+
+

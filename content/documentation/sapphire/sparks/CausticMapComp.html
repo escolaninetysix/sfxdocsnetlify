@@ -1,0 +1,539 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: CausticMapComp",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/CausticMap.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="CausticMapComp">
+     <h2>
+      CausticMapComp
+     </h2>
+    </a>
+    Simulates the patterns created when light rays
+  are reflected or refracted by a curved surface. Caustics can often
+  be seen at the bottom of a swimming pool in bright sunlight or
+  on objects viewed underwater.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Map:
+      </b>
+      The clip to use as height map.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Back:
+      </b>
+      The clip to use as background.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/CausticMap.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Ray Focus:
+   </b>
+   <i>
+    Default:
+   </i>
+   15,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Alter this to bring the caustic pattern into focus.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Ray Density:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   Increasing this value will increase the quality of the
+  caustic pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Ray Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.01,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Softens the caustic pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Map:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The blur applied to the height map
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness1:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of Color1.  Increase for more
+  contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The color of the 'brighter' parts of the texture.  The
+  colors of the result are determined by an interpolation between
+  Color0 and Color1.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color0:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0.05 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The color of the 'darker' parts of the texture.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset0:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Adds this value to color0.  Decrease to a negative value
+  for more contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the Background input.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Screen
+   </i>
+   .
+   <br/>
+   Determines how the texture is combined with the Background.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Caustic Only:
+      </i>
+     </b>
+     gives only the caustic texture with no Background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Mult:
+       </i>
+      </b>
+      the texture is multiplied by the Background.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Add:
+        </i>
+       </b>
+       the texture is added to the Background.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Screen:
+         </i>
+        </b>
+        the texture is blended with the Background using a screen operation.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Difference:
+          </i>
+         </b>
+         the result is the difference between the texture and Background.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Overlay:
+           </i>
+          </b>
+          the texture is combined with the Background using an overlay function.
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

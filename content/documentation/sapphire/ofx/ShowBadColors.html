@@ -1,0 +1,381 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: ShowBadColors",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/ShowBadColors.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="ShowBadColors">
+     <h2>
+      S_ShowBadColors
+     </h2>
+    </a>
+    Identifies all pixels that fall outside a given
+  color range, and flags them with the same color so they can be seen
+  easily.
+    <p>
+     In the Sapphire Adjust effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be processed.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/ShowBadColors.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Min:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Minimum color value. Pixels where any color channel is less than this value will be
+  marked with Low Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Maximum color value. Pixels where any color channel is greater than this value will
+  be marked with High Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Min Luma:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Minimum luminance value. Pixels where the luminance is less than this value will
+  be marked with Low Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Luma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Maximum luminance value. Pixels where the luminance is greater than this value will
+  be marked with High Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Min Chroma:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Minimum chrominance value. Pixels where the chroma is less than this value will
+  be marked with Low Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Chroma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Maximum chrominance value. Pixels where the chroma is greater than this value will
+  be marked with High Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Min Rgb:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   Minimum values per color channel. Pixels where any color channel is below the
+  corresponding channel of this parameter will be marked with Low Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Rgb:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Maximum values per color channel. Pixels where any color channel is above the
+  corresponding channel of this parameter will be marked with High Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    High Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0 0].
+   <br/>
+   Color to mark high pixels with. Any pixel that is above one of the Max parameters
+  will be set to this color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Low Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 1].
+   <br/>
+   Color to mark low pixels with. Any pixel that is below one of the Min parameters
+  will be set to this color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Output Matte:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, output a matte which is set to white for bad pixels and black otherwise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Matte:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the matte is inverted to show black for bad pixels and white otherwise. Has no effect unless Output Matte is also enabled.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../huesatbright">
+       HueSatBright
+      </a>
+      <br/>
+      <a href="../monochrome">
+       Monochrome
+      </a>
+      <br/>
+      <a href="../clampchroma">
+       ClampChroma
+      </a>
+      <br/>
+      <a href="../pseudocolor">
+       PseudoColor
+      </a>
+      <br/>
+      <a href="../duotone">
+       DuoTone
+      </a>
+      <br/>
+      <a href="../tritone">
+       TriTone
+      </a>
+      <br/>
+      <a href="../quadtone">
+       QuadTone
+      </a>
+      <br/>
+      <a href="../tint">
+       Tint
+      </a>
+      <br/>
+      <a href="../threshold">
+       Threshold
+      </a>
+      <br/>
+      <a href="../hotspots">
+       Hotspots
+      </a>
+      <br/>
+      <a href="../gamma">
+       Gamma
+      </a>
+      <br/>
+      <a href="../solarize">
+       Solarize
+      </a>
+      <br/>
+      <a href="../channelswitcher">
+       ChannelSwitcher
+      </a>
+      <br/>
+      <a href="../invert">
+       Invert
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

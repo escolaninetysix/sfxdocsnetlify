@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.13. ParameterSet &#8212; mocha 7.5.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.14. ProgressWatcher" href="ProgressWatcher.html" />
+    <link rel="prev" title="2.12. Parameter" href="Parameter.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ProgressWatcher.html" title="2.14. ProgressWatcher"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Parameter.html" title="2.12. Parameter"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 7.5.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="parameterset">
+<span id="id1"></span><h1><span class="section-number">2.13. </span>ParameterSet<a class="headerlink" href="#parameterset" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.13.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.13.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.ParameterSet.__dir__" title="mocha.project.ParameterSet.__dir__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__dir__</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ParameterSet.__eq__" title="mocha.project.ParameterSet.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ParameterSet.__mgetitem__" title="mocha.project.ParameterSet.__mgetitem__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__mgetitem__</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ParameterSet.__ne__" title="mocha.project.ParameterSet.__ne__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__ne__</span></code></a> (rhs)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="virtual-functions">
+<h3><span class="section-number">2.13.1.2. </span>Virtual functions<a class="headerlink" href="#virtual-functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.ParameterSet.isNull" title="mocha.project.ParameterSet.isNull"><code class="xref py py-meth docutils literal notranslate"><span class="pre">isNull</span></code></a> ()</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.13.1.3. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.ParameterSet.display_name" title="mocha.project.ParameterSet.display_name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">display_name</span></code></a> [read-only] of str</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ParameterSet.full_path" title="mocha.project.ParameterSet.full_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">full_path</span></code></a> [read-only] of list of str</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ParameterSet.parameters" title="mocha.project.ParameterSet.parameters"><code class="xref py py-attr docutils literal notranslate"><span class="pre">parameters</span></code></a> [read-only] of list of <a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a></p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ParameterSet.subsets" title="mocha.project.ParameterSet.subsets"><code class="xref py py-attr docutils literal notranslate"><span class="pre">subsets</span></code></a> [read-only] of list of <a class="reference internal" href="#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.13.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>Parameter set instance associated with some data object of the project.</p>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.project.ParameterSet">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">ParameterSet</code><a class="headerlink" href="#mocha.project.ParameterSet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ParameterSet.__dir__">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">__dir__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ParameterSet.__dir__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">PyObject</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ParameterSet.__mgetitem__">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">__mgetitem__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ParameterSet.__mgetitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the key is string value object, returns child parameter set or parameter given its name.
+If the key is a sequence of string values, traverses it down the hierarchy tree and returns the
+last parameter/-set item.
+Note: can be chained.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ParameterSet.isNull">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">isNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ParameterSet.isNull" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ParameterSet.__ne__">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ParameterSet.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ParameterSet.__eq__">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ParameterSet.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ParameterSet.full_path">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">full_path</code><a class="headerlink" href="#mocha.project.ParameterSet.full_path" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to the full parameter set name list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ParameterSet.parameters">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">parameters</code><a class="headerlink" href="#mocha.project.ParameterSet.parameters" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to list of the parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ParameterSet.subsets">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">subsets</code><a class="headerlink" href="#mocha.project.ParameterSet.subsets" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to list of the parameter subsets.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ParameterSet.display_name">
+<code class="sig-prename descclassname">ParameterSet.</code><code class="sig-name descname">display_name</code><a class="headerlink" href="#mocha.project.ParameterSet.display_name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to a display name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.13. ParameterSet</a><ul>
+<li><a class="reference internal" href="#synopsis">2.13.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.13.1.1. Functions</a></li>
+<li><a class="reference internal" href="#virtual-functions">2.13.1.2. Virtual functions</a></li>
+<li><a class="reference internal" href="#properties">2.13.1.3. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.13.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Parameter.html"
+                        title="previous chapter"><span class="section-number">2.12. </span>Parameter</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ProgressWatcher.html"
+                        title="next chapter"><span class="section-number">2.14. </span>ProgressWatcher</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ProgressWatcher.html" title="2.14. ProgressWatcher"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Parameter.html" title="2.12. Parameter"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 7.5.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2020, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

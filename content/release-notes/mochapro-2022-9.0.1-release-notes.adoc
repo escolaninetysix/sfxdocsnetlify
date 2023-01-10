@@ -1,0 +1,4057 @@
+{
+   "date": "2021-10-05T00:00:00-00:00",
+   "description": "",
+   "excerpt": "This is a new version containing many new features and defect fixes. Release notes cover Mocha Pro, for both standalone and plugin versions of the product.",
+   "image_url": "",
+   "tags": [
+      "Mocha"
+   ],
+   "title": "Mocha Pro 2022 v9.0.1 Release Notes"
+}
+:skip-front-matter:
+:Author:    (C) Boris FX, Inc.
+:Email:     support@borisfx.com
+:Date:      05/10/2021
+:Revision:  2022 v9.0.1
+:icons:		font
+:toc:
+:showtitle:
+
+== Introduction
+
+These release notes accompany *Mocha Pro {revision}*.
+
+This is a maintenance release with some new features and defect fixes.
+Release notes cover Mocha Pro, for both standalone and Plug-in versions of the product.
+
+Documentation is available inside *Mocha Pro {revision}* by pressing the F1 key.
+
+== Build notes
+
+Please read the following notes carefully as they may affect efficient use of the product.
+
+IMPORTANT: OFX builds of the Mocha Pro Plug-in have been tested to work with Autodesk Flame 2020-2021, The Foundry Nuke, Blackmagic Fusion Studio, HitFilm Pro, Vegas Pro and Silhouette v6+. +
+Other hosts that utilize OFX may operate the Mocha Pro OFX Plug-in correctly, but at this stage they are unofficially supported and may experience problems. +
+While Mocha will work in Blackmagic Resolve 16+, rendering can be slow.
+
+WARNING: Version {revision} changes some file paths and directories from previous versions, including the image cache. We recommend clearing your old Mocha caches before installing this version.
+
+WARNING: Projects created with version {revision} may not be backwards compatible with earlier versions of Mocha.
+
+WARNING: Mocha Pro 2022 requires macOS 10.14 or higher for Intel CPUs or 10.15 and higher for Apple silicon M1 support. +
+Some Mocha features, like GStreamer, are not supported on Apple M1 systems at this time.
+
+== New features in Mocha Pro 2022 9.0.1
+
+* *Restore Default Preferences:* You can now reset back to the default preferences via a button in the main preferences dialog
+* *Improved Insert rendering:* Insert edges are smoother.
+
+== New features in Mocha Pro 2022 9.0.0
+
+=== New Insert Module features
+
+* *Insert Mesh Warp:* Now drive insert warp with the PowerMesh tracker. You can also weight how much the insert grid is influenced by the mesh.
+* *Added resampling options:* The Insert Module can now be rendered with different resampling methods, such as nearest neighbor, bilinear and Lanczos (for different kernel sizes).
+* *Insert Blend Modes:* Blend modes can now be chosen inside the application, making it easier to visualise final results or render to plugin hosts
+* *Streamlined Insert Module:* Insert interface and grid warp has been optimized for easier use
+
+=== Architecture updates
+
+* *Apple silicon Support:* You can now use Mocha with Apple M1 chipsets under Apple silicon supported systems.
+* *VFX Platform 2022:* Mocha is updated to support the new reference platform for the VFX industry standard, including OCIO 2.0, which has much greater visual accuracy and performance.
+* *After Effects Multithreaded support:* Mocha now supports After Effects multithreaded rendering
+
+=== Dopesheet improvements
+
+* *Slide keyframes:* You can now move all keyframes easily in time as one group or by selection
+* *Keyframe zooming:* It is now much easier to zoom into selected keyframes and zoom out to all keyframes. Mouse dopesheet zooming now also zooms at the cursor point.
+
+=== Exports
+
+* *PowerMesh to Nuke Tracker:* Create a single Nuke tracker node with tracker points representing every vertex in the PowerMesh.
+* *PowerMesh to Alembic Transform:* Export PowerMesh vertex position data to individual transform nulls instead of closed geometry
+* *Silhouette shapes with split transform data:* Silhouette shapes now export with keyframe data split out to make it easier to add new Silhouette shapes which inherit the tracking data.
+* *Nuke Roto nodes with split transform data:* Nuke Roto now exports with keyframe data split out to make it easier to add new Nuke roto splines which inherit the tracking data
+* *Mistika Corner Pin:* You can now export Mocha planar tracking data to Mistika
+
+=== Tracking improvements
+
+* *Quick Stabilize Preview Update:* You can now quick-stabilize pan and zoom via any layer rather than just the currently selected layer. This option is available via a dropdown on the Quick Stabilize button.
+* *Multi-linking:* Link multiple selected layers to the same track using “Link to Track”
+* *Mesh Track Using Existing Data:* Linking PowerMeshes to existing planar tracking layers makes it easier to combine planar tracking with PowerMesh tracking for roto and other tasks.
+* *RGB Tracking:* You can now select individual channels for tracking rather than just Luminance or Auto Channel
+* *RGB views:* Preview each channel separate from the RGB dropdown in View controls.
+
+=== Minor Updates
+
+* 360 spline editing has been improved so over warping no longer occurs on large perspective changes
+* Improved AdjustTrack parameters now adjust all track keyframes based on the motion types selected
+* Layer editing is now possible outside set layer frame ranges
+* Channel selection has been changed to a dropdown
+* Data exports from Mocha to Silhouette now contain Silhouette-friendly frame offsets
+
+
+<<<
+
+== Fixed issues since Mocha Pro 2022 v9.0.0
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11413	Link to track cannot be set to None in Classic layout
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The layer Link to Track property could not be set to None when using the Classic layout.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11406 Insert Preview Shows on Hidden Layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Hidden layers no longer show the insert clip for that layer
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11399 Multiple clicks of the mocha launch button will open Mocha GUI multiple times after closing
+| *Platform:* | All Platforms
+| *Product:* | All Mocha Pro Plug-Ins
+| *Bug Description:* | Clicking more than once on the launch button before Mocha loaded would make Mocha relaunch mutliple times.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11398	"Showing Mocha Window" message box appearing above Mocha GUI on Mac
+| *Platform:* | macOS
+| *Product:* | Mocha Pro Plug-in
+| *Bug Description:* | The "Showing Mocha Window" dialog could sometimes appear in front of the Mocha GUI.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11395 Surface cannot be adjusted when "Show Layer Outlines" are turned off
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Fixed a problem where turning off "Show layer outlines" would stop the surface from being moved.
+|===
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11378 Tracking cog doesn't update for un-/linked layer when relevant parameters change
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The tracking cog would not update properly for certain layer state changes.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11367	Insert resets layer mask selection to None if layer name changes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Renaming a layer caused a referenced Insert foreground matte to reset to None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11360 Mocha crash when tracking backwards with mesh in some projects
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Mocha could crash when mesh tracking some projects backwards.
+|===
+
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11323 Mocha window scaling cuts off top portion of the UI
+| *Platform:* | Windows
+| *Product:* | All Products
+| *Bug Description:* | Windows display settings could cause the scaling to round up window size.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11152	License tool exited with error code 6 when attempting to activate or deactivate on Centos 8.2 FlameOS
+| *Platform:* | Linux
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | The license tool could exit abruptly when using the GUI interface to activate.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11009 Applying/Generating After Effects data from any layer retains original position in plugin
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in
+| *Bug Description:* | Some projects would apply the same tracking data regardless of the data generated in the plugin interface.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8146 Users cannot change the Insert clip of a hidden layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:*| You can now update the Insert Clip setting regardless of layer visibility.
+|===
+
+
+<<<
+
+== Known Issues
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11401	Mocha does not remember window position when moved to another screen
+| *Platform:* | All Platforms
+| *Product:* | All Mocha Pro Plug-ins
+| *Bug Description:* | The Mocha GUI can sometimes not be on the same screen it was previously set to.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11400	Mocha opens behind After Effects on second screen
+| *Platform:* | Windows and macOS
+| *Product:* | Mocha Pro Adobe Plug-in
+| *Bug Description:* | If Mocha is launched or dragged to the second screen in After Effects, subsequent launches of Mocha can appear behind the AE interface.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11369	Overlay Error when attempting to render a large insert with PowerMesh
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Attempting to preview inserts with PowerMesh that have large planar disortions can show an error
+| *Workaround:* | None. This is usually caused by an extreme distortion in the plane and a very large insert. Avoid making Inserts that encompass the entire frame.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11359	Internal error while reading some video on the last frame after reopening a project
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Some clips can have read error issues at the last frame when reopening a project.
+| *Workaround:* | Use an image sequence to replace the problem clip.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11357	360 VR views can cause points to move dramatically when trying to adjust them
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Adjusting points near areas of extreme distortion in 360 can cause the points to move contrary to mouse movements.
+| *Workaround:* | Adjust in Equirectangular mode.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11350	The Fusion page in Resolve 17.1.1+ no longer respects edits from the Media page
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Resolve 17.1.1 and over doesn't retain the media edits when loading clips into Mocha
+| *Workaround:* | Use Resolve 17.1 or earlier.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11324	Can't import clip by GStreamer from network by UNC path
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | UNC paths do not load correctly when using GStreamer as the video file reader.
+| *Workaround:* | Change to network drive mapping.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11317	Keyframed Spline doesn't follow mesh if "Existing planar data" is used.
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If a spline is manually keyframed, it will drift if you track the mesh only using "Existing planar data"
+| *Workaround:* | None. Currently Mocha displays a warning for users so you are aware of this problem.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11222	Lens loses line selection when reopening a saved project
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The Lens module calibration lines disappear after reopening the project.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11162	Mocha Standalone cannot save for clips or projects with long names
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Really long file names cannot save.
+| *Workaround:* | None. The file name has to be very, very long though.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11149	Resolve crashes when loading an edit sequence that contains a Mocha Effect on a multi-GPU system
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Mocha can crash Resolveif not set to render with the display GPU
+| *Workaround:* | Open Mocha and set the GPU to "Display" in GPU preferences.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11126	"Paste mesh keys" is offsetting mesh control points incorrectly
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Copying and pasting mesh keys is offsetting the mesh points to the last place the mesh was sitting in frame.
+| *Workaround:* | Offset the pasted vertices manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11122	Turning on and off matte colorisation view during playback can crash Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | On rare occasions, quickly toggling on and off matte colorisation during playback can cause a crash.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11112	RGB-only EXR images are read by Mocha OFX with a zero alpha in Nuke
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plugin-in
+| *Bug Description:* | EXR files without any alpha are interpreted as having zero alpha
+| *Workaround:* | Add an alpha channel to the EXR read node in the node graph before applying Mocha.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11109	Precomped After Effects layers with non-zero starting frames are incorrectly offset in Mocha
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in
+| *Bug Description:* | After Effects layers that are trimmed at the head will offset incorrectly in Mocha if they are Precomped
+| *Workaround:* | Precomp the trimmed layer before tracking to avoid any offset issues.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11094 Switching working colorspace will crash projects with imported insert clips
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If a project has an imported insert clip, changing the working colorspace will crash the Mocha GUI.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11092 Error when trying to import ssl when externally running Mocha Python
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You currently cant import the ssl module in a Mocha python script outside of the Mocha GUI.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11088 Exporting a rendered clip to QuickTime movie shows an error if you only have a directory in the file field
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If the QuickTime movie field only has a directory instead of a full file path, Mocha will throw an error.
+| *Workaround:* | Make sure you have a filename in the movie path, eg. "C:\Video\mymoviefile.mov"
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11077 GStreamer: “Internal error while reading video” when stepping backwards for some clips
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Stepping backwards with some clips imported into Mocha via GStreamer causes an error.
+| *Workaround:* | Use an image sequence.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11075 Nuke tracker export always creates a keyframe at frame zero for non-zero frame ranges
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The Nuke Tracker export will create a keyframe at frame zero when exporting from a project that doesn't start at zero.
+| *Workaround:* | Remove the keyframe manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11073 Rendering Mega Plates with large shapes causes "Standard Library Error"
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Attempting to render a Mega Plate using a very large shape causes an error.
+| *Workaround:* | Reduce the size of the layer shape.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11063 Mocha cannot open 12K images in Nuke
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Attempting to load a 12K image into the Mocha OFX plugin via Nuke causes a "bad argument error".
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11062 "Unknown Error" when attempting to read frames from Nuke for some clips
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Mocha will occasionally get an unknown error and will be unable to read frames when working inside Nuke.
+| *Workaround:* | Use an image sequence.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11042 Still image clips in Premiere with Mocha projects copied from multi-frame projects require easy keyframe time shifting
+| *Platform:* | macOS and Windows
+| *Product:* | Mocha Pro Adobe Plug-in
+| *Bug Description:* | Still images placed on the Premiere timeline come into Mocha with an offset timecode.
+| *Workaround:* | Nest the still image on the Premiere timeline before applying the Mocha effect.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11030 Inserts Imported directly from disk do not render in the After Effects timeline
+| *Platform:* | macOS and Windows
+| *Product:* | Mocha Pro Adobe Plug-in
+| *Bug Description:* | An imported clip in the insert module does not render to the After Effects timeline.
+| *Workaround:* | Convert insert to an image sequence, such as TIF.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11028 Mocha Standalone Projects with QuickTime Animation (RLE) encoding slips on some frames when exporting data to AE
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Animation encoding in Mocha Pro standalone will export tracking data that does not line up when pasted into After Effects.
+| *Workaround:* | Convert to an image sequence, such as TIF.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11019 Custom timeline shortcuts don't work once a layer is created in Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you customise timeline shortcuts (such as "next frame") they will work until you create a layer.
+| *Workaround:* | Use the default shortcuts.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11010 Mocha crashes on some systems when launched on Windows Remote Desktop
+| *Platform:* | macOS and Windows
+| *Product:* | All Products
+| *Bug Description:* | Mocha can crash on some systems when attempting to launch via RDP.
+| *Workaround:* | Open non-remotely.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-11006 AdjustTrack offsets surface incorrectly for some shots
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | AdjustTrack will offset the surface incorrectly on some shots even when the reference points are aligned to the right places on other frames.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | GStreamer cannot read some 6K ProRes files
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Large dimension ProRes files fail to read in GStreamer.
+| *Workaround:* | Convert the video so that its width is a multiple of 16 pixels.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | Bug MO-10995 GStreamer fails to read some frames that QuickTime can read.
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | GStreamer is failing to read some prores files correctly.
+| *Workaround:* | Convert to an image sequence, such as TIF.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10983 Cancelling out of Overwriting files closes GStreamer UI
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When you click Cancel when GStreamer asks to overwrite the file in the QuickTime export, the entire GStreamer UI will close itself.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10958 Export Rendered Clip with revert to clip outputting black on non rendered frames
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The "revert to clip" option when exporting rendered frames is showing black frames instead of the chosen clip frames.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10949 GPU tracking and processing not available on some Windows systems with an Intel 4600 GPU
+| *Platform:* | Windows
+| *Product:* | All Products
+| *Bug Description:* | Intel 4600 GPUs are causing GPU processing options to be unavailable.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10931 Mocha hangs when creating new project via importing with GStreamer with some clips
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Mocha can hang when attempting to read some clips with GStreamer.
+| *Workaround:* | Reformat the clip, use an image sequence, or try using the legacy QuickTime file reading option in preferences.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10919 On Mac, Solve button gets shrunk when using Auto solving
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The solving summary shrinks the Camera Solve button when using "Auto".
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10916 Mocha plugin cannot launch in front of full screen hosts on Mac
+| *Platform:* | macOS
+| *Product:* | Mocha Pro Plug-Ins
+| *Bug Description:* | If a host like Nuke is set to full frame on Mac, the Mocha GUI will launch but is not accessible.
+| *Workaround:* | Run hosts in windowed mode. Flame seems unaffected.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10897 After Effects renders out of step when rendering to the queue at a different frame rate
+| *Platform:* | Windows and macOS
+| *Product:* | Mocha Pro Adobe Plug-In
+| *Bug Description:* | If the After Effects render queue frame rate differs from your comp frame rate, Mocha renders will be offset incorrectly.
+| *Workaround:* | Render to the same frame rate as the original comp.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10885 Mocha Pro Logo is not color managed
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The Mocha pro logo insert clip will not match the OCIO color settings of the source clip.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10854 GeForce Experience GameStream crashes Mocha in Fusion
+| *Platform:* | Windows
+| *Product:* | Mocha Pro OFX Plug-In
+| *Bug Description:* | If you attempt to launch Mocha UI in Fusion, the program will crash if GeForce Experience GameStream is running.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10853 Interlaced projects cause Shift-modified shapes to draw 2:1 (H:W) rectangle/ellipse instead of square/circle.
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Attempting to draw shift-constrained shapes in interlaced projects causes the shapes to be drawn elongated instead of even.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10827 Insert opacity and gain changes don't trigger re-render option
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Turning on 'Re-render on parameter change' doesn't re-render when changing some parameters in Insert.
+| *Workaround:* | Render manually using the render button.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10811 Mocha UI not launching if Intel GPU is the only active GPU
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Only having an Intel GPU on enabled the system can cause Mocha Pro not to initialise.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10809 Mesh tracker Spline Warp does not work in 360 VR
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Mesh tracking will not correctly warp the spline in 360.
+| *Workaround:* | Turn off spline warp.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10801 Incorrect frame offset when scrubbing movie clips
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Occasionally scrubbing the timeline when using GStreamer with some clips causes frames to stick or jump to the wrong place.
+| *Workaround:* | Use an image sequence.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10797 Layer shape will shift if mesh is turned on after the layer has been tracked
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Mesh Spline Warp influences the layer shape, so turning on Mesh after tracking will shift the shape.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10776	Mocha spline overlays are offset when Windows scaling is too large
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Large scaling of the window display settings can cause Mocha to offset splines
+| *Workaround:* | Reduce the display scale in Windows display settings.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10771	Magnetic Spline detail does not adjust point count when shape has just been created
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | On first creation, the detail parameter does not show any change on a Magnetic spline.
+| *Workaround:* | Deselect and reselect the spline.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10768	Silhouette Shapes with transform data do not import into Mocha
+| *Platform:* | All Platforms
+| *Product:* | Mocha Standalone
+| *Bug Description:* | Silhouette project splines with transform data are not importing correctly into Mocha
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10733	Crop does not work in Stabilize module
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Crop currently has no effect in Mocha.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10722	Interlaced files are showing double frames in Remove module fields
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Interlaced project list twice the number of frames in the remove parameters
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10720	Mocha Pro and Mocha AE are lagging in AE when third-party script panels are showing
+| *Platform:* | All Platforms
+| *Product:* | Mocha Adobe Plug-ins
+| *Bug Description:* | If a large amount of the third-party scripts are displayed in the AE panels, the Mocha GUI can slow down.
+| *Workaround:* | Close third-party script panels before launching Mocha.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10699	Flame hangs on exit when Mocha remove render is enabled in the host
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Flame can sometimes hang on exit after attempting to render a Remove.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10683	Vegas renders inserts out of step when rendering with a different frame rate
+| *Platform:* | Windows
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Exporting a render out of Vegas using a different frame rate than the original timeline can cause offsets in the Mocha render.
+| *Workaround:* | Export using the same frame rate as the project.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10681	Mocha has stuttering playback for some H.264 codecs in GStreamer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Some H.264 codecs will play back with some jitter when using GStreamer.
+| *Workaround:* | Convert to another format.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10676	Resolve crashes when Mocha is launched on Linux
+| *Platform:* | Linux
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Launching Mocha in Resolve will currently crash on Linux.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10658	"Launch Mocha" label is truncated in Vegas Pro
+| *Platform:* | Windows
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | The "Launch Mocha" button label is cut off slightly.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10650	Rotation not possible on transform tool for high resolution screens or zoomed out canvas
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The transform tool hitboxes for rotation are too small when there is a very high resolution screen.
+| *Workaround:* | Zoom into the canvas further.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10623 Shapes can distort on some frames when tracking long perspective shots
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Long perspective shots will sometimes twist or distort shapes on some frames
+| *Workaround:* | Nome.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10581 Mocha Pro in Avid always starts up zoomed in on 4k monitor
+| *Platform:* | Windows and macOS
+| *Product:* | Mocha Pro AVX Plug-in
+| *Bug Description:* | Clips loading into Mocha via Media Composer will be zoomed in if working on a 4K monitor
+| *Workaround:* | None. Zoom out using the zoom tool.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10579 Canvas color does not change on Mac until it is selected
+| *Platform:* | macOS
+| *Product:* | All Products
+| *Bug Description:* | If you change the canvas background color it will not update until you refresh the canvas by clicking on it.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10578 QuickTime: New Project import clip populate Separate Fields as off for interlaced upper and lower clips
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When trying to import a clip via the New Project window, the UI will populate Separate Fields as Off instead of the clip's fields.
+| *Workaround:* | Change interlaced settings manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10574 Mocha Area Brush is oval in for interlaced footage
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Due to the field interpretation, interlaced projects make the Area Brush an oval instead of a circle.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10565 Mocha OFX is not reading read nodes with expressions in Nuke on macOS
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | The Mocha OFX plugin cannot read image nodes that are reading input images via expressions in Nuke.
+| *Workaround:* | Link the clip nodes directly to the source input.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10556 GStreamer MXF Issues
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | There are currently several issues loading MXF container format, depending on the codec and the type.
+| *Workaround:* | Convert footage to a different format for use in Mocha.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10555 Interlaced tracking project from 7.0.4 to 7.5.0 won't match up
+| *Platform:* | macOS and Windows
+| *Product:* | Mocha Pro AVX Plug-in
+| *Bug Description:* | Interlaced tracking projects in Media Composer from Mocha Pro 7.0.4 won't match up in later versions
+| *Workaround:* | None. Changes to the plug-in to support Media Composer properly breaks older Mocha interlaced projects.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* |MO-10552 GStreamer - Unable to load footage for Wraptor DCP files
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Mocha is unable to load footage for Wraptor DCP files
+| *Workaround:* | Convert to a different format.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10548 Mocha in Vegas always starts on the first frame instead of where the CTI is located
+| *Platform:* | Windows
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* |  Mocha in Vegas always starts on the first frame instead of where the CTI is located.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10544 GStreamer - Mocha unable to load footage with MPEG2 MPG container
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | GStreamer is unable to load some MPEG2 and MPG formats.
+| *Workaround:* | Convert to a different format.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10542 GStreamer - Unable to load MPEG4 3GPP H263 3GP files
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | GStreamer is unable to load some MPEG4 types.
+| *Workaround:* | Convert to a different format.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10534 Mocha crashes when attempting to import GoPro CineForm QuickTime when using GStreamer
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Trying to import GoPro CineForm files can crash Mocha.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10508 Shape becomes unselectable when undoing a control point change after moving the playhead
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Undoing a control point move after moving the playhead can make the point unselectable
+| *Workaround:* | Deselect the layer then reselect.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10496 Attempting to overwrite export data results in two overwrite dialogs in Catalina
+| *Platform:* | macOS
+| *Product:* | All Products
+| *Bug Description:* | Two dialogs will show up in Catalina when trying to overwrite a file.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10492 Mocha Edge Properties panel overlaps the module panels when moving between HD and 4k monitor
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The Edge properties can overlap the parameters when moving the GUI between high and low resolution screens.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10475 Point Insertion tool creates incorrect keyframes with Überkey
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Point insertion can make single-point keyframes instead of spline keyframes when using Überkey.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10454 Mocha viewport can glitch to show flipped inverted video and interface elements
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Mocha can occasionally flip or glitch UI graphics on certain hardware configurations.
+| *Workaround:* | Resize the GUI and the window should reset.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10451 Undo paint stroke when Quick Mask is enabled finishes the shape
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Undoing a paint stroke in Area Brush will complete the shape and convert it to a spline.
+| *Workaround:* | Erase instead of undo.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10450 GPU shows skipping in tracking where CPU doesn't for some shots
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Some GPUs can miscalculate a track where the CPU tracker doesn't.
+| *Workaround:* | Use CPU.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10437 Anamorphic Lens calibrations is very slow, can fail and can crash Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Anamorphic Lens calibration can be slow and unstable.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10430 Splash screen will remain up even when the interface has loaded when launching via "Track in Boris FX Mocha"
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The Splash screen can get in the way when launching Mocha via command line methods.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10423 Changing Motion parameters only keyframes Search Parameters
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you change the Motion parameters in the Track module, the Search parameters are keyframed.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10409 R3D Video shifts right and down by a pixel when scrubbing through proxy scale in Mocha
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Proxy scale can shift R3D footage slightly
+| *Workaround:* | Work in Full resolution.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10399 Mocha viewer does not refresh correctly after relinking matte and changing AE resolution
+| *Platform:* | macOS and Windows
+| *Product:* | All Products
+| *Bug Description:* | Relinking a matte clip and then changing the AE resolution to be quarter can cause theMocha viewer to not be refresh appropriately.
+| *Workaround:* | Work in full resolution.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10360	When Mocha Pro AE window is on 2nd monitor, menus open on 1st monitor
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-In
+| *Bug Description:* | If you are using Mocha Pro on a second monitor the menu items will default to the first monitor.
+| *Workaround:* | Move the window to the first monitor.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10359	Mocha can be "Unable to track" when input frame doesn't exist on some systems
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:* | Mocha can throw an error on some systems that it is unable to track due to not having an input frame.
+| *Workaround:* | None. Currently suspected to be related to memory exhaustion.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10347	Long delay when opening Mocha for first time in a host session
+| *Platform:* | All Platforms
+| *Product:* | Mocha Plug-ins
+| *Bug Description:* | There can be a significant delay when opening Mocha Pro for the first time in a session
+| *Workaround:* | None. Subsequent openings are normal speed.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10281	Mocha doesn't default back to hero view when drawing in stereo with shape, magnetic or area brush tools
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Mocha doesn't default back to hero view when drawing in stereo with shape, magnetic or area brush tools
+| *Workaround:* | Switch back to hero view before drawing.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10278	Adobe products can't read DPX matte files written from Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | DPX files written from "Export Rendered Mattes" are in Grey format, which Adobe products do not support.
+| *Workaround:* | Export mattes as TIF files or equivalent RGB output.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10255	Mocha Pro AVX can hang when opening in Avid MC 2019.9 on some systems
+| *Platform:* | macOS and Windows
+| *Product:* | Mocha Pro AVX Plug-in
+| *Bug Description:* | Mocha Pro AVX occasionally hangs when opening in Avid MC 2019.9 on some systems.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10234	Stopping playback can be unresponsive when caching frames in plugins
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Plug-ins
+| *Bug Description:* | Stopping playback after you have started playing can sometimes take several clicks.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10199	Rounded areas, such as the ends of Area Brush strokes, are fit insufficiently smoothly
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Area brush can sometimes generate too many points, especially for rounded areas.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10192	Cannot copy open splines from Standalone into AE
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Open splines to not paste into After Effects when bringing them across from Mocha Pro Standalone
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10159	Long delay for find_widget and get_widgets() in Mocha Python
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | The functions find_widget and get_widgets in the Python API can take several seconds to execute.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10082	Changing the Detail fields does not affect number of points unless magnetic shape tool is selected
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Layer Detail of a magnetic or freehand spline will only change if the tool is selected
+| *Workaround:* | Select the tool.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10055 Nesting a layer in Premiere can cause Removes to fail
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in
+| *Bug Description:* | Nesting a Premiere clip that has a Mocha render applied can stop the render from updating
+| *Workaround:* | Enter the nested sequence and move the playhead. This will nudge Premiere out of the render pause.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10052 Avid crashes if timeline's bit depth is changed after selecting Mocha Stabilize and Auto Fill render module.
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro AVX Plug-in
+| *Bug Description:* | Changing the bit depth of the timeline in Media Composer when rendering a stabilize with Auto Fill can cause a crash.
+| *Workaround:* | Turn off "Render" before changing depth.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10046 Mocha is extremely slow when playing backwards
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Playing backwards for some footage can be much slower than playing forwards
+| *Workaround:* | Play forwards or cache the clip.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10044 Mocha doesn't update output when a mask on the source layer is modified in After Effects
+| *Platform:* | All Platforms
+| *Product:* | Mocha AE and Mocha Pro Plug-ins
+| *Bug Description:* | When an After Effects layer has a keyframed mask, applying Mocha will not refresh the mask cutout
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-10024 Multiple Lens calibrations causes Mocha to crash
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Calibrating multiple times in the Lens Module can sometimes cause a crash
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9994 Shapes with deactivated points do not export correctly
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Shapes that have deactivated points will not export properly.
+| *Workaround:* | Re-enable points before export.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9992 Changing the Detail field only affects a single magnetic/freehand shape
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Only one contour at a time inside a layer will be affected by the detail field.
+| *Workaround:* | Select each contour separately while adjusting detail.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9982 Dope sheet can't scroll all items when there are many layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Projects with many layers cannot show all items in the Dopesheet.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9973 Can't select all control points at once after creating a bezier shape
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When attempting to select all the bezier points at once, one of the points will be deselected which causes that one point to not move when attempting to move the entire shape.
+| *Workaround:* | Reselect all control points.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9975 Flame OFX - can’t “Launch Mocha UI” before changing frames
+| *Platform:* | macOS and Linux
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Flame will not allow loading the Mocha UI if the timeline playhead has not moved frames. This is a Flame-side issue which will be addressed by Autodesk.
+| *Workaround:* | Scrub to different frame in timebar and Launch Mocha UI becomes active and can be picked.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9974 Holding down 'S' does not immediately change the cursor icon to the edge snap icon
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Holding down the 'S' key to activate drag-snapping does not immediately change the cursor
+| *Workaround:* | Move the mouse and the cursor should change.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9958 Nuke takes a very long time when rendering from a second Mocha node fed from another Mocha node.
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | A rendering Mocha Plugin fed as a source into another rendering Mocha plugin will be very slow to render in Nuke.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9954 Insert rendering does not work for relinked matte clips
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | A relinked matte clip doesn't show in the Insert foreground mattes.
+| *Workaround:* | Set the Matte Clip for the layer to "None", then back to the matte clip. It will ask to reconvert to 8-bit.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9933 Mocha rendering in Flame can stick playback
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | playing back a render on the Flame timeline can sometimes be hard to stop.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9932 Track mattes do not show correctly for imported mattes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Imported matte clips do not display correctly when viewing Track Mattes.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9927 Remove looks for missing clean plate frames even when set to "None"
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Setting the clean plate clip drop down to "None" when there is a clean plate clip available still references existing clean plate.
+| *Workaround:* | Remove the clean plate clip entirely.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9900 Imported matte clips lose name after reopening project
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Importing a matte clip will change to the layer name after reopening the project.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9868 Mocha starts up slowly on first launch after host first starts up in Avid
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro AVX Plug-in
+| *Bug Description:* | The first launch of Mocha in Avid is slower than usual. After that it is fine.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9850 Scrubbing timeline is stuttering playback
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Scrubbing the timeline back and forth can cause some stuttering frames
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9830 Premiere Pro can hang when nodelocked license is activated the first time.
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plugin-In
+| *Bug Description:* | Activating a nodelocked Mocha license in Premiere can cause Premiere to hang.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9817 Can't pan and zoom while playing back on Mac
+| *Platform:* | macOS
+| *Product:* | All Products
+| *Bug Description:* | The pan/zoom tools sometimes cannot be used when playing back a shot
+| *Workaround:* | Stop playback.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9813 Surface Area situated around 1st point when using Add X/B-Spline
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Drawing a new layer with the "Add" spline tools can cause the surface to sit on the first drawn point
+| *Workaround:* | Use the "Create" spline tools to create a new layer.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9806 Layout menu goes missing when changed from Big Picture to Roto
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Switching from Big Picture to the Roto Layout causes the Layout dropdown to become hidden
+| *Workaround:* | Pull the Layout tool bar size out to the right to reveal the drop down.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9787 Python Script Editor does not reset variables on separate runs
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Running scripts in the Python Script Editor doesn't clear the values when you write a new script in the same session.
+| *Workaround:* | Restart Mocha or clear the values manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9746 Mocha Pro 2019 does not auto-detect and interpret DPX Log files correctly.
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Mocha Pro 2019 does not auto-detect and interpret DPX Log files correctly.
+| *Workaround:* | Adjust Log values in Colorspace tab.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9744 0% progress bar at the top right after starting Mocha a second time
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Plug-in
+| *Bug Description:* | Mocha will display a 0% Progress bar at the top right corner when you reopen Mocha any other time after the initial use.
+| *Workaround:* | None. Cosmetic only.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9733 Imported matte clips always begin at start of project
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Importing a matte clip with an in point frame larger than the project in point always plays at the starting frame.
+| *Workaround:* | Pad the matte clip to the desired start point.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9715 Importing mocha Python module crashes Nuke
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Importing the mocha module into Nuke Python crashes the program.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9711 Mocha Welcome screen graphics looks jagged on 4k
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The High resolution version of the Welcome screen can look jagged in 4K.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9703 Magnetic tool transforms incorrectly in 360 after detail adjustment
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Moving a spline with the transform tool after adjusting Magnetic detail causes the spline to move incorrectly in 360 mode.
+| *Workaround:* | Move the spline in Equirectangular view.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9685 AdjustTrack Master Reference follows shape when "Link to track" is set to "None"
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When "Link to Track" is set to "None" the master frame reference points follow the unlinked shape.
+| *Workaround:* | Set "Link to track" to the current layer before adjusting.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9632 Saving tracking data is not inserting the layer name
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When you save tracking data exports to disk, they are not currently inserting the name into the save dialog.
+| *Workaround:* | Manually name the file.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9629 Magnetic Shape is not rebuilt when undoing a change to the detail parameter unless the Magnetic Tool is enabled
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Unless you have the Magnetic/FReehand tool selected, undo does not undo a detail change
+| *Workaround:* | Select tool before undoing.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9621 "Bad argument" error when frame range of output node in Nuke has hold or retime frames
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | If a Nuke node has hold or retime frames, the Mocha OFX Plug-in will throw a bad argument error
+| *Workaround:* | Retime the frames to allow Mocha to read image data from all frames in the timeline, or render the retimed frames.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9611 32-bit float DPX exports import incorrectly to Fusion on Windows
+| *Platform:* | Windows
+| *Product:* | Mocha OFX Plugin
+| *Bug Description:* | 32-bit bpc DPX Renders exported from mocha do not import correctly in Fusion.
+| *Workaround:* | Convert to a different format or export TIF instead.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9593 Pan/Zoom toggle doesn't work with some trackpads
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Using Pan or Zoom toggles with a trackpad that has buttons may not work.
+| *Workaround:* | Select the tool rather than using the toggle key.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9562 AdjustTrack Layer points and Surface points have duplicates in different position when 360 view mode is on
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | AdjustTrack can show multiple overlay controls in 360 mode.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9554 Unlicensed mocharender.py causes segmentation fault
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone
+| *Bug Description:* | Attempting to use mocharender.py with an unlicensed Mocha can cause an error
+| *Workaround:* | License Mocha before use.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9552 Mocha can crash the host if you run out of disk space
+| *Platform:* | All Platforms
+| *Product:* | All Mocha Pro Plug-ins
+| *Bug Description:* | If the system runs out of disk space, the Mocha host will crash.
+| *Workaround:* | Check disk space levels for large shots and make sure there is ample space.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9513 Matte rendering in Fusion is very slow
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Rendering Apply Matte or View Matte in Fusion is very slow compared to other hosts.
+| *Workaround:* | Export Fusion shapes instead.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9437 Deleting more than 4 layers at once doesn't delete all the layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Selecting a large amount of layers and deleting them will only get rid of some of the layers.
+| *Workaround:* | Select remaining layers and delete.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9426 GPU preferences on Mac are not remembered when you uncheck both 'Use GPU Processing' and 'Allow unsupported GPUs'
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | GPU preferences on Mac are not remembered when you uncheck both 'Use GPU Processing' and 'Allow unsupported GPUs'
+| *Workaround:* | Turn off just "Use GPU processing". "Allow unsupported GPUs" will be disabled when you do this.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9387 Avid crashes with Mocha installed using OSX 10.11
+| *Platform:* | macOS
+| *Product:* | Mocha Pro AVX Plug-in
+| *Bug Description:* | Avid will crash using the mocha Plug-in on OSX 10.11
+| *Workaround:* | Use macOS 10.12 or higher.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9370 White screen flash when launching Mocha as a plug-in.
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Plug-in
+| *Bug Description:* | There can be a white screen before the full interface loads in the Mocha Plug-in
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9301 It is possible to move points while playing back in the mocha timeline
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Pressing space while moving points in a layer will still keep moving the points while the clip plays.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9300 Save button isn't completely rectangular
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The Save button is slightly cut off.
+| *Workaround:* | None. Cosmetic only.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9261 Primitive circle tool draws incorrectly with 360 footage
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The circle primitive can look warped when drawn near the poles in 360 mode.
+| *Workaround:* | Adjust shape after drawing.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9232 Mocha OFX ignores aspect ratio in Fusion
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in
+| *Bug Description:* | Mocha ignores the set aspect ratio in the Loader node in Fusion and always loads 1:1
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9192 Panel headings disappear when re-docked under each other
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Docking a panel under another can hide the title of the panel
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9190 Surface doesn’t draw some edges on certain 360 view angles
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Some 360 view angles may not draw the surface correctly.
+| *Workaround:* | Adjust the camera view in 360.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9177 Shape tool spline gets stretched when used in VR 360 mode
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | In some areas of 360 footage, especially near the poles, the Primitive shape tool can become warped.
+| *Workaround:* | Adjust shape after drawing.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-9142 Add keyframe at current position not enabled when switching from Überkey to Auto-key
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You cannot add a keyframe when in Überkey mode after moving to another part of the timeline
+| *Workaround:* | Click the timeline again to activate the button.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8968 Black waves when preview rendering in the Premiere timeline
+| *Platform:* | Windows and macOS
+| *Product:* | Mocha VR Adobe Plug-in, Mocha Pro Adobe Plug-in
+| *Bug Description:* | Large black waves can appear when you render the effect on the Premiere timeline using "Render Effects In to out".
+| *Workaround:* | This is due to Premiere changing the image input at render time.
+                  Resetting the Premiere `Sequence Settings...` by turning on `Maximum Render Quality` restores Preview renders to the correct view.
+                  You can turn it off again and the problem will still remain fixed.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8953 Equirectangular Lens renders do not render correctly in standalone
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR Standalone
+| *Bug Description:* | Rendering a 360 view of Equirectangular footage does not match the current 360 view in the viewport.
+| *Workaround:* | Adjust Lens parameters to get the correct view.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8948 GPU tracking is abnormally slow to start on some machines
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The GPU tracker can initially pause for several seconds before starting to track anything.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8937 Offline activation save as "sapphire.req" by default
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Offline RLM activation uses the same process as the Sapphire RLM activation procedure and therefore saves the offline file as "Sapphire.req"
+| *Workaround:* | Rename the file to Mocha.req. The file will still work as expected.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8900 Attaching Mocha Pro node to a corner pin in Nuke immediately crashes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Attaching a corner pin node to a Mocha Pro OFX node will crash Nuke.
+| *Workaround:* | 1. Execute any processing used in the OFX node: +
+When using a Mocha Pro node, saving and executing any changes within the Plug-in appears to stop the crashes.
+So using the node and editing the CornerPin before executing the saved changes crashes Nuke.
+
+2. Place a processing node in-between the OFX & CornerPin nodes: +
+Adding a processing node in-between the two nodes (e.g. Blur) works around the issue, as the transformation information is processed before being passed through the CornerPin node.
+For example, having Mocha->Blur->CornerPin stops the process loop from crashing.
+
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8889 Layers that have in-points are animating from the first frame when exported as shapes in Premiere
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:* | Exporting Premiere shape data that has layer in-points pastes with the layers moving immediately on the first frame rather than from the defined frame.
+| *Workaround:* | Don't set the layer in point in Mocha
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8834 First attempt at exporting data to Premiere will not paste from Mocha Pro Plug-in
+| *Platform:* | macOS and Windows.
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:* | Switching to Premiere to paste shape data may not paste the first time.
+| *Workaround:* | Switch out of Premiere and back in again, then try pasting again.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8801 Mocha does not respect required Nuke naming conventions in its exports
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro All, Mocha VR All
+| *Bug Description:* | Mocha does not respect required Nuke naming conventions in its exports
+| *Workaround:* | Replace any invalid characters with letters, digits and underscores.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8760 Renders are incorrect when changing frame rate in Premiere
+| *Platform:* | macOS and Windows
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:* | Changing the frame rate in Premiere after using the Mocha Plug-in can cause the renders to be incorrect.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8734 Mocha crashes when removing backwards
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro All
+| *Bug Description:* | Occasionally Remove can fail or crash Mocha when rendering backwards.
+| *Workaround:* | Render forwards.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8721 Plug-in crash when texture memory is too low
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If GPU texture memory is set very low, Mocha can crash.
+| *Workaround:* | Set texture memory in Preferences to at least 50% of the available GPU memory.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8714 Installing on the command line in Linux shows numerous errors
+| *Platform:* | Linux Centos 7
+| *Product:* | Mocha Pro OFX Plug-in, Mocha Pro Standalone, Mocha VR OFX Plug-in, Mocha VR Standalone
+| *Bug Description:* | Errors can show when installing on Centos 7.
+| *Workaround:* | Check dependencies and try reinstalling.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8706 In standalone app on a Win system, some imported 8K movie files render pixelated video
+| *Platform:* | Win 10
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | In some cases, an 8K file can import incorrectly.
+| *Workaround:* | If converted to an image sequence it imports correctly.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8693 Mocharender.py directory output fails silently if windows directory contains ending slash
+| *Platform:* | Windows
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | Creating a Mocharender.py -D directory with a trailing backslash causes Mocharender.py to fail silently.
+| *Workaround:* | Don't add a slash to the end of directories in the command line arguments.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8690 Bad Argument when applying Mocha in Vegas on a 3D track motion clip
+| *Platform:* | Windows
+| *Product:* | Mocha Pro OFX Plug-in, Mocha VR OFX Plug-in
+| *Bug Description:* | Mocha shows a "Bad argument" when applying as an Event FX on top of a layer that has 3D motion applied to the track.
+| *Workaround:* | Currently a software limitation in Vegas. Save the track that has the 3d motion applied as a new veg file and apply Mocha to the nested veg file.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8667 Changing the frame rate on the timeline in Vegas can mess up the timing in Mocha
+| *Platform:* | Windows
+| *Product:* | Mocha Pro OFX Plug-in, Mocha VR OFX Plug-in
+| *Bug Description:* | In Vegas Pro, you can adjust the frame rate in the middle of editing, and this can alter the tracking data in the GUI.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8653 Exporting tracking data supplies additional extension rather than layer name in Plug-in save dialogs
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:* | Exporting tracking data shows two extensions rather than a layer name when using the Plug-in.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8647 Applying tracking data via Mocha Adobe Plug-in to a 3d null will set Z scale to 0
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:* | Applying Mocha transform data to a 3d Null in AE via the Plug-in UI will set a 3d null Z scale parameter to 0.
+| *Workaround:* | Reset the Z parameter after pasting.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8646 Time-remap/stretching a precomp containing a Mocha effect causes incorrect result
+| *Platform:* | macOS and Windows
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in.
+| *Bug Description:* | A Mocha Plug-in applied to any comp with native AE time manipulation (such as stretch) will not work predictably.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8645 Plug-in masks wont follow rendered stabilize footage
+| *Platform:* | All Platforms
+| *Product:* | All Plug-in Versions
+| *Bug Description:* | Apply Matte will applu the tracked matte, not a stabilized matte, when rendering Stabilize to the Mocha Plug-in host.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8637 Mocha projects exported from the Plug-in version show an "Insert Layer" when loaded into the standalone version
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro All, Mocha VR All
+| *Bug Description:* | If you export a project from the Plug-in version, importing into Standalone still shows the Insert Layer Clip.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8625 Mouse entry of Search range in Stabilize autofill is too sensitive
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro All, Mocha VR All
+| *Bug Description:* | Using the mouse to scroll up or down search range is very sensitive.
+| *Workaround:* | Use keyboard entry.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8623 Incremented steps when adjusting a layers Edge Width with the +/- (plus and minus) buttons is proxy dependent
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha Pro Avid Plug-in, Mocha Pro OFX Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:* | Changing proxy changes the pixel scale of the edge width tool.
+| *Workaround:* | Use the proxy you first adjusted the edge width with to make new adjustments.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8614 Render controls don't always update
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Render controls don't always disable when a layer has been deactivated on a frame.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8611 Mocha Pro/VR OFX Plug-in do not load in extra frames if a clip is expanded beyond its initial runtime in Vegas
+| *Platform:* | Windows 10, Vegas 14 and 13
+| *Product:* | Mocha Pro OFX Plug-in, Mocha VR OFX Plug-in
+| *Bug Description:* | Only the frames from the initial clip length in Vegas load into Mocha, not any modifications to its length.
+| *Workaround:* | Expand the clip first, then apply Mocha Pro/VR OFX Plug-in
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8609 Mocha does not load in the correct number of frames into the Mocha UI if the user first applies Mocha VR and Pro OFX Plug-in and then adjusts the clips length in Vegas
+| *Platform:* | Windows 10, Vegas 13 and 14
+| *Product:* | Mocha Pro OFX Plug-in, Mocha VR OFX Plug-in
+| *Bug Description:* | Mocha will not contain the reduced number of frames as indicated by a reshortened clip length in Vegas
+| *Workaround:* | Adjust clips length first, then add Mocha Pro/VR OFX Plug-in
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8598 GPU tracking with very large search area fail in all versions of Mocha Pro (and VR with Lens set to anything non-equirectangular)
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro All, Mocha VR All
+| *Bug Description:* | If you set a very large search area in the track module parameters, Mocha may not track when using GPU.
+| *Workaround:* | Turn off GPU tracking
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8581 Tweaking numeric values under Horizon Align will move the Horizon Orient onscreen widget and vice versa in Mocha VR
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | The Horizon Orient onscreen widget moves with the tweaks to the Horizon Align parameters
+| *Workaround:* | None. Cosmetic only.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8580 Unable to grab the lowest edge of the Planar Surface in equirectangular view when near the pole in Mocha VR
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | You are unable to click and drag the surface edge closest to the bottom of the image in equirectangular view
+| *Workaround:* | Enter 360 view to move the Planar Surface Edge
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8579 Transform Surface does not draw correctly across the seam in equirectangular view when tweaking the Depth parameter in the Transform Tab in Mocha VR
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | Adjusting the transform tools 3D depth in the Insert module will not draw the Insert surface overlay around the seam in VR module
+| *Workaround:* | Use 360 mode to control the surface instead
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8578 Transform Surface does not wrap to on the opposite edge when moving an Insert across the seam with the Position X parameter in the Transform Tab of the Insert Module in Equirectangular View in Mocha VR
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | Adjusting the transform tools in the Insert module will not wrap the Insert surface overlay around the seam in VR module
+| *Workaround:* | Use 360 mode to control the surface instead
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8577 Unreadable canvas error message displayed when tweaking the Perspective parameters in the Transform Tab of the Insert Module
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro All, Mocha VR All
+| *Bug Description:* | Mocha can sometimes display two error messages overlaid on top of each other, making them unreadable
+| *Workaround:* | Check the error log in the help menu to read the error.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8576 Some EXR files do not load into Mocha
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro All, Mocha VR All
+| *Bug Description:* | Some versions of EXR do not import into Mocha
+| *Workaround:* | Try a different EXR version or a different file format.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8561 Master Frame Zoom Window in the AdjustTrack Module is blank with some Reference Points on the seam in Mocha VR
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | Master Frame Zoom Window is not displaying the location of the Master Keyframe of the selected Reference Point in VR mode.
+| *Workaround:* | Enter 360 view
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8560 Spline is not affected by the AdjustTrack Module on Layers that have been tracked over the seam in Mocha VR
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | A Layer's Spline should move in accordance to the adjusting of a reference point, but does not when crossing over a seam.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8549 The "View Horizon" Checkbox becomes unchecked when a previously saved project is reopened in the Reorient Module in Mocha VR Standalone
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR Standalone
+| *Bug Description:* | The "View Horizon" Checkbox becomes unchecked when a previously saved project is reopened in the Reorient Module in Mocha VR Standalone
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8544 Apply checkbox under the 3D Offset in the Transform Tab of the Insert Module does not update to show the current parameter value
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro All, Mocha VR All
+| *Bug Description:* | 'Apply' checkbox under the 3D Offset in the Transform Tab of the Insert Module does not not remain on when reopening the Mocha project.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8531 Viewer in Clip Module does not crop VR footage in 360 view properly
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | Clips do not have the same appearance in 360 view when viewed from the Clip tab.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8530 "# Frames" parameter does not disable when "Smoothing" is disabled in the Reorient Module of Mocha VR
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | If you turn off the "Smoothing" checkbox in Reorient the sub parameters do not disable.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8529 Horizon Orient's Tilt, Pan, Roll do not disable when unchecking Horizon Orient in the Reorient Module in Mocha VR
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | If you turn off the "Horizon Orient" checkbox in Reorient the sub parameters do not disable.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8527 Reference Points in the Adjust Module in Mocha VR draw duplicates in 360 view
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | Reference Points in the Adjust Module in Mocha VR draw appear twice in 360 view
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8525 Horizon Align does not work correctly when working with only the Überkey enabled
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR All
+| *Bug Description:* | Using Überkey while adjusting Horizon Align parameters in Reorient does nothing.
+| *Workaround:* | Turn off Überkey.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8499 Mocha VR AE - if comp resolution is set to third, Mocha won’t switch into equirectangular mode
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR Adobe Plug-in
+| *Bug Description:* | Since the "Third" proxy resolution often results in dimensions that are not 2:1, it will not view correctly in the Mocha VR GUI
+| *Workaround:* | Use Half or Quarter proxy instead.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8476 Repeating error message when smoothing spline points can require a force quit of Avid
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro AVX Plug-in, Mocha VR AVX Plug-in
+| *Bug Description:*| In some rare cases attempting to smooth points in the Mocha GUI can cause a repeating error.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8417 Mocha Pro Plug-in - AVX - cannot cancel timeline render while in progress
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro AVX Plug-in, Mocha VR AVX Plug-in
+| *Bug Description:*| Rendering an effect in the Avid timeline can be difficult to cancel.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8414 Mocha Pro Plug-in - Fusion - Premultiply Output label is cut off in host UI
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in, Mocha VR OFX Plug-in
+| *Bug Description:*| The 'Premultiply' label is cut off in Fusion.
+| *Workaround:* | None. Cosmetic only.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8412 Mocha Pro AVX Plug-in- Background rendering fails in Avid MC versions older than 8.6.4
+| *Platform:* | Windows
+| *Product:* | Mocha Pro AVX Plug-in, Mocha VR AVX Plug-in
+| *Bug Description:*| If you are attempting to do a background render with the Mocha Pro Plug-in on MC 8.6.3 or earlier, the render fails.
+| *Workaround:* | Render in 8.6.4 or do a standard render.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8411 Mocha Pro Plug-in - Premiere gives low-level exception then crashes when resizing video during playback
+| *Platform:* | OS X
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:*| Tracking the shot and then trying to zoom or move the footage while playing back can cause a crash
+| *Workaround:* | Only zoom/pan footage when not playing back.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8392 Cannot undock panels in Mocha Pro Plug-in GUI
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:*| Panels cannot be undocked in the Plug-in
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8391 Mocha Pro Plug-in: Viewer preferences appear behind Mocha Plug-in window
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:*| The view preferences opens up behind the Mocha GUI.
+| *Workaround:* | Move Mocha GUI window to access the viewer preferences dialog.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8384 Quantel Rio Assist crashes when Mocha Pro is applied.
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in, Mocha VR OFX Plug-in
+| *Bug Description:*| Quantel Rio Assist crashes when Mocha Pro is applied.
+| *Workaround:* | None. Quantel Rio is not presently supported.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8383 Mocha Pro Plug-in: ".bundle" in dock when running Plug-in if "Blackmagic Codec.Component" installed
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:*| When loading any interface related to the Mocha GUI, an "xxxx.bundle" icon bounces in the OS X dock if the Blackmagic codec is installed
+| *Workaround:* | Cosmetic defect only. Remove the Blackmagic codec to get rid of the icon in the dock.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8377 Cleanplates can be set outside the frame range
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Cleanplates can be set to frame range zero, even if the clip range is above zero.
+| *Workaround:* | Check that clean plate numbers match timeline correctly.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8349 Crash when choosing footage if stored last directory is missing
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If a project directory from a previously opened file no longer exists, attempting to start a new project may crash Mocha.
+| *Workaround:* | Edit the preferences file to the right location.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8305 Frame range changes for *.mov files are not visible in Mocha OFX Plug-in
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro OFX Plug-in, Mocha VR OFX Plug-in
+| *Bug Description:*| A limitation inside Nuke means changes to frame ranges for a clip file in a read node still brings in the full range to Mocha.
+| *Workaround:* | Use a sequence or apply a FrameRange node upstream of the Mocha instance.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8304 Mocha Pro Plug-in OFX: OS X Nuke menu is disabled if access during Mocha GUI session
+| *Platform:* | OS X
+| *Product:* | Mocha Pro OFX Plug-in, Mocha VR OFX Plug-in
+| *Bug Description:*| If you click on the Nuke menu while inside Mocha GUI, it disables the menu items until a host reboot.
+| *Workaround:* | Reboot Nuke.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8296 Crash on tracking DPX footage with huge frame numbers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Crash on tracking DPX footage with huge frame numbers
+| *Workaround:* | Change the Frame Offset entry field to a low number, such as 1 (either manually or by choosing the Fixed Frame radio button).
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8266 When editing layers with multiple x-splines, spline tangents only animate for the selected layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | In scenarios where a layer has multiple x-splines, when you try to relax all the spline tangents on both splines, only the ones for the layer you’ve selected with the mouse animate before you let go of the mouse
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8244 Pasted layer shape data to Fusion has blank or incorrect layer name if Mocha layer contains non-Latin characters
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Pasted layer shape data to Fusion has blank or incorrect layer name if Mocha layer contains non-Latin characters
+| *Workaround:* | Rename layer with Latin-1 characters.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8226 Alternate black frames in a CineForm AVI file
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Some CineForm AVI files show every other frame as blank (black and zero alpha).
+| *Workaround:* | Use a different codec.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8214 "Apply" button in Insert 3D offset is turned off when reopening Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The "Apply" button in the Insert Transform tab currently resets when closing Mocha.
+| *Workaround:* | Turn Apply on again.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8212 Infinite loop error message when adjusting surface in manual track
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | In rare cases you can get a repeating error message if you try to adjust a tracked surface in Manual mode.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8194 Tracking in Premiere Pro via an adjustment layer wont give correct input for Mocha
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in,  Mocha VR Adobe Plug-in
+| *Bug Description:*| Adjustment layers don't always give correct source inputs.
+| *Workaround:* | Apply directly to the clip.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8193 Tracking in AE via an adjustment layer will keep cache from last open Mocha Plug-in instance
+| *Platform:* | All Platforms
+| *Product:* |  Mocha Pro Adobe Plug-in,  Mocha VR Adobe Plug-in
+| *Bug Description:*| Adjustment layers don't always give correct source inputs.
+| *Workaround:* | Apply directly to the clip.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8183 Mocha Plug-in: Copy and Paste commands are disabled in Edit menu if a layer is selected
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:*| Copying in the edit menu is disabled for some layers
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8179 Point insertion tool reverts back to pick tool after zooming or moving
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you zoom or pan using toggles, the point insertion tools returns to the Pick tool.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8172 Link to track data not copied over multiple effect instances
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:*| Copying an effect does not copy over layer property "Link to track" in the Mocha project.
+| *Workaround:* | Relink the layers.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8147 No warning if clip is timestretch/timeremapped changed from initial track in Plug-in
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:*| If the user changes a video track, the Plug-in should warn the user they need to retrack.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8107 Updating Mocha Pro Adobe Plug-in 2D parameters hangs After Effects for a very long time
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:*| Long projects can take a long time to update tracking keyframes in AE, making it appear to hang.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8093 Zoom windows show whole clip image for the cropped clip
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You can see the whole clip image in Zoom windows even if they are cropped.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8089 GPU tracking isn't stopped when the object is out of the image
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | GPU keeps on tracking if the layer goes out of the image.
+| *Workaround:* | Stop manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8077 Manual Track surface adjustments only works sporadically when using Wacom Tablet
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Using a tablet can sometimes effect manual adjustment of the surface
+| *Workaround:* | Use a mouse instead.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8055 Project in/out doesn't draw in the Mocha Plug-in UI
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:*| The red in and out markers for a project don't show in the timeline for the Plug-in
+| *Workaround:* | None. Cosmetic only.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8049 Duplicated frames for mismatching frame rates in Mocha Pro Plug-in in Premiere and Avid MC
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha Pro AVX Plug-in, Mocha VR Adobe Plug-in, Mocha VR AVX Plug-in
+| *Bug Description:*| If the frame rate of the source clip doesn't match the frame rate of the insert clip in the Plug-in, the frames become duplicated
+| *Workaround:* | Match frame rates correctly.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8041 Masks and shapes with non-Latin characters are not pasted correctly in AE
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Non-Latin 1 names for layers will paste to AE with incorrect characters.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8013 Export Rendered Shapes does not support some image formats if high bit-depth clip is shown in viewer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | A high-depth clip showing in the viewer stops support for some images when exporting to Export Rendered Shapes
+| *Workaround:* | Switch clips in the viewer.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-8000 Proxy error is shown when launching Mocha Pro Plug-in if the playhead is out of the trimmed frame range
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:*| An incorrect error is shown when outside the trimmed area of a layer when launching the Plug-in
+| *Workaround:* | Move the playhead inside the trimmed area.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7986 There are redundant shortcuts in the Key Shortcuts dialog in Mocha Pro Plug-in
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:*| There are redundant Import Footage Stream, Delete Footage Stream, Change Output Settings and Change Default Output Directory actions in the key shortcut preferences
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7974 Mocha Pro Plug-in effect isn't redrawn after license/unlicense the Plug-in
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:*| Cached images may retain on some frames when a Mocha Pro Plug-in has just activated or deactivated a license, even if AE or premiere is restarted
+| *Workaround:* | Purge the host cache.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7953 Selection tools should be in tools
+| *Platform:* | All platforms
+| *Product:* | All Products
+| *Bug Description:* | The lasso and marquee selection tools should be in the Tools section of the Key shortcuts dialog.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7951 Mocha Pro AE Plug-in stutters frames if AE is playing when launching Mocha
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in
+| *Bug Description:*| If you hit space to play a clip in AE then launch Mocha from the Mocha Pro Plug-in, the footage in Mocha Pro may stutter.
+| *Workaround:* | Don't play the clip while loading the Plug-in interface.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7941 Mocha Pro AE Plug-in does not read in output of effects above it in the Effects stack
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:*| The AE version of the Mocha Pro Plug-in will only read the base layer, not the effects applied to it already.
+| *Workaround:* | Use a precomp to contain the effects you want to read into Mocha Pro Plug-in.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7910 Wrong focus behavior after cancelling conversion to 8 bit dialog for a matte clip
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Focus jumps to the Project in point field when cancelling matte clip conversion.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7909 Canvas drops to the "Selected layer" from the layer matte clip after renaming the layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you rename the layer while viewing a matte clip, the view changes back to "Selected layer"
+| *Workaround:* | Reselect the matte clip from the clip view options
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7906 Zoom windows aren't moved when we drag mouse pointer over them on the Track and the Camera Solve pages
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you move the mouse over the zoom windows in some modules, they do not move out of the way.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7903 "Undo Render in All Frames" is not enabled for Stabilize
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You cannot undo the renders in Stabilize.
+| *Workaround:* | Delete the stabilize render clip from the Clips module.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7900 Low accuracy warning isn't shown after changing export type
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you export a camera solve and then export again to another data type, you are not warned about any low accuracy nulls.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7898 Adjusting manual tracking with a tablet pen alters other keyframes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | 	If you track frames then add manual track keyframes with a tablet pen, the other frames offset.
+| *Workaround:* | If you use a mouse it behaves normally.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7896 Pressing Zoom(Z) or Pan(X) keys causes overlays to disappear and alpha to stop working if Proxy is not 1:1
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you use the Z or X (the default pan/zoom) keys, overlays and alpha stop showing. Unselecting the key turns them back on.
+| *Workaround:* | Stay on 1:1 resolution
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7881 No insert preview on any other clip other than the original clip
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When a layer has an insert clip, you are unable to view it unless you are viewing the original tracking input clip on the canvas.
+| *Workaround:* | Switch to tracking input clip in the viewer.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7828 Wrong order after pasting copied layers if their order was changed
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you copy a layers after reordering them in the layer controls, they don't paste in the same order.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7813 Switching between different layouts makes canvas area change position
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When switching between different views using CMD+1, CMD+2, CMD+3 buttons, the currently viewed area changes.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7810 Wrong layer order in groups after project merging with the "Merge groups together" option
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | There is a mixed layer order in groups after project merging with "Merge groups together" when using a new name or keeping the existing name.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7797 Cannot render an Insert after rendering stereo Remove if Insert clip contains predefined Grid clips on Linux
+| *Platform:* | Linux
+| *Product:* | All Products
+| *Bug Description:* | Attempting to render predefined Grid clips in the Insert module after rendering a Remove in stereo causes an error.
+| *Workaround:* | Select an insert clip before performing a Remove render
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7786 Deactivation layer on some frame range makes render fail
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Deactivating a layer over a frame range can cause renders to fail.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7774 Removing a selected point after stepping over points causes removing the layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Using the '{' and '}' keys to step over points will delete the layer if you try to delete the single point.
+| *Workaround:* | Select the point without stepping first.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7770 States of add/delete keyframe buttons are incorrect after adding/removing keyframes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Delete keyframe is disabled and add keyframe button is enabled when animating a control point, and vice versa when on a non-keyframed frame.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7751 Poor performance when rendering R3D clips on proxy scale
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Performance is slow when rendering with R3D footage that isn't set to full resolution.
+| *Workaround:* | Set resolution to Full (1:1) before rendering.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7734 Tracking data is not applied to the canvas when tracking starts from a frame without a keyframe
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you start tracking a layer from a frame different to where you drew it, the layer will not update correctly until after tracking is done.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7732 Sometimes changing PAR from Python scripts doesn't cause recalculation of tracking data
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | Tracking data is recalculated incorrectly when changing the PAR via Python.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7688 Render cache files are not removed after closing a project without retain cache renders
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Unchecking "Retain Cached Renders" when closing a project does not clear the cache.
+| *Workaround:* | Use the cache clearing tools in the file menu or delete manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7685 Cannot change some parameters for invisible layers on the Track page
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you turn off the visibility of a layer, some of its parameters cannot be altered.
+| *Workaround:* | Turn on the layer visibility.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7667 Improper diagnostics for incomplete Python tool
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | Script editor output does not warn of Python tool errors.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7664 Cannot change parameters in grouped layers for some projects
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* |	Layers inside groups have sporadic ability to change radio buttons and check boxes
+| *Workaround:* | Pull layers out of group
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7638 Error when closing a project after rendering on the Remove page if the removed layer has defined matte clip in the Layer Properties pane
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Using a custom matte import for a layer involved in a remove render can cause an error when trying to clear the cache.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7632 Auto Camera Solve shows zero quality without warnings for some projects
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Auto camera solves sometimes solve to 0% and don't advise another approach.
+| *Workaround:* | Try solving with a non-Auto solve.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7617 Shape data to out of sync if layer has in point different to timeline
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If a layer has a different in point to the project in point, it is out of sync.
+| *Workaround:* | Extend the layer in point to the start of the project.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7613 Windowed EXRs open at full resolution
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | EXRs with windows still open at full resolution.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7590 Entered values don't save in Lens parameter widgets after selecting Distortion Maps type
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Selecting Distortion Maps model doesn't always let you change the Lens parameters.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7587 Mocha crashes on exit after creating a project based on ProRes footage if there are no ProRes codecs but Blackmagic codec is installed
+| *Platform:* | OS X
+| *Product:* | All Products
+| *Bug Description:* | Mocha crashes on exit after creating a project based on ProRes footage if there are no ProRes codecs but Blackmagic codec is installed
+| *Workaround:* | Install ProRes codecs
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7581 Twisted loops occur in beziers for some exports
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Exported Beziers can sometimes have looped splines in closely animated points.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7573 Mocha loads behind After Effects when launching from "Track in Mocha AE" on  OS X
+| *Platform:* | OS X
+| *Product:* | All Products
+| *Bug Description:* | Mocha always loads in the background when launching it from After Effects.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7549 Cannot render insert with the Mocharender.py utility if the rendered layer has some predefined insert clip
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Inserting  predefined clips like Logo and Grid8x8 will not let you render that layer via command line.
+| *Workaround:* | Use a custom clip.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7529 Maximized Mocha window size never remembers state on Mac
+| *Platform:* | OS X
+| *Product:* | All Products
+| *Bug Description:* | Opening Mocha on OS X will resize the window, even if you have adjusted it to full screen previously.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7499 Render buttons are disabled if the playhead is out of the frame range of the selected layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You cannot render a layer if the playhead is resting outside of a layer in or out point.
+| *Workaround:* | Move the playhead to inside the layer in/out points.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7477 Mocha crashes when exporting shape data to some formats if layer name contains more than 205 characters
+| *Platform:* | Linux and Windows: all
+| *Product:* | All Products
+| *Bug Description:* | Layers with huge amounts of characters in the name may crash Mocha on exporting shape data.
+| *Workaround:* | Use a shorter name.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7476 A project can load without layers if the layers contain some peculiar characters
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Some characters do not read in project files and may not load layers correctly.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7436 Cannot add a control point in the left bottom corner of an image
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | There is an issue with adding a point to the exact bottom left corner of a frame.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7432 Checking the default tracking clip during project load should check the source location, not the cache
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Mocha is checking the cache location before the original source clip to restore the tracking clip on load.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7431 Extra error message when using Python to export rendered clip without images
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | Two error messages are shown instead of one when attempting to export a rendered clip that doesn't exist.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7429 Cannot detect and move spline points if they are located near spline line of another spline in the same layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Points that are close to other splines are hard to select and move.
+| *Workaround:* | Zoom in further to make selection easier.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7418 Previous and Next keyframes zoom windows change according to the position of the current keyframe when moving surface corners in manual track mode
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The previous keyframe zoom window is referencing the current keyframe when adjusting in manual track mode.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7416 It is possible to open or start a project while another is loading.
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you are quick enough, or the project is large, it is possible to start or open another project while the first is still loading.
+| *Workaround:* | Wait until the project finishes loading before opening a new one.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7415 Wrong surface behavior in adjusting on a frame which is before the master frame and contains a layer keyframe
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Reference points are adjusted instead of the surface points when adjusting on a frame before the master keyframe
+| *Workaround:* | Reset the AdjustTrack solution and try again.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7402 Cache and rendered clips files aren't removed after closing a non-modified project
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you don't edit a project that has "Cache original clip" turned on, the cache files are not removed on exit.
+| *Workaround:* | Don't cache the original clip unless you have to.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7401 Undo of pasting a contour to existing layer drops layer selections
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Undoing a contour paste removes the selection from the current layer.
+| *Workaround:* | Reselect.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7391 Crash for multi-pass removing
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Attempting to use a previous remove clip as the input of a new remove clip can cause a crash.
+| *Workaround:* | Import the previously rendered clip separately from the original render and use that to remove with.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7379 Sometimes there is no ability to create a project based on footage that contains % and non-Latin characters in the path on Mac
+| *Platform:* | OS X
+| *Product:* | All Products
+| *Bug Description:* | Some character combinations in a footage name can stop a project from being created.
+| *Workaround:* | Use standard unicode characters and avoid some symbols like / or %.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7377 Wrong project and clip names if the footage contains % and digits characters in the file name
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Incorrect project and clip names are created if % is in the file name followed by digits.
+| *Workaround:* | Don't use % in your file name.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7351 Panes that were undocked during loading process return to the dock state after opening a project
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Undocked state is not remembered on closing.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7348 There are two "Matte for a layer" clips for the same layer after reselecting None as a Matte clip for it
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Selecting "None" in the Matte clip dropdown for a layer adds a new layer matte clip if you add another contour.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7343 Error when trying to paste spline data in the Dope Sheet
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you have spline data on the clipboard and try to paste to the dopesheet, there is an error.
+| *Workaround:* | Copy keyframes first.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7326 Removing "activate/deactivate" layer keyframe doesn't update layer state on the canvas
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The canvas doesn't refresh after removing activate or deactivate keyframes from a layer.
+| *Workaround:* | Move mouse cursor to the canvas or switch between frames
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7303 Cannot paste Mocha masks in AE if some layer has more than 32 characters in its name
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Shape layers with very long names cannot be pasted into After Effects.
+| *Workaround:* | Use a shorter name.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7279 Lasso and Marquee selections actions are in the wrong group of shortcuts
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* |  Lasso and Marquee shortcuts should be in the Tools category not General.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7276 Start Frame calculates wrong after entering negative value as Fixed frame in the Frame Offset field
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Start Frame calculates wrong after entering negative value as Fixed frame in the Frame Offset field
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7275 Frame Offset returns to default Fixed Frame after entering negative value and moving focus between clip frame range fields
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Inserting a negative frame offset in the New Project dialog can set the wrong offset.
+| *Workaround:* | Change the offset after the project is created.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7271 Changing In/Out layer points by mouse rotation aren't added to Undo/Redo history
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Rotational control adjustment of a layer in/out point is not undoable.
+| *Workaround:* | Type instead of using the mouse to adjust the value.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7269 Error when closing a project without Retain Cached Renders after rendering on the Lens page with Distortion map camera model
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Switching of "Retain Cached Renders" after performing a Lens distortion map render can throw an error.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7264 Frame offset field does not switch between frames and timecode
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Turning on "Timecode" for the frame offset view in the Clip tab does not update the frame offset field to timecode.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7256 Cleanplate clips are created with source sequence filename extension rather than TIF/DPX
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Clean plates should be written as the default Results format (TIF or DPX), not the source format.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7253 Stabilized Fixed Frames work incorrectly if there are negative frames in the Frame List
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Using negative frames in the Stabilize Frame List can show incorrect results.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7252 Cannot export whole rendered clip if there is a negative frame offset
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Setting negative frame offsets will not export the full range of a rendered clip.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7251 Wrong numbers are shown for frames with negative numbers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Some frame ranges in Mocha can be incorrect when using a negative frame offset in the Clip tab.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7250 There is ability to nudge shapes during tracking process
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Shape nudging shortcuts are not disabled while tracking.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7244 Rendered clips files aren't removed after deleting the corresponding rendered clip
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you remove a rendered clip from Mocha, it doesn't remove the rendered files on disk.
+| *Workaround:* | Delete manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7228 Wrong exported tracking data for Fusion format for interlaced projects
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Exports to Blackmagic Fusion based on interlaced footage have the wrong height and y scale.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7211 Edge is shown for open splines that were made from closed splines
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you created an edge for a closed spline, then open it the edge for the close spine still shows.
+| *Workaround:* | Reset edge with before opening spline.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7195 There is ability to step between control points for locked or invisible layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You can use the "Next control point" controls to cycle through locked or invisible layers.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7190 Cannot move points of a Bezier layer after undoing the creation of a new layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you have created a bezier layer then make another shape, undoing the second layer causes the bezier to be unadjustable.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7182 Redundant parameters are shown In the Dope Sheet after switching project mode from stereo to mono
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Redundant keyframes are pasted when copying keys from a stereo project and pasting them to a mono project.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7179 Video gamma for Log colorspace remains from the previous project
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Video gamma does not reset for log color space when starting a new project.
+| *Workaround:* | Restart Mocha before beginning a new project.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7178 Inconsistent layer mode after undo moving points of several layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Multiple changes to different layers then undoing them can cause problems with some layers.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7176 Relinked clip images are shown instead of images from the original clip if the project was closed with "Retain cached renders" on
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Sometimes relinked clip images are shown instead of images from the original clip if the project was closed with "Retain cached renders" on.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7168 Tangents of slave neighboring points are changed when moving a master point
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Lock Tangents doesn't work correctly if moving the point by attaching it to a master point on another layer.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7167 Inconsistent mode for Bezier tangents after undo/redo their changes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Bezier tangent handles can sometimes follow the cursor after undoing Bezier layer adjustments.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7147 Low accuracy warning shows after Save dialog when exporting camera solve data
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | A low accuracy warning can show after the Save dialog when exporting camera solve data.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7144 Error when clicking on the "-" edge width button for open splines
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | An error shows when trying to adjust the negative edge width of an open spline.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7143 Quality of the stereo solver depends on the current view
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You can get different stereo camera solve results depending on what view you are in.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7139 Edge width minus doesn't compensate edge width plus for complicated layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Edge curve doesn't match the spline curve and error is shown when adding large edge widths then reducing them again on complicated shapes
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7136 Canvas shows garbage when opening a project created by earlier Mocha versions based on currently unsupported footage
+| *Platform:* | macOS and Windows: all
+| *Product:* | All Products
+| *Bug Description:* | Some projects created with codecs that were supported in earlier versions of Mocha are now loading with artifacts and black frames.
+| *Workaround:* | Convert the footage to a different format.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7135 Mocha cannot load some video files that could be loaded by earlier versions.
+| *Platform:* | macOS and Windows: all
+| *Product:* | All Products
+| *Bug Description:* | Some codecs that were supported in earlier versions of Mocha are now showing as unsupported.
+| *Workaround:* | Convert the footage to a different format.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7128 Crash when showing a frame that is out of clip range if Mocha is launched from the command line with arguments
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Loading Mocha with command line arguments that set in/out points out of range of the clip will crash Mocha if you try to navigate the timeline.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7121 Endless error message when moving a layer point in unavailable clip
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | "Failed to open file" error is repeatedly shown when attempting to move layer points in a project with a missing clip.
+| *Workaround:* | Relink the clip before modifying layers.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7116 Extra step in undo/redo history after using Set and +/- edge width actions
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | An additional undo step is created when performing edge width operations.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7110 Wrong state of "Use Cleanplates Exclusively" checkbox for some clean plate clips
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | "Use Cleanplates Exclusively" will not become enabled when selecting particular clips in the clean plate dropdown and will not disable when choosing "None".
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7107 Sometimes a slave point is unconstrained after constraining a master point
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Chaining multiple layers with the vertex attach tool can sometimes unconstrain the points.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7099 The original clip attributes are changed after relinking a clip that inherits attributes from the original clip
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you relink a clip that inherits attributes from the clip you created the project with, the original clip attributes will also be changed.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7098 GUI isn't updated correctly for a layer that was created with Python
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | Creating or modifying a layer in Python while in the Mocha GUI will not immediately update the view or layer controls.
+| *Workaround:* | Perform another action such as layer selection in the GUI or switch out and back to the application.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7083 Extra undo/redo operation is required for changing a master reference point position in the AdjustTrack page
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You have to undo or redo twice when changing the Master in AdjustTrack.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7081 Multi-part EXR files containing channel-based multi-view images do not load correctly
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If the individual parts of a multi-part EXR file have their own channel-based multi-view images, they do not load correctly into the stream lists.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7078 There is no undo operation for changing corners mode for all layer handles after clicking right mouse button on some handle
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Switching to corner mode for all layer handles using right click cannot be undone.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7077 Sometimes "Apply keyframe changes to all views" doesn't work when Überkey mode is selected
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | In stereo shots, "Apply keyframe changes to all views" can sometimes not work across views with Überkey.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7069 Exported rendered clips to .exr or .sxr formats have wrong height if the project is interlaced
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you use EXR to render out an interlaced project, the render will have the wrong height dimension.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7068 Layer in/out point fields are too narrow when working with timecodes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Layer in/out point fields are too narrow when working with timecodes so they become hard to see.
+| *Workaround:* | Stretch the left panel out further.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7067 Tangent parameters are keyframed when creating a bezier layer in Überkey mode
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you create Bezier layers with Überkey on, it will create keyframes only for the tangents.
+| *Workaround:* | Create a layer with Autokey.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7058 "Stabilizer failed to smooth motion parameters" error on the Stabilize page if an open spline is selected and there is some lens distortion
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Attempting to stabilize with an open spline layer will throw an error.
+| *Workaround:* | Use a close spline layer.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7050 Crash in opening or creating a stereo project if Mocha launched via Remote Desktop
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you try to create a stereo project in Mocha over remote desktop, Mocha will crash.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7049 Incorrect Bezier handles at spline ends when exporting X-Splines to After Effects
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Smoothed X-Splines may export with incorrect Bezier handles when exported to After Effects.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7048 Project out point doesn't change correctly after changing project length in the Project Settings dialog
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Changing the project length will not move the outpoint correctly.
+| *Workaround:* | Reset or adjust out point manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7042 Prefix field in the Export Rendered Shapes dialog doesn't change according to a selected layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The prefix for export rendered shapes chooses the top layer rather than the selected layer.
+| *Workaround:* | Change the prefix manually.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7030 Clip has 1*1 dimensions after relinking when opening a Mocha project created via python script if it has wrong clip path
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | If you create a project with a nonexistent clip and try to relink inside Mocha, the clip dimensions will be 1*1.
+| *Workaround:* | Create a project with the correct clip path in Python.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7029 Wrong Output Directory in the project that was created via Python with "UTF-8" encoding on Windows
+| *Platform:* | All Windows Platforms
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | Setting an output directory with Python using UTF-8 encoding can show the wrong directory in Mocha.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7011 Clip parameters don't change after relinking a stream of a stereo clips
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Relinking stereo streams of different bit depths will not update the actual bit depth in the clip.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7001 Selected Absolute Path isn't saved after switching to Relative Path and back in Preferences
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Switching between Relative and Absolute paths doesn't save the Absolute path.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6977 Redundant keyframe is created when switching on the right view after tracking in both views if point mode was changed for a layer point
+| *Platform:* | OS X
+| *Product:* | All Products
+| *Bug Description:* | Redundant keyframe is created when switching on the right view after tracking in both views if point mode was changed for a layer point.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6972 Unix-style Absolute Output directory path results in a wrong folder being created on Windows
+| *Platform:* | Windows
+| *Product:* | All Products
+| *Bug Description:* | If you open an OS X project on Windows, accepting the saved absolute folder output directory will create the wrong folder.
+| *Workaround:* | Change the Absolute path before accepting the dialog.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6957 Cannot create a project based on image sequence with very large frame numbers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You cannot create a project based on image sequence with very large frame numbers
+| *Workaround:* | Reduce the frame number index of the sequence.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6951 "Frame not rendered" error if the right clip is shorter than the base clip for projects created via Python
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | If you set a right clip to a smaller frame range than the left in Python, an error occurs rather than repeating the frame.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6934 Sometimes changing stereo offset parameters causes changing another parameters
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Altering some Stereo Offset shear and perspective parameters may affect other fields in the tab.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6910 Stereo Offset controls have different widths when changing Mocha main window size
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you change the window size, the Stereo Offset tab fields do not resize uniformly.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6848 Symbol ⎋ is shown in shortcuts instead of Esc on OS X
+| *Platform:* | OS X
+| *Product:* | All Products
+| *Bug Description:* | When you enter "Esc" into the Keyboard shortcuts, it appears as a symbol instead of "Esc"
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6668 Stereo Offset parameters cannot be changed on the frame the layer was created on after changing hero view
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you change the hero view of a layer and try to change its stereo offset parameters nothing happens.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6661 Some MOV clips load without the last frame
+| *Platform:* | OS X and Windows: all
+| *Product:* | All Products
+| *Bug Description:* | If you load some QuickTime files they will import missing the last frame
+| *Workaround:* | Convert the QuickTime to an image sequence and import that instead.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6615 Wrong zoom windows after relinking footage streams to another dimension
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Image dimensions inside the zoom windows change if you relink a different sized piece of footage.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6601 Extra points are moved on the right view in moving some point if "Apply keyframes changes to all views" is switched on
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Extra points are moved on the right view in moving some point if "Apply keyframes changes to all views" is switched on
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6543 The last selected kind of footage isn't saved in the Export Rendered Shapes/Clip dialogs in Mocha
+| *Platform:* | OS X and Windows: all
+| *Product:* | All Products
+| *Bug Description:* | The last selected kind of footage isn't saved in the Export Rendered Shapes/Clip dialogs
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6542 Option checkboxes aren't saved in Export Rendered Shapes/Clip dialogs in Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Option checkboxes aren't saved in Export Rendered Shapes/Clip dialogs in Mocha
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6541 Some settings are saved between Export Rendered Clip and Export Rendered Shapes dialogs in Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Some settings are saved between Export Rendered Clip and Export Rendered Shapes dialogs in Mocha
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6540 Render Mattes settings are not saved in the Export Rendered Shapes dialog in Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Render Mattes settings are not saved in the Export Rendered Shapes dialog in Mocha
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6518 "Undo render" for inserting doesn't work in Mocha
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Undoing rendering in the Insert module is currently not working.
+| *Workaround:* | Delete the rendered clips from the clip tab
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6504 Crash in trying to change extension for rendered clips with Alpha channel to .jpg format in output Setting dialog
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you try to change the extension of a clip with alpha channel to jpg format in the Output settings, Mocha will crash
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6503 Mocha freezes upon changing extension to ".png" format in Output Setting of a rendered clip on Windows
+| *Platform:* | All Windows Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you try to change the extension of a clip png format in the Output settings, Mocha will freeze
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6224 Cannot nudge reference points by buttons after moving them by mouse on the right-view
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Cannot nudge reference points by buttons after moving them by mouse on the right-view
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6207 There are no right-view keyframes when changing AdjustTrack parameters
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You cannot see right-view keyframes when changing AdjustTrack parameters
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6074 Clicking in the Layer Controls pane when adding a spline causes spline to close without reverting back to arrow tool
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you click in the layer controls panel while drawing a spline, the spline will finish but the draw tool will remain active yet unusable.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-6068 Playhead continues to advance frames after the Contour shuttle controller jog is released
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When using the Contour Design ShuttlePRO jog controller to drive frame advancement, the playhead will over compensate and keep moving after you have stopped rotating.
+| *Workaround:* | Rotate the jog slower.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5995 Canvas errors jump when zooming into the canvas
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Zooming in when there is an error message on the canvas will cause it to jump.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5993 Wrong matte clip is removed when deleting a layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you import a matte clip to a layer and remove the layer, the imported clip is removed as well.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5967 A master key is set as soon as you switch to AdjustTrack module
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you switch to the AdjustTrack Module, a master key is set immediately.
+| *Workaround:* | Set a new master key and delete the old one.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5958 Floating client license always overrides node-locked
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you have two client licenses and one of them is for a floating license, it will always be used as the license even if it fails to find a server.
+| *Workaround:* | Remove the floating client license from the license directory if not in use
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5930 Resizing/moving of GUI when creating a project with small screen resolution
+| *Platform:* | OS X
+| *Product:* | All Products
+| *Bug Description:* | On very small screen resolutions the Mocha interface blinks and adjusts when creating a project.
+| *Workaround:* | Use a larger screen resolution.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5873 Some timeline buttons are enabled if there are no opened projects
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | On opening Mocha or after closing a project, some of the timeline buttons are still clickable.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5856 AdjustTrack reference points have incorrect view when switching active state of a layer
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Reference points are shown incorrectly when the active state of the layer is toggled off on one frame then on with another.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5843 Sometimes shape data exported to After Effects "Paste Mocha mask" gets corrupted spline points
+| *Platform:* | Windows and OS X
+| *Product:* | All Products
+| *Bug Description:* | Sometimes shape points can throw spline data out when using "Paste Mocha mask".
+| *Workaround:* | Find the problem point in Mocha and delete or adjust it.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5835 Imported matte clip shows track mattes incorrectly.
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When you import a matte clip it does not show the correct track matte.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5829 Custom modifier keys malfunction in Mac Remote Management (VNC)
+| *Platform:* | OS X
+| *Product:* | All Products
+| *Bug Description:* | If you open Mocha remotely some of the key shortcuts and toggles will not work.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5828 File name in the "Save shape data as..." dialog is empty if a selected layer has the same name as any folder in the last selected directory
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If your layer name matches the folder you save your data to, then the filename field will be empty when you go to save shape data.
+| *Workaround:* | Rename the folder or layer, or just type a new name.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5808 Moving tracking keyframes sometimes breaks tracking
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Sometimes if you manipulate the tracking keys in the dope sheet, additional tracking for the layer will not work.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5801 Cannot create a project based on QuickTime footage after closing and reopening remote desktop session
+| *Platform:* | Windows and OS X
+| *Product:* | All Products
+| *Bug Description:* | There is a "Corrupt or unsupported format" error if you try to use QuickTime after closing and reopening a remote desktop session to Mocha.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5750 Pan and Zoom keys don't work when tracking
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | When tracking you can't pan or zoom in the view.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5728 Wrong height for interlaced .mov footage
+| *Platform:* | Windows and OS X
+| *Product:* | All Products
+| *Bug Description:* | The clip height is listed wrong in the Clip page for interlaced QuickTime footage.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5723 Crash when trying to create a project based on footage in a location has a too long path
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Footage in a very long directory path can cause Mocha to crash when trying to create a project.
+| *Workaround:* | Choose a shorter path.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5722 Wrong data in the first frame in After Effects after importing camera data from an interlaced project.
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Nulls based on the surface corners don't have the same place in AE as they do in Mocha at the first frame when using interlaced footage.
+| *Workaround:* | Use progressive footage.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5721 Projects that were unsuccessfully created show in Recent Files
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If a project cannot be created successfully due to read only directories or other problems, they still show in Recent Files.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5720 An extra error message is shown if unable to create a project file
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | There are two messages shown instead of one when a project file cannot be created.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5718 Frame numbers are shown in progress bar instead of fields for projects based on interlaced footage
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Frame numbers are shown in the progress bar instead of fields for projects based on interlaced footage.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5717 Incorrect fields numbers in progress bar for projects based on interlaced footage
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Progress bar shows frames instead of fields when tracking or rendering interlaced footage.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5709 Process icon isn't updated immediately when changing Link To Track dropdown
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The process icon does not immediately turn off or on when updating the Link to Track property.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5624 Sometimes the Welcome Screen doesn't contain information about a license error
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Sometimes reopening Mocha when it has a broken license will not show the license error, only the LE mode message.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5519 "Frame out of range" error in opening Mocha from AE with setting frame range in the "New project" dialog
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Since frame range is define by the in and out points from AE, setting the frame range can cause problems when loading the project
+| *Workaround:* | Don't change the frame range when loading footage to Mocha from AE
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5452 Creating a clean plate with a file that has a number on the end will append the number directly
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Creating a clean plate with a file that has a number on the end does not separate the number of the clean plate frame from the number in the file.
+| *Workaround:* | Rename footage so it does not contain numbers other than sequence numbers.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5379 Bounding box isn't shown for multiple selected layers if the clicked one was out of range
+| *Platform:* | All
+| *Product:* | All Products
+| *Bug Description:* | The bounding box isn't shown for multiple selected layers if the first one clicked is out of range
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5372 Cannot create a new layer group by clicking on the corresponding icon
+| *Platform:* | All
+| *Product:* | All Products
+| *Bug Description:* | You can't create a group by itself. You need to select layers first.
+| *Workaround:* | Select a layer you want to group before you click the group icon
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5318 Mocha is unresponsive after the second attempt to export rendered shapes to H.264 codec
+| *Platform:* | OS X and Windows: all
+| *Product:* | All Products
+| *Bug Description:* | Sometimes rendering to H.264 the second time will do nothing and Mocha will become unresponsive
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5304 Undoing adding a layer point, selecting Layer Controls pane and clicking on the canvas cause an error
+| *Platform:* | All
+| *Product:* | All Products
+| *Bug Description:* | Undoing adding a layer point, selecting Layer Controls pane and clicking on the canvas cause an error
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5244 Cannot rename layouts
+| *Platform:* | All
+| *Product:* | All Products
+| *Bug Description:* | If you rename a layout it does not change the name in the menu.
+| *Workaround:* | Restart Mocha. The names will be updated.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5220 Wrong layers order after redo including in a group
+| *Platform:* | All
+| *Product:* | All Products
+| *Bug Description:* | If you group more than 2 layers and undo moving a layer outside of the group, it may not return to the right position
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5210	Wrong surface detection for several selected layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Try to select and move the surface of different layers in a multi-selection it will only let you move one.
+| *Workaround:* | Adjust one at a time
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5166	There is no ability to toggle active for several selected layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | While you can apply all other right-click options to multiple layers, you can only apply "toggle active" to the layer you were over when you right clicked.
+| *Workaround:* | Choose "toggle active" on separate layers rather than a selection of layers.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5156	Wrong spline behavior in AdjustTrack
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Sometimes using AdjustTrack on a surface will not adjust the spline as well.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5150	Transform tool sometimes interferes with tangents
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Sometimes the transform tool can get in the way of adjusting tangents
+| *Workaround:* | Turn off transform tool
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5147	There is incorrect importing QuickTime footage with pulldown on windows
+| *Platform:* | Windows
+| *Product:* | All Products
+| *Bug Description:* | There are some artifacts when playing back QuickTime footage that contains pulldown.
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5099	Dope Sheet: Cannot select several blocks of keyframes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | You cannot use the shift key to marquee-select multiple blocks of keyframes
+| *Workaround:* | None
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-5090	An error appears in using Point Insertion tool for multiple selected layers
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you select 2 layers and try to use the point insertion tool you get the error:  "Error: Could not find parent contour of the point."
+| *Workaround:* | Add points to one layer at a time
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-4186 OpenEXR error messages
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Attempt to open an unsupported EXR format (e.g. image with single channel named "G") results in  error message.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-4225 Crash when resizing with no docked sidebar panes
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* |  Mocha crashes after the canvas is resized to zero-height.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-4312 Using Ctrl+Z to undo values on the Parameters tab doesn't work
+| *Platform:* | OS X and Windows: 32-bit
+| *Product:* | All Products
+| *Bug Description:* |
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-190 "Pick Edge" tool selects and moves both Inner and Outer Spline Points
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | "Pick Edge" tool selects and moves both Inner and Outer Spline points if you first move the outer point.
+| *Workaround:* | Reselect.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-180 Stereoscopic options are enabled when equirectangular lens is enabled
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR
+| *Bug Description:* | Stereoscopic options should be disabled when Equirectangular lens is enabled in Mocha VR Standalone.
+| *Workaround:* | None. Stereo for Equirectangular footage is not yet supported in Mocha VR.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-173 AdjustTrack Module's Reference Point Onscreen Widgets expand and shrink according to resolution
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | AdjustTrack Module's Reference Point Onscreen Widgets expand and shrink according to Footage Resolution (in the Standalone), and also the Proxy Resolution in the Host Applications of the Plug-in Versions.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-171 Multiple tweaks to parameters in Source Tab of the Insert Module can cause a crash
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Tweaking parameters in Source Tab of the Insert Module can sporadically crash Plug-in hosts and Mocha Standalone (Pro and VR).
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-170 "Reset" button in the Source Tab of the Insert Module will not reset cropped inserts correctly
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | The "Reset" button in the Source Tab of the Insert Module will not reset cropped inserts correctly in Mocha VR and Pro
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-166 Avid can hang when using the "Render Effect" command with the Remove Module in Mocha VR AVX Plug-in
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR AVX Plug-in
+| *Bug Description:* | Media Composer can sometimes hang after clicking "Render Effect" when rendering the Remove clip with the Mocha VR AVX Plug-in.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-162 Crop mask in Mocha Plug-in does not rescale correctly when jumping between different proxy resolutions
+| *Platform:* | All Platforms
+| *Product:* | All Plug-ins
+| *Bug Description:* | The Crop mask in the Clip Module of Mocha Pro/VR Plug-in does not rescale correctly when jumping between different proxy resolutions.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-159 Deselecting multiple shapes does not reselect them on undo
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | If you deselect multiple shapes, undoing the selection will only select one shape.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-145 Unnecessary output tab in the reorient module of Mocha VR Plug-in
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR Plug-ins
+| *Bug Description:* | the output tab is redundant in Reorient for the Plug-in version of Mocha VR.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-137 Undo deselects shape
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Using undo after tracking forward or backward de-selects the shape
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-101 Zoom window disappears in proxy mode
+| *Platform:* | All Platforms
+| *Product:* | Mocha VR Standalone
+| *Bug Description:* | When switching to 1:2 or 1:4 proxy, the zoom window disappears when panning or zooming.
+| *Workaround:* | Switch to 1:1.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-79 Outer edge width (feather) remains consistent when layer scales
+| *Platform:* | All Platforms
+| *Product:* | All Products
+| *Bug Description:* | Scaling down a layer retains the same pixel width in the feathering.
+| *Workaround:* | Animate the feather with the scale to the desired width.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-30 Exporting an AEP file to Premiere destroys Mocha project data
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro Adobe Plug-in, Mocha VR Adobe Plug-in
+| *Bug Description:* | Exporting an AEP to Premiere keeps the effect on the layer, but destroys the Mocha project data.
+| *Workaround:* | Export the Mocha project from the  Mocha GUI in the After Effects effect and merge it into the Mocha project in the Premiere version of the effect.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-7 Black frames in Mocha Pro UI when applying over BCC and Sapphire effects in the Effect Editor in AVX
+| *Platform:* | All Platforms
+| *Product:* | Mocha Pro AVX Plug-in, Mocha VR AVX Plug-in
+| *Bug Description:* | When Mocha AVX plug-in is applied on top of a BCC or Sapphire effect, one can only see black frames in the Viewer window of the Mocha Pro UI.
+| *Workaround:* | None.
+|===
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|===
+| *Issue:* | MO-4 Mocharender.py crashes on Linux
+| *Platform:* | Linux
+| *Product:* | Mocha Pro Standalone, Mocha VR Standalone
+| *Bug Description:* | If you attempt to run Mocharender.py on RHEL Linux, you get a segmentation fault.
+| *Workaround:* | Preload "libGL.so.1" by typing LD_PRELOAD=/usr/lib64/libGL.so.1 before the python command.
+|===
+
+
+== Hardware Requirements
+
+=== Recommended Hardware
+
+- Processor: 3rd-generation Intel Core i7 or equivalent, Apple M1 arm64.
+- Memory: 16+ GB
+- Disk: High-speed disk array or NVMe SSD
+- Graphics Card: NVDIA Quadro K4000 or equivalent
+- Monitor: 1920×1080 or higher
+- Network: Must have an enabled network adapter (Wi-Fi or Ethernet)
+
+=== Minimal Requirements
+
+- Processor: x86-64 or Apple M1 arm64.
+- Memory: At least 4 GB
+- Graphics Card: For GPU tracking, must support OpenCL 1.2, for CPU tracking, OpenGL 2.1
+- Monitor: Minimum resolution 1200x800 pixels
+- Network: Must have an enabled network adapter (Wi-Fi or Ethernet)
+
+Working with high-resolution footage such as 4K is very demanding on system resources; a system with at least 16 GB of system memory and 2 GB of texture memory should be used.
+
+
+== Software Requirements for Mocha Pro Standalone
+
+=== Operating System
+
+- *Mac:* macOS 10.14 or 10.15 on 64-bit Intel or 10.15+ on Apple M1 arm64.
+- *Windows:* Windows 8 and Windows 10 on x64.
+- *Linux:* Red Hat Enterprise Linux 7-8, CentOS 7-8, or a compatible distribution on x86_64.
+
+== Software Requirements for Mocha Pro Plug-ins
+
+=== Host Applications
+
+The Mocha Pro Plug-ins officially support the following host applications:
+
+* *Mocha Plug-in for Adobe:* Adobe After Effects & Premiere CC or higher.
+* *Mocha Plug-in for Avid:* Avid Media Composer v8 or greater
+* *Mocha Plug-in for OFX:* Autodesk Flame 2020 or Flame 2021. The Foundry Nuke 8-13. Fusion Studio 8-17. HitFilm Pro 2017 or higher. Silhouette 2020 or higher. Vegas Pro 14-19.
+
+NOTE: While Mocha will function in Resolve 16+, rendering may be slow and is not supported on Linux.
+
+=== Operating System
+
+- *Mac:* macOS 10.14 or 10.15 on 64-bit Intel or 10.15+ on Apple M1 arm64.
+- *Windows:* Windows 8 and Windows 10 on x64.
+- *Linux:* Red Hat Enterprise Linux 7-8, CentOS 7-8, or a compatible Linux distribution on x86_64.
+
+== Compatible Third-Party Software for exporting data
+
+IMPORTANT: The table below shows support for Mocha Pro when working with 2D footage.
+
+*{revision}* can export tracking and shape data to a selection of third-party visual effects software. These are the versions we have tested:
+[frame="none", cols="4,3,2,2,3,4", width="80%", options="header"]
+|===
+|Application |Version |Track |Shape |Camera |Comments
+|Adobe After Effects|'CS3+'|X|X|X|Exporting Corner Pin data to non-English versions of After Effects requires CS4+. Shape export requires *Mocha shape for After Effects* plug-in.
+|Adobe Premiere Pro|CC '2014+'| |X| |
+|Apple Final Cut Pro|6.0.5-7.0.3|X|X| |Shape export requires *Mocha shape for Final Cut* plug-in.
+|Apple Final Cut Express|4.0.1|X|X| |Shape export requires *Mocha shape for Final Cut* plug-in.
+|Apple Shake|4.1|X|X| |
+|Apple Motion|'3.0.2+'|X| | |Shape export can be done via Final Cut
+|Assimilate SCRATCH|'7.0+'|X| | |
+|Autodesk Flame|9.5+|X|X| |Also known to work with newer releases
+|Autodesk Smoke|7.0+|X|X| |Also known to work with newer releases
+|Autodesk Combustion|3.0|X|X| |
+|Autodesk Maya|2012| | |X|
+|Avid DS|7.6|X| | |Also known to work with v8.0 and newer
+|Boris FX BCC Plug-ins| |X| | |Tracking export requires Boris BCC Plug-in that supports importing of tracking data.
+|Blackmagic Fusion|5.0X |X|X| |
+|FXhome HitFilm|'2.0+'|X|X|X| Shape export is available for HitFilm 3 Pro and above. Track export is available for HitFilm 4 Pro and above.
+|Magix Vegas |19.0+ |X|X| | Note the shape data is not fully supported. Shapes come in as bezier masks, but not fully animated.
+|Maxon Cinema 4D|'13.0+'| | |X| Exports to the MochaBlend Plug-in also support tracking and shape data to C4D
+|Quantel eQ, iQ, etc.|4.2|X| | |Requires Mocha Track for Quantel plug-in, available free from borisfx.com
+|SilhouetteFX|5.0+| |X| |
+|The Foundry Nuke|'6.0+'|X|X|6.3v7+|
+|SGO Mistika |10.2+|X   |   |   |
+|===
+
+== Compatible Third-Party Software for exporting data with 360 VR Footage
+
+IMPORTANT: Due to the wrap-around nature of 360 footage, many data formats are +
+not yet supported in Mocha VR when working in 360 mode. +
+See table above for supported versions when working with standard footage.
+
+These are the versions we have tested as official supported for exporting data:
+
+[frame="none", cols="4,3,2,2,3,4", width="80%", options="header"]
+|===
+|Application |Version |Track |Shape |Camera |Comments
+|Adobe After Effects|'CS3+'| |X| |
+|Adobe Premiere Pro|CC '2014+'| |X| |
+|Apple Final Cut Pro|6.0.5-7.0.3| | | |
+|Apple Final Cut Express|4.0.1| | | |
+|Apple Shake|4.1| |X| |
+|Apple Motion|'3.0.2+'| | | |
+|Assimilate SCRATCH|'7.0+'| | | |
+|Autodesk Flame|9.5+| |X| |
+|Autodesk Smoke|7.0+| |X| |
+|Autodesk Combustion|3.0| | | |
+|Autodesk Maya|2012| | | |
+|Avid DS|7.6| | | |
+|Boris FX BCC Plug-ins| | | | |
+|Blackmagic Fusion|5.0X | | | |
+|FXhome HitFilm|'2.0+'| | | |
+|Maxon Cinema 4D|'13.0+'| | | |
+|Quantel eQ, iQ, etc.|4.2| | | |
+|SilhouetteFX|5.0+|X (in 2020.0.1)|X| | VR Shape exports are supported via ssf
+|The Foundry Nuke|'6.0+'| |X| |
+|===
+
+Community-supplied importers are known to work but are not supported by Boris FX.
+
+== Installation of Mocha Pro Standalone
+
+=== Windows
+. Once the installation file, Mochapro2022-xxxx.exe, has been downloaded onto the system, double click the file to begin installation
+. Follow the instructions on screen
+
+=== OS X
+. Once the installation file, Mochapro2022-xxxx.dmg, has been downloaded onto the system double click the application this will open a new window
+. Drag the *{revision}* application bundle to the folder where *Mocha* will be installed. The conventional place to install applications is in the ‘Applications’ folder on Macintosh HD.
+. Run *{revision}*
+
+=== Linux
+. Once the installation file, Mochapro2022-xxxx.x86_64.rpm, has been downloaded, change into the directory you saved it into. Note that the ‘x’ in the file name is substituted by the current build number.
+. Install the package with the command: +sudo rpm –Uvh Mochapro2022-xxxx.rpm+ or see the man page for your favorite package manager.
+. Installing via rpm may prompt you to install additional dependencies, such as compat-glibc or xrandr. If these are required, download and install them using the appropriate method for your distribution, for example ‘yum’ or ‘up2date’.
+
+=== Linux Centos 7-8
+. Once the installation file, Mochapro2022-xxxx.x86_64.rpm, has been downloaded, change into the directory you saved it into. Note that the ‘x’ in the file name is substituted by the current release build number.
+. Install the package with the command: +sudo rpm -Uvh --nodeps Mochapro2022....rpm+ or see the man page for your favorite package manager.
+
+=== Linux dependencies
+
+==== libxkbcommon-x11
+
+This is a requirement for Mocha to launch on Linux successfully.
+This is not always installed on the system, so may need to be installed manually, for example using the command:
+`sudo yum install libxkbcommon-x11`
+
+==== mesa-libGLU
+The mesa-libGLU dependency may not be installed by default on Centos 8.
+Install mesa-libGLU with the command: `sudo yum install mesa-libGLU`
+
+== Installation of Mocha Pro Plug-in
+
+=== Windows
+. Once the installation file, (e.g. 'MochaPro[Plug-inType]-win-xxxx.msi'), has been downloaded onto the system, double click the file to begin installation
+. Follow the instructions on screen
+
+=== OS X
+. Once the installation file, (e.g 'MochaPro[Plug-inType]-mac-xxxx.dmg'), has been downloaded onto the system double click the DMG and his will open a new window
+. Double-click the MochaPro Plug-in .pkg inside and follow the on-screen instructions
+
+=== Linux
+. Once the installation file, (e.g 'MochaPro[Plug-inType]-rhel-xxxx.rpm'), has been downloaded onto the system, double click the RPM
+. Install the package with the command +sudo yum install MochaProOFX-*.rpm+ or see the man page for your favorite package manager.
+
+=== Linux dependencies
+
+==== libxkbcommon-x11
+
+This is a requirement for Mocha to launch on Linux successfully.
+This is not always installed on the system, so may need to be installed manually, for example using the command:
+`sudo yum install libxkbcommon-x11`
+
+==== mesa-libGLU
+The mesa-libGLU dependency may not be installed by default on Centos 8.
+Install mesa-libGLU with the command: `sudo yum install mesa-libGLU`

@@ -1,0 +1,37 @@
+{{ define "content" }}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <h1 class="mb-0">{{ .Title }}</h1>
+    </div>
+  </div>
+
+  {{ range .Params.products }}
+
+      <div class="row product-list-row">
+        <div class="col-md-12 col-lg-6">
+          {{ partial "video.html" .video_url }}
+        </div>
+        <div class="col-md-12 col-lg-6">
+          <h3>{{ .title }}</h3>
+          <p>
+            {{ .description | markdownify }}
+            <div class="row">
+              <div class="col">
+                <a class="btn" href="{{ .product_url }}">MORE INFO</a>
+              </div>
+            </div>
+          </p>
+        </div>
+      </div>
+    <hr>
+
+  {{ end }}
+
+
+
+</div>
+
+{{ end }}

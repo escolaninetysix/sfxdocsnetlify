@@ -1,0 +1,759 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: WarpChromaComp",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/WarpChroma.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="WarpChromaComp">
+     <h2>
+      WarpChromaComp
+     </h2>
+    </a>
+    In the S_WarpsComp Plugin.
+    <p>
+     Separates the source clip into spectral bands and warps them by different
+  amounts.  The red is warped by the From transformation, the blue by the To
+  transformation, with the other colors of the spectrum in between.  The From
+  and To parameters do not refer to time.  They describe the two
+  transformations in space that determine the sequence of warps applied to
+  each color.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Front:
+      </b>
+      The clip to use as foreground.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Back:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Specifies the opacities of the Front clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/WarpChroma.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    From Z Dist:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.001 or greater.
+   <br/>
+   The 'distance' of the From transformation.  This
+  zooms about the Center location when Shift is 0.  Increase to zoom
+  out, decrease to zoom in.  This parameter can be adjusted using the From Transfm Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    From Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The rotation angle of the From transformation, in
+  degrees, about the center.  This parameter can be adjusted using the From Transfm Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    From Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The horizontal and vertical translations of the From
+  transformation.  This can be used for directional motion.  If it is
+  non-zero the center location becomes less meaningful.  This parameter can be adjusted using the From Transfm Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Steps:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   8,
+   <i>
+    Range:
+   </i>
+   3 to 100.
+   <br/>
+   The number of spectrum samples to include along the path
+  between the From (red) and To (blue) transformations.  More steps give a
+  smoother result, but require more time to process.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    To Z Dist:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0.001 or greater.
+   <br/>
+   The 'distance' of the To transformation.  Increase to
+  zoom out, or decrease to zoom in.  This parameter can be adjusted using the To Transform Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    To Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The rotation angle of the To transformation, in
+  degrees, about the center.  Note that if the From and To Rotate angles
+  are very different, the interpolation between them will become less
+  accurate.  This parameter can be adjusted using the To Transform Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    To Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The horizontal and vertical translations of the To
+  transformation.  This can be used for directional motion.  If it is
+  non-zero the center location becomes less meaningful.  This parameter can be adjusted using the To Transform Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Warp Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the overall amount of warping by scaling
+  the From and To transformations. Setting this to zero disables both
+  transforms and leaves the image unchanged.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Filter:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the image is adaptively filtered when it is
+resampled.  This gives a better quality result when parts of the image
+are warped smaller.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The center of rotation and zooming, in screen coordinates
+  relative to the center of the frame.  The shift values should be zero
+  for this location to make sense.  This parameter can be adjusted using the Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    No No
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders of the
+source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Comp Premult:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Enable this for a better composite if the
+  Foreground pixel values have been pre-multiplied by the Matte pixel
+  values.  This is also known as an 'additive' composite.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0 0].
+   <br/>
+   The color at the From transformation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 1 0].
+   <br/>
+   The color midway between the From and To transformations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color3:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 1].
+   <br/>
+   The color at the To transformation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    White Balance:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   When enabled, the three colors are adjusted
+  internally so they sum to white.  In this case, the colors of
+  unwarped regions are not affected and the average color of the result
+  remains the same.
+  </dd>
+ </dl>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../warptransformcomp">
+       WarpTransformComp
+      </a>
+      <br/>
+      <a href="../warpvortexcomp">
+       WarpVortexComp
+      </a>
+      <br/>
+      <a href="../warpperspectivecomp">
+       WarpPerspectiveComp
+      </a>
+      <br/>
+      <a href="../warpwavescomp">
+       WarpWavesComp
+      </a>
+      <br/>
+      <a href="../warpwaves2comp">
+       WarpWaves2Comp
+      </a>
+      <br/>
+      <a href="../warppuddlecomp">
+       WarpPuddleComp
+      </a>
+      <br/>
+      <a href="../warpbubblecomp">
+       WarpBubbleComp
+      </a>
+      <br/>
+      <a href="../warpbubble2comp">
+       WarpBubble2Comp
+      </a>
+      <br/>
+      <a href="../warpfisheyecomp">
+       WarpFishEyeComp
+      </a>
+      <br/>
+      <a href="../warppuffcomp">
+       WarpPuffComp
+      </a>
+      <br/>
+      <a href="../warpshrivelcomp">
+       WarpShrivelComp
+      </a>
+      <br/>
+      <a href="../warppolarcomp">
+       WarpPolarComp
+      </a>
+      <br/>
+      <a href="../warprepeatcomp">
+       WarpRepeatComp
+      </a>
+      <br/>
+      <a href="../warpmagnifycomp">
+       WarpMagnifyComp
+      </a>
+      <br/>
+      <a href="../warpcornerpincomp">
+       WarpCornerPinComp
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../warpchroma">
+       WarpChroma
+      </a>
+      <br/>
+      <a href="../warpchromamask">
+       WarpChromaMask
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../distortchroma">
+       DistortChroma
+      </a>
+      <br/>
+      <a href="../defocusprism">
+       DefocusPrism
+      </a>
+      <br/>
+      <a href="../blurmotion">
+       BlurMotion
+      </a>
+      <br/>
+      <a href="../streaks">
+       Streaks
+      </a>
+      <br/>
+      <a href="../edgerays">
+       EdgeRays
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

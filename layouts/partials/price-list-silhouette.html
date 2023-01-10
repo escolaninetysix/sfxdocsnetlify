@@ -1,0 +1,399 @@
+<div class="col-md-12">
+
+<style>
+.ui-tabs .ui-tabs-nav {
+    display: flex;
+	border:none;
+	background-color:white;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    flex: auto;
+    display: flex;
+    white-space: normal;
+	color:#00aeef;
+
+
+}
+
+.ui-tabs .ui-tabs-nav li a {
+    flex: auto;
+    text-align: center;
+
+
+}
+
+@media all and (max-width: 767.98px)  {
+
+div#Sapphire,
+div#SapphireContinuumMocha,
+div#SapphireContinuum,
+div#SapphireMocha {
+
+flex:1 100%;
+align-items:stretch;
+
+}
+
+}
+</style>
+	        
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+</script>
+
+
+<div align="center" style="font-size:12pt;">
+<h1 style="letter-spacing:0px;"><b>SILHOUETTE PRICING:</b></h1><br>
+
+<div id="tabs" style="width:100%; height:50%;">
+  <ul style="border-bottom:none;display:flex;flex-direction:row;flex-wrap:wrap;background-color:white;">
+    <li><a href="#tabs-1">Annual Subscription</a></li>
+    <li><a href="#tabs-2">Permanent</a></li>
+    <li><a href="#tabs-3">Renewals</a></li>
+    <li><a href="#tabs-4">Enterprise</a></li>
+  </ul>
+  <div id="tabs-1" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;color:#00aeef;justify-content: space-evenly;">
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette:<br><br><br><br>
+<hr>
+<span id="adobe" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .si_annual_adobe }}</b></h1></span>
+12 Month Subscription<br><br>
+Hosts: 
+<select id="hostsNEW" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="multihost">Standalone</option>
+</select>
+<span id="adobe" style="display:none;color:silver;"><br><br>${{ div 995 12}} per month<br>with annual subscription</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette + Mocha Pro<br>OFX Plugin:<br><br><br>
+<hr>
+<span id="SIMPofx" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .simp_annual_ofx }}</b></h1></span>
+12 Month Subscription<br><br>
+Hosts: 
+<select id="hostsNEWSIMPofx" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="ofx">OFX</option>
+</select>
+<span id="SIMPofx" style="display:none;color:silver;"><br><br>${{ div 1095 12}} per month<br>with annual subscription</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette + Mocha Pro<br>Standalone and<br>Multihost plugin:<br><br>
+<hr>
+<span id="SIMPadobe" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .simp_annual_adobe }}</b></h1></span>
+12 Month Subscription<br><br>
+Hosts: 
+<select id="hostsNEWSIMP" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="SIMPadobe" style="display:none;color:silver;"><br><br>${{ div 1395 12}} per month<br>with annual subscription</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+
+<script>
+$(document).ready(function() {
+$('#hostsNEW option[value="multihost"]').attr("selected",true);
+$('#hostsNEWSIMP option[value="multihost"]').attr("selected",true);
+$('#hostsNEWSIMPofx option[value="ofx"]').attr("selected",true);
+$("span#adobe").toggle(true);
+$("span#SIMPadobe").toggle(true);
+$("span#SIMPofx").toggle(true);
+});
+$('select#hostsNEW').change(function() {
+	  if ( $('#hostsNEW option[value=""]').is(':selected')) {
+	  $("span#adobe").toggle(false);
+
+      }
+ 	  if ($('#hostsNEW option[value="multihost"]').is(':selected')) {
+	  	  $("span#adobe").toggle(true);
+	  } 
+});
+$('select#hostsNEWSIMPofx').change(function() {
+	  if ( $('#hostsNEWSIMPofx option[value=""]').is(':selected')) {
+	  $("span#SIMPofx").toggle(false);
+      }
+ 	  if ($('#hostsNEWSIMPofx option[value="ofx"]').is(':selected')) {
+	  	  $("span#SIMPofx").toggle(true);
+	  }  
+});
+$('select#hostsNEWSIMP').change(function() {
+	  if ( $('#hostsNEWSIMP option[value=""]').is(':selected')) {
+	  $("span#SIMPadobe").toggle(false);
+      }
+ 	  if ($('#hostsNEWSIMP option[value="multihost"]').is(':selected')) {
+	  	  $("span#SIMPadobe").toggle(true);
+	  } 
+});
+</script>
+  </div>
+   <div id="tabs-2" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;color:#00aeef;justify-content: space-evenly;">
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette:<br><br><br><br>
+<hr>
+<span id="permadobe" style="display:none;"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .si_perm_multihost }}</b></h1></span>
+Permanent Licensing<br><br>
+Hosts: 
+<select id="hostsPermanent" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="multihost">Standalone</option>
+</select>
+<span id="permadobe" style="color:silver;display:none;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=mocha-pro&product=mocha-pro" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette + Mocha Pro<br>OFX Plugin:<br><br><br>
+<hr>
+<span id="SIMPPermofx" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .simp_perm_ofx }}</b></h1></span>
+Permanent Licensing<br><br>
+Hosts: 
+<select id="hostsPermSIMPofx" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="ofx">OFX</option>
+</select>
+<span id="SIMPPermofx" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette + Mocha Pro<br>Standalone and<br>Multihost plugin:<br><br>
+<hr>
+<span id="SIMPPermadobe" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .simp_perm_adobe }}</b></h1></span>
+Permanent Licensing<br><br>
+Hosts: 
+<select id="hostsPermSIMP" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="SIMPPermadobe" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+
+<script>
+$(document).ready(function() {
+$('#hostsPermanent option[value="multihost"]').attr("selected",true);
+$('#hostsPermSIMP option[value="multihost"]').attr("selected",true);
+$('#hostsPermSIMPofx option[value="ofx"]').attr("selected",true);
+	  $("span#permadobe").toggle(true);
+	  $("span#SIMPPermadobe").toggle(true);
+	  $("span#SIMPPermofx").toggle(true);
+});
+$('select#hostsPermanent').change(function() {
+	  if ($('#hostsPermanent option[value=""]').is(':selected')) {
+	  	  $("span#permadobe").toggle(false);
+
+	  }
+
+	  if ($('#hostsPermanent option[value="multihost"]').is(':selected')) {
+	  	  $("span#permadobe").toggle(true);
+
+	  }	  	   
+
+});
+
+$('select#hostsPermSIMPofx').change(function() {
+	  if ($('#hostsPermSIMPofx option[value=""]').is(':selected')) {
+	  	  $("span#SIMPPermofx").toggle(false);
+	  }
+	  if ($('#hostsPermSIMPofx option[value="ofx"]').is(':selected')) {
+	  	  $("span#SIMPPermofx").toggle(true);
+	  }	  	     
+});
+
+$('select#hostsPermSIMP').change(function() {
+	  if ($('#hostsPermSIMP option[value=""]').is(':selected')) {
+	  	  $("span#SIMPPermadobe").toggle(false);
+	  }
+	  if ($('#hostsPermSIMP option[value="multihost"]').is(':selected')) {
+	  	  $("span#SIMPPermadobe").toggle(true);
+	  }	  	     
+});
+
+</script>
+  </div>
+  <div id="tabs-3" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;color:#00aeef;justify-content: center;">
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette:<br><br><br>
+<hr>
+<span id="adobe" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .si_upgrade_multihost }}</b></h1></span>
+Single Renewal (version 7 or above)<br><br>
+Hosts: 
+<select id="hostsRenewal" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="multihost">Standalone</option>
+</select>
+<span id="adobe" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette Legacy<br>Upgrade:<br><br>
+<hr>
+<span id="adobeL" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .si_legacy_multihost }}</b></h1></span>
+Legacy Renewal (version 6 or below)<br><br>
+Hosts: 
+<select id="hostsRenewalLegacy" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="multihost">Standalone</option>
+</select>
+<span id="adobeL" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette + Mocha Pro<br>Standalone and<br>Multihost plugin:<br>
+<hr>
+<span id="SIMPadobe" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .simp_upgrade_adobe }}</b></h1></span>
+Single Renewal (version 7 or above)<br><br>
+Hosts: 
+<select id="hostsRenewalSIMP" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="SIMPadobe" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette + Mocha Pro<br>Standalone and<br>Multihost plugin:<br><br>
+<hr>
+<span id="LSIMPadobe" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .simp_lupgrade_adobe }}</b></h1></span>
+Legacy Renewal (version 6 or below)<br><br>
+Hosts: 
+<select id="hostsRenewalLegacySIMP" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="LSIMPadobe" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette + Mocha Pro<br>OFX Plugin:<br><br><br>
+<hr>
+<span id="LSIMPadobenew" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .simp_upgrade_ofx }}</b></h1></span>
+Legacy Renewal (version 7 or above)<br><br>
+Hosts: 
+<select id="hostsRenewalLegacySIMPnew" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="ofx">OFX</option>
+</select>
+<span id="LSIMPadobenew" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Silhouette + Mocha Pro<br>OFX Plugin:<br><br><br>
+<hr>
+<span id="LSIMPofxnew" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .simp_lupgrade_ofx }}</b></h1></span>
+Legacy Renewal (version 6 or below)<br><br>
+Hosts: 
+<select id="RenewalLegacySIMPnew" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="ofx">OFX</option>
+</select>
+<span id="LSIMPofxnew" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+
+<br><br><center><a title="Buy Now" href="/store/?collection=silhouette&product=silhouette" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<script>
+$(document).ready(function() {
+$('#hostsRenewal option[value="multihost"]').attr("selected",true);
+	  $("span#adobe").toggle(true);
+$('#hostsRenewalLegacy option[value="multihost"]').attr("selected",true);
+	  $("span#adobeL").toggle(true);
+$('#hostsRenewalSIMP option[value="multihost"]').attr("selected",true);
+	  $("span#SIMPadobe").toggle(true);
+$('#hostsRenewalLegacySIMP option[value="multihost"]').attr("selected",true);
+	  $("span#LSIMPadobe").toggle(true);
+$('#hostsRenewalLegacySIMPnew option[value="ofx"]').attr("selected",true);
+	  $("span#LSIMPadobenew").toggle(true);
+$('#RenewalLegacySIMPnew option[value="ofx"]').attr("selected",true);
+	  $("span#LSIMPofxnew").toggle(true);
+});
+
+$('#hostsRenewal').change(function() {
+	  if ( $('#hostsRenewal option[value=""]').is(':selected')) {
+	  $("span#adobe").toggle(false);
+
+      }	  
+	  if ($('#hostsRenewal option[value="multihost"]').is(':selected') ) {
+	  $("span#adobe").toggle(true);
+
+	  }	 
+
+});
+$('#hostsRenewalLegacy').change(function() {
+		  if ( $('#hostsRenewalLegacy option[value=""]').is(':selected')) {
+	  $("span#adobeL").toggle(false);
+
+      }	  
+	  if ($('#hostsRenewalLegacy option[value="multihost"]').is(':selected') ) {
+	  $("span#adobeL").toggle(true);
+
+	  }	 
+});
+
+$('#hostsRenewalLegacySIMP').change(function() {
+		  if ( $('#hostsRenewalLegacySIMP option[value=""]').is(':selected')) {
+	  $("span#LSIMPadobe").toggle(false);
+      }	  
+	  if ($('#hostsRenewalLegacySIMP option[value="multihost"]').is(':selected') ) {
+	  $("span#LSIMPadobe").toggle(true);
+	  } 
+});
+
+$('#hostsRenewalSIMP').change(function() {
+		  if ( $('#hostsRenewalSIMP option[value=""]').is(':selected')) {
+	  $("span#SIMPadobe").toggle(false);
+      }	  
+	  if ($('#hostsRenewalSIMP option[value="multihost"]').is(':selected') ) {
+	  $("span#SIMPadobe").toggle(true);
+	  }
+
+});
+
+$('#hostsRenewalLegacySIMPnew').change(function() {
+		  if ( $('#hostsRenewalLegacySIMPnew option[value=""]').is(':selected')) {
+	  $("span#LSIMPadobenew").toggle(false);
+      }	  
+	  if ($('#hostsRenewalLegacySIMPnew option[value="ofx"]').is(':selected') ) {
+	  $("span#LSIMPadobenew").toggle(true);
+	  }
+
+});
+
+$('#RenewalLegacySIMPnew').change(function() {
+		  if ( $('#RenewalLegacySIMPnew option[value=""]').is(':selected')) {
+	  $("span#LSIMPofxnew").toggle(false);
+      }	  
+	  if ($('#RenewalLegacySIMPnew option[value="ofx"]').is(':selected') ) {
+	  $("span#LSIMPofxnew").toggle(true);
+	  }
+
+});
+</script>
+  </div>
+    <div id="tabs-4" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;text-align:left;">
+<br><p>Boris FX offers many benefits for enterprise customers, including volume license discounting, RLM floating licenses, render licenses, consolidated billing, and one on one customized on-site training by product experts. Please contact <a style="color:#00aeef;" href="mailto:sales@borisfx.com">sales@borisfx.com</a>&nbsp; to speak to an account representative.</p>
+</div>
+  </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,675 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: CloudsMultColor",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/CloudsMultColor.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="CloudsMultColor">
+     <h2>
+      CloudsMultColor
+     </h2>
+    </a>
+    In the S_Clouds Plugin.
+    <p>
+     Generates a procedural noise texture like
+  S_Clouds and tints the colors using an additional color noise
+  texture.  The Shift Speed parameters cause the texture to automatically
+  translate over time.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       None
+      </b>
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/CloudsMultColor.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The spatial frequency of the clouds.  Increase to zoom
+  out, decrease to zoom in.  Very high values of Frequency are clamped
+  internally so the grain size is no smaller than a few pixels.  If
+  you want even finer grain use S_Grain or S_Clouds:Perspective instead.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative horizontal frequency of the texture.
+  Increase to stretch it vertically or decrease to stretch it
+  horizontally.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   8,
+   <i>
+    Range:
+   </i>
+   1 to 10.
+   <br/>
+   The number of summed layers of noise.  Each octave is twice
+the frequency and half the amplitude of the previous.  A single octave
+gives a smooth texture.  Adding octaves makes the result approach a
+fractal (1/f) noise texture.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.234,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Start:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Translation offset of the texture.  Since the texture is
+  procedurally generated it can be shifted with no repeating units or
+  seams occurring.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amplitude of the color tinting.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The frequency of the colors.  Increase for finer color
+  variation, decrease for softer color changes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Freq Relx:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative horizontal frequency of the colors.
+  Increase to stretch vertically, decrease to stretch horizontally.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 to 10.
+   <br/>
+   The number of octaves of color noise to include.
+  Each octave is twice the frequency and half the amplitude of the
+  previous.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.345,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The random number generator seed to use for the color
+  noise.  The actual seed value is not significant, but different
+  values give different results.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Speed:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.5 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Translation speed of the texture.  If non-zero, the
+  result is automatically animated to shift at this rate.  The result
+  of animated Speed values may not be intuitive, so for variable
+  speed motion it is usually best to set this to 0 and animate the
+  Shift Start values instead.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Noise Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the noise used for
+  tinting.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds this gray value to the result (or subtracts if
+negative).  0 has no effect, .5 is middle gray, and 1 is white.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Boiling Mode:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   When enabled, the clouds will boil, or evolve, over
+  time.  This mode takes slightly more computation but usually looks
+  better.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Boil Details:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.55,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Increases or decreases the amount of fine detail in
+  the clouds.  Decrease to get a smoother look, increase to get a more
+  high-frequency, noisy look.  Only used when Boiling Mode is
+  enabled.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Boil Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Sets the speed of the cloud boiling.  Zero gives no
+  boiling at all.  Only used when Boiling Mode is enabled.
+  </dd>
+ </dl>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../clouds">
+       Clouds
+      </a>
+      <br/>
+      <a href="../cloudsperspective">
+       CloudsPerspective
+      </a>
+      <br/>
+      <a href="../cloudsvortex">
+       CloudsVortex
+      </a>
+      <br/>
+      <a href="../cloudscolorsmooth">
+       CloudsColorSmooth
+      </a>
+      <br/>
+      <a href="../cloudspsyko">
+       CloudsPsyko
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../cloudsmultcolorcomp">
+       CloudsMultColorComp
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../graincolor">
+       GrainColor
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

@@ -31,7 +31,7 @@ var pairs =
 ,"written":{"consent":1}
 ,"consent":{"boris":1}
 ,"boris":{"2022":1,"leading":1,"products":1,"acquired":1}
-,"december":{"2022":1}
+,"november":{"2022":1}
 ,"founded":{"1995":1}
 ,"1995":{"boris":1}
 ,"leading":{"developer":1,"developers":1}

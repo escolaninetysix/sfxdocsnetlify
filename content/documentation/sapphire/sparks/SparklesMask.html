@@ -1,0 +1,849 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: SparklesMask",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/SparklesMask.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="SparklesMask">
+     <h2>
+      SparklesMask
+     </h2>
+    </a>
+    In the S_SparklesMsk Plugin.
+    <p>
+     Like Sparkles but with a Mask input.
+  Generates a field of sparkling glint effects.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      The sparkle colors are scaled by
+  this input.  A monochrome Mask can be used to choose the areas that
+  will generate sparkles.  A color Mask can be used to selectively
+  adjust the sparkle colors in different regions.  The Mask is applied
+  before the sparkles are generated so it will not clip the resulting
+  glint rays.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/SparklesMask.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the length of all the glint rays.  This and all the
+  size parameters can be adjusted using the Size Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the length of the horizontal glint rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the length of the vertical glint rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Diag1:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the length of the diagonal rays from top right
+  to bottom left.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Diag2:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the length of the diagonal rays from top left
+  to bottom right.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the length of the red component of the rays.  If
+  the red, green, and blue sizes are equal the sparkles will be
+  monochrome.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the length of the green component of the rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the length of the blue component of the rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   32,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The frequency of the sparkles.  Increase to zoom out,
+  decrease to zoom in.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.65,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Increase to add more sparkles.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.23,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of all the sparkles.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the color of all the sparkles.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Sparkle Speed:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.1 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If non-zero, the sparkles automatically twinkle on and
+  off at this rate.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Anim:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Enable for more steady animation, especially at high
+  values of Frequency.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the horizontal glint rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the vertical glint rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness Diag1:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the diagonal rays from
+  top right to bottom left.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness Diag2:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the diagonal rays from
+  top left to bottom right.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Start:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Translation offset of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Speed:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Translation speed of the result.  If non-zero, the
+result is automatically animated to shift at this rate.  The result of
+animated Speed values may not be intuitive, so for variable speed
+motion it is usually best to set this to 0 and animate the Shift Start
+values instead.
+  </dd>
+ </dl>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../sparklescolormask">
+       SparklesColorMask
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../sparkles">
+       Sparkles
+      </a>
+      <br/>
+      <a href="../sparklescomp">
+       SparklesComp
+      </a>
+      <br/>
+      <a href="../sparklesmaskcomp">
+       SparklesMaskComp
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../glint">
+       Glint
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

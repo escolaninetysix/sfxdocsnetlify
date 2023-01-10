@@ -1,0 +1,140 @@
+== Troubleshooting Mocha issues [[troubleshooting]]
+
+Uh Oh. You've run into a problem using Mocha. Here are some guides to tackling some roadblocks.
+
+=== Common Error Messages
+
+Mocha will occasionally throw out an error message when launching, tracking, or performing rendering tasks.
+
+Here are a fe of the more common messages you'll see, and what they mean.
+
+==== Tracking
+
+===== "Tracking Terminated Prematurely"
+
+Often paired with the error "One or more layers were not tracked properly."
+
+This usually means Mocha can't see where to track next. This can be for a variety of reasons:
+
+. Your tracking area is too small or does use enough pixels. Try increasing the size of the spline area or the Min % of pixels used.
+. The area you are tracking has jumped a significant distance. Try moving back a frame where the tracking was good and increase
+  the horizontal and/or vertical search area.
+. The area has become completely obscured by something else, the edge of the shot or by motion blur. Check the next frame to see where it went. If
+  you can't see an obvious reason, try expanding the spline area, increasing the percentage of pixels used, or move the spline to
+  a different part of the shot that is coplanar to the area you were tracking.
+. Mocha can't find the frame. This could be because the host hasn't sent the plugin a frame or you have a corrupted frame on disk.
+  Check if you need to purge your cache or free up some memory.
+
+=====  "Tracking failed: couldn't decompose motion matrix"
+
+This usually means the tracking surface has gone behind the camera and cannot calculate the plane as it's gone out of bounds.
+Normally this happens in tracking with extreme perspetive distortion.
+
+One way around this is to track from the middle of the motion as opposed to starting at one end.
+
+==== Splines
+
+===== "Point could not be transformed into frame due to distortion. Error: SEL3"
+
+When you move a point and get this error, there can be a couple of reasons for the problem:
+
+. Usually this is a symptom of a bad track. The track has becme very distorted and moving the point is trying to translate within that space.
+. A corrupted spline. This can happen when points are very close together or have very extreme handles, or are looping in on themselve.
+
+In both situations it's often best to either find the problem point or keyframe and delete it or remove the spline and attempt to retrack it.
+
+==== File and clip problems
+
+===== Frame Not Rendered in Clip
+
+If you open Mocha and you may see a yellow warning that says "Frame X not Rendered in Clip" and the name of a rendered clip, like Remove, Insert, Stabilize etc.
+
+This is very normal. Your render cache is just cleared and needs to be re-rendered.
+
+To go back to seeing your footage, you can either use the top left hand dropdown in the viewer to select "Selected Layer" to view the source clip
+or you can click "Render" to re-render the frames of the clip that you are missing.
+
+If you're wondering why you get this message at all, read on:
+
+When you are in the standalone version of Mocha, you will often see the rendered clip when you reopen, because it is not cleared unless you tell it to.
+In the plugin, however, the render is always cleared on exit. You won’t ever see the render when you go back to the Mocha GUI in the plugin, because it is always removed.
+
+Because a plugin environment relies on the host’s images, if any changes are made to the source footage (brightness, color correction, editing, effects etc) the plugin needs to be updated with the new information.
+If we retain the old cached render, the output wouldn’t reflect the changes made by the user in the host and you would get inconsistent results.
+So, when you see a message saying “Frame X not rendered”, it literally just means there isn’t currently a frame to view, because it’s either never been rendered, or it’s been cleared.
+
+
+
+
+===== "Failed to open file"
+
+This error will also say "The file is corrupted or in an unsupported format."
+
+Generally the reason this occurs is for that very reason: The file can't be read because it's not currently supported.
+In most cases the best way to get back to work is to convert the clip in question to an image sequence such as TIF or DPX.
+
+You can also try to convert to one of the suppported media formats listed in the <<file_formats, File Formats>> section of the user guide.
+
+===== "Bad Argument Provided"
+
+If you get this error, it usually means the host hasn't sent Mocha any readable information.
+
+This can be for several reasons:
+
+. The host has run out of cache memory and can't supply any new frames
+. The node or layer you've added the Mocha effect to has hold or retiming applied to it and is feeding Mocha incorrect frames.
+. A frame is missing or corrupted
+
+In most cases, you need to solve this on the host end and find where the problem has occured. If you're unsure, please contact Boris FX support.
+
+===== “Clip must be converted to 8 bit greyscale for use as a matte clip.”
+
+If you need to use a matte clip in your project you need to import a Grey formatted file, not RGB.
+
+If you don't have a file that supports Grey as a color format, we do the conversion for you and save the resulting clip to the clip cache.
+
+
+==== License problems
+
+===== "Licensing error: heartbeat failure"
+
+The error occurs when a floating license client loses connection to the license the server.
+
+Normally to fix this you need to restablish the connection to the license server.
+
+
+=== Common problems encountered when working with Mocha
+
+==== Tracking
+
+===== Tracking slips or becomes erratic
+
+In most cases, a slipping, drifting or jumping track is going to be because Mocha
+cannot find the area you were tracking on the next frame.
+
+There can be multiple causes for this, so let's take a look at some common cases.
+
+*The tracking area has been interrupted or obscured*
+
+This is probably the most common. When the area you are tracking has something else enter the layer shape, it can throw off the track.
+
+This can be a small, high-contrast object entering the edges of the shape or even completely covering the main area.
+
+It can also be caused by the area itself updating, such as screens or reflective objects.
+
+It's important to check over your clip to see if anything (e.g. a bird, elbow, hair, etc) has drifted into the space you are tracking. If it has, you need to either adjust your
+tracking shape to avoid the object, or create a separate layer mask on top of your tracking layer.
+
+In cases where the foreground interruption is very large, you may not have enough information left in the tracking shape to get any worthwhile tracking data.
+In this case, you may need to track a coplanar area or manually adjust the tracking to ignore the problem.
+
+*The tracking area is moving very fast*
+
+If an object is moving fast, you can get two problems: The tracking not being able to keep up and the introduction of motion blur.
+
+If the object is moving very fast vertically or horizontally, you may need to turn off the "Auto" checkboxes in the search area parameters and enter a larger value.
+If the object is rotating or zooming/scaling very quickly, you can also adjust the angle and zoom parameters to provide an estimate of the speed of motion.
+
+For motion blur, it can be trickier. Start by increasing the Min % of Pixels used to see if there is
+enough detail to keep Mocha latched on. If the track is still slipping, it may be worth continuing the track and adjusting the drift with
+AjustTrack afterwards.

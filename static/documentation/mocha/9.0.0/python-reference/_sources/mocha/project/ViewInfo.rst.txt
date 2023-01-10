@@ -1,0 +1,126 @@
+.. _ViewInfo:
+
+.. currentmodule:: mocha.project
+
+
+ViewInfo
+********
+
+.. inheritance-diagram:: mocha.project.ViewInfo
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__eq__<ViewInfo.__eq__>` (rhs)
+    * def :meth:`__repr__<ViewInfo.__repr__>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`abbr<ViewInfo.abbr>` [read-write] of str
+*    property :attr:`color<ViewInfo.color>` [read-write] of 3-items tuple of float values in range [0.0...1.0]
+*    property :attr:`name<ViewInfo.name>` [read-write] of str
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Class representing common view information (name, abbreviation, color).
+
+
+.. class:: ViewInfo()
+
+
+
+
+
+
+
+
+.. class:: ViewInfo(name, abbr[, color=Color()])
+
+
+    :type name: str
+    :type abbr: str
+    :type color: :any:`Color`
+
+
+    :param name: New view name.
+    :param abbr: View name abbreviation (shows on mocha toolbar).
+    :param color: 3-items tuple of floats in range [0.0...1.0] representing RGB.
+    
+    Constructs new view info instance with given name, abbreviation and col
+
+
+
+.. class:: ViewInfo(ViewInfo)
+
+
+    :type ViewInfo: :any:`ViewInfo`
+
+
+
+
+
+
+
+
+
+
+.. method:: ViewInfo.__repr__()
+
+
+    :rtype: str
+
+
+
+
+
+
+.. method:: ViewInfo.__eq__(rhs)
+
+
+    :type rhs: :any:`ViewInfo`
+    :rtype: bool
+
+
+
+
+
+
+.. attribute:: ViewInfo.name
+
+
+    :type: str
+    :access: read-write    Provides access to view name.
+
+
+
+.. attribute:: ViewInfo.abbr
+
+
+    :type: str
+    :access: read-write    Provides access to view abbreviation (shows on mocha toolbar).
+
+
+
+.. attribute:: ViewInfo.color
+
+
+    :type: 3-items tuple of float values in range [0.0...1.0]
+    :access: read-write    Provides access to view RGB color.
+
+
+
+

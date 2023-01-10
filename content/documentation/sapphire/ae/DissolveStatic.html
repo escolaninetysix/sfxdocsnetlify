@@ -1,0 +1,256 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: DissolveStatic",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolveStatic.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolveStatic">
+     <h2>
+      S_DissolveStatic
+     </h2>
+    </a>
+    Transitions between two input clips using random pixel static.  The Dissolve
+  Percent parameter should be animated to control the transition speed.  The
+  pixelated look of this effect depends on the image resolution, so it is
+  recommended to test your final resolution before processing.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Foreground:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolveStatic.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Transition Dir:
+   </b>
+   <i>
+    Popup menu,  Default: Dissolve Off to Bg
+   </i>
+   .
+   <br/>
+   Selects the direction of the transition.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Dissolve Off to Bg:
+      </i>
+     </b>
+     transitions from the current layer to the Background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Dissolve On from Bg:
+       </i>
+      </b>
+      transitions from the Background to the current layer.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Auto Trans:
+   </b>
+   <i>
+    Popup YES-NO,  Default: No
+   </i>
+   .
+   <br/>
+   If enabled, a transition is performed automatically between
+the first and last frames of the layer.  If this is off, the transition is
+performed manually by animating the Dissolve Percent parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Percent:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Auto Trans must be disabled for this parameter to be
+  used.  It determines the transition ratio between the Foreground and Background
+  inputs, and would normally be animated from 0 to 100 to perform a
+  complete transition.  The curve controlling this parameter can be adjusted
+  for more detailed control over the timing of the dissolve.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../dissolveblur">
+       DissolveBlur
+      </a>
+      <br/>
+      <a href="../dissolvebubble">
+       DissolveBubble
+      </a>
+      <br/>
+      <a href="../dissolvediffuse">
+       DissolveDiffuse
+      </a>
+      <br/>
+      <a href="../dissolvefilm">
+       DissolveFilm
+      </a>
+      <br/>
+      <a href="../dissolveglow">
+       DissolveGlow
+      </a>
+      <br/>
+      <a href="../dissolveluma">
+       DissolveLuma
+      </a>
+      <br/>
+      <a href="../dissolvepuddle">
+       DissolvePuddle
+      </a>
+      <br/>
+      <a href="../dissolvespeckle">
+       DissolveSpeckle
+      </a>
+      <br/>
+      <a href="../dissolvevortex">
+       DissolveVortex
+      </a>
+      <br/>
+      <a href="../dissolvewaves">
+       DissolveWaves
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../grainstatic">
+       GrainStatic
+      </a>
+      <br/>
+      <a href="../filmeffect">
+       FilmEffect
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

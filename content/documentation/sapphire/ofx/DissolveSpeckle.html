@@ -1,0 +1,293 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: DissolveSpeckle",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolveSpeckle.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolveSpeckle">
+     <h2>
+      S_DissolveSpeckle
+     </h2>
+    </a>
+    Transition between two input clips using a speckled noise pattern.  The
+  Dissolve Amount parameter should be animated to control the transition
+  speed.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolveSpeckle.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -0.5 to 1.5.
+   <br/>
+   The transition ratio between the From and To inputs.  A
+  value of 0 gives only the From input and a value of 1 gives only the
+  To input.  By default this parameter automatically animates from 0
+  to 1 to perform a complete transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   40,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The frequency of the speckle pattern.  Increase for
+  smaller speckles, decrease for larger.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative vertical frequency of the speckles
+  pattern.  Increase for wider speckles, decrease for taller
+  speckles.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 to 10.
+   <br/>
+   The number of summed layers of noise.  Each octave is twice
+the frequency and half the amplitude of the previous.  A single octave
+gives a smooth texture.  Adding octaves makes the result approach a
+fractal (1/f) noise texture.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the transition edges.  Larger values
+  will cause softer, less visible edges in the wipe pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.23,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../dissolveblur">
+       DissolveBlur
+      </a>
+      <br/>
+      <a href="../dissolvebubble">
+       DissolveBubble
+      </a>
+      <br/>
+      <a href="../dissolvediffuse">
+       DissolveDiffuse
+      </a>
+      <br/>
+      <a href="../dissolvefilm">
+       DissolveFilm
+      </a>
+      <br/>
+      <a href="../dissolveglow">
+       DissolveGlow
+      </a>
+      <br/>
+      <a href="../dissolveluma">
+       DissolveLuma
+      </a>
+      <br/>
+      <a href="../dissolvepuddle">
+       DissolvePuddle
+      </a>
+      <br/>
+      <a href="../dissolvestatic">
+       DissolveStatic
+      </a>
+      <br/>
+      <a href="../dissolvevortex">
+       DissolveVortex
+      </a>
+      <br/>
+      <a href="../dissolvewaves">
+       DissolveWaves
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

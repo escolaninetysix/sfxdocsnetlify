@@ -1,0 +1,172 @@
+.. module:: mocha.project
+.. _XControlPointData:
+
+XControlPointData
+*****************
+
+.. inheritance-diagram:: XControlPointData
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`__eq__<XControlPointData.__eq__>` (xcpd)
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*   property :attr:`active<XControlPointData.active>` [read-write] of bool or NoneType
+*   property :attr:`corner<XControlPointData.corner>` [read-write] of bool or NoneType
+*   property :attr:`edge_angle_ratio<XControlPointData.edge_angle_ratio>` [read-write] of float or NoneType
+*   property :attr:`edge_width<XControlPointData.edge_width>` [read-write] of float or NoneType
+*   property :attr:`weight<XControlPointData.weight>` [read-write] of float or NoneType
+*   property :attr:`x<XControlPointData.x>` [read-write] of float or NoneType
+*   property :attr:`y<XControlPointData.y>` [read-write] of float or NoneType
+
+
+Detailed Description
+--------------------
+
+
+   
+   XControlPointData class. Provides access to individual parameters for each X-Spline contour control point.
+   
+
+
+.. class:: XControlPointData([active=OptionalBool()[, corner=OptionalBool()[, x=OptionalFloat()[, y=OptionalFloat()[, weight=OptionalFloat()[, edge_width=OptionalFloat()[, edge_angle_ratio=OptionalFloat()]]]]]]])
+
+
+   :type active: :class:`mocha.project.OptionalBool`
+   :type corner: :class:`mocha.project.OptionalBool`
+   :type x: :class:`mocha.project.OptionalFloat`
+   :type y: :class:`mocha.project.OptionalFloat`
+   :type weight: :class:`mocha.project.OptionalFloat`
+   :type edge_width: :class:`mocha.project.OptionalFloat`
+   :type edge_angle_ratio: :class:`mocha.project.OptionalFloat`
+
+
+
+   
+   :param active: Active state of keyframe.
+   :param corner: Corner state of keyframe.
+   :param x: X coordinate value of keyframe.
+   :param y: Y coordinate value of keyframe.
+   :param weight: Weight value of keyframe.
+   :param edge_width: Edge width of keyframe.
+   :param edge_angle_ratio: Edge angle ratio value of keyframe.
+   
+   Constructs new XControlPointData instance with given parameters.
+   
+
+
+
+.. class:: XControlPointData(XControlPointData)
+
+
+   :type XControlPointData: :class:`mocha.project.XControlPointData`
+
+
+
+
+
+
+
+   :type weight: :class:`mocha.project.OptionalFloat`
+   :type edge_width: :class:`mocha.project.OptionalFloat`
+   :type active: :class:`mocha.project.OptionalBool`
+   :type corner: :class:`mocha.project.OptionalBool`
+   :type x: :class:`mocha.project.OptionalFloat`
+   :type y: :class:`mocha.project.OptionalFloat`
+   :type edge_angle_ratio: :class:`mocha.project.OptionalFloat`
+   :type XControlPointData: :class:`mocha.project.XControlPointData`
+
+
+
+.. method:: XControlPointData.__eq__(xcpd)
+
+
+   :type xcpd: :class:`mocha.project.XControlPointData`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. attribute:: XControlPointData.active
+
+
+   :type: bool or NoneType
+   :access: read-write   
+   Provides access to ``active`` state of keyframe.
+   
+
+
+
+.. attribute:: XControlPointData.corner
+
+
+   :type: bool or NoneType
+   :access: read-write   
+   Provides access to ``corner`` state of keyframe.
+   
+
+
+
+.. attribute:: XControlPointData.x
+
+
+   :type: float or NoneType
+   :access: read-write   
+   Provides access to ``X`` keyframe point coordinate.
+   
+
+
+
+.. attribute:: XControlPointData.y
+
+
+   :type: float or NoneType
+   :access: read-write   
+   Provides access to ``Y`` keyframe point coordinate.
+   
+
+
+
+.. attribute:: XControlPointData.weight
+
+
+   :type: float or NoneType
+   :access: read-write   
+   Provides access to ``weight`` value of keyframe.
+   
+
+
+
+.. attribute:: XControlPointData.edge_width
+
+
+   :type: float or NoneType
+   :access: read-write   
+   Provides access to ``edge width`` value of keyframe.
+   
+
+
+
+.. attribute:: XControlPointData.edge_angle_ratio
+
+
+   :type: float or NoneType
+   :access: read-write   
+   Provides access to ``edge angle ratio`` value of keyframe.
+   
+
+
+
+

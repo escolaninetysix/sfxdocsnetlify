@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.4. BezierControlPointData &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.5. Clip" href="Clip.html" />
+    <link rel="prev" title="2.3. BezierControlPoint" href="BezierControlPoint.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Clip.html" title="2.5. Clip"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="BezierControlPoint.html" title="2.3. BezierControlPoint"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="beziercontrolpointdata">
+<span id="id1"></span><h1>2.4. BezierControlPointData<a class="headerlink" href="#beziercontrolpointdata" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>2.4.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>2.4.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.project.BezierControlPointData.__eq__" title="mocha.project.BezierControlPointData.__eq__"><tt class="xref py py-meth docutils literal"><span class="pre">__eq__</span></tt></a> (bcpd)</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>2.4.1.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.project.BezierControlPointData.active" title="mocha.project.BezierControlPointData.active"><tt class="xref py py-attr docutils literal"><span class="pre">active</span></tt></a> [read-write] of bool or NoneType</li>
+<li>property <a class="reference internal" href="#mocha.project.BezierControlPointData.corner" title="mocha.project.BezierControlPointData.corner"><tt class="xref py py-attr docutils literal"><span class="pre">corner</span></tt></a> [read-write] of bool or NoneType</li>
+<li>property <a class="reference internal" href="#mocha.project.BezierControlPointData.edge_angle_ratio" title="mocha.project.BezierControlPointData.edge_angle_ratio"><tt class="xref py py-attr docutils literal"><span class="pre">edge_angle_ratio</span></tt></a> [read-write] of float or NoneType</li>
+<li>property <a class="reference internal" href="#mocha.project.BezierControlPointData.edge_width" title="mocha.project.BezierControlPointData.edge_width"><tt class="xref py py-attr docutils literal"><span class="pre">edge_width</span></tt></a> [read-write] of float or NoneType</li>
+<li>property <a class="reference internal" href="#mocha.project.BezierControlPointData.handle_offset_backward" title="mocha.project.BezierControlPointData.handle_offset_backward"><tt class="xref py py-attr docutils literal"><span class="pre">handle_offset_backward</span></tt></a> [read-write] of 2-values tuple or NoneType</li>
+<li>property <a class="reference internal" href="#mocha.project.BezierControlPointData.handle_offset_forward" title="mocha.project.BezierControlPointData.handle_offset_forward"><tt class="xref py py-attr docutils literal"><span class="pre">handle_offset_forward</span></tt></a> [read-write] of 2-values tuple or NoneType</li>
+<li>property <a class="reference internal" href="#mocha.project.BezierControlPointData.x" title="mocha.project.BezierControlPointData.x"><tt class="xref py py-attr docutils literal"><span class="pre">x</span></tt></a> [read-write] of float or NoneType</li>
+<li>property <a class="reference internal" href="#mocha.project.BezierControlPointData.y" title="mocha.project.BezierControlPointData.y"><tt class="xref py py-attr docutils literal"><span class="pre">y</span></tt></a> [read-write] of float or NoneType</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>2.4.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>BezierControlPointData class. Provides access to individual parameters for each Bezier contour control point.</div></blockquote>
+<dl class="class">
+<dt id="mocha.project.BezierControlPointData">
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">BezierControlPointData</tt><span class="sig-paren">(</span><span class="optional">[</span><em>active=OptionalBool()</em><span class="optional">[</span>, <em>corner=OptionalBool()</em><span class="optional">[</span>, <em>x=OptionalFloat()</em><span class="optional">[</span>, <em>y=OptionalFloat()</em><span class="optional">[</span>, <em>edge_width=OptionalFloat()</em><span class="optional">[</span>, <em>edge_angle_ratio=OptionalFloat()</em><span class="optional">[</span>, <em>handle_offset_backward=OptionalPoint()</em><span class="optional">[</span>, <em>handle_offset_forward=OptionalPoint()</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.BezierControlPointData" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">BezierControlPointData</tt><span class="sig-paren">(</span><em>BezierControlPointData</em><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.BezierControlPointData.__eq__">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">__eq__</tt><span class="sig-paren">(</span><em>bcpd</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.BezierControlPointData.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.BezierControlPointData.active">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">active</tt><a class="headerlink" href="#mocha.project.BezierControlPointData.active" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool or NoneType</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to <tt class="docutils literal"><span class="pre">active</span></tt> state of keyframe.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.BezierControlPointData.corner">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">corner</tt><a class="headerlink" href="#mocha.project.BezierControlPointData.corner" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool or NoneType</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to <tt class="docutils literal"><span class="pre">corner</span></tt> state of keyframe.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.BezierControlPointData.x">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">x</tt><a class="headerlink" href="#mocha.project.BezierControlPointData.x" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float or NoneType</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to <tt class="docutils literal"><span class="pre">X</span></tt> keyframe point coordinate.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.BezierControlPointData.y">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">y</tt><a class="headerlink" href="#mocha.project.BezierControlPointData.y" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float or NoneType</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to <tt class="docutils literal"><span class="pre">Y</span></tt> keyframe point coordinate.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.BezierControlPointData.edge_width">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">edge_width</tt><a class="headerlink" href="#mocha.project.BezierControlPointData.edge_width" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float or NoneType</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to <tt class="docutils literal"><span class="pre">edge</span> <span class="pre">width</span></tt> value of keyframe.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.BezierControlPointData.edge_angle_ratio">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">edge_angle_ratio</tt><a class="headerlink" href="#mocha.project.BezierControlPointData.edge_angle_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float or NoneType</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to <tt class="docutils literal"><span class="pre">edge</span> <span class="pre">angle</span> <span class="pre">ratio</span></tt> value of keyframe.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.BezierControlPointData.handle_offset_backward">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">handle_offset_backward</tt><a class="headerlink" href="#mocha.project.BezierControlPointData.handle_offset_backward" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">2-values tuple or NoneType</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to relative coordinates of backward tangent vertex.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.BezierControlPointData.handle_offset_forward">
+<tt class="descclassname">BezierControlPointData.</tt><tt class="descname">handle_offset_forward</tt><a class="headerlink" href="#mocha.project.BezierControlPointData.handle_offset_forward" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">2-values tuple or NoneType</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to relative coordinates of forward tangent vertex.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.4. BezierControlPointData</a><ul>
+<li><a class="reference internal" href="#synopsis">2.4.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.4.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.4.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.4.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="BezierControlPoint.html"
+                        title="previous chapter">2.3. BezierControlPoint</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Clip.html"
+                        title="next chapter">2.5. Clip</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/BezierControlPointData.txt"
+            >Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Clip.html" title="2.5. Clip"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="BezierControlPoint.html" title="2.3. BezierControlPoint"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

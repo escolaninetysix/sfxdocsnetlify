@@ -1,0 +1,192 @@
+
+== mocha Pro - The Stabilize Module
+
+=== Overview
+
+NOTE: This section only relates to *mocha Pro* and *mocha VR*. +
+The Stabilize module is unsupported for 360 Equirectangular footage in *mocha VR*. Use the Reorient module to stabilize 360 footage. +
+This feature is not available in *mocha HitFilm or mocha AE*.  +
+For a full comparison of features, please refer to the comparison chart online.
+
+The stabilize feature in uses the data you have tracked to lock down a moving shot. You can think of it as the inverse of what tracking does: It moves the footage around an area rather than an area around the footage. Stabilization is useful for:
+
+* Removing camera jitter and bumps
+* Locking off a shot so it is easier to work with, before restoring the motion back into the final composition
+
+
+=== The Main Stabilization Parameters Interface
+
+Stabilization is a fairly straightforward operation. Once you have selected the tracked layer you wish to work with you have options to restrict the stabilization to key details.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/StabilizeParameters_001.jpg[]
+
+
+*Input Tab*
+
+Select the clip that you wish to use to stabilize here.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/StabilizeInput_001.jpg[]
+
+
+*Range Tab*
+
+Select the frame range for the stabilization.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/StabilizeRange_001.jpg[]
+
+
+*Fixed Frames*
+
+Here you can enter the frames you want to be unaffected by stabilization. Mocha will adjust the stabilization between these frames. You can either enter them into the field, or go to a frame and press the + key.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/StabilizeFrameList_001.jpg[width="60%"]
+
+Fixed frames can be useful when you want stabilization across a shot but would like to keep the general motion of the original shot intact.
+
+*Smooth*
+
+This is the main section for controlling how you want the shot to stabilize.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/StabilizeMotion_001.jpg[]
+
+
+*All Motion*
+
+This checkbox sets all the options below it.
+
+
+*X Translation*
+
+Stabilize translation in X
+
+
+*Y Translation*
+
+Stabilize translation in Y
+
+
+*Rotation*
+
+Stabilize rotation
+
+
+*Zoom*
+
+Stabilize the scale/zoom
+
+
+*X Shear*
+
+Distort the footage according to the tracked surface&rsquo;s shear data in X
+
+
+*Y Shear*
+
+Distort the footage according to the tracked surface&rsquo;s shear data in Y
+
+
+*X Perspective*
+
+Distort the footage according to the tracked surface&rsquo;s perspective data in X
+
+
+*Y Perspective*
+
+Distort the footage according to the tracked surface&rsquo;s perspective data in Y
+
+Shear and Perspective stabilization can be useful when you want to straighten out a plane in your footage to work on it flat before restoring it to its original perspective and motion.
+
+
+*Maximum Smoothing*
+
+Stabilize across the entire track. Setting this value will override the #Frames value beneath it.
+
+
+*# Frames*
+
+Stabilize variation across a certain amount of frames. Setting this to a low value will focus the stabilization to only pick up motion that occurs in short bursts (such as a bump in the road). A higher value will try to adjust longer movements.
+
+
+==== The Borders Tab
+
+This tool helps automate removing the black edges you gain from the footage being stabilize.
+
+*Center*
+
+This centers the footage around the stabilized area.
+
+*Zoom*
+
+This zooms into the footage to push the edges out of frame.
+
+*Crop*
+
+This crops down the edges and makes the footage smaller.
+
+
+==== The Auto Fill Tab
+
+You can use Auto Fill to help fill in the black edges with previously tracked layers, similar to how the Remove Module uses tracked background layers to remove foreground objects.
+
+If you have sufficient usable background available, you can avoid reducing the quality or resolution of footage, which is a common problem in stabilization.
+
+For a better understanding of background fills, please refer to the <<remove_module, Remove documentation>>.
+
+*Auto Fill*
+
+This turns on the auto fill function.  You will not see the effect of fill however until you render the result.
+
+*Search Range*
+
+The range of frames to look for possible fill frames.
+
+*Model Illumination*
+
+Like the Illumination modeling in the remove tool, this tries to calculate the correct lighting for a filled-in edge.
+
+*Dissolve*
+
+This gives the option of dissolving the edge of frame into the filled frame to reduce obvious mismatches.
+
+*Fill from Background*
+
+If you haven&rsquo;t set up a tracked background layer to use to help fill the edges, you can let mocha attempt to fill by analyzing the footage. This is mostly useful for filling in frames where there is only position and rotation jitter.
+
+
+=== Stabilizing Shaky Camera Footage
+
+One of the most common reasons to stabilize is to remove jitter from a shaky camera shot.  With shaky camera footage you are primarily concerned with removing position and rotation data.  This means you do not have to use the shear or perspective options when tracking.  Here is the common method:
+
+. Track a static area of the shot using Translation, Scale and Rotation only. You don&rsquo;t want to track a moving object within the shot as this will throw off the stabilization.
+. Once tracked, switch to the Stabilization tool.
+. Choose which fields of motion you wish to stabilize in the Smooth parameters.  By default, translation is automatically selected.  In many cases you may only be interested in position stabilization, but hand-held cameras can introduce scale and rotation jitter as well.
+. Adjust the number of frames you want to look for jitter over.  A small amount of frames will look for tiny adjustments in the overall motion, whereas bigger values in this field will adjust larger ranges of motion.
+. If there is a significant amount of motion being stabilized and you are losing a lot of your picture in some frames, try fixing those frames by adding them to the Frame List on the left.  Mocha will then interpolate the stabilization between these fixed frames.
+
+
+=== Locking Down Areas of Motion
+
+Sometimes you want to be able to completely lock down a section of the footage so that it stays in one place and everything else moves around it.  For this you can use more aggressive stabilization:
+
+. Track the area you want to lock down using whichever of the motion parameters  you require.  Tracking perspective also works for this technique.
+. Once tracked, switch to the Stabilization tool.
+. Choose which fields of motion you wish to lock down in the Smooth parameters.  By default, translation is automatically selected.  If you want to completely lock down everything, just choose the &ldquo;All Motion&rdquo; checkbox.
+. Adjust the number of frames you want to use to look for stabilization.   A small amount of frames will look for tiny adjustments in the overall motion, whereas bigger values in this field will adjust larger ranges of motion.  Again, if you want to completely lock down everything for all motion, choose the &ldquo;Maximum Smoothing&rdquo; option.
+. When you play back the timeline you will see the rest of the footage warp and move around your locked off area.
+
+
+=== Exporting Stabilized Tracking Data
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/Stabilize_Export.jpg[]
+
+Exporting Stabilization is similar to exporting tracking. When you hit the Export Stabilized Tracking Data button you will be presented with a dropdown box with options for various applications.
+
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/StabilizeExportOptions_001.jpg[]
+
+=== Stabilize in Stereo
+
+All stabilization occurs in stereo if you have tracked both views.
+You can render the stabilization for both views by selecting *Operate on All Views* button next to the Render buttons on the timeline.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/operate_on_all_views_render.jpg[]

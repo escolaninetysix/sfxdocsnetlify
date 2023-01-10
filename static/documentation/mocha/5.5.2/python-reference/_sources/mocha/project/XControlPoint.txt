@@ -1,0 +1,203 @@
+.. module:: mocha.project
+.. _XControlPoint:
+
+XControlPoint
+*************
+
+.. inheritance-diagram:: XControlPoint
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`__eq__<XControlPoint.__eq__>` (rhs)
+*    def :meth:`get_point_data<XControlPoint.get_point_data>` (time[, view=View()])
+*    def :meth:`parameter<XControlPoint.parameter>` (name_components)
+*    def :meth:`parameter_set<XControlPoint.parameter_set>` ([name_components=list()])
+*    def :meth:`remove<XControlPoint.remove>` ()
+*    def :meth:`set_master_point<XControlPoint.set_master_point>` (arg__1[, time=0.f[, view=View(0)]])
+*    def :meth:`set_point_data<XControlPoint.set_point_data>` (time, xcpd[, view=View()])
+*    def :meth:`update_point_data<XControlPoint.update_point_data>` (time, xcpd[, view=View()])
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`master_point<XControlPoint.master_point>` [read-only] of :class:`BezierControlPoint` or :class:`XControlPoint`
+
+
+Detailed Description
+--------------------
+
+
+    
+    X-Spline control point class. Provides access to X-Spline contour control points.
+    
+
+
+.. class:: XControlPoint(XControlPoint)
+
+
+    :type XControlPoint: :class:`mocha.project.XControlPoint`
+
+
+
+
+
+
+
+    :type XControlPoint: :class:`mocha.project.XControlPoint`
+
+
+
+.. method:: XControlPoint.get_point_data(time[, view=View()])
+
+
+    :type time: :class:`PySide.QtCore.float`
+    :type view: :class:`mocha.project.View`
+    :rtype: :class:`mocha.project.XControlPointData`
+
+
+
+    
+    :param time: Keyframe time.
+    :param view: Keyframe view.
+    
+    Returns control point data by time and view.
+    
+
+
+
+.. method:: XControlPoint.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.XControlPoint`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: XControlPoint.parameter(name_components)
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.Parameter`
+
+
+
+    
+    :param name_components: Relative name for a requested parameter.
+    
+    :rtype: :class:`Parameter`
+    
+    Returns :class:`Parameter` instance bound with given name path.
+    
+
+
+
+.. method:: XControlPoint.parameter_set([name_components=list()])
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.ParameterSet`
+
+
+
+    
+    :param name_components: Relative name for a requested parameter set.
+    
+    :rtype: :class:`ParameterSet`
+    
+    Returns :class:`ParameterSet` instance bound with given name path.
+    Pass an empty list ``[]`` to get access to the X-Spline control point parameters set.
+    
+
+
+
+.. method:: XControlPoint.remove()
+
+
+
+
+
+    
+    Removes the this control point.
+    
+
+
+
+.. method:: XControlPoint.set_master_point(arg__1[, time=0.f[, view=View(0)]])
+
+
+    :type arg__1: :class:`PyObject`
+    :type time: :class:`PySide.QtCore.float`
+    :type view: :class:`mocha.project.View`
+
+
+
+    
+    :param time: Keyframe time.
+    :param view: Keyframe view.
+    
+    Set the given point as constraining one for the point.
+    Set None value to break the constraint.
+    
+
+
+
+.. method:: XControlPoint.set_point_data(time, xcpd[, view=View()])
+
+
+    :type time: :class:`PySide.QtCore.float`
+    :type xcpd: :class:`mocha.project.XControlPointData`
+    :type view: :class:`mocha.project.View`
+
+
+
+    
+    :param time: Keyframe time.
+    :param xcpd: keyframe data reflected in XControlPointData instance
+    :param view: Keyframe view.
+    
+    Sets keyframe data for given time and view erasing all old keyframe data.
+    
+
+
+
+.. method:: XControlPoint.update_point_data(time, xcpd[, view=View()])
+
+
+    :type time: :class:`PySide.QtCore.float`
+    :type xcpd: :class:`mocha.project.XControlPointData`
+    :type view: :class:`mocha.project.View`
+
+
+
+    
+    :param time: Keyframe time.
+    :param xcpd: Keyframe data reflected in XControlPointData instance
+    :param view: Keyframe view.
+    
+    Updates keyframe data for given time and view.
+    
+
+
+
+.. attribute:: XControlPoint.master_point
+
+
+    :type: :class:`BezierControlPoint` or :class:`XControlPoint`
+    :access: read-only    
+    Provides access to constraining point.
+    
+
+
+
+

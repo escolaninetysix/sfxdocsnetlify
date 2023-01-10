@@ -1,6 +1,6 @@
-// Copyright (c) 2010-2022 Quadralay Corporation.  All rights reserved.
+// Copyright (c) 2010-2020 Quadralay Corporation.  All rights reserved.
 //
-// ePublisher 2022.1
+// ePublisher 2020.1
 //
 
 // Page
@@ -19,7 +19,7 @@ Page.KnownParcelURL = function (param_url) {
 
   var result;
 
-  result = Parcel_KnownParcelURL(Page.connect_info.parcel_prefixes, param_url);
+  result = Parcels.KnownParcelURL(Page.connect_info.parcel_prefixes, param_url);
 
   return result;
 };
@@ -29,7 +29,7 @@ Page.KnownParcelBaggageURL = function (param_url) {
 
   var result;
 
-  result = Parcel_KnownBaggageURL(Page.connect_info.parcel_prefixes, param_url);
+  result = Parcels.KnownParcelBaggageURL(Page.connect_info.parcel_prefixes, param_url);
 
   return result;
 };
@@ -142,18 +142,10 @@ Page.InterceptLink = function (param_event) {
   // PDF?
   //
   if (Browser.ContainsClass(this.className, 'ww_behavior_pdf')) {
-    var data;
-
     // Process normally
     //
     Page.unloading_for_pdf = true;
     result = true;
-
-    data = {
-      'action': 'page_report_pdf_click'
-    };
-
-    Message.Post(Page.window.parent, data, Page.window);
   } else {
     // Process event
     //
@@ -166,33 +158,21 @@ Page.InterceptLink = function (param_event) {
 Page.UpdateAnchors = function (param_document) {
   'use strict';
 
-  var index, link, subject, message, mailto, decoded_href;
+  var index, link, subject, message, mailto;
 
   if (Page.anchors_updated === undefined) {
     Page.anchors_updated = true;
 
     for (index = param_document.links.length - 1; index >= 0; index -= 1) {
-      var is_web_link, is_same_hierarchy, is_email_link, is_toggle_link, is_parcel_link,
-        is_external_link, is_preserved_link;
-
       link = param_document.links[index];
 
-      var is_web_link = new RegExp(/^http[s]?:/).test(link.attributes.href.value);
-      var is_same_hierarchy = Browser.SameHierarchy(Page.connect_info.base_url, link.href);
-      var is_email_link = Browser.ContainsClass(link.className, 'ww_behavior_email');
-      var is_toggle_link = Browser.ContainsClass(link.className, 'ww_behavior_dropdown_toggle') && !Browser.ContainsClass(link.className, 'ww_skin_dropdown_toggle_disabled');
-      var is_parcel_link = is_same_hierarchy && Page.KnownParcelURL(link.href);
-      var is_external_link = is_web_link || !is_same_hierarchy;
-      var is_preserved_link = !is_web_link && Page.preserve_unknown_file_links;
-
-      // Assign link click handler and update target attribute
+      // Update targets
       //
-      if (is_email_link) {
+      if (Browser.ContainsClass(link.className, 'ww_behavior_email')) {
         // Create email link
         //
-        decoded_href = Browser.DecodeURIComponent(Page.window.location.href);
         subject = Page.window.document.title;
-        message = Page.connect_info.email_message.replace('$Location;', decoded_href);
+        message = Page.connect_info.email_message.replace('$Location;', Page.window.location.href);
         if (Page.window.navigator.userAgent.indexOf('MSIE') !== -1) {
           subject = subject.replace('#', '%23');
           message = message.replace('#', '%23');
@@ -204,31 +184,48 @@ Page.UpdateAnchors = function (param_document) {
           'mailto:' +
           Page.connect_info.email +
           '?subject=' +
-          Browser.EncodeURIComponent(subject) +
-          '&body=' + Browser.EncodeURIComponent(message);
+          Browser.EncodeURIComponentIfNotEncoded(subject) +
+          '&body=' + Browser.EncodeURIComponentIfNotEncoded(message);
 
         link.href = mailto;
       }
 
-      else if (is_toggle_link) {
+      else if (Browser.ContainsClass(link.className, 'ww_behavior_dropdown_toggle') && !Browser.ContainsClass(link.className, 'ww_skin_dropdown_toggle_disabled')) {
         link.onclick = ShowAll_Toggle;
 
       }
 
-      else if (is_parcel_link) {
-        link.onclick = Page.InterceptLink;
-      }
+      else if (Browser.SameHierarchy(Page.connect_info.base_url, link.href)) {
+        // Verify parcel is known
+        //
+        if (Page.KnownParcelURL(link.href)) {
+          // Parcel is known
+          //
+          link.onclick = Page.InterceptLink;
+        } else {
+          // Unknown parcel
+          //
+          if (Page.preserve_unknown_file_links) {
+            // Replace current window
+            //
+            if (!link.target) {
+              link.target = Page.connect_info.target;
+            }
+          } else {
+            Browser.RemoveAttribute(link, 'href', '');
+          }
+        }
+      } else {
+        // Link to external (non-parcel) content
+        //
 
-      else if (is_external_link || is_preserved_link) {
+        // Assign window target if not already defined
+        //
         if (!link.target) {
           // Replace current window
           //
           link.target = Page.connect_info.target;
         }
-      }
-
-      else {
-        Browser.RemoveAttribute(link, 'href', '');
       }
     }
 
@@ -428,18 +425,14 @@ Page.Listen = function (param_event) {
           }
         } else {
           // Scroll will happen upon hash assignment
-          var href = Page.window.document.location.href.replace(Page.window.document.location.hash, "");
-
-          href += param_data.hash;
-
-          Page.window.document.location.replace(href);
+          Page.window.document.location.hash = param_data.hash;
         }
 
         // Page bookkeeping
         //
         data = {
           'action': 'page_bookkeeping',
-          'href': Page.window.document.location.href.replace(Page.window.document.location.hash, ""),
+          'href': Page.window.document.location.href,
           'hash': Page.window.document.location.hash
         };
 
@@ -775,9 +768,8 @@ Page.ContentChanged = function () {
   return true;
 };
 
-Page.HashChanged = function (e) {
+Page.HashChanged = function () {
   'use strict';
-  e.preventDefault();
 
   var target_element_id, target_element;
 
@@ -794,14 +786,6 @@ Page.HashChanged = function (e) {
   } else {
     Page.BackToTop();
   }
-
-  var data = {
-    'action': 'page_bookkeeping',
-    'href': Page.window.document.location.href.replace(Page.window.document.location.hash, ""),
-    'hash': Page.window.document.location.hash
-  };
-
-  Message.Post(Page.window.parent, data, Page.window);
 
   return true;
 };
@@ -946,154 +930,149 @@ Page.Load = function () {
 
   var skin_stylesheet, stylesheets_index, stylesheet, css_rules, css_rules_index, css_rule, css_rule_selector_text, stylesheet_element, back_to_top_element, helpful_button, unhelpful_button, data, helpful_rating;
 
-  // Page loading
-  //
-  document.body.onresize = Page.ContentChanged;
-
-  // Handle onload event only once
-  //
-  Page.onload_handled = true;
-
-  // Track unload
-  //
-  Page.window.onunload = Page.OnUnload;
-
-  // Find overflow CSS rule
-  //
-  Page.css_rule_overflow = undefined;
-
-  try {
-    // Locate skin stylesheet
+    // Page loading
     //
-    skin_stylesheet = undefined;
+    document.body.onresize = Page.ContentChanged;
 
+    // Handle onload event only once
+    //
+    Page.onload_handled = true;
+
+    // Track unload
+    //
+    Page.window.onunload = Page.OnUnload;
+
+    // Find overflow CSS rule
+    //
+    Page.css_rule_overflow = undefined;
+    try {
+      // Locate skin stylesheet
+      //
+      skin_stylesheet = undefined;
       for (stylesheets_index = 0; stylesheets_index < Page.window.document.styleSheets.length; stylesheets_index += 1) {
-      stylesheet = Page.window.document.styleSheets[stylesheets_index];
+        stylesheet = Page.window.document.styleSheets[stylesheets_index];
 
-      // Avoid security exceptions if stylesheet on a different server
-      //
-      try {
-        if (typeof stylesheet.href === 'string' && stylesheet.href.indexOf('skin.css') >= 0) {
-          skin_stylesheet = stylesheet;
-          break;
-        }
-      } catch (ignore) {
-        // Ignore
+        // Avoid security exceptions if stylesheet on a different server
         //
+        try {
+          if ((typeof stylesheet.href === 'string') && (stylesheet.href.indexOf('skin.css') >= 0)) {
+            skin_stylesheet = stylesheet;
+            break;
+          }
+        } catch (ignore) {
+          // Ignore
+          //
+        }
+      }
+
+      // Found skin stylesheet?
+      //
+      if (skin_stylesheet !== undefined) {
+        css_rules = skin_stylesheet.cssRules;
+        if (css_rules === undefined) {
+          css_rules = skin_stylesheet.rules;
+        }
+
+        // Google Chrome bug?
+        //
+        // http://code.google.com/p/chromium/issues/detail?id=49001
+        // If the stylesheet and the HTML are both on local disk, this bug occurs
+        // (i.e. you get a null stylesheet from document.styleSheets).
+        //
+        if (css_rules === undefined || css_rules === null) {
+          // Dynamically create a new stylesheet
+          //
+          stylesheet_element = Page.window.document.createElement('style');
+          stylesheet_element.type = 'text/css';
+          Page.window.document.head.appendChild(stylesheet_element);
+          stylesheet = window.document.styleSheets[Page.window.document.styleSheets.length - 1];
+          stylesheet.insertRule('.ww_skin_page_overflow { overflow-x: auto; overflow-y: hidden; min-width: 1px; }', stylesheet.cssRules.length);
+          css_rules = stylesheet.cssRules;
+        }
+
+        // Find overflow rule
+        //
+        for (css_rules_index = 0; css_rules_index < css_rules.length; css_rules_index += 1) {
+          css_rule = css_rules[css_rules_index];
+          css_rule_selector_text = css_rule.selectorText.toLowerCase();  // Handle IE 7,8
+
+          if (css_rule_selector_text === '.ww_skin_page_overflow') {
+            Page.css_rule_overflow = css_rule;
+          }
+        }
+      }
+    } catch (ignore) {
+      // Live without it
+      //
+    }
+
+    // Hook up back to top
+    //
+    back_to_top_element = Page.window.document.getElementById('back_to_top');
+    if (back_to_top_element !== null) {
+      back_to_top_element.onclick = Page.BackToTop;
+    }
+
+    var dropdown_toggle_button = document.getElementById("show_hide_all");
+    if (!!dropdown_toggle_button) {
+      var dropdown_ids_element, dropdown_ids_string, dropdown_ids;
+
+      dropdown_ids_element = document.getElementById('dropdown_ids');
+      dropdown_ids_string = dropdown_ids_element.innerText;
+
+      if (!!dropdown_ids_string) {
+        dropdown_ids = dropdown_ids_string.split(',');
+      } else {
+        dropdown_ids = [];
+      }
+
+      if (document.getElementById('ww_related_topics')) {
+        dropdown_ids.push('ww_related_topics');
+      }
+
+      Page.ShowAll = new ShowAll_Object(dropdown_ids);
+      Page_Toggle_State();
+    }
+
+    Browser.CreateLocalStorageItem('page_helpful_rating', {});
+
+    helpful_button = document.getElementById('helpful_thumbs_up');
+    unhelpful_button = document.getElementById('helpful_thumbs_down');
+
+    if (helpful_button !== null && unhelpful_button !== null) {
+      helpful_button.onclick = function () { Page.SendHelpfulButtonClick('yes'); };
+      unhelpful_button.onclick = function () { Page.SendHelpfulButtonClick('no'); };
+
+      helpful_rating = Page.GetHelpfulRating();
+
+      if (helpful_rating !== undefined) {
+        Page.SetSelectedStateForHelpfulButton(helpful_rating);
       }
     }
 
-    // Found skin stylesheet?
-    //
-    if (skin_stylesheet !== undefined) {
-      css_rules = skin_stylesheet.cssRules;
-
-      if (css_rules === undefined) {
-        css_rules = skin_stylesheet.rules;
-      }
-
-      // Google Chrome bug?
-      //
-      // http://code.google.com/p/chromium/issues/detail?id=49001
-      // If the stylesheet and the HTML are both on local disk, this bug occurs
-      // (i.e. you get a null stylesheet from document.styleSheets).
-      //
-      if (css_rules === undefined || css_rules === null) {
-        // Dynamically create a new stylesheet
-        //
-        stylesheet_element = Page.window.document.createElement('style');
-        stylesheet_element.type = 'text/css';
-        Page.window.document.head.appendChild(stylesheet_element);
-        stylesheet = window.document.styleSheets[Page.window.document.styleSheets.length - 1];
-        stylesheet.insertRule('.ww_skin_page_overflow { overflow-x: auto; overflow-y: hidden; min-width: 1px; }', stylesheet.cssRules.length);
-        css_rules = stylesheet.cssRules;
-      }
-
-      // Find overflow rule
-      //
-      for (css_rules_index = 0; css_rules_index < css_rules.length; css_rules_index += 1) {
-        css_rule = css_rules[css_rules_index];
-        css_rule_selector_text = css_rule.selectorText.toLowerCase();  // Handle IE 7,8
-
-        if (css_rule_selector_text === '.ww_skin_page_overflow') {
-          Page.css_rule_overflow = css_rule;
-        }
-      }
+    if (document.getElementById('disqus_developer_enabled')) {
+      disqus_developer = 1;
     }
-  } catch (ignore) {
-    // Live without it
-    //
-  }
 
-  // Hook up back to top
-  //
-  back_to_top_element = Page.window.document.getElementById('back_to_top');
-
-  if (back_to_top_element !== null) {
-    back_to_top_element.onclick = Page.BackToTop;
-  }
-
-  var dropdown_toggle_button = document.getElementById("show_hide_all");
-
-  if (!!dropdown_toggle_button) {
-    var dropdown_ids_element, dropdown_ids_string, dropdown_ids;
-
-    dropdown_ids_element = document.getElementById('dropdown_ids');
-    dropdown_ids_string = dropdown_ids_element.innerText;
-
-    if (!!dropdown_ids_string) {
-      dropdown_ids = dropdown_ids_string.split(',');
+    if (document.getElementById('preserve_unknown_file_links')) {
+      Page.preserve_unknown_file_links = document.getElementById('preserve_unknown_file_links').value === 'true';
     } else {
-      dropdown_ids = [];
+      Page.preserve_unknown_file_links = false;
     }
 
-    if (document.getElementById('ww_related_topics')) {
-      dropdown_ids.push('ww_related_topics');
-    }
-
-    Page.ShowAll = new ShowAll_Object(dropdown_ids);
-    Page_Toggle_State();
-  }
-
-  Browser.CreateLocalStorageItem('page_helpful_rating', {});
-
-  helpful_button = document.getElementById('helpful_thumbs_up');
-  unhelpful_button = document.getElementById('helpful_thumbs_down');
-
-  if (helpful_button !== null && unhelpful_button !== null) {
-    helpful_button.onclick = function () { Page.SendHelpfulButtonClick('yes'); };
-    unhelpful_button.onclick = function () { Page.SendHelpfulButtonClick('no'); };
-
-    helpful_rating = Page.GetHelpfulRating();
-
-    if (helpful_rating !== undefined) {
-      Page.SetSelectedStateForHelpfulButton(helpful_rating);
-    }
-  }
-
-  if (document.getElementById('disqus_developer_enabled')) {
-    disqus_developer = 1;
-  }
-
-  if (document.getElementById('preserve_unknown_file_links')) {
-    Page.preserve_unknown_file_links = document.getElementById('preserve_unknown_file_links').value === 'true';
-  } else {
-    Page.preserve_unknown_file_links = false;
-  }
-
-  // Notify parent
-  //
-  data = {
-    'action': 'page_load_data',
-    'dimensions': Browser.GetWindowContentWidthHeight(Page.window),
-    'id': Page.window.document.body.id,
-    'title': Page.window.document.title,
-    'href': Page.window.document.location.href.replace(Page.window.document.location.hash, ""),
-    'hash': Page.window.document.location.hash,
-    'Prev': Page.GetPrevNext(Page.window.document, 'Prev'),
-    'Next': Page.GetPrevNext(Page.window.document, 'Next')
-  };
-  Message.Post(Page.window.parent, data, Page.window);
+    // Notify parent
+    //
+    data = {
+      'action': 'page_load_data',
+      'dimensions': Browser.GetWindowContentWidthHeight(Page.window),
+      'id': Page.window.document.body.id,
+      'title': Page.window.document.title,
+      'href': Page.window.document.location.href,
+      'hash': Page.window.document.location.hash,
+      'Prev': Page.GetPrevNext(Page.window.document, 'Prev'),
+      'Next': Page.GetPrevNext(Page.window.document, 'Next')
+    };
+    Message.Post(Page.window.parent, data, Page.window);
 };
 
 Page.GetHelpfulRating = function () {

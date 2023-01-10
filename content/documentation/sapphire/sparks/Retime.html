@@ -1,0 +1,517 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: Retime",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/Retime.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="Retime">
+     <h2>
+      Retime
+     </h2>
+    </a>
+    Retimes a clip using optical flow based motion estimation and frame interpolation.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be retimed.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/Retime.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Effect:
+   </b>
+   <i>
+    Popup menu,  Default: Retime Speed
+   </i>
+   .
+   <br/>
+   How the clip is to be retimed.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Retime Speed:
+      </i>
+     </b>
+     The output clip is to run at a specified fraction of the speed of the input clip.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Retime Longer:
+       </i>
+      </b>
+      The output clip is to be a specified percentage longer than the input clip.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Retime Scale:
+        </i>
+       </b>
+       The output clip is to be a specified percentage times the length of the input clip.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Retime FPS:
+         </i>
+        </b>
+        The output clip speed is to be suitable for running at a specified frames-per-second
+  given the input clip speed specified in frames-per-second.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Retime Length:
+          </i>
+         </b>
+         Retimes a clip using optical flow motion estimation so that the output clip is a specified
+  length (in frames).
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Retime Curve:
+           </i>
+          </b>
+          Retimes a clip using optical flow motion estimation so that the input frame for every output
+  frame may be controlled with a key-framed parameter. This allows vari-speed effects, backwards motion and
+  so forth.
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0.01 to 10.
+   <br/>
+   Used in Speed mode. The output clip runs at a speed which is this times the speed of the input clip. For example,
+  0.2 would make the output 5 times slower than the input.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Percent Longer:
+   </b>
+   <i>
+    Default:
+   </i>
+   100,
+   <i>
+    Range:
+   </i>
+   0 to 1e+04.
+   <br/>
+   Used in Longer mode. How many percent longer the output is to be relative to the input. 0 percent makes the
+  output the same length as the input. 100 percent would make the output twice as long as the input.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Percent:
+   </b>
+   <i>
+    Default:
+   </i>
+   200,
+   <i>
+    Range:
+   </i>
+   1 to 1e+04.
+   <br/>
+   Used in Scale mode. How long the output clip is to be as a percentage of the input clip length. 100 percent
+  makes the output the same length as the input. 200 percent would make the output twice as long as the
+  input. 50 percent would make the output half as long as the input.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Input Fps:
+   </b>
+   <i>
+    Default:
+   </i>
+   30,
+   <i>
+    Range:
+   </i>
+   1 to 1000.
+   <br/>
+   Used in FPS mode. The frame rate of the input clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Output Fps:
+   </b>
+   <i>
+    Default:
+   </i>
+   60,
+   <i>
+    Range:
+   </i>
+   1 to 1000.
+   <br/>
+   Used in FPS mode. The frame rate of the output clip. If this is greater than the Input Fps parameter, the
+  output clip will be longer than the input clip. If this is less than the Input Fps parameter, the output
+  clip will be shorter than the input clip. If the output clip is played at the specified output
+  frames-per-second, it will last as long (in seconds) as the input clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Output Length:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   30,
+   <i>
+    Range:
+   </i>
+   2 to 1e+04.
+   <br/>
+   Used in Length mode. The desired length of the output clip in frames.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Input Frame:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1e+04.
+   <br/>
+   Used in Curve mode. The input frame to output. This parameter should normally be key-framed, with the frame for
+  which a key-frame is set designating an output frame, and the value set at that key-frame denoting the desired
+  input frame at that output frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Result:
+   </b>
+   <i>
+    Popup menu,  Default: Result
+   </i>
+   .
+   <br/>
+   Output the retimed clip or a representation of the motion vectors.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Result:
+      </i>
+     </b>
+     Output the retimed clip.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Flow Vectors:
+       </i>
+      </b>
+      Output a representation of the motion vectors. The direction of the vector at a pixel
+  is shown as a color, and the length of the vector as the saturation of that color.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Frame:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Frame number of the first frame in the clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Motion Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 2,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If greater than 0.0, blur along this fraction of the length of the motion vectors.
+  </dd>
+ </dl>
+ <h3>
+  Flow Tuning Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flow Field Smooth:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Optical flow parameter: The relative importance of adhering to the image data relative
+  to the importance of keeping a smooth flow field. The higher this value, the more relative importance
+  is assigned to the flow field smoothness.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Emphasize Edges:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Optical flow parameter: Specify the degree of structure/texture decomposition to
+  apply to the input clip prior to solving for the motion vector field. This can be useful to reduce problems due to lighting changes
+  and may give better localised flows and other improvements. It is not recommended when there is fast motion in the input
+  clip. However, in some cases, it can be very helpful in getting acceptable results. Suggested usage is
+  to first try a value of 0.0 (which turns off structure/texture decomposition). If the result is unsatisfactory,
+  try 0.4. Finally, try 1.0.
+  </dd>
+ </dl>
+ <h3>
+  Flow View Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flow Scale:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.9,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   When outputting a representation of the motion vectors, this increases the saturation
+  of the color corresponding to a unit length motion. This makes the representation more sensitive to
+  show shorter vectors more clearly.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

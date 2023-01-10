@@ -1,0 +1,815 @@
+{{ define "content" }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+<script>
+var videos = [
+{{ range .Site.Data.mocha_essentials.mocha_essentials }}
+  {
+    {{ range .chpt1 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}    
+	   {{ range .chpt2 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",	
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}	   	  
+	   {{ range .chpt3 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}		   
+	   {{ range .chpt4 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}	   	   		   
+	   {{ range .chpt5 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}		  	   
+	   {{ range .chpt6 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}	   
+	   {{ range .chpt7 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",		
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}	   	  
+	   {{ range .chpt8 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",		
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}		  
+	   {{ range .chpt9 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}		   
+	   {{ range .chpt10 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",		
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}				   
+	   {{ range .chpt11 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",		
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}				   
+	   {{ range .chpt12 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",		
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}				   
+	   {{ range .chpt13 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}					   
+	   {{ range .chpt14 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}					   
+	   {{ range .chpt15 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}						   
+	   {{ range .chpt16 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}								   
+	   {{ range .chpt17 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}								   
+	   {{ range .chpt18 }}
+    "title": "{{ .title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"ql_01": "{{ .ql_01 }}",
+	"ql_01_content": "{{ .ql_01_content }}",
+	"ql_02": "{{ .ql_02 }}",
+	"ql_02_content": "{{ .ql_02_content }}",
+	"ql_03": "{{ .ql_03 }}",
+	"ql_03_content": "{{ .ql_03_content }}",
+	"ql_04": "{{ .ql_04 }}",
+	"ql_04_content": "{{ .ql_04_content }}",
+	"ql_05": "{{ .ql_05 }}",
+	"ql_05_content": "{{ .ql_05_content }}",
+	"ql_06": "{{ .ql_06 }}",
+	"ql_06_content": "{{ .ql_06_content }}",	
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	   {{ end }}		   	   
+  },
+  {{ end }}
+];
+
+</script>
+<style>
+i.bi bi-check {
+background-color: white !important;
+color: rgb(255, 255, 255);
+}
+button {
+background-color:black !important;
+color: white !important;
+}
+button:hover {
+background-color:black !important;
+color: #26a9e0 !important;
+}
+</style>
+<div class="section" style="margin-top:-2%;">
+<div class="container">
+	<div class="row">
+	<div class="col-12 col-md-4">
+<div style="height:600px;overflow-y: scroll;overflow-x: hidden;"><h2 style="font-style: normal;font-weight: 500;letter-spacing:0em;color:black;"><b>{{ .Title }}</b></h2>
+
+
+        {{ range .Site.Data.mocha_essentials.mocha_essentials }}
+			 {{ range .chpt1 }}
+			{{ if .section_title }}   	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_02 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_03 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        	
+             {{ end }}		
+			 {{ end }}  
+			{{ range .chpt2 }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>
+             {{ end }}				
+			 {{ range .chpt3 }}
+			{{ if .section_title }} 	  	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_05 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_06 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        		
+             {{ end }}				
+			 {{ if eq .section_07 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        
+             {{ end }}	
+             {{ end }}			 
+			 {{ range .chpt4 }}
+			{{ if .section_title }} 
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_005 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_006 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        	
+             {{ end }}		
+			 {{ end }}
+			 {{ range .chpt5 }}
+			{{ if .section_title }}  	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_08 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_09 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			
+			 {{ end }}	
+
+             {{ end }}		
+	 		 
+			 {{ range .chpt6 }}   
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>
+             {{ end }}				
+				 			
+			 {{ range .chpt7 }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>
+
+             {{ end }}				 
+			 {{ range .chpt8 }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>
+             {{ end }}	
+		  	{{ range .chpt9 }}
+			{{ if .section_title }}   	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_10 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_11 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        	
+		   {{ end }}	
+           {{ end }}			  
+		   {{ range .chpt10 }}
+			{{ if .section_title }}   	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_12 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_13 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        		
+		   {{ end }}				
+		   {{ if eq .section_14 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_15 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			
+		   {{ end }}	
+           {{ end }}		
+	  	   {{ range .chpt11 }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>
+           {{ end }}	  	   
+		   {{ range .chpt12 }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>
+           {{ end }}
+		   {{ range .chpt13 }}
+			{{ if .section_title }}  	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_16 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_17 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        		
+		   {{ end }}				
+		   {{ if eq .section_18 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_19 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        		
+		   {{ end }}	
+           {{ end }}	
+		  	{{ range .chpt14 }}
+			{{ if .section_title }}   	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_20 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_21 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        		
+		   {{ end }}	
+           {{ end }}		  
+		   {{ range .chpt15 }}
+			{{ if .section_title }} 	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}
+			{{ if eq .section_22 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			  
+			{{ end }}				
+			{{ if eq .section_23 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			
+		   {{ end }}
+		   {{ end }}
+		   {{ range .chpt16 }}
+			{{ if .section_title }}   	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}			
+			{{ if eq .section_24 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			
+		   {{ end }}				
+		   {{ if eq .section_25 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        			
+		   {{ end }}		   
+		   {{ if eq .section_26 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }}  <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>        	
+	
+		   {{ end }}	
+           {{ end }}
+	       {{ range .chpt17 }}
+			<button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>
+           {{ end }}		       
+		   {{ range .chpt18 }}
+			<button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .video_id }}" style="display:none;"></i></span></button>
+           {{ end }}				   
+           {{ end }}</div></div>
+	<div class="col-12 col-md-8"><h2 style="font-style: normal;font-weight: 500;letter-spacing:0em;color:black;"><b>{{ .Params.lesson_title }}</b></h2><div>{{ .Params.description | markdownify }}</div><input name="vidID" type="hidden" id=""> <!-- <div id="start" style="display:block;">Click a chapter on the left to get started.</div> --> <div style="" id="player" vid="jvEGKt5ckjY" state=""></div>
+
+
+	<script>
+	  const urlParams = new URLSearchParams(window.location.search);
+	  const myParam = urlParams.get('vid');		
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      
+      var player;
+      var videotime = 0;
+  	  vidID = $("#player").attr('vid');
+      function onYouTubeIframeAPIReady() {
+	
+        player = new YT.Player('player', {
+          height: '400px',
+          width: '100%',
+          videoId: vidID,
+		  playerVars: {
+            'modestbranding': 1
+          },		  
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+function onPlayerReady(event) {
+      // read frontmatter from video files
+	  var id = $("#player").attr('vid');
+	 // var vidPath = '{{ .Params.video_name }}';
+	  // find storage keys with prefix 'videos_', if ID exists play from duration
+  for (var i=0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (/^freetraining_Z/.test(key)) {
+        var item = localStorage.getItem(key);
+        if (JSON.parse(item)) {
+		var objValue = JSON.parse(item);
+    if (objValue.id == id) {
+	  	player.cueVideoById({ videoId: id, startSeconds: objValue.duration});
+	  if (objValue.state == '0') { $("button i#" + objValue.id).toggle(true); }			
+     } else if (objValue.state == '-1' || "" ) {
+		 player.stopVideo();
+		 $("button i#" + objValue.id).toggle(false);
+		}
+	   }
+	  }
+	 } 
+        function updateTime() {
+		var overallTime = player.getDuration();
+	//	$("#dur").html("<b>Duration:</b> " + Math.floor(overallTime / 60) + ":" + (overallTime % 60 ? overallTime % 60 : '00'));
+          var oldTime = videotime;
+          if(player && player.getCurrentTime) {
+            videotime = player.getCurrentTime();
+            // console.log(videotime);
+          }
+          if(videotime !== oldTime) {
+            onProgress(videotime);
+          }
+        }
+        timeupdater = setInterval(updateTime, 100);
+		
+		        // event.target.playVideo();
+				
+      }
+
+      var done = false;
+      function onPlayerStateChange(event) {
+
+      
+      var vidID = $("#player").attr('vid');
+	  var arr = {"id": vidID, "state": event.data, "duration": videotime}    
+      var items = localStorage.getItem('freetraining_Z' + vidID);
+if (items === undefined || items === null || items.length === 0) {	  
+       localStorage.setItem("freetraining_Z" + vidID, JSON.stringify(arr));
+	   localStorage.removeItem('videos_undefined');
+	   localStorage.removeItem('undefined');	
+} else {
+       localStorage.setItem("freetraining_Z" + vidID, JSON.stringify(arr));
+	   localStorage.removeItem('videos_undefined');
+	   localStorage.removeItem('undefined');
+}
+		if (event.data == YT.PlayerState.PLAYING && !done) {  
+          done = true;  
+        }		
+		
+		if (event.data == YT.PlayerState.ENDED) {  
+	  var vidID = $("#player").attr('vid');
+	  $("button i#" + vidID).toggle(true);	
+        }
+	 
+
+	  }
+	  
+function onProgress(currentTime) {
+        if(currentTime > 3) {
+        }
+      }
+	  
+      function stopVideo() {
+        player.pauseVideo();
+      }
+    </script>
+	<br>
+	<div id="title"></div>
+	<div id="dur"></div>
+	<div id="timestamp"></div>
+	<!-- <div id="dl"></div> -->
+	<div id="content"></div>
+</div>
+	</div>
+</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+	  const urlParams = new URLSearchParams(window.location.search);
+	  const myParam = urlParams.get('vid');
+{{ range .Site.Data.mocha_essentials.mocha_essentials }}
+{{ range .chpt1 }}  
+{{ if .section_title }}
+	var videoIDLoad = $("#player").attr('vid');
+     if  (videoIDLoad == 'jvEGKt5ckjY') {  
+		$("#title").html("<b>Title:</b> " + {{ .title }});
+		$("#dur").html("<b>Runtime:</b> " + {{ .duration }});
+		// $("#dl").html('<b>Downloads: </b> <a href="{{ .download_source_url }}">Source Files</a> <a href="{{ .transcript_url }}">Transcription</a>');
+		$("#content").html("<b>Description:</b> " + {{ .content }});
+     }
+{{ end }}	 
+{{ end }}
+{{ end }}
+
+	$.each(videos , function(index, val) { 	
+	   $("button#" + val.video_id).click(function() {
+		$("#player").attr('vid', val.video_id);
+		var vid = $(this).attr('id');     
+		var id = $("#player").attr('vid');
+		var items = localStorage.getItem('freetraining_Z' + vid);
+		if (!items) {
+		player.cueVideoById({ videoId: vid });
+		}
+     			  
+	for (var i=0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (/^freetraining_Z/.test(key)) {
+        var item = localStorage.getItem(key);
+        if (JSON.parse(item)) {
+		var objValue = JSON.parse(item);
+    if (objValue.id == id) {
+	player.cueVideoById({ videoId: vid, startSeconds: objValue.duration});
+     } else if (objValue.state == '-1' || "" ) {
+		 player.stopVideo();
+		} 
+	if (objValue.state == '0') {  
+	  $("button i#" + objValue.id).toggle(true);	
+        }
+	   }
+	  }
+	 } 
+		 $("#title").html("<b>Title:</b> " + val.title);
+		$("#dur").html("<b>Runtime:</b> " + val.duration);
+		$("#timestamp").html("<b>Quicklinks: </b> <a href=\"javascript:void;\" id=\"ql-01\">" + val.ql_01_content + "</a> &nbsp; &nbsp; <a href=\"javascript:void;\" id=\"ql-02\">" + val.ql_02_content + "</a> &nbsp; &nbsp; <a href=\"javascript:void;\" id=\"ql-03\">" + val.ql_03_content + "</a> &nbsp; &nbsp; <a href=\"javascript:void;\" id=\"ql-04\">" + val.ql_04_content + "</a> &nbsp; &nbsp; <a href=\"javascript:void;\" id=\"ql-05\">" + val.ql_05_content + "</a> &nbsp; &nbsp; <a href=\"javascript:void;\" id=\"ql-06\">" + val.ql_06_content + "</a>");
+		// $("#dl").html('<b>Downloads: </b> <a href="' + val.download_source_url + '">Source Files</a> <a href="' + val.transcript_url + '">Transcription</a>');
+		$("#content").html("<b>Description:</b> " + val.content);
+	$("#ql-01").click(function() {
+     player.loadVideoById({ videoId: vid, startSeconds: val.ql_01});
+	 });	
+	 $("#ql-02").click(function() {
+     player.loadVideoById({ videoId: vid, startSeconds: val.ql_02});
+	 });	 
+	 $("#ql-03").click(function() {
+     player.loadVideoById({ videoId: vid, startSeconds: val.ql_03});
+	 });	
+	 $("#ql-04").click(function() {
+     player.loadVideoById({ videoId: vid, startSeconds: val.ql_04});
+	 });	
+	 $("#ql-05").click(function() {
+     player.loadVideoById({ videoId: vid, startSeconds: val.ql_05});
+	 });	 
+	 $("#ql-06").click(function() {
+     player.loadVideoById({ videoId: vid, startSeconds: val.ql_06});
+	 });
+		});
+
+	});
+});
+</script>
+
+<script>
+$(window).on('load',function() {
+  localStorage.removeItem('videos_undefined');
+  localStorage.removeItem('undefined'); 
+  
+  for (var i=0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (/^freetraining_Z/.test(key)) {
+        var item = localStorage.getItem(key);
+        if (JSON.parse(item)) {
+		var objValue = JSON.parse(item);
+	if (objValue.state == '0') {  
+	  $("button i#" + objValue.id).toggle(true);	
+        } else if (objValue.state == '-1' || "" ) {
+		 $("button i#" + objValue.id).toggle(false);
+		} 
+
+	   }
+	  }
+	 }
+ if (window.location.search) {
+ // alert(window.location.search);
+ setTimeout(function(){ 
+ $("button#" + myParam).trigger('click');
+ window.history.pushState({}, '', window.location.pathname);
+ }, 500);
+ } 		 
+});
+
+</script>
+
+
+{{ end }}

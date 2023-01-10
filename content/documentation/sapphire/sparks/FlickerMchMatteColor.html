@@ -1,0 +1,324 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: FlickerMchMatteColor",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FlickerMatchColor.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FlickerMchMatteColor">
+     <h2>
+      FlickerMchMatteColor
+     </h2>
+    </a>
+    In the S_FlickerMchMatte Plugin.
+    <p>
+     Adds color changes to the Source clip using
+the color changes from a second Match clip, in the areas specified by
+a Matte.  To use this effect, select a frame where you want the Source
+color unchanged, and hit the Set Match Color button.  When other
+frames are processed, the Source color will be scaled by the
+average Match color within the Matte, relative to the Match
+Color.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to add flicker to.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Match:
+      </b>
+      The clip to copy flicker from.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      The white of this clip specifies which Source areas to
+  measure the flicker from.  It can be inverted with the Invert Matte
+  parameter.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FlickerMatchColor.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Set Match Color:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Pressing this button sets the Match Color
+  parameter to the average Match clip color within the Matte at the
+  current frame.  It causes the output to equal the Source at this
+  frame.  (This will not work properly when in 'Redraw:Never' mode.)
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Match Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.5 0.5 0.5].
+   <br/>
+   The average Match color in the Matte for which
+  the Source input is unchanged.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Matte:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the matte
+are inverted before use.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Measured Flicker R:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   When processing, this parameter is automatically adjusted to record the
+  amount of flicker in the red color channel at each frame.
+  You can copy the keyframes to a parameter in other effect in
+  order to match the flicker in a different clip, or adjust the brightness on certain frames.
+  Changing this parameter manually has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Measured Flicker G:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   When processing, this parameter is automatically adjusted to record the
+  amount of flicker in the green color channel at each frame.
+  You can copy the keyframes to a parameter in other effect in
+  order to match the flicker in a different clip, or adjust the brightness on certain frames.
+  Changing this parameter manually has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Measured Flicker B:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   When processing, this parameter is automatically adjusted to record the
+  amount of flicker in the blue color channel at each frame.
+  You can copy the keyframes to a parameter in other effect in
+  order to match the flicker in a different clip, or adjust the brightness on certain frames.
+  Changing this parameter manually has no effect.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../flickermatchmatte">
+       FlickerMatchMatte
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../flickerremove">
+       FlickerRemove
+      </a>
+      <br/>
+      <a href="../flickerremovecolor">
+       FlickerRemoveColor
+      </a>
+      <br/>
+      <a href="../flickerremovematte">
+       FlickerRemoveMatte
+      </a>
+      <br/>
+      <a href="../flickerrmmattecolor">
+       FlickerRmMatteColor
+      </a>
+      <br/>
+      <a href="../flickermatch">
+       FlickerMatch
+      </a>
+      <br/>
+      <a href="../flickermatchcolor">
+       FlickerMatchColor
+      </a>
+      <br/>
+      <a href="../flicker">
+       Flicker
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

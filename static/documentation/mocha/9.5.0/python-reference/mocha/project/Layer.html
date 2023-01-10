@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.10. Layer &#8212; mocha  documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.11. LayerGroup" href="LayerGroup.html" />
+    <link rel="prev" title="2.9. Keyframes" href="Keyframes.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="LayerGroup.html" title="2.11. LayerGroup"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Keyframes.html" title="2.9. Keyframes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="layer">
+<span id="id1"></span><h1><span class="section-number">2.10. </span>Layer<a class="headerlink" href="#layer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.10.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.10.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.__eq__" title="mocha.project.Layer.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a> (layer)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.__ne__" title="mocha.project.Layer.__ne__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__ne__</span></code></a> (layer)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.add_bezier_contour" title="mocha.project.Layer.add_bezier_contour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_bezier_contour</span></code></a> (time, bezier_spline[, view=View()])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.add_bezier_contour" title="mocha.project.Layer.add_bezier_contour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_bezier_contour</span></code></a> (time, points[, view=View()])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.add_contour" title="mocha.project.Layer.add_contour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_contour</span></code></a> (time, contour[, view=View(0)])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.add_xspline_contour" title="mocha.project.Layer.add_xspline_contour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_xspline_contour</span></code></a> (time, points[, view=View()])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.add_xspline_contour" title="mocha.project.Layer.add_xspline_contour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_xspline_contour</span></code></a> (time, x_spline[, view=View()])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.get_contours" title="mocha.project.Layer.get_contours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_contours</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.get_parent_group" title="mocha.project.Layer.get_parent_group"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_parent_group</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.get_surface_position" title="mocha.project.Layer.get_surface_position"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_surface_position</span></code></a> (point_index, time[, view=View( 0 )])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.get_transform_matrix" title="mocha.project.Layer.get_transform_matrix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_transform_matrix</span></code></a> (time[, view=View()])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.in_point" title="mocha.project.Layer.in_point"><code class="xref py py-meth docutils literal notranslate"><span class="pre">in_point</span></code></a> ([view=View( 0 )])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.initLayerIfNecessary" title="mocha.project.Layer.initLayerIfNecessary"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initLayerIfNecessary</span></code></a> (context)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.out_point" title="mocha.project.Layer.out_point"><code class="xref py py-meth docutils literal notranslate"><span class="pre">out_point</span></code></a> ([view=View( 0 )])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.parameter" title="mocha.project.Layer.parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parameter</span></code></a> (name_components)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.parameter_set" title="mocha.project.Layer.parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parameter_set</span></code></a> ([name_components=list()])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.remove" title="mocha.project.Layer.remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">remove</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.set_parent" title="mocha.project.Layer.set_parent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_parent</span></code></a> (group[, index=0])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.set_parent_group" title="mocha.project.Layer.set_parent_group"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_parent_group</span></code></a> (arg__1)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Layer.tracking_input_clip" title="mocha.project.Layer.tracking_input_clip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tracking_input_clip</span></code></a> ([use_linked_layer=false])</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.10.1.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.contours" title="mocha.project.Layer.contours"><code class="xref py py-attr docutils literal notranslate"><span class="pre">contours</span></code></a> [read-only] of mixed list of <code class="xref py py-class docutils literal notranslate"><span class="pre">XSplineContour</span></code> and <a class="reference internal" href="BezierContour.html#mocha.project.BezierContour" title="mocha.project.BezierContour"><code class="xref py py-class docutils literal notranslate"><span class="pre">BezierContour</span></code></a> instances</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.link_to_track" title="mocha.project.Layer.link_to_track"><code class="xref py py-attr docutils literal notranslate"><span class="pre">link_to_track</span></code></a> [read-write] of <a class="reference internal" href="#mocha.project.Layer" title="mocha.project.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a> or NoneType</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.locked" title="mocha.project.Layer.locked"><code class="xref py py-attr docutils literal notranslate"><span class="pre">locked</span></code></a> [read-write] of bool</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.matte_color" title="mocha.project.Layer.matte_color"><code class="xref py py-attr docutils literal notranslate"><span class="pre">matte_color</span></code></a> [read-write] of 3-items tuple of float values in range [0.0…1.0]</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.name" title="mocha.project.Layer.name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a> [read-write] of str</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.parent" title="mocha.project.Layer.parent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">parent</span></code></a> [read-write] of LayerGroup</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.psets" title="mocha.project.Layer.psets"><code class="xref py py-attr docutils literal notranslate"><span class="pre">psets</span></code></a> [read-only] of ParameterSet</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.selected" title="mocha.project.Layer.selected"><code class="xref py py-attr docutils literal notranslate"><span class="pre">selected</span></code></a> [read-write] of bool</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.stroke_color" title="mocha.project.Layer.stroke_color"><code class="xref py py-attr docutils literal notranslate"><span class="pre">stroke_color</span></code></a> [read-write] of 3-items tuple of float values in range [0.0…1.0]</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.visibility" title="mocha.project.Layer.visibility"><code class="xref py py-attr docutils literal notranslate"><span class="pre">visibility</span></code></a> [read-write] of bool</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Layer.z_order" title="mocha.project.Layer.z_order"><code class="xref py py-attr docutils literal notranslate"><span class="pre">z_order</span></code></a> [read-write] of int</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.10.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="more"></span><dl class="py class">
+<dt id="mocha.project.Layer">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">Layer</code><a class="headerlink" href="#mocha.project.Layer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.add_bezier_contour">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">add_bezier_contour</code><span class="sig-paren">(</span><em class="sig-param">time</em>, <em class="sig-param">bezier_spline</em><span class="optional">[</span>, <em class="sig-param">view=View()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.add_bezier_contour" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="BezierContour.html"><span class="doc">BezierContour</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">add_bezier_contour</code><span class="sig-paren">(</span><em class="sig-param">time</em>, <em class="sig-param">points</em><span class="optional">[</span>, <em class="sig-param">view=View()</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="BezierContour.html"><span class="doc">BezierContour</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>points</strong> (<em>list of BezierControlPointData</em>) – Bezier control points which will be inserted into new contour, keeping the same order.</p></li>
+<li><p><strong>view</strong> (<a class="reference internal" href="View.html"><span class="doc">View</span></a>) – View.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates new bezier contour with given bezier control points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.add_contour">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">add_contour</code><span class="sig-paren">(</span><em class="sig-param">time</em>, <em class="sig-param">contour</em><span class="optional">[</span>, <em class="sig-param">view=View(0)</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.add_contour" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+<p>Copies the given contour into the layer, including all keyframes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.add_xspline_contour">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">add_xspline_contour</code><span class="sig-paren">(</span><em class="sig-param">time</em>, <em class="sig-param">x_spline</em><span class="optional">[</span>, <em class="sig-param">view=View()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.add_xspline_contour" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="XSplineContour.html"><span class="doc">XSplineContour</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">add_xspline_contour</code><span class="sig-paren">(</span><em class="sig-param">time</em>, <em class="sig-param">points</em><span class="optional">[</span>, <em class="sig-param">view=View()</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="XSplineContour.html"><span class="doc">XSplineContour</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>points</strong> (<em>list of XControlPointData</em>) – X spline control points which will be inserted into new contour, keeping the same order.</p></li>
+<li><p><strong>view</strong> (<a class="reference internal" href="View.html"><span class="doc">View</span></a>) – View.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates new x spline contour with given x spline control points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.get_contours">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">get_contours</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.get_contours" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref any docutils literal notranslate"><span class="pre">PySequence</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.get_parent_group">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">get_parent_group</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.get_parent_group" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="LayerGroup.html"><span class="doc">LayerGroup</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.get_surface_position">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">get_surface_position</code><span class="sig-paren">(</span><em class="sig-param">point_index</em>, <em class="sig-param">time</em><span class="optional">[</span>, <em class="sig-param">view=View( 0 )</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.get_surface_position" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of float</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>point_index</strong> (<em>uint</em>) – Point index of a surface corner.</p></li>
+<li><p><strong>time</strong> (<em>float</em>) – Time.</p></li>
+<li><p><strong>view</strong> (<a class="reference internal" href="View.html"><span class="doc">View</span></a>) – View.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>2-value list of floats (x, y).</p>
+</dd>
+</dl>
+<p>Returns the coordinates of the surface corner with <code class="docutils literal notranslate"><span class="pre">point_index</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.get_transform_matrix">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">get_transform_matrix</code><span class="sig-paren">(</span><em class="sig-param">time</em><span class="optional">[</span>, <em class="sig-param">view=View()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.get_transform_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref any docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em>) – Keyframe time.</p></li>
+<li><p><strong>view</strong> (<a class="reference internal" href="View.html"><span class="doc">View</span></a>) – Clip view.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p>tuple of tuples of float values</p>
+</dd>
+</dl>
+<p>Returns underlying transformation matrix as tuple for given clip view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.in_point">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">in_point</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">view=View( 0 )</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.in_point" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>uint</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>view</strong> (<a class="reference internal" href="View.html"><span class="doc">View</span></a>) – View.</p>
+</dd>
+</dl>
+<p>Returns in-point value for given view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.initLayerIfNecessary">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">initLayerIfNecessary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.initLayerIfNecessary" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.__ne__">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">layer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.__eq__">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">layer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.out_point">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">out_point</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">view=View( 0 )</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.out_point" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>uint</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>view</strong> (<a class="reference internal" href="View.html"><span class="doc">View</span></a>) – View.</p>
+</dd>
+</dl>
+<p>Returns out-point value for given view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.parameter">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name_components</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.parameter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Parameter.html"><span class="doc">Parameter</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>name_components</strong> (<em>list of strings</em>) – Relative name for a requested parameter.</p>
+</dd>
+</dl>
+<p>Returns <a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> instance bound with given name path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.parameter_set">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">parameter_set</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">name_components=list()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.parameter_set" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ParameterSet.html"><span class="doc">ParameterSet</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>name_components</strong> (<em>list of strings</em>) – Relative name for a requested parameter set.</p>
+</dd>
+</dl>
+<p>Returns <a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> instance bound with given name path.
+Pass an empty list <code class="docutils literal notranslate"><span class="pre">[]</span></code> to get access to the Layer parameters set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.remove">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes current layer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.set_parent">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">set_parent</code><span class="sig-paren">(</span><em class="sig-param">group</em><span class="optional">[</span>, <em class="sig-param">index=0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.set_parent" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group</strong> (<a class="reference internal" href="LayerGroup.html"><span class="doc">LayerGroup</span></a>) – New parent group.</p></li>
+<li><p><strong>index</strong> (<em>uint</em>) – Insertion index.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Moves the layer object to the certain group. Pass <code class="docutils literal notranslate"><span class="pre">None</span></code> to move it to the top level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.set_parent_group">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">set_parent_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg__1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.set_parent_group" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Layer.tracking_input_clip">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">tracking_input_clip</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">use_linked_layer=false</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Layer.tracking_input_clip" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>use_linked_layer</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> then will use the layer that this layer is linked to (See “Link to Track” in the User Guide).</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Clip</span></code> instance.</p>
+</dd>
+</dl>
+<p>Returns <a class="reference internal" href="Clip.html#mocha.project.Clip" title="mocha.project.Clip"><code class="xref py py-class docutils literal notranslate"><span class="pre">Clip</span></code></a> instance of the tracking input clip of the layer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.name">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">name</code><a class="headerlink" href="#mocha.project.Layer.name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to layer name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.contours">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">contours</code><a class="headerlink" href="#mocha.project.Layer.contours" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>mixed list of <code class="xref py py-class docutils literal notranslate"><span class="pre">XSplineContour</span></code> and <a class="reference internal" href="BezierContour.html#mocha.project.BezierContour" title="mocha.project.BezierContour"><code class="xref py py-class docutils literal notranslate"><span class="pre">BezierContour</span></code></a> instances</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to list of this layer contours.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.parent">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">parent</code><a class="headerlink" href="#mocha.project.Layer.parent" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="LayerGroup.html#mocha.project.LayerGroup" title="mocha.project.LayerGroup">LayerGroup</a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to parent layer group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.visibility">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">visibility</code><a class="headerlink" href="#mocha.project.Layer.visibility" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to layer visibility.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.matte_color">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">matte_color</code><a class="headerlink" href="#mocha.project.Layer.matte_color" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>3-items tuple of float values in range [0.0…1.0]</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to layer matte color.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.stroke_color">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">stroke_color</code><a class="headerlink" href="#mocha.project.Layer.stroke_color" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>3-items tuple of float values in range [0.0…1.0]</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to layer stroke color.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.locked">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">locked</code><a class="headerlink" href="#mocha.project.Layer.locked" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to layer locked state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.link_to_track">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">link_to_track</code><a class="headerlink" href="#mocha.project.Layer.link_to_track" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#mocha.project.Layer" title="mocha.project.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a> or NoneType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to Link-to-track property of the layer.</p>
+</dd>
+</dl>
+<p>Mimics “Link to track” combo box functionality which is on the Layer Properties panel.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.z_order">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">z_order</code><a class="headerlink" href="#mocha.project.Layer.z_order" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to Z order value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.selected">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">selected</code><a class="headerlink" href="#mocha.project.Layer.selected" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to selected state of the layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Layer.psets">
+<code class="sig-prename descclassname">Layer.</code><code class="sig-name descname">psets</code><a class="headerlink" href="#mocha.project.Layer.psets" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet">ParameterSet</a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to the parameter set.</p>
+</dd>
+</dl>
+<p>Mimics parameter_set() call.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.10. Layer</a><ul>
+<li><a class="reference internal" href="#synopsis">2.10.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.10.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.10.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.10.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Keyframes.html"
+                        title="previous chapter"><span class="section-number">2.9. </span>Keyframes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="LayerGroup.html"
+                        title="next chapter"><span class="section-number">2.11. </span>LayerGroup</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="LayerGroup.html" title="2.11. LayerGroup"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Keyframes.html" title="2.9. Keyframes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2021, Boris FX, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

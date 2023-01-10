@@ -1,0 +1,222 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: ZComp",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/ZComp.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="ZComp">
+     <h2>
+      S_ZComp
+     </h2>
+    </a>
+    Layers a source input over or under a second source input based on the
+  difference of two depth images.  The DepthA input should be a 'z' depth
+  image corresponding to the objects in the first input, and DepthB should be
+  a 'z' depth image corresponding to the objects in the second input.
+    <p>
+     In the Sapphire Composite category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       SourceA:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The first input image.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       SourceB:
+      </b>
+      <i>
+       Selectable.
+      </i>
+      The second input image.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       DepthA:
+      </b>
+      <i>
+       Selectable.
+      </i>
+      The depth image corresponding to the objects in SourceA
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       DepthB:
+      </b>
+      <i>
+       Selectable.
+      </i>
+      The depth image corresponding to the objects in SourceB
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/ZComp.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Anti Alias:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of depth difference over which to
+  interpolate the source inputs instead of taking just the closer one.
+  Specified as a fraction of the entire depth range: 0 does no
+  antialiasing, 1 interpolates over the entire depth range.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Z:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Normally larger depth values (white) are treated as
+  farther away and smaller values (black) are treated as near.  When
+  this is enabled, these depth values are reversed.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../zfoglinear">
+       ZFogLinear
+      </a>
+      <br/>
+      <a href="../zfogexponential">
+       ZFogExponential
+      </a>
+      <br/>
+      <a href="../zblur">
+       ZBlur
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

@@ -1,0 +1,111 @@
+
+== Using the Mocha HitFilm Plugin [[mocha_plugin]]
+
+The *Mocha HitFilm* plugin can be applied as an effect directly onto layers in HitFilm.
+
+This reduces the need to swap out of your application and streamlines getting data in and out of Mocha.
+
+The biggest advantage is you can set up layers and module settings in Mocha as normal, and then have the results render directly to the host timeline without having to export.
+
+=== Applying the Mocha HitFilm or Mocha Pro Plugin inside HitFilm
+
+Mocha HitFilm includes the following features:
+
+* Tracking and roto export for HitFilm
+* Matte rendering
+* 3D Camera solving: See the <<camera_solve, Camera Solve>> section for more details on using Mocha tracking data with the Camera Solver
+
+
+NOTE: You can also use the Mocha Pro OFX plugins in the HitFilm interface, which have a much wider range of features. +
+See the https://www.borisfx.com website for more details
+
+==== Adding the Mocha Plugin to a layer
+
+To add Mocha, simply locate it in the Effects panel like any other effect and drag it onto your layer.
+
+_Mocha HitFilm Effect Controls in a HitFilm comp:_
+
+image:UserGuide/en_US/images/5.1.1_mocha_hitfilm_plugin_full_interface.jpg[width="60%"]
+
+==== Basic workflow for the Mocha Plugin in HitFilm
+
+Once your layer is hooked up to your Mocha Effect, the general workflow for the Mocha Plugin is as follows:
+
+. Launch the Mocha UI using the 'Launch Mocha UI' button at the top of the panel. This will load a full version of the Mocha interface that you can use just like the standalone version.
+. Use Mocha as required
+. Export any data if needed (tracks, shapes or camera solve data) then close and save
+. Choose any mattes you want to use from Mocha back in the plugin interface
+. If you are using Mocha Pro, choose the renders you wish to use from the "Module Renders" section and check "Render"
+
+NOTE: The Mocha HitFilm Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+==== Using the Mocha GUI
+
+Once you have applied the Mocha effect, you can click on the 'Launch Mocha UI' button to launch the main interface.
+
+image:UserGuide/en_US/images/5.1.1_mocha_hitfilm_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of Mocha, with a few exceptions.
+
+First, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+
+Secondly, you don't need to save out a project file (unless you want to export it). You just close and save the Mocha view when done and the project is saved inside the effect.
+
+For further details on how to use anything inside the Mocha GUI, see the rest of the User Guide!
+
+==== Controlling Mattes
+
+Once you have tracked layers in Mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image:UserGuide/en_US/images/5.1.1_mocha_hitfilm_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the Mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the source node.
+* *Visible Layers Button:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes. You can also edit the Layer names in this window.
+* *Visible layers Dropdown:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside Mocha.
+* *Invert Matte:* Inverts the currently visible mattes.
+
+=== Exporting Shapes from Mocha to HitFilm
+
+You can also export Mocha shape data directly to a HitFilm Composite Shot file.
+
+Exporting shapes to HitFilm is very similar to exporting HitFilm Camera solves:
+
+. Select a shape and go to "Export Shape Data..."
+. Choose *HitFilm [Transform & Shape]*
+. Choose if you want to export the selected layer, all visible layers or all layers
+. Click Save and choose a file name
+
+image:UserGuide/en_US/images/4.1.0_Export_HitFilm_Shape_Data.jpg[]
+
+Importing is done via the Compositing section:
+
+. In HitFilm go to your Composite section
+. Choose Import > Composite Shot
+. Select the saved HFCS file from Mocha
+. HitFilm will then load the Composite Shot with the footage you tracked in Mocha and layers with shape masks.
+
+=== Exporting Tracks from Mocha to HitFilm
+
+You can export HitFilm transform and corner pin data directly to a HitFilm Composite Shot file.
+
+Exporting tracks to HitFilm is very similar to exporting HitFilm Camera solves or Shapes:
+
+. Select a layer and go to "Export Tracking Data..."
+. Choose *HitFilm Corner Pin [supports motion blur]* or *HitFilm Transform Data [postion, scale and rotation]*
+. Click Save and choose a file name
+
+image:UserGuide/en_US/images/4.1.0_Export_HitFilm_Track_Data.jpg[]
+
+Importing is done via the Compositing section in HitFilm 4:
+
+. In HitFilm go to your Composite section
+. Choose Import > Composite Shot
+. Select the saved HFCS file from Mocha
+. HitFilm will then load the Composite Shot with the footage you tracked in Mocha and layers with either a Quad Warp (for corner pin) or the layer with transform animation applied (for Transform).
+. You can then either relink the media in the composite file to the desired insert, or copy the Effect or Keyframes to the desired media in your existing composite.
+
+=== 3D Camera Solving for HitFilm
+
+See the <<camera_solve, Camera Solve>> section for more details on using Mocha tracking data to calculate a 3D Camera for HitFilm.

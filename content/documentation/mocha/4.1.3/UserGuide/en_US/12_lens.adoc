@@ -1,0 +1,387 @@
+
+== The Lens Module
+
+
+=== Overview
+
+NOTE: Some features in the Lens Module are not available in *mocha Plus, mocha HitFilm or mocha AE* and only relate to *mocha Pro* (such as rendering).  For a full comparison of features, please refer to the comparison chart online.
+
+The mocha lens module helps locate and undistort lens distortion.
+
+To compute lens distortion you need an image with one or more distorted straight lines or a distortion map (*mocha Pro* only). 
+
+For line calibration you can either use your source material if it has suitable lines or take an image of a calibration grid. Using either 1-Parameter or 2-Parameter radial distortion models will allow you to straighten up the image.  There is also an Anamorphic model that will accurately model the distortion in anamorphic and extreme wide-angle lenses.
+
+If you have a Distortion Map, you can also remove or work with distortion by importing your maps instead of calibrating.
+
+Distortion of the images can also influence the performance of other modules in mocha Pro, because the tracker tools assume that the camera obeys a simple pinhole camera model. Severe distortion effects are most likely when a fish-eye or other short focal length lens is used.
+
+Typical lens distortion makes a square object appear either barrel shaped or pin cushion shaped in the image.
+
+The most obvious way to tell whether your images are distorted is to look at the straight edges of objects in the scene. If lines that should be straight are actually curved in the image, this is indicative of distortion. If there are no long straight edges in the scene (for instance a natural scene) then it is much more difficult to discern distortion, even when it is significant.
+
+With the mocha lens module you can compute, apply and remove distortion automatically. There are two parts to this process – firstly compute the distortion and secondly correct the distortion.
+
+To compute distortion automatically you will need to have some straight lines in your image(s).
+
+It is useful to toggle the grid on and off during the different stages of calibrating the lens to see a visual representation of what is actually happening. Just select the Grid button in the View Controls bar to switch the grid on and off.
+
+
+=== Lens Workflow with Line Detection Calibration
+
+
+Lens calibration is dependent on working with the parameters, which are described in detail below.  The basic workflow for lens calibration is as follows:
+
+. Set your input clip and your calibration clip.  These can be the same if there are obvious distorted lines in your input clip, but you can also opt to use a Grid Image (see Using Grid Images)
+. Use the Locate Lines button to find the straight lines in your calibration clip. Adjust the Min Line Length if needed.
+. Click the new line button (Or press N on your keyboard) and click on line segments to define what should be straight lines.  Every time you need to define a new line, make sure you click on the button again or press N.
+. Once you have defined enough lines, click on the Calibration dropdown and select a camera model (Usually 1-Parameter or 2-Parameter).
+. If you are calibrating with a grid, choose Equidistant Lines
+. Click the Calibrate button.
+. To check the distortion, turn on your grid
+
+You can now choose to render out the distortion, or use the current calibration to assist your tracking and insertion workflow.
+
+
+For further detail on the calibration tools, see Lens Parameters below.
+
+
+=== Lens Parameters
+
+	
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lenstabfull.jpg[]			
+
+
+*Input tab*
+ 
+Here you have two options:
+
+* The Calibration Clip is the clip used for finding and selecting lines to calibrate with – just select the clip from the pulldown menu if you have imported it or import it by selecting the Import button and using the file browser to locate the file.
+* The Input Clip is the input for the distort/undistort process – just select the clip you want to distort or undistort from the pulldown menu.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_input.jpg[]			
+
+
+*Output tab*
+ 
+This is a way to re-name a distortion setting if you want to have more than one distortion applied. You can choose to leave the input clip intact and create a new clip containing the output from the Lens module, and then rename the rendered distorted or undistorted file and carry on working. Just select the clip from the pulldown menu and select the New... button to name the new clip. The new clip will be the same as the current output if you choose to select that it inherits the attributes of that output clip.
+
+
+*Distortion Map tab*
+ 
+Here you have two options:
+
+* The Undistort (Inverse) is the distortion map clip used to set Undistortion for the input clip
+* The Distort (Direct) is the distortion map clip used to set distortion for the input clip
+		
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_distortion_map.jpg[]			
+
+
+*Calibration Lines*
+ 
+Line calibration is the most important part of the process for 1-parameter, 2 parameter and Anamorphic calibration: These buttons work to locate and then define the straight lines in your shot. See below.
+		
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/calibration.jpg[]			
+
+
+*Locate Lines*
+ 
+Select the Locate Lines button once for the image you want to use for calibration.
+
+The output of the Locate Lines process is an overlay showing all the line segments that were detected in the image. Typically longer lines will be divided into two or more line segments.  See &ldquo;Min Line Length&rdquo; below.
+		
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_locatelinesscreen.jpg[]			
+		
+
+*New Line*
+ 
+Using the New Line button you can start selecting line segments to define the straight lines in your scene.
+
+* To select which lines you want to use for calibrating the distortion, select the New Line button each time you want to select an entirely new line.
+* Select one or more line segments lying on the same line in the scene by placing the cursor over each segment and selecting them.
+* As you hover over the lines the currently closest line will be highlighted in red to indicate which line will be selected.
+* As you add more segments, the completed line is rendered so that you can check for mistakes. Each line you select will be colored differently to clarify the groupings of the line segments.
+* Try to choose lines that exhibit the most distortion, typically those reaching towards the edge of the image, and not pointing towards the center .
+* Try also to achieve good coverage of the whole image, because otherwise the distortion may only be computed correctly in the part of the image where the lines are chosen. If you select a line segment incorrectly, click on it again to deselect it.
+
+It is important to remember to select New Line each time you want to select the segments of a new line in the scene.
+
+
+*Min Line Length*
+ 
+Increase the Min Line Length parameter to show only longer lines and simplify the display, or if you only short line details, try a smaller line value.
+
+
+*Calibrate Parameters*
+ 		
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/calibratedropdown.jpg[]			
+
+Having chosen your lines (see above), you need to select a camera model:
+
+* If only a small amount of distortion is present in the images, choose the *1-Parameter* radial distortion model. Then press the Calibrate button. This will find the optimal value for the radial distortion parameter to straighten the selected lines.
+* You can use the 2-Parameter radial distortion model if the 1-Parameter model doesn&rsquo;t capture all the distortion in the image.  This distortion model is often used when there is a wave or irregularity in the lens.
+* Anamorphic can be used for any lens with Anamorphic or different vertical and horizontal distortion.
+* Distortion Map is only used with Distortion Maps and is not related to line-selection based calibration (see below)
+
+The Grid display option will show a reference grid with the computed distortion added.
+
+Here is an example grid of a 1-Parameter distortion model:
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/Simplegrid_1_param.jpg[]			
+
+Here is an example grid of a 2-Parameter distortion model:
+		
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/Simplegrid_2_param.jpg[]			
+		
+Here is an example grid of an anamorphic distortion model:
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/Simplegrid_anamorphic.jpg[]			
+		
+
+*Calibrate button*
+ 
+Once you have selected your lines and set either the 1-Parameter, 2-Parameter or Anamorphic models, you can click this button to start computing the calibration. This will invoke the mocha Pro camera calibration algorithm which will apply the new calibration parameters to any image you are working on in the current project.
+
+The No Distortion parameter does not compute any distortion and the 1- Parameter Inv model is only for use with RealViz Rz3 files.
+
+If you have a grid image, select the Equidistant Lines box and then select lines appropriately for a grid as explained above.
+
+Note: You only need to render the image and remove the computed distortion if you want to save the output – mocha Pro will use the calibration data generated without having to use an undistorted clip. To render the clip use the Distort/Undistort controls.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_calibratedscreen.jpg[]			
+
+*Lens*
+ 
+The image center  is naturally set at the center  of the image by default. Again the coordinates can be entered manually if you want to eye match the center  position of the lens by dragging the Center  %X or Center  %Y sliders or highlighting the current value and typing in a new value. Alternatively, switch on the Calibrate option so that it will be adjusted automatically when you invoke the camera calibration algorithm.
+	
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lensdistortion.jpg[]			
+		
+
+*Distortion*
+ 
+The distortion values for the current camera model can be entered manually if you want to match the lens distortion by eye, or they can be computed automatically using the Calibrate button – which is considerably quicker and easier. To adjust manually simply drag the sliders to increase or decrease the values in the K1/Cxx, K2/Cyx, Cxy &amp; Cyy fields or highlight the current value and type in a new value.
+
+
+*Function*
+ 
+Select whether when you render an image you want to remove or add distortion here by selecting the Undistort radio button to remove distortion or the Distort radio button to add distortion.
+
+
+*Distort/Undistort*
+ 
+These buttons are for rendering the clip with the distortion or undistortion values selected.
+
+Selecting the right arrow renders the clip forward from the current point in time. Selecting the left arrow renders the clip backwards from the current point in time.
+
+Selecting the central button with a square stops mocha Pro from rendering, which can also be done by selecting the escape or space keys on the keyboard instead.
+
+Selecting the down arrow just renders the single frame at the current point in time. This is useful for testing a single frame before deciding to render an entire sequence.
+
+Selecting the lock button enables re-rendering for this module. If the button is locked mocha Pro will render the frame each time a parameter is changed.
+
+
+
+*Export Lens Data*
+ 
+You can export the lens parameters to a variety of formats.  See "Exporting Lens Data" below for more information:
+
+* *mocha Lens for After Effects:* This format is used exclusively with the mocha Lens plugin for After Effects, which you can download separately from the Imagineer Systems Website.
+* *Distortion Map (mocha Pro only):* A renderable Distortion map to use in supported applications, such as Nuke.
+* *Imagineer Lens Data (mocha Pro only):* You can export the lens parameters in a simple XML file format by selecting the Export Lens Data.. button. The parameters are written in a resolution-independent way. The focal distance and image center  x/y are represented as multiples of the image width and height. The distortion parameters are written directly. They are defined in the later section called &ldquo;For the technically minded&rdquo;.
+
+
+
+=== Using Grid Images
+
+A common way to generate accurate distortion models is to take an image of a calibration grid, which not only provides long straight lines that exhibit the distortion clearly, but also restricts the lines to a rectilinear grid. The latter constraint can be used to improve on the simple &ldquo;straightening lines&rdquo; technique.
+
+If you are using a grid image, select the *Equidistant Lines*
+ button. This will enforce a regular grid structure on the selected lines, by forcing the distance between adjacent horizontal and vertical lines to be a constant fixed value.
+
+To use this feature, select lines a fixed distance apart on the grid. You can use a different separation horizontally and vertically. You don&rsquo;t have to select the lines in the right order - mocha Pro will re-order the lines according to their horizontal and vertical position on the image.
+
+You also don&rsquo;t have to select all the grid lines.  All that matters is that the distances on the grid between adjacent sampled horizontal lines are the same, with the same rule applying vertically as well.
+
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/LENS_equidistantlines.jpg[]			
+			
+*Grid image with sampled equidistant horizontal and vertical lines. Image courtesy of Jean-Yves Guillernaut, University of Surrey*
+ 
+Note that when you fit a grid, the Grid display option attaches the rendered grid lines to the image grid, so that you can easily see the result.
+
+
+
+=== Anamorphic Camera Model
+
+In cases where even the radial distortion models are not sufficient, or you have an anamorphic shot for which a radial distortion model is not suitable, select the Anamorphic camera model.  This allows for different horizontal and vertical distortion. This is the model used in 3D Equalizer V3, although without the inversion of the model used in that product, and we use the &ldquo;raw&rdquo; curvature parameters cxx , cxy , cyx , cyy .
+
+You will probably need a grid image to compute the parameters of this model accurately.
+
+
+=== Calibrating the Image Center 
+
+The image center  is by default set to the center  of the frame, i.e. 50% of the frame dimensions in both directions. If the center  of distortion is or may be offset from the center  of the frame, these values need to be modified.
+
+You can either select the correct image center  manually by eye or switch on calibration for the image center , which will then calibrate for the image center  along with the distortion parameters. A yellow cross indicates the image center  position.
+
+
+=== Manual calibration
+
+If you don&rsquo;t get good results from the mocha Pro calibration procedure, or you have known distortion parameters that you wish to use in mocha Pro, you can select the distortion parameters manually.
+
+By manipulating the distortion parameters and observing the effect on the image, choose the parameters that straighten up the curved lines as accurately as possible. This should at least deal with the worst effects of the distortion.
+
+Mocha Pro also has the capability to import camera parameters computed by Realviz&rsquo;s MatchMove 3D camera tracking software.
+
+
+=== Lens Workflow with Distortion Maps (mocha Pro only)
+
+
+
+If you are working with Distortion Maps (sometimes called UV maps or ST Maps), a lot less calibration is required. You can simply bring in your map and it will automatically set the lens.
+
+NOTE: Distortion maps need to be 32-bit floating-point component RGBA in order to be read correctly by mocha.
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_distortion_map_example.jpg[]			
+			
+*An example of a Distortion Map*
+ 
+. Go to the "Distortion Map" tab on the left side of the Lens Module
++				
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_distortion_map.jpg[]					
++		
+. Use the "Undistort (Inverse)" and "Distort (Direct)" drop downs to import your maps files
+. Click on the Calibration dropdown and select "Distortion Map"
++				
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_distortion_map_calibration.jpg[]					
++		
+. To check the distortion, turn on your grid
+
+You can now choose to render out the distortion, or use the current calibration to assist your tracking and insertion workflow, as you would a line calibration.
+
+Keep in mind the hard boundaries of the Distortion map being imported may affect the tracking of your shot. 
+
+NOTE: You cannot export Lens Data with a Distortion Map calibration.  You will only be able to perform track and render operations.
+
+
+=== Exporting Lens Data
+
+The Lens Module provides different exports for getting your lens data out to other applications.
+
+
+==== mocha Lens for After Effects
+
+This format provides a way to get the Lens data into After Effects via the *mocha Lens for After Effects* plugin which you can download and install separately.
+
+Exporting data to After Effects is done via the clipboard, similar to the tracking and shape data methods.  To bring data into After Effects:
+
+. Click on Export Lens Data in the Lens Module or the File menu
+. Select "mocha Lens for After Effects" in the drop down
++					
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_exportlensdata_ae.jpg[]						
++			
+. Click "Copy to Clipboard"
+. Switch to After Effects
+. Select the layer you wish to add the effect to
+. Press CMD/Ctrl+V to paste the data
+
+A lens effect will then be created in the layer with parameters from mocha.  You can choose to Remove Distortion or Add Distortion from the Effects panel. 
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_pastelensdata_ae.jpg[]			
+	
+			
+==== Distortion Maps (mocha Pro only)
+
+This format will render a map for programs that support color-based displacement or distortion (such as UV or STMaps).  This is also useful if you want to save a calibration so it can be used on another shot, by importing the Distortion Map back into mocha.
+
+By default the Distortion Map will only render 1 frame, unless you have an animated distortion calibrated in mocha.
+
+Distortion Maps may also generate a map larger than your footage dimensions in order to accommodate overscan of the distortion.
+
+. Click on Export Lens Data in the Lens Module or the File menu
+. Select "Distortion Map" in the drop down
++		
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_distortion_map_export_01.jpg[]					
++			
+. Note that:
+	.. The dimensions of the distortion map will be automatically calculated at a larger size to your footage to make sure there is enough overscan for correct distortion.
+	.. The frame range is automatically set to only render 1 frame unless you have an animated distortion.		
+. Choose whether you want to render a map to Undistort or Distort with the radio buttons on the right
+. Choose a destination folder for the image
+. Distortion maps must be 32 bit floats, so TIF or DPX will be the best options
+. Click "Save"
+. Load the Distortion Map into the program of your choice
+
+
+==== Using Tracking Data Exports with Lens
+
+
+===== Using Tracking Data Exports with Undistorted Shots
+
+If you have undistorted a shot and plan to export tracking data to the result, you will need to check "Remove lens distortion" in the tracking data export dialog in order to match the undistorted data.
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_exporttrackingdata_ae.jpg[]					
+
+This will make sure the tracking information is set to fit the same flattened information you are using elsewhere.
+
+
+===== Using Tracking Data Exports with Distorted Shots in After Effects
+
+If you want to keep a shot distorted and plan to export tracking data, you will also need to check "Remove lens distortion" in the tracking data export dialog and then apply the lens distortion to the result in After Effects.
+
+Because of the way After Effects handles render order, you need to do a few extra steps to get a corner pin working correctly:
+
+. Click on *Export Tracking Data...* in the Track Module or the File menu.
+. Select your format and select the "Remove lens distortion" checkbox.
++
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_exporttrackingdata_ae.jpg[]							
++									
+. Click "Copy to Clipboard".
+. Switch to After Effects.
+. Make sure your insert layer is the same size as the source comp. If not:
+.. Precompose the layer and move all attributes into the new composition.
++					
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/precompose_ae.jpg[]										
++					
+.. Open the Precomp and fit the layer to the composition dimensions (Layer | Transform | Fit to Comp). 
++
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/fittocomp_ae.jpg[]										
++															
+.. Paste the tracking data you exported on the clipboard to the insert layer.  You will notice that it will probably not be sitting in the right spot.  This is normal.
++					
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_cornerpinpaste_ae.jpg[]	
++														
+. In order to apply the lens distortion to the insert layer correctly, you now need to Precompose the layer to make it fit the same dimensions as the original source.
++					
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_distortprecomp_ae.jpg[]										
+. You can now go back to mocha and export the mocha Lens for After Effects data.
++
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_exportlensdata_ae.jpg[]							
++				
+. Paste the lens data you exported on the clipboard to the Precomposed insert layer.
+. Choose "Apply Distortion" from the drop down in the effect.
++			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/lens_applydistortionplugin_ae.jpg[]							
+
+
+If you notice your insert is clipping, this may be because the precomposed layer is going past the boundaries of the pre-composition.  You can fix this by opening the precomp and making it larger:
+
+. Open the Lens-Distorted Precomp
+. Open Composition Settings
+. Increase the dimensions of the Composition.  For example with a 1920x1080 shot with large distortion try adjusting the width to 2500.
+. Close Composition Settings and go back to your original composition to check the clipping
+
+
+=== Tips for Lens Calibration
+
+*When working on large files, drop the proxy scale*
+ 
+If you set the proxy scale in View Controls from Full Res to Half Res it should still give enough information to locate good lines, and will be a lot faster.
+
+
+*Make sure your aspect ratio is correct*
+ 
+Note that for the radial distortion models you need to have selected the correct pixel aspect ratio for the images when you started the project. If you have chosen the correct aspect ratio the image will appear in the correct proportions on the screen.
+
+The film back width and height selected when you started the project determine the pixel aspect ratio.  Mocha Pro will normally select the correct film back from the image dimensions, but sometimes it may be necessary to make manual adjustments if the correct match was not found.
+

@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>5.1. AbstractImageIOModule &#8212; mocha 9.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. ui" href="../../ui.html" />
+    <link rel="prev" title="5. mocha.mediaio" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../ui.html" title="6. ui"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="5. mocha.mediaio"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 9.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">5. </span>mocha.mediaio</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="abstractimageiomodule">
+<span id="id1"></span><h1><span class="section-number">5.1. </span>AbstractImageIOModule<a class="headerlink" href="#abstractimageiomodule" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">5.1.1. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>Abstract image IO class that provides overridable methods to determine custom
+image input and output operations. Every overridable method must be implemented.
+The methods should not call each other.</p>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.mediaio.AbstractImageIOModule">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.mediaio.</code><code class="sig-name descname">AbstractImageIOModule</code><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.mediaio.</code><code class="sig-name descname">AbstractImageIOModule</code><span class="sig-paren">(</span><em class="sig-param">format_name</em>, <em class="sig-param">extensions</em>, <em class="sig-param">save_image_formats</em>, <em class="sig-param">save_image_types</em><span class="optional">[</span>, <em class="sig-param">is_clip_loader=false</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format_name</strong> (<em>str</em>) – Short description of custom format, e.g. “Maya Image Format”.</p></li>
+<li><p><strong>extensions</strong> (<em>list of strings</em>) – List of supported extensions, e.g. [‘.iff’].</p></li>
+<li><p><strong>save_image_formats</strong> (<em>list of PixelFormat</em>) – List of supported <code class="xref py py-class docutils literal notranslate"><span class="pre">PixelFormat</span></code> to persist.</p></li>
+<li><p><strong>save_image_types</strong> (<em>list of ChannelType</em>) – List of supported <code class="xref py py-class docutils literal notranslate"><span class="pre">ChannelType</span></code> to persist.</p></li>
+<li><p><strong>is_clip_loader</strong> (<em>bool</em>) – True if the loader returns multiple frames from a single file (such as with .MOV or .AVI).</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates and registers custom image IO module. Create its instance in custom
+Python bootstrapping code to obtain appropriate image format in mocha backend.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.accepts_ext">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">accepts_ext</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">extension</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.accepts_ext" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>ext_no_dot</strong> – File name suffix (extension) of the image file, with no leading dot.</p>
+</dd>
+</dl>
+<p>Implements checking whether given file type is acceptable by the module.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.accepts_file">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">accepts_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.accepts_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>file_name</strong> (<em>str</em>) – Absolute path to an image file.</p>
+</dd>
+</dl>
+<p>Implements checking whether image file is acceptable by the module.
+Being called upon project opening.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.channel_type">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">channel_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.channel_type" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref any docutils literal notranslate"><span class="pre">ChannelType</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>file_name</strong> (<em>str</em>) – Absolute path to an image file.</p>
+</dd>
+</dl>
+<p>Implements channel type getting for given file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_name</strong> – Absolute path to an image file.</p>
+</dd>
+</dl>
+<p>Implements channel type getting for given file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.get_fps">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">get_fps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.get_fps" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>path</strong> (<em>str</em>) – Absolute path to the clip file.</p>
+</dd>
+</dl>
+<p>Implements determining the frame rate of a source clip.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.get_frame_count">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">get_frame_count</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.get_frame_count" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>path</strong> (<em>str</em>) – Absolute path to the clip file.</p>
+</dd>
+</dl>
+<p>Implements determining the number of frames in the given clip.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.get_gamma">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">get_gamma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.get_gamma" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref any docutils literal notranslate"><span class="pre">OptionalFloat</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>file_name</strong> (<em>str</em>) – Absolute path to an image file.</p>
+</dd>
+</dl>
+<p>Implements gamma value getting. Return None if the module does not support this.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.get_interlace_mode">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">get_interlace_mode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.get_interlace_mode" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref any docutils literal notranslate"><span class="pre">InterlaceMode</span> <span class="pre">or</span> <span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>file_name</strong> (<em>str</em>) – Absolute path to an image file.</p>
+</dd>
+</dl>
+<p>Implements interlace mode getting. Return None if the module does not support this.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.get_metadata">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">get_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">frame_number</span></em>, <em class="sig-param"><span class="n">stream_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.get_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary with keys of type QString and values of type QVariant.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Absolute path to the clip file.</p></li>
+<li><p><strong>frame_number</strong> (<em>int</em>) – Frame number to load.</p></li>
+<li><p><strong>stream_name</strong> (<em>str</em>) – Name of the stream to load.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Return a dictionary containing additional metadata for the given
+frame and stream, if there is any. The default implementation is to
+return an empty dictionary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.get_stream_names">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">get_stream_names</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.get_stream_names" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of QString</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>path</strong> (<em>str</em>) – Absolute path to the clip file.</p>
+</dd>
+</dl>
+<p>Return a list of available stream names for this clip. These stream
+names will be passed back as a parameter to load_image to load the
+respective image from a particular stream. If the clip does not
+contain multiple streams, an empty list can be returned as per the
+default implementation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.image_size">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">image_size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.image_size" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref any docutils literal notranslate"><span class="pre">QSize</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>file_name</strong> (<em>str</em>) – Absolute path to an image file.</p>
+</dd>
+</dl>
+<p>Implements image size getting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.load_image">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">load_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">frame_number</span></em>, <em class="sig-param"><span class="n">stream_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.load_image" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<a class="reference internal" href="../project/ImageData.html#imagedata"><span class="std std-ref">ImageData</span></a>) – <p>Empty image instance to fill in.
+:param path: Absolute path to an image file.
+:param frame_number: Number of the frame to load (only relevant for multi-frame clips)
+:param stream_name: Name of the stream name to load (only relevant for multi-stream files like OpenEXR)</p>
+<p>Implements image loading. Set <code class="docutils literal notranslate"><span class="pre">pixels</span></code> property
+for given <code class="docutils literal notranslate"><span class="pre">image</span></code> instance as appropriate python <code class="docutils literal notranslate"><span class="pre">array</span></code> object
+(see docs of built-in python <code class="docutils literal notranslate"><span class="pre">array</span></code> module).</p>
+</p>
+</dd>
+</dl>
+<p><strong>Important</strong>: loaded images should be vertically flipped.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.pixel_format">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">pixel_format</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.pixel_format" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref any docutils literal notranslate"><span class="pre">PixelFormat</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>file_name</strong> (<em>str</em>) – Absolute path to an image file.</p>
+</dd>
+</dl>
+<p>Implements checking whether given file extension is acceptable by the module.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.save_image">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">save_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.save_image" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="../project/ImageData.html#imagedata"><span class="std std-ref">ImageData</span></a>) – Complete image instance.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Absolute path to an image file to save.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Implements image saving.</p>
+<p><strong>Important</strong>: mocha presents vertically flipped images only.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.mediaio.AbstractImageIOModule.supports_image">
+<code class="sig-prename descclassname">AbstractImageIOModule.</code><code class="sig-name descname">supports_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em>, <em class="sig-param"><span class="n">format</span></em>, <em class="sig-param"><span class="n">pixels_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.mediaio.AbstractImageIOModule.supports_image" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>file_name</strong> (<em>str</em>) – Absolute path to an image file.</p></li>
+<li><p><strong>format</strong> (<code class="xref any docutils literal notranslate"><span class="pre">PixelFormat</span></code>) – Image format.</p></li>
+<li><p><strong>pixels_type</strong> (<code class="xref any docutils literal notranslate"><span class="pre">ChannelType</span></code>) – Pixels type.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Implements checking whether the module supports image persisting with given
+path, image format and pixels type.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5.1. AbstractImageIOModule</a><ul>
+<li><a class="reference internal" href="#detailed-description">5.1.1. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter"><span class="section-number">5. </span>mocha.mediaio</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../ui.html"
+                        title="next chapter"><span class="section-number">6. </span>ui</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../ui.html" title="6. ui"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="5. mocha.mediaio"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 9.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">5. </span>mocha.mediaio</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2021, Boris FX, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

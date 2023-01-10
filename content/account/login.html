@@ -1,0 +1,616 @@
+{
+"title": "",
+"require_recaptcha_v3": "True"
+}
+
+<!--
+<script>
+    grecaptcha.ready(() => {
+      grecaptcha.render('html_element', {
+         'sitekey' : '6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_'
+      });
+    });
+</script>
+  -->
+
+
+<style>
+    .container>.row {
+        margin-top: 0;
+    }
+
+    label {
+        font-size: 14.5px;
+    }
+
+    .form-control-lg {
+        font-size: 1.75rem;
+        padding: .2rem .5rem;
+    }
+
+    .g-recaptcha>div {
+        margin: 0 auto;
+    }
+
+    @media (min-width: 576px) {
+        .modal-dialog {
+            max-width: 600px;
+        }
+    }
+
+    .branded-box {
+        padding: 0 0 .5rem 0 !important;
+    }
+
+    #login-form-partition {
+        border-right: .1px solid rgba(0, 0, 0, .2)
+    }
+
+    @media screen and (max-width: 992px) {
+        #login-form-partition {
+            border-bottom: 2px solid rgba(0, 0, 0, .2);
+            margin: 1rem 0;
+        }
+
+        #sign-up-partition {
+            margin-top: 1rem;
+        }
+    }
+</style>
+<div id="app">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-11 px-0">
+            <div class="row justify-content-center branded-box">
+                <div v-if="intro" class="col-12" style="background-color:#26A9E0; color: white;">
+                    <p class="my-2 text-center">${intro}</p>
+                </div>
+                <div class="col-lg-5 px-lg-5 pt-lg-3" id="login-form-partition">
+                    <h2 class="mb-3">Log In</h2>
+                    <span style="color:red;" v-if="login.error">${login.error}</span>
+                    <form id="login-form" ref="login" @submit.prevent="handleLogin">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input name="email" class="form-control form-control-sm" type="email"
+                                v-model="login.email" />
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input name="password" class="form-control form-control-sm" type="password"
+                                v-model="login.password" />
+                        </div>
+                        <button :disabled="submitting" ref="login-button" type="submit" class="btn my-2">Log In</button>
+                        <button class="btn my-2" @click="cancelLogin">Cancel</button>
+                    </form>
+                </div>
+                <div class="col-lg-7 px-lg-5 pt-lg-3" id="signup-partition">
+                    <h2 class="mb-3">Sign Up</h2>
+                    <span style="color:red;" v-if="signup.error">${signup.error}</span>
+                    <form class="" id="signup-form" ref="signup" @submit.prevent="handleSignup">
+                        <!-- Account Type: Business or Personal -->
+                        <div class="row">
+                            <div class="col form-group m-0">
+                                <label>Account Type:</label><br />
+                                <label class="radio-inline">
+                                    <input name="accountType" class="mr-2" type="radio" v-model="signup.accountType"
+                                        value="personal" name="optradio" checked>Personal Account
+                                </label>
+                                <label class="radio-inline ml-lg-1">
+                                    <input name="accountType" class="mr-2" type="radio" v-model="signup.accountType"
+                                        value="business" name="optradio">Company Account
+                                </label>
+                            </div>
+                        </div>
+                        <div class='form-group' v-if="signup.accountType == 'business'">
+                            <label>Company</label>
+                            <input name="company" class="form-control form-control-sm" v-model="signup.company" />
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>First Name</label>
+                                <input name="firstName" class="form-control form-control-sm" v-model="signup.firstName"
+                                    required />
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Last Name</label>
+                                <input name="lastName" class="form-control form-control-sm" v-model="signup.lastName"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>Email</label>
+                                <input name="email" class="form-control form-control-sm" v-model="signup.email"
+                                    required />
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Phone Number</label>
+                                <input name="phone" class="form-control form-control-sm" v-model="signup.phone"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class='form-group col-lg-8'>
+                                <label>Password</label>
+                                <input name="password" size=14 maxlength="128" class="form-control form-control-sm"
+                                    type="password" v-model="signup.password" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class='form-group col-lg-8'>
+                                <label>Confirm Password</label>
+                                <input name="password-confirm" size="14" maxlength="128"
+                                    class="form-control form-control-sm" type="password"
+                                    v-model="signup.passwordConfirm" required />
+                            </div>
+                        </div>
+
+                        <!-- Country and State -->
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>Country</label>
+                                <select name="country" class="form-control form-control-sm" id="billing-country"
+                                    v-model="signup.country"
+                                    @change="renderStates($event, $event.target.selectedIndex);" required>
+                                    <option value="">-- Select Country --</option>
+                                    <option v-for="c in countries" :value="c.code">${ c.name }</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6" v-if="states">
+                                <label>State</Label>
+                                <select name="state" class="form-control form-control-sm" id="billing-state"
+                                    v-model="signup.state" required>
+                                    <option value="">-- Select State --</option>
+                                    <option v-for="s in states" :value="s.code">${ s.name }</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group form-inline my-0">
+                                <label>Join our email newsletter and keep up to date</label>
+                                <input id="newsletter" name="newsletter" class="form-control ml-2 " type="checkbox"
+                                    v-model="signup.newsletter" />
+                            </div>
+                            <p id="newsletter-consent" style="font-size: .8rem;" class="my-1"
+                                v-show="signup.newsletter">You can unsubscribe from the Boris FX newsletter at any time
+                                by
+                                clicking a link we include in every message. We use a third-party service, Pardot, to
+                                deliver our newsletters,
+                                please see our <a href="{{< relref " privacy#e-newsletter">}}" target="_blank">privacy
+                                    policy</a> for more
+                                information.</p>
+                        </div>
+                        <button :disabled="submitting" ref="signup-button" type="submit" class="btn">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VERIFY MODAL -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="verify-modal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Verify Your Email Address</h5>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">We have sent a confirmation code to the email address you've provided. Please
+                        check your email
+                        for this code, and enter it in the box below.
+                    </p>
+                    <div class="d-flex justify-content-center">
+                        <template v-for="(d, index) of verifyModal.digits" :key="index">
+                            <input class="form-control-lg mx-1 text-center" :ref="'verify-' + index"
+                                @keyDown="handleDigitInput(index, event)" @paste.prevent="handleCodePaste" maxlength="1"
+                                size="1" v-model="verifyModal.digits[index]" style="border: 2px solid #26A9E0" />
+                        </template>
+                    </div>
+                    <p class="text-center mt-2" style="font-size: .8rem">
+                        <span style="color:red;" v-show="verifyModal.error">${verifyModal.error}<br /></span>
+                        <span v-show="!verifyModal.resent">Didn't receive your confirmation code? <a href="#"
+                                @click="handleCodeResend">Resend Code</a></span>
+                        <span v-show="verifyModal.resent">Code resent! <br />Still having trouble? Contact us at
+                            customerservice@borisfx.com</span>
+                    </p>
+                    <div class="g-recaptcha" v-show="verifyModal.recaptchaRequired"
+                        data-sitekey="6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_"></div>
+                </div>
+                <div class="modal-footer">
+                    <button :disabled="submitting" ref="verify-button" type="button" class="btn btn-primary"
+                        @click="handleVerify">Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{% country-state-json %}}
+<script>
+    var gdprCountries = ['BE', 'BG', 'CZ', 'DK', 'DE', 'EE', 'IE', 'EL', 'GR', 'ES', 'FR', 'HR', 'IT', 'CY',
+        'LV', 'LT', 'LU', 'HU', 'MT', 'NL', 'AT', 'PL', 'PT', 'RO', 'SI', 'SK', 'FI', 'SE'];
+</script>
+<script>
+    var login = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            returnUrl: Cookies.get('redirect_url'),
+            source: '',
+            login: {
+                email: '',
+                password: '',
+                error: ''
+            },
+            signup: {
+                firstName: '',
+                lastName: '',
+                accountType: 'personal',
+                company: '',
+                email: '',
+                phone: '',
+                password: '',
+                passwordConfirm: '',
+                country: '',
+                state: '',
+                newsletter: false,
+                newsletterSet: false,
+                error: ''
+            },
+            verifyModal: {
+                digits: ['', '', '', '', ''],
+                resent: false,
+                error: '',
+                recaptchaRequired: false,
+                getCode: function () { return this.digits.join(''); },
+                show: function () { this.code = ''; this.resent = false; $('#verify-modal').modal('show'); },
+                hide: function () { $('#verify-modal').modal('hide'); }
+            },
+            countries: countryJson,
+            states: null,
+            submitting: false
+        },
+        mounted: function () {
+            var params = new URLSearchParams(window.location.search);
+            this.source = params.get('source');
+            var userString = Cookies.get('bfx-login');
+            var login = userString != null ? JSON.parse(userString) : null;
+            
+            //Detect Zendesk error and prevent further action. 
+            if (params.get('kind') == 'error'){return;}
+            
+            if (login != null && login.email_verified == false) this.verifyModal.show();
+            else if (login != null && this.source == 'zendesk') this.zendeskLogin(login);
+            else if (login != null && params.get('sso') != null) {
+                var self = this;
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', { action: 'loginpage' })
+                    .then(function(token){
+                        passed_token = token;
+                        self.discourseLogin(params.get('sso'), params.get('sig'), login);
+                    })
+                });
+                return;
+            }
+            else if (login != null) this.completeLogin();
+        },
+        methods: {
+            renderStates: function (event, index) {
+                var i = index - 1;
+                var selectedCountry = this.countries[i];
+                this.states = selectedCountry.states;
+                this.signup.state = '';
+
+                if (!this.signup.newsletterSet) {
+                    this.signup.newsletter = !gdprCountries.includes(selectedCountry.code);
+                }
+            },
+            handleLogin: function () {
+                var self = this;
+                self.submitting = true;
+                self.$refs['login-button'].innerText = 'Logging In...';
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', { action: 'loginpage' })
+                        .then(function (token) {
+                            passed_token = token;
+                            axios.post('https://backend.borisfx.com/loginv3', {
+                                email: self.login.email,
+                                password: self.login.password,
+                                'g-recaptcha-response': passed_token,
+                            })
+                                .then(function (res) {
+                                    var loginData = res.data;
+                                    Cookies.set('bfx-login', loginData, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+                                    var sso = getQueryParameter('sso');
+                                    var sig = getQueryParameter('sig');
+                                    if (sso && sig) {
+                                        self.discourseLogin(sso, sig, loginData);
+                                    }
+                                    else if (self.source == 'zendesk') {
+                                        self.zendeskLogin(loginData);
+                                    }
+                                    else {
+                                        self.loginEvent();
+                                        self.submitting = false;
+                                        self.$refs['login-button'].innerText = 'Log In';
+                                        if (loginData.email_verified) self.completeLogin();
+                                        else self.verifyModal.show();
+                                    }
+                                })
+                                .catch(function (error) {
+                                    switch (error.response.status) {
+                                        case 401:
+                                            self.login.error = 'Incorrect Email Address/Password. Please Try Again.';
+                                            break;
+                                        case 430:
+                                            self.login.error = 'Please enter a valid Email Address.';
+                                            break;
+                                        case 431:
+                                            self.login.error = 'Something has gone wrong. Please wait a few minutes and try again.';
+                                        default:
+                                            self.login.error = 'Something has gone wrong. Please try again.'
+                                    }
+                                    self.submitting = false;
+                                    self.$refs['login-button'].innerText = 'Log In';
+                                });
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                        });
+                });
+            },
+            cancelLogin: function () {
+                window.history.back();
+            },
+            loginEvent: function () {
+                try {
+                    _hsq.push(["trackCustomBehavioralEvent", {
+                        name: "pe21305637_website_login",
+                        properties: {
+                            email: this.login.email
+                        }
+                    }]);
+                }
+                catch (err) { }
+            },
+            signupEvent: function () {
+                try {
+                    _hsq.push(["trackCustomBehavioralEvent", {
+                        name: "pe21305637_website_signup",
+                        properties: {
+                            'company_name': this.signup.company,
+                            'email': this.signup.email,
+                            'first_name': this.signup.firstName,
+                            'last_name': this.signup.lastName,
+                            'phone': this.signup.phone,
+                            'country': this.signup.country,
+                            'region': this.signup.state,
+                            'newsletter': this.signup.newsletter
+                        }
+                    }]);
+                }
+                catch (err) { }
+            },
+            handleSignup: function () {
+                var self = this;
+                self.submitting = true;
+                if (self.signup.password != self.signup.passwordConfirm) {
+                    self.signup.error = 'Passwords do not match. Please double check your password and try again.'
+                    self.submitting = false;
+                    return;
+                }
+                if (self.signup.password.length > 128) {
+                    self.signup.error = 'Password contains too many characters. Please enter a shorter password and try again.'
+                    self.submitting = false;
+                    return;
+                }
+                self.$refs['signup-button'].innerText = 'Please Wait...';
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', { action: 'loginpage' })
+                        .then(function (token) {
+                            self.signup['g-recaptcha-response'] = token;
+                            return axios.post('https://backend.borisfx.com/signup', self.signup)
+                        })
+                        .then(function (res) {
+                            self.setSignupCookie(self.signup.email, res.data);
+                            self.signupEvent();
+                            return axios.post('https://backend.borisfx.com/verify2/signup/send', { email: self.signup.email, firstName: self.signup.firstName, returnUrl: self.returnUrl })
+                        })
+                        .then(function (res) {
+                            self.submitting = false;
+                            self.$refs['signup-button'].innerText = 'Sign Up';
+                            self.verifyModal.show();
+                        })
+                        .catch(function (err) {
+                            if (err.response.status == 400) {
+                                switch (err.response.data) {
+                                    case 'existing login':
+                                        self.signup.error = 'An account already exists under this email address. Please log in with your email and password.';
+                                        break;
+                                    case 'invalid password':
+                                        self.signup.error = 'Please ensure your password contains at least one number, one uppercase letter, and one special character.';
+                                        break;
+                                    case 'invalid email':
+                                        self.signup.error = 'Please enter a valid email address.';
+                                        break;
+                                }
+                            }
+                            else {
+                                self.signup.error = 'Something has gone wrong. Please review your information and try again.';
+                            }
+                            self.submitting = false;
+                            self.$refs['signup-button'].innerText = 'Sign Up'
+                        })
+                })
+            },
+            handleVerify: function () {
+                var self = this;
+                self.submitting = true;
+                self.$refs['verify-button'].innerText = 'Please Wait...';
+                var fullCode = self.verifyModal.getCode();
+                var login = JSON.parse(Cookies.get('bfx-login'));
+                var payload = {
+                    email: login.email,
+                    code: fullCode,
+                    recaptchaRequired: self.verifyModal.recaptchaRequired,
+                }
+                if (payload.recaptchaRequired) payload['g-recaptcha-response'] = grecaptcha.getResponse();
+                axios.post('https://backend.borisfx.com/verify2/signup/confirm', payload)
+                    .then(function () {
+                        var loginData = JSON.parse(Cookies.get('bfx-login'));
+                        if (loginData != null) {
+                            loginData.email_verified = true;
+                            Cookies.set('bfx-login', loginData, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+                        }
+                        self.submitting = false;
+                        self.$refs['login-button'].innerText = 'Verify';
+                        if (self.source == 'zendesk'){
+                            self.zendeskLogin(loginData);
+                        }
+                        else{
+                            self.completeLogin();
+                        }
+                    })
+                    .catch(function (err) {
+                        switch (err.response.status) {
+                            case 403:
+                                self.verifyModal.error = 'Code does not match. Please review your code and try again.';
+                                break;
+                            case 410:
+                                self.verifyModal.resent = false;
+                                self.verifyModal.error = 'Code has expired. Please click resend to receive a new code.';
+                                break;
+                            case 429:
+                                self.verifyModal.recaptchaRequired = true;
+                                break;
+                            case 433:
+                                self.verifyModal.error = 'Please complete the Recaptcha before continuing.'
+                                break;
+                            default:
+                                self.verifyModal.error = 'Something has gone wrong. Please try again.';
+                                break;
+                        }
+                        self.submitting = false;
+                        self.$refs['verify-button'].innerText = 'Verify';
+                    })
+            },
+            handleCodeResend: function () {
+                var self = this;
+                var login = JSON.parse(Cookies.get('bfx-login'));
+                axios.post('https://backend.borisfx.com/verify2/signup/send', { email: login.email, firstName: self.signup.firstName })
+                    .then(function (res) {
+                        self.verifyModal.resent = true;
+                    })
+            },
+            handleDigitInput: function (indexStr, event) {
+                var digits = this.verifyModal.digits;
+                var index = parseInt(indexStr);
+                var previousValue = digits[index];
+                var validDigits = '0123456789';
+                var key = event.key;
+                var ctrlHeld = event.ctrlKey || event.metaKey;
+
+                if (ctrlHeld && key == 'v') return;
+
+                //Handle backspace and arrow keys
+                if (key == 'Backspace') {
+                    var i = digits[index] == '' ? index - 1 : index;
+                    this.$set(digits, i, '');
+                    if (index != 0) this.$refs['verify-' + (index - 1)][0].focus();
+                }
+                if (key == 'ArrowLeft' && index > 0) {
+                    var el = this.$refs['verify-' + (index - 1)][0].focus();
+                }
+                else if (key == 'ArrowRight' && index < 7) {
+                    this.$refs['verify-' + (index + 1)][0].focus();
+                }
+
+                //Handle invalid inputs
+                if (index == 4 && digits[4] != '') { event.preventDefault(); return; }
+                if (index != 0 && digits[index - 1] == '') { event.preventDefault(); return; }
+
+                //Handle valid inputs
+                if (validDigits.includes(key)) {
+                    this.$set(digits, index, key);
+                    if (index < 4) this.$refs['verify-' + (index + 1)][0].focus();
+                }
+                event.preventDefault();
+
+            },
+            handleCodePaste: function (event) {
+                var validDigits = '0123456789';
+                var pastedData = event.clipboardData.getData('Text');
+                var scrubbedString = '';
+                for (var char of pastedData) {
+                    if (validDigits.includes(char)) scrubbedString += char;
+                }
+                if (scrubbedString.length != 5) return;
+
+                for (var i = 0; i < scrubbedString.length; i++) {
+                    this.$set(this.verifyModal.digits, i, scrubbedString[i]);
+                }
+            },
+            setSignupCookie: function (email, token) {
+                var loginData = { email: email, token: token, email_verified: false }
+                Cookies.set('bfx-login', loginData, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+            },
+            discourseLogin: function (sso, sig, login) {
+                var payload = {
+                    sso: sso,
+                    sig: sig,
+                    'g-recaptcha-response': passed_token,
+                }
+                axios.get('https://backend.borisfx.com/discourse_loginv3?' + $.param(payload), { auth: { username: login.email, password: login.token } })
+                .then(function(res){
+                    var redirectUrl = res.data;
+                    console.log(redirectUrl);
+                    window.location.href = redirectUrl;
+                })
+            },
+            zendeskLogin: function (user) {
+                var payload = {
+                    email: user.email,
+                    token: user.token
+                }
+                axios.post('https://backend.borisfx.com/zendesk_login', payload)
+                    .then(function (res) {
+                        var zdJwt = res.data;
+                        window.location.href = 'https://borisfx.zendesk.com/access/jwt?jwt=' + zdJwt;
+                    })
+                    .catch(function(err){
+                        self.login.error = 'Something has gone wrong. Please wait a few minutes and try again.';
+                    })
+            },
+            completeLogin: function () {
+                var redirect = this.returnUrl;
+                window.location.href = redirect != null ? redirect : '/account/manage';
+            }
+        },
+        computed: {
+            intro: function () {
+                var params = new URLSearchParams(window.location.search);
+                var source = params.get('source');
+                if (params.get('session_expired') == 'true') {
+                    return 'Your login session has expired. Please log in again to continue.'
+                }
+                if (params.get('kind') == 'error'){
+                    return 'We were unable to sign you into our Help Center. Please try again.\nError: ' + params.get('message'); 
+                }
+                switch (source) {
+                    case 'cart':
+                        return 'Thanks for shopping at Boris FX! Before you continue to checkout, you\'ll need to log in to your Boris FX Account, or create a new Account with us. Please fill out the appropriate form below.';
+                    case 'download':
+                        return 'Thanks for visiting Boris FX! In order to download your installer, you\'ll need to log in to your Boris FX Account, or create a new Account with us. Please fill out the appropriate form below.';
+                    case 'payment':
+                        return 'Thanks for purchasing from Boris FX! Before you make your payment, you\'ll need to log in to your Boris FX Account, or create a new Account with us. Please fill out the appropriate form below.';
+                    case 'zendesk':
+                        return 'Please log in to access the Boris FX Support Portal.'
+                }
+            }
+        },
+        watch: {
+            'signup.newsletter': function () {
+                this.signup.newsletterSet = true;
+            }
+        }
+    })
+</script>

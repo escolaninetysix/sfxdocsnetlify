@@ -1,0 +1,37 @@
+{
+   "title": ""
+}
+
+<script>
+
+  $(function () {
+    var params = new URLSearchParams(window.location.search);
+    //detect Zendesk login error
+    if (params.get('kind') == 'error'){
+      window.location.href = '/account/login/' + window.location.search;
+      return;
+    }
+
+    var data = Cookies.getJSON('bfx-login');
+    if (!data) window.location.href = '/account/login'
+    if (data.admin_user){
+      admin = data.admin_user
+      axios.get('https://backend.borisfx.com/user', {auth: {username : admin.email, password: admin.token}})
+      .then(function(res){
+        Cookies.set('bfx-login', res.data, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+        window.location = '/'
+      })
+    }
+    else{
+      axios.post('https://backend.borisfx.com/logout', {
+        email: data.email,
+        token: data.token,
+      })
+      .then(function(res){
+        Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+        window.location = '/account/login';
+      })
+    }
+  });
+
+</script>

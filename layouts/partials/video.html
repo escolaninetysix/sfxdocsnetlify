@@ -1,0 +1,10 @@
+<div class="video embed-responsive embed-responsive-16by9">
+  {{ if in . "https://vimeo.com/" }}
+  {{ $video_src := (printf "https://player.vimeo.com/video/%s" (index (split . "https://vimeo.com/") 1)) }}
+  <iframe class="embed-responsive-item" src="{{ $video_src }}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  {{ end }}
+  {{ if in . "https://youtu.be/" }}
+  {{ $video_src := (printf "https://www.youtube.com/embed/%s" (index (split . "https://youtu.be/") 1)) }}
+  <iframe class="embed-responsive-item" src="{{ $video_src }}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  {{ end }}
+</div>

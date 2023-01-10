@@ -1,0 +1,10 @@
+{
+   "title": ""
+}
+<script>
+$(document).ready(function() { 
+    var redirect_url = Cookies.get('redirect_url');
+    window.location = redirect_url;
+	Cookies.remove('redirect_url');
+});
+</script>

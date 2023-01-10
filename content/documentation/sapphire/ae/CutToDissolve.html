@@ -1,0 +1,296 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: CutToDissolve",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/CutToDissolve.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="CutToDissolve">
+     <h2>
+      S_CutToDissolve
+     </h2>
+    </a>
+    Turns a cut within a single clip into a dissolve.
+  No heads or tails are required; just set the cut point (frame) and
+  CutToDissolve creates a dissolve around that point.
+  Note that this effect does not take two clips; just a single clip
+  already containing a cut.  The Cut Point param is key to making it
+  work; whatever frames are on either side of that will be treated as
+  the cut, and the dissolve will be created around them.
+    <p>
+     In the Sapphire Time effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      The clip to be processed.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/CutToDissolve.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Cut Point:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   2 or greater.
+   <br/>
+   The frame where the cut happens.  Press the Find Cut
+  pushbutton to automatically find the cut frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Find Cut:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Press this button to automatically search through the
+  clip and attempt to find a cut, starting at the current Cut Frame.
+  The frame number will be stored in Cut Point above. If no cuts are
+  found within a few seconds, the search will stop. Click Find Cut
+  again to continue searching.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Length:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   6,
+   <i>
+    Range:
+   </i>
+   2 or greater.
+   <br/>
+   The total length of the dissolve. Half will be on
+  the left side of the cut, half on the right side.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Slow In Out:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0.1 to 10.
+   <br/>
+   Set to 0 for a linear dissolve, increase to 2 for a
+  more subtle slow-in-out transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 to 10.
+   <br/>
+   Set to 1 for a video dissolve, increase a little for a more filmic look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show:
+   </b>
+   <i>
+    Popup menu,  Default: Result
+   </i>
+   .
+   <br/>
+   This can help you find the cut frame; set it to Cut Frames
+  to see a split-screen view of the last outgoing frame and first
+  incoming, based on Cut Point.  You can also use it to only show one
+  side or the other, with the interpolated dissolve frames.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Result:
+      </i>
+     </b>
+     Show the result clip, containing the dissolve.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Cut Frames:
+       </i>
+      </b>
+      Show a split-screen of the two cut frames, no matter where the play head currently is.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         A:
+        </i>
+       </b>
+       Show the A (outgoing) side of the cut: as if the B side were black.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          B:
+         </i>
+        </b>
+        Show the B (incoming) side of the cut: as if the A side were black.
+        <br/>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Split For Cut:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   Where to split the split-screen view of the Cut Point, when in Show:Cut Frames mode.  Normally this has no effect.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../dissolve">
+       Dissolve
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

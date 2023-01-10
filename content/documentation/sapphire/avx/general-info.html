@@ -1,0 +1,1828 @@
+{
+   "title": "Sapphire Plug-ins v2023.0 for Avid Products",
+   "date": "2022-11-17T00:00:00"
+}
+ <font size="1">
+ </font>
+ <h2>
+  Sapphire Plug-ins v2023.0 for Avid, General User Info
+ </h2>
+ <br/>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="whats-new">
+   What's New In This Version
+  </a>
+ </h3>
+ <!-- New Effects: -->
+ <!-- New Featurea: -->
+ <p>
+  <b>
+   New Features:
+  </b>
+ </p>
+ <ul>
+  <li>
+   UltraGrain
+  </li>
+  <li>
+   PrismLens
+  </li>
+  <li>
+   DissolveUltraGlow
+  </li>
+  <li>
+   Mocha Improvements
+  </li>
+  <li>
+   Metal Support for Aurora
+  </li>
+  <li>
+   Metal Support for Median
+  </li>
+  <li>
+   New LensFlares
+  </li>
+  <li>
+   New UltraGlow presets
+  </li>
+ </ul>
+ <p>
+  <b>
+   Known Issues:
+  </b>
+ </p>
+ <ul>
+  <li>
+   If Avid is open when the installer is run, Avid may crash.  If Avid crashes after install try making sure the preset browser isn't running in the background.
+  </li>
+  <li>
+   Not all S_UltraZap presets are visible in S_Effect.
+  </li>
+  <li>
+   ColorFuse: ColorFuse presets don't render in the preset browser.
+  </li>
+  <li>
+   Sometimes Mocha tracks slowly.  If this happens, close mocha, re-open mocha, then play through the clip inside mocha.  After the clip is cached in mocha, tracking will proceed smoothly.  Sometimes if the clip is tracking slowly an "unable to track" error will also pop up.
+  </li>
+  <li>
+   UltraZapMocha: Sometimes, a straight line will apear in the zap.  To fix this, add an additional control point in mocha in the part of the mocha spline that corresponds to that straight segment.  Adjust the control point until the straight line segment goes away.
+  </li>
+  <li>
+   If Sapphire 2021.5 OFX is installed at the same time as 2021.0 (either AE or AVX), lensflare presets may not show up inside 2021.0.  To fix this, all Sapphire plugins installed on a single machine should be 2021.5.  If the second installation of Sapphire cannot be upgraded to 2021.5, the Sapphire 2021.0 plugins may be re-installed to restore the 2021.0 compatible LensFlare presets.
+  </li>
+  <li>
+   Mac OS, Big Sur: if you open mocha and then open the preset browser, the preset browser will fail and generate an error.  If this happens, the host will have to be restarted to fix the preset browser.
+  </li>
+  <li>
+   UltraZap: On an open spline zap may do unexpected things when mixing vary-endpoint and looping parameters.
+  </li>
+  <li>
+   Mocha: The Mocha UI does not correctly locate the default OCIO config file shipped with Sapphire.
+    To use the default OCIO config file shipped with Sapphire, use the OCIO environment variable to
+    locate said the config file.
+  </li>
+  <li>
+   LensFlareAutoTrack: green/green and yellow/yellow mode will give different results if hotspot_shift
+    is set to a non-zero value on interlaced footage.
+  </li>
+  <li>
+   Mocha: Mocha point tracking widget starts in the wrong place in green/green mode on interlaced footage.
+  </li>
+ </ul>
+ <p>
+  <br/>
+  <!-- Maintenance notes -->
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="compat-notes">
+   Compatibility Notes:
+  </a>
+ </h3>
+ <p>
+ </p>
+ <ul>
+  <li>
+   Sapphire 2022 has been updated to use CUDA 11 in order to support NVIDIA's latest Ampere cards. (RTX A4000, A5000, and A6000).
+  As a result some cards from 2012 are no longer supported.  Sapphire 2022 works with CUDA compute capability 3.5 and higher.
+  </li>
+  <li>
+   In v2019, LensFlares using MutliSpot and MultiStreak elements would look different
+  inside the Flare Designer across operating systems.  In v2019.5 this was fixed,
+  but as a result LensFlares may look different from v2019 when loaded through the Flare
+  Designer.  Old projects will continue to look the same as they did in v2019 when loaded
+  into the host or rendered, but may look different after loading in the Flare Designer.
+  </li>
+ </ul>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="opencolorio">
+   Color Management with OpenColorIO
+  </a>
+ </h3>
+ OpenColorIO (OCIO), is the open-source color management solution from
+Sony Picture Imageworks, Sapphire 2020 can apply and read a color profile
+to provide consistent colors across internal applications, such as the
+Preset Browser, Flare Designer, and Effect and Transition Builder. The
+Flare Designer and Builder applications now feature an OCIO panel to
+confidently manage the color output to any monitor. Also, Sapphire 2020
+features a new effect called S_OCIOTransform, which allows Sapphire to
+apply an OCIO transform inside of any application, bringing OCIO Color
+Management to many applications that have yet to adopt the OCIO standard.
+ <p>
+  All OpenColorIO information below applies both to Color Management within
+  the Sapphire Preset Browser, Sapphire Effect and Transition Builder, and Sapphire
+  Flare Designer as well as to the new OCIOTransform effect in Sapphire 2020.
+ </p>
+ <p>
+  To use OpenColorIO in Sapphire, there are three ways to specify the OpenColorIO configuration file.
+ </p>
+ <ul>
+  <li>
+   By default, Sapphire will use the config.ocio file found in Sapphire's installation directory.
+  </li>
+  <li>
+   To set OCIO system wide, set the OCIO environment variable to point to the desired config.ocio.
+  This will ensure that all host applications and plugins that use OCIO will use the same OCIO settings.
+   <ul>
+    <li>
+     We strongly suggest working with an IT department or IT professional to help setup environment
+    variables, as there can be underlying conflicts with pre-existing settings.
+    </li>
+    <li>
+     Windows:
+     <ul>
+      <li>
+       Open "File Explorer"
+      </li>
+      <li>
+       Right-click on "This PC" and select "Properties"
+      </li>
+      <li>
+       On the left, navigate to "Advanced system settings"
+      </li>
+      <li>
+       At the bottom, click on "Environment Variables"
+      </li>
+      <li>
+       In the top section labelled "User variables for...", click "New"
+      </li>
+      <li>
+       In the dialog that pops up, enter "OCIO" in the "Variable name" box,
+  and the full path to the config.ocio file in the "Variable value" box.
+      </li>
+     </ul>
+    </li>
+    <li>
+     Mac OS:
+     <ul>
+      <li>
+       Open a Terminal - This can be found using Spotlight
+      </li>
+      <li>
+       Type: "launchctl setenv OCIO /full/macos/pathway/config.ocio" (without quotes).
+    Note: this will not remain set after a reboot.
+      </li>
+      <li>
+       To set the environment variable so that it persists through a reboot, the above command
+    needs to be called through a .plist file in /Library/LaunchDaemons.
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   To set OCIO for Sapphire only, set the ocio_config flag inside the s_config
+  file that shipped with Sapphire and can be found in the Sapphire installation
+  directory.
+   <br/>
+   <ul>
+    <li>
+     Windows: C:\Program Files\BorisFX\Sapphire 2023 AVX\s_config.text
+    </li>
+    <li>
+     Mac OS: /Applications/BorisFX/Sapphire 2023 AVX/config/s_config.text
+    </li>
+   </ul>
+  </li>
+ </ul>
+ <h3>
+  <a name="load-plugin">
+   Loading a Plug-in
+  </a>
+ </h3>
+ The plug-ins appear in the
+ <b>
+  Effect Palette
+ </b>
+ under the
+ <b>
+  Sapphire
+ </b>
+ categories.
+ <p>
+  You can drag a plug-in onto a track just as you would any other
+effect.  After you apply a plug-in to a track, select Effect Mode to
+display the Effect Editor which allows you to adjust the controls and
+parameters for that effect.
+ </p>
+ <p>
+  On DS, the Sapphire presets have moved to an easier location.  You
+should now find the Sapphire effect presets in the
+  <b>
+   DS Presets/Image Effects/Sapphire
+  </b>
+  folders.  You can
+apply Sapphire effects directly on clips, as transitions, or in a tree,
+and you can load a Sapphire effect either from a preset or using the
+  <b>
+   AVX2
+Host
+  </b>
+  preset in
+  <b>
+   Image Effects
+  </b>
+  .
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="preset-browser">
+   Browsing and Selecting Presets
+  </a>
+ </h3>
+ You can load and save presets for effects using the
+ <b>
+  Load Preset
+ </b>
+ and
+ <b>
+  Save Preset
+ </b>
+ buttons near the top of the effect palette
+window in all Sapphire effects.
+ <h4>
+  Loading:
+ </h4>
+ In the preset browser you'll see all the presets available for the
+current plug-in, both Boris FX-supplied presets and the ones you've
+created yourself.  You can filter by tags on the left side to quickly
+find the look you're interested in.
+ <p>
+  The main top window shows the preset on your footage (unless the
+plug-in can't access the AE layer for some reason, in which case
+you'll see a poster frame) and various information about the preset.
+ </p>
+ <p>
+  At the bottom you see all the presets; you can enlarge or shrink them
+with the slider at the bottom.  You can also switch to a table view
+there, as well as viewing the preset on your source, over black, or
+over the sample footage.  You can also see the source all by itself
+for comparison.
+ </p>
+ <h4>
+  Saving:
+ </h4>
+ Clicking
+ <b>
+  Save Preset
+ </b>
+ brings up the Save Preset dialog.  Here
+you can name the preset, and add various other information.
+Particularly important is the tagging system; you can apply as many
+tags as you want to your presets.  You can even create new tags.  Tags
+are grouped into categories, so all the color names appear under
+Colors, for instance.
+ <p>
+  You can create new categories as well, by typing into the Category
+drop-down menu after clicking Add New Tag....  Boris FX recommends
+sticking to the shipped categories when possible, for compatibility.
+But adding your own tags within categories (new color names, for
+example) is encouraged.
+ </p>
+ <h4>
+  More Info:
+ </h4>
+ <p>
+  While the preset browser, save dialog, or flare designer are open, the
+main AE window will be unresponsive.  This is normal.  Close the
+preset browser or flare designer and AE will wake up again.
+ </p>
+ <p>
+  Certain parameters, like Lens Flare hotspot, are not saved in presets;
+we thought it would be less than useful for the flares to jump around
+as you load presets.
+ </p>
+ <p>
+  It may take a few seconds to load the preset browser if a plug-in has
+many presets.  Be patient.
+ </p>
+ <p>
+  The Preset Browser has a "Use Static Thumbnails" checkbox in certain effects.
+When checked, the thumbnails use a pre-rendered image to improve performance.
+If "Use Static Thumbnails" is not checked, the thumbnails will render on the
+footage the Sapphire effect has been applied to back in the host.
+ </p>
+ <p>
+  If playing through the preview window in the Preset Browser, Flare Editor, or
+Effect Builder, is using too much memory, "Render on Still" is available
+in the view menu.  This will reduce the memory usage of the preview window
+by rendering all frames using the same host frame.
+ </p>
+ <p>
+  The preset browser may be configured to load presets from and/or save presets
+to user specified locations.  The load location and save location may be
+different.  If the locations are different, load will show presets from both the load
+location and the save location.  Save will only use the specified save location.
+ </p>
+ <p>
+  There are three options for setting the load and save paths:
+ </p>
+ <ol>
+  <li>
+   To set load and save paths per user, use the "Browser Settings" dialog.  To do this:
+  open the preset browser, go to the Edit menu and select "Browser Settings".
+  </li>
+  <li>
+   To set the load and save paths for all users of the machine, use the INI file.  To do this, edit the
+    sapphire-app-settings.ini file in the Sapphire directory:
+   <ul>
+    <li>
+     Windows: C:\Program Files\BorisFX\Sapphire 2023 AVX\sapphire-app-settings.ini
+    </li>
+    <li>
+     MacOS: /Applications/BorisFX/Sapphire 2023 AVX/config/sapphire-app-settings.ini
+    </li>
+   </ul>
+  </li>
+  <li>
+   To set the load and save paths in a script, use the Sapphire environment variables:
+  SAPPHIRE_LOAD_PRESET_PATH and SAPPHIRE_SAVE_PRESET_PATH.
+  </li>
+ </ol>
+ Note: Values set in environment variables will override the INI file.  Values set in the "Browser Settings"
+dialog will override both.
+ <p>
+  <br/>
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="builder">
+   Using the Sapphire Effect Builder
+  </a>
+ </h3>
+ Builder lets you design completely new effects by combining several
+Sapphire effects together.  The result is a new effect that does what
+all the different effects you add to the workspace do, but it can be
+applied and used as a single effect.
+ <h4>
+  Starting Builder
+ </h4>
+ To use the Effect Builder, apply S_Effect or S_Transition (both in the
+Sapphire Builder category) to a clip, or between two clips in the case
+of S_Transition.  Then press the Edit Effect button to bring up the
+Builder interface.  Create the effect in the builder interface, then
+when you return to Avid your new effect will be there, with
+all of its published parameters.
+
+You can also load effects you've defined before, using the Load Preset
+button in these effects.
+
+The builder interface is composed of several panels, described below.
+ <h4>
+  Panels
+ </h4>
+ The builder interface is where you create and customize your new
+effect.  All the panels are movable and resizable so you can customize
+the layout for your particular work style.
+ <h5>
+  Components
+ </h5>
+ The Components panel lists all the Sapphire effects.  They're listed
+by category, and you can search for any one you want; you can also
+organize them alphabetically.  To add an effect to your workspace,
+double-click it or drag it onto a line on the node graph, or onto
+another node to add it after that one.
+ <p>
+  The Tools category contains tools that are only available in Builder:
+ </p>
+ <dl>
+  <dt>
+   Color
+  </dt>
+  <dd>
+   creates a solid color
+  </dd>
+  <dt>
+   Composite
+  </dt>
+  <dd>
+   a simple premultiplied composite. Use when the
+foreground clip already has an alpha channel.
+  </dd>
+  <dt>
+   Blend
+  </dt>
+  <dd>
+   dissolve between two clips using a Matte input. Use
+    when the foreground clip does not have an alpha channel.
+  </dd>
+  <dt>
+   Crop
+  </dt>
+  <dd>
+   crop to a rectangular area
+  </dd>
+  <dt>
+   Cutout
+  </dt>
+  <dd>
+   crop input to an arbitrary shape, given by a Matte
+    input. The Matte multiplies with any alpha channel that's already
+    present.
+  </dd>
+  <dt>
+   SetAlpha
+  </dt>
+  <dd>
+   add an alpha channel to a clip which doesn't have
+    one, and premultiply.
+  </dd>
+  <dt>
+   Sticky Note
+  </dt>
+  <dd>
+   write notes in the workspace
+  </dd>
+ </dl>
+ <h5>
+  Preview Window
+ </h5>
+ The preview window is where you see the result of the effect you're
+creating.  It has a play bar so you can see any animation in the
+nodes you've added.  You can also play through transitions if you're using
+S_Transition.
+ <h5>
+  Node Graph
+ </h5>
+ <p>
+  The Node Graph is where you build the new effect.  Processing flows
+from the Source node to the Result node; you add whatever effects you
+want in between to build a processing pipeline.  Using multi-input
+effects like S_Layer or S_MathOps, you can also combine the outputs of
+two effects (or stacks of effects) into a single result.
+ </p>
+ <p>
+  In the node graph you can move, connect, disconnect, disable and
+preview nodes.  Right-clicking on a node brings up a context menu of
+useful items.
+ </p>
+ <p>
+  To connect a node to the graph, drag it onto any line.  If it was
+previously connected somewhere else, this will move it.  You can also
+drag a node onto another node, which will connect it after the other
+node.  Shift-drag a node to disconnect it.
+ </p>
+ <h5>
+  Parameters
+ </h5>
+ <p>
+  The Parameters panel is where all the parameters for the currently
+selected node can be edited and published back to Avid.
+It only shows parameters for one node at a time; to edit
+params for a different node, just select it in the node graph.  You
+can rename the current node here; just type a new name into the Node
+Name box.  You can also load a preset for the current effect from the
+Parameters panel, choosing from the Boris FX-provided set of thousands
+of presets or ones you've created yourself.
+ </p>
+ <p>
+  The checkboxes on the right side are used to publish params to Avid;
+published params show up as params in the final
+effect where users can make further changes or add animation.
+Non-published params don't appear in Avid at all; this can
+be useful to simplify the params of the effect you're creating, or
+prevent users from accidentally changing important parameters.  They
+will still take on their correct values, but users who just apply your
+S_Effect preset won't be able to see or change them.
+ </p>
+ <p>
+  You can adjust params using the slider, by dragging directly on the
+numbers, or by clicking in the number text and typing a new value.
+Shift-dragging on the numbers goes faster, and Ctrl-dragging on the
+numbers goes slower.
+ </p>
+ <p>
+  The master checkbox at the top publishes or
+un-publishes
+  <emph>
+   all
+  </emph>
+  the params for the current node at once;
+this can be useful if you've got too many params defined and builder
+warns you you have to un-publish some.  In that case you have to
+un-publish all the params of one or more effects.
+ </p>
+ <h5>
+  Animation
+ </h5>
+ <p>
+  Each parameter has an animation button that allows you to define
+animations. In Transition mode, most nodes will have a predefined
+parameter already animated in a way that makes sense for a transition,
+but you can change these.  There are various animations you can choose
+from:
+ </p>
+ <dl>
+  <dt>
+   Ramp Up or Down (starting from zero or one)
+  </dt>
+  <dd>
+   increase or decrease
+the value of the parameter as the transition progresses.  Use
+this, for instance, to blur the outgoing and incoming clips
+oppositely to get a blur dissolve.
+  </dd>
+  <dt>
+   Up/Down (starting from zero or one)
+  </dt>
+  <dd>
+   increase to the midpoint,
+and then decrease again.  Use this, for instance, to add a "hit"
+of brightness or glow in the middle of a transition to get a
+flash-frame transition.
+  </dd>
+ </dl>
+ <p>
+  You can further adjust the shape of each curve by dragging the
+sliders for Slow In, Slow Out, Start Time, End Time, Mid Time, and
+Slow Middle.
+ </p>
+ <h4>
+  Creating Effects
+ </h4>
+ <h5>
+  Adding Nodes
+ </h5>
+ <p>
+  You can add nodes to the graph by double-clicking them in the Components
+panel or dragging them from that panel into the graph.  If you
+double-click, the new node will go after the currently selected node,
+or just before the result if no node is selected.
+ </p>
+ <p>
+  To connect two nodes, drag the connecting output arrow from the source
+to the destination, or drag from the destination's input circle up to the
+source's output.  To connect multiple nodes to the same source node,
+you have to use the latter method, dragging from the destination to
+the source.
+ </p>
+ <p>
+  You can neaten the layout of the graph at any point by using
+Edit -&gt; Clean Up All.
+ </p>
+ <h5>
+  Previewing nodes
+ </h5>
+ To preview a node anywhere in your graph, i.e. to see what that node's
+output looks like, click Preview selected node at the bottom of the
+node graph, then select the node you want to examine.  Its output will
+appear in the large preview window above.
+ <h5>
+  Mask/secondary inputs
+ </h5>
+ Many Sapphire nodes have secondary inputs; these appear as small
+circles on the left or right side of the node.  Mousing over that
+circle will show the name of the input.  The most common secondary
+input is a mask.  A simple way to use these is to create a mask using
+S_Vignette (set to Vignette Only mode) or S_Shape.  Connect the output
+of that node to the mask input of the desired node to use it as a mask
+for that node.
+ <p>
+  Starting with Sapphire 10 Builder has a Mask node which represents the clip
+(or path) connected to the Mask input in the host.  Connecting the Mask node
+in Builder to an input of an effect will pass the clip from the host to the
+effect.  The Mask (and Background) nodes are only visible in Effect Builder,
+not in Transition Builder.
+ </p>
+ <h5>
+  Layering with S_Layer
+ </h5>
+ Often you will want to combine two images.  S_Layer and S_MathOps are
+good ways to do that.  S_Layer composites with alpha by default, while
+S_MathOps adds the two inputs by default.  S_Layer can also be used to
+combine two images using a mask: connect the mask to its side Mask
+input, leave it set to Normal mode, and turn off its Comp Premult
+parameter.
+ <h4>
+  Creating Transitions
+ </h4>
+ <p>
+  You can use Builder to create transitions as well as effects; just
+start with S_Transition.  In this case, the node graph will start with
+a default dissolve transition between the outgoing and incoming
+clips.  You can play through the transition to see how it looks.
+ </p>
+ <p>
+  You have tremendous flexibility when designing transitions; you can
+add effects to the outgoing and incoming clips, you can change the
+underlying transition, and you can add effects to the result.
+ </p>
+ <p>
+  You can also change the speed of the the underlying dissolve by
+selecting the Transition node and adjusting Dissolve Speed; if you
+increase that speed, the dissolve will happen more quickly in the
+middle of the overall transition.
+ </p>
+ <h4>
+  Saving and Loading Effects
+ </h4>
+ <p>
+  When you press OK to close the Builder interface, you will be taken back
+to Avid with the current effect as you've defined it.  That
+effect will be stored with your project; to take it to a different
+machine you don't have to save any external files.  (Pressing Cancel
+leaves the effect as it was before you started the builder UI.)
+ </p>
+ <p>
+  You can also save effect definitions as "presets", to share with other
+users or to define a look for a show or project.  These presets are
+simple text files, so you can send them via email or put them on a
+shared drive.  They are cross-platform, meaning they work on all video
+systems which support Sapphire and Builder, for instance After Effects
+or Premiere.  These presets can be loaded back into Builder for further
+editing, and they also appear in the preset browser when loading
+presets for S_Effect or S_Transition.
+ </p>
+ <h4>
+  Restrictions
+ </h4>
+ There are a few restrictions on what you can create with Sapphire Builder.
+ <dl>
+  <dt>
+   Popup params
+  </dt>
+  <dd>
+   Popup params (params that have a menu of choices)
+can't be published to your Adobe product.  You have to set them as desired
+within the builder interface.
+  </dd>
+  <dt>
+   Too many params
+  </dt>
+  <dd>
+   If you publish too many params, we may not
+be able to show all of them in Avid.  Builder will warn you
+in that case; you can simply un-publish all the params of one or more
+nodes.  That will free up space for publishing something else.  You
+can use the master checkbox at the top to un-publish all the params of
+any node.
+  </dd>
+  <dt>
+   Param groups
+  </dt>
+  <dd>
+   Some Sapphire effects collect their params into
+groups.  In Builder, the groups are used for effects within the
+composite builder effect, so the lower level groups are removed.
+  </dd>
+  <dt>
+   Temporal effects
+  </dt>
+  <dd>
+   Some Sapphire effects can't be used as
+nodes in Builder, notably temporal effects (effects that modify
+time) such as S_TimeWarpRGB and S_Retime.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="mocha">
+   Using Mocha in Sapphire
+  </a>
+ </h3>
+ <h4>
+  What is Mocha?
+ </h4>
+ <p>
+  Mocha is a planar tracking and masking utility that can save time on
+the most difficult motion tracking and masking shots. It tracks the
+entire area of the mask, not just individual points, to significantly
+reduce the tedium of manual keyframing.
+ </p>
+ <p>
+  Mocha looks for 3-d planes in the image: pixels that move together.
+Screens and signs are clear candidates, but Mocha can also track
+faces. It can handle objects obscured by foreground elements, and can
+track unlimited layers all at once.
+ </p>
+ <p>
+  There's a lot more to Mocha than we can explain here; there are plenty
+of tutorials online at http://borisfx.com.
+ </p>
+ <p>
+  In Sapphire, Mocha works as a mask for the effect, similarly to the
+mask input, but with all the tracking features of Mocha. For instance,
+in S_DistortRGB, the mask affects the amount of RGB distortion. In
+S_Glow, the mask masks out the areas you want to emit glowing light,
+without chopping off the smooth edges of the glow.
+ </p>
+ <h4>
+  How to use it
+ </h4>
+ <ol>
+  <li>
+   Apply a Sapphire effect
+  </li>
+  <p>
+   Most Sapphire effects now feature Mocha planar tracking integrated
+within the effect. Certain effects were omitted because utilizing a
+mask made no logical sense; for example, none of the S_Transition
+effects incorporate S_Mocha, and the Z_effects which require a Z_depth
+matte to work were also skipped.
+  </p>
+  <li>
+   Click
+   <b>
+    Edit Mocha
+   </b>
+   to launch Mocha
+  </li>
+  <p>
+   When you click the
+   <b>
+    Edit Mocha
+   </b>
+   button, you will launch the Mocha UI,
+which will allow you to create and track a mask for use back with the
+selected Sapphire effect in your host application.
+  </p>
+  <li>
+   Create a spline
+  </li>
+  <p>
+   You can create a shape to track within Mocha utilizing either an
+X-spline or Bezier splines. X-splines are recommended for most uses.
+  </p>
+  <p>
+   Draw one or more splines around the planar areas you would like to
+track.
+  </p>
+  <li>
+   Track it
+  </li>
+  <p>
+   You can use backwards and forward tracking from whatever frame you're
+parked on. You can often get a great result with default settings, but
+if you're getting a lot of drifts, try increasing the
+   <b>
+    Min K Pixels Used
+   </b>
+   .
+  </p>
+  <li>
+   Save and exit back to host
+  </li>
+  <p>
+   For your mask to appear back in your host application, YOU MUST SAVE
+AND EXIT. If you exit without saving, all you current work will
+be lost. Always save and exit!
+  </p>
+  <li>
+   Adjust in Sapphire
+  </li>
+  <p>
+   You can make additional fine tuning adjustments after tracking in
+Mocha by opening the "Mocha" pulldown in your selected Sapphire
+effect. Additional softness and position/scale paramters can be
+found here, as well as checkboxes for soloing/hiding/inverting the
+Mocha mask.
+  </p>
+  <li>
+   Moving masks between effects
+  </li>
+  <p>
+   Sometimes you track a shot with Mocha in one Sapphire effect and would
+like to reuse the track in a different effect. The simplest way is to
+export it from the first effect and re-import into the second effect.
+  </p>
+  <ol>
+   <li>
+    go into Mocha with
+    <b>
+     Edit Mocha
+    </b>
+    , then File &gt; Export to
+  export the Mocha project to a file.
+   </li>
+   <li>
+    Exit Mocha and delete the old effect.
+   </li>
+   <li>
+    Apply the new effect,
+    <b>
+     Edit Mocha
+    </b>
+    , and File &gt; Merge the
+  project from the file you saved.
+   </li>
+  </ol>
+  <p>
+  </p>
+ </ol>
+ <h3>
+  <a name="flare-editor">
+   Editing and Designing Lens Flares and
+other elements
+  </a>
+ </h3>
+ Clicking
+ <b>
+  Edit Lens
+ </b>
+ in LensFlare, or
+ <b>
+  Edit Style
+ </b>
+ in Glare
+or Flashbulbs, opens up the Lens Flare Designer.
+ <p>
+  The Flare Designer lets you completely customize a lens flare.  You
+can add or remove elements, copy them, customize how each element
+looks, and even how it reacts to the center or edge of the image.  You
+can also interactively move the flare around to see how it will look
+as it moves.
+ </p>
+ <p>
+  All the panels of the Flare Designer are movable, so you can adjust
+the user interface itself to suit your work flow.  The main panels are
+the view window, where you see the flare you're working on, the
+Elements panel which lists all the elements of the flare, and the
+Properties panel, which lets you adjust the properties of the
+currently selected element (or elements).  There's also a toolbar of
+element templates at the top.
+ </p>
+ <h4>
+  View Panel
+ </h4>
+ The main view window is where you see how your flare will look; you
+can click and drag to move the flare around.  You can see it over the
+background or just over black, adjust the gamma, and Solo only the
+selected elements.
+ <b>
+  Use Plug-in Settings
+ </b>
+ makes the flare
+designer import the plug-in settings currently active in the host
+app.  If you have that selected, the flare will look the same back in
+the host app when you're done designing it.  On the other hand, if you
+want to create a "reusable" flare preset, it's probably a good idea to
+un-check Use Plug-in Settings so the flare will look good with default
+settings in the plug-in.
+ <h4>
+  Elements Panel
+ </h4>
+ The Elements panel shows you all the elements, with thumbnails.  If
+you mouse over them, an overlay shows where they are in the main view
+window.  When you click on an element to select it, it also flashes
+brighter in the main window to help you find the element you're
+looking for.  Clicking
+ <b>
+  Identify
+ </b>
+ in the Properties panel does
+the same flashing.
+ <p>
+  To add new elements, just click the element template picture in the
+top toolbar.  You can then rename the element, move it in the list by
+dragging and dropping, or hide it by un-checking the checkbox.
+ </p>
+ <p>
+  To delete an elements, select it and click the trash can icon at the
+bottom of the Elements panel, or click Delete.  There is full undo, so
+feel free to experiment!
+ </p>
+ <p>
+  You can also duplicate an element using standard copy/paste
+operations, or select it and click the two pages icon at the bottom of
+the Elements panel.  You can then adjust the copy's parameters in the
+Parameters panel.
+ </p>
+ <p>
+  The gear-looking element is the "advanced element" type; it has lots
+of controls and is very customizable, but it's recommended for
+advanced users only.  The other types get you most of the same looks
+with simpler parameters.
+ </p>
+ <p>
+  Along with all the standard element types, you can import your own
+images to use as elements.  Click the picture frame to import an image
+file.  The image data will become part of the flare, so it doesn't
+need to keep a reference to the original file.
+ </p>
+ <p>
+  To combine two flares into one, or add many elements at once, you can
+import another flare into your current flare; this will add all the
+other flare's elements to your current flare.  You can also just open
+that flare, which replaces your current flare with that one.  To
+import and add to your flare, use Insert Flare (down-right pointing
+arrow in the toolbar), or File... Insert Flare.  To import and
+replace, use Open Flare (folder icon in the toolbar), or use
+File... Open Flare.
+ </p>
+ <h4>
+  Parameters Panel
+ </h4>
+ The Parameters panel is where you adjust all the details of a single
+element -- or multiple elements together, if you select multiple
+elements in the Elements panel.  (Use Shift-click or Control-click to
+select multiple elements.)
+ <p>
+  There are a few common control types.  Sliders with numbers to the
+left control numeric params; you can drag the slider thumb, but you
+can also drag in the number text field to increase or decrease the
+value.  You can also click in the number field and type any value you
+want.
+ </p>
+ <p>
+  Color controls are just a swatch of color; click to bring up a
+standard color picker.
+ </p>
+ <p>
+  Some elements have a Gradient; there's a special gradient control to
+adjust those.  The stops are below the color swatch; you can drag them
+left and right to move them.  Drag down to delete.  Click in the color
+gradient to add a stop there.  Control-drag to "stretch" neighboring
+colors, and shift-drag to push neighboring colors.  The triangles
+above the color gradient allow you to control the interpolation of the
+colors between stops.  Ring Thickness lets you easily turn a spot or
+fan of rays into a ring; turning Ring Thickness down from 1 hollows
+out the center.  This lets you still have fine control of the colors
+within the ring, even if it's very thin.
+ </p>
+ <p>
+  Different element types will have various parameters you can adjust,
+but here are some common ones:
+ </p>
+ <dl>
+  <dt>
+   Position
+  </dt>
+  <dd>
+   Where the element occurs, along the line between the hotspot and
+  pivot point.  Position 1.0 is at the hotspot, 0.0 is at the pivot.
+  Note that you don't have to stay in that range; you can use any
+  value you like.  Bigger than 1 will be past the hotspot, and less
+  than zero will look like a reflection because it's on the other side
+  of the pivot point.
+  </dd>
+  <dt>
+   Size
+  </dt>
+  <dd>
+   How big the image is.
+  </dd>
+  <dt>
+   Rel Width, Rel Height
+  </dt>
+  <dd>
+   Use these to squash and stretch.
+  </dd>
+  <dt>
+   Rotate
+  </dt>
+  <dd>
+   Rotates the element around, in degrees.
+  </dd>
+ </dl>
+ There's a Reset button at the bottom of the Parameters panel to reset
+the current element(s) to all default settings.  That's undoable too.
+ <h4>
+  More Information
+ </h4>
+ If you open the flare designer from the plug-in, you can just click OK
+to close the window when you're done; your current flare will be used
+in your project and saved with it.  But you can do more than that; you
+can save the flare definition to disk separately, so you can recall it
+later, or use it in other flares.  You can also open the flare
+designer directly from the Start menu or Applications folder to create
+flares independent of your host product.  In this case, use
+File...Save Lens As... to save the flare definition.   That dialog
+will allow you to name the lens and tag it so it's easy to find later.
+ <p>
+  Note that saving a lens this way does
+  <i>
+   not
+  </i>
+  save your plug-in
+settings; it only saves the lens flare definition itself (the things
+you can change in the flare designer).  You can save a preset in the
+host application to save everything -- the flare and all the regular
+plug-in parameters.
+ </p>
+ <p>
+  While the preset browser, save dialog, or flare designer are open, the
+main AE window will be unresponsive.  This is normal.  Close the
+preset browser or flare designer and AE will wake up again.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="doc">
+   Online Documentation
+  </a>
+ </h3>
+ All Sapphire Plug-ins include a
+ <b>
+  Help
+ </b>
+ button just below the
+effect name in the Effect Editor window.  Push this button to bring up
+a window showing the current version of Sapphire Plug-ins, your
+license status, some documentation about the current plug-in, and
+links to more detailed HTML documentation.
+ <p>
+  Online documentation in HTML or PDF format can also be accessed
+directly.  On Windows go to Start -&gt; Programs -&gt; GenArts Sapphire AVX
+-&gt; Online Help (HTML) or (PDF).  On Mac, go to the
+Applications/BorisFX/Sapphire 2023 AVX folder and double click on Online
+Help.html or .pdf.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="title-key">
+   Processing Titles and Keys
+  </a>
+ </h3>
+ <p>
+  Sapphire v2023.0 allows you to easily process a title or key without
+affecting the background.  To do this, drop a Sapphire Plug-in onto a
+title or key and then select the
+  <b>
+   Apply To Title/Key
+  </b>
+  checkbox in
+the Effect Editor.  This causes the plug-in to process the fill and
+matte of the title together.  By default it will also combine this
+result with a background that is one track below, but the
+  <b>
+   Background
+  </b>
+  input selector allows choosing "This Track" or
+"None" for the background instead.
+ </p>
+ <p>
+  When you replace a title effect in this way, any animation curves in
+the title are lost, and only the matte and fill clips remain.  If you
+want the title to move, you can instead use the
+  <b>
+   <a href="#transform">
+    Crop/Transform
+   </a>
+  </b>
+  parameters described
+below to perform the moves within the Sapphire effect.
+ </p>
+ <p>
+  You can also apply more than one Sapphire Plug-in to a title or key
+without affecting the background.  To do this, drop the first effect
+onto the title and select
+  <b>
+   Apply To Title/Key
+  </b>
+  as above.  But
+then change its
+  <b>
+   Background
+  </b>
+  input to "None" to prevent it from
+compositing.  Next, apply another Sapphire effect by alt-dropping it
+on the first effect, but leave
+  <b>
+   Apply To Title/Key
+  </b>
+  unselected
+this time.  You can alt-drop any number of additional effects in this
+way.  In the final effect, set the
+  <b>
+   Background
+  </b>
+  to "1 Track
+Below" to composite the final result.  Note that only the first effect
+should have
+  <b>
+   Apply To Title/Key
+  </b>
+  selected, and only the last
+effect should have a
+  <b>
+   Background
+  </b>
+  selected.  You should use only Sapphire effects
+between this first effect and the final composite, because other
+effects will probably not pass the alpha channel through in a
+compatible way.
+ </p>
+ <p>
+  If you have your own separate matte and fill tracks you can also
+combine and process these together in a similar way.  First make sure
+your matte is on a track above the fill, for example matte on v3, fill
+on v2, and background on v1.  Drop an effect on the matte track (v3)
+and select
+  <b>
+   Apply To Title/Key
+  </b>
+  in that effect.  The Background
+track selection defaults to "1 Track Below" which now is v1 because
+"This Track" becomes v2 and v3 combined.  As above, you can apply
+multiple effects by setting the Background to "None" on the first
+effect, alt-dropping additional effects, and setting the last effect's
+Background to "1 Track Below".
+ </p>
+ <p>
+  In general, to view the alpha channel of a clip, you can use
+  <a href="../channelswitcher">
+   ChannelSwitcher
+  </a>
+  and set some or all
+of the RGB channels to Alpha.
+ </p>
+ <p>
+  The above methods are not necessary if you want to process a title and
+its background together with the same effect.  In this case you can
+just
+  <i>
+   alt-drop
+  </i>
+  the effect on the title (instead of drop) and
+leave
+  <b>
+   Apply To Title/Key
+  </b>
+  unselected.  When
+  <b>
+   Apply To
+Title/Key
+  </b>
+  is not selected, the input track menus will include an
+additional option for "2 Tracks Below" because one of the plug-in input
+tracks is not used up by the matte channel.
+ </p>
+ <p>
+  The Wipe and Dissolve transition effects do not include an
+  <b>
+   Apply To Title/Key
+  </b>
+  option, because they are required by
+  <small>
+   AVX
+  </small>
+  to accept only 2 inputs, and therefore can not
+replace a Title which requires 3 inputs.
+ </p>
+ <p>
+  If you are using Xpress DV and processing a title with multiple
+nested plug-ins, make sure you turn OFF real time mode.  Real time
+mode will corrupt the alpha channel being passed from one plug-in to
+the next.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="transform">
+   Crop and Transform Parameters
+  </a>
+ </h3>
+ Sapphire Plug-ins include a
+ <b>
+  Crop/Transform Input
+ </b>
+ parameter
+category, that includes parameters for cropping, scaling, and shifting
+the input clips before they are processed by the effect.  The Source
+clip and other optional inputs are cropped and transformed, but
+Background inputs are not affected.
+ <p>
+  <b>
+   Crop Top, Crop Bottom, Crop Left, Crop Right
+  </b>
+  are used to select
+a rectangular subsection of the image to be processed.  A "Show Crop
+Widget" mode button on the far right column of the Effect Editor
+brings up an onscreen control for setting this rectangle visually, and
+a "Hide Widgets" button at the top/right removes it from view.
+ </p>
+ <p>
+  A
+  <b>
+   Crop Output
+  </b>
+  option is provided for some effects.  When this
+is selected, the cropped area is processed as if it was the entire
+frame.  This can be used to avoid soft edges around the crop area that
+may be created by effects such as Blur.
+ </p>
+ <p>
+  <b>
+   Scale
+  </b>
+  adjusts the overall size of the input images.  You can
+use this to scale while preserving the aspect ratio of the image, or
+you can use
+  <b>
+   Scale Rel X
+  </b>
+  and
+  <b>
+   Scale Rel Y
+  </b>
+  to scale
+horizontally or vertically by different factors.
+  <b>
+   Shift X
+  </b>
+  and
+  <b>
+   Shift Y
+  </b>
+  translate the input images
+horizontally or vertically.  The values of the shift parameters are
+in units where 100 equals one complete screen width.  A "Show
+Transform Widget" mode button in the far right column of the Effect
+Editor brings up an onscreen control rectangle for setting the scale
+and shift visually, and the "Hide Widgets" button at the top/right removes
+it from view.
+ </p>
+ <p>
+  When an image is cropped or transformed to expose areas beyond its
+edges, the border areas are made transparent, and if you select
+a
+  <b>
+   Background
+  </b>
+  input, it will show through in these areas.  In
+this way a "picture in picture" effect can be created using any
+Sapphire Plug-in that has Crop/Transform parameters.
+ </p>
+ <p>
+  When Warp or Distort effects'
+  <b>
+   Wrap
+  </b>
+  parameters are set to "Tile"
+or "Reflect" the cropped source image will be wrapped on these new
+cropped or transformed boundaries.  In this case, the result will
+still fill the frame, and the borders will not be transparent as
+usual.  This makes it easier to avoid artifacts when distorting a clip
+with bad edges, but if you prefer transparent borders, set the Wrap
+parameters to "No" instead.
+ </p>
+ <p>
+  The Crop and Transform parameters are not available for temporal
+effects which might require access to other frames of the input, such
+as GetFrame, TimeSlice, FieldRemove, and FilmEffect.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="other-params">
+   Resolution, Clamp Output To Legal, and Bypass Effect
+  </a>
+ </h3>
+ Sapphire Plug-ins also include these additional controls, located at
+the bottom of the parameters in the Effect Editor:
+ <p>
+  <b>
+   Resolution
+  </b>
+  is a popup menu that allows the render
+resolution to be reduced to Half, Third, Quarter, and so on, for
+faster testing.  Return this to Full resolution for the best quality
+results.  This parameter is not provided on DS which has its own
+resolution controls.
+ </p>
+ <p>
+  <b>
+   Clamp Output to Legal
+  </b>
+  causes the output colors to be
+clamped between broadcast-legal black and white.  If off, the plug-in
+may pass through or generate non-broadcast-legal super black or super
+white.  On DS, this parameter only affects image formats that support
+super-blacks and whites, such as 16bit and float.
+ </p>
+ <p>
+  <b>
+   Bypass Effect
+  </b>
+  ignores the effect and the primary input clip
+or title is output unmodified when checked.  This can be useful for
+quickly comparing your effect to the original image.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="reset-defaults">
+   Resetting Parameters To Defaults
+  </a>
+ </h3>
+ Every plug-in has two buttons that allow restoring its state to
+defaults.  These buttons are located at the bottom of the effect's
+parameter page, and they act in slightly different ways.
+ <p>
+  <b>
+   Reset Parameter Values
+  </b>
+  sets the effect's parameter values to
+their default values.  However this does not reset keyframes, input
+track selections, or the state of the Apply To Title/Key
+checkbox.
+ </p>
+ <p>
+  <b>
+   Reset All
+  </b>
+  restores all of the effect's state to its default
+including clearing any keyframes, as if the effect has just been
+re-applied to the track from scratch.  If you hit either of these by
+accident, an Undo (Ctl-Z or Apple-Z) should reverse its effect and
+bring you back to the previous state.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="gpu">
+   GPU Acceleration
+  </a>
+ </h3>
+ Many effects can use the
+GPU to speed up rendering. This requires an NVIDIA graphics card which
+supports CUDA, such as a GeForce 280 or 285, or Quadro FX 5600 or
+5800. If a suitable GPU is found, a GPU Enable button will appear in
+the Help dialog.  GPU acceleration is enabled by default if it's
+available, but if you experience performance or stability problems,
+you can turn it off by deselected the GPU Enable button.
+ <p>
+  If a plug-in is unable to render on the GPU, it will automatically
+fall back to the CPU and continue processing. The GPU status,
+including the type of error, is displayed in the Help dialog.
+ </p>
+ <p>
+  On machines with more than one GPU that supports CUDA, you can select which
+GPU Sapphire Plug-ins will use by changing the value of use_gpu in the
+  <tt>
+   s_config.text
+  </tt>
+  file.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="keyframes">
+   Keyframes
+  </a>
+ </h3>
+ Sapphire v2023.0 for
+ <small>
+  AVX
+ </small>
+ 2 uses Avid's Advanced Keyframe
+Model.  This allows users to have independent keyframes for single
+parameters, groups of parameters, or the entire effect, and to slip
+and edit keyframes visually.  It gives a new level of flexibility to
+doing effects work in the Avid, but it requires some thought to use
+well.
+ <p>
+  If you prefer, you can use it just like the old keyframe model by
+selecting "Add to All Parameters". This setting is
+saved, and becomes the default when pressing the pink "Add Keyframe"
+triangle button in the viewer or effect editor.  You can then add
+keyframes at the start and end of the clip and work as you used to.
+ </p>
+ <p>
+  The Advanced Keyframe Model also allows you to add individual
+keyframes: right-click (or Option-click on Mac) in the keyframe area
+of the effect editor and you can add keyframes for only the active
+parameter or group, or all open groups.
+ </p>
+ <p>
+  You can shift keyframes in time by holding down the Shift key while
+dragging them.
+ </p>
+ <p>
+  One important note is that if you're not parked on a keyframe and no
+keyframes are selected for a parameter, changes to the parameter value
+have no effect.  Conversely if several keyframes are selected,
+changing the parameter value changes all the keyframe values.
+ </p>
+ <p>
+  For more information, see the section on Advanced Keyframes in your
+Avid documentation.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="motion-blur">
+   About Motion Blur
+  </a>
+ </h3>
+ <p>
+  Many Sapphire Plug-ins can simulate motion blur by rendering the
+effect at multiple times and averaging the results together. Motion
+blur is controlled by three parameters:
+ </p>
+ <ul>
+  <li>
+   <b>
+    Enable Motion Blur
+   </b>
+   turns motion blur on or off.
+  </li>
+  <li>
+   <b>
+    Shutter Angle
+   </b>
+   controls the amount of time that the
+  simulated shutter is open, and thus the overall amount of motion
+  blur.  The default value of 180 degrees will blur over an interval
+  of half a frame, which is a common setting for real cameras. A value
+  of 360 degrees will blur over an entire frame, which is the maximum
+  amount of motion blur possible with a real camera.
+  </li>
+  <li>
+   <b>
+    Samples
+   </b>
+   controls the number of individual renders that are
+  averaged together. Increasing the number of samples will give
+  smoother results, but will also increase render times. If too few
+  samples are used, there can be visible aliasing or ghosting
+  artifacts. Faster motion will require more samples to avoid
+  artifacts.
+  </li>
+ </ul>
+ <h3>
+  <a name="mask">
+   Mask Inputs
+  </a>
+ </h3>
+ Many Sapphire Plug-ins accept an optional
+ <b>
+  Mask
+ </b>
+ input clip.
+Typically, this input can be used to provide more detailed control for
+where the effect should be applied and where it should not be applied.
+The Mask input defaults to "None" and it can be enabled by setting it to
+"This Track", "1 Track Below", or "2 Tracks Below" depending on which
+track you would like to use for the Mask.  (If
+ <b>
+  Apply To
+Title/Key
+ </b>
+ is enabled, "2 Tracks Below" is removed from the menu of
+optional inputs because the title's matte clip uses up one of the
+tracks.)
+ <p>
+  <a href="../glint">
+   Glint
+  </a>
+  ,
+  <a href="../glow">
+   Glow
+  </a>
+  ,
+  <a href="../glare">
+   Glare
+  </a>
+  ,
+and
+  <a href="../rays">
+   Rays
+  </a>
+  ,
+for example, take the main Source input and also optional Background
+and Mask inputs.  If a Mask is selected, the source input is
+multiplied by the mask
+  <i>
+   before
+  </i>
+  generating the glints (or glows,
+glares), so where the mask is black no glints are generated, and where
+it is white they are generated as usual.  This method prevents the
+glints or glows themselves from being partially cropped by the mask.
+In addition these effects use the RGB colors of the Mask input to
+selectively colorize the resulting glows, glints, or glares.  The red
+areas of the mask will produce red glows, glints, or glares, and so
+on.
+ </p>
+ <p>
+  In
+  <a href="../blur">
+   Blur
+  </a>
+  effects, the areas which are masked out
+are never blurred, so they do not blur into the masked-in regions.  If
+a mask were instead applied afterward, the pixels behind the mask
+would be blurred over the edge of the mask and into the final image.
+As an example, say you have a clip with white text over a black
+background.  If you put that clip into both the Source and Mask
+inputs of Blur, the black background will
+  <i>
+   not
+  </i>
+  be blurred into
+the text, since the black pixels are all masked out.
+ </p>
+ <p>
+  For the Warp effects, the Mask input can control the amplitude of
+warping for different areas of the image.  In masked out areas
+(black), no warping occurs.  In fully white areas of the mask, full
+warping occurs.  But in gray areas, the amount of warping is scaled by
+the brightness of the Mask.  The
+  <b>
+   Blur Mask
+  </b>
+  parameter can be
+useful here to soften the Mask image before it is applied and avoid
+artifacts that can sometimes be caused by hard edges in the Mask.
+ </p>
+ <p>
+  Sapphire Plug-ins that accept Mask inputs also include an
+  <b>
+   Invert
+Mask
+  </b>
+  parameter.  This can be useful because the black/white of
+Alpha images are often backwards from what Sapphire expects.  Normally
+Sapphire processes where the mask is white and shows the background
+where it is black.  The Invert Mask parameter defaults ON for
+  <small>
+   AVX
+  </small>
+  products (except DS) when monochrome Masks
+are expected.  However for Glows, Glints, Glares, EdgeRays, and
+Streaks, Masks can include color information so the Invert Mask
+defaults OFF for those.
+ </p>
+ <p>
+  DS also provides optional masking for all plug-ins which can be enabled on
+the Masking page.  The processed result appears where the Mask is
+white, and the unprocessed first input (usually the background) shows
+through where the Mask is black.
+Sapphire Plug-ins with a
+  <b>
+   Mask
+  </b>
+  input perform their own method of
+Mask processing.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="alpha">
+   Alpha Channel Processing
+  </a>
+ </h3>
+ Sapphire Plug-ins sometimes produce transparency information in an
+Alpha (or opacity) channel along with the RGB colors, for example when
+a plug-in is applied to a title or key, or when its inputs are cropped
+or transformed.  RGBA images output by one effect can also be passed
+to the inputs of other Sapphire Plug-ins.  When processing RGBA
+images, the Alpha channel is handled in one of three ways, depending
+on the effect:
+ <ol>
+  <p>
+  </p>
+  <li>
+   Alpha is processed as just another input channel like R, G, and
+B.  Effects in this category include: AutoPaint, Mosaic, Blur,
+BlurMotion, RackDefocus, all Wipes, all Dissolves, Lens, LensBlur,
+LensChroma, all Kaleidoscopes, all Warps, Shake, and MathOps.
+   <p>
+   </p>
+  </li>
+  <li>
+   Alpha is copied from the first input to the output.  In this
+case the effect doesn't use the Alpha channel, but it is passed
+through unchanged from the first input to the output.  Effects in this
+category include: BandPass, BlurChroma, ClampChroma, DuoTone,
+EdgeDetect, Embosses, Etching, HalfTones, Hotspots, LensRGB,
+Monochrome, Pseudo_Color, Psykos, Sharpen, Sketch, Sparkles, Streaks,
+Threshold, and Zebrafy.  This is the same as what DS does if Process
+Alpha is disabled.
+   <p>
+   </p>
+  </li>
+  <li>
+   Some other effects pass the Alpha through by default, but
+include an
+   <b>
+    Affect Alpha
+   </b>
+   parameter for optionally adding to the alpha
+channel.  These are LensFlare, Glows, Glints, Glare, Rays, and Zaps.
+  </li>
+ </ol>
+ <p>
+  If our method of Alpha processing is not appropriate for your
+application, you can usually manipulate Alpha to be what you need
+using the Channel Switcher.
+ </p>
+ <p>
+  In some cases, it is not obvious how Alpha should be processed.  When
+possible we've chosen the method that seems best for use with
+'premultiplied' compositing.  This is often also called 'additive'
+compositing and is done when the R, G and B values have already been
+multiplied by Alpha:
+ </p>
+ <pre>
+Result = Background * (1 - Alpha) + Foreground
+</pre>
+ For example, by default LensFlare, Glows, Glints, and Glares pass the
+background's Alpha through to the output without modification.  This
+is because these effects simulate light emission.  They are purely
+additive and have no opacity themselves.  You should get the correct
+effect if you composite the output of LensFlare (applied to an RGBA
+clip) over another clip using a premultiplied composite.  The original
+clip will composite over the background using its Alpha, and the flare
+will simply add to the result.
+ <p>
+  Effects with an Affect Alpha parameter can optionally increase
+the output Alpha where the flares (or glows, glints, or glares) occur,
+but in this case the flare elements will become opaque and will darken
+the background image behind them when composited later.
+ </p>
+ <p>
+  On DS, plug-ins can process the alpha channel by enabling Process
+Alpha in the Masking tab of the parameter dialog.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="pixel-aspect">
+   Pixel Aspect Ratios
+  </a>
+ </h3>
+ For some image formats, the digital form of the image is scaled
+non-uniformly to produce the final viewed picture.  For example NTSC
+resolution is normally 720x486 with an aspect ratio of 1.481.
+However, the final NTSC picture has an aspect ratio of 1.333.  Thus
+the original digital image is scaled in the horizontal direction by a
+factor of 0.9 and shapes rendered as circles can end up squashed
+slightly into ovals.  The original pixels are effectively rectangular
+shaped instead of squares, and have an aspect ratio of 1.48/1.333 =
+1.111.  In addition, since
+ <small>
+  AVX
+ </small>
+ products except DS
+provide only half-height "field" images to plug-ins, the pixel aspect
+ratio is scaled by another factor of 2 there (2.222 for NTSC).
+ <p>
+  To compensate for this, all Sapphire Plug-ins pre-stretch or shrink
+their effect in the vertical direction by the inverse of this
+  <i>
+   pixel
+aspect ratio
+  </i>
+  .  We use the pixel aspect ratio from your current
+sequence, but you can override these defaults for
+  <i>
+   all
+  </i>
+  effects
+by changing the value of force_pixel_aspect_ratio in the
+"s_config.text" file.
+ </p>
+ <p>
+  Most plug-ins also have a parameter for adjusting the relative width
+or height of the effect, which can be used to stretch the effect as
+needed on a case by case basis.
+ </p>
+ <p>
+  The pixel aspect ratio makes no difference for basic pixel processing
+effects such as Layer and color processing.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="custom">
+   Customizing Plug-ins
+  </a>
+ </h3>
+ A facility is included with Sapphire Plug-ins that allows users with
+some programming experience to define and customize new plug-ins.  A
+number of parameters are also available that can be adjusted to
+customize the behavior of all Sapphire plug-ins.  You can force
+progressive mode, disable multi-processing, or specify lookup tables
+for more accurate processing of log format images.  For additional
+information on these, or to modify a parameter, open the config file
+which is normally located on Windows in
+ <tt>
+  C:\Program Files\BorisFX\Sapphire 2023 AVX\s_config.text
+ </tt>
+ . On Mac OSX it is in
+ <tt>
+  Applications/BorisFX/Sapphire 2023 AVX/config/s_config.text
+ </tt>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="known-probs">
+   Known Problems
+  </a>
+ </h3>
+ <ol>
+  <p>
+  </p>
+  <li>
+   Trimming clips from the head may invalidate the Mocha track.
+  </li>
+  <p>
+  </p>
+  <li>
+   Any S_Effect saved with an earlier version containing WarpDrops
+  will render incorrectly after installing Sapphire 11. The effect can
+  be fixed by clicking "Edit Effect" to open Builder, and then
+  clicking "OK" to update the effect to Sapphire 11.
+  </li>
+  <p>
+  </p>
+  <li>
+   Media Composer 7.04 or later is required for full Effect
+Builder support. On DS and older versions of Media Composer, S_Effect
+and S_Transition can load and edit effects, but will not display any
+parameters.
+   <p>
+   </p>
+  </li>
+  <li>
+   If multiple copies of S_Effect or S_Transition are stacked on a
+clip, Media Composer may display the parameters of one or both effects
+incorrectly. This will hopefully be fixed in a future version of Media
+Composer.
+   <p>
+   </p>
+  </li>
+  <li>
+   When dragging on-screen widgets to adjust a parameter, the
+image is not redrawn with the new values until you release the mouse.
+This is an
+   <small>
+    AVX
+   </small>
+   2 limitation that will hopefully be fixed
+in future versions of Avid products.
+   <p>
+   </p>
+  </li>
+  <li>
+   Avid plug-in processing is supported on fields only, for
+field-based media.  They usually do not provide full frame data to
+plug-ins.  For some effects such as warps, this can cause less
+vertical sharpness than you would get from the same effect on other
+platforms.
+   <p>
+   </p>
+  </li>
+  <li>
+   In LensFlareAutoTrack the hotspot will move around if the resolution
+changes (including yellow/green to full green) and the hotspot_shift
+parameter is set to any value other than zero.  If using the hotspot_shift
+parameter always work in full green mode.
+  </li>
+ </ol>
+ <p>
+  <br/>
+  <a href="../intro">
+   To Sapphire Plug-ins Introduction
+  </a>
+ </p>

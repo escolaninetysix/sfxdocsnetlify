@@ -1,0 +1,17 @@
+{{ if in .image_url "https://borisfx-com-res.cloudinary.com/" }}
+
+<img class="img-fluid" src="{{ .image_url }}" />
+
+{{ else if in .image_url "https://cdn.shopify.com/" }}
+
+<img class="img-fluid" src="{{ .image_url }}" style="width:inherit;"/>
+
+{{ else if .image_url }}
+<picture>
+<source srcset="{{ .baseURL }}{{ .baseDIR }}w_1200,f_auto,q_auto{{ .image_url }}" media="(min-width: 1200px)" />
+<source srcset="{{ .baseURL }}{{ .baseDIR }}w_1000,f_auto,q_auto{{ .image_url }}" media="(min-width: 992px)" />
+<source srcset="{{ .baseURL }}{{ .baseDIR }}w_800,f_auto,q_auto{{ .image_url }}" media="(min-width: 768px)" />
+<source srcset="{{ .baseURL }}{{ .baseDIR }}w_600,f_auto,q_auto{{ .image_url }}" media="(min-width: 576px)" />
+<img src="{{ .baseURL }}{{ .baseDIR }}w_500,h_300,f_auto,q_auto{{ .image_url }}" class="img-fluid" />
+</picture>
+{{ end }}

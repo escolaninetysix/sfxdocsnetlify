@@ -1,0 +1,110 @@
+{
+   "date": "2014-04-30T12:46:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC AE/Premiere Pro - 9.0.1 Release Notes"
+}
+
+<p>Boris Continuum Complete AE 9.0.1 was released on 4/30/2014 and is an update to:</p>
+<ul>
+<li>Boris Continuum Complete AE 9.0.0 ( <a title="BCC 9 AE/Premiere Pro –  9.0.0 Release Notes" href="/release-notes/bcc-ae-premiere-pro-9-0-0-release-notes/" target="_blank">BCC AE 9.0.0 Release Notes </a>)</li>
+</ul>
+<p><strong> Registration: </strong> <br> <a href="/account/manage/" target="_blank"> Make sure to register your product in order to receive the latest technical and upgrade information. </a></p>
+<p><strong> BCC AE 9 supports the following host applications: </strong></p>
+<p>Mac OSX 10.7, 10.8, and 10.9:</p>
+<ul>
+<li>Adobe After Effects and Premiere Pro CS5, CS5.5, CS6, and CC</li>
+</ul>
+<p>Windows 7 64, Windows 8 64:</p>
+<ul>
+<li>Adobe After Effects and Premiere Pro CS5, CS5.5, CS6, and CC</li>
+</ul>
+<p><strong> Feature Enhancements in BCC AE 9.0.1: </strong> <!--more--></p>
+<ul>
+<li>The FX Browser can now be applied to Precomps or Adjustment Layers in AE.</li>
+<li>More than 100 new transition presets.</li>
+<li>Built-in Vignette added to Pan and Zoom.</li>
+<li>Motion Blur now supported for 3D Mode in Pan and Zoom.</li>
+<li>Improved GPU support on ATI systems.</li>
+<li>Help Docs refinements.</li>
+<li>Colored Background option added to Swish Pan.</li>
+</ul>
+<p><strong> Bug Fixes In BCC AE 9.0.1: </strong></p>
+<ul>
+<li>Warp - Antialiasing not working.</li>
+<li>Vector Blur Dissolve - Ignore Edge Pixels not working as expected.</li>
+<li>Edge Grunge - Layer Border options not working as expected.</li>
+<li>Film Damage - Error messages when applied to time remapped clips in Premiere.</li>
+<li>Vector Blur Dissolve - Streaks visible on video that has alpha transparency.</li>
+<li>Revise parameter defaults for several transitions.</li>
+<li>Sporadic instability when loading animated presets in the FX Browser.</li>
+<li>FX Browser - sporadic instability in Mac AE when closing the browser or switching from AE to other apps and then back again while the browser is open.</li>
+<li>Extruded Text - Hitting Apply in the text edit window causes other apps to jump in front of AE.</li>
+<li>Extruded Text - Refresh issue when launching the text window with fragments of the window bar being drawn in the wrong place and then not refreshing.</li>
+<li>Cuda driver errors are displayed on some ATI systems which had previously installed NVIDIA cards.</li>
+<li>FX Browser - Saving Workspace does not allow overwriting of an existing one.</li>
+<li>FX Browser - Workspaces save number does not automatically advance beyond 2 on windows.</li>
+<li>FX Browser - Open folders are not always saved and restored.</li>
+<li>3D Objects filters will incorrectly cache the first layer assigned as texture/bump map, even if that layer has been deleted and another assigned.</li>
+<li>Sporadic instability with 3D Objects filters on windows, especially in Premiere on Windows 8.</li>
+<li>Laser Beam - Motion Blur does not work in Premiere.</li>
+<li>Damaged TV - Triangle and Saw edge shapes don’t animate.</li>
+<li>Grunge - 4K displacement map doesn’t work when 4K media is selected as the layer.</li>
+<li>Grunge - With 'use texture' turned off, displacement map uses source layer as map even when map is set to texture.</li>
+<li>Grunge - Glow in 4K media gets bigger when dropping resolution.</li>
+<li>Lens Flare 3D - Instability in AE when applying to alpha media and selecting images smaller than comp sized as background.</li>
+<li>Grunge - Opacity parameter incorrectly adjusting scratches.</li>
+<li>Vignette - When dropping resolution to third or quarter, the blur shifts unexpectedly.</li>
+<li>Damaged TV Dissolve - Interference shows random gaps in interference on side edge of screen.</li>
+<li>Preset library - Remove outdated presets in some filters which distract from browsing the more important entries.</li>
+<li>Several Jitter presets contain incorrect default Y offsets.</li>
+<li>Sphere Transition - Uses wrong folder for default preset location.</li>
+</ul>
+<p><strong> BCC AE 9.0.1 - Known Issues and Limitations: </strong></p>
+<ul>
+<li> 29745 - Grunge can render with missing textures on Radeon cards in 8 or 16 bit color depth on Windows when using driver versions prior to 14.x. The filter will work in 32 bit float color depth (in hosts that offer 32-bit color) even with older drivers.</li>
+<li>27855 - Rendering errors can occasionally occur when using Adobe Media Encoder to render filters that rely on OpenGL acceleration such as 3D Objects filters, or the new particle filters. Rendering directly from within the original host should alleviate these errors.</li>
+<li>28732 - BCC Extruded Text and BCC Type On Text use a custom text entry window and some of the changes that can be made through in this window are not reflected in the preview within the text window on Mac OS (although they will be apparent in the effect when previewed/rendered back in the host). The following text attributes do not preview within the text window:</li>
+</ul>
+<ol>
+<li>Justification (when Word Wrap is not enabled)</li>
+<li>Top Down Text</li>
+<li>Right to Left Reading</li>
+<li>Negative Line Leading</li>
+<li>Italics (for fonts that don't include an italic typeface)</li>
+<li>Superscript and Subscript</li>
+</ol>
+<ul>
+<li>27362 - Filters in the 3D Objects category can show clipping or shifting when applied to layers larger than HD, and if such clipping is observed it may be necessary to apply the effects to HD or smaller sized clips.</li>
+<li>23630 - In BCC Particle Emitter 3D the interaction layer does not work accurately with 3D Text layers in AE unless they are precomposed at comp dimensions.</li>
+<li>26068 - In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.</li>
+<li>27591 - As part of the new Motion Tracker workflow, if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must now reset the tracker data with the reset button in the tracker banner before starting a second tracker pass. (This extra step is not necessary if the tracker point picker location has changed.)</li>
+<li>25867 - In BCC Type On Text the Line Leading in the text entry preview window does not accurately match up with the leading in the rendered result, and the leading may need to be adjusted to generate the desired final render.</li>
+<li>28724 - Importing Premiere Pro projects containing BCC effects directly into After Effects can lead to effects with some incorrectly transferred parameters which can lead to incorrect renders or other unexpected behavior. This project import workflow is currently not recommended for BCC filters. Please contact Boris technical support if represents an important desired workflow</li>
+<li>27313 - The Beat Reactor propagation options generate unexpected results in Organic Strands. Use non-propagation modes which work as expected as a temporary workaround.</li>
+<li>28590 - Optical Stabilizer does not currently analyze correctly when applied to precomps in AE. As a temporary workaround it should be applied directly to individual clip elements instead of to precomps.</li>
+<li>26750 - The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. Use lower values near the default setting of 32 as a workaround.</li>
+<li>28774 - When using a video track to define a texture in the 3D Objects filters, the scaling of that texture can vary incorrectly when changing resolutions so effects that use layers as textures should be set up in full resolution.</li>
+<li>29533 - The apply modes Boost Expo 1, 2, and 50/50 mix do not give the expected result in Grunge.</li>
+<li>29502 - In Grunge the Spot Light Cone Feather doesn’t follow the cone size</li>
+<li>29841 - In Grunge when using the Chromatic Aberration feature, white pixels render over blur region when the Vignette feature is also enabled.</li>
+<li>29777 - In Grunge the Edge Offset control in the Chromatic Aberration group is not working as designed</li>
+<li>29758 - (Mac Only) In Grunge the noise does not animate smoothly and can yield unexpected repeating patterns at some settings on mac</li>
+<li>28552 - LED - For certain Size settings a thin black strip of missing LED elements can appear along the top and right edges of the image.</li>
+<li>30205 - Grunge and Lens Flare 3D - The Scale Random feature does not work in the Orbs groups.</li>
+<li>29395 - FX Browser - on Macintosh systems with Retina displays the tabs in the preset browser do not respond correctly to mouse click+drag events.</li>
+<li>29974 - FX Browser - The Animation timing is inaccurate when previewing presets with animated point pickers in the FX Browser.</li>
+</ul>
+<p><strong> Known issues that are specific to Premiere Pro: </strong></p>
+<ul>
+<li>29030 - When rending in Premiere to a final resolution that is lower than the projects main resolution, the Premiere host will render effects are lower resolution internally which can cause some effects to generate significantly different results than if rendered and full resolution and resized afterwards. Some filters that are highly resolution dependent such as BCC Match Grain will even render error messages when used at less than full resolution. To ensure renders internally at full resolution and then resizes as a secondary step you can enabled Premiere's "maximum render quality" option.</li>
+<li>23498 - Versions of Premiere Pro prior to CS6 have problems getting the correct frame with filters that access layers at alternate times when applied to trimmed clips. Adobe resolved this issue in Premiere Pro CS6 but in prior versions of Premiere Pro you may need to export trimmed sections and reimport them as untrimmed in order for time based features such as Optical Stabilizer, Motion Key, or the Motion Tracker to work properly.</li>
+<li>26212 - In Premiere Pro CS5.5. and earlier, enabling the Use Individual Layers control in BCC Pin Art will generate a rendered error message.</li>
+<li>26994 - Currently the only way to select from the list of installed image shapes in the new particle filters on Windows Premiere Pro is to use the prev/next arrow keys to step through the list which is inconvenient due to the length of the list. Using a host layer to define a particle shape can serve as a workaround.</li>
+<li>29111 - Preset banner popup menus do not work in Premiere Pro on Windows. Presets must be loaded with the Load (L) button instead.</li>
+<li>28423 - Stacking multiple 3D Objects filters on a single clip can lead to performance degradation or psuedo-hanging. It is recommended that for the time being 3D Objects filters be applied to separate tracks or separate clips in Premiere Pro.</li>
+<li>28714 - The Beat Reactor does not properly recognize audio levels in AIF files exported from Premiere that use 32bit non-float formatting. As a temporary workaround use 8 bit, 16 bit, or 32bit float formatting for exporting AIF files from Premiere for use in the Beat Reactor.</li>
+<li>27000 - BCC frequently enables/disables individual parameters within the effect control pane to help make clear which parameters are relevant in a particular configuration. Premiere CS6 and earlier have a host problem where they sometimes fail to fully enable or fully disable parameters in response to other parameter changes. This can at times make parameters appear unavailable when they should in fact be editable. Newer versions of Adobe Premiere do not show this problem, but for older versions you can usually force the UI to refresh correctly by twirling an effect group closed and then back open again.</li>
+<li>30143 - Even when parked on a single frame in Premiere, the Video Scope log file can generate entries for multiple frame when a render refreshes e.g. due to changing a parameter. This is caused by Premiere's predictive background rendering scheme where it automatically renders many frames ahead in the timeline. The Video Scope log file entry for the current frame should be the first entry in the list if you clear the log file prior to forcing a render refresh.</li>
+</ul>

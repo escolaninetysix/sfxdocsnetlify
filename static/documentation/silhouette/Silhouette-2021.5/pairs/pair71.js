@@ -1,0 +1,21 @@
+var pairs =
+{
+"grain":{"composite":1,"detail":1,"extracted":1}
+,"composites":{"grain":1,"detail":1}
+,"detail":{"back":1,"nodes":1,"added":1,"image":1,"extracted":1,"node":1}
+,"back":{"image":1}
+,"image":{"previously":1}
+,"previously":{"extracted":1}
+,"extracted":{"using":1}
+,"using":{"degrain":1,"extract":1}
+,"degrain":{"extract":1,"node":1}
+,"extract":{"detail":1}
+,"node":{"group":1}
+,"controls":{"amount":1}
+,"amount":{"grain":1}
+,"added":{"image":1}
+,"sets":{"mode":1}
+,"mode":{"compositing":1}
+,"compositing":{"grain":1}
+}
+;Search.control.loadWordPairs(pairs);

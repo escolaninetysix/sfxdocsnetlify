@@ -1,0 +1,264 @@
+{{ define "content" }}
+
+{{ $contents := split .Content "<split>" }}
+
+<style>
+  .form-container {
+    overflow-x: auto;
+  }
+  #newsletter-consent{
+    max-height: 0px;
+    overflow-y: hidden;
+  }
+  #newsletter-consent.show{
+    max-height: 300px;
+    transition: max-height 1s ease;
+  }
+</style>
+<div class="container" id="app">
+  <div class="row">
+    <h1 class="">{{ .Title }}</h1>
+    <div class="col-md-12 mt-3">
+      <div class="row">
+        <div class="col">
+        {{ index $contents 0 | markdownify }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-container branded-box col-lg-5 px-lg-5">
+          <!-- Account Type: Business or Personal -->
+          <form class="">
+            <div class="form-group">
+              <div class="form-group">
+                <label>Activation Keys</label>
+                <p><em>Please enter key exactly as it is written.</em></p>
+                <template v-for="(serial, i) in formContent.serials">
+                  <input class="form-control d-inline w-75" placeholder="XXXX-XXXX-XXXX-XXXX" v-model="serial.value" /> 
+                  <a href="#" @click="addSerial(i)">Add</a> | <a href="#" @click="removeSerial(i)">Del</a>
+                  <p class="text-danger">${serial.error}</p>
+                </template>
+              </div>
+
+              <label>Account Type:</label><br />
+              <label class="radio-inline">
+                <input class="mr-2" type="radio" v-model="formContent.accountType" value="personal" name="optradio"
+                  checked>Personal Account
+              </label>
+              <label class="radio-inline ml-lg-1">
+                <input class="mr-2" type="radio" v-model="formContent.accountType" value="business"
+                  name="optradio">Company Account
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label>First Name</label>
+              <input class="form-control" placeholder="First Name" v-model="formContent.firstName" />
+            </div>
+
+            <div class="form-group">
+              <label>Last Name</label>
+              <input class="form-control" placeholder="Last Name" v-model="formContent.lastName" />
+            </div>
+
+            <div class="form-group">
+              <label>Email Address</label>
+              <input class="form-control" placeholder="Email" v-model="formContent.email" :disabled="user" />
+            </div>
+
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input class="form-control" placeholder="Phone Number" v-model="formContent.phone" />
+            </div>
+
+            <div class="form-group">
+              <label>Company Name</label>
+              <input class="form-control" placeholder="Company Name" v-model="formContent.company"
+                :disabled="formContent.accountType == 'personal'" />
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <input name="address" class="form-control" placeholder="Address" type="text" v-model="formContent.address.street" required />
+              <input name="city" class="form-control" placeholder="City" v-model="formContent.address.city" type="text" required />
+              <select class="form-control grouped-input" id="billing-country" v-model="formContent.address.country"
+                @change="handleCountryChange($event, $event.target.selectedIndex)" required>
+                <option value="">Country</option>
+                <option v-for="c in countries" :value="c.code">${ c.name }</option>
+              </select>
+              <select class="form-control grouped-input" id="billing-state" v-if="states"
+                v-model="formContent.address.state" required>
+                <option value="">-- Select State --</option>
+                <option v-for="s in states" :value="s.code">${ s.name }</option>
+              </select>
+              <input name="zip" class="form-control" type="text" placeholder="Zip/Postal Code" v-model="formContent.address.zip" required />
+            </div>
+
+            <!-- Password -->
+            <div class="form-group" v-if="!user">
+              <label>Password</label>
+              <input id="password" name="password" type="password" v-model="formContent.password" class="form-control"
+                @change="validatePassword" />
+              <div id="pwErrorMsg" style="color: red">${ passwordError }</div>
+            </div>
+
+            <!-- Newsletter Sign Up -->
+            <div class="form-group form-inline">
+              <label>Join our email newsletter and keep up to date</label>
+              <input id="newsletter" name="newsletter" class="form-control ml-2" type="checkbox" v-model="formContent.newsletter"
+                @change="toggleNewsletterConsent" />
+            </div>
+            <div id="newsletter-consent" v-bind:class="{show : formContent.newsletter}">
+              <p>You can unsubscribe from the Boris FX newsletter at any time by
+                clicking a link we include in every message. We use a third-party service, Pardot, to deliver our
+                newsletters,
+                please see our <a href="{{ relref . "privacy#e-newsletter" }}" target="_blank">privacy policy</a> for more
+                information.</p>
+            </div>
+
+            <!-- Recaptcha -->
+            <div class="g-recaptcha" data-sitekey="6Le-fEQUAAAAAKNX6zxewTeps8tnPgvzj7o1GfrI"></div>
+
+            <!-- Sign Up -->
+            <div class="form-group">
+              <button type="submit" :disabled="submitting"
+                class="btn btn-lg btn-block w-75">Register License</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-7 px-5">
+          <h2> {{ .Params.subtitle }}</h2>
+          {{ index $contents 1 | markdownify}}
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+          {{ index $contents 2 | markdownify }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var countryData = {{ $.Site.Data.CountriesAndStates }};
+  var partnerId = {{ .Params.partnerId }}
+  var confirmationSlug = {{ .Params.confirmationSlug }}
+  var campaignId = {{ .Params.campaignId }}
+</script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    delimiters: ['${', '}'],
+    data: {
+      user: Cookies.getJSON('bfx-login'),
+      partnerId: partnerId,
+      campaignId: campaignId,
+      formContent: {
+        accountType: 'personal',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        address: {
+          street: '',
+          city: '',
+          state: '',
+          country: '',
+          zip: ''
+        },
+        serials: [{value: '', error:''}],
+        newsletter : false
+      },
+      countries: countryData,
+      states: null,
+      passwordError: '',
+      submitting: false
+  },
+  created: function(){
+    if (this.user != null){
+      this.formContent.email = this.user.email;
+    }
+  },
+  mounted: function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('serial') != null){
+      this.formContent.serials[0].value = urlParams.get('serial')
+    }
+  },
+  methods: {
+    addSerial(){
+      this.formContent.serials.push({value: '', error:''});
+    },
+    removeSerial(index){
+      if (this.formContent.serials.length <= 1) return;
+      this.formContent.serials.splice(index, 1);
+    },
+    handleSubmit: function(){
+      var self = this;
+      self.submitting = true;
+      var data = self.formContent;
+      data.partnerId = self.partnerId;
+      data.campaignId = self.campaignId;
+      if (self.user) data.token = self.user.token;
+      axios.post('https://backend.borisfx.com/partner/submit', data)
+      .then(function(res){
+        var url = '/partner/' + confirmationSlug;
+        if (!self.user) url += '?verification_required=1&email=' + self.formContent.email;
+        window.location.href = url;
+      })
+      .catch(function(err){
+        switch(err.response.status){
+          case 401: window.location.href = '/account/logout'; break;
+          case 400: alert ('You have provided an invalid Email Address or Password. Please check your information and try again.'); break;
+          
+          case 403: {
+            results = err.response.data;
+            for (var r of results){
+              for (var s of self.formContent.serials){
+                if (r.serial == s.value){ 
+                  s.error = r.valid ? '' : r.error; 
+                  break;
+                }
+              }
+            }
+            break;
+          }
+
+          default : alert ('There was a problem registering your license. Please contact us at customerservice@borisfx.com for assistance');
+        }
+        window.scrollTo(0, 0);
+        self.submitting = false;
+      })
+    },
+    handleCountryChange: function(event, index) {
+      var i = index - 1;
+      var selectedCountry = this.countries[i];
+      this.states = selectedCountry.states;
+      this.formContent.address.state = '';
+    },
+    validatePassword: function() {
+      var password = this.formContent.password;
+      var isValid = true;
+      //password should have at least eight characters
+      if (password.length < 8) isValid = false;
+      //password should have at least one lowercase letter
+      else if (!new RegExp('[a-z]').test(password)) { isValid = false; }
+      //password should have at least one uppercase letter
+      else if (!new RegExp('[A-Z]').test(password)) { isValid = false; }
+      //password should have at one number
+      else if (!new RegExp('[0-9]').test(password)) { isValid = false; }
+      //password should have at least one non-alphanumeric character
+      else if (!new RegExp('[^A-Za-z0-9]').test(password)) { isValid = false; }
+
+      this.passwordError = isValid ? '' : 'Password must contain both uppercase and lowercase letters, as well as at least one number and one symbol. It must also be at least 8 characters long.';
+    },
+    toggleNewsletterConsent: function(){
+      if (this.newsletter) {
+        document.getElementById('newsletter-consent').visible = true;
+      }
+    }
+  }
+  })
+</script>
+
+{{ end }}

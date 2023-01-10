@@ -1,0 +1,305 @@
+{
+  "date": "2009-06-19T15:11:04-04:00",
+  "tags": [
+    "Continuum Complete"
+  ],
+  "title": "BCC for Avid DS - 6.0.0",
+  "description": "BCC 6.0.0 for Avid DS release notes",
+  "excerpt": "",
+  "image_url": ""
+}
+<p>
+ Boris Continuum Complete 6 Plugins for Avid DS [AVX 2 systems]
+</p>
+<p>
+ minimum required Avid DS version ;
+ <b>
+  Avid DS 10.2.1
+ </b>
+</p>
+<p>
+ required Windows OS ;
+ <b>
+  Windows XP 64bit
+ </b>
+ <img src="https://cdn.borisfx.com/borisfx/images/DS-LensFlare3D.jpg" alt="image" width="666" height="1">
+</p>
+<h1>
+ What's New in this release of BCC AVX for Avid DS ?
+</h1>
+<ul id="l1">
+ <li>
+  <p>
+   support for
+   <b>
+    AFE conform for Media Composer and Symphony sequences using AVX 2 Continuum plugin effects
+   </b>
+  </p>
+ </li>
+ <li>
+  <h2>
+   built-in filter presets
+  </h2>
+ </li>
+ <li>
+  <h2>
+   contextual hiding / displaying of parameter controls allows for options to display only animated parameters and EZ Mode parameter display
+  </h2>
+ </li>
+ <li>
+  <h2>
+   improved on-screen controls
+  </h2>
+ </li>
+ <li>
+  <h2>
+   32 bit precision processing for OpenGL category effects
+  </h2>
+  <h2>
+   Filters new to BCC product for DS in this release ; Colors and Blurs category
+  </h2>
+  <ul id="l2">
+   <li>
+    <p>
+     Lens Blur
+    </p>
+   </li>
+   <li>
+    <p>
+     Lens Shape
+    </p>
+   </li>
+   <li>
+    <p>
+     Motion Blur
+    </p>
+    <p>
+     Distortion and Perspective category
+    </p>
+   </li>
+   <li>
+    <p>
+     Match Move
+    </p>
+   </li>
+   <li>
+    <p>
+     Pan and Zoom
+    </p>
+    <p>
+     Effects category
+    </p>
+   </li>
+   <li>
+    <p>
+     DeGrain
+    </p>
+   </li>
+   <li>
+    <p>
+     Match Grain
+    </p>
+   </li>
+   <li>
+    <p>
+     Witness Protection
+    </p>
+    <p>
+     Keys and Matte category
+    </p>
+   </li>
+   <li>
+    <p>
+     Motion Key
+    </p>
+    <p>
+     Time category
+    </p>
+   </li>
+   <li>
+    <p>
+     Jitter
+    </p>
+   </li>
+   <li>
+    <p>
+     Jitter Basic
+    </p>
+   </li>
+   <li>
+    <p>
+     Looper
+    </p>
+   </li>
+   <li>
+    <p>
+     Optical Flow
+    </p>
+   </li>
+   <li>
+    <p>
+     Optical Stabilizer
+    </p>
+   </li>
+   <li>
+    <p>
+     Posterize Time
+    </p>
+   </li>
+   <li>
+    <p>
+     Sequencer
+    </p>
+   </li>
+   <li>
+    <p>
+     Temporal Blur
+    </p>
+   </li>
+   <li>
+    <p>
+     Time Displacement
+    </p>
+   </li>
+   <li>
+    <p>
+     Trails
+    </p>
+   </li>
+   <li>
+    <p>
+     Trails Basic
+    </p>
+   </li>
+   <li>
+    <p>
+     Velocity Remap
+    </p>
+    <p>
+     Transitions category
+    </p>
+   </li>
+   <li>
+    <p>
+     Lens Blur Transition
+    </p>
+    <p>
+     <img src="//cdn.borisfx.com/borisfx/image/DS-LensFlare3D.jpg" alt="image" width="666" height="1">
+    </p>
+    <p class="s1">
+     Known
+     <b>
+      Issues and Limitations
+     </b>
+     using this release in Avid DS 10.2.1
+    </p>
+    <h2>
+     Limitations when conforming BCC effects from Media Composer / Symphony to DS ;
+    </h2>
+   </li>
+  </ul>
+ </li>
+ <li>
+  <p>
+   When comforming a sequence from Media Composer or Symphony that includes BCC effects,
+   <b>
+    the effects must use the AVX2
+   </b>
+   API (not AVX 1.5 or AVX1). If the effects are not AVX2 API they must be promoted to AVX2 while on the Media Composer or Symphony before doing the conform to DS.
+  </p>
+ </li>
+ <li>
+  <p>
+   Due to some differences in the way Media Composer/Symphony handles compositing as compared to DS,
+   <b>
+    some effects need to be adjusted after conforming in order to get the intended appearance
+   </b>
+   . For example, for effects using multiple video inputs it is necessary to manually patch the alternate inputs into the filter once the sequence has been conformed. Also, in some cases it is necessary to enable Alpha processing to get the correct appearance once the effect has been conformed.
+  </p>
+ </li>
+ <li>
+  <h2>
+   Some filters that are available in the BCC product for Media Composer and Symphony are not yet available in this release of AVX2 plugins for DS. That means these filters are not available for use in DS and will not conform from Media Composer or Symphony to DS. Here is the list of the effects not yet available in BCC AVX2 for DS
+  </h2>
+  <p>
+   3D Objects category
+  </p>
+  <ul id="l3">
+   <li>
+    <p>
+     Extruded EPS
+    </p>
+   </li>
+   <li>
+    <p>
+     Extruded Spline
+    </p>
+   </li>
+   <li>
+    <p>
+     Extruded Text
+    </p>
+   </li>
+   <li>
+    <p>
+     Layer Deformer
+    </p>
+   </li>
+   <li>
+    <p>
+     Type-On Text
+    </p>
+    <p>
+     OpenGL category
+    </p>
+   </li>
+   <li>
+    <p>
+     Damaged TV
+    </p>
+   </li>
+   <li>
+    <p>
+     Lightning
+    </p>
+   </li>
+   <li>
+    <p>
+     Prism
+    </p>
+   </li>
+   <li>
+    <p>
+     Tile Mosaic
+    </p>
+   </li>
+  </ul>
+ </li>
+ <li>
+  <p>
+   BCC AVX for Media Composer/Symphony supports filter level (built-in) animated presets, but the built- in
+   <b>
+    animated presets are not yet supported for Avid DS
+   </b>
+   (built-in presets must be static).
+  </p>
+ </li>
+</ul>
+<h2>
+ Other Limitations Issues ;
+</h2>
+<h2>
+ - PixelChooser custom spline regions cannot be created or modif ied in DS 10.2.1 since the bezier tools are not available. A custom PixelChooser region can function if the effect is conformed from Media Composer or Symphony (but the region cannot be modified etc.)
+</h2>
+<ul id="l4">
+ <li>
+  <h2>
+   X/Y point control parameters and color parameters are not hidden when they should be
+  </h2>
+ </li>
+ <li>
+  <h2>
+   Glow Alpha Edges does not produce the proper effect when applied as a filter. The workaround is to use the filter in tree mode where it will give the expected result.
+  </h2>
+ </li>
+</ul>

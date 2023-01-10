@@ -1,0 +1,694 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: WhipLash",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/WhipLash.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="WhipLash">
+     <h2>
+      S_WhipLash
+     </h2>
+    </a>
+    2D-only version of Swish3D, with optional Whip Out motion and RGB Split.
+  Cuts between two input clips while performing 2D moves on each.
+  During the transition the clips are transformed by the Rotate,
+  Shift, and Scale parameters.
+    <p>
+     In the Sapphire Transitions category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/WhipLash.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Motion Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of motion blur to use.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen center.
+   <br/>
+   The center position about which to scale or rotate.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates by the specified angle in counter-clockwise degrees.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-4 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Translates horizontally or vertically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the size of the clips.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Whip Out:
+   </b>
+   <i>
+    Popup menu,  Default: Smooth
+   </i>
+   .
+   <br/>
+   End of transition motion
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Smooth:
+      </i>
+     </b>
+     Smooth decelerate
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Bounce:
+       </i>
+      </b>
+      Overshoot with bounce to stop
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Snap:
+        </i>
+       </b>
+       Overshoot then snap to stop
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap From:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    Tile Tile
+   </i>
+   ].
+   <br/>
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap To:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    Tile Tile
+   </i>
+   ].
+   <br/>
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mix RGB:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Blend in optional RGB split / blur
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the width of the blur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The rotation of the overall lash pattern used for the wipe,
+  in counter-clockwise degrees.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift RGB:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the image in the direction of the blur.  A negative shift amount
+               shifts the image in the opposite direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bias:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Varies the weight of the pixels along the path of the blur, which gives the appearance
+          of trails or streaks in a single direction. A value of 0.5 weights
+          all pixels evenly. A value of 1 causes the weight to increase toward the direction of
+          the blur, while a value of 0 has the opposite effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The blur width of the red channel, relative to Blur
+  Amount.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The blur width of the green channel, relative to Blur
+  Amount.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The blur width of the blue channel, relative to Blur
+  Amount.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Additional amount to shift the red color channel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Additional amount to shift the green color channel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Additional amount to shift the blue color channel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds this gray value to the darker regions of
+the result.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Reflect
+   </i>
+   .
+   <br/>
+   Determines the behavior when accessing areas outside the source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Black:
+      </i>
+     </b>
+     Areas outside the source image are treated as black, which can produce
+                     dark areas around the edges of the image.
+             Select this for fastest rendering.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Repeat:
+       </i>
+      </b>
+      Repeats the last pixel outside the border of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       Reflects the image outside the border.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../swish3d">
+       Swish3D
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

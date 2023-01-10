@@ -1,0 +1,617 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: TextureNoiseEmboss",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/TextureNoiseEmboss.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="TextureNoiseEmboss">
+     <h2>
+      TextureNoiseEmboss
+     </h2>
+    </a>
+    In the S_Textures Plugin.
+    <p>
+     Creates an abstract texture by applying a
+  EmbossShiny effect to a procedurally generated noise texture.  Adjust the Light Dir
+  to illuminate the pattern from different angles.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       None
+      </b>
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/TextureNoiseEmboss.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The spatial frequency of the texture.  Increase to zoom
+  out, decrease to zoom in.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.5,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative horizontal frequency of the texture.
+  Increase to stretch it vertically or decrease to stretch it
+  horizontally.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   1 to 10.
+   <br/>
+   The number of summed layers of noise.  Each octave is twice
+the frequency and half the amplitude of the previous.  A single octave
+gives a smooth texture.  Adding octaves makes the result approach a
+fractal (1/f) noise texture.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.23,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Translation offset of the texture.  Since the texture is
+  procedurally generated it can be shifted with no repeating units or
+  seams occurring.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Light Dir:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.2 0.2],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The direction vector for the light source.  Surface
+  shading is calculated using light from this direction shining onto
+  the generated bump map.  This parameter can be adjusted using the Light Dir Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bumps Scale:
+   </b>
+   <i>
+    Default:
+   </i>
+   2.5,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the amplitude of the bump map.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bumps Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   This value is subtracted from the Bumps input
+  before it is used.  It can be used to create flat areas resembling
+  'lakes.'
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hilite Brightnss:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the specular highlights.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hilite Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Adjusts the size of the specular highlights.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Surface Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.75 0.75 0.75].
+   <br/>
+   The color of the surface.  The final color is
+  affected by both this and the Light Color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Light Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   The color of the light source that creates the embossed result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Smooth:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Smooths the noise texture before applying the
+  Emboss.  This can be helpful in removing unwanted artifacts from the
+  noise generation algorithm.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../texturefolded">
+       TextureFolded
+      </a>
+      <br/>
+      <a href="../textureweave">
+       TextureWeave
+      </a>
+      <br/>
+      <a href="../textureplasma">
+       TexturePlasma
+      </a>
+      <br/>
+      <a href="../texturenoisepaint">
+       TextureNoisePaint
+      </a>
+      <br/>
+      <a href="../texturespots">
+       TextureSpots
+      </a>
+      <br/>
+      <a href="../texturecells">
+       TextureCells
+      </a>
+      <br/>
+      <a href="../texturechromaspiral">
+       TextureChromaSpiral
+      </a>
+      <br/>
+      <a href="../texturemoire">
+       TextureMoire
+      </a>
+      <br/>
+      <a href="../texturetiles">
+       TextureTiles
+      </a>
+      <br/>
+      <a href="../textureneurons">
+       TextureNeurons
+      </a>
+      <br/>
+      <a href="../textureloops">
+       TextureLoops
+      </a>
+      <br/>
+      <a href="../textureflux">
+       TextureFlux
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../texturenoiseembosscmp">
+       TextureNoiseEmbossCmp
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../clouds">
+       Clouds
+      </a>
+      <br/>
+      <a href="../embossshiny">
+       EmbossShiny
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

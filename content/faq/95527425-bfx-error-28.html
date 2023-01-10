@@ -1,0 +1,18 @@
+{
+   "date": "2015-05-27T09:37:00-04:00",
+   "tags": [
+      "Continuum"
+   ],
+   "title": "BFX Error -28"
+}
+
+<div id="BFXError28" class="hidden-faq">
+<p><strong> Subject </strong> : BFX Error -28</p>
+<p><strong> Issue </strong> : When Working with BCC, Sometimes I See An Error That Reads ʻBFX Error -28ʼ</p>
+<p><strong> Cause </strong> : This Is A Broad Error, But This Generally Indicates A Strain Of Available Resources For Preview Or Render</p>
+<p><strong> How to Get Around the Issue </strong> :</p>
+<p>Your primary objective will be to remove any strain on the CPU, GPU or RAM usage when it comes to the BCC operations.</p>
+<p>The most common reason for this would be if the BCC effects are stacked among other effects; these could be other BCC effects or non-BCC effects, either built into the NLE or from another third party.  If you are stacking multiple filters onto your clip and receiving this error, it would be recommended that you break down the effect types used, and see if you are able to Pre-Comp or Pre-Render your footage having applied some effects, and applying the remaining effects to this Pre-Comp/Pre-Render.  A good example might be to Pre-Comp/Pre-Render footage that you are cleaning up using some of the BCC Image Restoration filters, and then conducting work involving Lights, Colors or Keying to this Pre-Comp/Pre-Render as a second pass.  The reason for this is the Pre-Comp/Pre-Render will purely be visual information, so the Host NLE will only need to process the newly introduced effects.</p>
+<p>If you are exclusively having this problem with GPU/OpenGL based effects, it would be recommended, if possible, to dis-engage any secondary Monitors you have - any additional Monitors beyond the main display would be utilizing the same resources as the OpenGL-based BCC effects.  If you are able to disengage any secondary Monitors, you will need to do so while the Host NLE/Compositor is Closed.</p>
+<p>Lastly, if you are on Windows, while the Host NLE/Compositor program is running, launch the Task Manager and go into the Services tab - inside here, you will see a running entry for your Host.  Right-click on this and go into the ʻSet Priorityʼ - likely your Host will be set to ʻAverageʼ; if this is the case, set it to ʻHighʼ, and after a minute or two, your Host should be operating with a bit more power.</p>
+</div>

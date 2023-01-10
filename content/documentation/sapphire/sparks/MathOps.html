@@ -1,0 +1,730 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: MathOps",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/MathOps.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="MathOps">
+     <h2>
+      MathOps
+     </h2>
+    </a>
+    Combines two clips using one of a variety of mathematical operations.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       SourceA:
+      </b>
+      The first input clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       SourceB:
+      </b>
+      The second input clip to be processed.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/MathOps.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Effect:
+   </b>
+   <i>
+    Popup menu,  Default: Add
+   </i>
+   .
+   <br/>
+   Determines which mathematical operation is applied to
+combine the pixel colors of the two source inputs.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Add:
+      </i>
+     </b>
+     A + B.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Subtract:
+       </i>
+      </b>
+      A - B.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Multiply:
+        </i>
+       </b>
+       A * B.  This can be used as an 'intersection'
+  operation on matte images.  The result only contains white where both
+  inputs are white.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Divide:
+         </i>
+        </b>
+        A / B.  This can be used to 'un-premultiply' an
+  image by using its matte as the second input.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Screen:
+          </i>
+         </b>
+         A + B - AB.  This can be useful in combining the
+  bright areas of two clips.  It can also be used as a 'union'
+  operation on matte images.  The result is white where either of the
+  input images is white.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Average:
+           </i>
+          </b>
+          (A + B) / 2.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Overlay:
+            </i>
+           </b>
+           combines A over B with an overlay function.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Minimum:
+             </i>
+            </b>
+            the smallest value for each color channel of each
+  pixel.  This can also be used as an 'intersection' operation with
+  slightly different results than Multiply.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Maximum:
+              </i>
+             </b>
+             the largest value for each color channel of each
+  pixel.  This can also be used as a 'union' operation with slightly
+  different results than Screen.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Difference:
+               </i>
+              </b>
+              similar to Subtract but the absolute value of
+  the result is used, which tends to give more resulting colors in
+  bounds.  This can be used to select the regions of two matte
+  images where one or the other is white, but not both.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Xor:
+                </i>
+               </b>
+               performs an 'exclusive-or' operation on the colors of
+  the source clips.  This can also be used to select the regions of two
+  matte images where one or the other is white, but not both, with
+  slightly different results than Difference.
+               <br/>
+               <dd>
+                <b>
+                 <i>
+                  Xor Bits:
+                 </i>
+                </b>
+                performs a bitwise exclusive-or on the colors of
+  the source clips.  This can produce some interesting contour effects
+  although the results are often difficult to predict.
+                <br/>
+                <dd>
+                 <b>
+                  <i>
+                   And Bits:
+                  </i>
+                 </b>
+                 performs a bitwise logical and on the colors of
+  the source clips.  Similar to XorBits but tends to produce darker
+  results.
+                 <br/>
+                 <dd>
+                  <b>
+                   <i>
+                    Or Bits:
+                   </i>
+                  </b>
+                  performs a bitwise logical or on the colors of
+  the source clips.  Similar to XorBits but tends to produce brighter
+  results.
+                  <br/>
+                  <dd>
+                   <b>
+                    <i>
+                     Mod:
+                    </i>
+                   </b>
+                   gives the remainder after dividing the colors of the
+  first source clip by the second.  Set the A Scale parameter to a
+  high value for some unusual pixel banding effects.
+                   <br/>
+                   <dd>
+                    <b>
+                     <i>
+                      Round:
+                     </i>
+                    </b>
+                    the colors of the first source clip are rounded using
+  the values of the second input as the step size.
+                    <br/>
+                    <dd>
+                     <b>
+                      <i>
+                       Bounce:
+                      </i>
+                     </b>
+                     similar to Mod but the result contains fewer jagged
+  edges.  Set the A Scale parameter to a high value for some striping
+  effects.
+                     <br/>
+                     <dd>
+                      <b>
+                       <i>
+                        Atan:
+                       </i>
+                      </b>
+                      performs an arc-tangent function on the colors of the
+  two source clips.  The Dest Scale parameter is used in a slightly
+  different way in this operation.  Set it to a high value for some
+  strange banding effects.
+                      <br/>
+                     </dd>
+                    </dd>
+                   </dd>
+                  </dd>
+                 </dd>
+                </dd>
+               </dd>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    A Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of SourceA before performing the operation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    A Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Offsets the darker regions of the first input before
+  performing the effect.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    A Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Adjusts the color intensity of SourceA before
+  performing the operation.  0.0 makes it monochromatic, 1.0 has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    B Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of SourceB before performing the operation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    B Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Offsets the darker regions of the second input before
+  performing the effect.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    B Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Adjusts the color intensity of SourceB before
+  performing the operation.  0.0 makes it monochromatic, 1.0 has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Swap Inputs:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, effectively swaps the A and B Source inputs,
+  and can be helpful for non-commutative operations like subtract.
+  Note that this also causes parameters labeled 'A' to affect the
+  'B' input instead, and vice versa.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dest Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the result after performing the operation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dest Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Offsets the darker regions of the result after
+  performing the effect.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dest Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the color intensity of the result after
+  performing the operation.  0.0 makes it monochromatic, 1.0 has no effect.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../layer">
+       Layer
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

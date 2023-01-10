@@ -1,0 +1,38 @@
+.. module:: mocha.project
+
+Global functions
+****************
+
+.. container:: function_list
+
+*    :func:`mocha.project.get_current_project`
+*    :func:`mocha.project.get_license_path`
+*    :func:`mocha.project.set_license_search_path`
+
+
+Detailed Description
+--------------------
+
+.. function:: mocha.project.get_current_project()
+
+    :rtype: :any:`Project`
+
+
+        Returns the current open project. Use it only in init.py script to get the current open project.
+
+.. function:: mocha.project.get_license_path()
+
+    :rtype: str
+
+
+        Returns the current license directory path. By default it equals to installed mocha license path.
+
+.. function:: mocha.project.set_license_search_path(path)
+
+    :type path: str
+
+
+        :param path: New license search path.
+        
+        Sets the current license directory path. By default it equals to installed mocha license path.
+

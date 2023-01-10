@@ -1,0 +1,63 @@
+{
+   "date": "2012-07-19T16:01:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC for Avid DS - 8.1.1 Release Notes"
+}
+
+<p>Boris Continuum Complete AVX 8.1.1 for Avid DS is an update to:</p>
+<ul>
+<li>Boris Continuum Complete AVX 8.1.0 for Avid DS ( <a title="Continuum Complete 8.1.0 for Avid DS Release Notes" href="/release-notes/bcc-for-avid-ds-8-1-0/"> Continuum Complete 8.1.0 for Avid DS Release Notes </a> )</li>
+<li>Boris Continuum Complete AVX 8.0.0 for Avid DS ( <a title="Continuum Complete 8.0.0 for Avid DS Release Notes" href="/release-notes/bcc-for-avid-ds-8-0-0/"> Continuum Complete 8.0.0 for Avid DS Release Notes </a> )</li>
+</ul>
+<p><b> Boris Continuum Complete AVX 8 for Avid DS supports the following Avid host applications: </b></p>
+<ul>
+<li>Avid DS 10.5 running Windows Professional OS™ 7x64.</li>
+<li>Avid DS 11.0 running Windows Professional OS™ 7x64.</li>
+</ul>
+<p><b> What's new in BCC 8 AVX (Summary of major changes since BCC7): </b></p>
+<ul>
+<li>14 new filters including support for the 3D Objects family of 3D extrusion filters:</li>
+</ul>
+<ol>
+<li>Extruded EPS</li>
+<li>Extruded Spline</li>
+<li>Extruded Text</li>
+<li>Film Glow</li>
+<li>Flicker Fixer (requires DS 11.0.2 or higher)</li>
+<li>Layer Deformer</li>
+<li>Lens Flare 3D</li>
+<li>Optical Stabilizer (requires DS 11.0.2 or higher)</li>
+<li>Organic Strands</li>
+<li>Particle Emitter 3D</li>
+<li>Stage Light</li>
+<li>Type On Text</li>
+<li>Videoscope</li>
+<li>Wild Cards</li>
+</ol>
+<ul>
+<li>Float bit depth rendering added to most filters.</li>
+<li>Addition of the Integrated Beat Reactor to many filters.</li>
+<li>New/Revised filter categories.</li>
+</ul>
+<p><b> BCC AVX 8.1.1 for Avid DS – What's New: </b></p>
+<ul>
+<li>Addition of two additional Image Restoration filters - Flicker Fixer and Optical Stabilizer. Note, these two new filters require Avid DS 11.0.2 or higher to function properly.</li>
+</ul>
+<p><b> BCC AVX 8.1.1 for Avid DS - Known Issues and Limitations: </b></p>
+<ul>
+<li>Flicker Fixer and Optical Stabilizer require Avid DS 11.0.2 or higher to function properly.</li>
+<li>After hitting the Analyze button in Optical Stabilizer you may need to manually force a render refresh (e.g. by stepping to another frame in the timeline) in order to ensure that the analyzation process commences.</li>
+<li>The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. As a temporary workaround use low values near the default setting of 32.</li>
+<li>In filters with more than one Motion Tracker point (e.g. BCC Witness Protection), saving/loading the motion tracker data only works for the first tracker point.</li>
+<li>BCC LED shows occasional mis-colored dots on Quadro FX 3500 card and can generate driver error messages when working with alpha on the Quadro FX 4800.</li>
+<li>The 3D Objects filters can show a white fringe around the edges of the objects when used within a compositing container. As a temporary workaround you can process the filters within the container and it will then composite normally as opposed to rendering from outside the container.</li>
+<li>There is a notable difference in the lighting for Particle Array 3D and Pin Art 3D when changing from RGB to YCC colorspaces. As a temporary workaround these filters will produce more accurate final lighting when used in YCC colorspaces.</li>
+<li>Filters with subtle alpha gradients can generate noticeably different results in RGB vs. YCC colorspaces. As a temporary workaround these filters will produce more accurate final composites when used in YCC colorspaces.</li>
+<li>Occasionally parameter groups which should remain hidden will appear in the UI until a refresh is forced by toggling a parameter or rescaling the effect pane. We are working with Avid to resolve this issue.</li>
+<li>When saving a BCC preset with the BCC preset menu, it can be difficult to read the filename as it is typed. The preset will still be saved as expected. We are working with Avid to resolve this issue.</li>
+<li>In 3D Objects filters the textures can sometimes shift or scale when changing resolutions. As a temporary workaround these effects are best prepared at full resolution.</li>
+<li>The names of the DS preset folders have changed between BCC7 and BCC8. When opening BCC7 projects in BCC8 this can cause a host error message about being unable to find the previous preset folder location. This message can be ignored as the projects still come forward and open correctly.</li>
+<li>When using an image layer as a particle shape in Particle Emitter 3D, Organic Strands, or Wild Cards you can see incorrect color channels in 16bit projects. As a temporary workaround you can use images from the Image Collection library installed with the product or use 8bit or 32 bit float processing.</li>
+</ul>

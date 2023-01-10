@@ -1,0 +1,177 @@
+{
+    "title": "License Lookup",
+    "layout" : "case"
+}
+<style>
+    .display-field label{
+        display: block;
+        font-size: .85rem;
+        margin-bottom: 2px;
+        border-bottom: 1px solid #dddddd;
+    }
+    .col-auto{
+        padding: 0 15px;
+    }
+    .field-row{
+        margin: .5rem 15px!important;
+    }
+    h4{
+        font-size: 1.2rem!important;
+    }
+    th{
+        text-align: center!important;
+    }
+</style>
+
+<div id="app">
+    <div class="branded-box mt-3">
+        <div v-if="view == 'lookup'">
+            <h4>Input Serial Number</h4>
+            <input class="form-control form-control-lg" style="max-width:400px" v-model="inputSerial" placeholder="Enter Serial" />
+            <p class="m-0" v-show="error" style="color: red; font-size:.85rem;">${error}</p>
+            <button :disabled="submitting" class="btn" @click="fetchLicense">${submitting ? 'Please Wait. . .' : 'Look Up License'}</button>
+        </div>
+        <div v-if="view == 'details'">
+            <div style="padding: 0 15px;">
+                <h4>License Details</h3>
+            </div>
+            <div class="row field-row">
+                <div class="col-6 display-field">
+                    <label>Serial</label>
+                    <strong>${license.serial}</strong>
+                </div>
+                <div class="col-6 display-field">
+                    <label>Quantity</label>
+                    ${license.seatCount}
+                </div>
+            </div>
+            <div class="row field-row">
+                <div class="col display-field">
+                    <label>Product</label>
+                    ${license.family} - ${license.host}
+                </div>
+                <div class="col display-field">
+                    <label>License Type</label>
+                    ${license.floating ? 'Floating' : 'Node Locked'}
+                </div>
+            </div>
+            <div class="row field-row">
+                <div class="col display-field">
+                    <label>License Expires</label>
+                    <span v-if="license.licenseEndDate">${formatDate(license.licenseEndDate)}</span>
+                    <span v-else>Permanent</span>
+                </div>
+                <div class="col display-field">
+                    <label>Contract Lapses</label>
+                    <span v-if="license.contractEndDate">${formatDate(license.contractEndDate)}</span>
+                    <span v-else>N/A</span>
+                </div>
+            </div>
+            <div class="row field-row">
+                <div class="col display-field" v-if="license.supportedVersions">
+                    <label>
+                        <span v-if="license.supportedVersions.length == 1">Latest Supported Version</span>
+                        <span v-else>Latest Supported Versions</span>
+                    </label>
+
+                    <span v-if="license.supportedVersions.length == 1">${license.supportedVersions[0]}</span>
+                    <span v-else><a href="javascript:void(0);" @click="showModal">View All</a></span>
+                </div>
+                <div class="col display-field">
+                    <label>Version #</label>
+                    ${license.versionNumber}
+                </div>
+            </div>
+            <div style="padding: 0 15px;">
+                <h4>Fulfillments</h3>
+                <table class="table table-responsive">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Activated</th>
+                            <th>Host Name</th>
+                            <th>Host Id</th>
+                            <th>Qty</th>
+                            <th>Expires</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="f in license.fulfillments" class="text-center">
+                            <td>${formatDate(f.dateActivated)}</td>
+                            <td>${f.hostName}</td>
+                            <td>${f.hostId}</td>
+                            <td>${f.count}</td>
+                            <td>${f.expires ? formatDate(f.expires) : 'Permanent'}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn" @click="returnToLookup">Back</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" id="version-modal">
+        <div class="modal-dialog">
+            <div class="modal-content p-2">
+                <div class="modal-header">
+                    <h2>Supported Products</h2>
+                    <button type="button" class="close" data-dismiss="modal" @click="hideModal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li v-for="v in license.supportedVersions">
+                            ${v}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data : {
+            view: 'lookup',
+            submitting: false,
+            inputSerial : '',
+            error: '',
+            license : {},
+        },
+        methods: {
+            fetchLicense: function(){
+                var self = this;
+                self.submitting = true;
+                axios.get('https://backend.borisfx.com/license_lookup?serial=' + self.inputSerial.trim())
+                .then(function(res){
+                    self.license = res.data;
+                    self.submitting = false;
+                    self.view = 'details';
+                })
+                .catch(function(err){
+                    self.error = 'Could not locate license';
+                    self.submitting = false;
+                })
+            },
+            returnToLookup: function(){
+                this.license = {};
+                this.inputSerial = '';
+                this.view = 'lookup';
+            },
+            formatDate: function(dateString){
+                var placeholderDate = new Date(dateString);
+                var calc = placeholderDate.getTime() + (placeholderDate.getTimezoneOffset() * 60000);
+                //Account for timezone adjustment
+                var d = new Date(calc);
+                return d.toLocaleDateString();
+            },
+            showModal: function(){
+                $('#version-modal').modal('show');
+            },
+            hideModal: function(){
+                $('#version-modal').modal('hide');
+            }
+        }
+    })
+</script>

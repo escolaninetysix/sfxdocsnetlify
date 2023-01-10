@@ -1,0 +1,155 @@
+.. _Keyframes:
+
+.. currentmodule:: mocha.project
+
+
+Keyframes
+*********
+
+.. inheritance-diagram:: mocha.project.Keyframes
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__contains__<Keyframes.__contains__>` ()
+    * def :meth:`__iter__<Keyframes.__iter__>` ()
+    * def :meth:`__mgetitem__<Keyframes.__mgetitem__>` ()
+    * def :meth:`__mlen__<Keyframes.__mlen__>` ()
+    * def :meth:`__msetitem__<Keyframes.__msetitem__>` ()
+    * def :meth:`assign<Keyframes.assign>` (keyframes)
+    * def :meth:`assign<Keyframes.assign>` (keyframes)
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Keyframe sequential 2D-container.
+
+
+.. class:: mocha.project.Keyframes
+.. method:: Keyframes.__contains__()
+
+
+
+
+
+
+
+
+.. method:: Keyframes.__iter__()
+
+
+
+
+
+
+
+
+.. method:: Keyframes.__mgetitem__()
+
+
+
+
+    Queries the parameter keyframes.
+    The key can be either a frame index or slice.
+    Additionally it can be/include a View(s).
+    If the View is not specified, it defaults to all views
+    Examples::
+    
+       >>> param.keyframes[5]  # keyframe 5 of all views
+       >>> param.keyframes[View(1)]  # keyframes of View(1)
+       >>> param.keyframes[:, View(1)]  # ditto
+       >>> param.keyframes[2:20, View(1)]  # keyframes [2:20) of View(1)
+       >>> param.keyframes[2:20, (View(0), View(1))]  # keyframes [2:20) of View(0) and View(1)
+    
+    Note: the ranges consist of frame project indices, not keyframe indices in the Keyframes container.
+
+
+
+.. method:: Keyframes.__mlen__()
+
+
+
+
+    Returns the number of all keyframes.
+
+
+
+.. method:: Keyframes.__msetitem__()
+
+
+
+
+    Add new or modyfing the existing keyframes.
+    There are 4 possible ways, e.g. if there are 2 views in your project:
+    Case 1::
+    
+       >>> param.keyframes[5, View(0)] = 200.0
+       # Basic keyframe assignment. The type being assigned must be convertible to the parameter's type.
+    
+    Case 2::
+    
+       >>> param.keyframes[5] = [200.0, 300.0]
+       # or
+       >>> param.keyframes[5, (View(0), View(1))] = [200.0, 300.0]
+       # Per-view keyframe assignment.
+       # The same as 2 basic assignments.
+       # `param.keyframes[5, View(0)] = 200.0`
+       # `param.keyframes[5, View(1)] = 300.0`
+    
+    Case 3::
+    
+       >>> param.keyframes[:3, View(0)] = [200.0, 300.0, 400.0]
+       # Keyframe range assignment
+       # The same as 3 basic assignments:
+       # `param.keyframes[0, View(0)] = 200.0`
+       # `param.keyframes[1, View(0)] = 300.0`
+       # `param.keyframes[2, View(0)] = 400.0`
+    
+    Case 4::
+    
+       >>> param.keyframes[:3] = [[200.0, 300.0, 400.0], [500.0, 600.0, 700.0]]
+       # or
+       >>> param.keyframes[:3, (View(0), (View(1)))] = [[200.0, 300.0, 400.0], [500.0, 600.0, 700.0]]
+       # Per-view keyframe range assignment
+       # The same as 2 keyframe range assignments:
+       # `param.keyframes[:3, View(0)] = [200.0, 300.0, 400.0]`
+       # `param.keyframes[:3, View(1)] = [500.0, 600.0, 700.0]`
+    
+    Apart from assignment, the same protocol is compatible with the `del` operator.
+
+
+
+.. method:: Keyframes.assign(keyframes)
+
+
+    :type keyframes: :any:`Keyframes`
+
+
+    Add new or replace the existing keyframes from the ``Keyframes`` object.
+    This method merges given keyframes into the existing keyframes sequence.
+
+
+
+.. method:: Keyframes.assign(keyframes)
+    :noindex:
+
+
+    :type keyframes: list of Keyframe
+
+
+    Add new or replace the existing keyframes from a list of ``Keyframe`` objects.
+    This method merges given keyframes into the existing keyframes sequence.
+
+
+
+

@@ -1,0 +1,107 @@
+{
+   "date": "2009-08-24T12:42:44-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC FxPlug - 6.0.4 Release Notes"
+}
+
+<h1>
+ BCC 6.04 FxPlug Release Notes
+</h1>
+<p>
+ BCC 6.04 is the first major update to BCC 6 FxPlug set aimed at bolstering integration with Final Cut Studio, improving workflow in some key filters and streamlining compatibility with After Effects and Avid versions of the set. This update provides official support for FCS3 release by Apple.
+</p>
+<h2>
+ New Features And Improvements:
+</h2>
+<ul id="l1">
+ <li>
+  <p>
+   Support for Motion native camera control. You can now use built-in Motion 3 and Motion 4 camera with all BCC 6 3D Objects such as Extruded Text, Extruded EPS, Type-On Text, Extruded Spline and Layer Deformer. A new checkbox is added to the controls stack to enable the Camera animation from Motion and discard any Built-In Camera information. The control has no effect in Final Cut Pro.
+  </p>
+  <p>
+    
+  </p>
+ </li>
+</ul>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_001.png">
+  <img class="alignnone size-full wp-image-4898" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_001.png" alt="Image_001" width="258" height="138">
+ </a>
+</p>
+<ul id="l1">
+ <li>
+  <p>
+   In 3D Objects, the maximum Polygon Count value has been extended from 25 to 80 to accommodate for tight curves sometimes found in fonts and EPS graphics. Note that higher Polygon Count will impact performance. Apply only as needed.
+  </p>
+ </li>
+ <li>
+  <p>
+   In 3D Objects, the maximum Extrusion Depth value has been increased from 25 to 80 for creating dramatic or tube-style extrusions.
+  </p>
+  <p>
+   Optical Stabilizer filter – the filter can now be applied directly to a clip without the need for a well layer control.
+  </p>
+ </li>
+ <li>
+  <p>
+   Optical Stabilizer filter User interface has been improved with a newly introduced progress dialog. The dialog features a progress bar, an estimated time to completion and a cancel button. Any Optical Flow data computed prior to canceling will be preserved for the next estimation session.
+  </p>
+ </li>
+</ul>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0021.png">
+  <img class="alignnone size-full wp-image-4899" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0021.png" alt="Image_002" width="434" height="213">
+ </a>
+</p>
+<p>
+  
+</p>
+<p>
+ Optical Stabilizer now includes an Auto Scale Control for automating the process of finding the optimal scale factor to repair edges of the image after the stabilization process.
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_003.png">
+  <img class="alignnone size-full wp-image-4900" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_003.png" alt="Image_003" width="413" height="209">
+ </a>
+</p>
+<p>
+ BCS – Boris Continuum Shaders filters have an improved Preset Browser. The New Browser window is tracking effects selection and deletion in Final Cut Sequence.
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_004.png">
+  <img class="alignnone size-full wp-image-4901" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_004.png" alt="Image_004" width="410" height="250">
+ </a>
+</p>
+<p>
+ Shatter Deformer – a common feature of all 3D Objects filters has been improved to match the BCC 6 AE and AVX version.
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_005.png">
+  <img class="alignnone size-full wp-image-4902" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_005.png" alt="Image_005" width="422" height="158">
+ </a>
+</p>
+<p>
+ All BCS Filter in Motion, contextual controls behavior is now matching Final Cut Pro.
+</p>
+<h2>
+ Bugs Fixed in BCC 6.04 FxPlug
+</h2>
+<ul id="l2">
+ <li>
+  <p>
+   Default text size in the text window is now correctly remembered after re-opening the window with the existing text object.
+  </p>
+ </li>
+ <li>
+  <p>
+   BCS filers in Motion, video placed in video input wells does not use the correct start time (always uses start time of comp frame 1)
+  </p>
+ </li>
+ <li>
+  <p>
+   In Extruded Text filter, Text Master Jitter control is fixed.
+  </p>
+ </li>
+</ul>

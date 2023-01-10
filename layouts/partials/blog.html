@@ -1,0 +1,495 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-4 push-md-8">
+      <div style="position: sticky; top: 115px">
+
+        <h1 class="mb-0">{{ .title }}</h1>
+
+        {{ $Scratch := .Page.Scratch }}
+        {{ $Scratch.Set "tags" (slice) }}
+	   {{ if not (in .Params.live "false") }}		
+        {{ range where .Page.Site.Pages "Section" ((replace .title " " "-") | lower) }}
+        {{ if .Params.tags }}
+        {{ range .Params.tags }}
+        {{ if in ($Scratch.Get "tags") . }}
+        {{ else }}
+        {{ $Scratch.Add "tags" . }}
+        {{ end }}
+        {{ end }}  
+		{{ end }}
+        {{ end }}
+        {{ end }}
+
+        <div class="mb-3">
+          Tags: <select id="tag" class="form-control">
+            <option value="All">
+              All
+            </option>
+            {{ range sort ($Scratch.Get "tags") }}
+            <option value="{{ . }}">
+            {{ . }}
+            </option>
+            {{ end }}
+          </select>
+        </div>
+
+        
+        <input id="search" class="form-control mb-3" placeholder="Search" />
+<script>
+$(document).ready(function() {
+
+if (window.location.pathname == "/events/virtual-ibc-2020/") {	  
+
+$("div#sb").html("");
+
+}
+
+});
+</script>
+        {{ partial "sidebar.html" .Page }}
+
+
+      </div>
+    </div>
+
+    <div class="col-md-8 pull-md-4">
+
+      {{ range .Page.Data.Pages }}
+	  {{ if not (in .Params.live "false") }}
+      <div class="row post" data-title="{{ .Title }}" data-tags="{{ if .Params.tags }}{{ range .Params.tags }}{{ . }},{{ end }}{{ end }}" data-content="{{ .Content }}">
+        <div class="col">
+          <div class="blog-preview">
+            {{ if .Params.image_url }}
+           <a href="{{ .Permalink }}" title="{{ .Title }}"> <img class="img-fluid w-100 mb-3" src="{{ .Params.image_url }}"> </a>
+            {{ else }}
+            <div class="mb-3"></div>
+            {{ end }}
+            <div class="blog-lower">
+              <h2 class="my-0">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </h2>
+              <p class="mb-3"><b>{{ dateFormat "January 2, 2006" .Date }}</b></p>
+              <p class="mb-0">
+                {{ if .Params.excerpt }}
+                {{ .Params.excerpt | markdownify }}
+                {{ else }}
+                {{ .Summary }}
+                {{ end }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+      {{ end }}
+
+      <script>
+
+   function update() {
+
+        function formatSearchText(searchText) {
+          return searchText.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        }
+        var searchText = formatSearchText($('#search').val() || '');
+        var tag = $('#tag').val() || 'All';
+
+        $('.post').each(function (post) {
+	
+         if (
+            (tag == 'All' || $(this).data('tags').split(',').indexOf(tag) != -1)
+            &&
+            (searchText.length == 0 || ($(this).data('title').search(new RegExp(searchText, 'i')) != -1 || $(this).data('content').search(new RegExp(searchText, 'i')) != -1))
+          ) {
+
+            $(this).show();
+				   	 
+           } else {
+
+            $(this).hide();
+          }
+        });
+      } 
+      update();
+
+
+	  var searchParams = new URLSearchParams(window.location.search);
+	  var param = decodeURIComponent(searchParams.get('tags'));
+	  var searchQ = decodeURIComponent(searchParams.get('search'));
+	  
+
+      $('#tag').change(function (e) {
+
+	  var mocha = $('#tag option[value="Mocha"]').val();
+	  var install = $('#tag option[value="Installation & Licensing"]').val();
+	  var mvr = $('#tag option[value="Mocha VR"]').val();
+	  var mpro = $('#tag option[value="Mocha Pro"]').val();
+	  var apple = $('#tag option[value="Apple"]').val();
+	  var VR = $('#tag option[value="VR"]').val();
+	  var cont = $('#tag option[value="Continuum"]').val();
+	  var saph = $('#tag option[value="Sapphire"]').val();
+	  var adobe = $('#tag option[value="Adobe"]').val();
+	  var avid = $('#tag option[value="Avid"]').val();
+	  var autodesk = $('#tag option[value="Autodesk"]').val();
+	  var nuke = $('#tag option[value="Nuke"]').val();
+	  var resolve = $('#tag option[value="Resolve"]').val();
+	  var vegas = $('#tag option[value="Vegas"]').val();
+	  var purchase = $('#tag option[value="Purchase"]').val();
+	
+	  var crash = $('#tag option[value="Crash"]').val();
+	  var watermark = $('#tag option[value="Watermark"]').val();
+	  var red = $('#tag option[value="RED"]').val();
+	  var error = $('#tag option[value="Error"]').val();
+	  var qt = $('#tag option[value="Quicktime"]').val();
+
+	  var graffiti = $('#tag option[value="Graffiti"]').val();
+	  var rendr = $('#tag option[value="Render"]').val();
+
+	  var fx = $('#tag option[value="FX"]').val();
+	  var lang = $('#tag option[value="Language"]').val();
+	  var dl = $('#tag option[value="Download"]').val();
+
+	  var pinn = $('#tag option[value="Pinnacle"]').val();
+	  var shdr = $('#tag option[value="Shaders"]').val();
+	  var news = $('#tag option[value="News"]').val();
+	  var review = $('#tag option[value="Review"]').val();
+	  var blog = $('#tag option[value="Blog"]').val();
+	  var interview = $('#tag option[value="Interview"]').val();
+	  var meetings = $('#tag option[value="Meetings"]').val();	
+	  var webinars = $('#tag option[value="Webinars"]').val();	
+	  var webinar = $('#tag option[value="Webinar"]').val();	
+	  var tradeshows = $('#tag option[value="Tradeshows"]').val();	
+	  var events = $('#tag option[value="Events"]').val();	
+	  var finalfx = $('#tag option[value="Final Effects Complete"]').val();	
+	  var mochapro = $('#tag option[value="mocha Pro"]').val();	
+	  var removemodule = $('#tag option[value="Remove Module"]').val();	
+	  var mochae = $('#tag option[value="Mocha AE"]').val();	
+	  var avidfx = $('#tag option[value="Avid FX"]').val();
+	  var dar = $('#tag option[value="DaVinci Resolve"]').val();
+	  var bfusion = $('#tag option[value="Blackmagic Fusion"]').val();
+	  var supportfaq = $('#tag option[value="Support FAQ"]').val();
+	  var fcp = $('#tag option[value="Final Cut Pro"]').val();
+	  var title = $('#tag option[value="Title Studio"]').val();
+	  var cc = $('#tag option[value="Continuum Complete"]').val();
+	  var m100 = $('#tag option[value="Media 100"]').val();
+	  var cvr = $('#tag option[value="Continuum VR"]').val();
+	  var svp = $('#tag option[value="Sony Vegas Pro"]').val();
+	  var bfx = $('#tag option[value="Boris FX"]').val();
+	  var bred = $('#tag option[value="Boris RED"]').val();
+	  var wreplays = $('#tag option[value="Webinar Replays"]').val();
+	  var mplus = $('#tag option[value="mocha Plus"]').val();
+	  var fnews = $('#tag option[value="Featured News"]').val();
+	  var mpls = $('#tag option[value="Mocha Plus"]').val();
+	  var xfer = $('#tag option[value="Transfer"]').val();
+	  var nab = $('#tag option[value="NAB"]').val();
+	  var sgraph = $('#tag option[value="Siggraph"]').val();
+	  var pillusion = $('#tag option[value="Particle Illusion"]').val();
+	  var cannounce = $('#tag option[value="Company Announcements"]').val();
+	  var flame = $('#tag option[value="Flame"]').val();
+	  var adobefx = $('#tag option[value="Adobe After Effects"]').val();
+	  var adobepp = $('#tag option[value="Adobe Premiere Pro"]').val();
+	  var premierepro = $('#tag option[value="Premiere Pro"]').val();
+	  var aeffects = $('#tag option[value="Affect Effects"]').val();
+	  var feffects = $('#tag option[value="Final Effects"]').val();
+	  var trainings = $('#tag option[value="Training"]').val();
+	  var ugroups = $('#tag option[value="User Groups"]').val();
+	  var fcpx = $('#tag option[value="FCPX"]').val();
+	  	  var t3d = $('#tag option[value="Title 3D"]').val();	  	  
+	  var ata = $('#tag option[value="Ask the Artist"]').val();
+	  
+      if ($('#tag option[value="All"]').is(':selected')) {
+		window.history.pushState("tag", "na", "?");
+	  }
+   
+   	  if ($('#tag option[value="Mocha"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Mocha", "?tags="+ mocha);
+	   }
+   	  if ($('#tag option[value="Blog"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Blog", "?tags="+ blog); 
+	   }
+	   if ($('#tag option[value="Mocha Plus"]').is(':selected')) {
+	   window.history.pushState("tag", "Mocha Plus", "?tags="+ mpls);
+	   }
+	   if ($('#tag option[value="mocha Plus"]').is(':selected')) {
+	   window.history.pushState("tag", "mocha Plus", "?tags="+ mplus);
+
+	   }
+	   if ($('#tag option[value="mocha Pro"]').is(':selected')) {
+	  	  window.history.pushState("tag", "mocha Pro", "?tags="+ mochapro);
+
+	   }
+	   if ($('#tag option[value="Meetings"]').is(':selected')) {
+	   window.history.pushState("tag", "Meetings", "?tags="+ meetings);
+
+	   }
+	   
+   	   if ($('#tag option[value="Mocha VR"]').is(':selected')) {
+	  window.history.pushState("tag", "Mocha VR", "?tags="+ mvr);
+	   }
+
+	  if ($('#tag option[value="Mocha Pro"]').is(':selected')) {
+	  window.history.pushState("tag", "Mocha Pro", "?tags="+ mpro);
+
+	   }	   
+   	   if ($('#tag option[value="Remove Module"]').is(':selected')) {
+	  window.history.pushState("tag", "Remove Module", "?tags="+ removemodule);
+
+	   }
+   	   if ($('#tag option[value="Title 3D"]').is(':selected')) {
+	  window.history.pushState("tag", "Title 3D", "?tags="+ t3d);
+
+	   }
+
+	   if ($('#tag option[value="Mocha AE"]').is(':selected')) {
+	  window.history.pushState("tag", "Mocha AE", "?tags="+ mochae);
+
+	   }
+	   if ($('#tag option[value="Avid FX"]').is(':selected')) {
+	  window.history.pushState("tag", "Avid FX", "?tags="+ avidfx);
+
+	   }
+	   if ($('#tag option[value="DaVinci Resolve"]').is(':selected')) {
+	  window.history.pushState("tag", "DaVinci Resolve", "?tags="+ dar);
+
+	   }
+	   if ($('#tag option[value="Blackmagic Fusion"]').is(':selected')) {
+	  window.history.pushState("tag", "Blackmagic Fusion", "?tags="+ bfusion);
+
+	   }
+	   if ($('#tag option[value="Support FAQ"]').is(':selected')) {
+	  window.history.pushState("tag", "Support FAQ", "?tags="+ supportfaq);
+
+	   }
+	  if ($('#tag option[value="Final Cut Pro"]').is(':selected')) {
+	  window.history.pushState("tag", "Final Cut Pro", "?tags="+ fcp);
+
+	   }
+	  if ($('#tag option[value="Title Studio"]').is(':selected')) {
+	  window.history.pushState("tag", "Title Studio", "?tags="+ title);
+
+	   }
+	 if ($('#tag option[value="Continuum Complete"]').is(':selected')) {
+	  window.history.pushState("tag", "Continuum Complete", "?tags="+ cc);
+
+	   }
+	 if ($('#tag option[value="Media 100"]').is(':selected')) {
+	  window.history.pushState("tag", "Media 100", "?tags="+ m100);
+
+	   }	
+	 if ($('#tag option[value="Continuum VR"]').is(':selected')) {
+	  window.history.pushState("tag", "Continuum VR", "?tags="+ cvr);
+
+	   }
+	 if ($('#tag option[value="Sony Vegas Pro"]').is(':selected')) {
+	  window.history.pushState("tag", "Sony Vegas Pro", "?tags="+ svp);
+
+	   }	   
+
+	 if ($('#tag option[value="Boris FX"]').is(':selected')) {
+	  window.history.pushState("tag", "Boris FX", "?tags="+ bfx);
+
+	   }
+	 if ($('#tag option[value="Boris RED"]').is(':selected')) {
+	  window.history.pushState("tag", "Boris RED", "?tags="+ bred);
+
+	   }
+	 if ($('#tag option[value="Webinar Replays"]').is(':selected')) {
+	  window.history.pushState("tag", "Webinar Replays", "?tags="+ wreplays);
+
+	   }
+	 if ($('#tag option[value="Final Effects Complete"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Final Effects Complete", "?tags="+ finalfx);
+	   }
+	   
+	   if ($('#tag option[value="Installation & Licensing"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Installation & Licensing", "?tags="+ install);
+	   }
+   	  if ($('#tag option[value="Webinars"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Webinars", "?tags="+ webinars);
+	   }
+   	  if ($('#tag option[value="Webinar"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Webinar", "?tags="+ webinar);
+	   }
+
+	   if ($('#tag option[value="Events"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Events", "?tags="+ events);
+	   }
+   	  if ($('#tag option[value="Tradeshows"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Tradeshows", "?tags="+ tradeshows);
+	   }
+	  if ($('#tag option[value="Apple"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Apple", "?tags="+ apple);   
+	   }
+	  if ($('#tag option[value="Interview"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Interview", "?tags="+ interview);   
+	   } 
+	  if ($('#tag option[value="VR"]').is(':selected')) {
+	  	  window.history.pushState("tag", "VR", "?tags="+ VR);
+	   }
+	   	  if ($('#tag option[value="Continuum"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Continuum", "?tags="+ cont);  
+	   }
+	   if ($('#tag option[value="Sapphire"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Sapphire", "?tags="+ saph);  
+	   }
+	   if ($('#tag option[value="Adobe"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Adobe", "?tags="+ adobe);    
+	   }
+	   if ($('#tag option[value="Avid"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Avid", "?tags="+ avid); 
+	   }
+	   if ($('#tag option[value="Autodesk"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Autodesk", "?tags="+ autodesk);   
+	   }
+	   if ($('#tag option[value="Nuke"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Nuke", "?tags="+ nuke);  
+	   }
+	   if ($('#tag option[value="Resolve"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Resolve", "?tags="+ resolve);      
+	   }
+	   if ($('#tag option[value="Vegas"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Vegas", "?tags="+ vegas);      
+	   }
+	   if ($('#tag option[value="Purchase"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Purchase", "?tags="+ purchase);      
+	   }
+	   if ($('#tag option[value="Crash"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Crash", "?tags="+ crash);	      
+	   }	  
+	   if ($('#tag option[value="Watermark"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Watermark", "?tags="+ watermark);      
+	   }	
+	   if ($('#tag option[value="RED"]').is(':selected')) {
+	  	  window.history.pushState("tag", "RED", "?tags="+ red);	      
+	   }
+	   if ($('#tag option[value="Error"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Error", "?tags="+ error);      
+	   }	
+	   if ($('#tag option[value="Quicktime"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Quicktime", "?tags="+ qt);	  
+	   }	
+	   if ($('#tag option[value="Review"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Review", "?tags="+ review);	    
+	   }	
+	   if ($('#tag option[value="Featured News"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Featured News", "?tags="+ fnews);
+	   }	
+	   	   if ($('#tag option[value="News"]').is(':selected')) {
+	  	  window.history.pushState("tag", "News", "?tags="+ news);
+	   }
+	   if ($('#tag option[value="Graffiti"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Graffiti", "?tags="+ graffiti);
+	   }	
+	   if ($('#tag option[value="Render"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Render", "?tags="+ rendr);
+	   }	
+	   if ($('#tag option[value="FX"]').is(':selected')) {
+	  	  window.history.pushState("tag", "FX", "?tags="+ fx);
+	   }			   
+	   if ($('#tag option[value="Language"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Language", "?tags="+ lang);
+	   }
+	   if ($('#tag option[value="Download"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Download", "?tags="+ dl);
+	   } 
+	   if ($('#tag option[value="Pinnacle"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Pinnacle", "?tags="+ pinn);
+	   }	
+	   if ($('#tag option[value="Shaders"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Shaders", "?tags="+ shdr);  
+	   }			   
+	   if ($('#tag option[value="Transfer"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Transfer", "?tags="+ xfer);  
+	   }	
+	   if ($('#tag option[value="NAB"]').is(':selected')) {
+	  	  window.history.pushState("tag", "NAB", "?tags="+ nab);
+	   }			   
+	   if ($('#tag option[value="Siggraph"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Siggraph", "?tags="+ sgraph);
+	   }		   	   
+	   if ($('#tag option[value="Particle Illusion"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Particle Illusion", "?tags="+ pillusion);
+	   }		   	  
+	   if ($('#tag option[value="Company Announcements"]').is(':selected')) {
+	  	  window.history.pushState("tag", "Company Announcements", "?tags="+ cannounce);
+	   }		   
+	   if ($('#tag option[value="Flame"]').is(':selected')) {
+	   window.history.pushState("tag", "Flame", "?tags="+ flame);
+
+	   }
+	   if ($('#tag option[value="Adobe After Effects"]').is(':selected')) {
+	   window.history.pushState("tag", "Adobe After Effects", "?tags="+ adobefx);
+
+	   }
+	   if ($('#tag option[value="Adobe Premiere Pro"]').is(':selected')) {
+	   window.history.pushState("tag", "Adobe Premiere Pro", "?tags="+ adobepp);
+
+	   }
+	   if ($('#tag option[value="Premiere Pro"]').is(':selected')) {
+	   window.history.pushState("tag", "Premiere Pro", "?tags="+ premierepro);
+	   }
+	   if ($('#tag option[value="Affect Effects"]').is(':selected')) {
+	   window.history.pushState("tag", "Affect Effects", "?tags="+ aeffects);
+	   }
+	   if ($('#tag option[value="Final Effects"]').is(':selected')) {
+	   window.history.pushState("tag", "Final Effects", "?tags="+ feffects);
+	   }
+	   	   if ($('#tag option[value="Training"]').is(':selected')) {
+	   window.history.pushState("tag", "Training", "?tags="+ trainings);
+	   }
+		   	   if ($('#tag option[value="User Groups"]').is(':selected')) {
+	   window.history.pushState("tag", "User Groups", "?tags="+ ugroups);
+	   }  
+		   	   if ($('#tag option[value="FCPX"]').is(':selected')) {
+	   window.history.pushState("tag", "FCPX", "?tags="+ fcpx);
+	   }
+	   if ($('#tag option[value="Ask the Artist"]').is(':selected')) {
+	   window.history.pushState("tag", "Ask the Artist", "?tags="+ ata);
+	   }   	   
+        update();
+      });
+
+	  
+      $('#search').keypress(function (event) {
+	  var query = $(this).val();
+	  var tags = $("#tag").val();
+	  var key = (event.keyCode ? event.keyCode : event.which);
+	if(key == '13'){
+     if (searchParams.get('tags')) {
+	  window.history.pushState(tags, "Search Query", "?tags="+ tags +"&search="+ query);
+
+        } else {
+		
+			  window.history.pushState("Search", "Search Query", "?search="+ query);
+		
+		}
+		}
+		update();
+      });
+	  
+	 $("#tag").ready(function() {
+	  $('#tag option[value="'+ param +'"]').attr("selected","selected");
+	 update();
+	 });
+	 
+     $("#search").ready(function() {
+	 if (searchParams.get('search')) {
+	 $("#search").val(searchQ);
+	 update();
+	 } else {
+	 update();
+	 	 $("#search").attr("placeholder", "Search");
+		 
+	 }
+	 });
+	 
+
+	  
+      </script>
+
+    </div>
+
+  </div>
+
+</div>

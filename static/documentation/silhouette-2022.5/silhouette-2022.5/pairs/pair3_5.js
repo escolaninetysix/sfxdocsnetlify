@@ -7,7 +7,7 @@ var pairs =
 ,"sophisticated":{"animated":1}
 ,"animated":{"mattes":1,"type":1,"keyframes":1}
 ,"mattes":{"using":1}
-,"using":{"b-spline":1,"shape":1,"keyboard":1,"control":1,"edge":1,"stereo":1,"viewer\u2019s":1,"icon":1,"morph":1,"opacity":1,"color":1,"on-screen":1,"three":1,"arrow":1,"two":1,"none":1,"object":1,"point":1,"magnetic":1,"alt-f":1,"surrounding":1,"split":1,"break":1,"shift":1,"layers":1,"transform":1,"automatic":1,"numeric":1,"multiframe":1,"shapes":1,"pre-defined":1,"file":1,"silhouette":1}
+,"using":{"b-spline":1,"keyboard":1,"control":1,"edge":1,"stereo":1,"viewer\u2019s":1,"icon":1,"morph":1,"opacity":1,"color":1,"on-screen":1,"three":1,"arrow":1,"two":1,"none":1,"object":1,"point":1,"magnetic":1,"alt-f":1,"surrounding":1,"split":1,"break":1,"shift":1,"layers":1,"transform":1,"automatic":1,"numeric":1,"multiframe":1,"shapes":1,"pre-defined":1,"file":1,"silhouette":1,"shape":1}
 ,"b-spline":{"b\u00E9zier":1,"shape":1,"tutorial":1,"click":1,"keyboard":1,"can\u2019t":1,"creates":1,"point":1,"alternatively":1,"adjusts":1,"corner":1,"options":1,"x-spline":1,"extreme":1}
 ,"b\u00E9zier":{"x-spline":1,"shift-b":1,"spline":1,"tutorial":1,"1970":1,"splines":1,"curve":1,"curves":1,"keyboard":1,"shape":1,"options":1,"menu":1,"couple":1,"conversion":1}
 ,"x-spline":{"magnetic":1,"shape":1,"tutorial":1,"click":1,"intuitive":1,"edges":1,"keyboard":1,"follows":1,"options":1,"choose":1,"toggled":1,"end":1}
@@ -29,7 +29,7 @@ var pairs =
 ,"assist":{"creating":1}
 ,"creating":{"complicated":1,"magnetic":1,"shape":1}
 ,"complicated":{"shape":1}
-,"shape":{"animations":1,"animator":1,"transform":1,"feather":1,"outlines":1,"opacity":1,"creation":1,"creates":1,"add":1,"reshape":1,"adjust":1,"created":1,"control":1,"curve":1,"move":1,"ctrl":1,"b-splines":1,"hand":1,"weight":1,"snaps":1,"boundary":1,"magnetic":1,"tracing":1,"point":1,"points":1,"background":1,"strokes":1,"around":1,"properly":1,"create":1,"new":1,"freehand":1,"exactly":1,"minus":1,"drawn":1,"completed":1,"square":1,"circle":1,"layer":1,"parameters":1,"adjusted":1,"selected":1,"shapes":1,"equally":1,"blurred":1,"values":1,"motion":1,"outline":1,"used":1,"rendered":1,"red":1,"channel":1,"icons":1,"resides":1,"default":1,"roll":1,"b-roll":1,"color":1,"white":1,"visibility":1,"fade":1,"cannot":1,"various":1,"group":1,"selection":1,"movement":1,"bounding":1,"corners":1,"skewed":1,"rotates":1,"notice":1,"drag":1,"selects":1,"linked":1,"view":1,"don\u2019t":1,"windows":1,"mac":1,"preferences":1,"match":1,"pop-up":1,"number":1,"remains":1,"start":1,"duplicated":1,"100":1,"editing":1,"disappear":1,"appear":1,"copied":1,"object":1,"select":1,"opens":1,"alt-click":1,"clicking":1,"two":1,"inherits":1,"rotate":1,"shortcut":1,"tracker":1,"outside":1,"nothing":1,"animation":1,"press":1,"frame":1,"timebar":1,"colors":1,"import":1,"name":1,"export":1,"data":1,"blur":1,"transform--not":1,"separately":1}
+,"shape":{"animations":1,"animator":1,"transform":1,"feather":1,"creation":1,"creates":1,"add":1,"reshape":1,"adjust":1,"created":1,"control":1,"curve":1,"move":1,"ctrl":1,"b-splines":1,"hand":1,"weight":1,"snaps":1,"boundary":1,"magnetic":1,"tracing":1,"point":1,"points":1,"background":1,"strokes":1,"around":1,"properly":1,"create":1,"new":1,"freehand":1,"exactly":1,"minus":1,"drawn":1,"completed":1,"square":1,"circle":1,"layer":1,"parameters":1,"adjusted":1,"selected":1,"shapes":1,"equally":1,"blurred":1,"opacity":1,"values":1,"motion":1,"outline":1,"used":1,"rendered":1,"red":1,"channel":1,"icons":1,"resides":1,"default":1,"roll":1,"b-roll":1,"color":1,"white":1,"visibility":1,"fade":1,"outlines":1,"cannot":1,"various":1,"group":1,"selection":1,"movement":1,"bounding":1,"corners":1,"skewed":1,"rotates":1,"notice":1,"drag":1,"selects":1,"linked":1,"view":1,"don\u2019t":1,"windows":1,"mac":1,"preferences":1,"match":1,"pop-up":1,"number":1,"remains":1,"start":1,"duplicated":1,"100":1,"editing":1,"disappear":1,"appear":1,"copied":1,"object":1,"select":1,"opens":1,"alt-click":1,"clicking":1,"two":1,"inherits":1,"rotate":1,"shortcut":1,"tracker":1,"outside":1,"nothing":1,"animation":1,"press":1,"frame":1,"timebar":1,"colors":1,"import":1,"name":1,"export":1,"data":1,"blur":1,"transform--not":1,"separately":1}
 ,"animations":{"integrated":1}
 ,"integrated":{"motion":1}
 ,"tracking":{"makes":1,"data":1,"technique":1,"system":1,"point":1,"utilizes":1}
@@ -99,11 +99,6 @@ var pairs =
 ,"feather":{"handle":1,"point":1,"points":1,"handles":1,"shortcuts":1,"outward":1,"tutorial":1,"information":1,"opacity":1}
 ,"adds":{"weighted":1,"object":1}
 ,"weighted":{"keyframe":1,"based":1,"key":1}
-,"draws":{"unselected":1,"straight":1}
-,"unselected":{"inactive":1,"shapes":1,"shape":1,"point":1}
-,"inactive":{"shape":1}
-,"outlines":{"using":1,"filled":1}
-,"opacity":{"value":1,"selected":1,"range":1,"interpolation":1,"keyframes":1,"unselected":1,"blend":1,"level":1,"100":1,"icon":1,"current":1,"appear":1,"parameter":1,"behavior":1,"fade":1,"copied":1,"key":1,"blur":1,"exported":1,"nuke":1,"ignored":1,"visibility":1,"color":1,"shape":1,"control":1}
 ,"stereo":{"shape":1,"project":1,"roto":1,"rotoscoping":1,"offset":1,"sources":1,"clips":1,"align":1,"objects":1,"linked":1}
 ,"right":{"view":1,"create":1,"weight":1,"views":1,"point":1,"stereo":1,"side":1,"shape\u2019s":1,"next":1}
 ,"view":{"stereo":1,"channels":1,"left":1,"layer":1,"icon":1,"right":1,"indicates":1,"shape":1,"mode":1,"blend":1,"selecting":1,"transform":1,"using":1,"icons":1,"shapes":1}
@@ -380,6 +375,7 @@ var pairs =
 ,"anchors":{"currently":1}
 ,"currently":{"drawn":1,"shapes":1}
 ,"drawn":{"path":1,"object":1,"alt-click":1,"spline":1,"line":1,"around":1}
+,"draws":{"straight":1,"unselected":1}
 ,"straight":{"line":1}
 ,"line":{"new":1,"drawn":1,"created":1,"show":1}
 ,"temporary":{"foreground":1}
@@ -465,6 +461,7 @@ var pairs =
 ,"negative":{"values":1,"value":1}
 ,"values":{"shrink":1,"grow":1,"default":1,"changed":1,"using":1,"pressing":1,"create":1}
 ,"positive":{"values":1}
+,"opacity":{"selected":1,"range":1,"interpolation":1,"keyframes":1,"unselected":1,"blend":1,"level":1,"100":1,"icon":1,"current":1,"appear":1,"parameter":1,"value":1,"behavior":1,"fade":1,"copied":1,"key":1,"blur":1,"exported":1,"nuke":1,"ignored":1,"visibility":1,"color":1,"shape":1,"control":1}
 ,"defaults":{"100":1,"180":1,"-90":1}
 ,"100":{"interpolation":1,"black":1,"opacity":1,"shapes":1}
 ,"interpolation":{"type":1,"linear":1}
@@ -617,6 +614,7 @@ var pairs =
 ,"addition":{"shift-click":1,"node":1,"subtractive":1}
 ,"shift-w":{"enable":1}
 ,"template":{"mode":1,"color":1}
+,"unselected":{"shapes":1,"inactive":1,"shape":1,"point":1}
 ,"colors":{"template":1,"changed":1,"preference":1,"point":1,"motion":1}
 ,"moved":{"dragging":1,"using":1,"just":1,"frame":1}
 ,"dropping":{"new":1}
@@ -668,6 +666,8 @@ var pairs =
 ,"linux":{"silhouette":1}
 ,"mac":{"shape":1,"number":1,"holding":1}
 ,"fade":{"outline":1,"1-100":1,"shape":1,"fade":1,"time":1,"areas":1,"parameters":1,"values":1}
+,"inactive":{"shape":1}
+,"outlines":{"using":1,"filled":1}
 ,"behavior":{"enabled":1,"pressing":1}
 ,"opacity-splines":{"disappear":1}
 ,"disappear":{"opacity":1,"shape":1}

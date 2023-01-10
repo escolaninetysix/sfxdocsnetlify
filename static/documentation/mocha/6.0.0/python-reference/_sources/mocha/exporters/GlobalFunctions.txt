@@ -1,0 +1,55 @@
+.. module:: mocha.exporters
+
+Global functions
+****************
+
+.. container:: function_list
+
+*   :func:`mocha.exporters.set_license_search_path`
+*   :func:`mocha.exporters.get_license_path`
+*   :func:`mocha.exporters.get_current_project`
+*   :func:`mocha.exporters.register_custom_tool_type`
+*   :func:`mocha.exporters.tool_instance`
+*   :func:`mocha.exporters.registered_tool_types`
+*   :func:`mocha.exporters.set_overlay_renderer`
+
+
+Detailed Description
+--------------------
+
+.. function:: mocha.exporters.set_license_search_path(path)
+
+      :type path: unicode
+
+
+.. function:: mocha.exporters.get_license_path()
+
+      :rtype: unicode
+
+
+.. function:: mocha.exporters.get_current_project()
+
+      :rtype: :class:`mocha.project.Project`
+
+
+.. function:: mocha.exporters.register_custom_tool_type(tool_type)
+
+      :type tool_type: :class:`PyTypeObject`
+
+
+.. function:: mocha.exporters.tool_instance(tool_type)
+
+      :type tool_type: :class:`PyTypeObject`
+      :rtype: :class:`PyObject`
+
+
+.. function:: mocha.exporters.registered_tool_types()
+
+      :rtype: :class:`PyObject`
+
+
+.. function:: mocha.exporters.set_overlay_renderer(arg__1)
+
+      :type arg__1: :class:`PyObject`
+
+

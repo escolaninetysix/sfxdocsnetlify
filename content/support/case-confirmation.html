@@ -1,0 +1,22 @@
+{
+   "title": "Case Confirmation"
+}
+
+<div id="caseconf">
+    <h1>Case submitted, Thank You!</h1>
+
+    <p id="caseId">Thank you for submitting your case. Your case number is  
+    </p>
+    <p id="emailId">We have sent a confirmation e-mail to 
+    </p>
+    <p>If you need to send us any additional information or attachments related to this case, please reply to that e-mail. Our dedicated support team will contact you as soon as possible.</p>
+</div>
+
+<script>
+    word = window.location.search.substring(1);
+    var vars = word.split('=');
+    var caseNumEmail = vars[1];
+    var params = caseNumEmail.split('*');
+    $("#caseId").html($('#caseId').html() + params[0]);
+    $("#emailId").html($('#emailId').html() + params[1]);
+</script>

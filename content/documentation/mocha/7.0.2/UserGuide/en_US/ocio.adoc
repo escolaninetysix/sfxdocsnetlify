@@ -1,0 +1,35 @@
+== OpenColorIO (OCIO)
+
+Mocha Pro has OCIO functionality in both the standalone version and the plugin.
+
+Depending on the color profile you are working with, a number of display options are available via the Viewer Preferences:
+
+image:UserGuide/en_US/images/ICON_ViewerControls_001.jpg[]
+
+The controls are listed at the bottom of the Viewer Preferences dialog:
+
+image:UserGuide/en_US/images/viewer_preferences_dialog.jpg[width="40%"]
+
+The plugin version of Mocha Pro will automatically try to use the current host colorspace.
+
+=== Loading OpenColorIO configurations into Mocha Pro
+
+The default config field is read-only, and only shows the current OCIO config file if there is one.
+
+In order to set a config, you need to define the environment variable OCIO and point it to the config file path, for example:
+
+[source, text]
+----
+export OCIO=$HOME/OCIO/nuke-default/config.ocio
+----
+
+Then run Mocha (or your plugin host) from the terminal after defining this variable.
+
+You could also set the OCIO environment variable system-wide using an appropriate OS-specific method
+(e.g. the Environment Variables dialog in Windows).
+
+If there is no config set, you should see a blank Config field and just “raw” or “*default” in the dropdowns.
+
+If you set a valid config path, you should see the complete list of supported colorspaces.
+
+Once set, the OCIO config will be saved with the project.

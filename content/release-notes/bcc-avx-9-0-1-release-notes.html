@@ -1,0 +1,108 @@
+{
+   "date": "2014-04-30T13:16:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC AVX - 9.0.1 Release Notes"
+}
+
+<p>Boris Continuum Complete AVX 9.0.1 was released on 4/30/2014 and is an update to:</p>
+<ul>
+<li>Boris Continuum Complete AVX 9.0.0 ( <a title="BCC 9 AVX – 9.0.0 Release Notes" href="/release-notes/bcc-avx-9-0-0/" target="_blank"> BCC AVX 9.0.0 Release Notes </a> )</li>
+</ul>
+<p><b> BCC AVX 9 supports the following Avid host applications: </b></p>
+<p>Macintosh:</p>
+<ul>
+<li>Avid Media Composer 6, 6.5, and 7 running Macintosh OS™ X 10.7, 10.8, and 10.9.</li>
+<li>Avid Symphony 6, 6.5, and 7 running Macintosh OS™ X 10.7, 10.8, and 10.9.</li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li>Avid Media Composer Media Composer 6, 6.5, and 7 running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+<li>Avid Symphony 6, 6.5, and 7 running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+<li>Avid NewsCutter 10, 10.5, and 11 running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+</ul>
+<p><b> Feature Enhancements in BCC AVX 9.0.1 </b> : <!--more--></p>
+<ul>
+<li>More than 100 new transition presets.</li>
+<li>Built-in Vignette added to Pan and Zoom.</li>
+<li>Motion Blur now supported for 3D Mode in Pan and Zoom.</li>
+<li>Improved GPU support on ATI systems.</li>
+<li>Help Docs refinements.</li>
+<li>Colored Background option added to Swish Pan.</li>
+</ul>
+<p><b> Bug Fixes In BCC AVX 9.0.1 </b> :</p>
+<ul>
+<li>Warp - Antialiasing not working.</li>
+<li>Vector Blur Dissolve - Ignore Edge Pixels not working as expected.</li>
+<li>Edge Grunge - Layer Border options not working as expected.</li>
+<li>Revise parameter defaults for several transitions.</li>
+<li>Sporadic instability when loading animated presets in the FX Browser.</li>
+<li>Extruded Text - Refresh issue when launching the text window with fragments of the window bar being drawn in the wrong place and then not refreshing.</li>
+<li>Cuda driver errors are displayed on some ATI systems which had previously installed NVIDIA cards.</li>
+<li>FX Browser - Saving Workspace does not allow overwriting of an existing one.</li>
+<li>FX Browser - Workspaces save number does not automatically advance beyond 2 on windows.</li>
+<li>FX Browser - Open folders are not always saved and restored.</li>
+<li>3D Objects filters will incorrectly cache the first layer assigned as texture/bump map, even if that layer has been deleted and another assigned.</li>
+<li>Sporadic instability with 3D Objects filters on Windows.</li>
+<li>Damaged TV - Triangle and Saw edge shapes don’t animate.</li>
+<li>Grunge - With 'use texture' turned off, displacement map uses source layer as map even when map is set to texture.</li>
+<li>Grunge - Opacity parameter incorrectly adjusting scratches.</li>
+<li>Vignette - When dropping resolution to quarter, the blur shifts unexpectedly.</li>
+<li>Damaged TV Dissolve - Interference shows random gaps in interference on side edge of screen.</li>
+<li>Preset library - Remove outdated presets in some filters which distract from browsing the more important entries.</li>
+<li>Several Jitter presets contain incorrect default Y offsets.</li>
+<li>Sphere Transition - Uses wrong folder for default preset location.</li>
+<li>Damaged TV - Does not support 16bit rendering and always renders as 8bit instead.</li>
+<li>Several effects failed to load presets correctly in Avid hosts including Artists Poster, Brightness Contrast, Correct Selected Color, 3D Extruded Image Shatter, Spray Paint Noise, and Particle System.</li>
+<li>Scanlines - Crop parameters turn image entirely black with any value greater than 0 in Avid hosts.</li>
+<li>In Laser Beam, Motion Blur parameter does not work correctly in Avid hosts.</li>
+<li>When Grunge is applied to Title Matte, Post-Apply geometrics affect the background layer.</li>
+<li>Help Docs not loading when the Help button was clicked for several filters in Avid hosts.</li>
+</ul>
+<p><b> BCC AVX 9.x Compatibility Notes </b> :</p>
+<p>While in general your previously saved projects should render identically in the newer version, bug fixes and quality improvements can sometimes change the look of older projects. While every effort is made to ensure project compatibility, the following notable areas may see some change to the look of previously saved projects.</p>
+<ul>
+<li>In all wipe-style transitions which contain Border options, the opacity of the border elements fades automatically at the start/end of transitions (except in manual mode) to fix potential jumps in the renders at the start and end of the transitions when border offsets were non-zero.</li>
+<li>The largely unnecessary Hold In / Hold Out parameters were removed from the Animation Tuning group in all transitions which could cause changes in the transition timing in the unlikely event these parameters had been changed from their defaults.</li>
+<li>As part of the major performance optimizations implemented in Damaged TV for BCC9, some details such as the randomization patterns can render differently although the overall feel of the effect should remain the same.</li>
+<li>BCC9 fixes a bug introduced in BCC8.2 that affected the perceived rate of progress of the underlying dissolve in BCC Lens Transition. Projects saved in BCC8.2 maybe appear to render somewhat differently now that the dissolve rate has been fixed.</li>
+<li>BCC9 fixes a gamma shift in some externally loaded images on Mac systems (such as those loaded by Pan and Zoom, or the particle files in Particle Emitter 3D, Organics Strands, or Particle Array) which caused the images to appear slightly too dark as compared to the same image when imported on Windows. These images now render identically on Mac and Windows but Mac projects saved with these filters prior to BCC9 may display slight brightness boosts in such images.</li>
+<li>The Pixel Chooser and Motion Tracker were removed from Swish Pan since they did not make sense in the context of a transition. In the unlikely event that these controls were used in previously saved projects, the pixel chooser and motion tracker settings would be ignored in new renders.</li>
+</ul>
+<p><b> BCC AVX 9.0.1 - Known Issues and Limitations </b> :</p>
+<ul>
+<li>29745 - Grunge can render with missing textures on Radeon cards in 8 or 16 bit color depth on Windows when using driver versions prior to 14.x. The filter will work in 32 bit float color depth (in hosts that offer 32-bit color) even with older drivers.</li>
+<li>28732 - BCC Extruded Text and BCC Type On Text use a custom text entry window and some of the changes that can be made through in this window are not reflected in the preview within the text window on Mac OS (although they will be apparent in the effect when previewed/rendered back in the host). The following text attributes do not preview within the text window:</li>
+</ul>
+<ol>
+<li>Justification (when Word Wrap is not enabled)</li>
+<li>Top Down Text</li>
+<li>Right to Left Reading</li>
+<li>Negative Line Leading</li>
+<li>Italics (for fonts that don't include an italic typeface)</li>
+<li>Superscript and Subscript</li>
+</ol>
+<ul>
+<li>26068 - In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.</li>
+<li>27591 - As part of the new Motion Tracker workflow, if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must now reset the tracker data with the reset button in the tracker banner before starting a second tracker pass. (This extra step is not necessary if the tracker point picker location has changed.)</li>
+<li>25867 - In BCC Type On Text the Line Leading in the text entry preview window does not accurately match up with the leading in the rendered result, and the leading may need to be adjusted to generate the desired final render.</li>
+<li>27313 - The Beat Reactor propagation options generate unexpected results in Organic Strands. Use non-propagation modes which work as expected as a temporary workaround.</li>
+<li>28749 - In Media Composer 6.5 and higher you may find the alpha channel failing to propagate from a 3D Object filter to another BCC effect in a stacked multi-filter start/end setup when rendering in 16bit. As a temporary workaround you can render in 8bit instead of 16bit or render in Media Composer 6.0 which does not show the problem.</li>
+<li>27736 - When using a host image layer as the particle type in Particle Emitter 3D, the particles can appear squished/stretched in projects with non-square pixel aspect ratios.</li>
+<li>26750 - The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. Use lower values near the default setting of 32 as a workaround.</li>
+<li>26845 - BCC LED shows occasional mis-colored dots on Quadro FX 3500 cards.</li>
+<li>25671 - When stacking multiple effects on a track and then rearranging the order of those effects, parameter errors may occur such as button parameters functioning as simple checkboxes instead of true buttons. We are working with Avid to resolve this issue.</li>
+<li>27292 - Effect stacks will occasionally display an error stating "Connect failed to connect" when preview at less than full resolution. This error does not affect final render and can be worked around by switching to full green/green preview resolution. We are working with Avid to resolve this issue.</li>
+<li>28774 - When using a video track to define a texture in the 3D Objects filters, the scaling of that texture can vary incorrectly when changing resolutions so effects that use layers as textures should be set up in full resolution.</li>
+<li>29839 - Scanline and 3D Extruded Image Shatter and show vertical stretching in interlaced AVX projects.</li>
+<li>29533 - The apply modes Boost Expo 1, 2, and 50/50 mix do not give the expected result in Grunge.</li>
+<li>29502 - In Grunge the Spot Light Cone Feather doesn’t follow the cone size</li>
+<li>29841 - In Grunge when using the Chromatic Aberration feature, white pixels render over blur region when the Vignette feature is also enabled.</li>
+<li>29777 - In Grunge the Edge Offset control in the Chromatic Aberration group is not working as designed.</li>
+<li>29758 - (Mac Only) In Grunge the noise does not animate smoothly and can yield unexpected repeating patterns at some settings on mac</li>
+<li>28552 - LED - For certain Size settings a thin black strip of missing LED elements can appear along the top and right edges of the image.</li>
+<li>30205 - Grunge and Lens Flare 3D - The Scale Random feature does not work in the Orbs groups.</li>
+<li>29395 - FX Browser - on Macintosh systems with Retina displays the tabs in the preset browser do not respond correctly to mouse click+drag events.</li>
+<li>29974 - FX Browser - The Animation timing is inaccurate when previewing presets with animated point pickers in the FX Browser.</li>
+</ul>

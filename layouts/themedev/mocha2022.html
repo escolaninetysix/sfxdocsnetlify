@@ -1,0 +1,704 @@
+{{ define "content" }}
+
+{{ $.Scratch.Set "video_count" 0 }}
+
+<style>
+@media only screen and (min-width: 1200px) {
+.image {
+display: inline;
+}
+}
+.carousel-indicators li{display:none;}
+</style>
+<script>
+var videos = [
+  {{ range (.Site.GetPage "section" "effects").Pages }}
+  {{ if isset $.Params "product" }}
+  {{ if eq .Params.product $.Params.product }}
+  {{ if or (not (isset $.Params "unit")) (eq .Params.unit $.Params.unit) }}
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "{{ .Title }}",
+    "url": "{{ .Permalink }}",
+    "thumbnail_url": "{{ .Params.thumbnail_url }}",
+    "tagging": {
+      {{ if isset .Params "unit" }}
+      "unit": {{ .Params.unit }},
+      {{ end }}
+    },
+    "content": "{{ .Content | plainify }}",
+  },
+  {{ end }}
+  {{ end }}
+  {{ end }}
+  {{ end }}
+];
+</script>
+
+{{ if .Params.carousel }}
+<div style="background-color: black;">
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {{ range $index, $item := .Params.carousel }}
+      <li data-target="#carousel" data-slide-to="{{ $index }}"{{ if eq $index 0 }} class="active"{{ end }}></li>
+      {{ end }}
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      {{ range $index, $item := .Params.carousel }}
+      <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+        <div class="inner">
+          {{ if $item.video_url }}
+          <video autoplay loop muted poster="{{ $item.image_url }}">
+            <source src="{{ $item.video_url }}">
+          </video>
+          {{ else }}
+
+		  {{ partial "imagehandlecarousel.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+
+          {{ end }}
+          <div class="content text-center {{ if eq $item.color "black" }}black{{ end }}">
+            <div>
+              <p class="mb-0" style="line-height: 1; font-size: 47px; font-weight: 900;">{{ $item.title }}</p>
+              <p>
+                {{ if $item.content }}
+                {{ $item.content | markdownify }}
+                {{ end }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ else }}
+<div class="section" style="background-image: url('https://borisfx-com-res.cloudinary.com/image/upload/default-logo-background.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h1>{{ .Title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+<div class="product-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-12">
+        <nav>
+          <span class="product-links">
+            {{ if .Params.overview.content }}
+            <a href="#overview">Overview</a>
+            {{ end }}
+            {{ if .Params.whats_new }}
+            <a href="#whats-new">What's New</a>
+            {{ end }}
+            {{ if .Params.videos }}
+            <a href="#videos">Videos</a>
+            {{ end }}
+            {{ if .Params.features.content }}
+            <a href="#features">Features</a>
+            {{ end }}
+            {{ if .Params.presets }}
+            <a href="#presets">Presets</a>
+            {{ end }}
+            {{ if .Params.hosts.content }}
+            <a href="#hosts">Hosts</a>
+            {{ end }}
+            {{ range .Params.sections }}
+            <a href="#{{ .title | urlize }}">{{ .title }}</a>
+            {{ end }}
+			<a href="#stories">Stories</a>
+            {{ if gt ($.Scratch.Get "video_count") 0 }}
+            <a href="#effects">Effects</a>
+            {{ end }}
+          </span>
+        </nav>
+      </div>
+
+      <div class="col-lg-3 col-md-12">
+        <span class="float-lg-right product-btns">
+          <a href="{{ if .Params.download_url }}{{ .Params.download_url }}{{ else }}/downloads{{ end }}" class="btn btn-{{ .Params.key_color }}" id="ft">FREE TRIAL</a>
+          <a href="{{ .Params.buy_now_url }}" class="btn btn-{{ .Params.key_color }}">BUY NOW</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product-nav-placeholder"></div>
+<script>
+$(function () {
+  $(document).ready(function () {
+    var nav = $('.product-nav');
+    var navPosition = nav.offset().top;
+    navPosition -= $('header').height();
+    function update() {
+      if ($(this).scrollTop() > navPosition) {
+        nav.addClass("fixed");
+      } else {
+        nav.removeClass("fixed");
+      }
+    }
+    $(window).scroll(update);
+    update();
+  });
+});
+</script>
+
+
+<div class="container">
+    <div class="row" style="margin-top:-35px;">
+      <div class="col-lg-12 text-center">	
+	  <div id="overview"></div>
+</div>
+</div>
+</div>
+
+{{ if .Params.store }}
+<div class="container">
+<div class="section" style="background:none;border-top:none;">
+		   <div class="row">
+		   <div class="col-md-12">
+		   <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>{{ .Params.overview.title }}</b></h1><br>
+   </div>
+  </div>	  
+
+	  <div class="row">
+	    <div class="col-lg-8">
+<script src="https://fast.wistia.com/embed/medias/5bmspsux6y.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_5bmspsux6y videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/5bmspsux6y/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+<div class="text-left" style="margin-top: 2.5%;margin-bottom:2.5%;width:100%;color:black;">
+          {{ .Params.overview.content | markdownify }}
+      </div>
+	</div>  
+    <div class="col-lg-4">
+   {{ partial "product-page-mocha-pro-cart-video" . }}
+   </div>
+  </div>	
+
+{{ end }}
+</div>
+</div>
+
+
+{{ if .Params.whats_new }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <center><h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;" id="whats-new">
+          <b>{{ if .Params.whats_new_title }}
+          {{ .Params.whats_new_title }}
+          {{ else }}
+          WHAT'S NEW
+          {{ end }}</b>
+        </h1></center>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{ $items := .Params.whats_new }}
+        {{ range $index, $item := .Params.whats_new }}
+		{{ if $item.section_title }}
+        <div class="row py-4">
+        <div class="col-12">
+		 <center><h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;">
+          <b>{{ $item.section_title | upper }}</b>
+        </h1></center>
+		</div>
+		</div>
+		{{ end }}
+	    <div class="row py-4">        
+		<div class="col-12 col-md-6 {{ if eq (mod $index 2) 1 }}push-md-6{{ end }}">
+            
+			{{ if eq (mod $index 2) 1 }}
+			{{ if $item.wistia_whats_new_powermesh }}
+<script src="https://fast.wistia.com/embed/medias/u81xfgoy30.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_u81xfgoy30 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/u81xfgoy30/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+{{ end }}
+			{{ if $item.image_url }}
+			 <div align="right">{{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}</div>
+            {{ end }}			
+			{{ if and ($item.image_url_analog_before) ($item.image_url_analog_after) }}
+			 <div id="analog" align="right">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_analog_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_analog_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}				
+			{{ if and ($item.image_url_lights_before) ($item.image_url_lights_after) }}
+			 <div id="lights" align="right">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_lights_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_lights_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}			
+			{{ if and ($item.image_url_lf_before) ($item.image_url_lf_after) }}
+			 <div id="lens-flare" align="right">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_lf_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_lf_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}		
+			{{ if and ($item.image_url_gels_before) ($item.image_url_gels_after) }}
+			 <div id="gels" align="right">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_gels_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_gels_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}
+			{{ if and ($item.image_url_looks_before) ($item.image_url_looks_after) }}
+			 <div id="looks">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_looks_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_looks_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}
+		    {{ if $item.video_url }}
+	        <div align="right">{{ partial "video-play-mfp.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url "video_id" $item.video_id) }}</div>
+            {{ end }}		    
+			{{ if $item.video_url_wthumb }}
+	        <div align="right">{{ partial "video-play-mfp.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url "video_id" $item.video_id) }}</div>
+            {{ end }}
+			{{ end }}
+			
+			
+			{{ if ne (mod $index 2) 1 }}
+			{{ if $item.wistia_whats_new  }}
+			<script src="https://fast.wistia.com/embed/medias/xqdi33an8u.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_xqdi33an8u videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/xqdi33an8u/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+			{{ end }}
+			{{ if $item.image_url }}
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+            {{ end }}
+			{{ if and ($item.image_url_fs_before) ($item.image_url_fs_after) }}
+			 <div id="filmstock-compare">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_fs_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_fs_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}			
+			{{ if and ($item.image_url_cs_before) ($item.image_url_cs_after) }}
+			 <div id="centerspot">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_cs_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_cs_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}			
+			{{ if and ($item.image_url_lrg_before) ($item.image_url_lrg_after) }}
+			 <div id="lrg">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_lrg_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_lrg_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}			
+			{{ if and ($item.image_url_ec_before) ($item.image_url_ec_after) }}
+			 <div id="ec">
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_ec_before "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		     {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url_ec_after "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			 </div>
+            {{ end }}		
+			{{ if $item.thumbnail_url }}
+	         {{ partial "video-play-mfp.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url "video_id" $item.video_id) }}
+            {{ end }}
+			{{ if $item.thumbnail_url_noplay }}
+			 {{ partial "video-play-nobutton.html" (dict "thumbnail_url_noplay" $item.thumbnail_url_noplay "video_url" $item.video_url) }}
+			{{ end }}
+			{{ end }}
+			
+          </div>
+          <div class="col-12 col-md-6 {{ if eq (mod $index 2) 1 }}pull-md-6{{ end }}">
+            <h2 style="font-style: normal;font-weight: 100;letter-spacing:0em;color:black;"><b>{{ $item.title }}</b></h2>
+            {{ if $item.content }}
+			{{ if eq (mod $index 2) 1 }}
+			<div style="text-align:left;color:black;">
+              {{ $item.content | markdownify }}
+			</div>
+            {{ end }}
+			{{ end }}
+            {{ if $item.content }}
+			{{ if ne (mod $index 2) 1 }}
+			<div style="text-align:left;color:black;">
+              {{ $item.content | markdownify }}
+			</div>
+            {{ end }}
+			{{ end }}
+          </div>
+        </div>
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}
+
+
+{{ if .Params.videos }}
+<div  class="section white text-center">
+  <div class="container">
+  	  <div style="font-size:14pt;">
+    <div class="row">
+      <div class="col">
+        <h2 id="videos" style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>Videos</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      {{ range .Params.videos }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .Params.video_url }}">
+            <img class="img-fluid" src="{{ .image_url }}" />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .Params.video_url }}">{{ .title }}</a>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+    {{ if .Params.video_see_more_url }}
+    <div class="row">
+      <div class="col">
+        <p>
+          <a href="{{ .Params.video_see_more_url }}">See More Videos</a>
+        </p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+</div>
+{{ end }}
+
+{{ if .Params.features.content }}
+<div style="font-style: normal;font-weight: 300;" class="section">
+  <div class="container">
+      <div class="row">
+      <div class="col">
+	          <h1 id="features" style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b></b></h1>
+	  </div>
+	  </div>
+    <div class="row">
+		  <div style="font-size:14pt;">
+      <div class="col">
+
+        <div class="text-left"><p style="font-style: normal;font-weight: 300;">{{ .Params.features.content | markdownify }}</p></div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.presets }}
+<div style="font-style: normal;font-weight: 300;" class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="presets">Presets</h3>
+        <div class="row">
+          {{ range .Params.presets }}
+          <div class="col-md-3">
+            <img class="img-fluid" src="{{ .thumbnail_url }}" />
+            <p>
+              {{ .title }}
+            </p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.hosts.content }}
+<div style="font-style: normal;font-weight: 300;" class="section text-center">
+  <div class="container">
+    <div class="row">
+		  <div style="font-size:14pt;">
+      <div class="col">
+        <h2 id="hosts" style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>Hosts</b></h2>
+        <div class="text-left">{{ .Params.hosts.content | markdownify }}</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+{{ end }}
+
+{{ range .Params.sections }}
+<div  class="section {{ if (eq .background "Gray") }}gray{{ else }}white{{ end }}">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+	  {{ if not .page_title }}
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;" id="{{ .title | urlize }}"><b>{{ .title }}</b></h1>
+      {{ else if .page_title }}
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;" id="{{ .title | urlize }}"><b>{{ .page_title }}</b></h1>	  
+	  {{ end }}
+	  </div>
+    </div>
+	<!-- divider -->
+    {{ if (eq .type "Two Up") }}
+    {{ $items := .items }}
+    {{ range $index, $item := .items }}
+       <div class="row">
+	
+      <div class="col">
+	  {{ if $item.title }}
+   	  	<h2 style="font-style: normal;font-weight: 300;"><b>{{ $item.title }}</b></h2>
+	  {{ end }}
+	  
+	  {{ if $item.image_url2 }}
+			<br><div id="container4">
+ {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url2 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+{{ end }}
+			{{ if $item.image_url4 }}
+			<br><div id="container2">
+ {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url3 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url4 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+            {{ end }}
+			
+			{{ if $item.image_url6 }}
+			<div id="container3">
+ {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url5 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url6 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>		
+			{{ end }}	
+			{{ if $item.image_url8 }}
+			 <div id="container5">
+ {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url7 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url8 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>		
+			{{ end }}
+			{{ if and ($item.image_url3) ($item.image_url4) }}
+			<div id="container2">
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url3 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url4 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}			
+			{{ if $item.single_image_url }}
+			
+			 <br>{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			
+			{{ end }}
+			{{ if $item.single_image_url1 }}
+			
+			 <br>{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url1 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			
+			{{ end }}
+			{{ if $item.single_image_url2 }}
+			
+			 <br>{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url2 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			
+			{{ end }}
+        {{ if not ($item.image_url2) }}
+		
+		<br>{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+
+		{{ end }}
+        {{ if $item.video_url }}
+	    {{ partial "video-play-mfp.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url "video_id" $item.video_id) }}<br>
+        {{ end }}
+
+        {{ if $item.content }}
+        <div class="text-align:left;color:black;">
+       {{ $item.content | markdownify }}
+        </div>
+        {{ end }}
+      </div>
+	  </div>
+    {{ end }}
+    {{ else if (eq .type "feature_side") }}
+    {{ $items := .items }}
+    {{ range $index, $item := .items }}
+	    <div class="row py-4">        
+		<div class="col-12 col-md-6 {{ if eq (mod $index 2) 1 }}push-md-6{{ end }}">
+            	  {{ if $item.section_title }}
+   	  	<h2 style="font-style: normal;font-weight: 300;"><b>{{ $item.section_title }}</b></h2>
+	  {{ end }}
+			{{ if eq (mod $index 2) 1 }}
+			
+		  {{ if $item.vid_autoplay  }}
+		 <a id="popVideo" data-fancybox href="{{ $item.vid_autoplay}}">
+          <div class="video">
+		  <video loop muted playsinline autoplay width="100%" height="100%">
+            <source src="{{ $item.vid_autoplay }}">
+          </video>
+		  </div> </a>
+			{{ end }}	
+			{{ if $item.single_image_url }}
+			
+			{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			
+			{{ end }}			
+
+			{{ if $item.thumbnail_url }}
+            {{ partial "video-play-mfp.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url "video_id" $item.video_id) }}
+            {{ end }}
+			{{ if $item.learn_image_url }}
+			 <a href="/free-training/mocha-essentials/">{{ partial "imagehandlewithdir2.html" (dict "image_url" $item.learn_image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}</a>
+            {{ end }}	
+		    {{ if and ($item.image_url7) ($item.image_url8) }}
+		    <div id="container5">
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url7 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url8 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>		
+			{{ end }}				
+			{{ end }}
+			
+			
+			{{ if ne (mod $index 2) 1 }}	
+		  {{ if $item.vid_autoplay  }}
+		 <a id="popVideo" data-fancybox href="{{ $item.vid_autoplay}}">
+          <div class="video">
+		  <video loop muted playsinline autoplay width="100%" height="100%">
+            <source src="{{ $item.vid_autoplay }}">
+          </video>
+		  </div> </a>
+			{{ end }}				
+			{{ if and ($item.image_url) ($item.image_url2) }}
+			<div id="container4">
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url2 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}
+    			{{ if and ($item.image_url3) ($item.image_url4) }}
+			<div id="container2">
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url3 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url4 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}			
+			{{ if and ($item.image_url5) ($item.image_url6) }}
+		    <div id="container7">
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url5 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+ {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.image_url6 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>		
+			{{ end }}
+			{{ if $item.single_image_url }}
+			 {{ partial "imagehandlewithdir2.html" (dict "image_url" $item.single_image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+            {{ end }}		
+			{{ if $item.thumbnail_url }}
+            {{ partial "video-play-mfp.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url "video_id" $item.video_id) }}
+            {{ end }}
+			{{ if $item.learn_image_url }}
+			 <a href="/free-training/mocha-essentials/">{{ partial "imagehandlewithdir2.html" (dict "image_url" $item.learn_image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}</a>
+            {{ end }}
+			{{ end }}
+		</div>	
+          <div class="col-12 col-md-6 {{ if eq (mod $index 2) 1 }}pull-md-6{{ end }}">
+            <h2 style="font-style: normal;font-weight: 100;letter-spacing:0em;color:black;"><b>{{ $item.title }}</b></h2>
+            {{ if $item.content }}
+			{{ if eq (mod $index 2) 1 }}
+			<div style="text-align:left;color:black;">
+              {{ $item.content | markdownify }}
+			</div>
+            {{ end }}
+			{{ if ne (mod $index 2) 1 }}
+			<div style="text-align:left;color:black;">
+              {{ $item.content | markdownify }}
+			</div>
+            {{ end }}
+			{{ end }}
+          </div>
+		</div>
+	
+    {{ if (ne $index (add (len $items) -1)) }}
+    <hr class="hidden-sm-down"/>
+    {{ end }}
+	
+    {{ end }}
+	
+	{{ else if (eq .type "Version") }}
+    {{ $items := .items }}
+    {{ range $index, $item := .items }}
+    
+      <div class="col-md-12">
+	  <br><h2 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>{{ $item.title }}</b></h2><br>
+        {{ if $item.content }}
+        <div class="text-align:left;color:black;">
+          <br>{{ $item.content | markdownify }}
+        </div>
+        {{ end }}
+
+     </div>
+    {{ if (ne $index (add (len $items) -1)) }}
+    <hr class="hidden-sm-down"/>
+    {{ end }}
+    {{ end }}	
+    {{ else if (eq .type "Thumbnails") }}
+    <div class="row">
+      {{ range .items }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .video_url }}">
+            <img class="img-fluid" src="{{ .image_url }}" />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .video_url }}">{{ .title }}</a>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ if .content }}
+    <div class="row">
+      <div class="col">
+	  <div style="text-align:left;color:black;">
+        {{ .content | markdownify }}
+      </div>
+      </div>
+    </div>
+    {{ end }}
+
+</div>
+</div>
+{{ end }}
+
+<div class="section gray" id="content">
+  <div class="container">
+  <div class="row">
+  <div class="col-12 text-center">
+  <h1 id="stories">WHY USERS LOVE MOCHA PRO</h1>
+  </div>
+  </div>
+    <div class="row">
+      <div class="col">
+<center>
+{{ partial "mocha-customer-stories.html" . }}
+</center>
+	  </div>
+	</div>  
+   </div>
+</div>
+
+{{ if gt ($.Scratch.Get "video_count") 0 }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2 id="effects">Effects</h2>
+        {{ partial "video-gallery.html" }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{ end }}
+
+<script>
+$(window).on('load',function() {
+  $("#container1").twentytwenty();
+  $("#container2").twentytwenty();  
+  $("#container3").twentytwenty();
+  $("#container4").twentytwenty();
+  $("#container5").twentytwenty();
+  $("#container7").twentytwenty();
+  
+});
+</script>
+
+{{ end }}

@@ -1,0 +1,94 @@
+
+== Mocha VR: The Reorient Module [[reorient_module]]
+
+NOTE: This section applies specifically to *Mocha VR* and not *Mocha Pro* or other versions of Mocha such as *Mocha AE* or *Mocha HitFilm*.
+
+To use the Reorient module on a 360 equirectangular shot you need to first set up the 360 image.
+
+See the <<mochavr_workflow, Mocha VR: Using Mocha for 360 workflow>> section for details on how to set up and work in a 360 shot.
+
+=== Reorienting Equirectangular Footage in Mocha VR
+
+The Mocha VR Reorient Module provides two useful tools for adjusting the VR camera:
+
+* The ability to track and stabilize the VR horizon in each rotational axis
+* The ability to control the position of the VR horizon in tilt in each rotational axis
+
+==== 1. Track Horizon or Track Near-Objects
+
+===== Horizon Tracking
+The most efficient way to stabilize and reorient is to track a layer (or series of layers) near the horizon.
+It doesn’t have to be exactly on the horizon, but it helps to be as close as possible. Multiple layers in sequence will concatenate for a single solution (see below).
+
+NOTE: Mocha assumes that if you are tracking with more than one layer at a time that you're using a near-object track. See "Near Object Tracking" below.
+
+===== Near-Object Tracking
+From Mocha version 5.6.0 onwards, if you do _not_ have an obvious horizon to track or it is constantly obscured,
+the next best option is to use a series of layers closer to the camera.
+You will need at least two layers that are non-coplanar, which is a fancy way of saying "Not on the same plane".
+This is necessary for the Reorient module to work out the relative motion between the planes and calculate a smooth result.
+
+For example, if you are trying to reorient a scene with a corridor, tracking one wall is not enough:
+You will need to also track the opposite (non-coplanar) wall or the floor/ceiling to get the near-object depth for mocha to understand the movement of the scene.
+
+===== A Mix of Near-object and Horizon Tracking
+If you have a long shot where you can see the horizon in parts and not in others you can track both the horizon and near objects in sequence.
+Mocha will assume that a single layer is tracking the horizon and multiple layers on the same frames are tracking near-objects.
+
+For example, you can track the ground plane and a wall plane and they are on different planes.
+
+===== Tracking Long or Rapidly Changing Shots
+
+If a shot is moving very far, or has a lot of changes (such as moving through trees), you can concatenate tracked layers together.
+
+However, it is important to make sure there is a little overlap between the tracked layers in order to blend the tracked layers together, for example:
+
+* Layer 1: Tracked from frame 0 to frame 100
+* Layer 2: Tracked from frame 90 to frame 280
+* Layer 3: Tracked from frame 265 to 400
+* Etc.
+
+This helps to smooth any jumps from one tracked layer to the next.
+
+==== 2. Adjusting the Horizon
+Like most modules in Mocha, to use the Reorient module stabilization you first need a tracked layer.
+
+. Track a layer(s) for the stabilization (see step 1 above!)
+. Move to the Reorient module. This will turn on the 'View Horizon' checkbox, which shows the red horizon line on screen. It will also disable Preview so you can work with the original clip. +
+image:UserGuide/en_US/images/5.5.0_mochavr_reorient_parameters.jpg[width="60%"] +
+. Adjust the red horizon line to fit your horizon using the column “Horizon Align”. You can do this in either 360 mode or in Equirectangular mode. We recommend Equirectangular mode, as it is much easier to see the whole horizon.
+. If you would prefer a visual control, you can turn on “Show Control” under the Horizon Align rotation fields:
+* Move up and down to control tilt
+* Left and right to control pan
+* Rotating the circle controls roll. +
+image:UserGuide/en_US/images/5.5.0_mochavr_reorient_horizon_align.jpg[The Horizon Align Control] +
+. Once your line fits the horizon, you can turn off the 'View Horizon' check box.
+. If 'Preview' doesn't turn on immediately, you can toggle it in the view controls. This is the large ‘P’ next to the 360 icon in the view controls.
+image:UserGuide/en_US/images/5.5.0_module_preview_button.jpg[]
+
+==== 3. Smoothing the Horizon
+
+You can control the Smoothing to any rotational axis by turning off the tilt, roll and pan controls.
+
+For example, if you’re only interested in stopping the camera from panning, you can just leave “Pan” on.
+
+If you don’t want to lock the smoothing completely, you can turn off “Maximum Smoothing” and adjust the number of frames to stabilize the horizon jitter.
+
+image:UserGuide/en_US/images/5.5.0_mochavr_reorient_parameters.jpg[width="60%"]
+
+==== 4. Reorienting the Horizon
+
+Finally, if you want to position the camera exactly, you can do so by using the ‘Horizon Reorient’ column.
+
+This has exactly the same parameters as the Horizon Adjust column, allowing you to either move the camera via the fields, or via the on-screen control.
+
+image:UserGuide/en_US/images/5.5.0_mochavr_reorient_horizon_orient.jpg[The Horizon Orient Control]
+
+If you have the Preview button turned on, it will update in the view automatically.
+
+
+
+==== 5. Rendering
+Like all modules, you can choose to either render in the Mocha GUI, or choose “Reorient” from the render options in the main plugin interface back in the host.
+
+(Footage images courtesy of Makoto Hirose, SeaPics Japan)

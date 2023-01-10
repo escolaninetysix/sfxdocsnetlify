@@ -1,0 +1,38 @@
+{
+   "date": "2015-05-27T11:19:00-04:00",
+   "tags": [
+
+   ],
+   "title": "Media 100 Error Codes -39 and -2048"
+}
+
+<div id="M100Errors39And2048" class="hidden-faq">
+<p><strong> Subject </strong> : M100 Errors -39 and -2048</p>
+<p><strong> Issue </strong> : When Working In Media 100, Suddenly I Am Seeing Errors That Read Error Code -39 and/or -2048</p>
+<p><strong> How to Get Around the Issue </strong> :</p>
+<p>These two errors will come up, usually together, when there is a problem with Quicktime playback.  To clarify the nature of these messages: <br> Error -2048 is actually a Quicktime error, not a Media 100 error, stating that a clip cannot be loaded; Error -39 is the same error, just using a Media 100 numerical code, relaying the same problem.</p>
+<p>If this comes up repeatedly, this will likely be connected to a specific clip in your project. What you will want to do is:</p>
+<ol>
+<li>Isolate the clip that is causing this problem</li>
+<li>Quickly, see if you are able to play this file from inside a Bin rather than inside the Timeline.</li>
+</ol>
+<p>If you are able to play this from inside a Bin, then most likely the file that is failing to play back is a rendered file, rather than the source clip.  In that case:</p>
+<ol>
+<li>Quit Media 100</li>
+<li>Delete your Render files associated with the project</li>
+<li>Re-launch Media 100, and you should be able to re-render these files and play them back successfully.</li>
+</ol>
+<p>If you are unable to play this file from inside the Bin:</p>
+<ol>
+<li>Quit Media 100</li>
+<li>Locate the file in the Finder</li>
+<li>See if it will play in Quicktime player</li>
+</ol>
+<p>Most likely this file will not successfully load into Quicktime player, in which case this video file is corrupt, and needs to be reinstated.  At this point:</p>
+<ol>
+<li>Delete this file</li>
+<li>Re-launch Media 100 - now this file should simply fail to load as an offline file. </li>
+<li>Save your Media 100 project files. </li>
+<li>Now, you will need to re-construct the media file.Note: if the corrupt file was a render file, you should be able to successfully and safely reconstruct this clip by <em> rerendering </em> .</li>
+</ol>
+</div>

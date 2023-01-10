@@ -1,0 +1,257 @@
+
+== The Remove Module [[remove_module]]
+
+NOTE: This section only relates to *Mocha Pro*. This feature is not available in *Mocha HitFilm* or *Mocha AE*.  For a full comparison of features, please refer to the comparison chart online.
+
+
+=== Overview
+
+The remove module is designed to remove foreground objects from your footage to create clean plates.  A removed object can be anything: wires, poles, signs, people and so on.  The only requirement for a good removal is enough background to use.
+
+To understand how Mocha Pro removes a foreground object consider how you would do it yourself.  A common method is to select a source image where the foreground object does not obscure the background region you are trying to paint in the target frame. You would then clone or otherwise copy the pixels from the source frame to the target frame. If the background is not in the same position in the two frames you would have to track the patch of pixels into the frame, and if the lighting is different between the two frames you would have to adjust the brightness of the patch.
+
+The remove module attempts to do this for you automatically using a method called motion keying. As it has tracked the background areas you have defined, it can move pixels of these background areas from one frame to another. Hence, if a part of a background area is obscured in one frame, Mocha Pro can search the rest of the clip for a frame where the obscured background area is visible, and move the pixels correctly into the target frame. During this process Mocha Pro will evaluate and compensate for the lighting differences between the source and the target frame.
+
+IMPORTANT: The Remove module is GPU optimised. Make sure you have GPU processing turned on in the 'GPU' page of Preferences for optimal results.
+
+=== The Removal Process
+
+Object removal requires a few simple steps to work correctly.  The key to a good remove is adequate, tracked background and a correctly masked foreground.
+
+*1. Identify your foreground and background planes*
+
+First of all, scrub through your timeline and identify the planes of depth within your shot.  Background often consists of multiple planes of motion, and there can also be obstructing foreground material.  For example, in the shot below, the sign is in front of the ground, and the car door is in front of (but not obscuring) the sign.
+
+image:UserGuide/en_US/images/remove_shot_001.jpg[]
+
+
+*2. Track and roto your foreground elements*
+
+We handle the foreground first as we need to mask them off from the background plane and from each other.  You don&rsquo;t actually need to worry too much about tracking the foreground: If the object is untrackable for whatever reason, just hand-animate a spline around it.  You absolutely must track an object if it is going to be used as a background pass to replace foreground. For more information on effective tracking, please refer to the tracking section of the documentation.
+
+In the example below, we have tracked and rotoscoped the sign and the door frame, which would otherwise obscure the ground plane.
+
+image:UserGuide/en_US/images/remove_shot_002.jpg[]
+
+
+*3. Make sure your layer order is correct*
+
+Layer order matters in Mocha.  The closer to the camera an object is, the higher in the layer stack it should be.  Far background should be on the bottom layer, foreground objects should be on top, in order of closeness.
+
+In the example here, we show the door layer is above the sign layer, and the sign is above the ground layer in the stack.
+
+image:UserGuide/en_US/images/remove_shot_003.jpg[]
+
+
+*4. Track your background plane*
+
+Once you have your foreground objects masked out across the timeline, draw as big a shape as possible to cover as much of the possible area you want to remove.  Make sure the background layer is under the foreground layers, and track.  For multiple planes of background, such as a floor and a wall, you will have to track two separate planes of motion. You must specifically track the background layer in order for the removal to work, even if you are working with a locked-off shot.
+
+Here we can see the background drawn on a layer at the bottom of the layer stack, covering the large area of grass.
+
+image:UserGuide/en_US/images/remove_shot_004.jpg[]
+
+
+*5. Select the layer you want to remove and adjust your removal parameters*
+
+Switch to the remove tab and adjust your parameters (see <<remove_parameters, Remove Parameters>> below).  Key things to focus on are your search range, whether or not you need to create or adjust a cleanplate, and if you need to use an illumination model.
+
+We recommend trying a remove with Illumination modeling set to None first.  This is the fastest setting for removals, and can quite often be all you need if there is not much light difference  in the background over time.
+
+
+*6. Render*
+
+Once your layers are ready and the parameters are set, click the render button or render forward.
+
+image:UserGuide/en_US/images/remove_shot_005.jpg[]
+
+NOTE: Removal can be a slow process depending on the resolution of the footage and the amount of frames you are removing on.  You can optimize your search range (see <<remove_parameters, Remove Parameters>> below) but keep in mind that removal quality can vary.
+
+
+=== Removal Troubleshooting
+
+One or more background layers must be defined that include all areas that the foreground object moves across during the shot.
+
+To get the result you expect you should observe the following rules:
+
+* As the tracker computes the motion of planar objects in the scene, you get the best results if the background is planar, or it has been subdivided into planar elements. Otherwise you might see artifacts.
+* If Mocha Pro cannot track the background accurately you will probably get artifacts. If your selection of the background includes objects that move differently to the background this can reduce the accuracy of the computed motion.
+* If your selection of the background includes parts of the foreground objects then this can cause problems for the tracker as it will compute a motion for the background that is influence by the movement of the foreground. This may also cause artifacts when the removal is performed.
+* If the background contains e.g. a waterfall or another object that changes appearance from frame to frame, you will most likely get artifacts if you try to remove a foreground object that moves across such a background. Mocha Pro will not know how to handle the changes. Another cause of such artifacts is moving specular reflections.
+
+
+=== Remove Parameters [[remove_parameters]]
+
+Here we provide a breakdown of each remove tool parameter and how to use it effectively.
+
+image:UserGuide/en_US/images/removetabfull.jpg[]
+
+When changing parameters in Mocha Pro the change only affects the currently selected layer. To change the parameters of a layer other than the currently selected layer that layer must first be selected.
+
+*Input Tab*
+
+Here you specify the input clip for the remove process and any cleanplates you wish to import.
+
+image:UserGuide/en_US/images/input.jpg[width="40%"]
+
+*Input Clip*
+
+You can choose from any of the Mocha Pro result clips to be used as the source clip to fill the requested foreground layers, instead of the default, which is to use the originally imported clip as the input clip.  This can be useful if you have to do multiple passes to get an effective remove.
+
+*Cleanplates*
+
+Here you can import cleanplates to replace frames in your footage.  If you don&rsquo;t have enough background to use in your shot, importing your own cleaned up version of a frame can assist the remove tool greatly.
+
+To import one or more cleanplates:
+
+. Click on Import. This pops up the Cleanplates window.
+. Click on the file Import... button to specify the file(s) you want to use. If they are numbered in the same way as the input clip, they will be given corresponding frame numbers. Otherwise, edit the Frame Number field for each cleanplate to set up the correct frame number. The entries for two cleanplates will look like this:
++
+image:UserGuide/en_US/images/remove_cleanplates.jpg[]
++
+. By default the Preview option is switched on. This means that the selected (highlighted) cleanplate will be shown in the display window. The current frame viewed on the timeline is also changed to the selected cleanplate frame. When Preview is switched off, the view switches back to the clip you are viewing.
+. Click on the File name or Frame Number for any cleanplate to change the selection. The Preview option allows you to select the correct frame number for your cleanplate(s). If you import a single cleanplate, the frame number will be listed as &ldquo;All&rdquo;. This means that the cleanplate will be used for all the frames of the clip. Use this option if the camera is locked off. Change &ldquo;All&rdquo; to a particular frame if want to change this behavior and track the cleanplate from the specified frame into the other frames.
+
+NOTE: The All option only applies when you are using a single cleanplate.
+
+If you import two or more cleanplates, Mocha Pro will try to guess the frame numbers from any numbering in the file name. When using the cleanplates between those frame numbers, Mocha Pro will blend the nearest two cleanplates to produce a smooth transition through the clip.
+
+If you want to change the cleanplate settings after exiting the cleanplate window, click on Edit... You would need to do this if you are using the frames on a new machine where the cleanplates are stored in a different location, or just to add new cleanplates. If you re-import files with the same name but different directory to existing cleanplate files, Mocha Pro will update the file to the new directory.
+
+*Create (Cleanplate)*
+
+One useful option within Mocha Pro is to create a cleanplate from the currently viewed frame.
+
+To do this, make sure you are viewing the frame you want to use and click on the Create button. This will create a clip containing the frame you are viewing, and set the Cleanplates clip to the new clip.  You can then touch up this cleanplate from your Results folder.
+
+When you save your edits, it will automatically be updated in Mocha Pro to be used in the cleanplate list.
+
+
+*Use Cleanplates Exclusively*
+
+If this option is checked, only the cleanplates will be used by Remove to remove the pixels in the selected layer. If it is unchecked, the normal Remove process will be used, pulling in pixels from other frames in the input clip. The cleanplates will then only be used to remove the remaining pixels.
+
+*Output Tab*
+
+This assigns an output clip for the removal render.  You can create new output clips if needed here.
+
+==== Search Range
+
+Used to specify which frames should be used when removing a layer.  The First Frame, Last Frame, # Frames Before and# Frames After settings can be keyframed.
+
+* First Frame and Last Frame specify an absolute range in the input clip
+* # Frames Before and # Frames After settings specify the range relative to the currently rendered frame. If both options are used the intersection of the two frame ranges is used.
+
+image:UserGuide/en_US/images/search_range.jpg[width="60%"]
+
+
+*Step*
+
+With this option you can specify that not every frame in the reference range is to be used.
+
+Setting it to three, for instance, means that only every third frame will be accessed.
+This feature can speed up the removal process for large projects, especially film projects, which are very memory intensive.
+
+IMPORTANT: Setting a step value can skip over clean plates for specific frames causing them to not be used in the Remove calculation.
+
+*Auto Step*
+This is an automatically calculated version of the manual Step field. If you're not quite sure what step is optimal,
+Auto Step will look at the motion of the layers and try to determine the best step to use.
+
+
+==== Illumination Model
+
+This specifies how to model changes in illumination.
+
+image:UserGuide/en_US/images/illumination.jpg[width="60%"]
+
+* The None option will not model changes, giving you a result very quickly.
+* Linear will model global changes and should hence be used if the brightness change between frames are caused by e.g. changes in aperture.
+* Interpolated will model global and local changes and is often useful when a cleanplate is used.
+
+
+*Smoothing Level*
+
+This controls the amount of smoothing applied in the Interpolated model. Increase the value if there are artifacts which might be resolved with more smoothing, either spatial variations or temporal variations.
+
+==== Blend Interior
+
+This option causes pixels from different frames to be blended into each other to avoid tearing artifacts inside the Remove area.
+
+*Blend Amount*
+
+Select either Blend or Randomize and increase the value to reduce artifacts which sometimes can be seen when illumination modelling fails.
+
+* Blend uses alpha blending from the replaced areas to either the original pixels or the recently replaced areas.
+* Randomize mixes original and replaced pixels in a random way to achieve a similar effect.
+
+
+*3D Compensation*
+
+3D compensation can be switched on to try to remove artifacts due to the background layer not being planar.
+
+For example, if you have tracked a background that has subtle parallax it can cause removal in other frames to look incorrect.  3D compensation attempts to model the parallax change in the target removal frame.
+
+
+*Flood Fill*
+
+If part of the missing background has not been found anywhere in the clip, and the foreground object therefore cannot be completely removed, Flood Fill can be switched on to fill the remaining region using a flood fill method. This is especially useful when it is the matte you are interested in, as you then don&rsquo;t care too much about the quality of the removal but require that the foreground object is completely removed to avoid holes in the matte. The Smoothing Level should be increased if you result is not as smooth as it should be or there are temporal variations in the results.
+
+=== Stereo Remove
+
+Stereo Remove works in exactly the same way as Mono Remove above, with the additional bonus of being able to render both views at the same time and also choosing whether or not each view assists the other view during the remove process.
+
+.To render a remove in stereo:
+. Track the background in both views with a layer as outlined in "Stereo Tracking" above
+. Mask out and animate the foreground object you want to remove. You will need to check to make sure the object is correctly covered by the layer in both views.
+. Make sure the foreground layer is above the background layer in the layer controls.
+. Adjust your remove parameters (See the full User Guide for details on Remove parameters)
+. If it is not already on, press the "Operate in all views" button on the right side of the render buttons.
++
+image:UserGuide/en_US/images/operate_on_all_views_render.jpg[]
++
+. Click the render button
+
+image:UserGuide/en_US/images/prefer_same_view_Remove.jpg[]
+
+By default "Prefer Same View" is checked on in the search range section of the Remove tab.  This will attempt to use the current view rather than both views to perform the remove. +
+If you have useful information in the other view that may assist the remove, you can uncheck this option.
+
+
+=== Tips for Removal
+
+*Some of the object is still visible after removal.*
+
+* Remember that you can only remove an object if the background behind it is also tracked. Track the background layer(s) before removing a foreground object.
+* Check that the object is inside the selection contour in every frame. If it isn't, move the control points outwards as necessary to completely enclose the object. Use linking forwards/backwards to apply changes to the contour in multiple frames.
+* Check whether the relative motion of the foreground and background layers is sufficient to see &ldquo;behind&rdquo; the whole of the foreground object. Mocha Pro only needs to see the background in one frame to achieve good results. If more images are available in the clip, track the selections over a few more images. This may provide Mocha Pro with the extra information it needs.
+* Try pulling the selection contour closer to the edge of the object. This will provide Mocha Pro with extra background pixels.
+
+*The replaced background region is brighter/darker than the surrounding image.*
+
+* Changes in illumination or camera aperture will change the overall brightness of the image, making direct replacement of pixels inappropriate. Select the Linear illumination model to compensate for the brightness changes and repeat the object removal.
+* If the variation is more complex than a simple brightness change, try the Interpolated illumination model, which will compute and compensate for changes in apparent brightness and color that vary across the region being removed.
+
+*The background patches don't line up with the surrounding image.*
+
+* This may be due to inaccurate tracking of the background. If you think this is possible, see the above hints on improving the tracking.
+* If the tracking accuracy cannot be improved, increase the Dissolve Width. This will dissolve the patches into the original image and reduce the tearing artifacts.
+* For small foreground objects such as wires, in front of a non-planar background, switch on 3D Compensation. This will attempt to model the effect of the varying 3D depth of the background.
+* If there is more than one background selection behind the foreground selection, special treatment of the boundary between them is often required. If the background layers are joined, such as a wall and floor selection, use the Attach Layers tool to join them together and avoid artifacts at the boundary. If they are moving independently, you need to adjust the boundary in the front background selection to accurately delineate the boundary between the two background selections.
+
+*Remove is slow.*
+
+If you have a long clip, especially working with HD or film, Remove can be slow because it has to search over a large number of images with a large memory footprint.
+
+Before you change any settings in the Remove parameters, it is worthwhile checking to see if GPU Processing is turned on in Preferences under the GPU page.
+
+GPU Processing can have a significant impact on your render times.
+
+Remove is the most memory intensive module in *Mocha Pro*, and it will always benefit the performance to add more memory.
+If *Mocha Pro* can fit all the images it needs in memory, performance will be dramatically accelerated when rendering Remove in multiple frames, because it will minimize the amount of disk accesses.
+
+Your aim should be where possible to change the settings to achieve this:
+
+* Change the First Frame and Last Frame in Range to a smaller range of frames. Sometimes Mocha Pro can spend a lot of time removing a small part of the foreground image, and if your layers were chosen loosely, not all of the foreground needs to be removed. Experiment by reducing the range of frames searched.
+* Increase the Step in Range to sample less frames.
+* Create clean plates on key frames (such as the start, middle and end of the shot, or wherever there is significant change) and check "Use Cleanplates Exclusively" to reduce the need to look for other frames.

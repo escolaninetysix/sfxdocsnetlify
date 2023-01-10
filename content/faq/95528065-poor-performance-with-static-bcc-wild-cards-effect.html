@@ -1,0 +1,20 @@
+{
+   "date": "2015-05-27T10:58:00-04:00",
+   "tags": [
+      "Continuum"
+   ],
+   "title": "Poor Performance with Static BCC Wild Cards Effect"
+}
+
+<div id="WildCardsPoorPerformance" class="hidden-faq">
+<p><strong> Subject </strong> : Poor Performance with Static BCC Wild Cards Effect</p>
+<p><strong> Issue </strong> :  When Previewing or Rendering Static Instances of BCC Wild Cards, The Performance Is Notably Slow</p>
+<p><strong> Cause </strong> :  The BCC Wild Cards Is Processing Unnecessary Information</p>
+<p><strong> How to Get Around the Issue </strong> :</p>
+<ol>
+<li>During Preview at least (and possibly during Render), dis-engage the Anti-Aliasing function completely.  </li>
+<li>Turn off the Motion Blur if enabled.</li>
+<li>Set the Back Face to None, as these two functions are being processed despite not carrying out any visual alteration to the effect.</li>
+</ol>
+<p>Note: if you wish to use this effect in conjunction with another clip or visual effect (such as Glow or Glare), it would be recommended to either Pre-Comp or PreRender the BCC Wild Cards effect before applying additional elements.</p>
+</div>

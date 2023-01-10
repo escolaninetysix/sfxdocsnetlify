@@ -1,0 +1,45 @@
+.subscription-option{
+    background-color: rgb(255, 255, 255, 50%);
+    border: 1px solid #26A9E0;
+    padding: .5rem;
+    border-radius: 2px;
+    box-sizing: content-box;
+    text-align: center;
+}
+
+.subscription-option:hover{
+    cursor: pointer;
+}
+
+.subscription-option .title{
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+.subscription-option .price{
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #26A9E0
+}
+
+.subscription-option .priceSubtitle{
+    font-size: .7rem;
+}
+
+.subscription-option.selected .title{
+    color:white;
+}
+
+.subscription-option.selected{
+    background-color: #26A9E0;
+    color: white;
+    box-shadow: inset 0 0 0 3px #26A9E0;
+}
+
+.subscription-option.selected .price{
+    color: white;
+}
+
+.subscription-option span{
+    font-size:.8rem;
+}

@@ -1,0 +1,169 @@
+{
+   "title": "Checkout Status"
+}
+<h1>Thank you for your order.</h1>
+<script src="//www.google-analytics.com/analytics.js"></script>
+<script>
+  $(function() {
+    $(document).ready(function() {
+     var $_GET = {},
+        args = location.search.substr(1).split(/&/);
+    for (var i=0; i<args.length; ++i) {
+        var tmp = args[i].split(/=/);
+        if (tmp[0] != "") {
+        $_GET[decodeURIComponent(tmp[0])] = decodeURIComponent(tmp.slice(1).join("").replace("+", " "));
+        }
+    }
+    var checkout_email = $_GET['checkout_email']
+    var checkout_billing_address_first_name = $_GET['checkout_billing_address_first_name']
+    var checkout_billing_address_last_name = $_GET['checkout_billing_address_last_name']
+    var checkout_billing_address_company = $_GET['checkout_billing_address_company']
+    var checkout_billing_address_address1 = $_GET['checkout_billing_address_address1']
+    var checkout_billing_address_address2 = $_GET['checkout_billing_address_address2']
+    var checkout_billing_address_city = $_GET['checkout_billing_address_city']
+    var checkout_billing_address_country = $_GET['checkout_billing_address_country']
+    var checkout_billing_address_province = $_GET['checkout_billing_address_province']
+    var checkout_billing_address_zip = $_GET['checkout_billing_address_zip']
+    var checkout_billing_address_phone = $_GET['checkout_billing_address_phone']
+    var checkout_product_id = $_GET['checkout_product_id']
+    var checkout_product_name = $_GET['checkout_product_name']
+    var checkout_product_category = $_GET['checkout_product_category']
+    var checkout_product_price = $_GET['checkout_product_price']
+    var checkout_product_quantity = $_GET['checkout_product_quantity']
+    var checkout_order_id = $_GET['checkout_order_id']
+    var checkout_order_affiliation = $_GET['checkout_order_affiliation']
+    var checkout_order_revenue = $_GET['checkout_order_revenue']
+    var checkout_order_tax = $_GET['checkout_order_tax']
+    var checkout_order_shipping = $_GET['checkout_order_shipping']
+    var checkout_order_coupon = $_GET['checkout_order_coupon']
+    if (checkout_order_coupon === 'NoDiscount')
+    {
+    	checkout_order_coupon = '';
+    }
+    function createGoogleAnalyticsQueueIfNeeded() {
+        // As a workaround for: http://stackoverflow.com/questions/40587544
+        // We mimick: https://developers.google.com/analytics/devguides/collection/analyticsjs/tracking-snippet-reference
+        var gaKey = window["GoogleAnalyticsObject"] || "ga";
+        var ga = window[gaKey] || function () {
+            (window[gaKey]["q"] = window[gaKey]["q"] || []).push(arguments);
+        };
+        window[gaKey] = ga;
+        return ga;
+    }
+     
+    var ga = createGoogleAnalyticsQueueIfNeeded();
+    ga(function() {
+        ga.getAll().forEach(function(t) {
+            ga(t.get("name") + ".ec:addProduct", {
+              'id': checkout_product_id,
+              'name': checkout_product_name,
+              'category': checkout_product_category,
+              'brand': 'BorisFX',
+              'variant': 'ESD',
+              'price': checkout_product_price,
+              'quantity': checkout_product_quantity
+            });
+        });
+     });
+    ga(function() {
+        ga.getAll().forEach(function(t) {
+            ga(t.get("name") + ".ec:setAction", 'purchase', {
+              'id': checkout_order_id,
+              'affiliation': checkout_order_affiliation,
+              'revenue': checkout_order_revenue,
+              'tax': checkout_order_tax,
+              'shipping': checkout_order_shipping,
+              'coupon': checkout_order_coupon,    // User added a coupon at checkout.
+              'list': 'webshop-bundle-mocha-sapphire'
+            });
+        });
+     });
+
+    ga(function() {
+        ga.getAll().forEach(function(t) {
+            ga(t.get("name") + ".send", 'pageview');
+        });
+    });
+    
+    var f = document.createElement('form');
+    f.setAttribute('method','post');
+    f.setAttribute('action','https://go.pardot.com/l/272832/2018-09-04/cssbn');
+    
+    var i1 = document.createElement('input');
+    i1.setAttribute('type','text');
+    i1.setAttribute('name','checkout_email');
+    i1.setAttribute('value',checkout_email);
+    
+    var i2 = document.createElement('input');
+    i2.setAttribute('type','text');
+    i2.setAttribute('name','checkout_billing_address_first_name');
+    i2.setAttribute('value',checkout_billing_address_first_name);
+    
+    var i3 = document.createElement('input');
+    i3.setAttribute('type','text');
+    i3.setAttribute('name','checkout_billing_address_last_name');
+    i3.setAttribute('value',checkout_billing_address_last_name);
+    
+    var i4 = document.createElement('input');
+    i4.setAttribute('type','text');
+    i4.setAttribute('name','checkout_billing_address_company');
+    i4.setAttribute('value',checkout_billing_address_company);
+
+    var i5 = document.createElement('input');
+    i5.setAttribute('type','text');
+    i5.setAttribute('name','checkout_billing_address_address1');
+    i5.setAttribute('value',checkout_billing_address_address1);
+
+    var i6 = document.createElement('input');
+    i6.setAttribute('type','text');
+    i6.setAttribute('name','checkout_billing_address_address2');
+    i6.setAttribute('value',checkout_billing_address_address2);
+
+    var i7 = document.createElement('input');
+    i7.setAttribute('type','text');
+    i7.setAttribute('name','checkout_billing_address_city');
+    i7.setAttribute('value',checkout_billing_address_city);
+    
+    var i8 = document.createElement('input');
+    i8.setAttribute('type','text');
+    i8.setAttribute('name','checkout_billing_address_country');
+    i8.setAttribute('value',checkout_billing_address_country);
+    
+    var i9 = document.createElement('input');
+    i9.setAttribute('type','text');
+    i9.setAttribute('name','checkout_billing_address_province');
+    i9.setAttribute('value',checkout_billing_address_province);
+    
+    var i10 = document.createElement('input');
+    i10.setAttribute('type','text');
+    i10.setAttribute('name','checkout_billing_address_zip');
+    i10.setAttribute('value',checkout_billing_address_zip);
+    
+    var i11 = document.createElement('input');
+    i11.setAttribute('type','text');
+    i11.setAttribute('name','checkout_billing_address_phone');
+    i11.setAttribute('value',checkout_billing_address_phone);
+    
+    var s = document.createElement('input');
+    s.setAttribute('type','submit');
+    s.setAttribute('value','Submit');
+    
+    f.appendChild(i1);
+    f.appendChild(i2);
+    f.appendChild(i3);
+    f.appendChild(i4);
+    f.appendChild(i5);
+    f.appendChild(i6);
+    f.appendChild(i7);
+    f.appendChild(i8);
+    f.appendChild(i9);
+    f.appendChild(i10);
+    f.appendChild(i11);
+    f.appendChild(s);
+    
+    document.body.appendChild(f);
+    
+    f.submit();
+    });
+  });  
+</script>

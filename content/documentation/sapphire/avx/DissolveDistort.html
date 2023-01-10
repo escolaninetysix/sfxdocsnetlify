@@ -1,0 +1,405 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: DissolveDistort",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolveDistort.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolveDistort">
+     <h2>
+      S_DissolveDistort
+     </h2>
+    </a>
+    Transitions between two input clips while
+  distorting each using the gradient of the other.  The first clip is
+  warped away and faded out while the second clip is unwarped into
+  place and faded in.  The Dissolve Amount parameter should be
+  animated to control the transition speed.
+    <p>
+     In the Sapphire Transitions category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolveDistort.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The transition ratio between the From
+  and To inputs.  Auto Trans must be disabled for this parameter to be
+  used.  This would normally be animated from 0 to 1 to perform a
+  complete transition, and the curve can be adjusted for more detailed
+  control over the timing of the dissolve.  The Slow In and Slow Out
+  parameters, if positive, also adjust the transition ratio internally
+  for a smoother start and/or end to the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Amplitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the amount of distortion applied to both input
+  clips.  This can also be negative to turn expansions into
+  contractions and vice versa.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Amp From:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the relative distortion amplitude of the From clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Amp To:
+   </b>
+   <i>
+    Default:
+   </i>
+   -1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the relative distortion amplitude of the To clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smoothness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Smooths the distortions by this amount.  Increase for
+  large scale distortion, decrease for finer detailed distortion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate Warp Dir:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the direction of the distortion.  This
+  can cause areas of similar brightness to be twisted instead of just
+  expanded or shrunk.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    Reflect Reflect
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders of the
+  source images.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Filter:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   If enabled, the image is adaptively filtered when it is
+  resampled.  This gives a better quality result when parts of the
+  image are warped smaller.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../dissolvestatic">
+       DissolveStatic
+      </a>
+      <br/>
+      <a href="../dissolvespeckle">
+       DissolveSpeckle
+      </a>
+      <br/>
+      <a href="../dissolvediffuse">
+       DissolveDiffuse
+      </a>
+      <br/>
+      <a href="../dissolvebubble">
+       DissolveBubble
+      </a>
+      <br/>
+      <a href="../dissolvewaves">
+       DissolveWaves
+      </a>
+      <br/>
+      <a href="../dissolvepuddle">
+       DissolvePuddle
+      </a>
+      <br/>
+      <a href="../dissolvevortex">
+       DissolveVortex
+      </a>
+      <br/>
+      <a href="../dissolveblur">
+       DissolveBlur
+      </a>
+      <br/>
+      <a href="../dissolvedefocus">
+       DissolveDefocus
+      </a>
+      <br/>
+      <a href="../dissolveluma">
+       DissolveLuma
+      </a>
+      <br/>
+      <a href="../dissolvefilm">
+       DissolveFilm
+      </a>
+      <br/>
+      <a href="../dissolvetiles">
+       DissolveTiles
+      </a>
+      <br/>
+      <a href="../dissolveglow">
+       DissolveGlow
+      </a>
+      <br/>
+      <a href="../dissolvelensflare">
+       DissolveLensFlare
+      </a>
+      <br/>
+      <a href="../dissolveedgerays">
+       DissolveEdgeRays
+      </a>
+      <br/>
+      <a href="../dissolveglint">
+       DissolveGlint
+      </a>
+      <br/>
+      <a href="../dissolveglintrainbow">
+       DissolveGlintRainbow
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../distort">
+       Distort
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

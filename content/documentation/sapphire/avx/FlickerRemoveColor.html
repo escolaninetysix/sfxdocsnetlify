@@ -1,0 +1,263 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: FlickerRemoveColor",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FlickerRemoveColor.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FlickerRemoveColor">
+     <h2>
+      S_FlickerRemoveColor
+     </h2>
+    </a>
+    Removes temporal color changes from the Source
+clip.  Similar to FlickerRemove but the process is applied to each
+color channel.  To use this effect, first position the rectangle over
+an area where the average color should remain constant.  A middle or
+light gray area is best for this.  Then select a Source frame that has
+the desired color within the rectangle, and hit the Set Hold Color
+button.  When other frames are processed, their colors will be scaled
+so the average color within the rectangle is equal to the Hold Color.
+    <p>
+     In the Sapphire Time category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The clip to remove color changes from.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.  The output of the effect is composited over this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FlickerRemoveColor.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rect Corner1:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   The upper left corner of the rectangle which is used to
+  measure the flicker, in screen coordinates.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rect Corner2:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   The lower right corner of the rectangle which is used to
+  measure the flicker, in screen coordinates.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Set Hold Color:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Pressing this button has a side effect of setting
+  the Hold Color parameter to the average Source color in the rectangle at
+  the current frame.  It causes the output to equal the Source at this frame.
+  This button retains no value itself, and is turned back off immediately
+  after being pushed. On AVX2, this button sets the value at the current time, creating
+  a keyframe if necessary. On AVX1, it sets the value at all active keyframes. To animate the
+  Hold Color on AVX1, you must create all the keyframes first, then set the value at each one
+  separately.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hold Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.5 0.5 0.5].
+   <br/>
+   The requested average output color for the
+  area within the rectangle.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#title-key">
+  Apply To Title/Key
+ </a>
+ ,
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../flickerremove">
+       FlickerRemove
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../flickerremovematte">
+       FlickerRemoveMatte
+      </a>
+      <br/>
+      <a href="../flickerrmmattecolor">
+       FlickerRmMatteColor
+      </a>
+      <br/>
+      <a href="../flickermatch">
+       FlickerMatch
+      </a>
+      <br/>
+      <a href="../flickermatchcolor">
+       FlickerMatchColor
+      </a>
+      <br/>
+      <a href="../flickermatchmatte">
+       FlickerMatchMatte
+      </a>
+      <br/>
+      <a href="../flickermchmattecolor">
+       FlickerMchMatteColor
+      </a>
+      <br/>
+      <a href="../flicker">
+       Flicker
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

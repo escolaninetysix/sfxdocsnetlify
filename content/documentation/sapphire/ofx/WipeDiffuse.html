@@ -1,0 +1,421 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: WipeDiffuse",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/WipeDiffuse.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="WipeDiffuse">
+     <h2>
+      S_WipeDiffuse
+     </h2>
+    </a>
+    Wipes between two input clips with a pixel-diffusion process performed within
+the transition area.  The Wipe Amount parameter should be animated to
+control the transition speed.  The pixelated look of this effect depends on
+the image resolution, so it is recommended to test your final resolution
+before processing.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/WipeDiffuse.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wipe Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -0.5 to 1.5.
+   <br/>
+   Determines the transition ratio between the From and To
+  inputs, and would normally be animated from 0 to 1 to perform a
+  complete transition.  The curve controlling this parameter can be adjusted
+  for more detailed control over the timing of the wipe.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.4,
+   <i>
+    Range:
+   </i>
+   0.014 or greater.
+   <br/>
+   The width of the transition area.  This can be
+  adjusted using the Wipe Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The angle of the wipe direction in counter-clockwise
+  degrees from the right.  This can be adjusted using the Wipe
+  Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Diffuse Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The magnitude of the pixel diffusion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    Reflect Reflect
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders of the
+  source images.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Crop Input Parameters:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   These 4 parameters,
+   <b>
+    Crop Top
+   </b>
+   ,
+   <b>
+    Crop Bottom
+   </b>
+   ,
+   <b>
+    Crop Left,
+   </b>
+   and
+   <b>
+    Crop Right
+   </b>
+   ,
+allow selecting a rectangular subsection of the input image to be processed.
+If the Wrap parameters are set to "No" the exposed borders will be transparent.
+If the Wrap is "Tile" or "Reflect" the source image is wrapped on the new cropped borders to fill the frame.
+This can make it easier to avoid artifacts due to distorting an image with bad edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Wipe:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface widget
+  for adjusting the Wipe Amt, Angle, and Edge Width parameters.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../wipeline">
+       WipeLine
+      </a>
+      <br/>
+      <a href="../wipecircle">
+       WipeCircle
+      </a>
+      <br/>
+      <a href="../wiperectangle">
+       WipeRectangle
+      </a>
+      <br/>
+      <a href="../wipestar">
+       WipeStar
+      </a>
+      <br/>
+      <a href="../wipeclock">
+       WipeClock
+      </a>
+      <br/>
+      <a href="../wipewedge">
+       WipeWedge
+      </a>
+      <br/>
+      <a href="../wipedoublewedge">
+       WipeDoubleWedge
+      </a>
+      <br/>
+      <a href="../wipefourwedges">
+       WipeFourWedges
+      </a>
+      <br/>
+      <a href="../wipedots">
+       WipeDots
+      </a>
+      <br/>
+      <a href="../wipechecker">
+       WipeChecker
+      </a>
+      <br/>
+      <a href="../wipestripes">
+       WipeStripes
+      </a>
+      <br/>
+      <a href="../wiperings">
+       WipeRings
+      </a>
+      <br/>
+      <a href="../wipeblobs">
+       WipeBlobs
+      </a>
+      <br/>
+      <a href="../wipecells">
+       WipeCells
+      </a>
+      <br/>
+      <a href="../wipetiles">
+       WipeTiles
+      </a>
+      <br/>
+      <a href="../wipepixelate">
+       WipePixelate
+      </a>
+      <br/>
+      <a href="../wipebubble">
+       WipeBubble
+      </a>
+      <br/>
+      <a href="../wipeclouds">
+       WipeClouds
+      </a>
+      <br/>
+      <a href="../wipemoire">
+       WipeMoire
+      </a>
+      <br/>
+      <a href="../wipeplasma">
+       WipePlasma
+      </a>
+      <br/>
+      <a href="../wipepointalize">
+       WipePointalize
+      </a>
+      <br/>
+      <a href="../wipeweave">
+       WipeWeave
+      </a>
+      <br/>
+      <a href="../wipeflux">
+       WipeFlux
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../diffuse">
+       Diffuse
+      </a>
+      <br/>
+      <a href="../dissolvediffuse">
+       DissolveDiffuse
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

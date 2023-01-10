@@ -1,0 +1,314 @@
+{
+  "date": "2017-06-22T12:00:20.753Z",
+  "description": "Open a case to get support for all Boris FX products.  You may also view the FAQ section or call us at 1-888-77-BORIS.",
+  "title": "Open a Case",
+  "require_recaptcha": "True",
+  "layout": "case"
+}
+<div class="row">
+  <div class="col-md-6">
+    <p>Please use this form for questions about pricing, upgrades and more. Our sales team is here to help!</p>
+    <p>If you would like to speak with a sales representative, please call:<br /><br /><strong>1-888-77-BORIS</strong><br /><br />Outside the US, please call +1 617-451-9900 or our UK office on +44 1483 347743.<br /><br />If you have a technical support or licensing question, please log your case <a href="/support/">here</a>. <br /><br />Business Hours:<br /><br />9am – 6pm Eastern Standard Time (M-F)<br /><br />We do our best to respond to phone messages and email within 24 hours on business days.</p>
+	</div>    
+  <div class="col-md-6">
+    <p>For more help, you can also check out our FAQ Section or call us at 1-888-77-BORIS. If this is regarding a student license request, please click <a href="/support/student-license-request/">here</a>.</p>
+    <form id="open-a-case-form">
+      <div class="form-group"><label>First and Last Name</label> <input name="name" class="form-control" type="text" required/></div>
+      <div class="form-group"><label>Company Name (Optional)</label> <input name="company" class="form-control" type="text"/></div>
+      <div class="form-group"><label>Email</label> <input name="email" class="form-control" type="text" required/></div>
+      <div class="form-group"><label>Case Type</label>
+        <select name="case_type" class="form-control" id="select_type" required=true>
+          <option value="">Choose your case type</option>
+        </select>
+      </div>
+     <div class="form-group">
+        <select name="case_subtype" class="form-control" id="subtype" hidden=true required=true>
+        </select>
+      </div>  
+      <div class="form-group"><label>Product Name</label>
+        <select name="product_name" class="form-control" required=true>
+          <option value="">Choose a Product</option>
+          <option>Sapphire</option>
+          <option>Sapphire Unit</option>
+          <option>Continuum</option>
+          <option>Continuum Unit</option>
+          <option>Mocha Pro</option>
+          <option>Mocha VR</option>
+          <option>Optics</option>
+          <option>Silhouette</option>
+          <option>Boris RED</option>
+          <option>Final Effects Complete</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Product Version</label> 
+        <input name="product_version" class="form-control" type="text" required=true/>
+      </div>
+      <div class="form-group"><label>Host Name</label>
+        <select name="host_name" class="form-control" id="select_host" required=true>
+          <option value="">Choose a Host</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="host_product" class="form-control" id="select_host_product" hidden="true" required=true>
+        </select>
+      </div>      
+      <div class="form-group"><label>Host Version</label> 
+        <input name="host_version" class="form-control" type="text" required=true/>
+      </div>
+      <div class="form-group"><label>Operating System</label>
+        <select name="operating_system" class="form-control" id="select_os" required=true>
+          <option value="">Choose an Operating System</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="os_version" class="form-control" id="select_os_version" hidden="true" required=true>
+        </select>
+      </div>
+      <div class="form-group"><label>License Type</label>
+        <select name="license_type" class="form-control" id="license_type" required=true>
+          <option value="">Choose a License Type</option>
+          <option>Standard (Node Locked)</option>
+          <option>Floating</option>
+          <option>Dongle Locked</option>
+          <option>Other</option>
+          <option>None</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Serial Number or License String</label> 
+        <textarea name="license" class="form-control" type="text" rows="4" required=true></textarea>
+      </div>
+      <div class="form-group"><label>Machine ID (optional)</label> 
+        <input name="machine_id" class="form-control" type="text"/>
+      </div>
+      <div class="form-group"><label>Subject</label> <input name="subject" class="form-control" type="text" required=true/></div>
+      <div class="form-group"><label>Description</label> <textarea name="description" rows="6" class="form-control" required=true></textarea></div>
+      <div class="g-recaptcha" data-sitekey="6Le-fEQUAAAAAKNX6zxewTeps8tnPgvzj7o1GfrI"></div>
+      <div class="form-group"><button class="btn btn-block btn-lg" type="submit" id="submitCase">Submit</button></div>
+      <div class="form-group form-inline"><label>Join our email newsletter and keep up to date</label><input name="newsletter" id="newsletter" class="form-control ml-2" type="checkbox"/></div>
+      <p id="newsletter-consent" style="display:none;">You can unsubscribe from the Boris FX newsletter at any time by clicking a link we include in every message. We use a third-party service, Pardot, to deliver our newsletters, please see our <a href="{{< relref "privacy#e-newsletter" >}}" target="_blank">privacy policy</a> for more information.</p>
+    </form>
+  </div>
+</div>
+<script>
+$(function() {
+  $(document).ready(function() {
+
+       $.each(data, function(index,value) {
+          var fieldId = '#' +  data[index].Id;
+          var $field = $(fieldId);
+          if (data[index].IsSubField == "false"){
+            $.each(data[index].Options, function(index,value) {
+                $field.append("<option rel=" + index + " value=\"" + value.Name + "\">" + value.Name + "</option>");
+            });    
+          }
+       });
+     
+      $('#open-a-case-form').submit(function(e) {
+        $('#submitCase').attr('disabled', 'disabled');
+        $('#submitCase').text('Submitting Case...');
+        e.preventDefault();
+        var values = $(this).serializeArray();
+        var error = false;
+        var fields = {};
+        $.each(values, function () {
+          if(this.name == 'newsletter'){
+            fields[this.name] = this.value == 'on';
+          }
+          else{
+            fields[this.name] = this.value;
+          }
+
+          if (this.value == '' && this.required == true) {
+            error = true;
+          }
+        });
+        if (error) {
+          alert("Please complete all fields to submit a support case.");
+          return;
+        }
+        $.ajax({
+          type:'POST',
+          url: 'https://backend.borisfx.com/cases',
+          data: JSON.stringify(fields),
+          contentType: 'application/json',
+          success: function (res) {
+            //Took away alert box as it causes delay and is replaced by a new confirmation page
+            //alert('Your support request was successfully submitted. We will be in touch via email soon!');
+            $('#submitCase').text('Case Submitted');
+            window.location = '/support/case-confirmation?var1='+res;
+
+          },
+          error: function (error) {
+            if (error.status == 429) {
+              alert('Please wait 5 minutes before contacting us again.');
+            } else {
+              alert('There was an error submitting your case. Please email support@borisfx.com');
+            }
+            $('#submitCase').removeAttr('disabled');
+            $('#submitCase').text('Submit');
+          },
+        });
+      });
+    $('#newsletter').change(function(){
+        console.log($(this).prop('checked'));
+        if($(this).prop('checked') == true){
+          $('#newsletter-consent').slideDown(300);
+        }
+        else{
+          $('#newsletter-consent').slideUp(300);
+        }
+      });
+
+    $('select').change(function(){
+      
+      var $field = $(this);
+      var fieldValue = $field.find('option:selected').attr('value');
+      var field_id = $field.attr('id');
+
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].Id == field_id){
+          var fieldIndex = i;
+          break;
+        }
+      }
+
+
+      if (fieldIndex != null && data[fieldIndex].SubFieldId != ""){
+        var subFieldId = "#" + data[fieldIndex].SubFieldId;
+        var $subField = $(subFieldId);
+        var vals = [];
+        var key_id = $field.find('option:selected').attr('rel');
+
+        if(fieldValue != "" && data[fieldIndex].Options[key_id].subOptions !== null){
+          vals = data[fieldIndex].Options[key_id].subOptions.split(",");
+        }
+
+        $subField.empty();
+        if (vals[0] == "" || fieldValue == ""){
+          $subField.attr("hidden",true);
+          $subField.attr("required",false);
+        }
+        else{
+          $subField.attr("hidden",false);
+          $subField.attr("required",true);
+          $subField.append('<option value="">-- Select --</option>');
+          $.each(vals, function(index,value) {
+            $subField.append("<option>" + value + "</option>");
+          });
+        }
+      }
+      if ($field.attr('name') == 'case_type'){
+        if (fieldValue == 'Sales'){
+          $('#newsletter').prop('checked', true);
+        }
+        else{
+          $('#newsletter').prop('checked', false);
+        }
+      }
+    });
+  });
+
+  var data = [
+    {
+      "Name":"Type",
+      "Id":"select_type",
+      "SubFieldId":"subtype",
+      "IsSubField":"false",
+      "Options":[
+        {
+          "Id":"licensing",
+          "Name":"Licensing",
+          "subOptions":"License Release,License Troubleshooting,License Transfer,License Inventory"
+        },
+        
+        {
+          "Id":"product_support",
+          "Name":"Product Support",
+          "subOptions":"Installation,Crash/Freeze,System Requirements,Usage,Feature Suggestion"
+        },
+        {
+          "Id":"sales",
+          "Name":"Sales",
+          "subOptions":"Purchase Assistance,Quote/Invoice Request"
+        },
+        {
+          "Id":"education",
+          "Name":"Educational Information",
+          "subOptions":""
+        }
+      ]
+    },
+      
+    {
+      "Name":"OS",
+      "Id":"select_os",
+      "SubFieldId":"select_os_version",
+      "IsSubField":"false",
+      "Options":[
+        {
+          "Id":"windows",
+          "Name":"Windows",
+          "subOptions":"Windows 11,Windows 10,Windows 8,Windows 7 or older,Other"
+        },
+        
+        {
+          "Id":"mac",
+          "Name":"Mac OS X",
+          "subOptions":"12 Monterey,11.01 Big Sur,10.15 Catalina,10.14 Mojave,10.13 High Sierra,10.12 Sierra,10.11 El Capitan or older"
+        },
+        {
+          "Id":"linux",
+          "Name":"Linux",
+          "subOptions":"CentOS,RedHat,Other"
+        }
+      ]
+    },
+
+    {
+      "Name":"Host",
+      "Id":"select_host",
+      "SubFieldId":"select_host_product",
+      "IsSubField":"false",
+      "Options":[
+        {
+          "Id":"adobe",
+          "Name":"Adobe",
+          "subOptions":"After Effects,Premiere,Both,Photoshop,Lightroom"
+        },
+        {
+          "Id":"avid",
+          "Name":"Avid",
+          "subOptions":"Media Composer,Symphony,DS,Newscutter"
+        },
+        {
+          "Id":"ofx",
+          "Name":"OFX",
+          "subOptions":"Nuke,DaVinci Resolve,Baselight,Vegas Pro,Baselight,Quantel Rio,Other OFX"
+        },
+        {
+          "Id":"autodesk",
+          "Name":"Autodesk",
+          "subOptions":"Flame,Smoke,Flame Assist,Burn,Flare,Inferno,Flint"
+        },
+        {
+          "Id":"apple",
+          "Name":"Apple",
+          "subOptions":"Final Cut,Motion"
+        },
+        {
+          "Id":"standalone",
+          "Name":"Standalone",
+          "subOptions":""
+        },
+        {
+          "Id":"other",
+          "Name":"Other",
+          "subOptions":""
+        }
+      ]
+    }
+  ]
+
+});
+</script>

@@ -1,0 +1,196 @@
+.. module:: mocha.project
+.. _BezierContour:
+
+BezierContour
+*************
+
+.. inheritance-diagram:: mocha.project.BezierContour
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__eq__<BezierContour.__eq__>` (rhs)
+    * def :meth:`control_point<BezierContour.control_point>` (index)
+    * def :meth:`get_bounding_rect<BezierContour.get_bounding_rect>` ([time=0.f[, view=View( 0 )]])
+    * def :meth:`insert_point<BezierContour.insert_point>` (time, bcp[, index=UINT_MAX[, view=View()]])
+    * def :meth:`insert_point<BezierContour.insert_point>` (time, bcpd[, index=UINT_MAX[, view=View()]])
+    * def :meth:`parameter<BezierContour.parameter>` (name_components)
+    * def :meth:`parameter_set<BezierContour.parameter_set>` ([name_components=list()])
+    * def :meth:`remove<BezierContour.remove>` ()
+    * def :meth:`set_control_points<BezierContour.set_control_points>` (points)
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`control_points<BezierContour.control_points>` [read-write] of list of :class:`BezierControlPoint` instances
+*    property :attr:`psets<BezierContour.psets>` [read-only] of ParameterSet
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Bezier contour class. Provides access to Bezier contours and their control points.
+
+
+.. class:: BezierContour()
+
+
+
+
+
+
+
+
+
+.. method:: BezierContour.control_point(index)
+
+
+    :type index: uint
+    :rtype: :class:`mocha.project.BezierControlPoint`
+
+
+    :param index: Control point index.
+    :return: ``BezierControlPoint`` or ``None`` if index is invalid.
+    
+    Returns bezier control point by index.
+
+
+
+.. method:: BezierContour.get_bounding_rect([time=0.f[, view=View( 0 )]])
+
+
+    :type time: float
+    :type view: :class:`mocha.project.View`
+    :rtype: list of float
+
+
+    :param time: Time
+    :param view: View
+                
+    Returns coordinates of top left and bottomRight points of the contour bounding rectangle,
+    considering its handles, as a list of floats [x1, y1, x2, y2]
+
+
+
+.. method:: BezierContour.insert_point(time, bcp[, index=UINT_MAX[, view=View()]])
+
+
+    :type time: float
+    :type bcp: :class:`mocha.project.BezierControlPoint`
+    :type index: uint
+    :type view: :class:`mocha.project.View`
+    :rtype: :class:`mocha.project.BezierControlPoint`
+
+
+    :param time: Keyframe time.
+    :param xcp: Keyframe data.
+    :param index: Inserting index.
+    :param view: View.
+    
+    Inserts new control point into index position.
+
+
+
+.. method:: BezierContour.insert_point(time, bcpd[, index=UINT_MAX[, view=View()]])
+
+
+    :type time: float
+    :type bcpd: :class:`mocha.project.BezierControlPointData`
+    :type index: uint
+    :type view: :class:`mocha.project.View`
+    :rtype: :class:`mocha.project.BezierControlPoint`
+
+
+    :param time: Keyframe time.
+    :param xcpd: Keyframe data.
+    :param index: Inserting index.
+    :param view: View.
+    
+    Inserts new control point into index position.
+
+
+
+.. method:: BezierContour.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.BezierContour`
+    :rtype: bool
+
+
+
+
+
+.. method:: BezierContour.parameter(name_components)
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.Parameter`
+
+
+    :param name_components: Relative name for a requested parameter.
+    
+    Returns :class:`Parameter` instance bound with given name path.
+
+
+
+.. method:: BezierContour.parameter_set([name_components=list()])
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.ParameterSet`
+
+
+    :param name_components: Relative name for a requested parameter set.
+    
+    Returns :class:`ParameterSet` instance bound with given name path.
+    Pass an empty list ``[]`` to get access to the Bezier contour parameters set.
+
+
+
+.. method:: BezierContour.remove()
+
+
+
+
+    Removes this contour.
+
+
+
+.. method:: BezierContour.set_control_points(points)
+
+
+    :type points: list of BezierControlPoint
+
+
+
+
+
+.. attribute:: BezierContour.control_points
+
+
+    :type: list of :class:`BezierControlPoint` instances
+    :access: read-write    Provides access to list of :class:`BezierControlPoint` instances.
+
+
+
+.. attribute:: BezierContour.psets
+
+
+    :type: ParameterSet
+    :access: read-only    Provides access to the root parameter set.
+    Mimics parameter_set() call.
+
+
+
+

@@ -1,0 +1,191 @@
+.. _AbstractShapeDataExporter:
+
+.. currentmodule:: mocha.exporters
+
+
+AbstractShapeDataExporter
+*************************
+
+.. inheritance-diagram:: mocha.exporters.AbstractShapeDataExporter
+    :parts: 2
+
+**Inherited by:** :ref:`ShapeDataExporter`
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`register<AbstractShapeDataExporter.register>` ()
+    * def :meth:`unregister<AbstractShapeDataExporter.unregister>` ()
+
+
+Virtual functions
+^^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`do_export<AbstractShapeDataExporter.do_export>` (project, layers, shape_file_path, views)
+    * def :meth:`error_string<AbstractShapeDataExporter.error_string>` ()
+
+
+Static functions
+^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`registered_exporters<AbstractShapeDataExporter.registered_exporters>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`exports_interlaced<AbstractShapeDataExporter.exports_interlaced>` [read-only] of bool
+*    property :attr:`exports_multiple_shapes<AbstractShapeDataExporter.exports_multiple_shapes>` [read-only] of bool
+*    property :attr:`exports_multiple_views<AbstractShapeDataExporter.exports_multiple_views>` [read-only] of bool
+*    property :attr:`exports_open_splines<AbstractShapeDataExporter.exports_open_splines>` [read-only] of bool
+*    property :attr:`registered<AbstractShapeDataExporter.registered>` [read-only] of bool
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Abstract shape exporter class. Inherit the class to create own exporter formats.
+    Method do_export must be overloaded.
+
+
+.. class:: AbstractShapeDataExporter(name, extension[, number_of_data_streams=1[, export_multiple_shapes=false[, export_multiple_views=false[, export_open_splines=false[, export_interlaced=false]]]]])
+
+
+    :type name: str
+    :type extension: str
+    :type number_of_data_streams: uint
+    :type export_multiple_shapes: bool
+    :type export_multiple_views: bool
+    :type export_open_splines: bool
+    :type export_interlaced: bool
+
+
+    :param name: name of the exporter which will be displayed in the Export Shape Data dialog drop-down list. Should contain a file mask in brackets e.g. Foo (*.bar)
+    :param extension: additional extension.
+    :param number_of_data_streams: number of result files. If it equals to 1 then the Copy to Clipboard button will be enabled.
+    :param export_multiple_shapes: whether the exporter supports multiple shapes.
+    :param export_multiple_views: whether the exporter supports multiple views.
+    :param export_open_splines: whether the exporter supports open splines.
+    :param export_interlaced: whether the exporter supports interlaced footage.
+    
+    Create an exporter instance. The instance ownership is delegated to Python. To register the exporter inside
+    mocha exporters system, call `register()` method. Before deleting the object unregisters itself.
+
+
+
+
+
+.. method:: AbstractShapeDataExporter.do_export(project, layers, shape_file_path, views)
+
+
+    :type project: :any:`Project`
+    :type layers: list of Layer
+    :type shape_file_path: str
+    :type views: list of View
+    :rtype: Dictionary with keys of type QString and values of type QByteArray.
+
+
+    :param project: mocha project instance.
+    :param layers: list of layers to export.
+    :param shape_file_path: absolute file path to save which has been chosen by a user in a file dialog.
+    :param views: list of views to export (if the exporter supports multi-view exporting).
+    
+    :return: ``dict`` of {file_name: QByteArray}
+    
+    Performs main exporter operations. Must return a map (``dict``) of absolute file path and appropriate contents.
+    The exporter should not create those files.
+
+
+
+.. method:: AbstractShapeDataExporter.error_string()
+
+
+    :rtype: str
+
+
+
+
+
+
+.. method:: AbstractShapeDataExporter.register()
+
+
+
+
+    Registers the exporter instance inside mocha exporters system.
+
+
+
+.. staticmethod:: AbstractShapeDataExporter.registered_exporters()
+
+
+    :rtype: Dictionary with keys of type QString and values of type ShapeDataExporter.
+
+
+    :return: ``dict`` of {str: :class:`ShapeDataExporter`}
+    
+    Returns a dict of registered exporters including custom user exporters.
+
+
+
+.. method:: AbstractShapeDataExporter.unregister()
+
+
+
+
+    Unregisters the exporter instance inside mocha exporters system.
+
+
+
+.. attribute:: AbstractShapeDataExporter.exports_multiple_shapes
+
+
+    :type: bool
+    :access: read-only    Whether the exporter supports multiple shapes.
+
+
+
+.. attribute:: AbstractShapeDataExporter.exports_multiple_views
+
+
+    :type: bool
+    :access: read-only    Whether the exporter supports multiple views.
+
+
+
+.. attribute:: AbstractShapeDataExporter.exports_open_splines
+
+
+    :type: bool
+    :access: read-only    Whether the exporter supports open splines.
+
+
+
+.. attribute:: AbstractShapeDataExporter.exports_interlaced
+
+
+    :type: bool
+    :access: read-only    Whether the exporter supports interlaced footage.
+
+
+
+.. attribute:: AbstractShapeDataExporter.registered
+
+
+    :type: bool
+    :access: read-only    Whether the exporter registered.
+
+
+
+

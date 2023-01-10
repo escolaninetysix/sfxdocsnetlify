@@ -1,0 +1,1816 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: LightLeak",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/LightLeak.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="LightLeak">
+     <h2>
+      S_LightLeak
+     </h2>
+    </a>
+    Renders abstract patterns of color that simulate light leaking through
+gaps in a camera body. The light leak consists of three distinct elements which can be
+adjusted individually.
+    <p>
+     In the Sapphire Lighting effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Interpolate between the result and the Source input.  White areas
+use the result of the effect.  Black areas use the Source clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/LightLeak.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Project:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the light leak by this value.  Increase for a
+  brighter result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -8 to 2.
+   <br/>
+   Adds this gray value to the darker regions of
+the result.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   The overall color of the light leak.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the hue of the light leak, in revolutions
+  from red to green to blue to red.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   -2 to 8.
+   <br/>
+   Scales the color saturation of the light leak.
+  Increase for more intense colors.  Set to 0 for a monochrome
+  light leak.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Increasing gamma brightens the light leak, and especially boosts
+  the darker areas.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the speed of all elements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the position of all elements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Random Motion:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of random motion of each element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Random Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of random motion. Increase for faster, more frenetic motion.
+Decrease for slower, smoother motion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of random flickering in the light leak brightness.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of the random flickering.  Increase for
+  more variation between frames.  Decrease for slower flickering.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the background before
+combining with the lights.  If 0, the result will contain only the light
+image over black.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Screen
+   </i>
+   .
+   <br/>
+   Determines how the light leak is combined with the background image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Screen:
+      </i>
+     </b>
+     the light leak is blended with the background using a function that
+helps prevent overly bright results
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Add:
+       </i>
+      </b>
+      the light leak is added to the background.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Leaks Only:
+        </i>
+       </b>
+       the light leak is shown on its own, with no background
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Affect Alpha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this value is positive the output Alpha channel
+  will include some opacity from the light leak.  The maximum of the red,
+  green, and blue light leak brightness is scaled by this value and combined
+  with the Background Alpha at each pixel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the glow which is applied to the entire
+image after combining the light leak with the background.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the glow. Increase for a softer glow and decrease for a
+sharper, brighter glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Parts of the image that are brighter than this value get glowed.
+  </dd>
+ </dl>
+ <h3>
+  Element1 Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Element1 Enable:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Turns this element on and off.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size1:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the size of this element.  This parameter can be adjusted using the Size1 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Height1:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the vertical dimension of this element, making it elliptical
+instead of circular.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness1:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Speed1:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The speed at which this element moves across the screen. Set to zero
+to keep the element stationary at its center position. A faster speed means the element will
+start and end farther from its center.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Angle1:
+   </b>
+   <i>
+    Default:
+   </i>
+   175,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The angle of this element's path across the screen. The element moves along
+a line at this angle, passing through the center position at the midpoint of the clip.  This parameter can be adjusted using the Angle1 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center1:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The center point of this element's motion. The element will reach this
+location half way through the clip.  This parameter can be adjusted using the Center1 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Outer Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 0.15].
+   <br/>
+   The color at the outer edge of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mid Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0.7 0.3].
+   <br/>
+   The color at the midpoint of this element, between the Outer and
+Center Colors. The exact location depends on the Midpoint parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0.1 0].
+   <br/>
+   The color at the center of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Midpoint1:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Moves the location of the Mid Color between the center and outer edge of the
+element. Set to 0 to place the Mid Color at the center, or 1 to place it at the edge.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Softness1:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the color gradient of this element. Increase for a smoother gradient, or
+decrease for sharper bands of color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Amp1:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of noise applied to this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq1:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of the noise applied to this element. Increase
+for smaller blobs, or decrease for larger ones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq Rel Y1:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative vertical frequency of the noise pattern. Increase
+to flatten the noise, or decrease to stretch it out vertically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Detail1:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the amount of fine detail in the
+  noise simulation.  Decrease to get smoother noise,
+  increase for a more crunchy or grainy look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Boil Speed1:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Sets the speed of noise boiling or evolving as the element moves.
+Set to 0 for a static noise pattern.
+  </dd>
+ </dl>
+ <h3>
+  Element2 Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Element2 Enable:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Turns this element on and off.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size2:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the size of this element.  This parameter can be adjusted using the Size2 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Height2:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the vertical dimension of this element, making it elliptical
+instead of circular.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness2:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Speed2:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The speed at which this element moves across the screen. Set to zero
+to keep the element stationary at its center position. A faster speed means the element will
+start and end farther from its center.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Angle2:
+   </b>
+   <i>
+    Default:
+   </i>
+   175,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The angle of this element's path across the screen. The element moves along
+a line at this angle, passing through the center position at the midpoint of the clip.  This parameter can be adjusted using the Angle2 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center2:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-0.5 -0.5],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The center point of this element's motion. The element will reach this
+location half way through the clip.  This parameter can be adjusted using the Center2 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Outer Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.25 0.15 0.1].
+   <br/>
+   The color at the outer edge of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mid Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.7 0.12 0.22].
+   <br/>
+   The color at the midpoint of this element, between the Outer and
+Center Colors. The exact location depends on the Midpoint parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   The color at the center of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Midpoint2:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Moves the location of the Mid Color between the center and outer edge of the
+element. Set to 0 to place the Mid Color at the center, or 1 to place it at the edge.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Softness2:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the color gradient of this element. Increase for a smoother gradient, or
+decrease for sharper bands of color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Amp2:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of noise applied to this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq2:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of the noise applied to this element. Increase
+for smaller blobs, or decrease for larger ones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq Rel Y2:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative vertical frequency of the noise pattern. Increase
+to flatten the noise, or decrease to stretch it out vertically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Detail2:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the amount of fine detail in the
+  noise simulation.  Decrease to get smoother noise,
+  increase for a more crunchy or grainy look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Boil Speed2:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Sets the speed of noise boiling or evolving as the element moves.
+Set to 0 for a static noise pattern.
+  </dd>
+ </dl>
+ <h3>
+  Element3 Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Element3 Enable:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Turns this element on and off.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size3:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the size of this element.  This parameter can be adjusted using the Size3 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Height3:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the vertical dimension of this element, making it elliptical
+instead of circular.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness3:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Speed3:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The speed at which this element moves across the screen. Set to zero
+to keep the element stationary at its center position. A faster speed means the element will
+start and end farther from its center.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Angle3:
+   </b>
+   <i>
+    Default:
+   </i>
+   175,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The angle of this element's path across the screen. The element moves along
+a line at this angle, passing through the center position at the midpoint of the clip.  This parameter can be adjusted using the Angle3 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center3:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.5 0.5],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The center point of this element's motion. The element will reach this
+location half way through the clip.  This parameter can be adjusted using the Center3 Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Outer Color3:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.2 0.2 0].
+   <br/>
+   The color at the outer edge of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mid Color3:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.55 0.4 0].
+   <br/>
+   The color at the midpoint of this element, between the Outer and
+Center Colors. The exact location depends on the Midpoint parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Color3:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0.7 0].
+   <br/>
+   The color at the center of this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Midpoint3:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Moves the location of the Mid Color between the center and outer edge of the
+element. Set to 0 to place the Mid Color at the center, or 1 to place it at the edge.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Softness3:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the color gradient of this element. Increase for a smoother gradient, or
+decrease for sharper bands of color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Amp3:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of noise applied to this element.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq3:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of the noise applied to this element. Increase
+for smaller blobs, or decrease for larger ones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq Rel Y3:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative vertical frequency of the noise pattern. Increase
+to flatten the noise, or decrease to stretch it out vertically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Detail3:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the amount of fine detail in the
+  noise simulation.  Decrease to get smoother noise,
+  increase for a more crunchy or grainy look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Boil Speed3:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Sets the speed of noise boiling or evolving as the element moves.
+Set to 0 for a static noise pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Mask input channels are used to make a
+monochrome mask.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.  It has no effect unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.  This has no effect
+unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../lensflare">
+       LensFlare
+      </a>
+      <br/>
+      <a href="../glint">
+       Glint
+      </a>
+      <br/>
+      <a href="../glare">
+       Glare
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

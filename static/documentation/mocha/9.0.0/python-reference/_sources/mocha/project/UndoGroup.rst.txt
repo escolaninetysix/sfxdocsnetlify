@@ -1,0 +1,96 @@
+.. _UndoGroup:
+
+.. currentmodule:: mocha.project
+
+
+UndoGroup
+*********
+
+.. inheritance-diagram:: mocha.project.UndoGroup
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__enter__<UndoGroup.__enter__>` ()
+    * def :meth:`__exit__<UndoGroup.__exit__>` (arg__1, arg__2, arg__3)
+    * def :meth:`commit<UndoGroup.commit>` ()
+    * def :meth:`redo<UndoGroup.redo>` ()
+    * def :meth:`rollback<UndoGroup.rollback>` ()
+    * def :meth:`undo<UndoGroup.undo>` ()
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    The undo/redo handler class which allows to group changes to unified undoable blocks
+    in scope of context managers.
+
+
+.. class:: mocha.project.UndoGroup
+.. method:: UndoGroup.__enter__()
+
+
+
+
+    Starts an unified actions block.
+
+
+
+.. method:: UndoGroup.__exit__(arg__1, arg__2, arg__3)
+
+
+    :type arg__1: object
+    :type arg__2: object
+    :type arg__3: object
+
+
+    Commits an unified action block. Either rollbacks in case of an unhandled exception.
+
+
+
+.. method:: UndoGroup.commit()
+
+
+
+
+    Commits an unified action block.
+
+
+
+.. method:: UndoGroup.redo()
+
+
+
+
+    Redoes the latest command from the redo stack.
+
+
+
+.. method:: UndoGroup.rollback()
+
+
+
+
+    Rollbacks an unified action block.
+
+
+
+.. method:: UndoGroup.undo()
+
+
+
+
+    Undoes the latest command from the undo stack.
+
+
+
+

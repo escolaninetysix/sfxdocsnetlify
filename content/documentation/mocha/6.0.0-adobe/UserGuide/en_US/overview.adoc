@@ -1,0 +1,295 @@
+
+== Interface Overview
+
+To quickly get familiar with Mocha before you dive into the rest of the manual, here is a breakdown of the interface and its controls.
+
+NOTE: Interface Overview uses the Mocha Pro Interface. Versions of the Mocha Pro Plugin, Mocha HitFilm, Mocha for After Effects etc. may differ in presentation, but their tools perform the same function
+
+=== Layouts [[layouts]]
+
+Mocha layouts are modifiable, allowing you to hide or reveal many parts of the interface.
+
+image:UserGuide/en_US/images/layouts_dropdown.jpg[width="60%"]
+
+These layouts are clustered into 4 default types you can build from.
+
+==== Essentials Layout
+
+Mocha begins in the Essentials layout, which provides a simplified interface for basic tracking and roto.
+
+image:UserGuide/en_US/images/main-overview-essentials.jpg[]
+
+The basic toolbar provides a minimal set of tools without cluttering the interface.
+
+The Essentials panel on the left side of the window combines everything you need for a basic track.
+
+image:UserGuide/en_US/images/mochaae_essentials_panel.jpg[width="40%"]
+
+The Panel contains the following features (from top to bottom):
+
+*Track Motion Options*
+
+The 5 motion types you can track in:
+
+. Translation
+. Scale
+. Rotation
+. Shear (sometimes known as Skew)
+. Perspective
+
+*Track Buttons*
+
+For tracking backwards, forwards and to stop the track
+
+*Link to Track*
+
+To attach a spline layer to an existing track, or detach it from a track entirely.
+See <<tracking_basics, Tracking Basics>> and <<roto_basics, Rotoscoping Basics>> for more information on the benefits of Link to Track.
+
+*Surface*
+
+These buttons control viewing and expanding the surface.
+See <<tracking_basics, Tracking Basics>> for how to use the surface effectively.
+
+* *Show surface (tracking data):* Reveals the blue surface that represents the tracking data.
+* *Show grid:* Reveals a useful grid for lining up the surface or monitoring for drift in a track.
+* *Align surface:* Expands the surface to fit the dimensions of the footage on the current frame.
+
+==== Classic Layout
+
+For Mocha veterans, the Classic layout is arranged like the original Mocha.
+
+image:UserGuide/en_US/images/main-overview.jpg[]
+
+Use this mode if you are familiar with Mocha and want access to all the parameters and tools.
+
+==== Roto Layout
+
+Like the Essentials layout, this layout is optimized specifically for roto sessions where only the most necessary panels and tools are shown.
+
+==== Big Picture Layout
+
+If you want to reduce all clutter entirely, the Big Picture layout is very useful for previewing shots without any elements getting in the way.
+
+=== Saving Layouts
+
+You can add or remove many parts of the Mocha interface, such as:
+
+* Timeline controls
+* Toolbars
+* View controls
+* Etc.
+
+These can either be access by right clicking the area of the interface and choosing a GUI element to show or hide, or selecting from the `View` menu.
+
+Any changes you make to a layout will not be saved unless you choose `View | Layout | Save Current Layout`.
+
+For example if you like the Essentials layout, but would like the Advanced toolbar from the Classic layout:
+
+. Choose "Essentials" from the layout drop-down
+. Choose "Advanced Tools" from `View | Toolbars`
+. Choose `View | Layout | Save Current Layout`
+
+This will now save the Essentials layout with the new toolbar.
+
+If you have made changes to a saved layout want to revert back to the saved version, just choose `View | Layout | Revert to saved`.
+
+If you want to revert back to the original default layout, just choose `View | Layout | Revert to default`.
+
+
+=== The Advanced Toolbar
+
+image:UserGuide/en_US/images/MainToolbar.jpg[]
+
+At the very top of the interface you have the tools that form the brunt of your time inside Mocha.
+
+[cols='^1,2', frame="none", grid="rows", valign="middle"]
+|====
+| image:UserGuide/en_US/images/FileSave_2x.jpg[width="60%"]|*Save Project:* Save the project
+| image:UserGuide/en_US/images/ToolPointer_2x.jpg[width="60%"]|*Select:* Selection tool for splines and points. Hold the button to choose between Marquee selection and Lasso selection.
+| image:UserGuide/en_US/images/ToolPointModeBoth_2x.jpg[width="60%"]|*Select Both:* Selects both the Inner spline points and the edge points.  Hold this button down to select further options (See below)
+| image:UserGuide/en_US/images/ToolPointModeInner_2x.jpg[width="60%"]|*Select Inner:* Only selects the inner spline points
+| image:UserGuide/en_US/images/ToolPointModeEdge_2x.jpg[width="60%"]|*Select Edge:* Only selects the outer edge points
+| image:UserGuide/en_US/images/ToolPointModeAny_2x.jpg[width="60%"]|*Select Auto:* Automatically selects between Inner and Edge points
+| image:UserGuide/en_US/images/ToolPointerInsert_2x.jpg[width="60%"]|*Add Point:* Tool to add points to the spline
+| image:UserGuide/en_US/images/ToolHand_2x.jpg[width="60%"]|*Pan:* Used to pan the footage in the Viewer
+| image:UserGuide/en_US/images/ToolZoom_2x.jpg[width="60%"]|*Zoom:* Used to zoom into footage in the viewer
+| image:UserGuide/en_US/images/ToolAddXSplineLayer_2x.jpg[width="60%"]|*Create X-Spline Layer:* Draw a new X-Spline layer
+| image:UserGuide/en_US/images/ToolAddXSpline_2x.jpg[width="60%"]|*Add X-Spline to Layer:* Draw an X-spline that is added to the current spline layer.
+| image:UserGuide/en_US/images/ToolAddBezierSplineLayer_2x.jpg[width="60%"]|*Create Bezier-Spline Layer:* Draw a new B-Spline layer
+| image:UserGuide/en_US/images/ToolAddBezierSpline_2x.jpg[width="60%"]|*Add Bezier-Spline to Layer:* Draw a B-spline that is added to the current spline layer.
+| image:UserGuide/en_US/images/MagneticShapeToolXSpline_2x.jpg[width="60%"]|*Create New Magnetic Layer:* Draw a magnetic line that converts to an X-Spline.
+| image:UserGuide/en_US/images/MagneticShapeToolAddXSpline_2x.jpg[width="60%"]|*Add Magnetic Shape Selected to Layer:* Add a new magnetic line that converts to an X-Spline in the existing layer.
+| image:UserGuide/en_US/images/FreehandShapeToolXSpline_2x.jpg[width="60%"]|*Create New Freehand Layer:* Draw a freehand line that converts to an X-Spline.
+| image:UserGuide/en_US/images/FreehandShapeToolAddXSpline_2x.jpg[width="60%"]|*Add Freehand Shape Selected to Layer:* Add a new freehand line that converts to an X-Spline in the existing layer.
+| image:UserGuide/en_US/images/RectShapeXSplineLayer_2x.jpg[width="60%"]|*Create Rectangle X-Spline Layer:* Draw a new Rectangle X-Spline layer
+| image:UserGuide/en_US/images/RectShapeAddXSpline_2x.jpg[width="60%"]|*Add Rectangle X-Spline to Layer:* Draw an Rectangle X-spline that is added to the current spline layer.
+| image:UserGuide/en_US/images/RectShapeBezierLayer_2x.jpg[width="60%"]|*Create Rectangle Bezier-Spline Layer:* Draw a new Rectangle B-Spline layer
+| image:UserGuide/en_US/images/RectShapeBezier_2x.jpg[width="60%"]|*Add Rectangle Bezier-Spline to Layer:* Draw a Rectangle B-spline that is added to the current spline layer.
+| image:UserGuide/en_US/images/CircleShapeXSpline_2x.jpg[width="60%"]|*Create Circle X-Spline Layer:* Draw a new Rectangle X-Spline layer
+| image:UserGuide/en_US/images/CircleShapeAddXSpline_2x.jpg[width="60%"]|*Add Circle X-Spline to Layer:* Draw an Rectangle X-spline that is added to the current spline layer.
+| image:UserGuide/en_US/images/CircleShapeBezier_2x.jpg[width="60%"]|*Create Circle Bezier-Spline Layer:* Draw a new Rectangle B-Spline layer
+| image:UserGuide/en_US/images/CircleShapeAddBezier_2x.jpg[width="60%"]|*Add Circle Bezier-Spline to Layer:* Draw a Rectangle B-spline that is added to the current spline layer.
+| image:UserGuide/en_US/images/ToolConstraint_2x.jpg[width="60%"]|*Attach Layer:* Used to select a point and drag-lock it to another layer&rsquo;s spline point. Useful for lining up individual splines.
+| image:UserGuide/en_US/images/ToolRotate_2x.jpg[width="60%"]|*Rotate:* Rotate selection around the axis of the point you click in the viewer
+| image:UserGuide/en_US/images/ToolScale_2x.jpg[width="60%"]|*Scale:* Scale Selection
+| image:UserGuide/en_US/images/ToolTranslate_2x.jpg[width="60%"]|*Move:* Move selection
+| image:UserGuide/en_US/images/ToolTransform_2x.jpg[width="60%"]|*Transform Tool:* Toggles the transform bounding box for manipulating selections
+| image:UserGuide/en_US/images/ShowSurface_2x.jpg[width="60%"]|*Show Planar Surface:* Toggles the planar surface view
+| image:UserGuide/en_US/images/ShowGrid_2x.jpg[width="60%"]|*Show Planar Grid:* Toggles a grid relative to the planar surface view. You can adjust the number of grid lines under Viewer Preferences (See below)
+| image:UserGuide/en_US/images/AlignSurface_2x.jpg[width="60%"]|*Align Surface:* Expands the layer surface to fit the dimensions of the footage at the current frame. All tracked data is made relative to this new alignment.
+|====
+
+=== Basic Toolbar
+
+image:UserGuide/en_US/images/basictoolbar.jpg[]
+
+In Essentials Mode, only a basic set of these tools is shown, to simplify the interface.
+
+[cols='^1,2a', frame="none", grid="rows", valign="middle"]
+|===============
+| image:UserGuide/en_US/images/ICON_Footage_001.jpg[width="40%"]|*Clip to Show:* Choose which clip to view from this dropdown
+| image:UserGuide/en_US/images/ICON_Proxy_001.jpg[width="60%"]|*Proxy Scale:* Adjust the resolution of the footage for performance
+| image:UserGuide/en_US/images/RGB_2x.jpg[width="60%"]|*Show RGB Channels:* Turns on the RGB view of the footage
+| image:UserGuide/en_US/images/Alpha_2x.jpg[width="60%"]|*Show Alpha Channels:* Turns on the Alpha view of the footage
+| image:UserGuide/en_US/images/Mattes_2x.jpg[width="60%"]|*Show Layer Mattes:* Toggle on or off to show the mattes. Select from the dropdown to choose the type of matte
+| image:UserGuide/en_US/images/Colorize_2x.jpg[width="60%"]|*Color Layer Mattes:* Fills matte with Color. Decreasing the value lessens the opacity
+| image:UserGuide/en_US/images/Overlays_2x.jpg[width="60%"]|*Overlays:* Toggles all viewer overlays, including splines, tangents, surface and grid
+| image:UserGuide/en_US/images/Layers_2x.jpg[width="60%"]|*Show Layer Outlines:* Toggles all spline overlays, including splines, points and tangents
+| image:UserGuide/en_US/images/Tangents_Splines_2x.jpg[width="60%"]|*Show Spline Tangents:* Toggles spline tangents view. Select from the dropdown to choose the type of view
+| image:UserGuide/en_US/images/ZoomWindow_2x.jpg[width="60%"]|*Show Zoom Window:* Toggles the Zoom window
+| image:UserGuide/en_US/images/Stabilize_2x.jpg[width="60%"]|*Stabilize:* Turns on stabilize view. This centers the footage around your tracked surface.
+| image:UserGuide/en_US/images/Trace_2x.jpg[width="60%"]|*Trace:* Turns on the traced path of the tracked surface. You can adjust the amount of frames to trace under Viewer Preferences (See below)
+| image:UserGuide/en_US/images/View_Brightness_2x.jpg[width="60%"]|*Enable Brightness Scaling:* Toggles brightness adjustment to work with low-contrast footage.
+| image:UserGuide/en_US/images/ICON_ViewerControls_001.jpg[width="60%"]|*Viewer Preferences:* Adjustments dialog for parameters such as grid lines and trace frames
+| image:UserGuide/en_US/images/AlignSurface_2x.jpg[width="60%"]|*Align Surface:* Expands the layer surface to fit the dimensions of the footage at the current frame. All tracked data is made relative to this new alignment.
+|===============
+
+See descriptions in Advanced Toolbar above for the rest of the tools.
+
+
+=== The Viewer Controls
+
+image:UserGuide/en_US/images/ViewControls_Toolbar_001.jpg[]
+
+These controls cover what can been seen or hidden while working in the Mocha viewer.
+
+NOTE: The Viewer controls are turned off in some layouts. You can turn them on via the View menu.
+
+[cols='^1,2a', frame="none", grid="rows", valign="middle"]
+|====
+| image:UserGuide/en_US/images/ICON_Footage_001.jpg[width="40%"]|*Clip to Show:* Choose which clip to view from this dropdown
+| image:UserGuide/en_US/images/ICON_Proxy_001.jpg[width="60%"]|*Proxy Scale:* Adjust the resolution of the footage for performance
+| image:UserGuide/en_US/images/RGB_2x.jpg[width="60%"]|*Show RGB Channels:* Turns on the RGB view of the footage
+| image:UserGuide/en_US/images/Alpha_2x.jpg[width="60%"]|*Show Alpha Channels:* Turns on the Alpha view of the footage
+| image:UserGuide/en_US/images/Mattes_2x.jpg[width="60%"]|*Show Layer Mattes:* Toggle on or off to show the mattes. Select from the dropdown to choose the type of matte
+| image:UserGuide/en_US/images/Colorize_2x.jpg[width="60%"]|*Color Layer Mattes:* Fills matte with Color. Decreasing the value lessens the opacity
+| image:UserGuide/en_US/images/Overlays_2x.jpg[width="60%"]|*Overlays:* Toggles all viewer overlays, including splines, tangents, surface and grid
+| image:UserGuide/en_US/images/Layers_2x.jpg[width="60%"]|*Show Layer Outlines:* Toggles all spline overlays, including splines, points and tangents
+| image:UserGuide/en_US/images/Tangents_Splines_2x.jpg[width="60%"]|*Show Spline Tangents:* Toggles spline tangents view. Select from the dropdown to choose the type of view
+| image:UserGuide/en_US/images/ZoomWindow_2x.jpg[width="60%"]|*Show Zoom Window:* Toggles the Zoom window
+| image:UserGuide/en_US/images/Stabilize_2x.jpg[width="60%"]|*Stabilize:* Turns on stabilize view. This centers the footage around your tracked surface.
+| image:UserGuide/en_US/images/Trace_2x.jpg[width="60%"]|*Trace:* Turns on the traced path of the tracked surface. You can adjust the amount of frames to trace under Viewer Preferences (See below)
+| image:UserGuide/en_US/images/View_Brightness_2x.jpg[width="60%"]|*Enable Brightness Scaling:* Toggles brightness adjustment to work with low-contrast footage.
+| image:UserGuide/en_US/images/ICON_ViewerControls_001.jpg[width="60%"]|*Viewer Preferences:* Adjustments dialog for parameters such as grid lines and trace frames
+|====
+
+
+=== The Timeline Controls
+
+image:UserGuide/en_US/images/Timeline_001.jpg[]
+
+The timeline controls cover frame range, playback, tracking controls and key-framing.
+
+NOTE: Some timeline controls may not be visible in certain layouts. You can turn them on via the View menu or by right-clicking the timeline.
+
+[cols='^1,1', frame="none", grid="rows", valign="middle"]
+|====
+| image:UserGuide/en_US/images/ICON_FrameField_001.jpg[width="60%"]|*Project In-Point:* Frame where timeline playback starts
+| image:UserGuide/en_US/images/SetInPoint_2x.jpg[width="60%"]|*Set In-Point:* Set the in-point for the timeline
+| image:UserGuide/en_US/images/ClearInPoint_2x.jpg[width="60%"]|*Reset In-Point:* Set the in-point back to the start of the clip
+| image:UserGuide/en_US/images/ICON_FrameField_001.jpg[width="60%"]|*Current Frame:* The frame the playhead is currently on. Enter a new value to jump to that frame.
+| image:UserGuide/en_US/images/ClearOutPoint_2x.jpg[width="60%"]|*Reset Out Point:* Set the out point back to the end of the clip
+| image:UserGuide/en_US/images/SetOutPoint_2x.jpg[width="60%"]|*Set Out Point:* Set the out point for the timeline
+| image:UserGuide/en_US/images/ICON_FrameField_001.jpg[width="60%"]|*Project Out Point:* Frame where timeline playback ends
+| image:UserGuide/en_US/images/ZoomToInOutPoints_2x.jpg[width="60%"]|*Zoom Timeline to In/Out points:* Expands the timeline between the in and out points to the edges of the viewer
+| image:UserGuide/en_US/images/ZoomToFullRange_2x.jpg[width="60%"]|*Zoom Timeline to full frame range:* Resets the timeline scale to the full range of frames
+| image:UserGuide/en_US/images/ICON_Playbar_001.jpg[width="40%"]|*Play Controls:* Controls for playing back and forth and moving one frame at a time
+| image:UserGuide/en_US/images/Play_PingPong_2x.jpg[width="60%"]|*Change Playback Mode:* Toggles tri-state button between Play once, Loop and Bounce playback modes.
+| image:UserGuide/en_US/images/ICON_TrackPlaybar_001.jpg[width="60%"]|*Tracking Controls:* Controls for tracking back and forth and tracking one frame at a time.
+| image:UserGuide/en_US/images/PlayBackwards_2x.jpg[width="60%"]|*Go to Previous Keyframe:* Jump to the previous keyframe set in the timeline for that layer
+| image:UserGuide/en_US/images/PlayForwards_2x.jpg[width="60%"]|*Go to Next Keyframe:* Jump to the next keyframe set in the timeline for that layer
+| image:UserGuide/en_US/images/AddKeyframe_2x.jpg[width="60%"]|*Add New Keyframe:* Add a new keyframe at the current position for the selected layer. This only appears if you are not hovering over an existing keyframe.
+| image:UserGuide/en_US/images/RemoveKeyframe_2x.jpg[width="60%"]|*Delete New Keyframe:* Deletes the keyframe at the current position for the selected layer. This only appears if you are hovering over a keyframe.
+| image:UserGuide/en_US/images/RemoveAllKeyframes_2x.jpg[width="60%"]|*Delete All Keyframes:* Deletes all keyframes on the timeline for the selected layer
+| image:UserGuide/en_US/images/AutoKeyframe_2x.jpg[width="60%"]|*Autokey:* Toggles automatic key insertion when moving points or adjusting parameters
+| image:UserGuide/en_US/images/Uber_2x.jpg[width="60%"]|*Überkey:* Toggles the Überkey, which modifies all keys in the layer relative to the key you are now on.
+|====
+
+=== Layer Controls
+
+image:UserGuide/en_US/images/LayerControls_001.jpg[width="40%"]
+
+The top left hand panel contains the tools to manage layers.
+
+[cols='1,1a', frame="none", grid="rows", valign="top"]
+|====
+| image:UserGuide/en_US/images/LayerView_001.jpg[width="40%"] |
+*Layer Icons:*
+
+* Click the *Eye* to toggle layer visibility
+* Click the *Cog* to toggle tracking for that layer
+* Click the *Lock* to toggle locking
+* Click the *Spline Color* to change the color of the selected layer splines
+* Click the *Matte Color* to change the color of the selected layer mattes
+
+| image:UserGuide/en_US/images/LayerActions_001.jpg[width="40%"] |
+
+*Layer Actions dropdown:*
+
+* *Select All:* Selects all layers
+* *Select Group:* Selects all layers in a selected group
+* *Invert Selection:* Inverts the layer selection
+* *Delete Selected:* Deletes all selected layers
+* *Duplicate:* Duplicates all selected layers
+* *Lock Selected:* Locks all selected layers
+* *Lock All:* Locks all layers
+* *New Group:* Creates a new empty group
+* *Group Selected:* Creates a group containing the selected layers
+* *Align Selected Surfaces:* Aligns the selected layer surfaces to the dimensions of the footage at the current frame
+* *Toggle Active at current frame:* Activates or Deactivates the layer on the current frame
+
+| image:UserGuide/en_US/images/LayerGroupFolder_2x.jpg[width="60%"]|*Group Layer:* Groups the currently selected layers. If no layers are selected, creates an empty group.
+| image:UserGuide/en_US/images/DuplicateLayer_2x.jpg[width="60%"]|*Duplicate Layer:* Duplicates the currently selected layers
+| image:UserGuide/en_US/images/DeleteLayer_2x.jpg[width="60%"]|*Delete Layer:* Delete currently selected layers on all frames
+|====
+
+
+=== Layer Properties
+
+The section under the Layer Controls panel contains the properties for each layer.
+
+image:UserGuide/en_US/images/LayerProperties_001.jpg[width="60%"]
+
+* *Layer In/Out frames:* Settings to change where the layer turns on and off in the clip
+* *Blend mode:* Dropdown to add or subtract your spline to the current layer. Invert flips this
+* *Insert Clip:* Insert a demo clip to preview your track. You can use one of the defaults or import your own. For preview purposes only
+* *Matte Clip:* Replaces the current layer splines with a matte clip.
+* *Link to Track:* Which layer&rsquo;s track to link your layer splines to. Can also be set to None.
+* *Link to adjusted track:* Optional checkbox to link the layer splines to the adjusted track of the selection in &ldquo;Link to Track&rdquo;
+
+=== Cache Management
+
+In Mocha v5 we introduced manual cache clearing to allow you to clear the Mocha cache at the project, render or global level.
+
+You can access the Clear Cache option from the file menu under File -> Clear Cache...
+
+image:UserGuide/en_US/images/clear_cache_dialog.jpg[width="60%"]
+
+You can check the following options:
+
+* *Project Cache:* Clear the cache for the currently loaded project
+* *Rendered Clips:* Clear just the rendered clips for the project
+* *Global Cache:* Clear everything in the entire Mocha cache.
+
+Only clear the Global Cache if you are certain you don't want any of your existing project caches to remain.

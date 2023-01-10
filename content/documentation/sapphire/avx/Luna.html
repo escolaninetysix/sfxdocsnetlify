@@ -1,0 +1,1263 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: Luna",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/Luna.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="Luna">
+     <h2>
+      S_Luna
+     </h2>
+    </a>
+    Renders the Earth's Moon; you can adjust phase and colors, and add atmospheric effects.
+    <p>
+     In the Sapphire Render category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.  The output of the effect is composited over this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Interpolate between the result and the Source input.  White areas
+use the result of the effect.  Black areas use the Source clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/Luna.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Luna
+   </i>
+   .
+   <br/>
+   Selects how the moon's phase is chosen. You can adjust it
+  directly in Luna mode, or select LunaDate mode to choose a date and
+  time and the effect will use the proper phase for that date.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luna:
+      </i>
+     </b>
+     Select this mode to adjust the moon phase manually.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        LunaDate:
+       </i>
+      </b>
+      Select this mode to have the effect compute the phase from the given date and time.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen upper left.
+   <br/>
+   Center point of the moon.  This parameter can be adjusted using the Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the moon's center is controlled by the Center parameter or follows
+ the Center tracked inside of Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Center Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Size of the moon.  This parameter can be adjusted using the Size Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lunar Phase:
+   </b>
+   <i>
+    Default:
+   </i>
+   65,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Phase of the moon, in degrees; 0 is new, 90 is first
+  quarter, 180 is full, and 270 is last quarter. Only available in Luna mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Year:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2.02e+03,
+   <i>
+    Range:
+   </i>
+   1900 to 2295.
+   <br/>
+   Year to use when computing the phase.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Month:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 to 12.
+   <br/>
+   Month to use when computing the phase.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Day:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   1 to 31.
+   <br/>
+   Day to use when computing the phase.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hour:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   0 to 23.
+   <br/>
+   Hour to use when computing the phase.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Minute:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Minute to use when computing the phase.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    GMT Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   -5,
+   <i>
+    Range:
+   </i>
+   -12 to 12.
+   <br/>
+   GMT offset to use when computing the phase.
+  -5 is Eastern Standard Time, -8 is Pacific Standard Time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotation:
+   </b>
+   <i>
+    Default:
+   </i>
+   30,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotation of the moon image, in degrees.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bumpiness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The moon has craters that catch and reflect light.  This
+  parameter can be used to adjust how bumpy those craters look.  0 is
+  completely smooth, 1 is very rough. 0.3 is about physically
+  realistic on a clear night.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Contrast:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Adjusts the contrast of the moon. Values toward 0 brighten the dark areas.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the result.  For example, if it is yellow
+[1 1 0], the blue of the result will be 0.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Earth Glow:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   Adds earth-glow, which you often see near sunset when
+  the moon is crescent. The sun's light reflects off the earth, and
+  some of that reflected light illuminates even the dark part of the
+  moon. This gives an especially nice look during a lunar eclipse.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.6,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Sets the overall gamma of the moon image. Good for reducing
+  contrast in a different way from the contrast parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Sky Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   If you want to make a complete sky image with the moon
+  and a colored sky, you can put the moon in a blue sky by setting Sky
+  Color to blue. This will also tint the moon toward the sky color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adds some glow to the moon. You can see this often
+  in real life when there's some haze or light clouds.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.01,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Threshold for the glow; only parts of the moon brighter
+  than this threshold will glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Size of the moon glow. Larger creates a more diffuse glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Halo Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   With certain kinds of high, diffuse clouds, you can
+  sometimes see a subtle rainbow halo around the moon. Increase this
+  parameter to see that halo.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Halo Rel Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Sets the size of the halo, relative to the moon. 1.0
+  would be the same size as the moon, 2.0 is twice as large.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Fringing:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Increases or decreases the amount of color fringing in the moon halo; fringing separates the colors into a rainbow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Inner Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.15,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Sets the softness or spread of the inside of the halo, closest to the moon.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Outer Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Sets the softness or spread of the outside of the halo, farthest from the moon.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Halo Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Sets the overall saturation of the moon halo. Increase for a more graphic look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Halo Tint:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Tints the halo toward this color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The Atmosphere params add a little noise to the glow
+  and halo, for a more realistic look. Atmosphere Amp controls the
+  amount of atmospheric noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Controls the frequency of the atmospheric noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Turbulence:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the turbulence (amount of detail) in the atmospheric noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Sets the seed of the atmospheric noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Controls how fast the atmospheric noise changes over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Overlay
+   </i>
+   .
+   <br/>
+   Combine allows you to combine the moon image with the background in various ways.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Moon Only:
+      </i>
+     </b>
+     Ignore the background; show the moon (and its glow and halo) only.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Overlay:
+       </i>
+      </b>
+      Overlay (composite) the moon over the background.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Add:
+        </i>
+       </b>
+       Add the moon to the background.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Screen:
+         </i>
+        </b>
+        Screen the moon with the background. Nice for daytime shots.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Max:
+          </i>
+         </b>
+         Where the moon is brighter than the background, show
+  it. This can be useful for daytime shots with clouds. Where the
+  clouds are brighter than the moon, they'll obscure it.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Transparent Shadow:
+           </i>
+          </b>
+          Composite only the lit part of the moon
+  over the background, leaving the dark part transparent.  This is not
+  physically realistic, since the dark part of the moon obscures the
+  sky and stars behind it, but it can be used for graphic effect.
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the background before combining with the moon. If 0, the result will contain only the moon image over black.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Affect Alpha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this value is positive, the output Alpha channel
+  will include some opacity from the moon's halo and glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Mask input channels are used to make a
+monochrome mask.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used, or if there is no
+valid Alpha channel the Red channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.  It has no effect unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.  This has no effect
+unless the Mask input is provided.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#title-key">
+  Apply To Title/Key
+ </a>
+ ,
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

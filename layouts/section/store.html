@@ -1,0 +1,1271 @@
+{{ define "content" }}
+<div id="top"></div>
+<script>
+var collections = [
+	{{ range .Site.Data.products.collections }}
+	{
+		"title": "{{ .title }}",
+		"id": "{{ .id }}",
+	},
+	{{ end }}
+];
+</script>
+
+<script type="text/javascript" src="/slick.min.js"></script>
+
+<style>
+.store-nav {
+  background-color: #5B5B5B;
+  height: 100px; }
+  @media (max-width: 1200px) {
+    .store-nav {
+      text-align: center;
+      height: auto;
+      padding-bottom: 10px; } }
+  @media (max-width: 768px) {
+    .store-nav {
+      padding-bottom: 0px; } }
+  .store-nav .row {
+    margin-top: 0;
+    margin-bottom: 0; }
+	.store-nav nav a {
+	text-decoration:underline;
+	}	
+	.store-nav nav a:hover {
+	color:#0ab0f6 !important;
+	text-decoration:none;	
+	}
+  .store-nav nav {
+    padding-left: 0rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem; }
+    .store-nav nav > a {
+      display: inline-block;
+      padding-top: 4px;
+      line-height: 38px;
+      color: #fefefe;
+      margin-right: 20px;
+      font-size: .8em;
+      font-weight: normal;
+      text-transform: uppercase; }
+      .store-nav nav > a:hover {
+        color: #26A9E0; }
+    .store-nav nav .product-links a {
+      margin-right: 20px;
+      font-size: .8em;
+      font-weight: normal;
+      text-transform: uppercase;
+      padding-top: 4px;
+      line-height: 38px;
+      color: #fefefe; }
+      .store-nav nav .product-links a:hover {
+        color: #26A9E0; }
+      @media (max-width: 576px) {
+        .store-nav nav .product-links a {
+          display: block;
+          margin-right: 0px;
+          border-bottom: 1px solid #364249;
+          line-height: 36px; } }
+    @media (max-width: 991px) {
+      .store-nav nav {
+        margin-bottom: 0;
+        padding-bottom: 0; } }
+    @media (max-width: 640px) {
+      .store-nav nav {
+        padding: 0px; } }
+  @media (min-width: 992px) {
+    .store-nav.fixed {
+      position: fixed;
+      z-index: 998;
+      top: 80px;
+      left: 0;
+      right: 0; }
+      .store-nav.fixed .row {
+        margin-top: 0;
+        margin-bottom: 0; } }
+  @media (max-width: 576px) {
+    .store-nav .container {
+      padding: 0px; } }
+
+.slick-slide {
+    margin: 0 10px;
+}
+.slick-list {
+    margin: 0 -10px;
+}
+.slick-prev:before {
+  color: #0ab0f6;
+}
+.slick-next:before {
+  color: #0ab0f6;
+}
+ 
+</style>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+<script>
+if (typeof Object.assign != 'function') {
+  // Must be writable: true, enumerable: false, configurable: true
+  Object.defineProperty(Object, "assign", {
+    value: function assign(target, varArgs) { // .length of function is 2
+      'use strict';
+      if (target == null) { // TypeError if undefined or null
+        throw new TypeError('Cannot convert undefined or null to object');
+      }
+
+      var to = Object(target);
+
+      for (var index = 1; index < arguments.length; index++) {
+        var nextSource = arguments[index];
+
+        if (nextSource != null) { // Skip over if undefined or null
+          for (var nextKey in nextSource) {
+            // Avoid bugs when hasOwnProperty is shadowed
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
+    },
+    writable: true,
+    configurable: true
+  });
+}
+if (!String.prototype.endsWith) {
+	String.prototype.endsWith = function(search, this_len) {
+		if (this_len === undefined || this_len > this.length) {
+			this_len = this.length;
+		}
+		return this.substring(this_len - search.length, this_len) === search;
+	};
+}
+</script>
+<!-- <script src="https://sdks.shopifycdn.com/js-buy-sdk/v1/latest/index.umd.min.js"></script> -->
+<script src="https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+<script>
+var shopifyClient = ShopifyBuy.buildClient({
+	domain: 'borisfx.myshopify.com',
+	storefrontAccessToken: '3f231af7322de13fabe8e3e7ff3ef003',
+});
+</script>
+<!-- <div class="store-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 text-center">
+        <nav>
+		<h4 style="color:white;">Choose a Subscription Plan or Purchase a New/Perpetual License</h4>
+		<p style="color:white;"><b>Already own a product? Please login to upgrade or renew</b></p>
+		</nav>
+	  </div>
+      <div class="col-md-3 text-center" style="border-left:2px solid white;">
+        <nav>
+	    <h4 style="color:white;">Talk to our sales team</h4>
+		<p style="color:white;"><b><a href="javascript:;" id="cu"  style="color:white;">Contact Us</a> | <a href="javascript:;" style="color:white;" id="storeContact">Live Chat</a></b></p>
+		</nav>
+	  </div>	  
+     </div>
+   </div>
+</div>   -->
+<script>
+$(document).ready(function() {
+if ($(window).width() <= '767') {
+$("ul#navStore").attr("style", "font-size: 10pt !important;display:inline;");
+$("li#navStore").attr("style", "display:inline;");
+$("h4#navTitle").attr("style", "text-align:center;");
+$("div#navContainer").attr("style", "margin-bottom:2%;");
+} else {
+$("ul#navStore").attr("style", "font-size: 10pt !important;");
+$("li#navStore").attr("style", "");
+$("h4#navTitle").attr("style", "");
+$("div#navContainer").attr("style", "");
+}
+});
+$( window ).resize(function() {
+if ($(window).width() <= '767') {
+$("ul#navStore").attr("style", "font-size: 10pt !important;display:inline;");
+$("li#navStore").attr("style", "display:inline;");
+$("h4#navTitle").attr("style", "text-align:center;");
+$("div#navContainer").attr("style", "margin-bottom:2%;");
+} else {
+$("ul#navStore").attr("style", "font-size: 10pt !important;");
+$("li#navStore").attr("style", "");
+$("h4#navTitle").attr("style", "");
+$("div#navContainer").attr("style", "");
+}
+});
+</script>
+
+<div id="app">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-2 col-12 text-center" id="navContainer">
+					<div style="position: sticky; top: 115px">
+					<h4 id="navTitle">Products</h4>
+					<ul class="list-unstyled" style="font-size: 10pt !important;" id="navStore">
+						<template v-for="c in collections" :key="c.id">
+							<li class="my-1" id="navStore" style="">
+								<a
+									v-if="collection && c.id === collection.id"
+									href=""
+									v-on:click.prevent="selectCollection(c.id)"
+									class="font-weight-bold"
+								>
+									${ c.title }
+								</a>
+								<a
+									v-else
+									href=""
+									v-on:click.prevent="selectCollection(c.id)"
+								>
+									${ c.title }
+								</a>
+							</li>
+							<hr class="my-0"/>
+						</template>
+					</ul>
+					</div>
+				</div>
+				
+				<div v-if="loading" class="col-10">
+					<p>
+						Loading...
+					</p>
+				</div>
+ 
+				<div v-else class="col-md-10 col-12">
+					<div class="row">
+						<!-- <div class="col-3">
+							<img class="w-100" v-bind:src="product.images[0].src" />
+							 <br>
+							<div style="font-size:10pt;" id="newDesc"></div>
+							<br><br>
+							<div style="font-size:10pt;" id="newOS"></div>
+						</div> -->
+					<div class="col-md-7 col-12" style="padding-right:0rem !important;">
+					<div style="font-size:10pt;" id="desc" v-html="product.descriptionHtml"></div>
+					</div>
+						<div class="col-md-5 col-12" style="font-size:10pt !important;">
+<form v-on:submit.prevent="addToCart()">
+								<h4>${ collection.title }</h4>
+								<div class="form-group" style="margin-bottom: 0rem !important;">
+									<label style="margin-bottom: 0rem !important;">Product</label>
+									<select style="font-size:10pt !important;" v-model="productId" v-on:change="selectProduct" class="form-control custom-select" ref="product-select">
+										<option v-for="product in collection.products" v-bind:value="product.id">
+											${ product.title }
+										</option>
+									</select>
+								</div>
+								<div v-for="option in product.options" class="form-group" style="margin-bottom: 0.5rem !important;">
+									<label style="margin-bottom: 0rem !important;">${ option.name }</label>
+									<select style="font-size:10pt !important;" v-model="options[option.name]" v-on:change="selectOption(option.name, options[option.name])" class="form-control custom-select">
+										<option v-for="valuep in option.values" v-bind:value="valuep.value" v-if="showrareoption(valuep.value, option.name)">
+											<!-- ${ valuep.value } -->
+											${ valuep.value == 'Annual Subscription' ? 'Subscription' : valuep.value }
+										</option>
+									</select>
+								</div>
+								
+								<div v-show="showLicenseField()" class="form-group" style="margin-bottom: 0rem !important;">
+									<template v-if="useTextBox()">
+										<label for="serial-text" style="margin-bottom: 0rem !important;">Current Serial Number</label>
+										<input style="font-size:10pt !important;" class="form-control" name="serial-text" v-model="serialNumber" placeholder="Serial"/>
+									</template>
+									<template v-else>
+										<template v-if="renewalError">
+											<span style="color:red" v-html="renewalError"></span>
+										</template>
+										<template v-else />
+											<label for="serial-number" style="margin-bottom: 0rem !important;">Current Serial Number</label>
+											<select style="font-size:10pt !important;" v-model="serialNumber" name="serial-number" class="form-control custom-select" v-on:change="selectSerial">
+												<option value="">Select a Serial Number</option>
+												<option v-for="contract in renewalOptions" v-bind:value="contract.serial">
+													${ contract.serial }
+												</option>
+											</select>
+										</template>
+									</template>
+									<p v-show="user">Not seeing your serial? <a href="https://borisfx.com/store/contact-us/">Contact us.</a></p>
+								</div>
+								<!-- <div class="form-group">
+									<label for="quantity">Quantity</label>
+									<input id="quantity" class="form-control" v-model="quantity" :disabled="isRenewal()"/>
+								</div> -->
+								<div class="col-md-12 mx-auto" v-if="variant()" class="form-group" style="margin-bottom: 0rem !important;">
+									<div class="row">
+									<template v-if='isSubscription()'>
+					
+					
+					
+										  <div v-on:click="setSubscription(0)" class='col-5 col-md-5 mb-0 mx-auto' style="cursor:pointer;width:185px;border:1px solid #00aeef;background-color:#f5f8f8;padding:10px;">
+											<em>Best Value!</em>
+											<input id="ra_annual" type="radio" v-model="mode_subscription" value="0">
+											<label for="ra_annual"><b>Annual Plan:</b></label><br>
+											<h6 v-if='!showCompareAt()' style="letter-spacing:0px;color:#00aeef;"><b>${ price() } </b>USD</h6>
+												<template v-if='showCompareAt()'>
+														<h6 style="letter-spacing:0px;color:#00aeef;"><b><s>Price: ${ compareAtPrice() }  USD</s></b> </h6>
+														<h6 style="letter-spacing:0px;color: red;"><b>SALE Price: ${ price() } </b>USD</h6>
+												</template>
+										  </div>
+										  <br/>
+							  
+										  <div v-on:click="setSubscription(1)" class='col-5 col-md-5 mb-0  mx-auto' style="cursor:pointer;width:185px;border:1px solid #00aeef;background-color:#f5f8f8;padding:10px;">
+											<em>Low Monthly Cost!</em>
+											<input id="ra_monthly" type="radio" v-model="mode_subscription" value="1">
+											<label for="ra_monthly" ><b>Monthly Plan:</b></label><br>
+											<h6 v-if='!showCompareAt()' style="letter-spacing:0px;color:#00aeef;"><b>${ price_monthly() } </b>USD</h6>
+												<template v-if='showCompareAt()'>
+														<h6 style="letter-spacing:0px;color:#00aeef;"><b><s>Price: ${ compareAtPrice_monthly() }  USD</s></b></h6>
+														<h6 style="letter-spacing:0px;color: red;"><b>SALE Price: ${ price_monthly() } </b>USD</h6>
+												</template>
+										  </div>
+
+									</template>
+
+									<!-- <template v-else>
+										<p style="text-align: center!important;" class='mb-0 font-weight-bold'>Price: ${ price() }</p><br/>
+									</template>
+									<template v-if='sku() && !isSubscription()'>
+										<p style="text-align: center!important;" class='mb-0 font-weight-bold'>SKU: ${ sku() }</p>
+									</template> -->
+
+									<template>
+										<template v-if='!isSubscription() && showCompareAt()'>
+											<div class='col-12 col-md-12 mb-0  mx-auto text-center'>
+											<span class='font-weight-bold'><s>Price: ${ compareAtPrice() }</s></span> <span style='color: red' class='font-weight-bold'>SALE Price: ${ price() }</span>
+									     	<p style="text-align: center !important;" class='mb-0 font-weight-bold'>SKU: ${ sku() }</p>
+										    </div>
+										</template>
+									</template>
+									<!-- <p class="mb-0 font-weight-bold">
+										<template v-if="sku()">
+											SKU: ${ sku() }
+											<br />
+										</template>
+										<template>
+											<template v-if="showCompareAt()">
+												<s>Price: ${ compareAtPrice() }</s><br/>
+												<p style="color: red">
+													SALE Price: ${ price() }
+												</p>
+											</template>
+											<template v-else>
+												Price: ${ price() }
+											</template>
+										</template>
+									</p> -->
+																		</div>
+																		</div>
+								<div class="col-md-12">
+									<div class="row" v-if="variant()">
+									<div class="col-md-3 col-6 text-center" class='form-group' style="margin-bottom: 0rem !important;">
+											<label for='quantity' class="">Quantity</label>
+											<input type="number" style="font-size:10pt !important;" min="1" style="width: 50px" id='quantity' class='form-control' v-model='quantity' :disabled='isRenewal()'/>
+								    </div>
+									<template v-if='sku() && !isSubscription()'>
+									<div class="col-md-9 col-6 text-center">
+										<p style="text-align: center !important;" v-if='!showCompareAt()' class='mb-0 font-weight-bold'>Price: ${ price() }</p>
+										<p style="text-align: center !important;" v-if='!showCompareAt()' class='mb-0 font-weight-bold'>SKU: ${ sku() }</p>
+										<div class="form-group" style="margin-bottom: 0rem !important;">
+												<button v-bind:disabled="!variant()" type="submit" class="btn btn-primary btn-lg btn-block" name="checkout">Add to Cart</button>
+										</div>
+									</div>	
+									</template> 
+
+										<template v-if='isSubscription()'>
+												<!-- <label  style="bottom:0;position:absolute"> -->
+													<template v-if='mode_subscription == 0'>
+												<div class="col-md-9 col-6 text-center" class='form-group' style="margin-bottom: 0rem !important;">
+														<h6>${ price() }</h6>
+												<div class="form-group" style="margin-bottom: 0rem !important;">
+												<button v-bind:disabled="!variant()" type="submit" class="btn btn-primary btn-lg btn-block" name="checkout">Add to Cart</button>
+												</div>
+												</div>
+													</template>
+													<template v-if='mode_subscription == 1'>
+											<div class="col-md-9 col-6 text-center" class='form-group' style="margin-bottom: 0rem !important;">
+														<h6>${ price_monthly() }</h6/>
+												<div class="form-group" style="margin-bottom: 0rem !important;">
+												<button v-bind:disabled="!variant()" type="submit" class="btn btn-primary btn-lg btn-block" name="checkout">Add to Cart</button>
+												</div>
+													</template>
+												<!-- </label> -->
+											</div>
+										</template>
+							
+									</div>
+								</div>
+
+							</form>
+						</div>
+					
+			<div class="col-md-12">			
+					    <hr>
+			<div class="col-12 text-center">
+				<h2>Choose a Bundle and Save</h2><br>
+			</div>
+
+  <div class="slider">
+
+	<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzE2NjI0MjM1MzI1NQ==', '0'); selectOption('Annual Subscription', 'Multihost (Avid/Adobe/OFX)')" id="hidden"><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1628796082/Webshop%20Images/Prod%20Logos/BFXSuite.png" class="img-fluid" style="width:50%;height:50%;"></a></center>
+			<br>
+			<h5>Boris FX Suite</h5>
+			<p style="font-size:12px;">All Our Products, Largest Savings!</p>
+			</div>
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI5OTM3NjMyMQ==', '0')" id="hidden"><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1628796056/Webshop%20Images/Bundle%20Logos/SaCoMo-3prod.png" class="img-fluid" style="width:100%;height:100%;"></a></center>
+			<br>
+			<h5>Sapphire, Continuum, Mocha Pro</h5>
+			<p style="font-size:12px;">Popular 3 Product Bundle!</p>
+			</div>			
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI5OTM3NjMyMQ==', '3')" id="hidden"><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1628796056/Webshop%20Images/Bundle%20Logos/Bundle_CoSa-2prod.png" class="img-fluid" style="width:75%;height:75%;"></a></center>
+				<br>
+				<h5>Continuum + Sapphire</h5>
+			<p style="font-size:12px;">The Video Editors' Choice!</p>
+			</div>	
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI5OTM3NjMyMQ==', '4')" id="hidden"><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1628796056/Webshop%20Images/Bundle%20Logos/Bundle_SiMo-2prod.png" class="img-fluid" style="width:75%;height:75%;"></a></center>
+				<br>
+				<h5>Silhouette + Mocha Pro</h5>
+			    <p style="font-size:12px;">Tracking, Roto & Paint!</p>			
+			</div>	
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI5OTM3NjMyMQ==', '1')" id="hidden"><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1628796056/Webshop%20Images/Bundle%20Logos/Bundle_CoMo-2prod.png" class="img-fluid" style="width:75%;height:75%;"></a></center>
+				<br>
+				<h5>Continuum + Mocha Pro</h5>
+			    <p style="font-size:12px;">Combine to Save!</p>			
+			</div>				
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI5OTM3NjMyMQ==', '2')" id="hidden"><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1628796056/Webshop%20Images/Bundle%20Logos/Bundle_SaMo-2prod.png" class="img-fluid" style="width:75%;height:75%;"></a></center>
+				<br>
+				<h5>Sapphire + Mocha Pro </h5>
+			    <p style="font-size:12px;">Combine to Save!</p>			
+			</div>					
+    
+	  </div>	
+  </div>		
+  <div class="col-md-12">			
+					    <hr>
+			<div class="col-12 text-center">
+				<h2>You May Also Like</h2><br>
+			</div>
+
+  <div class="slider">
+    <div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2MjIxMTA3NjE5OQ==', '0')" id="hidden"><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1628796082/Webshop%20Images/Prod%20Logos/PILogo.png" class="img-fluid" style="width:50%;height:50%;"></a></center>
+				<br>
+				<h5>Particle Illusion</h5>
+			    <p style="font-size:12px;">Particle Animation Plugin<br><b>$95</b><!--<b>$71.25</b>--></p>			
+	</div>	 
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzMxNjg1MDE3Nw==', '1')" id="hidden"><img src="https://cdn.shopify.com/s/files/1/1222/4522/products/mocha-essentials-mosaic-01.jpg?v=1617716317" class="img-fluid" style="width:50%;height:50%;"></a></center>
+			<br>
+			<h5>Mocha Essentials</h5>
+			    <p style="font-size:12px;">7 hours of Mocha Training<br><b>$29</b><!--<b>$21.75</b>--></p>
+			</div>			
+	
+	<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzE0MDEwNzY0NTAzMQ==', '0')" id="hidden"><img src="https://cdn.shopify.com/s/files/1/1222/4522/products/BEAUTY_STUDIO.png?v=1574648699" class="img-fluid" style="width:50%;height:50%;"></a></center>
+			<br>
+			<h5>Beauty Studio</h5>
+			    <p style="font-size:12px;">Skin Smoothing & Digital Makeup<br><b>$199</b><!--<b>$149.25</b>--></p>	
+     		</div>	
+			
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzIzNTgxMzI0OQ==', '0')" id="hidden"><img src="https://cdn.shopify.com/s/files/1/1222/4522/products/image_1.png?v=1611261601" class="img-fluid" style="width:50%;height:50%;"></a></center>
+			<br>
+			<h5>Nitro FX</h5>
+			    <p style="font-size:12px;">Presets for Avid Sapphire Owners<br><b>$49.95</b><!--<b>$37.46</b>--></p>	
+     		</div>
+
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzE0MDEwNzY0NTAzMQ==', '7')" id="hidden"><img src="https://cdn.shopify.com/s/files/1/1222/4522/products/GENERIC_PremiumFilter_transparent.png?v=1574648706" class="img-fluid" style="width:50%;height:50%;"></a></center>
+				<br>
+				<h5>Primatte Studio</h3>
+			    <p style="font-size:12px;">Premium Keying Plugin<br><b>$299</b><!--<b>$224.25</b>--></p>
+			</div>					
+			<div class="col-md-3 text-center">
+			<center><a href="#top" @click="selectCollectionCarousel('Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzE2NTUyMzEyODQyMw==', '0')" id="hidden"><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1628796082/Webshop%20Images/Prod%20Logos/OpticsLogo.png" class="img-fluid" style="width:50%;height:50%;"></a></center>
+				<br>
+				<h5>Optics</h3>
+			    <p style="font-size:12px;">VFX Plugin for Photoshop<br><b>$99</b><!--<b>$74.25</b>--></p>
+			</div>			
+    
+	  </div>	
+	 <hr>
+  </div>
+
+			</div>
+			</div>
+			</div>
+			</div>
+			
+			</div>
+ 
+
+	
+<div style="display: none;" id="hidden-content">
+						  {{ partial "product-login.html" . }}
+</div>
+
+<script>
+function slugify(text) {
+	return text.toString().toLowerCase()
+	.replace(/\s+/g, '-')           // Replace spaces with -
+	.replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+	.replace(/\-\-+/g, '-')         // Replace multiple - with single -
+	.replace(/^-+/, '')             // Trim - from start of text
+	.replace(/-+$/, '');            // Trim - from end of text
+}
+
+function getQueryParameterArray(url) {
+    if (!url) {
+      url = window.location.href;
+    }
+
+	var params = {};
+	var parser = document.createElement('a');
+	parser.href = url;
+	var query = parser.search.substring(1);
+	var vars = query.split('&');
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split('=');
+		params[pair[0]] = decodeURIComponent(pair[1]);
+	}
+	return params;
+  }
+
+var productKey = {
+	hosts : {
+		"Multihost (Avid/Adobe/OFX/Flame)" : "Multi-host",
+		"Multihost (Adobe/Avid/OFX)" : "Multi-host",
+		"Multihost (Avid/Adobe/OFX)" : "Multi-host",
+		"Multihost (Flame/Adobe/Avid/OFX)" : "Multi-host",
+		"Adobe and OFX" : "Adobe/OFX",
+		"Multi-Host (Avid Adobe Apple OFX)" : "Multi-host + Avid",
+		"Multi-Host (Adobe Apple OFX)" : "Multi-host",
+		"Plug-in: MultiHost" : "Multi-host",
+		"Plug-in: Adobe" : "Adobe",
+		"Plug-in: Avid" : "Avid",
+		"Plug-in: OFX" : "OFX",
+		"Standalone + MultiHost Plug-ins" : "Standalone + Plug-Ins"
+	},
+	prods : {
+		"Sapphire + Continuum + Mocha Pro Bundle" : "Continuum + Sapphire + Mocha",
+		"Continuum + Sapphire Bundle" : "Continuum + Sapphire",
+		"Continuum + Mocha Pro Bundle" : "Continuum + Mocha",
+		"Sapphire + Mocha Pro Bundle" : "Sapphire + Mocha"
+	}
+}
+
+new Vue({
+
+	el: '#app',
+	delimiters: ['${', '}'],
+	data: {
+		loading: true,
+		collections: collections,
+		collection: undefined,
+		productId: undefined,
+		productName: '',
+		options: {},
+		serialNumber: '',
+		user: undefined,
+		renewalError: undefined,
+		renewalSerials: undefined,
+		renewalOptions: undefined,
+		legacyThreshold: undefined,
+		quantity: 1,
+		deep_link: {},
+		by_list: false,
+		mode_subscription: 0,
+	},
+
+	mounted: function() {
+		// this.options['Host'] = 'Adobe and OFX';
+		// this.options['Purchase Options'] = 'Annual Subscription';
+	},
+
+	created: function () {
+		var self = this;
+		self.collections = collections;
+		self.user = Cookies.getJSON('bfx-login');
+		self.loading = true
+		if (getQueryParameter('collection') && getQueryParameter('product')) {
+			const collectionId = self.collections.filter(function(c) { return slugify(c.title) === getQueryParameter('collection') })[0].id
+			shopifyClient.collection.fetchWithProducts(collectionId).then(function(collection) {
+				self.collection = collection
+				self.productId = self.collection.products.filter(function(p) { return slugify(p.title) === getQueryParameter('product') })[0].id
+				self.loading = false
+				this.mode_subscription = 0;
+				self.initDeepLink(self.collection);
+				
+			})
+		} else {
+			const collectionId = self.collections[0].id
+			shopifyClient.collection.fetchWithProducts(collectionId).then(function(collection) {
+				self.collection = collection
+				self.productId = self.collection.products[0].id
+				self.loading = false
+				// self.initDeepLink(self.collection);
+			})
+		}
+		self.getRenewalSerials();
+	},
+
+	computed: {
+		product: function() {
+			var self = this;
+			return self.collection.products.filter(function(product) {
+				return product.id == self.productId
+			})[0]
+		},
+	},
+
+	methods: {
+		initDeepLink: function(p_collection) {
+			var temp_options = p_collection.products.filter(function(p) { return slugify(p.title) === getQueryParameter('product') })[0].options;
+			var isMonthly = false;
+			temp_options.map(item => {
+				var option_name = item.name;
+				var matched_param_value = getQueryParameter(slugify(option_name));
+				var matched_param_value_disp = '';
+				
+				if (matched_param_value == 'monthly-subscription'){
+					isMonthly = true;
+					matched_param_value = 'annual-subscription'
+				}
+
+				if(matched_param_value !== null){
+					item.values.map(p_value => {
+						if (slugify(p_value.value) == slugify(matched_param_value)){
+							matched_param_value_disp = p_value.value;
+						}
+					});
+				}
+				Vue.set(this.deep_link, option_name, matched_param_value_disp);
+			});
+			if (isMonthly){
+				this.mode_subscription = 1;
+			}
+		},
+
+		setSubscription: function(key) {
+			var self = this;
+			self.mode_subscription = key;
+
+			var current_href = window.location.href;
+
+			var up_url = "";
+				
+			if(key !== 0){
+				up_url = current_href.replace("annual-subscription", "monthly-subscription");
+			}else{
+				up_url = current_href.replace("monthly-subscription", "annual-subscription");
+			}
+
+			window.history.pushState({}, '', up_url);
+			var currentVariant = this.mode_subscription == 0 ? this.variant() : this.variantformonthly();
+			if (currentVariant != null) this.gtmProductClickEvent(currentVariant);
+		},
+
+		variant: function(options) {
+			var self = this;
+			if (options == null) options = self.options;
+			return self.product.variants.filter(function(variant) {
+				if (Object.keys(options).length !== variant.selectedOptions.length) {
+					return false;
+				}
+				if (self.isRenewal() && !self.serialNumber){
+					return false;
+				}
+				for (option in options) {
+					var optionValue = options[option]
+					for (productOption in variant.selectedOptions) {
+						productOption = variant.selectedOptions[productOption]
+						if (
+							option === productOption.name &&
+							optionValue !== productOption.value
+						) {
+							return false;
+						}
+					}
+				}
+				return true;
+			})[0]
+		},
+		variantformonthly: function() {
+			var monthlyOptions = {};
+			for (var key in this.options){
+				monthlyOptions[key] = this.options[key];
+			}
+			monthlyOptions['Purchase Options'] = 'Monthly Subscription';
+			return this.variant(monthlyOptions);
+		},
+		reinstatementVariant(){
+			var reinstatementOptions = {};
+			for (var key in this.options){
+				reinstatementOptions[key] = this.options[key];
+			}
+			reinstatementOptions['Purchase Options'] = 'Upgrade & Support Reinstatement';
+			return this.variant(reinstatementOptions);
+		},
+		showCompareAt: function() {
+			return parseFloat(this.variant().price.amount) < parseFloat(this.variant().compareAtPrice.amount)
+		},
+		showCompareAt_monthly: function() {
+			return parseFloat(this.variantformonthly().price.amount) < parseFloat(this.variantformonthly().compareAtPrice.amount)
+		},
+		sku: function() {
+			return this.variant().sku
+		},
+		sku_monthly: function() {
+			return this.variantformonthly().sku
+		},
+		compareAtPrice_monthly: function() {
+			var price = (parseFloat(this.variantformonthly().compareAtPrice.amount) * this.quantity).toFixed(2);
+			return '$' + price.toString()
+		},
+		compareAtPrice: function() {
+			var price = (parseFloat(this.variant().compareAtPrice.amount) * this.quantity).toFixed(2)
+			return price.toString()
+		},
+		price: function() {
+			var price = (parseFloat(this.variant().price.amount) * this.quantity).toFixed(2)
+			return '$' + price.toString()
+		},
+		price_monthly: function() {
+			var price = (parseFloat(this.variantformonthly().price.amount) * this.quantity).toFixed(2);
+			return '$' + price.toString()
+		},
+		showLicenseField: function() {
+			var fullProductOptions = [
+				'New License', 'Annual Subscription', '30 Day Subscription', 'Monthly Subscription'
+			]
+			return (
+				this.options['Purchase Options'] !== undefined &&
+				!fullProductOptions.includes(this.options['Purchase Options'])
+			)
+		},
+		useTextBox: function() {
+			return (
+				this.product.title === 'Silhouette' ||
+				this.product.title === 'Silhouette + Mocha Pro Bundle'
+			)
+		},
+		isRenewal: function() {
+			var option = this.options['Purchase Options'];
+			return (
+				option != null && (
+				option === 'Upgrade/Support Renewal' ||
+				option === 'Annual Subscription Renewal' ||
+				option === 'Legacy Upgrade' ||
+				option.includes('Upgrade') ||
+				option.includes('Legacy Renewal'))
+			);
+		},
+		isReinstatement: function () {
+			if (this.renewalSerials == null) return false;
+		 	var contract = this.renewalSerials[this.serialNumber];
+		 	return (contract != null && contract.isLegacy);
+		},
+		confirmReinstatement: function(){
+			var renewalVariant = this.variant();
+			var reinstatementVariant = this.reinstatementVariant();
+			var reinstatementFee = reinstatementVariant.price.amount - renewalVariant.price.amount;
+
+			var confirmMessage = 
+				'Upgrade & Support has expired for this license. A reinstatement fee of $' + reinstatementFee.toFixed(2) + ' will be applied. Continue?';
+			return confirm(confirmMessage);
+		},
+		isMonthlySubscription: function() {
+			var option = this.options['Purchase Options'];
+			return (
+				option != null && (
+				option === 'Monthly Subscription')
+			);
+		},
+		isSubscription: function() {
+			var option = this.options['Purchase Options'];
+			return (
+				option != null && (
+				option === 'Annual Subscription')
+			);
+		},
+		getRenewalSerials: function() {
+			var self = this;
+			var serials;
+			var today = new Date();
+			self.legacyThreshold = new Date(today.getFullYear() - 2, today.getMonth(), today.getDate());
+			if (!self.user){
+				return '';
+			}
+			else{
+				$.ajax({
+		          type:'POST',
+		          url: 'https://backend.borisfx.com/renewals',
+		          data: JSON.stringify(self.user),
+		          contentType: 'application/json',
+		          success: function (res) {
+		          	var renewalObject = {};
+		          	var data = JSON.parse(JSON.parse(res));
+		          	for (var i = 0 ; i < data.licenses.length; i++){
+		          		var contract = data.licenses[i];
+		          		renewalObject[contract.serial] = {
+		          			serial: contract.serial,
+		          			product : contract.family,
+		          			host: contract.host,
+		          			qty: contract.quantity,
+		          			endDate: contract.endDate,
+		          			contractType: contract.contractType,
+							isLegacy: contract.isLegacy
+		          		};
+		          	}
+		          	for (var i = 0 ; i < data.bundles.length; i++){
+		          		var bundle = data.bundles[i];
+		          		var serialString = bundle.serials.toString().replace(/,/g, ' + ');
+		          		renewalObject[serialString] = {
+		          			serial: serialString,
+		          			product : bundle.family,
+		          			host : bundle.host,
+		          			qty: bundle.quantity,
+		          			endDate : bundle.endDate,
+		          			contractType : contract.contractType,
+							isLegacy : contract.isLegacy
+		          		}
+
+		          	}
+		          	self.renewalSerials = renewalObject;
+		          }
+				});	
+			}
+		},
+		getRenewalOptions: function() {
+			var self = this;
+			self.renewalError = undefined;
+			self.renewalOptions = undefined;
+			self.quantity = 1;
+			if (!self.user){
+				var url_base = window.location.protocol + "//" + window.location.host
+				var redirect = url_base + '/store?';
+				redirect += 'collection=' + slugify(this.collection.title)
+				redirect += '&'
+				redirect += 'product=' + slugify(this.product.title)
+				var url = url_base + '/account/login/?redirect_url=' + encodeURIComponent(redirect);
+				self.renewalOptions = '';
+				self.renewalError = 'Please <a data-fancybox data-src="#hidden-content" href="javascript:;">log in</a> to renew your License(s).'
+				return '';
+			}
+			var isLegacyProduct = self.options['Purchase Options'].includes('Legacy');
+			var isSubscription = self.options['Purchase Options'].includes('Subscription');
+			var renewalSerials = self.renewalSerials;
+			var optionArray = [];
+			var host = self.options['Host'];
+			if (productKey.hosts[host] != null){
+				host = productKey.hosts[host];
+			}
+			var prod = self.product.title;
+			if (productKey.prods[prod] != null){
+				prod = productKey.prods[prod];
+			}
+			for (var key in renewalSerials){
+				var c = renewalSerials[key];
+				var endDate = new Date(c.endDate);
+				var isValidDate = ((!isLegacyProduct && !c.isLegacy) || (isLegacyProduct && c.isLegacy));
+				var isValidType = ((!isSubscription && c.contractType == 'Upgrade and Support') || (isSubscription && c.contractType == 'Subscription'));
+				var productMatch = c.product.toLowerCase() == prod.toLowerCase();
+				var hostMatch = (host == null || c.host.toLowerCase() == host.toLowerCase());
+				if (productMatch && hostMatch && isValidType){
+					optionArray.push(c);
+				}
+			}
+			if (optionArray.length == 0){
+				self.renewalError = 'No licenses found for this Product.'
+				return ''; 
+			}
+			self.renewalOptions = optionArray;
+			return '';
+		},
+		showrareoption: function(optionlicense,optionname) {
+				var self = this;
+				var host = self.options['Host'];
+				var prodName = self.product.title;
+				doexclude = false
+				
+				// Hide Legacy Renewal/U&S Reinstatement Options
+				if (optionname === 'Purchase Options' && (optionlicense.includes('Legacy') || optionlicense.includes('Reinstatement'))){
+					doexclude = true;
+				}
+
+				//Hide 30 Day Subscription Option
+				if (host === 'Multihost (Avid/Adobe/OFX/Flame)' && optionname === 'Purchase Options' && optionlicense === '30 Day Subscription'){
+					doexclude = true;
+				}
+
+				// ### PL: HIDE Monthly Subscription
+				if (optionname === 'Purchase Options' && optionlicense === 'Monthly Subscription'){ 
+					doexclude = true
+				}
+
+				//Hide all Renewal Options for Silhouette Plugins
+				if (prodName != null && prodName.includes('Silhouette')){
+					var excludeOptions = ['Upgrade/Support Renewal', 'Legacy Renewal (version 7)', 'Legacy Upgrade'];
+					var exclueHosts = ['Adobe/OFX plugin', 'Standalone & Adobe/OFX plugin'];
+					if (optionname === 'Purchase Options' && excludeOptions.includes(optionlicense) && exclueHosts.includes(host)){
+						doexclude = true;
+					}
+				}
+
+				//Unclear what this filter is accomplishing. 'Bundle Options' does not appear to be an option on any Products currently in Shopify.
+				hasmatchinghost = false
+				for (option in self.options) {
+					var optionValue = self.options[option]
+					if (
+						option === 'Bundle Options' &&
+						optionValue === 'Silhouette + Mocha Pro OFX plugin'
+					) {
+						hasmatchinghost = true
+					}
+				}
+				if (optionname === 'Purchase Options' && optionlicense === 'Monthly Subscription' && hasmatchinghost)
+				{ doexclude = true}
+
+				return (
+				!doexclude
+			)
+		},
+		selectCollection: function (collectionId) {
+			var self = this
+			self.by_list = true;
+			self.loading = true
+			shopifyClient.collection.fetchWithProducts(collectionId).then(function(collection) {
+				self.collection = collection
+				self.productId = self.collection.products[0].id
+				self.options = {}
+				self.loading = false
+			});
+		},			
+		selectCollectionCarousel: function (collectionId, pID) {
+			var self = this
+			self.by_list = true;
+			self.loading = true
+			shopifyClient.collection.fetchWithProducts(collectionId).then(function(collection) {
+				self.collection = collection
+				self.productId = self.collection.products[pID].id
+				self.options = {}
+				self.loading = false
+			});
+		},		
+		selectProduct: function () {
+			var self = this;
+			this.options = {}
+			this.serialNumber = ''
+			this.$forceUpdate()
+
+			var current_href = window.location.href;
+			var change_param = "";
+			if(getQueryParameter("product") !== null) {
+				change_param = "&product=" + getQueryParameter("product").replaceAll(' ', '%20');
+			}
+
+			var updated_param = "&product=" + slugify(this.product.title);
+			var up_url = "";
+			
+			if(change_param !==""){
+				up_url = current_href.replace(change_param, updated_param);
+			}else{
+				up_url = current_href + updated_param;
+			}
+			window.history.pushState({}, '', up_url);
+		},
+		selectOption: function (option_name, option_value) {
+			// if(!this.by_list) {
+				
+			// } else {
+				this.serialNumber = '';
+				if (this.isRenewal()){
+					this.getRenewalOptions();
+				}
+				this.$forceUpdate()
+			// }
+				var current_href = window.location.href;
+				var change_param = "";
+				if(getQueryParameter(slugify(option_name)) !== null) {
+					change_param = "&" + slugify(option_name) + "=" + getQueryParameter(slugify(option_name)).replaceAll(' ', '%20');
+				}
+				var updated_param = "";
+				if(option_value!==undefined){
+					updated_param = "&" + slugify(option_name) + "=" + slugify(option_value);
+				}
+				
+				var up_url = "";
+				
+				if(change_param !==""){
+					up_url = current_href.replace(change_param, updated_param);
+				}else{
+					up_url = current_href + updated_param;
+				}
+
+				window.history.pushState({}, '', up_url);
+
+				var currentVariant = this.mode_subscription == 0 ? this.variant() : this.variantformonthly();
+				if (currentVariant != null) this.gtmProductClickEvent(currentVariant);
+		},
+		selectSerial: function () {
+			var self = this;
+				contract = self.renewalSerials[self.serialNumber];
+			if (self.serialNumber != ''){
+				self.quantity = contract.qty;
+			}
+			else{
+				self.quantity = 1;
+			}
+		},
+		addToCart: function () {
+			var self = this;
+			if (self.isReinstatement()){
+				var doReinstate = self.confirmReinstatement();
+				if (!doReinstate) return;
+				var variant = self.reinstatementVariant();
+			}
+			else{
+				var variant = self.mode_subscription == 0 ? self.variant() : self.variantformonthly();
+			}
+
+			var storedCheckoutId = Cookies.get('bfx-checkout-id');
+			if (self.serialNumber != null){
+				
+			}
+			var lineItems = [{
+				variantId: variant.id,
+				quantity: parseInt(self.quantity),
+				customAttributes : [{key: 'Current Serial Number', value: self.serialNumber}]
+			}];
+
+			self.fetchCheckout(storedCheckoutId)
+			.then(function(checkoutId){
+				Cookies.set('bfx-checkout-id', checkoutId);
+				shopifyClient.checkout.addLineItems(checkoutId, lineItems)
+				.then(function() {
+					self.gaAddToCartEvent(variant, self.quantity);
+					showCart();
+				});
+			});
+		},
+		fetchCheckout: function(checkoutId){
+		var self = this;
+			return new Promise(function(resolve, reject){
+				var shopifyCallback = function(checkout){
+				if (checkout.orderStatusUrl) {
+					shopifyClient.checkout.create().then(function(checkout){
+						resolve(checkout.id);
+						return;
+					})
+				}
+				resolve(checkout.id);
+				return;
+				}
+
+				if (checkoutId == null) shopifyClient.checkout.create().then(shopifyCallback);
+				else (shopifyClient.checkout.fetch(checkoutId).then(shopifyCallback))
+			})
+		},
+		gtmProductClickEvent: function(variant){
+			var self = this;
+			try{
+				var titleSplit = variant.title.split(' / ');
+				var host = titleSplit.length == 2 ? titleSplit[0] : null;
+				var type = titleSplit.length == 2 ? titleSplit[1] : titleSplit[0];
+				var productTitle = self.product.title;
+				products = [{
+					'name': productTitle,
+					'id': variant.sku,
+					'price': variant.price.amount,
+					'category': host ? host.replaceAll('/', ' + ') : null,
+					'variant' : type
+				}];
+
+				dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+				dataLayer.push({
+					'event': 'productClick',
+					'ecommerce': {
+					'click': {
+						'actionField': {'list': 'Store'},
+						'products': products
+					}
+					}
+				});
+			}
+			catch(e){
+				console.error(e);
+			}
+		},
+		gtmProductImpressionEvent: function(productName){
+			dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+			dataLayer.push({
+				'event': 'productImpression',
+				'ecommerce': {
+				'impressions': [{
+					'name': productName,
+					'list': 'Store',
+				}]
+			}
+  		});
+		},
+		gaAddToCartEvent: function(variant, quantity){
+			var self = this;
+			try{
+				var titleSplit = variant.title.split(' / ');
+				var host = titleSplit.length == 2 ? titleSplit[0] : null;
+				var type = titleSplit.length == 2 ? titleSplit[1] : titleSplit[0];
+				var productTitle = self.product.title;
+
+				window.dataLayer.push({ ecommerce: null });
+				window.dataLayer.push({
+					'event': 'addToCart',
+					'ecommerce': {
+						'currencyCode': 'USD',
+						'add': {                                
+							'products': [{                        
+								'name': productTitle,
+								'id': variant.sku,
+								'price': variant.price.amount,
+								'brand': null,
+								'category': host ? host.replaceAll('/', ' + ') : null,
+								'variant': type,
+								'quantity': quantity 
+							}]
+						}
+					}
+				});
+			}
+			catch(err){}
+		}
+	},
+	watch: {
+		productId: function() {
+			// if (this.by_list){
+				var url = window.location.protocol + "//" + window.location.host + window.location.pathname + '?';
+				url += 'collection=' + slugify(this.collection.title)
+				url += '&'
+				url += 'product=' + slugify(this.product.title)
+				window.history.pushState({}, '', url);
+			// }
+			var multiProductCollections = ['Continuum Units', 'Continuum Premium Filters', 'Bundles', 'Training Products'];
+			if (multiProductCollections.includes(this.collection.title)){
+				this.gtmProductImpressionEvent(this.product.title);
+			}
+		},
+		collection: function(newVal, oldVal) {
+			if (oldVal == null) return;
+			var temp_options = JSON.parse(JSON.stringify(this.collection.products[0].variants));
+			for(var temp in temp_options) {
+				if (temp_options.hasOwnProperty(temp)) {
+					var val = temp_options[temp];
+					if (val.title.includes('Subscription')) {
+						var tmpArray = val.title.split(' / ');
+						if (tmpArray.length > 1){
+							var target = '';
+							if (tmpArray[0].includes('Subscription')) {
+								target = tmpArray[1];
+							} else {
+								target = tmpArray[0];
+							}
+							this.options['Host'] = target;
+						}
+						this.options['Purchase Options'] = 'Annual Subscription';
+						this.mode_subscription = 0;
+						break;
+					} else if (val.title.includes('New License')) {
+					    this.options['Purchase Options'] = 'New License';
+			       } else if (val.title.includes('Instant Download')) {
+					    this.options['Delivery Options'] = 'Instant Download';
+			       } else if (val.title.includes('Avid Media Composer')) {
+					    this.options['Host'] = 'Avid Media Composer';
+			       }	
+				}
+			}
+
+			var multiProductCollections = ['Continuum Units', 'Continuum Premium Filters', 'Bundles', 'Training Products'];
+			if (!multiProductCollections.includes(this.collection.title)) this.gtmProductImpressionEvent(this.collection.title);
+		},
+		deep_link: {
+			handler(deep_link) {
+				var tdl = JSON.parse(JSON.stringify(this.deep_link));
+				for (var key of Object.keys(tdl)){
+					this.options[key] = tdl[key];
+				}
+			},
+			deep: true,
+			immediate: true
+		}
+	},
+	updated() {
+	$('.slider').not('.slick-initialized').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});	
+	},
+
+});
+
+</script>
+
+<!-- <script>
+           $("a#cu").click(function() {
+		   var instance = $.fancybox.open({
+		   src  : '/store/contact-us-popup/',
+		   type : 'iframe',
+		   openEffect : 'none',
+		   opts : {
+			afterLoad : function( instance, current ) {
+			console.log(instance);
+	
+		    },
+			afterClose : function( instance, current ) {
+			instance.close();
+			},
+			iframe : {
+			  css : {
+				width : '1024px',
+				height: '768px'
+			  }
+			 }
+			}
+	});
+	});
+</script> -->
+
+{{ end }}

@@ -1,0 +1,1224 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: ZapTo",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/ZapTo.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="ZapToMask:ZapTo">
+     <h2>
+      ZapToMask: ZapTo
+     </h2>
+    </a>
+    Generates a forked lightning bolt from a given point to the
+  edges of objects in the ToObj input clip, and renders it over a
+  background input.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       ToObj:
+      </b>
+      The edges of objects in this clip are extracted, and the
+  lightning connects to points along these edges facing towards the
+  starting point.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Back:
+      </b>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      This input is used to control which edges are used to attract the lightning.
+  Edges found in black areas will not be used.  Edges found in white areas will be used
+  as normal.  Edges found in grey areas will be scaled down.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/ZapTo.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Surface Points:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of points along the edges to connect
+  the lightning to.  These surface points are divided up amongst the
+  shapes in the ToObj input.  If the number of requested surface
+  points is equal to the number of separate shapes in the ToObj input,
+  one lightning fork will connect to each.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 -0.0031],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The starting position of the lightning.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Dist:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The maximum distance of surface points from the Start
+  position.  Edges outside this distance are ignored.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The value used to determine the edge locations.
+  Objects darker than this value are ignored.  On smooth objects,
+  larger threshold values move the edges inwards to make smaller
+  shapes, and smaller values move the edges outwards.  You can use the
+  Show Edges option to view the edge image directly while adjusting
+  this parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur To Obj:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.025,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the ToObj input clip before finding the edges.
+  This can help remove noise, and reduce the number of separate
+  shapes.  You can use the Show Edges option to view the edge image
+  directly while adjusting this parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show:
+   </b>
+   <i>
+    Popup menu,  Default: Result
+   </i>
+   .
+   <br/>
+   Selects what the effect will output.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Result:
+      </i>
+     </b>
+     shows the normal lightning result over the background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Over ToObj:
+       </i>
+      </b>
+      shows the lightning over the ToObj input instead
+  of the Back.  This can be useful to view while adjusting the Surface
+  Points, Start, and Max Dist parameters.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Edges:
+        </i>
+       </b>
+       shows the target edge image.  This can be useful to view
+  while adjusting the Threshold and Blur To Obj parameters.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.07,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the lightning bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The amount of random variation in the width of the
+bolts along their lengths.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    End Pointiness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Determines how pointed the end of the bolts are.
+If 0, the entire bolt will have equal width.  If 1, the bolts will
+thin out along their entire length for a pointed end.  If it is .5,
+the bolts will start thinning out half way between the start and
+end points.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wiggle Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   By default the bolts automatically wiggle over time.
+This parameter provides a starting offset for these bolt
+perturbations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wiggle Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The speed at which the bolts are perturbed
+automatically over time.  To animate changes in speed, set this
+to zero and animate the Wiggle Start parameter instead.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Jitter Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this is 0, the same random lightning will be
+used for every frame processed.  If it is 1, different random
+lightning is used for each frame.  If it is 2, new random lightning is
+used for every other frame, and so on.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rand Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The
+actual seed value is not significant, but different seeds give
+different random lightning bolts, and the same value should give a
+repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the lightning bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   The color of the lightning.  If you want to keep the
+  lightning bolt itself bright white, you can still affect the
+  perceived color by adjusting the Glow Color instead.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrinkle Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of wrinkles in the bolts.  Decrease
+for straighter smoother bolts or increase for more kinky bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branchiness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 20.
+   <br/>
+   Scales the number of additional bolts that branch
+from the main bolt.  Set this to 0 for basic bolts with no extra
+branches.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branch Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   65,
+   <i>
+    Range:
+   </i>
+   0 to 180.
+   <br/>
+   The maximum angle of the random branches relative to
+the bolt they are branching off of.  If this is 0 the branches will be
+more lined up with the main bolt.  With larger values the branches will
+be more perpendicular to the main bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branch Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 3.
+   <br/>
+   The scaled length of the branches relative to the
+distance between the Start and End points.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Back:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the background before
+combining with the lightning.  If 0, the result will contain only the
+lightning image over black.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Screen
+   </i>
+   .
+   <br/>
+   Determines how the lightning and glow are combined with the Background.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Screen:
+      </i>
+     </b>
+     performs a blend function which can help prevent
+  overly bright results.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Add:
+       </i>
+      </b>
+      causes the lightning to be added to the background.  This gives
+  brighter glows over light backgrounds.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Zap Only:
+        </i>
+       </b>
+       displays the lightning over black, ignoring the source image.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The offset from the start point to begin drawing the
+bolts.  This can be useful for animating a lightning strike.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The length of the bolts, beginning at Start Offset.  If
+less than 1, the bolts will not be drawn all the way from start to end.
+This can be useful for animating a lightning strike.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bolts:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 to 1000.
+   <br/>
+   The number of independent forked lightning bolts to draw,
+  each connecting the Start position with the edge points.
+  </dd>
+ </dl>
+ <h3>
+  Glow Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Bright:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the glow applied to the lightning.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.5 0.5 1].
+   <br/>
+   The color of the glow applied to the lightning.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the glow applied to the lightning.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative red width of the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Grn:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative green width of the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative blue width of the glow.
+  </dd>
+ </dl>
+ <h3>
+  Motion Blur Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shutter Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the shutter angle for motion blur. This
+  controls the amount of time that the simulated shutter is open, and
+  thus the overall amount of motion blur.  A value of 0 disables
+  motion blur.  A value of 360 degrees will blur over an entire frame,
+  which is the maximum amount of motion blur possible with a real
+  camera. Values above 360 degrees will produce unrealistic results in
+  which the motion of adjacent frames overlaps.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Samples:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   2 or greater.
+   <br/>
+   Controls the number of individual renders that are averaged
+  together when applying motion blur. Increasing the number of samples
+  will give smoother results, but will also increase render times. If
+  too few samples are used, there can be visible aliasing or ghosting
+  artifacts. Faster motion will require more samples to avoid
+  artifacts.
+  </dd>
+ </dl>
+ <h3>
+  Atmosphere Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Atmosphere gives the effect of the zap shining through
+  a dusty atmosphere and picking up light or getting shadowed.
+  This parameter adjusts the amount, or amplitude, of the atmospheric
+  effect.  Zero gives a smooth zap, higher values give more dusty look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Controls the spatial frequency of the atmospheric
+  noise.  Turn this up higher to get finer details, turn down for
+  broader overall variation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Detail:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the amount of fine detail in the
+  atmosphere simulation.  Decrease to get smoother atmosphere,
+  increase for a more crunchy or grainy look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator for
+  the atmospheric noise.  The actual seed value is not significant, but
+  different seeds give different results and the same value should
+  give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The cloudy noise in the atmosphere evolves over
+  time like real dust clouds; this parameter controls how fast the
+  cloud pattern changes over time.  Set to zero for a static pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../zap">
+       Zap
+      </a>
+      <br/>
+      <a href="../zapfrom">
+       ZapFrom
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

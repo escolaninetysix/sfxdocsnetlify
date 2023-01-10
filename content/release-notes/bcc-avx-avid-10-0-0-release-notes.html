@@ -1,0 +1,173 @@
+{
+   "date": "2015-10-29T14:08:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC AVX [Avid] - 10.0.0 Release Notes"
+}
+
+<h3>Boris Continuum Complete AVX 10.0.0 Release Notes</h3>
+<p>BCC AVX 10.0.0 was released on 10/29/2015.</p>
+<p> </p>
+<p><strong> What's New in BCC AVX 10 (Summary of major changes since BCC9): </strong></p>
+<ul>
+<li>mocha planar tracking integrated directly into the PixelChooser.</li>
+<li>8 new effects:
+<ul>
+<li>Beauty Studio</li>
+<li>Dropout Fixer</li>
+<li>Fast Lens Blur</li>
+<li>Light Leaks</li>
+<li>Reframer</li>
+<li>Remover</li>
+<li>Title Studio</li>
+<li>Video Glitch</li>
+</ul>
+</li>
+<li>5 new transitions:
+<ul>
+<li>Cross Glitch</li>
+<li>Cross Melt</li>
+<li>Cross Zoom</li>
+<li>Lens Blur Dissolve</li>
+<li>Light Leaks Dissolve</li>
+</ul>
+</li>
+<li>PixelChooser re-engineered for streamlined UI, enhanced shape masking, and robust color keying (in addition to mocha spline tracking).</li>
+<li>Greater use of OpenCL and OpenGL for GPU acceleration in filters such as Beauty Studio, Title Studio, Fast Lens Blur, Lens Blur Dissolve, and many more.</li>
+<li>New OpenCL rendering engine for enhanced performance and robustness in OpenCL accelerated filters.</li>
+<li>FX Browser™ support in 3D Objects family of effects.</li>
+<li>Change text fields directly from FX Browser™ in 3D objects filters.</li>
+<li>Fast Film Glow:
+<ul>
+<li>Render quality improvements - particularly on alpha clips.</li>
+<li>Additional standard features such as Compare Mode, PixelChooser with mocha, and Beat Reactor.</li>
+<li>2x performance improvement in interlaced AVX projects.</li>
+</ul>
+</li>
+<li>Fast Film Process:
+<ul>
+<li>Improved OpenCL rendering.</li>
+<li>Additional standard features such as Compare Mode and PixelChooser with mocha.</li>
+</ul>
+</li>
+<li>New textures added to BCC Grunge.</li>
+<li>Advanced Optical Flow option in BCC Motion Blur.</li>
+<li>Added View Current Matte feature to Chroma Key Studio.</li>
+<li>New presets for many key filters such as Fast Film Process, Fast Film Glow, Grunge, Glare, Glint, and Glitter.</li>
+<li>Streamlined effect categories with deprecated filters moved to Obsolete category.</li>
+<li>Numerous bug fixes.</li>
+</ul>
+<p> </p>
+<p><strong> BCC AVX 10 supports the following Avid host applications: </strong></p>
+<p>Macintosh:</p>
+<ul>
+<li>Avid Media Composer 6.5, 7, and 8.x  running Macintosh OS™ X 10.8, 10.9, and 10.10.</li>
+<li>Avid Symphony 6.5, 7, and 8.x running Macintosh OS™ X 10.8, 10.9, and 10.0.</li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li>Avid Media Composer Media Composer 6.5, 7, and 8.x running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+<li>Avid Symphony 6.5, 7, and 8.x running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+<li>Avid NewsCutter running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+</ul>
+<p> </p>
+<p><strong>Training:</strong></p>
+<p> Numerous resources are available for helping you get the most out of Boris Continuum Complete.</p>
+<ul>
+<li>Help documents for individual BCC effects are accessible directly from each plug-in’s UI.  The entire <a href="/documentation/continuum/bcc-effects-list/" title="BCC Help Documentation">BCC Help Documention</a> library is also available on the BorisFX website, including access to a downloadable version for browsing <a href="https://cdn.borisfx.com/borisfx/store/BCC10Documentation.zip" title="Offline Downloadable BCC Help Documentation">offline BCC Help Documentation</a>.</li>
+<li>
+<a href="/videos/?tags=category:Continuum%20TV&search=">BorisTV</a> video tutorials cover a huge range of topics from introductions to the Fundamentals, to deep training Webinar Replays, to in-depth looks at  key effects and techniques.</li>
+</ul>
+<p> </p>
+<p><strong> BCC AVX 10.x Compatibility Notes: </strong> <br> While in general your previously saved projects should render identically in the newer version, bug fixes and quality improvements can sometimes change the look of older projects. While every effort is made to ensure project compatibility, the following notable areas may see some change to the look of previously saved projects.</p>
+<ul>
+<li>Render quality improvements in Fast Film Glow when applied to alpha clips may result in some changes to glow brightness and/or extent.</li>
+<li>Render quality improvements with Extrusion Styles in 3D Objects filters may result in changes to the extrusion thickness.</li>
+</ul>
+<p> </p>
+<p><strong> BCC AVX 10.0.0 - Known Issues and Limitations: </strong></p>
+<ul>
+<li>28732 - BCC Extruded Text and BCC Type On Text use a custom text entry window. On Mac OS some of the parameters such as Top Down Text, Right to Left Reading, Negative Line Leading, Superscript and Subscript are not accounted for in the custom text entry window.  However previews and renders back in the host will always correctly account for these parameters.  This limitation does not affect Windows users.  We recommend using the new Title Studio effect for more comprehensive typography preview and control.</li>
+<li>26068 - In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.</li>
+<li>27591 - BCC Motion Tracker - if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must reset the tracker data with the reset button in the tracker banner before starting a second tracker pass. (This extra step is not necessary if the tracker point picker location has changed.)</li>
+<li>25867 - In BCC Type On Text the Line Leading in the text entry preview window does not match up with the leading in the rendered result, and the leading may need to be adjusted to generate the desired final render.</li>
+<li>27313 - The Beat Reactor propagation options in Organic Strands do not work. Use non-propagation modes instead.</li>
+<li>27736 - When using a host image layer as the particle type in Particle Emitter 3D, the particles can appear squished/stretched in projects with non-square pixel aspect ratios.</li>
+<li>26750 - The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. Use lower values near the default setting of 32 as a workaround.</li>
+<li>26845 - BCC LED shows occasional mis-colored dots on Quadro FX 3500 cards.</li>
+<li>25671 - When stacking multiple effects on a track and then rearranging the order of those effects, parameter errors may occur such as button parameters functioning as simple checkboxes instead of true buttons.  This is an Avid host problem and we are working with Avid to resolve it.</li>
+<li>27292 - Effect stacks will occasionally display an error stating "Connect failed to connect" when preview at less than full resolution. This error does not affect final render and can be worked around by switching to full green/green preview resolution. We are working with Avid to resolve this issue.</li>
+<li>30613 - Flicker Fixer - When using the Key/Mask controls the intensity of the flicker correction is only half as strong as it should be, even in regions that should be fully corrected.</li>
+<li>30351 - Pan and Zoom - Preview Mode rectangle widgets don’t match the final result exactly when using 3D Mode with non-square PAR comps.</li>
+<li>30395 - Combining 3D Objects filters with other OpenGL accelerated BCC filters such as Lens Flare 3D or Grunge requires at least 2GB graphics card memory for HD projects and higher for 4K.</li>
+<li>30632 - Some OpenGL accelerated filters such as Lens Flare 3D will always render with Broadcast Safe Levels even if this option is off.</li>
+<li>30638 - Lens Flare 3D - enabling the Geometrics in Pre-Apply mode causes the image to be squished horizontally when in Green/Green mode or in final render.</li>
+<li>30653 - Mac only - 3D Objects filters can show an unexpected brightness shift in 16bit when using the Trasforms-&gt;Opacity control.  As a workaround you can use the Effect Layer Opacity control in the General Controls group to achieve the same result.</li>
+<li>30959 - The integrated Beat Reactor parameters in some filters may default to incorrect values if a BCC preset is loaded prior to enabling the Beat Reactor.</li>
+<li>1624 - LED - Increasing Grow Alpha param to larger values can cause performance degradation or unexpected behavior in 16bit mode.</li>
+<li>1540 - Grunge - dust elements will sporadically render as a squares instead of proper irregular dust shapes.</li>
+<li>1604 - FX Browser - Choose Folder dialog box becomes hidden if folder panel location is moved from default workspace location. As a workaround you can Alt-tab out of the host and then back in to make it appear.</li>
+<li>1602 - PixelChooser subpresets don't load when selected in the pop menu but they do load when using the Load option in the menu.</li>
+<li>1593 - mocha PixelChooser - ignores values set in PC Mask Intensity slider</li>
+<li>1559 - Reframer - When the background is set to Scale to Fit, the background X/Y Position moves the entire background layer instead of offsetting the video with the available source content.</li>
+<li>1568 - FX Browser - Mac - Browser UI does not launch until you move the mouse out of the effect editor. As a workaround, move the mouse outside the effect editor pane after clicking the launch button.</li>
+<li>1309 - mocha PixelChooser - Background Rendering does not work. As a workaround, avoid the Avid background rendering option when using tracked mocha splines in the PixelChooser.</li>
+<li>1167 - Hitting Reset to Factory Defaults in Avid turns on the Use Legacy PixelChooser checkbox.</li>
+<li>1503 - Fast Lens Blur can render slower than expected on older graphics cards - particularly older MacBook Pro laptops older than 2015.</li>
+<li>1528 - FX Browser - Win - For filters with large numbers of presets, some of the thumbnails may not refresh until you move the mouse.</li>
+<li>1526 - FX Browser - Mac - Save Workspace menu is not available.</li>
+<li>1395 - Lens Flare 3D and other lighting filters can't be applied to alpha clips without explicitly specifying the background layer for compositing.</li>
+<li>1382 - Fast Film Glow &amp; Film Glow: Selecting Reset to Factory Defaults does not completely return the filter to its default state.</li>
+<li>497 - PixelChooser - feathering option does not work for OpenGL filters.</li>
+<li>645 - mocha PixelChooser - mocha track data is not saved along with presets nor with the PixelChooser sub-presets.  If you wish to clone mocha tracking data from one effect instance or machine or host to another, you can use the File-&gt;Export Project and File-&gt;Merge Project options from within the mocha UI.</li>
+<li>799 - Loading a BCC effect preset saved in another host will enable the BCC AVX Safe Levels</li>
+<li>1076 - mocha PixelChooser - tracking data does not adjust if the user changes the clip trim on the front end of the clip after tracking.  The clip will need to be re-tracked if the trim is changed on the front.  You can minimize the amount of retracking by re-aligning the contours within the mocha UI with the Ubey-key, offsetting the contour to re-align it, and then re-tracking the remainder as necessary.</li>
+<li>496 - PixelChooser in OpenGL filters shows poor gradation in gradient masks.</li>
+<li>663 - Optical Stabilizer - subtle horizontal banding artifacts when applied to some interlaced clips.</li>
+<li>1107 - PixelChooser - Circle and Egg Shape can show stretched shapes or feathering when in interlaced projects and set to Speed Optimized. As a workaround you can change the Fields menu in the General Controls group to Quality Optimized.</li>
+<li>1070 - PixelChooser - Egg and Circle modes don't work correctly in OpenGL filters on avid.</li>
+<li>877 - Geometrics drop shadow option in OpenGL filters can produce unwanted colors.</li>
+<li>871 - Video Glitch - Block Damage Freeze Source will jitter back and forth between 2 frames rather than freezing.</li>
+<li>400 - PixelChooser - feathering can cause a mirror-edge effect on masks near edge of screen.</li>
+<li>265 - Rays Dissolve - Region Animation doesn't account for non-square aspect ratios or custom downsampling factors.</li>
+<li>1292 - Fast Film Process can show minor flickering around edges for shaky shots.</li>
+<li>1222 - Fast Lens Blur can produce slightly more course gradients near high contrast regions than the original CPU version for large blurs. As a workaround you can increase the Quality setting.</li>
+<li>1112 - mocha PixelChooser - the mocha UI does not display video if timeline quality is set to Green 10 and you are in an OpenGL filter. As a workaround, reduce the host quality level to regular green/green and then relaunch the mocha UI.</li>
+<li>932 - Lightning - Effect Layer Opacity control does not work.</li>
+<li>690 - External files in Pan &amp; Zoom are limited to 16k X 16k in dimension.</li>
+<li>431 - With Optical Stabilizer, inserting a transition at the head of the stabilized clip makes it lose stabilization &amp; the filter has to be re-analyzed</li>
+<li>1519 - Title Studio - objects using off center pivot preview incorrectly at Avid reduced resolutions.   As a workaround, use full resolution.</li>
+<li>1613 - Title Studio - Title Container - Type On doesn't auto update text.</li>
+<li>1603 - Title Studio - Reopening projects saved with OBJ models can trigger errors.  OBJ models are not currently supported.</li>
+<li>1607 - Title Studio - Some specific C4D model files import with misaligned textures.   Double check your model after importing.</li>
+<li>1605 - 3D Objects - FX Browser - Cannot copy/paste text into text entry field.</li>
+<li>1606 - FX Browser and Title Studio UI do not support mirroring displays on some MacBook Pro laptops.</li>
+<li>1450 - Title Studio - Camera position moves in opposite direction of cursor when dragging the Translate Interactor.</li>
+<li>1452 - Title Studio - Drop shadow ignores zoom level in alternate views.</li>
+<li>1477 - Title Studio - Enabling Motion Blur changes comp window background to black.</li>
+<li>1537 - Title Studio - does not support .png files.</li>
+<li>1539 - Title Studio Plugin Mac - Menu Bar doesn't update back to the host when toggling apps until you cancel or apply.</li>
+<li>1545 - Title Studio - Using the hand tool to move the comp window causes it to continue to move with camera motion.</li>
+<li>1555 - Title Studio - Imported OBJ object geometry can display incorrect material color attributes.  OBJ models are not currently supported.</li>
+<li>1553 - Title Studio - Scene lighting incorrect with imported OBJ models.  OBJ models are not currently supported.</li>
+<li>1556 - Title Studio - cannot import MTL file associated with OBJ model.  OBJ models are not currently supported.</li>
+<li>1524 - Title Studio - EPS colors are retained upon extrusion. If this is not desirable you can convert the EPS data to a Spline Object.</li>
+<li>1497 - Title Studio - FX Browser Folders view "Show Files from Subfolders" is not implemented.</li>
+<li>1488 - Title Studio - Mac: At High Preview Quality, ghosting is visible when Smoothness for Motion Blur is set to Highest.</li>
+<li>1471 - 3D Objects - FX Browser does not respect the background parameter in Avid.</li>
+<li>1479 - Title Studio - Type On effects do not animate when scrubbing timeline in the Title Studio UI.</li>
+<li>1385 - 3D Objects - Text Entry tab in FX Browser does not display text unless preset is changed.</li>
+<li>1432 - Title Studio: Camera interactors in world view allow for X/Y/Z movement beyond the parameter limits.</li>
+<li>1429 - Title Studio - drop shadow can look incorrect when viewed at reduced resolution.</li>
+<li>1045 - 3D Objects FX Browser - Text entry field does not show the proper number of text tracks until you select a preset.</li>
+<li>1423 - Title Studio - Mac: Extruded Spline with Texture material applied shifts in position depending on Host resolution.</li>
+<li>1413 - Title Studio AVX - Incorrect render results when setting Front Material to Texture.</li>
+<li>1374 - Title Studio - Rigid Run markers obscure loop region markers.</li>
+<li>1334 - Title Studio AVX - Effect sometimes does not render objects far back in Z space.</li>
+<li>1207 - Title Studio - Drop Shadow changes brightness of extrusions with opacity.</li>
+<li>1124 - Extruded Spline Material Layer stretches Pal video.</li>
+<li>706 + 1094 - BCC Motion Blur now includes an Advanced optical flow option which uses OpenCL hardware assisted rendering to implement a more sophisticated (and more computationally intensive) motion vector analysis.  The performance of the Advance mode varies widely from one graphics card to another and if you see reduced performance or unexpected results when using the Advanced option it is recommended that you switch to the Simple mode on that card.</li>
+<li>1671 - OpenGL filters (other than those in the 3D Objects category) may not render correctly when applied to 4k footage in Avid. </li>
+</ul>
+<p> </p>

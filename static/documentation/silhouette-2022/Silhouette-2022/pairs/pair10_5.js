@@ -1,0 +1,19 @@
+var pairs =
+{
+"distance":{"pixels":1}
+,"sets":{"pixels":1,"fractional":1}
+,"pixels":{"object":1}
+,"object":{"moves":1}
+,"moves":{"arrow":1}
+,"arrow":{"keys":1}
+,"keys":{"used":1}
+,"extended":{"shift":1}
+,"shift":{"distance":1,"key":1}
+,"used":{"conjunction":1}
+,"conjunction":{"shift":1,"ctrl":1}
+,"precise":{"ctrl":1}
+,"ctrl":{"cmd":1}
+,"cmd":{"distance":1,"key":1}
+,"fractional":{"pixels":1}
+}
+;Search.control.loadWordPairs(pairs);

@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.20. UndoGroup &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.21. View" href="View.html" />
+    <link rel="prev" title="2.19. StreamInfo" href="StreamInfo.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="View.html" title="2.21. View"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="StreamInfo.html" title="2.19. StreamInfo"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="undogroup">
+<span id="id1"></span><h1>2.20. UndoGroup<a class="headerlink" href="#undogroup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>2.20.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>2.20.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.project.UndoGroup.__enter__" title="mocha.project.UndoGroup.__enter__"><tt class="xref py py-meth docutils literal"><span class="pre">__enter__</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.project.UndoGroup.__exit__" title="mocha.project.UndoGroup.__exit__"><tt class="xref py py-meth docutils literal"><span class="pre">__exit__</span></tt></a> (arg__1, arg__2, arg__3)</li>
+<li>def <a class="reference internal" href="#mocha.project.UndoGroup.commit" title="mocha.project.UndoGroup.commit"><tt class="xref py py-meth docutils literal"><span class="pre">commit</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.project.UndoGroup.redo" title="mocha.project.UndoGroup.redo"><tt class="xref py py-meth docutils literal"><span class="pre">redo</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.project.UndoGroup.rollback" title="mocha.project.UndoGroup.rollback"><tt class="xref py py-meth docutils literal"><span class="pre">rollback</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.project.UndoGroup.undo" title="mocha.project.UndoGroup.undo"><tt class="xref py py-meth docutils literal"><span class="pre">undo</span></tt></a> ()</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>2.20.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The undo/redo handler class which allows to group changes to unified undoable blocks
+in scope of context managers.</div></blockquote>
+<dl class="class">
+<dt id="mocha.project.UndoGroup">
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">UndoGroup</tt><span class="sig-paren">(</span><em>UndoGroup</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.UndoGroup" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.UndoGroup.__enter__">
+<tt class="descclassname">UndoGroup.</tt><tt class="descname">__enter__</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.UndoGroup.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts an unified actions block.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.UndoGroup.__exit__">
+<tt class="descclassname">UndoGroup.</tt><tt class="descname">__exit__</tt><span class="sig-paren">(</span><em>arg__1</em>, <em>arg__2</em>, <em>arg__3</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.UndoGroup.__exit__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+<p>Commits an unified action block. Either rollbacks in case of an unhandled exception.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.UndoGroup.commit">
+<tt class="descclassname">UndoGroup.</tt><tt class="descname">commit</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.UndoGroup.commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commits an unified action block.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.UndoGroup.redo">
+<tt class="descclassname">UndoGroup.</tt><tt class="descname">redo</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.UndoGroup.redo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redoes the latest command from the redo stack.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.UndoGroup.rollback">
+<tt class="descclassname">UndoGroup.</tt><tt class="descname">rollback</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.UndoGroup.rollback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rollbacks an unified action block.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.UndoGroup.undo">
+<tt class="descclassname">UndoGroup.</tt><tt class="descname">undo</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.UndoGroup.undo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Undoes the latest command from the undo stack.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.20. UndoGroup</a><ul>
+<li><a class="reference internal" href="#synopsis">2.20.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.20.1.1. Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.20.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="StreamInfo.html"
+                        title="previous chapter">2.19. StreamInfo</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="View.html"
+                        title="next chapter">2.21. View</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/UndoGroup.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="View.html" title="2.21. View"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="StreamInfo.html" title="2.19. StreamInfo"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

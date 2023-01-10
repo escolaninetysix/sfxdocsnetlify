@@ -1,0 +1,61 @@
+{
+   "date": "2009-11-18T14:56:39-05:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC AVX - 6.0.6"
+}
+
+<h1>
+ Changes from BCC AVX 6.0.4 to BCC AVX 6.0.6
+</h1>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_011.jpg">
+  <img class="alignnone size-full wp-image-4950" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_011.jpg" alt="Image_001" width="615" height="364">
+ </a>
+</p>
+<p>
+  
+</p>
+<ul id="l1">
+ <li>
+  <h1>
+   Improvements to animated presets workflow
+  </h1>
+  <p>
+   One of the new features in BCC AVX 6 was the ability to load presets that contained keyframed parameters from either After Effects or Media Composer. In the BCC 6.0.6 release, we modified the behavior of the animated presets feature so that the user can decide whether to load the keyframe animation from the current frame in time or from the start point of the clip.
+  </p>
+ </li>
+ <li>
+  <p>
+   Improvements to keyframe interpolation in animated presets
+  </p>
+  <p>
+   Keyframes in various hosts use often show differences in the way they interpolate a change over time. For instance, Bezier style keyframes in Adobe After Effects are not the same as Bezier style keyframes in Avid Media Composer. With BCC AVX 6.0.6, we have compensated for these differences as much as possible with the result being that in this version, animated presets exchanged between AE and MC match each other more closely.
+  </p>
+ </li>
+ <li>
+  <p>
+   Improvements to static presets workflow
+  </p>
+  <p>
+   All filters in BCC AVX 6x include the ability to load and save a static, non-animated, preset with static presets taking a snapshot of the parameter values from the current point in time. In previous versions of BCC AVX 6, the preset recorded the parameter information from the first frame, regardless of the position of the CTI. This situation has been resolved with BCC 6.0.6 and static presets are now always recorded from the current point in time.
+  </p>
+ </li>
+ <li>
+  <p>
+   Improvements to the BCC Optical Stabilizer filter
+  </p>
+  <p>
+   The BCC Optical Stabilizer filter has been updated and improved with new user interface controls and a progress bar that accurately shows the frame being processed and the remaining frames to be processed in the clip. Other improvements to this filter include an auto-scale option that always fills the frame with image pixels and additional image sharpening options yielding an improved end result.
+  </p>
+ </li>
+ <li>
+  <p>
+   Fix for PixelChooser custom spline shape issue
+  </p>
+ </li>
+</ul>
+<p>
+ Most filters in BCC AVX include a PixelChooser matte and masking option. One of the selections in the PixelChooser mask option is Custom Splines. Sometimes, attempts to use this option in BCC 6.0.4 could cause instability within the host environment. This issue has been resolved with the 6.0.6 version.
+</p>

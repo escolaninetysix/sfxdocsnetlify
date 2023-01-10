@@ -1,0 +1,779 @@
+{{ if .Params.category }}
+<div class="row">
+  <div class="col">
+Category: <br>
+
+{{ with .Site.GetPage "section" "category-list" }}
+{{ range .Pages }}
+    <p id="cat"><a href="../../../category-list/#{{ .Params.category }}" id="{{ .Params.category }}">{{ .Params.category }}</a></p>	
+{{ end }}
+{{ end }}
+
+</div>
+
+<div class="col">
+<script>
+$(document).ready(function(){
+var map = {};
+$('p#cat').each(function() {
+    var value = $(this).text();
+    if (map[value] == null){
+        map[value] = true;
+    } else {
+        $(this).remove();
+    }
+});
+$("#Tutorial").toggle(false);
+$("#Uncategorized").toggle(false);
+$("[id='Nested Subgroup']").toggle(false);
+$("[id='Title Studio']").toggle(false);
+$("[id='BCC Obsolete']").toggle(false);
+});
+</script>
+<script>
+$(document).ready(function(){
+var cat = $('h4#categoryTag').text();
+$('p#cat').each(function() {
+
+if ($(this).text() == cat) {
+$(this).replaceWith('<p><b>' + cat + '</b></p>');
+
+}
+});
+});
+</script>
+<script>
+$(document).ready(function(){
+var categ = $('#categoryTag').text();
+
+$('a#links').each(function(){
+
+if ($("[class='BCC Art Looks']").attr("class") == categ) {
+$("[class='BCC Art Looks']").toggle(true);
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Lights']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(true);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Particles']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(true);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Color & Tone']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(true);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Perspective']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(true);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Licensing']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(true);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Key & Blend']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(true);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Time']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(true);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Image Restoration']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(true);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Transitions']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(true);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Blur & Sharpen']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(true);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Textures']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(true);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Warp']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(true);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Stylize']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(true);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Match Move']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(true);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Film Style']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(true);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Lights']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(true);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC 3D Objects']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(true);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Browser']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(true);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC VR']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(true);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Lens']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(true);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Optical Diffusion']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(true);
+$("[class='BCC Grads and Tints']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+if ($("[class='BCC Grads and Tints']").attr("class") == categ) {
+$("[class='BCC Particles']").toggle(false);
+$("[class='BCC Color & Tone']").toggle(false);
+$("[class='BCC Perspective']").toggle(false);
+$("[class='BCC Licensing']").toggle(false);
+$("[class='BCC Key & Blend']").toggle(false);
+$("[class='BCC Time']").toggle(false);
+$("[class='BCC Image Restoration']").toggle(false);
+$("[class='BCC Transitions']").toggle(false);
+$("[class='BCC Blur & Sharpen']").toggle(false);
+$("[class='BCC Textures']").toggle(false);
+$("[class='BCC Warp']").toggle(false);
+$("[class='BCC Stylize']").toggle(false);
+$("[class='BCC Match Move']").toggle(false);
+$("[class='BCC Film Style']").toggle(false);
+$("[class='BCC Lights']").toggle(false);
+$("[class='BCC 3D Objects']").toggle(false);
+$("[class='BCC Browser']").toggle(false);
+$("[class='BCC VR']").toggle(false);
+$("[class='BCC Lens']").toggle(false);
+$("[class='BCC Optical Diffusion']").toggle(false);
+$("[class='BCC Grads and Tints']").toggle(true);
+$("[class='Title Studio']").toggle(false);
+$("[class='Tutorial']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Uncategorized']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[class='BCC Art Looks']").toggle(false);
+$("[class='']").toggle(false);
+}
+});
+
+});
+</script>
+
+Effect:<br />
+
+
+{{ with .Site.GetPage "section" "category-list" }}
+{{ range (.Pages).Reverse }}
+  {{ if in .Params.title "BCC+" }}
+  <a href="../{{ .Params.link }}" id="links" class="{{ .Params.category }}">{{ .Params.title }}</a><br class="{{ .Params.category }}"/>
+  {{ end }}
+  {{ if in .Params.title "BCC " }}
+  <a href="../{{ .Params.link }}" id="links" class="{{ .Params.category }}">{{ .Params.title }}</a><br class="{{ .Params.category }}"/>
+  {{ end }}
+{{ end }}
+{{ end }}
+
+</div>
+
+
+<script>
+$(document).ready(function(){
+var title = $('h1#titleTag').text();
+
+$('a#links').each(function() {
+
+if ($(this).text() == title) {
+$(this).replaceWith('<b>' + title + '</b>');
+
+}
+});
+});
+</script>
+
+
+</div>
+{{ end }}

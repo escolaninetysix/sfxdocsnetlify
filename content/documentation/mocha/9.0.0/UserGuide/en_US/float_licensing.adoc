@@ -1,0 +1,288 @@
+
+== Installing Floating Licenses
+This guide will walk you through the process of installing floating licenses. Installing node-locked licenses does not require the use of the license manager. See above.
+
+=== Floating licenses - How it works
+A floating license allows central administration of your license deployment, avoiding the need to manually activate and deactivate our software on every machine, which is particularly beneficial for large facilities.
+
+Configuring a new machine to use your floating license server is very straightforward and requires no internet connection.
+
+Similarly, replacing a failed machine can be done without needing to contact technical support for the license to be released.
+
+=== How do I Install the Floating License Server? [[floating_server]]
+
+Mocha uses the Boris FX RLM License server for floating licenses.
+
+You can download the license server from the Boris FX website. See the steps below.
+
+Floating licenses are easy to set up if if you are familiar with configuring network services, but if you need any help with the process, please contact technical support.
+
+NOTE: To configure a license server you must have Administrator (or root) privileges
+
+=== Installing Floating Licenses with Online Activation
+
+. Download the RLM License Manager from the download section here: https://borisfx.com/downloads/?&product=RLM%20License%20Server[RLM License Server].
+. Run the License Manager file then follow the installation prompts
+. Open a Web browser and go to: http://SERVERNAME:5054/goforms/activate (Replace “SERVERNAME” with the name of the license server)
+. Click "BEGIN License Activation"
+. Enter `activation.genarts.com` in the “ISV activation website” field provided and click “Next”.
+. Enter `genarts` in the “ISV” field
+. Copy and paste your Mocha Activation Key license that you received from your license email into the “License activation key” field. Then, click “Next”
+. Your Ethernet address will auto-populate in the “License Server or Node-lock hostid” field. Accept the auto-populated Ethernet address
+. Enter the number of licenses that should be locked to this server in the “License count (for floating licenses)” field. Or just enter 0 to assign all licenses to the specified server. Click “Next”
+. A default license location will auto-populate in the “License File to create or edit” field. Accept the default license location and click “Next”.
+. On the “Activation Request Data” screen, verify all the information you have entered, and click “REQUEST LICENSE”
+. On the “License Activation” page, click on “(Re)start License Server”
+. Then, on the “Reread/Restart Servers” page, click on “Reread/Restart”
+
+The license server should now be set up.
+
+To confirm that the Boris FX license server is working, go to http://SERVERNAME:5054 (replace SERVERNAME with the name of the server), and click “Status” on the top left hand corner.
+
+`genarts` should show up under the ISV Servers and it will say `Running: Yes`.
+
+====  Installing Floating Licenses with Offline Activation
+
+In cases where you cannot install the license via an Activation code (normally where the server is not connected to the internet) you can manually install your license:
+
+. On a machine with internet access, download the RLM License Manager from the download section here: https://borisfx.com/downloads/?&product=RLM%20License%20Server[RLM License Server]
+. Install the License Manager on both the machine that has an internet connection AND the offline server you intend to run on (You will use the online machine to get the license for your offline server)
+. One the *online* computer, open a web browser and go to: http://SERVERNAME:5054/goforms/activate (Replace “SERVERNAME” with the name of the license server)
+. Click "BEGIN License Activation"
+. Enter `activation.genarts.com` in the “ISV activation website” field provided and click “Next”.
+. Enter `genarts` in the “ISV” field
+. Copy and paste your Mocha Activation Key license that you received from your license email into the “License activation key” field. Then, click “Next”
+. The Ethernet address of the machine you are on will auto-populate in the “License Server or Node-lock hostid” field.
+You will need to overwrite it with the Ethernet address of the *offline* license server.
+To find the Ethernet address on the *offline* license server:
+.. For RLM Server v13 and newer:
+* *On Windows:* Go to start -> Boris FX RLM Server -> Get RLM HostID
+* *On Mac:* In a console type: “/Library/Application Support/BorisFX/rlm/Get Hostid.py”
+* *On Linux:* In a terminal type: /usr/borisfx/rlm/hostid_wrapper.py
+.. For older versions of RLM Server:
+* *On Windows:* Go to start -> GenArtsRLMServer -> Get RLM HostID
+* *On Mac:* In a console type: “/Library/Application Support/GenArts/rlm/Get Hostid.py”
+* *On Linux:* In a terminal type: /usr/genarts/rlm/hostid_wrapper.py
+. The command above will print out the results – Get the first mac address from the first line: “Hostid of this machine:“
+. Enter the mac address into the *online* “License Server or Node-lock hostid” field.
+. Enter the number of licenses that should be locked to this server in the “License count (for floating licenses)” field. Or just enter 0 to assign all licenses to the specified server. Click “Next”
+. A default license location will auto-populate in the “License File to create or edit” field. Replace the default location to a location that you can easily write to and access the file, such as your Desktop or the Downloads folder.
+. Click "Next"
+. On the “Activation Request Data” screen, verify all the information you have entered, and click “REQUEST LICENSE”
+. On the “License Activation” page, click on “(Re)start License Server”
+. Then, on the “Reread/Restart Servers” page, click on “Reread/Restart”
+. Transfer the License File on to the *offline* license server and save the License File to the RLM directory.
+.. For RLM Server v13 and newer:
+* *For Windows:* `C:\Program Files\BorisFX\rlm`
+* *For Mac:* `/Library/Application Support/BorisFX/rlm/`
+* *For Linux:* `/usr/borisfx/rlm/`
+.. For older versions of RLM Server:
+* *For Windows:* `C:\Program Files (x86)\GenArts\rlm`
+* *For Mac:* `/Library/Application Support/GenArts/rlm/`
+* *For Linux:* `/usr/genarts/rlm/`
+. Open the License File in a text editor and edit the file with your offline server’s Hostname
+. Open a Web browser on the offline server, go to http://localhost:5054 and click on “(Re)Start License Server”
+
+This completes the License server set up.
+
+To confirm that the Boris FX license server is working, go to http://SERVERNAME:5054 (replace SERVERNAME with the name of the server), and click “Status” on the top left hand corner. `genarts` should show up under the ISV Servers and it will say `Running: Yes`.
+
+Now that everything is installed and activated, you no longer need the RLM server installed on the temporary online computer – you can remove it at this time.
+
+
+==== Installing the Floating Client License on a Client Machine (Manual Install)
+
+If you haven't yet installed the server license, follow the instructions above in <<floating_server, How do I Install the Floating License Server>>.
+Once you have the server license installed, perform the following steps to get the client license running:
+
+. Install Mocha on the client machine
+. Get the host line from the server license, which looks like this: `HOST ServerName EthernetAddress PortNumber`
++
+For example, `HOST camelot 00000000042e 5053`
++
+. Create a new file in a text editor called `mocha_client.lic`. The file name is not important, as long as the '.lic' extension exists.
+. Paste in the HOST line into the client license file and press enter to create a new line
+. You can either keep the server Mac address in the client or replace it with the word "any". See example below:
++
+.mocha_client.lic
+----
+HOST camelot any 5053
+----
++
+. Save the file to the Mocha RLM directory. For your particular system this is:
+** *For Windows:* `C:\ProgramData\GenArts\rlm`
+** *For Mac:* `/Library/Application Support/GenArts/rlm/`
+** *For Linux:* `/usr/genarts/rlm/`
+. If the installation is successful, you will now be able to use Mocha
+
+=== How do I point to the server license using an Environment Variable?
+If you want to point to a license file via environment variable, use genarts_LICENSE. It uses the usual RLM syntax, e.g:
+
+====
+`genarts_LICENSE=5053@server-name`
+
+`genarts_LICENSE=/path/to/file.lic`
+====
+
+You can also set up the RLM environment variable to read all .lic files in a directory:
+====
+`genarts_LICENSE=your/rlm/directory`
+====
+
+NOTE: The `genarts` in the environment variable name **must** be lower case.
+
+=== Troubleshooting Floating Licenses
+
+As with any software, problems may arise during the installation process. Please take a moment to read our troubleshooting section and check for common errors.
+
+If you continue to have issues installing, please contact support and we will be happy to help you. You may contact our support team here: https://borisfx.com/support/open-a-case/
+
+
+==== Verify your server license has been successfully installed
+
+Check that your license actually exists on the Server:
+
+For RLM Server v13 and newer:
+
+* *For Windows:* `C:\Program Files\BorisFX\rlm`
+* *For Mac:* `/Library/Application Support/BorisFX/rlm/`
+* *For Linux:* `/usr/borisfx/rlm/`
+
+For older versions of RLM Server:
+
+* *For Windows:* `C:\Program Files (x86)\GenArts\rlm`
+* *For Mac:* `/Library/Application Support/GenArts/rlm/`
+* *For Linux:* `/usr/genarts/rlm/`
+
+
+==== Verify your client license has been successfully installed
+
+Check that your client license actually exists on the client machine:
+
+* *For Windows:* `C:\ProgramData\GenArts\rlm`
+* *For Mac:* `/Library/Application Support/GenArts/rlm/`
+* *For Linux:* `/usr/genarts/rlm/`
+
+
+==== Verify you are using the latest version of the license server software.
+Check to make sure your License Manager is up to date.
+
+
+==== Verify there is not a firewall running between the server and the client computer
+If your organization needs to run a firewall, you will need to check if the ports for the RLM server are open for use.
+
+
+==== Check to make sure your Mocha software matches your activation code
+Check your purchase order to make sure everything matches up version wise. It may be that you don't have the correct version of Mocha installed from our download section. This is especially important for legacy software.
+
+
+==== Check for conflicting licenses installed in your licensing folder
+If you have more than one Mocha license installed on the server or client machine check to make sure they are not expired licenses. While rare, sometimes these licenses can conflict with any current ones you have on your system.
+
+
+==== The client does not connect or see the server host name
+If your client machine does not connect to the server based on the server name, try replacing the server name with the IP address of the server instead in the license file. You can easily do this via the License Manager or via a text editor.
+
+
+==== When in doubt, check the logs!
+Check logs and their paths: Read the logs from Mocha and from your server, they will tell you all about what is happening to your machine.
+
+
+==== Check your firewall settings
+Check to make sure you are not restricted to using certain ports due to a firewall or other admin permissions. When in doubt, temporarily turn your firewalls off for the duration of the installation and then turn them back on when you are done.
+
+
+==== Check your host name settings
+If your client machine is not able to connect to the server you may have a networking issue. Try changing the server name in the client license to the IP address of the server instead, or check to see if your host has ".local" appended to the end of it.
+You can also do this in any text editor by opening up the client license and server license and manually editing the server name.
+
+
+==== Sometimes the best solution is to start again
+You might roll your eyes at this one, but try uninstalling, restarting your machine, and installing the software again from scratch. Make sure you follow installation directions off our website exactly. It sounds redundant, but sometimes it's a great way to troubleshoot what is going on inside your machine.
+
+
+==== When all else fails...
+Contact us!
+Our support team are more than happy to help you fix any floating license issues you may have.
+Please contact support here: https://borisfx.com/support/open-a-case/
+
+'''
+
+<<<
+
+== Installing Render Licenses
+
+This section will discuss the installation of floating render licenses and how they differ from standard interactive floating licensed.
+
+=== Render Floating Licenses vs Interactive Floating Licenses
+
+A render license is a specific kind of floating license that only allows rendering of Mocha project output, be it inside a plugin or in the standalone application.
+
+When you are using a floating license, it is broken into two parts: The interactive portion and the rendering portion.
+
+For plugins, this is separated like so:
+
+. If you open the Mocha GUI in the Mocha Pro Plugin (and a license is available) you are entering the interactive portion.
+. If you are back in the host and not using interactive elements such as layer choosing or opening the GUI, you are using the rendering portion of the license.
+
+For the standalone, this is separated like so:
+
+. If you open the Mocha Pro standalone application (and a license is available) you are entering the interactive portion.
+. If you have the Mocha Pro standalone application closed and are using the mocharender.py render script, you are utilizing the rendering portion. (See the Python guide for more details on rendering with mocharender.py)
+
+If the interactive license is in use elsewhere or missing, the Mocha GUI will become unlicensed and attempting further work may encrypt your project if you choose to save.
+If you have no interactive floating licenses available to render with, additional render licenses can be helpful to let you free up interactive licenses elsewhere.
+
+==== Workflow for Render Licenses: Example 1
+
+To help illustrate the Render License workflow, let's look at the following situation:
+
+* 5 floating licenses (interactive)
+* 10 render licenses (render only)
+* There is only 1 user
+
+The license server is operating with both sets of licenses.
+
+* If only one person is using Mocha on the network, there are 4 interactive and 10 render licenses still available to use.
+* If only that one person was using Mocha on the network, they would have 15 render machines available for use including the one they were working with.
+* If another person started working and all machines were in use for rendering, their version of Mocha would be unlicensed, as there would be no available seats.
+
+==== Workflow for Render Licenses: Example 2
+
+To help illustrate the Render License workflow, let's look at another situation:
+
+* 5 floating licenses (interactive)
+* 10 render licenses (render only)
+* There are 5 users
+
+The license server is operating with both sets of licenses.
+
+* There are 5 people working in Mocha.
+* If another user tries to work on a 6th machine, they will open Mocha unlicensed, because all interactive licenses are in use.
+* They open an existing project with Mocha in it (or render from the command line), they will be able to render, because all render licenses are available.
+
+Now, say one person wants to send off a render to the network:
+
+* If 5 people are using Mocha on the network already, there would be 11 render machines available for use including the one the user was presently working with.
+* If another person stopped working in Mocha, the interactive license would be released, and a new machine would then be free to either use for work (interactive) or render (non-interactive) by another user.
+
+
+=== Installing Render Floating Licenses
+
+The installation of a render license is exactly the same as that of a standard interactive floating license. See the 'Installing Floating Licenses' for a complete guide.
+
+=== File Management for Rendering on a Network
+
+If you are planning to render either via the Mocha render scripts, an Adobe watch folder or a render farm (for example in Nuke), there are some file workflows you need to adopt.
+
+You will need to make sure the necessary source footage is available for all machines. This includes anything you have imported into the Mocha GUI such as clean plates, insert clips and other imported files.
+
+These files need to be managed by any of the following methods:
+
+* Placed in the same file structure on all machines
+* Relinked manually with an interactive license on all machines
+* Pointing to the same shared directory.
+
+Failing to set this up may result in incorrect renders.
+
+IMPORTANT: If you are using the plugin, you may have imported footage into the Mocha GUI separate from the host source footage. Make sure any imported footage is also available.

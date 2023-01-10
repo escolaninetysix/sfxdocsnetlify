@@ -1,0 +1,470 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: DissolveFlashbulbs",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolveFlashbulbs.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolveFlashbulbs">
+     <h2>
+      DissolveFlashbulbs
+     </h2>
+    </a>
+    In the S_Dissolves Plugin.
+    <p>
+     Simulates lots of flashbulbs going off while
+  dissolving between two clips.  With many small flashes, can look
+  like a stadium scene.  With a few large flashes, works well on a
+  celebrity red carpet clip.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolveFlashbulbs.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Amt:
+   </b>
+   <i>
+    AutoTransition,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -0.5 to 1.5,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The transition ratio between the From and To inputs.  A
+  value of 0 gives only the From input and a value of 1 gives only the
+  To input.  By default this parameter automatically animates from 0
+  to 1 to perform a complete transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The speed of the dissolve between the From and To clips.
+  When set to 1, the dissolve takes place over the entire duration of
+  the effect. When set higher, the dissolve is
+  shorter, although the flashbulb ramp-up and ramp-down still takes the
+  entire duration.  Setting this to 10 can make the transition
+  snappier and more like a quick cut.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Flashes:
+   </b>
+   <i>
+    Default:
+   </i>
+   20,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Maximum number of flashes per frame, in the middle of the dissolve.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flash Randomness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Increase to get more flashes on some frames (up
+  to the values of Flashes) and fewer on others.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hold Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Each flash trails off slightly in time, to simulate
+  persistence of vision as well as the effect of the filament cooling
+  off in old-time flashbulbs.  Hold Frames controls how long that trail lasts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flash Decay Rate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   How quickly the flashes decay over the Hold Frames time.
+  Increase to make them stay on screen brighter, for longer; decrease to
+  make them disappear quickly.  Note that you may have to increase Hold Frames
+  to see long-lived flash trails.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flash Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Average size of flashes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flash Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Use to squash or stretch flashes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Overall brightness of the flashes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flash Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Brightens or darkens the midtones of the flashes.
+  Can give a round, hard-edged look, or make the flashes more soft and subtle.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Add
+   </i>
+   .
+   <br/>
+   Determines how the flash image is combined with the background.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Screen:
+      </i>
+     </b>
+     blends the flashes with the background, which can help prevent
+  overly bright results.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Add:
+       </i>
+      </b>
+      causes the flash image to be added to the background.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to vary the brightness of each flashbulb in each frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flash Style:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Style of flashbulb to use.  Several styles are
+  available, or you can try some of the glares for a different look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../flashbulbs">
+       Flashbulbs
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../flashbulbs">
+       Flashbulbs
+      </a>
+      <br/>
+      <a href="../flashbulbsmask">
+       FlashbulbsMask
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

@@ -1,0 +1,804 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: DissolvePixelSort",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolvePixelSort.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolvePixelSort">
+     <h2>
+      S_DissolvePixelSort
+     </h2>
+    </a>
+    Transitions between two input clips while sorting the dissolve result.
+    <p>
+     In the Sapphire Transitions category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolvePixelSort.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mode:
+   </b>
+   <i>
+    Popup menu,  Default: DissolvePixelSortLinear
+   </i>
+   .
+   <br/>
+   Selects between several sort patterns.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       DissolvePixelSortLinear:
+      </i>
+     </b>
+     Sort pixels along parallel lines.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        DissolvePixelSortRadial:
+       </i>
+      </b>
+      Sort pixels along lines emanating from a point.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         DissolvePixelSortCircular:
+        </i>
+       </b>
+       Sort pixels along concentric circles.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The transition ratio between the From and To inputs.
+  A value of 0 gives only the From input and a value of 1 gives only
+  the To input.  By default this parameter automatically animates from
+  0 to 1 to perform a complete transition.  The curve controlling this
+  parameter can be adjusted for more detailed control over the timing
+  of the dissolve.  In the AVX1 version, Auto Trans must be disabled
+  for this parameter to be used.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The speed of the dissolve between the From and To clips.
+      When set to 1, the dissolve takes place over the entire duration of
+      the effect. When set higher, the dissolve is
+      shorter, although the pixel sort ramp-up and ramp-down still takes the
+      entire duration.  Setting this to 10 can make the transition
+      snappier and more like a flash-frame cut.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Percentage:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The threshold at the point in the transition of the maximum or full sort.
+      Set to 1 for maximum sort at the height of the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Sort Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The angle to sort parallel lines at in Linear mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   The center in Radial mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The angle to start sorting in Radial mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Degrees Sorted:
+   </b>
+   <i>
+    Default:
+   </i>
+   360,
+   <i>
+    Range:
+   </i>
+   0 to 360.
+   <br/>
+   How many degrees around the center should be sorted in Radial mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Inner Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The radius of unsorted pixels around the center in Radial mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Ray Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The length of the sorted pixel chunks in Radial mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   How much to vary the starting pixel of the radiating lines in Radial mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The angle to start sorting in Circular mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Degrees Sorted:
+   </b>
+   <i>
+    Default:
+   </i>
+   360,
+   <i>
+    Range:
+   </i>
+   0 to 360.
+   <br/>
+   How many degrees around the center should be sorted in Circular mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Circle Center:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   The center of the concentric circles in Circular mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   How much to vary the start in Circular mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Inner Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The minimum circle to sort in Circular mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Thickness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The number of concentric circles to sort in Circular mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Sort Direction:
+   </b>
+   <i>
+    Popup menu,  Default: sort above threshold
+   </i>
+   .
+   <br/>
+   Controls whether pixels over the threshold or under the threshold will be sorted.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       sort below threshold:
+      </i>
+     </b>
+     Sort pixels with a value lower than the threshold.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        sort above threshold:
+       </i>
+      </b>
+      Sort pixels with a value higher than the threshold.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Reverse Sort Direction:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Determines whether to sort the pixels in an ascending or descending order.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Randomly Restart Sort:
+   </b>
+   <i>
+    Default:
+   </i>
+   100,
+   <i>
+    Range:
+   </i>
+   0 to 1000.
+   <br/>
+   How often to break up the sorted pixel chunks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Sort Type:
+   </b>
+   <i>
+    Popup menu,  Default: monochrome
+   </i>
+   .
+   <br/>
+   Determines how to analyze the colors of the pixels for sorting.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       monochrome:
+      </i>
+     </b>
+     Sort on the monochrome value of the pixels.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        average:
+       </i>
+      </b>
+      Sort on the average value of the color channels in the pixels.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         minimum:
+        </i>
+       </b>
+       Sort on the smallest channel in the pixels.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          maximum:
+         </i>
+        </b>
+        Sort on the largest channel in the pixels.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           red:
+          </i>
+         </b>
+         Sort on the red channel in the pixels.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            green:
+           </i>
+          </b>
+          Sort on the green channel in the pixels.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             blue:
+            </i>
+           </b>
+           Sort on the blue channel in the pixels.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              hue:
+             </i>
+            </b>
+            Sort on the hue of the pixels.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               saturation:
+              </i>
+             </b>
+             Sort on the saturation of the pixels.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                brightness:
+               </i>
+              </b>
+              Sort on the brightness of the pixels.
+              <br/>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.273,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Initializes the random number generator for the sort restarts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Soften Threshold Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blur the mask generated by thresholding the image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mix With Dissolve:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Softens the look of the pixel sort by interpolating the raw dissolve with the
+    pixel sorted result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show:
+   </b>
+   <i>
+    Popup menu,  Default: Result
+   </i>
+   .
+   <br/>
+   Selects the output option.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Result:
+      </i>
+     </b>
+     Shows the result of the pixel sort.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Raw Sort Values:
+       </i>
+      </b>
+      Shows the values the pixel sort will use for sorting.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Threshold Mask:
+        </i>
+       </b>
+       Shows the mask of pixels to sort based on the threshold parameter.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Random Restart Noise:
+         </i>
+        </b>
+        Shows the pixels that will cause the sort lines to restart.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Combined Mask:
+          </i>
+         </b>
+         Shows the threshold mask combined with the input mask.
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../jpegdamage">
+       JpegDamage
+      </a>
+      <br/>
+      <a href="../tvdamage">
+       TVDamage
+      </a>
+      <br/>
+      <a href="../filmdamage">
+       FilmDamage
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

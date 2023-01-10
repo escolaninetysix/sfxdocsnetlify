@@ -1,0 +1,545 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: FlickerRemoveMatte",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FlickerRemove.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FlickerRemoveMatte">
+     <h2>
+      S_FlickerRemoveMatte
+     </h2>
+    </a>
+    Removes temporal flickering from the Source
+clip using a Matte clip to specify the area where the average
+brightness should remain constant.  To use this effect, select a
+Source frame that has the desired brightness within the Matte, and hit
+the Set Hold Level button.  When other frames are processed, their
+brightness will be scaled so the average brightness within the Matte
+is equal to the Hold Level.  You can keyframe different Hold Level
+values over time to account for desirable brightness changes.
+    <p>
+     In the Sapphire Time effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      The clip to remove flicker from.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      This clip specifies which Source areas to measure the
+  flicker from.  If this input is not provided, the Alpha of the
+  Source input is used as the Matte instead.  It can be inverted with
+  the Invert Matte parameter.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FlickerRemove.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Project:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hold Level:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The requested average output brightness for the
+  area within the Matte.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Set Hold Level:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Pressing this button has a side effect of setting
+  the Hold Level parameter to the average Source brightness within the Matte at
+  the current frame.  It causes the output to equal the Source at this frame.
+  This button retains no value itself, and is turned back off immediately
+  after being pushed.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Matte Use:
+   </b>
+   <i>
+    Popup menu,  Default: Alpha
+   </i>
+   .
+   <br/>
+   Determines how the Matte input channels are used to make
+a monochrome matte.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Matte:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the Matte input so the effect is applied
+to areas where the Matte is black instead of white.  This has no effect
+unless the Matte input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Opacity:
+   </b>
+   <i>
+    Popup menu,  Default: Normal
+   </i>
+   .
+   <br/>
+   Determines the method used for dealing with
+opacity/transparency.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       All Opaque:
+      </i>
+     </b>
+     Use this option to render slightly faster when
+the input image is fully opaque with no transparency (alpha=1).
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Normal:
+       </i>
+      </b>
+      Process opacity normally.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         As Premult:
+        </i>
+       </b>
+       Process as if the image is already in
+premultiplied form (colors have been scaled by opacity).  This option
+also renders slightly faster than Normal mode, but the results will
+also be in premultiplied form, which is sometimes less correct.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../flickerrmmattecolor">
+       FlickerRmMatteColor
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../flickerremove">
+       FlickerRemove
+      </a>
+      <br/>
+      <a href="../flickerremovecolor">
+       FlickerRemoveColor
+      </a>
+      <br/>
+      <a href="../flickermatch">
+       FlickerMatch
+      </a>
+      <br/>
+      <a href="../flickermatchcolor">
+       FlickerMatchColor
+      </a>
+      <br/>
+      <a href="../flickermatchmatte">
+       FlickerMatchMatte
+      </a>
+      <br/>
+      <a href="../flickermchmattecolor">
+       FlickerMchMatteColor
+      </a>
+      <br/>
+      <a href="../flicker">
+       Flicker
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

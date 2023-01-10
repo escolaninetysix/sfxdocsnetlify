@@ -1,0 +1,654 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.5. Clip &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.6. ColorParameters" href="ColorParameters.html" />
+    <link rel="prev" title="2.4. BezierControlPointData" href="BezierControlPointData.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ColorParameters.html" title="2.6. ColorParameters"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="BezierControlPointData.html" title="2.4. BezierControlPointData"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="clip">
+<span id="id1"></span><h1>2.5. Clip<a class="headerlink" href="#clip" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>2.5.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>2.5.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.project.Clip.__eq__" title="mocha.project.Clip.__eq__"><tt class="xref py py-meth docutils literal"><span class="pre">__eq__</span></tt></a> (rhs)</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.__ne__" title="mocha.project.Clip.__ne__"><tt class="xref py py-meth docutils literal"><span class="pre">__ne__</span></tt></a> (rhs)</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.add_stream" title="mocha.project.Clip.add_stream"><tt class="xref py py-meth docutils literal"><span class="pre">add_stream</span></tt></a> (first_clip_file, view, start_frame, stop_frame[, validate=false])</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.apply" title="mocha.project.Clip.apply"><tt class="xref py py-meth docutils literal"><span class="pre">apply</span></tt></a> (stream_info[, view=View()])</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.assign_project_view" title="mocha.project.Clip.assign_project_view"><tt class="xref py py-meth docutils literal"><span class="pre">assign_project_view</span></tt></a> (view, proj_view)</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.base_parameter_set" title="mocha.project.Clip.base_parameter_set"><tt class="xref py py-meth docutils literal"><span class="pre">base_parameter_set</span></tt></a> ([name_components=list()])</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.delete_stream" title="mocha.project.Clip.delete_stream"><tt class="xref py py-meth docutils literal"><span class="pre">delete_stream</span></tt></a> (view)</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.export" title="mocha.project.Clip.export"><tt class="xref py py-meth docutils literal"><span class="pre">export</span></tt></a> (revertToClip, directory, extension, prefix, suffix, index_start, index_finish[, index_width=1[, views=list()[, separate_streams=false[, offset=0[, step=1]]]]])</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.get_info" title="mocha.project.Clip.get_info"><tt class="xref py py-meth docutils literal"><span class="pre">get_info</span></tt></a> (view)</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.image" title="mocha.project.Clip.image"><tt class="xref py py-meth docutils literal"><span class="pre">image</span></tt></a> (frame[, view=View()[, allocate=false]])</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.parameter" title="mocha.project.Clip.parameter"><tt class="xref py py-meth docutils literal"><span class="pre">parameter</span></tt></a> (name_components)</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.parameter_set" title="mocha.project.Clip.parameter_set"><tt class="xref py py-meth docutils literal"><span class="pre">parameter_set</span></tt></a> ([name_components=list()])</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.relink" title="mocha.project.Clip.relink"><tt class="xref py py-meth docutils literal"><span class="pre">relink</span></tt></a> ([path=&#8221;&#8220;[, prefix=&#8221;&#8220;[, suffix=&#8221;&#8220;[, start_frame=UINT_MAX[, end_frame=UINT_MAX[, view=View()]]]]]])</li>
+<li>def <a class="reference internal" href="#mocha.project.Clip.relink" title="mocha.project.Clip.relink"><tt class="xref py py-meth docutils literal"><span class="pre">relink</span></tt></a> (stream_info[, view=View()])</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>2.5.1.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.project.Clip.color_parameters" title="mocha.project.Clip.color_parameters"><tt class="xref py py-attr docutils literal"><span class="pre">color_parameters</span></tt></a> [read-write] of <a class="reference internal" href="ColorParameters.html#mocha.project.ColorParameters" title="mocha.project.ColorParameters"><tt class="xref py py-class docutils literal"><span class="pre">ColorParameters</span></tt></a></li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.discrete_frames" title="mocha.project.Clip.discrete_frames"><tt class="xref py py-attr docutils literal"><span class="pre">discrete_frames</span></tt></a> [read-only] of tuple</li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.first_frame_offset" title="mocha.project.Clip.first_frame_offset"><tt class="xref py py-attr docutils literal"><span class="pre">first_frame_offset</span></tt></a> [read-write] of int</li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.frame_rate" title="mocha.project.Clip.frame_rate"><tt class="xref py py-attr docutils literal"><span class="pre">frame_rate</span></tt></a> [read-write] of float</li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.frame_size" title="mocha.project.Clip.frame_size"><tt class="xref py py-attr docutils literal"><span class="pre">frame_size</span></tt></a> [read-write] of float</li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.id" title="mocha.project.Clip.id"><tt class="xref py py-attr docutils literal"><span class="pre">id</span></tt></a> [read-only] of long</li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.name" title="mocha.project.Clip.name"><tt class="xref py py-attr docutils literal"><span class="pre">name</span></tt></a> [read-only] of str</li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.progress_watcher" title="mocha.project.Clip.progress_watcher"><tt class="xref py py-attr docutils literal"><span class="pre">progress_watcher</span></tt></a> [read-only] of <a class="reference internal" href="ProgressWatcher.html#mocha.project.ProgressWatcher" title="mocha.project.ProgressWatcher"><tt class="xref py py-class docutils literal"><span class="pre">ProgressWatcher</span></tt></a></li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.view_mapping" title="mocha.project.Clip.view_mapping"><tt class="xref py py-attr docutils literal"><span class="pre">view_mapping</span></tt></a> [read-only] of dict of { <a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">View</span></tt></a>: <a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">View</span></tt></a> }</li>
+<li>property <a class="reference internal" href="#mocha.project.Clip.views" title="mocha.project.Clip.views"><tt class="xref py py-attr docutils literal"><span class="pre">views</span></tt></a> [read-only] of list of <a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">View</span></tt></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>2.5.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Clip class which provides primary manipulations on clip.</div></blockquote>
+<dl class="class">
+<dt id="mocha.project.Clip">
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">Clip</tt><span class="sig-paren">(</span><em>clip_path</em><span class="optional">[</span>, <em>clip_name=&quot;NewClip&quot;</em><span class="optional">[</span>, <em>validate=false</em><span class="optional">[</span>, <em>width=0</em><span class="optional">[</span>, <em>height=0</em><span class="optional">[</span>, <em>length=0</em><span class="optional">[</span>, <em>parent=NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>clip_path</strong> (<em>unicode</em>) &#8211; Absolute path to first clip file.</li>
+<li><strong>validate</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt>) &#8211; Validate creating clip if set to True</li>
+<li><strong>width</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Clip width in pixels.</li>
+<li><strong>height</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Clip height in pixels.</li>
+<li><strong>length</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Clip length.</li>
+<li><strong>parent</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.QObject</span></tt>) &#8211; Parent object.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Creates detached clip instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.add_stream">
+<tt class="descclassname">Clip.</tt><tt class="descname">add_stream</tt><span class="sig-paren">(</span><em>first_clip_file</em>, <em>view</em>, <em>start_frame</em>, <em>stop_frame</em><span class="optional">[</span>, <em>validate=false</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.add_stream" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>first_clip_file</strong> (<em>unicode</em>) &#8211; Absolute path to first clip file.</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Project view which is not used in this clip.</li>
+<li><strong>start_frame</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Start frame index for new stream.</li>
+<li><strong>stop_frame</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Stop frame index for new stream.</li>
+<li><strong>validate</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt>) &#8211; Validate adding stream if it is set to True.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>IndexError</strong> &#8211; If project does not have given <tt class="docutils literal"><span class="pre">view</span></tt>,
+or clip already has such view, or current frame range is invalid.</li>
+<li><strong>IOError</strong> &#8211; If given first_clip_file is inaccessible.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Adds a new clip stream on unoccupied view.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.apply">
+<tt class="descclassname">Clip.</tt><tt class="descname">apply</tt><span class="sig-paren">(</span><em>stream_info</em><span class="optional">[</span>, <em>view=View()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.apply" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stream_info</strong> (<a class="reference internal" href="StreamInfo.html#mocha.project.StreamInfo" title="mocha.project.StreamInfo"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.StreamInfo</span></tt></a>) &#8211; Stream data which will be applied immediately.</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Clip view.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Relinks clip without any checking.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.assign_project_view">
+<tt class="descclassname">Clip.</tt><tt class="descname">assign_project_view</tt><span class="sig-paren">(</span><em>view</em>, <em>proj_view</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.assign_project_view" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Clip view.</li>
+<li><strong>proj_view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Project view.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>IndexError</strong> - If project does not contain the given proj_view or the clip does not.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Assigns given clip view to given project view.</p>
+<dl class="docutils">
+<dt>See also:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference internal" href="#mocha.project.Clip.view_mapping" title="mocha.project.Clip.view_mapping"><tt class="xref py py-attr docutils literal"><span class="pre">view_mapping</span></tt></a></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.base_parameter_set">
+<tt class="descclassname">Clip.</tt><tt class="descname">base_parameter_set</tt><span class="sig-paren">(</span><span class="optional">[</span><em>name_components=list()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.base_parameter_set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.ParameterSet</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_components</strong> (<em>list of strings</em>) &#8211; Relative name for a requested parameter set.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">ParameterSet</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Returns <a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">ParameterSet</span></tt></a> instance bound with given name path.
+Pass an empty list <tt class="docutils literal"><span class="pre">[]</span></tt> to get access to the base clip parameters set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.delete_stream">
+<tt class="descclassname">Clip.</tt><tt class="descname">delete_stream</tt><span class="sig-paren">(</span><em>view</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.delete_stream" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Clip view.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>IndexError</strong> - If the clip does not have the given <tt class="docutils literal"><span class="pre">view</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+<p>Deletes the stream for given <tt class="docutils literal"><span class="pre">view</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.export">
+<tt class="descclassname">Clip.</tt><tt class="descname">export</tt><span class="sig-paren">(</span><em>revertToClip</em>, <em>directory</em>, <em>extension</em>, <em>prefix</em>, <em>suffix</em>, <em>index_start</em>, <em>index_finish</em><span class="optional">[</span>, <em>index_width=1</em><span class="optional">[</span>, <em>views=list()</em><span class="optional">[</span>, <em>separate_streams=false</em><span class="optional">[</span>, <em>offset=0</em><span class="optional">[</span>, <em>step=1</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.export" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>revert_to_clip</strong> &#8211; Revert to clip option.</li>
+<li><strong>directory</strong> (<em>unicode</em>) &#8211; Output clip directory.</li>
+<li><strong>extension</strong> (<em>unicode</em>) &#8211; File format extension.</li>
+<li><strong>prefix</strong> (<em>unicode</em>) &#8211; Prefix to add to exported clip.</li>
+<li><strong>suffix</strong> (<em>unicode</em>) &#8211; Suffix to append to exported clip.</li>
+<li><strong>index_start</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; The starting index.</li>
+<li><strong>index_stop</strong> &#8211; The ending index.</li>
+<li><strong>index_width</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Width of the sequence number, padded by zeroes.</li>
+<li><strong>views</strong> (<em>list of View</em>) &#8211; Views to export.</li>
+<li><strong>offset</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Frame offset for the exported image sequence.</li>
+<li><strong>step</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Step value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Exports current clip to filesystem directory.
+Same options provides mocha main menu item <strong>File - Export Rendered Clip...</strong></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.get_info">
+<tt class="descclassname">Clip.</tt><tt class="descname">get_info</tt><span class="sig-paren">(</span><em>view</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="StreamInfo.html#mocha.project.StreamInfo" title="mocha.project.StreamInfo"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.StreamInfo</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Clip view.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns stream info for given view.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.image">
+<tt class="descclassname">Clip.</tt><tt class="descname">image</tt><span class="sig-paren">(</span><em>frame</em><span class="optional">[</span>, <em>view=View()</em><span class="optional">[</span>, <em>allocate=false</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.image" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="ImageData.html#mocha.project.ImageData" title="mocha.project.ImageData"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.ImageData</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>frame</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Index of frame to query the source image from.</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; View.</li>
+<li><strong>allocate</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt>) &#8211; If True and the clip has no image on given frame, the frame image will be allocated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="ImageData.html#mocha.project.ImageData" title="mocha.project.ImageData"><tt class="xref py py-class docutils literal"><span class="pre">ImageData</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns <a class="reference internal" href="ImageData.html#mocha.project.ImageData" title="mocha.project.ImageData"><tt class="xref py py-class docutils literal"><span class="pre">ImageData</span></tt></a> instance bearing the pixel data and metainformation
+of the querying clip source image.
+Any changes made on the pixel data will immediately invalidate the image cache.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.__ne__">
+<tt class="descclassname">Clip.</tt><tt class="descname">__ne__</tt><span class="sig-paren">(</span><em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.__eq__">
+<tt class="descclassname">Clip.</tt><tt class="descname">__eq__</tt><span class="sig-paren">(</span><em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.parameter">
+<tt class="descclassname">Clip.</tt><tt class="descname">parameter</tt><span class="sig-paren">(</span><em>name_components</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.parameter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Parameter</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_components</strong> (<em>list of strings</em>) &#8211; Relative name for a requested parameter.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">Parameter</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Returns <a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">Parameter</span></tt></a> instance bound with given name path.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.parameter_set">
+<tt class="descclassname">Clip.</tt><tt class="descname">parameter_set</tt><span class="sig-paren">(</span><span class="optional">[</span><em>name_components=list()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.parameter_set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.ParameterSet</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_components</strong> (<em>list of strings</em>) &#8211; Relative name for a requested parameter set.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">ParameterSet</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Returns <a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">ParameterSet</span></tt></a> instance bound with given name path.
+Pass an empty list <tt class="docutils literal"><span class="pre">[]</span></tt> to get access to the Clip parameters set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.Clip.relink">
+<tt class="descclassname">Clip.</tt><tt class="descname">relink</tt><span class="sig-paren">(</span><span class="optional">[</span><em>path=&quot;&quot;</em><span class="optional">[</span>, <em>prefix=&quot;&quot;</em><span class="optional">[</span>, <em>suffix=&quot;&quot;</em><span class="optional">[</span>, <em>start_frame=UINT_MAX</em><span class="optional">[</span>, <em>end_frame=UINT_MAX</em><span class="optional">[</span>, <em>view=View()</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Clip.relink" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>unicode</em>) &#8211; Absolute path to first clip file.</li>
+<li><strong>prefix</strong> (<em>unicode</em>) &#8211; Clip prefix.</li>
+<li><strong>suffix</strong> (<em>unicode</em>) &#8211; Clip suffix.</li>
+<li><strong>start_frame</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Start frame number.</li>
+<li><strong>end_frame</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; Stop frame number.</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; View.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Relinks current clip with given parameters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descclassname">Clip.</tt><tt class="descname">relink</tt><span class="sig-paren">(</span><em>stream_info</em><span class="optional">[</span>, <em>view=View()</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stream_info</strong> (<a class="reference internal" href="StreamInfo.html#mocha.project.StreamInfo" title="mocha.project.StreamInfo"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.StreamInfo</span></tt></a>) &#8211; <a class="reference internal" href="StreamInfo.html#mocha.project.StreamInfo" title="mocha.project.StreamInfo"><tt class="xref py py-class docutils literal"><span class="pre">StreamInfo</span></tt></a> instance.</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; View.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Relinks current clip with given <tt class="docutils literal"><span class="pre">`stream_info`</span></tt> parameters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.name">
+<tt class="descclassname">Clip.</tt><tt class="descname">name</tt><a class="headerlink" href="#mocha.project.Clip.name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to clip name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.views">
+<tt class="descclassname">Clip.</tt><tt class="descname">views</tt><a class="headerlink" href="#mocha.project.Clip.views" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">list of <a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">View</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to clip views.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.frame_size">
+<tt class="descclassname">Clip.</tt><tt class="descname">frame_size</tt><a class="headerlink" href="#mocha.project.Clip.frame_size" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to clip frame size in pixels.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.frame_rate">
+<tt class="descclassname">Clip.</tt><tt class="descname">frame_rate</tt><a class="headerlink" href="#mocha.project.Clip.frame_rate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to clip frame rate.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.first_frame_offset">
+<tt class="descclassname">Clip.</tt><tt class="descname">first_frame_offset</tt><a class="headerlink" href="#mocha.project.Clip.first_frame_offset" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to first frame offset.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.color_parameters">
+<tt class="descclassname">Clip.</tt><tt class="descname">color_parameters</tt><a class="headerlink" href="#mocha.project.Clip.color_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="ColorParameters.html#mocha.project.ColorParameters" title="mocha.project.ColorParameters"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.ColorParameters</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to clip color parameters object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.view_mapping">
+<tt class="descclassname">Clip.</tt><tt class="descname">view_mapping</tt><a class="headerlink" href="#mocha.project.Clip.view_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict of { <a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">View</span></tt></a>: <a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">View</span></tt></a> }</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to view mapping as dict instance where keys are project views and values are clip views.</p>
+<dl class="docutils">
+<dt>See also:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference internal" href="#mocha.project.Clip.assign_project_view" title="mocha.project.Clip.assign_project_view"><tt class="xref py py-meth docutils literal"><span class="pre">assign_project_view()</span></tt></a></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.progress_watcher">
+<tt class="descclassname">Clip.</tt><tt class="descname">progress_watcher</tt><a class="headerlink" href="#mocha.project.Clip.progress_watcher" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="ProgressWatcher.html#mocha.project.ProgressWatcher" title="mocha.project.ProgressWatcher"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.ProgressWatcher</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the current progress watcher object of render operation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.id">
+<tt class="descclassname">Clip.</tt><tt class="descname">id</tt><a class="headerlink" href="#mocha.project.Clip.id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">long</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the current clip ID.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.Clip.discrete_frames">
+<tt class="descclassname">Clip.</tt><tt class="descname">discrete_frames</tt><a class="headerlink" href="#mocha.project.Clip.discrete_frames" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">tuple</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to discrete frames of the clip instance.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.5. Clip</a><ul>
+<li><a class="reference internal" href="#synopsis">2.5.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.5.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.5.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.5.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="BezierControlPointData.html"
+                        title="previous chapter">2.4. BezierControlPointData</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ColorParameters.html"
+                        title="next chapter">2.6. ColorParameters</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/Clip.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ColorParameters.html" title="2.6. ColorParameters"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="BezierControlPointData.html" title="2.4. BezierControlPointData"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

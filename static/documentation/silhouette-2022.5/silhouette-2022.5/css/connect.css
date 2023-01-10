@@ -32,6 +32,8 @@
 /* header */
 /* footer */
 /* back-to-top button */
+/* progress bar */
+/* modal (cookies disabled message) */
 /*
  * lightbox
 */
@@ -68,6 +70,9 @@
 */
 /*
  * unsupported browser
+*/
+/*
+ * modal (cookies disabled message)
 */
 /*~~~~~ SIZING ~~~~~*/
 /*~~~~~~~~~~~~~~~~~~*/
@@ -148,15 +153,19 @@
          Apply to variable value in quotes and a leading backslash
          (ex: "\f002")
 
-  font-awesome cheatsheet: https://fontawesome.com/v5/cheatsheet/free
+  font-awesome cheatsheet: https://fontawesome.com/v4.7.0/cheatsheet/
+
+  The cheatsheet can also be found in the ePublisher Installation Directory at:
+
+  <Install Location>/WebWorks/ePublisher/<version>/Helpers/font-awesome/Font Awesome Cheatsheet.html
 */
 /* toolbar */
 /* menu */
 /* page */
-/* page loading */
 /* header */
 /* footer */
 /* search */
+/* modal (cookies disabled message) */
 html, body {
   margin: 0px;
   padding: 0px; }
@@ -182,7 +191,11 @@ body * {
 .layout_initial #container_div {
   visibility: hidden; }
 
-#presentation_div {
+div#progress {
+  margin: 0px 0px 0px 0px;
+  padding: 24px 20% 24px 20%; }
+
+div#presentation_div {
   margin: 0px;
   padding: 0px;
   visibility: hidden; }
@@ -496,7 +509,7 @@ div#index_title {
   width: 100vw; }
 
 div#parcels {
-  display: none; }
+  display: block; }
 
 div.back_to_top {
   visibility: hidden;
@@ -541,7 +554,82 @@ div.back_to_top > a {
     border-bottom: 10px solid black;
     background-color: #005399; }
 
-/* Unsupported Browser */
+/* Modal Background */
+.modal_background {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto; }
+
+/* Modal Content */
+.modal_content {
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 0;
+  overflow: auto;
+  width: 30%;
+  min-width: 250px;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s; }
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+
+/* Modal Close Button */
+#modal_close {
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px; }
+
+#close_div {
+  display: inline-block;
+  width: 100%; }
+
+.modal_header {
+  margin-top: 30px; }
+  .modal_header i {
+    margin-top: 40px; }
+
+.modal_body {
+  padding-right: 70px;
+  padding-left: 70px;
+  word-wrap: break-word; }
+
+.modal_footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px; }
+
+#retry_btn {
+  padding: 15px 0px;
+  width: 100%;
+  height: 100%; }
+
+.info_text_title {
+  margin-top: 30px; }
+
 #unsupported_browser_container {
   display: none; }
 

@@ -1,0 +1,21 @@
+on macOS, have http command line tools installed via:
+brew install httpie
+do docker web build:
+cd ~/web
+docker build -t web-master:latest . && docker run --rm -it --name web-master -v $PWD:/app -p 2323:2323 web-master:latest
+ssh into the docker,
+execute
+hugo
+this will produce the public folder in ~/web/public/index.json in the local file tree
+Copy the file "algolia-update-reindex-example.py" from the ~/web/scripts/reindex-notes/ directory up one level into ~/web/scripts
+Update the righthand hash in algolia-update-reindex-example.py to the commit hash of the web master branch's last commit
+Now run:
+cd ~/web
+python3 scripts/reindex-notes/algolia-update-reindex-example.py
+Regex replace thisindexdata.json with each rule in index-upload-structure.txt
+run 
+perl scripts/reindex-notes/partition.pl
+Increase the number of rows in runoutputupload.sh to match the number of output files
+Clear the Index in algolia.com for web
+Now run the runoutputupload.sh script
+That completes the reindex.

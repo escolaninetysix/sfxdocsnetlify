@@ -1,0 +1,309 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: FlickerMchMatteColor",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FlickerMatchColor.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FlickerMchMatteColor">
+     <h2>
+      S_FlickerMchMatteColor
+     </h2>
+    </a>
+    Adds color changes to the Source clip using
+the color changes from a second Match clip, in the areas specified by
+a Matte.  To use this effect, select a frame where you want the Source
+color unchanged, and hit the Set Match Color button.  When other
+frames are processed, the Source color will be scaled by the
+average Match color within the Matte, relative to the Match
+Color.
+    <p>
+     In the Sapphire Time category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The clip to add flicker to.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Match:
+      </b>
+      <i>
+       Selectable.
+      </i>
+      The clip to copy flicker from.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      <i>
+       Selectable.
+      </i>
+      This clip specifies which Source areas to measure the
+  flicker from.  If this input is not provided, the Alpha of the
+  Match input is used as the Matte instead.  It can be inverted with
+  the Invert Matte parameter.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.  The output of the effect is composited over this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FlickerMatchColor.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Set Match Color:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Pressing this button sets the Match Color
+  parameter to the average Match clip color within the Matte at the
+  current frame.  It causes the output to equal the Source at this
+  frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Match Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.5 0.5 0.5].
+   <br/>
+   The average Match color in the Matte for which
+  the Source input is unchanged.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Matte Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Matte input channels are used to make
+a monochrome matte.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used, or if there is no
+valid Alpha channel the Red channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Matte:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the matte
+are inverted before use.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#title-key">
+  Apply To Title/Key
+ </a>
+ ,
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../flickermatchmatte">
+       FlickerMatchMatte
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../flickerremove">
+       FlickerRemove
+      </a>
+      <br/>
+      <a href="../flickerremovecolor">
+       FlickerRemoveColor
+      </a>
+      <br/>
+      <a href="../flickerremovematte">
+       FlickerRemoveMatte
+      </a>
+      <br/>
+      <a href="../flickerrmmattecolor">
+       FlickerRmMatteColor
+      </a>
+      <br/>
+      <a href="../flickermatch">
+       FlickerMatch
+      </a>
+      <br/>
+      <a href="../flickermatchcolor">
+       FlickerMatchColor
+      </a>
+      <br/>
+      <a href="../flicker">
+       Flicker
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

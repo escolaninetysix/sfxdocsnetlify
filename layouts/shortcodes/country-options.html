@@ -1,0 +1,3 @@
+  {{ range $.Site.Data.CountriesAndStates }}
+    <option value="{{ .code }}"> {{ .name }} </option>
+  {{ end }}

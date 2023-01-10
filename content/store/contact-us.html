@@ -1,0 +1,77 @@
+{
+   "title": "Contact Us",
+   "require_recaptcha": "True"
+}
+
+<div class="row">
+  <div class="col-md-6">
+    <p>Please use this form for questions about pricing, upgrades and more. Our sales team is here to help!</p>
+    <p>If you would like to speak with a sales representative, please call:<br><br><strong>1-888-77-BORIS</strong><br><br>Outside the US, please call +1 617-451-9900 or our UK office on +44 1483 347743.<br><br>If you have a technical support or licensing question, please log your case <a href="/support/">here</a>. <br><br>Business Hours:<br><br>9am – 6pm EST (Mon.-Fri.)<br><br>We do our best to respond to phone messages and email within 24 hours on business days.</p>
+  </div>
+  <div class="col-md-6">
+    <form id="open-a-case-form">
+      <div class="form-group"><label>Email:</label> <input name="email" class="form-control" type="text"></div>
+      <div class="form-group"><label>First Name:</label> <input name="first_name" class="form-control" type="text"></div>
+      <div class="form-group"><label>Last Name:</label> <input name="last_name" class="form-control" type="text"></div>
+      <div class="form-group"><label>Company:</label> <input name="company" class="form-control" type="text"></div>
+      <div class="form-group"><label>City:</label> <input name="city" class="form-control" type="text"></div>
+      {{% country-state-dropdown %}}
+      <div class="form-group"><label>Phone:</label> <input name="phone" class="form-control" type="text"></div>
+      <div class="form-group"><label>Case Type</label>
+        <select name="case_type" class="form-control">
+          <option value="">Choose a Case Type</option>
+          <option>Sales</option>
+          <option>Educational Information</option>
+          <option>Career Opportunities</option>
+          <option>General</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Subject:</label> <input name="subject" class="form-control" type="text"></div>
+      <div class="form-group"><label>Description:</label> <textarea name="description" rows="6" class="form-control"></textarea></div>
+      <div class="g-recaptcha" data-sitekey="6Le-fEQUAAAAAKNX6zxewTeps8tnPgvzj7o1GfrI"></div>
+      <div class="form-group"><button class="btn btn-block btn-lg" type="submit">Submit</button></div>
+      <div class="form-group form-inline"><label>Join our email newsletter and keep up to date</label><input name="newsletter" id="newsletter" class="form-control ml-2" type="checkbox" checked/></div>
+      <p id="newsletter-consent">You can unsubscribe from the Boris FX newsletter at any time by clicking a link we include in every message. We use a third-party service, Pardot, to deliver our newsletters, please see our <a href="/company/privacy/#e-newsletter" target="_blank">privacy policy</a> for more information.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $(document).ready(function() {
+      $('#open-a-case-form').submit(function(e) {
+        e.preventDefault();
+        var values = $(this).serializeArray();
+        var error = false;
+        var fields = {};
+        $.each(values, function () {
+          fields[this.name] = this.value;
+          if (this.value == '' && $(this).attr('hidden') == false) {
+            error = true;
+          }
+        });
+        if (error) {
+          alert("Please complete all fields to submit a support case.");
+          return;
+        }
+        $.ajax({
+          type:'POST',
+          url: 'https://backend.borisfx.com/contact',
+          data: JSON.stringify(fields),
+          contentType: 'application/json',
+          success: function (res) {
+            alert('Your message was successfully sent. We will be in touch via email soon!');
+            window.location = '/';
+          },
+          error: function (error) {
+            if (error.status == 429) {
+              alert('Please wait 5 minutes before contacting us again.');
+            } else {
+              alert('There was an error submitting your case. Please email support@borisfx.com');
+            }
+          },
+        });
+      });
+    });
+  });
+</script>

@@ -10,16 +10,29 @@
     <noscript>
       <div id="noscript_padding"></div>
     </noscript>
-    <link rel="StyleSheet" href="css/font-awesome/css/all.min.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/font-awesome/css/font-awesome.css" type="text/css" media="all" />
     <link rel="StyleSheet" href="css/connect.css" type="text/css" media="all" />
     <link rel="StyleSheet" href="css/skin.css" type="text/css" media="all" />
     <link rel="StyleSheet" href="css/menu_initial_open.css" type="text/css" media="all" />
   </head>
   <body id="connect_body" class="preload">
-    <div id="page_loading">
-      <i class="spin fa"></i>
-    </div>
     <div id="layout_div" class="layout_initial">
+      <!-- Progress Bar -->
+      <!--              -->
+      <div id="progress">
+        <div class="ww_skin_progress_bar">
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+          <div class="ww_skin_progress_segment ww_skin_progress_segment_pending">&nbsp;</div>
+        </div>
+      </div>
       <!-- Presentation -->
       <!--              -->
       <div id="presentation_div" class="menu_initial menu_open">
@@ -31,7 +44,19 @@
         <div id="toolbar_div">
           <table class="ww_skin_toolbar" cellpadding="0" cellspacing="0">
             <tr>
-              <td class="ww_skin_toolbar_cluster ww_skin_toolbar_cluster_left"><div class="ww_skin_toolbar_logo_spacer"><div class="ww_skin_menu_button_container"><!--<span class="ww_skin_menu ww_skin_menu_toggle_button">--><span class="ww_skin_menu_toggle_button"><a class="ww_behavior_menu ww_skin ww_skin_menu ww_skin_menu_toggle_button" title="Menu" href="#"><i class="fa"></i></a></span></div><div class="ww_skin_toolbar_logo_container"><img class="ww_skin_toolbar_logo" src="connect/SilhouetteType_DarkBg-EP.png" /></div></div></td>
+              <td class="ww_skin_toolbar_cluster ww_skin_toolbar_cluster_left"><!-- Keep these in case we want to implement individual TOC/Index buttons inside the toolbar.
+              <div style="display: none;">
+                <span wwpage:condition="toc-enabled" class="ww_skin_toolbar_button_left ww_skin_toolbar_background_default ww_skin_toolbar_button_enabled">
+                  <wwexsldoc:nobreak />
+                  <a class="ww_behavior_toc ww_skin ww_skin_toc" title="TOC" wwpage:attribute-title="toc-button-title" href="#">&#160;</a>
+                </span>
+
+                <span wwpage:condition="index-enabled" class="ww_skin_toolbar_button_left ww_skin_toolbar_background_default ww_skin_toolbar_button_enabled">
+                  <wwexsldoc:nobreak />
+                  <a class="ww_behavior_index ww_skin ww_skin_index" title="Index" wwpage:attribute-title="index-button-title" href="#">&#160;</a>
+                </span>
+              </div>
+              --><div class="ww_skin_toolbar_logo_spacer"><div class="ww_skin_menu_button_container"><!--<span class="ww_skin_menu ww_skin_menu_toggle_button">--><span class="ww_skin_menu_toggle_button"><a class="ww_behavior_menu ww_skin ww_skin_menu ww_skin_menu_toggle_button" title="Menu" href="#"><i class="fa"></i></a></span></div><div class="ww_skin_toolbar_logo_container"><img class="ww_skin_toolbar_logo" src="connect/SilhouetteType_DarkBg-EP.png" /></div></div></td>
               <td class="ww_skin_toolbar_cluster ww_skin_toolbar_cluster_search"><form class="ww_skin_search_form" method="get"><span class="ww_skin_toolbar_button_left ww_skin_toolbar_background_default ww_skin_toolbar_button_enabled ww_skin_search_form_inner"><table class="ww_skin_search_table"><tr><!-- Search Scope button --><!--                     --><td id="search_scope_container" class="ww_skin_search_scope_container selector_options_closed"></td><td id="search_input_container" class="ww_skin_search_input_container"><input id="search_input" class="ww_skin_search_input" autofocus="true" placeholder="Enter search term or phrase"></input></td><td class="ww_skin_search_button_container_outer"><div class="ww_skin_search_button_container_inner"><a class="ww_behavior_search ww_skin ww_skin_search ww_skin_search_button" title="Search" href="#"><i class="fa"></i></a></div></td></tr></table></span></form></td>
               <!-- Search bar, nav buttons -->
               <!--                         -->
@@ -69,6 +94,11 @@
     <!-- Panels -->
     <!--        -->
     <div id="panels">
+      <!-- Panel Progress -->
+      <!--                -->
+      <div id="panel_progress" class="ww_skin_panel_progress_background">
+      Panel Progress
+    </div>
       <!-- Menu Nav Buttons -->
       <!--                  -->
       <div id="nav_buttons_div">
@@ -115,10 +145,30 @@
     <!--         -->
     <div id="parcels">
       <ul>
-        <li id="group:nKBs1Zaene4" data-group-title="silhouette-2022.5">
-          <div class="ww_skin_toc_entry ww_skin_toc_folder"><div class="ww_skin_toc_entry_indent"><span class="ww_skin ww_skin_toc_dropdown ww_skin_toc_dropdown_closed"><i class="fa"></i></span></div><a class="ww_skin_toc_entry_title" id="silhouette-2022.5:nKBs1Zaene4" href="silhouette-2022.5.html" target="_self" title="silhouette-2022.5">silhouette-2022.5</a></div>
+        <li id="group:nKBs1Zaene4" data-group-title="Silhouette-2022.5">
+          <div class="ww_skin_toc_entry ww_skin_toc_folder"><span class="ww_skin ww_skin_toc_dropdown ww_skin_toc_dropdown_closed"><i class="fa"></i></span><a id="Silhouette-2022.5:nKBs1Zaene4" href="Silhouette-2022.5.html" target="_self" title="Silhouette-2022.5">Silhouette-2022.5</a></div>
         </li>
       </ul>
+    </div>
+    <!-- The Modal for disabled storage/cookies -->
+    <!--                                -->
+    <div id="modal_container" class="modal_background ww_skin_modal_background">
+      <!-- Modal content -->
+      <div class="modal_content ww_skin_modal_content">
+        <div id="close_div">
+          <span id="modal_close" class="ww_skin_modal_btn">×</span>
+        </div>
+        <div class="modal_header ww_skin_modal_header">
+          <i class="fa"></i>
+          <h2 class="info_text_title ww_skin_info_text_title">DOM storage is disabled</h2>
+        </div>
+        <div class="modal_body ww_skin_modal_body">
+          <p>Your browser has DOM storage disabled. Make sure DOM storage is enabled and try again.</p>
+        </div>
+        <div class="modal_footer">
+          <button id="retry_btn" class="ww_skin_retry_btn">Retry</button>
+        </div>
+      </div>
     </div>
     <div id="unsupported_browser_container">
       <div id="unsupported_browser" class="ww_skin_unsupported_browser">
@@ -131,6 +181,7 @@
     </noscript>
     <script type="text/javascript" src="scripts/common.js"></script>
     <script type="text/javascript" src="scripts/menu.js"></script>
+    <script type="text/javascript" src="scripts/modal.js"></script>
     <script type="text/javascript" src="scripts/connect.js"></script>
   </body>
 </html>

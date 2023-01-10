@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.14. ProgressWatcher &#8212; mocha 9.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.15. Project" href="Project.html" />
+    <link rel="prev" title="2.13. ParameterSet" href="ParameterSet.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Project.html" title="2.15. Project"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ParameterSet.html" title="2.13. ParameterSet"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 9.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="progresswatcher">
+<span id="id1"></span><h1><span class="section-number">2.14. </span>ProgressWatcher<a class="headerlink" href="#progresswatcher" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.14.1. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>Progress indication class for different complex operations which might take a long time
+(e.g. rendering, exporting, etc.).</p>
+<p>There are 4 main Qt signals:</p>
+<ul class="simple">
+<li><p><cite>started()</cite>: The signal being emitted when operation starts.</p></li>
+<li><p><cite>progress_status(int)</cite>: The signal being emitted during operation.</p></li>
+<li><p><cite>progress_message(unicode)</cite>: Verbose signal being emitted during operation.</p></li>
+<li><p><cite>finished()</cite>: The signal being emitted when operation ends.</p></li>
+</ul>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.project.ProgressWatcher">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">ProgressWatcher</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">parent=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ProgressWatcher" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+<p>Create a global progress watcher instance which reflects the mocha progress bar behaviour.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ProgressWatcher.finished">
+<code class="sig-prename descclassname">ProgressWatcher.</code><code class="sig-name descname">finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ProgressWatcher.finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ProgressWatcher.progress_message">
+<code class="sig-prename descclassname">ProgressWatcher.</code><code class="sig-name descname">progress_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ProgressWatcher.progress_message" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ProgressWatcher.progress_status">
+<code class="sig-prename descclassname">ProgressWatcher.</code><code class="sig-name descname">progress_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">progress</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ProgressWatcher.progress_status" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ProgressWatcher.started">
+<code class="sig-prename descclassname">ProgressWatcher.</code><code class="sig-name descname">started</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ProgressWatcher.started" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.14. ProgressWatcher</a><ul>
+<li><a class="reference internal" href="#detailed-description">2.14.1. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ParameterSet.html"
+                        title="previous chapter"><span class="section-number">2.13. </span>ParameterSet</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Project.html"
+                        title="next chapter"><span class="section-number">2.15. </span>Project</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Project.html" title="2.15. Project"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ParameterSet.html" title="2.13. ParameterSet"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 9.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2021, Boris FX, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

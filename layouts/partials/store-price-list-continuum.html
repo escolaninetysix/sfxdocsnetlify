@@ -1,0 +1,1538 @@
+<div class="col-md-12">
+
+<style>
+select {
+width:100px;
+}
+
+.ui-tabs .ui-tabs-nav {
+    display: flex;
+	border:none;
+	background-color:white;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    flex: auto;
+    display: flex;
+    white-space: normal;
+	color:#00aeef;
+
+
+}
+
+.ui-tabs .ui-tabs-nav li a {
+    flex: auto;
+    text-align: center;
+
+
+}
+
+@media all and (max-width: 767.98px)  {
+
+div#Sapphire,
+div#SapphireContinuumMocha,
+div#SapphireContinuum,
+div#SapphireMocha {
+
+flex:1 100%;
+align-items:stretch;
+
+}
+
+}
+</style>
+	        
+<script>
+  $( function() {
+    $( "#tabs1" ).tabs();
+  } );
+</script>
+
+
+<div align="center" style="font-size:12pt;">
+<h1 style="letter-spacing:0px;"><b>CONTINUUM PRICING:</b></h1><br>
+
+<div id="tabs1" style="width:100%; height:50%;">
+  <ul style="border-bottom:none;display:flex;flex-direction:row;flex-wrap:wrap;background-color:white;">
+    <li><a href="#tabs-1">Annual Subscription</a></li>
+    <li><a href="#tabs-2">Permanent</a></li>
+    <li><a href="#tabs-3">Renewals</a></li>
+    <li><a href="#tabs-4">Units</a></li>
+	<li><a href="#tabs-5">Enterprise</a></li>
+  </ul>
+  <div id="tabs-1" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;color:#00aeef;justify-content: space-evenly;">
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Continuum:<br><br>
+<hr>
+<span id="adobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_adobe }}</b></h1></span>
+<span id="ofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_ofx }}</b></h1></span>
+<span id="avidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_avid }}</b></h1></span>
+<span id="appleCont" style="display:none" ><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_apple }}</b></h1></span>
+<span id="avidadobeappleofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_avidadobeappleofx }}</b></h1></span>
+<span id="adobeappleofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_adobeappleofx }}</b></h1></span>
+12 Month Subscription<br><br>
+Hosts: 
+<select id="hostsNEWCont" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="OFX">OFX</option>
+<option value="Avid">Avid</option>
+<option value="Apple">Apple</option>
+<option value="avidadobeappleofx">Avid/Adobe/Apple/OFX</option>
+<option value="adobeappleofx">Adobe/Apple/OFX</option>
+</select>
+<span id="adobeCont" style="display:none;color:silver;"><br><br>${{ div 295 12}} per month<br>with annual subscription</span>
+<span id="ofxCont" style="display:none;color:silver;"><br><br>${{ div 195 12}} per month<br>with annual subscription</span>
+<span id="avidCont" style="display:none;color:silver;"><br><br>${{ div 495 12}} per month<br>with annual subscription</span>
+<span id="appleCont" style="display:none;color:silver;"><br><br>${{ div 195 12}} per month<br>with annual subscription</span>
+<span id="avidadobeappleofxCont" style="display:none;color:silver;"><br><br>${{ div 695 12}} per month<br>with annual subscription</span>
+<span id="adobeappleofxCont" style="display:none;color:silver;"><br><br>${{ div 395 12}} per month<br>with annual subscription</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=continuum&product=continuum" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+
+<div id="SapphireContinuumMocha" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+
+Continuum + Sapphire<br>+ Mocha:<br>
+<hr>
+
+<span id="scmpadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_scmp_adobe }}</b></h1></span>
+<span id="scmpavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_scmp_avid }}</b></h1></span>
+<span id="scmpofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_scmp_ofx }}</b></h1></span>
+<span id="scmpadobeofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_scmp_adobeofx }}</b></h1></span>
+<span id="scmpmultihostCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_scmp_multihost }}</b></h1></span>
+12 Month Subscription<br><br>
+Hosts: 
+<select id="hostsNEWscmpCont" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="Avid">Avid</option>
+<option value="OFX">OFX</option>
+<option value="adobeofx">Adobe/OFX</option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="scmpadobeCont" style="display:none;color:silver;"><br><br>${{ div 795 12}} per month<br>with annual subscription</span>
+<span id="scmpavidCont" style="display:none;color:silver;"><br><br>${{ div 895 12}} per month<br>with annual subscription</span>
+<span id="scmpofxCont" style="display:none;color:silver;"><br><br>${{ div 695 12}} per month<br>with annual subscription</span>
+<span id="scmpadobeofxCont" style="display:none;color:silver;"><br><br>${{ div 895 12}} per month<br>with annual subscription</span>
+<span id="scmpmultihostCont" style="display:none;color:silver;"><br><br>${{ div 1195 12}} per month<br>with annual subscription</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=bundles&product=sapphire-continuum-mocha-pro-bundle" target="_blank"><button data-toggle="popover" data-content="Best Value" class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+
+
+
+<div id="SapphireContinuum" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Continuum + Sapphire:<br><br>
+<hr>
+<span id="scadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_sc_adobe }}</b></h1></span>
+<span id="scavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_sc_avid }}</b></h1></span>
+<span id="scofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_sc_ofx }}</b></h1></span>
+<span id="scadobeofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_sc_adobeofx }}</b></h1></span>
+<span id="scmultihostCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_sc_multihost }}</b></h1></span>
+12 Month Subscription<br><br>
+Hosts: 
+<select id="hostsNEWscCont" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="Avid">Avid</option>
+<option value="OFX">OFX</option>
+<option value="adobeofx">Adobe/OFX</option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="scadobeCont" style="display:none;color:silver;"><br><br>${{ div 695 12}} per month<br>with annual subscription</span>
+<span id="scavidCont" style="display:none;color:silver;"><br><br>${{ div 795 12}} per month<br>with annual subscription</span>
+<span id="scofxCont" style="display:none;color:silver;"><br><br>${{ div 695 12}} per month<br>with annual subscription</span>
+<span id="scadobeofxCont" style="display:none;color:silver;"><br><br>${{ div 795 12}} per month<br>with annual subscription</span>
+<span id="scmultihostCont" style="display:none;color:silver;"><br><br>${{ div 1195 12}} per month<br>with annual subscription</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=bundles&product=continuum-sapphire-bundle" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<div id="SapphireMocha" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Continuum + Mocha:<br><br>
+<hr>
+<span id="cmpadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_cmp_adobe }}</b></h1></span>
+<span id="cmpavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_cmp_avid }}</b></h1></span>
+<span id="cmpofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_cmp_ofx }}</b></h1></span>
+<span id="cmpadobeofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_cmp_adobeofx }}</b></h1></span>
+<span id="cmpmultihostCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .annual_cmp_multihost }}</b></h1></span>
+12 Month Subscription<br><br>
+Hosts: 
+<select id="hostsNEWsmpCont" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="Avid">Avid</option>
+<option value="OFX">OFX</option>
+<option value="adobeofx">Adobe/OFX</option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="cmpadobeCont" style="display:none;color:silver;"><br><br>${{ div 495 12}} per month<br>with annual subscription</span>
+<span id="cmpavidCont" style="display:none;color:silver;"><br><br>${{ div 595 12}} per month<br>with annual subscription</span>
+<span id="cmpofxCont" style="display:none;color:silver;"><br><br>${{ div 395 12}} per month<br>with annual subscription</span>
+<span id="cmpadobeofxCont" style="display:none;color:silver;"><br><br>${{ div 595 12}} per month<br>with annual subscription</span>
+<span id="cmpmultihostCont" style="display:none;color:silver;"><br><br>${{ div 795 12}} per month<br>with annual subscription</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=bundles&product=continuum-mocha-pro-bundle" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+<script>
+$(document).ready(function() {
+$('#hostsNEWCont option[value="Adobe"]').attr("selected",true);
+	  $("span#adobeCont").toggle(true);
+$('#hostsNEWscmpCont option[value="Adobe"]').attr("selected",true);
+	  $("span#scmpadobeCont").toggle(true);
+$('#hostsNEWscCont option[value="Adobe"]').attr("selected",true);
+$("span#scadobeCont").toggle(true);
+$('#hostsNEWsmpCont option[value="Adobe"]').attr("selected",true);
+$("span#cmpadobeCont").toggle(true);
+});
+$('select#hostsNEWCont').change(function() {
+	  if ( $('#hostsNEWCont option[value=""]').is(':selected')) {
+	  $("span#adobeCont").toggle(false);
+	  $("span#ofxCont").toggle(false);
+	  $("span#avidCont").toggle(false);
+	  $("span#appleCont").toggle(false);
+	  $("span#avidadobeappleofxCont").toggle(false);
+	  $("span#adobeappleofxCont").toggle(false);
+      }
+ 	  if ($('#hostsNEWCont option[value="Adobe"]').is(':selected')) {
+	  $("span#adobeCont").toggle(true);
+	  $("span#ofxCont").toggle(false);
+	  $("span#avidCont").toggle(false);
+	  $("span#appleCont").toggle(false);
+	  $("span#avidadobeappleofxCont").toggle(false);
+	  $("span#adobeappleofxCont").toggle(false);
+	  } 
+	  if ($('#hostsNEWCont option[value="OFX"]').is(':selected') ) {
+	  $("span#adobeCont").toggle(false);
+	  $("span#ofxCont").toggle(true);
+	  $("span#avidCont").toggle(false);
+	  $("span#appleCont").toggle(false);
+	  $("span#avidadobeappleofxCont").toggle(false);
+	  $("span#adobeappleofxCont").toggle(false);
+	  }	  
+	  
+	  if ($('#hostsNEWCont option[value="Avid"]').is(':selected')) {
+	  $("span#adobeCont").toggle(false);
+	  $("span#ofxCont").toggle(false);
+	  $("span#avidCont").toggle(true);
+	  $("span#appleCont").toggle(false);
+	  $("span#avidadobeappleofxCont").toggle(false);
+	  $("span#adobeappleofxCont").toggle(false);
+
+	  }
+	  if ($('#hostsNEWCont option[value="Apple"]').is(':selected')) {
+	  $("span#adobeCont").toggle(false);
+	  $("span#ofxCont").toggle(false);
+	  $("span#avidCont").toggle(false);
+	  $("span#appleCont").toggle(true);
+	  $("span#avidadobeappleofxCont").toggle(false);
+	  $("span#adobeappleofxCont").toggle(false);
+	  } 
+	  if ($('#hostsNEWCont option[value="avidadobeappleofx"]').is(':selected')) {
+	  $("span#adobeCont").toggle(false);
+	  $("span#ofxCont").toggle(false);
+	  $("span#avidCont").toggle(false);
+	  $("span#appleCont").toggle(false);
+	  $("span#avidadobeappleofxCont").toggle(true);
+	  $("span#adobeappleofxCont").toggle(false);
+	  }  
+	  if ($('#hostsNEWCont option[value="adobeappleofx"]').is(':selected')) {
+	  $("span#adobeCont").toggle(false);
+	  $("span#ofxCont").toggle(false);
+	  $("span#avidCont").toggle(false);
+	  $("span#appleCont").toggle(false);
+	  $("span#avidadobeappleofxCont").toggle(false);
+	  $("span#adobeappleofxCont").toggle(true);
+	  }
+});
+$('select#hostsNEWscmpCont').change(function() {
+	  if ( $('#hostsNEWscmpCont option[value=""]').is(':selected')) {
+	  $("span#scmpadobeCont").toggle(false);
+	  $("span#scmpavidCont").toggle(false);
+	  $("span#scmpofxCont").toggle(false);
+	  $("span#scmpadobeofxCont").toggle(false);
+	  $("span#scmpmultihostCont").toggle(false);
+	  }	  
+	  if ( $('#hostsNEWscmpCont option[value="Adobe"]').is(':selected')) {
+	  $("span#scmpadobeCont").toggle(true);
+	  $("span#scmpavidCont").toggle(false);
+	  $("span#scmpofxCont").toggle(false);
+	  $("span#scmpadobeofxCont").toggle(false);
+	  $("span#scmpmultihostCont").toggle(false);
+	  }
+	  if ( $('#hostsNEWscmpCont option[value="Avid"]').is(':selected')) {
+	  $("span#scmpadobeCont").toggle(false);
+	  $("span#scmpavidCont").toggle(true);
+	  $("span#scmpofxCont").toggle(false);
+	  $("span#scmpadobeofxCont").toggle(false);
+	  $("span#scmpmultihostCont").toggle(false);
+      }	 
+	  if ( $('#hostsNEWscmpCont option[value="OFX"]').is(':selected')) {
+	  $("span#scmpadobeCont").toggle(false);
+	  $("span#scmpavidCont").toggle(false);
+	  $("span#scmpofxCont").toggle(true);
+	  $("span#scmpadobeofxCont").toggle(false);
+	  $("span#scmpmultihostCont").toggle(false);    
+	  }	 
+	  if ( $('#hostsNEWscmpCont option[value="adobeofx"]').is(':selected')) {
+	  $("span#scmpadobeCont").toggle(false);
+	  $("span#scmpavidCont").toggle(false);
+	  $("span#scmpofxCont").toggle(false);
+	  $("span#scmpadobeofxCont").toggle(true);
+	  $("span#scmpmultihostCont").toggle(false);
+   
+	  }
+	  if ( $('#hostsNEWscmpCont option[value="multihost"]').is(':selected')) {
+	  $("span#scmpadobeCont").toggle(false);
+	  $("span#scmpavidCont").toggle(false);
+	  $("span#scmpofxCont").toggle(false);
+	  $("span#scmpadobeofxCont").toggle(false);
+	  $("span#scmpmultihostCont").toggle(true);   
+	  }	 
+	  
+});
+$('select#hostsNEWscCont').change(function() {
+	  if ( $('#hostsNEWscCont option[value=""]').is(':selected')) {
+  $("span#scadobeCont").toggle(false);
+	  $("span#scavidCont").toggle(false);
+	  $("span#scofxCont").toggle(false);
+	  $("span#scadobeofxCont").toggle(false);
+	  $("span#scmultihostCont").toggle(false);      
+	  }	  
+	  if ( $('#hostsNEWscCont option[value="Adobe"]').is(':selected')) {
+  $("span#scadobeCont").toggle(true);
+	  $("span#scavidCont").toggle(false);
+	  $("span#scofxCont").toggle(false);
+	  $("span#scadobeofxCont").toggle(false);
+	  $("span#scmultihostCont").toggle(false);      
+	  }
+	  if ( $('#hostsNEWscCont option[value="Avid"]').is(':selected')) {
+	    $("span#scadobeCont").toggle(false);
+	  $("span#scavidCont").toggle(true);
+	  $("span#scofxCont").toggle(false);
+	  $("span#scadobeofxCont").toggle(false);
+	  $("span#scmultihostCont").toggle(false);
+      }	 
+	  if ( $('#hostsNEWscCont option[value="OFX"]').is(':selected')) {
+   $("span#scadobeCont").toggle(false);
+	  $("span#scavidCont").toggle(false);
+	  $("span#scofxCont").toggle(true);
+	  $("span#scadobeofxCont").toggle(false);
+	  $("span#scmultihostCont").toggle(false);     
+	  }	 
+	  if ( $('#hostsNEWscCont option[value="adobeofx"]').is(':selected')) {
+  $("span#scadobeCont").toggle(false);
+	  $("span#scavidCont").toggle(false);
+	  $("span#scofxCont").toggle(false);
+	  $("span#scadobeofxCont").toggle(true);
+	  $("span#scmultihostCont").toggle(false);      
+	  }
+	  if ( $('#hostsNEWscCont option[value="multihost"]').is(':selected')) {
+  $("span#scadobeCont").toggle(false);
+	  $("span#scavidCont").toggle(false);
+	  $("span#scofxCont").toggle(false);
+	  $("span#scadobeofxCont").toggle(false);
+	  $("span#scmultihostCont").toggle(true);      
+	  }	 
+	  
+});
+$('select#hostsNEWsmpCont').change(function() {
+	  if ( $('#hostsNEWsmpCont option[value=""]').is(':selected')) {
+	  	    $("span#cmpadobeCont").toggle(false);
+	  $("span#cmpavidCont").toggle(false);
+	  $("span#cmpofxCont").toggle(false);
+	  $("span#cmpadobeofxCont").toggle(false);
+	  $("span#cmpmultihostCont").toggle(false);  
+	  }	  
+	  if ( $('#hostsNEWsmpCont option[value="Adobe"]').is(':selected')) {
+	  	    $("span#cmpadobeCont").toggle(true);
+	  $("span#cmpavidCont").toggle(false);
+	  $("span#cmpofxCont").toggle(false);
+	  $("span#cmpadobeofxCont").toggle(false);
+	  $("span#cmpmultihostCont").toggle(false);
+     
+	  }
+	  if ( $('#hostsNEWsmpCont option[value="Avid"]').is(':selected')) {
+	  	    $("span#cmpadobeCont").toggle(false);
+	  $("span#cmpavidCont").toggle(true);
+	  $("span#cmpofxCont").toggle(false);
+	  $("span#cmpadobeofxCont").toggle(false);
+	  $("span#cmpmultihostCont").toggle(false);
+      }	 
+	  if ( $('#hostsNEWsmpCont option[value="OFX"]').is(':selected')) {
+	  	    $("span#cmpadobeCont").toggle(false);
+	  $("span#cmpavidCont").toggle(false);
+	  $("span#cmpofxCont").toggle(true);
+	  $("span#cmpadobeofxCont").toggle(false);
+	  $("span#cmpmultihostCont").toggle(false);   
+	  }	 
+	  if ( $('#hostsNEWsmpCont option[value="adobeofx"]').is(':selected')) {
+	  	    $("span#cmpadobeCont").toggle(false);
+	  $("span#cmpavidCont").toggle(false);
+	  $("span#cmpofxCont").toggle(false);
+	  $("span#cmpadobeofxCont").toggle(true);
+	  $("span#cmpmultihostCont").toggle(false);     
+	  }
+	  if ( $('#hostsNEWsmpCont option[value="multihost"]').is(':selected')) {
+	  	    $("span#cmpadobeCont").toggle(false);
+	  $("span#cmpavidCont").toggle(false);
+	  $("span#cmpofxCont").toggle(false);
+	  $("span#cmpadobeofxCont").toggle(false);
+	  $("span#cmpmultihostCont").toggle(true);  
+	  }	 
+	  
+});
+</script>  
+  </div>
+   <div id="tabs-2" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;color:#00aeef;justify-content: space-evenly;">
+<div id="Sapphire" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Continuum:<br><br>
+<hr>
+<span id="permadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_adobe }}</b></h1></span>
+<span id="permofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_ofx }}</b></h1></span>
+<span id="permavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_avid }}</b></h1></span>
+<span id="permappleCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_apple }}</b></h1></span>
+<span id="permavidadobeappleofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_avidadobeappleofx }}</b></h1></span>
+<span id="permadobeappleofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_adobeappleofx }}</b></h1></span>
+Permanent Licensing<br><br>
+Hosts: 
+<select id="hostsPermanent" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="OFX">OFX</option>
+<option value="Avid">Avid</option>
+<option value="Apple">Apple</option>
+<option value="avidadobeappleofx">Avid/Adobe/Apple/OFX</option>
+<option value="adobeappleofx">Adobe/OFX/Apple</option>
+</select>
+<span id="permadobeCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="permofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="permavidCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="permappleCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="permavidadobeappleofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="permadobeappleofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=continuum&product=continuum" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+
+
+<div id="SapphireContinuumMocha" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Continuum + Sapphire<br>+ Mocha:<br>
+<hr>
+<span id="PERMscmpadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_scmp_adobe }}</b></h1></span>
+<span id="PERMscmpavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_scmp_avid }}</b></h1></span>
+<span id="PERMscmpofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_scmp_ofx }}</b></h1></span>
+<span id="PERMscmpadobeofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_scmp_adobeofx }}</b></h1></span>
+<span id="PERMscmpmultihostCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_scmp_multihost }}</b></h1></span>
+Permanent Licensing<br><br>
+Hosts: 
+<select id="hostsPermanentscmp" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="Avid">Avid</option>
+<option value="OFX">OFX</option>
+<option value="adobeofx">Adobe/OFX</option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="PERMscmpadobeCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMscmpavidCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMscmpofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMscmpadobeofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMscmpmultihostCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=bundles&product=sapphire-continuum-mocha-pro-bundle" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+
+
+
+
+<div id="SapphireContinuum" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Continuum + Sapphire:<br><br>
+<hr>
+<span id="PERMscadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_sc_adobe }}</b></h1></span>
+<span id="PERMscavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_sc_avid }}</b></h1></span>
+<span id="PERMscofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_sc_ofx }}</b></h1></span>
+<span id="PERMscadobeofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_sc_adobeofx }}</b></h1></span>
+<span id="PERMscmultihostCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_sc_multihost }}</b></h1></span>
+Permanent Licensing<br><br>
+Hosts: 
+<select id="hostsPermanentsc" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="Avid">Avid</option>
+<option value="OFX">OFX</option>
+<option value="adobeofx">Adobe/OFX</option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="PERMscadobeCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMscavidCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMscofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMscadobeofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMscmultihostCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=bundles&product=continuum-sapphire-bundle" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<div id="SapphireMocha" style="flex:inherit;border:1px solid #00aeef;padding:15px;">
+Continuum + Mocha:<br><br>
+<hr>
+<span id="PERMsmpadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_cmp_adobe }}</b></h1></span>
+<span id="PERMsmpavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_cmp_avid }}</b></h1></span>
+<span id="PERMsmpofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_cmp_ofx }}</b></h1></span>
+<span id="PERMsmpadobeofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_cmp_adobeofx }}</b></h1></span>
+<span id="PERMsmpmultihostCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .permanent_cmp_multihost }}</b></h1></span>
+Permanent Licensing<br><br>
+Hosts: 
+<select id="hostsPermanentsmp" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="Avid">Avid</option>
+<option value="OFX">OFX</option>
+<option value="adobeofx">Adobe/OFX</option>
+<option value="multihost">Multihost</option>
+</select>
+<span id="PERMsmpadobeCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMsmpavidCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMsmpofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMsmpadobeofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="PERMsmpmultihostCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=bundles&product=continuum-mocha-pro-bundle" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<script>
+$(document).ready(function() {
+$('#hostsPermanent option[value="Adobe"]').attr("selected",true);
+	  $("span#permadobeCont").toggle(true);
+$('#hostsPermanentscmp option[value="Adobe"]').attr("selected",true);
+	  $("span#PERMscmpadobeCont").toggle(true);
+$('#hostsPermanentsc option[value="Adobe"]').attr("selected",true);
+	  $("span#PERMscadobeCont").toggle(true);
+$('#hostsPermanentsmp option[value="Adobe"]').attr("selected",true);
+	  $("span#PERMsmpadobeCont").toggle(true);
+});
+$('select#hostsPermanent').change(function() {
+	  if ($('#hostsPermanent option[value=""]').is(':selected')) {
+	  	  $("span#permadobeCont").toggle(false);
+	  	  $("span#permofxCont").toggle(false);
+	  $("span#permavidCont").toggle(false);
+	  $("span#permappleCont").toggle(false);
+	  $("span#permavidadobeappleofxCont").toggle(false);
+	  $("span#permadobeappleofxCont").toggle(false);
+	  }
+
+	  if ($('#hostsPermanent option[value="Adobe"]').is(':selected')) {
+	  	  $("span#permadobeCont").toggle(true);
+	  	  $("span#permofxCont").toggle(false);
+	  $("span#permavidCont").toggle(false);
+	  $("span#permappleCont").toggle(false);
+	  $("span#permavidadobeappleofxCont").toggle(false);
+	  $("span#permadobeappleofxCont").toggle(false);
+	  }	  	   
+	  if ($('#hostsPermanent option[value="OFX"]').is(':selected')) {
+	  	  $("span#permadobeCont").toggle(false);
+	  	  $("span#permofxCont").toggle(true);
+	  $("span#permavidCont").toggle(false);
+	  $("span#permappleCont").toggle(false);
+	  $("span#permavidadobeappleofxCont").toggle(false);
+	  $("span#permadobeappleofxCont").toggle(false);
+	  }	  	 
+	  if ($('#hostsPermanent option[value="Avid"]').is(':selected')) {
+	  	  $("span#permadobeCont").toggle(false);
+	  	  $("span#permofxCont").toggle(false);
+	  $("span#permavidCont").toggle(true);
+	  $("span#permappleCont").toggle(false);
+	  $("span#permavidadobeappleofxCont").toggle(false);
+	  $("span#permadobeappleofxCont").toggle(false);
+      }	  	 
+	  if ($('#hostsPermanent option[value="Apple"]').is(':selected')) {
+	  	  $("span#permadobeCont").toggle(false);
+	  	  $("span#permofxCont").toggle(false);
+	  $("span#permavidCont").toggle(false);
+	  $("span#permappleCont").toggle(true);
+	  $("span#permavidadobeappleofxCont").toggle(false);
+	  $("span#permadobeappleofxCont").toggle(false);
+      }	  
+	  if ($('#hostsPermanent option[value="avidadobeappleofx"]').is(':selected')) {
+	  	  $("span#permadobeCont").toggle(false);
+	  	  $("span#permofxCont").toggle(false);
+	  $("span#permavidCont").toggle(false);
+	  $("span#permappleCont").toggle(false);
+	  $("span#permavidadobeappleofxCont").toggle(true);
+	  $("span#permadobeappleofxCont").toggle(false);
+	  }
+	  if ($('#hostsPermanent option[value="adobeappleofx"]').is(':selected')) {
+	  	  $("span#permadobeCont").toggle(false);
+	  	  $("span#permofxCont").toggle(false);
+	  $("span#permavidCont").toggle(false);
+	  $("span#permappleCont").toggle(false);
+	  $("span#permavidadobeappleofxCont").toggle(false);
+	  $("span#permadobeappleofxCont").toggle(true);
+	  }	  
+});
+$('select#hostsPermanentscmp').change(function() {
+	  if ($('#hostsPermanentscmp option[value=""]').is(':selected')) {
+	  $("span#PERMscmpadobeCont").toggle(false);
+	  $("span#PERMscmpavidCont").toggle(false);
+	  $("span#PERMscmpofxCont").toggle(false);
+	  $("span#PERMscmpadobeofxCont").toggle(false);  
+	  $("span#PERMscmpmultihostCont").toggle(false);
+	  }
+
+	  if ($('#hostsPermanentscmp option[value="Adobe"]').is(':selected')) {
+	  $("span#PERMscmpadobeCont").toggle(true);
+	  $("span#PERMscmpavidCont").toggle(false);
+	  $("span#PERMscmpofxCont").toggle(false);
+	  $("span#PERMscmpadobeofxCont").toggle(false);  
+	  $("span#PERMscmpmultihostCont").toggle(false);
+	  }	  	 
+	  if ($('#hostsPermanentscmp option[value="Avid"]').is(':selected')) {
+	  	  $("span#PERMscmpadobeCont").toggle(false);
+	  $("span#PERMscmpavidCont").toggle(true);
+	  $("span#PERMscmpofxCont").toggle(false);
+	  $("span#PERMscmpadobeofxCont").toggle(false);  
+	  $("span#PERMscmpmultihostCont").toggle(false);
+      }	  
+	  if ($('#hostsPermanentscmp option[value="OFX"]').is(':selected')) {
+	  	  $("span#PERMscmpadobeCont").toggle(false);
+	  $("span#PERMscmpavidCont").toggle(false);
+	  $("span#PERMscmpofxCont").toggle(true);
+	  $("span#PERMscmpadobeofxCont").toggle(false);  
+	  $("span#PERMscmpmultihostCont").toggle(false);
+
+	  }
+	  if ($('#hostsPermanentscmp option[value="adobeofx"]').is(':selected')) {
+	  	  $("span#PERMscmpadobeCont").toggle(false);
+	  $("span#PERMscmpavidCont").toggle(false);
+	  $("span#PERMscmpofxCont").toggle(false);
+	  $("span#PERMscmpadobeofxCont").toggle(true);  
+	  $("span#PERMscmpmultihostCont").toggle(false);
+	  }	  
+	  if ($('#hostsPermanentscmp option[value="multihost"]').is(':selected')) {
+	  	  $("span#PERMscmpadobeCont").toggle(false);
+	  $("span#PERMscmpavidCont").toggle(false);
+	  $("span#PERMscmpofxCont").toggle(false);
+	  $("span#PERMscmpadobeofxCont").toggle(false);  
+	  $("span#PERMscmpmultihostCont").toggle(true);
+	  }
+});
+$('select#hostsPermanentsc').change(function() {
+	  if ($('#hostsPermanentsc option[value=""]').is(':selected')) {
+	  $("span#PERMscadobeCont").toggle(false);
+	  $("span#PERMscavidCont").toggle(false);
+	  $("span#PERMscofxCont").toggle(false);
+	  $("span#PERMscadobeofxCont").toggle(false);  
+	  $("span#PERMscmultihostCont").toggle(false);
+	  }
+
+	  if ($('#hostsPermanentsc option[value="Adobe"]').is(':selected')) {
+	  $("span#PERMscadobeCont").toggle(true);
+	  $("span#PERMscavidCont").toggle(false);
+	  $("span#PERMscofxCont").toggle(false);
+	  $("span#PERMscadobeofxCont").toggle(false);  
+	  $("span#PERMscmultihostCont").toggle(false);
+	  }	  	 
+	  if ($('#hostsPermanentsc option[value="Avid"]').is(':selected')) {
+	  	  $("span#PERMscadobeCont").toggle(false);
+	  $("span#PERMscavidCont").toggle(true);
+	  $("span#PERMscofxCont").toggle(false);
+	  $("span#PERMscadobeofxCont").toggle(false);  
+	  $("span#PERMscmultihostCont").toggle(false);
+      }	  
+	  if ($('#hostsPermanentsc option[value="OFX"]').is(':selected')) {
+	  	  $("span#PERMscadobeCont").toggle(false);
+	  $("span#PERMscavidCont").toggle(false);
+	  $("span#PERMscofxCont").toggle(true);
+	  $("span#PERMscadobeofxCont").toggle(false);  
+	  $("span#PERMscmultihostCont").toggle(false);
+
+	  }
+	  if ($('#hostsPermanentsc option[value="adobeofx"]').is(':selected')) {
+	  	  $("span#PERMscadobeCont").toggle(false);
+	  $("span#PERMscavidCont").toggle(false);
+	  $("span#PERMscofxCont").toggle(false);
+	  $("span#PERMscadobeofxCont").toggle(true);  
+	  $("span#PERMscmultihostCont").toggle(false);
+	  }	  
+	  if ($('#hostsPermanentsc option[value="multihost"]').is(':selected')) {
+	  	  $("span#PERMscadobeCont").toggle(false);
+	  $("span#PERMscavidCont").toggle(false);
+	  $("span#PERMscofxCont").toggle(false);
+	  $("span#PERMscadobeofxCont").toggle(false);  
+	  $("span#PERMscmultihostCont").toggle(true);
+	  }
+});
+$('select#hostsPermanentsmp').change(function() {
+	  if ($('#hostsPermanentsc option[value=""]').is(':selected')) {
+	  $("span#PERMsmpadobeCont").toggle(false);
+	  $("span#PERMsmpavidCont").toggle(false);
+	  $("span#PERMsmpofxCont").toggle(false);
+	  $("span#PERMsmpadobeofxCont").toggle(false);  
+	  $("span#PERMsmpmultihostCont").toggle(false);
+	  }
+
+	  if ($('#hostsPermanentsmp option[value="Adobe"]').is(':selected')) {
+	  $("span#PERMsmpadobeCont").toggle(true);
+	  $("span#PERMsmpavidCont").toggle(false);
+	  $("span#PERMsmpofxCont").toggle(false);
+	  $("span#PERMsmpadobeofxCont").toggle(false);  
+	  $("span#PERMsmpmultihostCont").toggle(false);
+	  }	  	 
+	  if ($('#hostsPermanentsmp option[value="Avid"]').is(':selected')) {
+	  	  $("span#PERMsmpadobeCont").toggle(false);
+	  $("span#PERMsmpavidCont").toggle(true);
+	  $("span#PERMsmpofxCont").toggle(false);
+	  $("span#PERMsmpadobeofxCont").toggle(false);  
+	  $("span#PERMsmpmultihostCont").toggle(false);
+      }	  
+	  if ($('#hostsPermanentsmp option[value="OFX"]').is(':selected')) {
+	  	  $("span#PERMsmpadobeCont").toggle(false);
+	  $("span#PERMsmpavidCont").toggle(false);
+	  $("span#PERMsmpofxCont").toggle(true);
+	  $("span#PERMsmpadobeofxCont").toggle(false);  
+	  $("span#PERMsmpmultihostCont").toggle(false);
+
+	  }
+	  if ($('#hostsPermanentsmp option[value="adobeofx"]').is(':selected')) {
+	  	  $("span#PERMsmpadobeCont").toggle(false);
+	  $("span#PERMsmpavidCont").toggle(false);
+	  $("span#PERMsmpofxCont").toggle(false);
+	  $("span#PERMsmpadobeofxCont").toggle(true);  
+	  $("span#PERMsmpmultihostCont").toggle(false);
+	  }	  
+	  if ($('#hostsPermanentsmp option[value="multihost"]').is(':selected')) {
+	  	  $("span#PERMsmpadobeCont").toggle(false);
+	  $("span#PERMsmpavidCont").toggle(false);
+	  $("span#PERMsmpofxCont").toggle(false);
+	  $("span#PERMsmpadobeofxCont").toggle(false);  
+	  $("span#PERMsmpmultihostCont").toggle(true);
+	  }
+});
+</script>	  
+  </div>
+  <div id="tabs-3" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;color:#00aeef;justify-content: center;">
+<div id="Sapphire" style="border:1px solid #00aeef;padding:15px;justify-content:center;">
+Continuum Single<br>Upgrade:<br>
+<hr>
+<span id="upgradeadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumsingle_adobe }}</b></h1></span>
+<span id="upgradeofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumsingle_ofx }}</b></h1></span>
+<span id="upgradeavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumsingle_avid }}</b></h1></span>
+<span id="upgradeappleCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumsingle_apple }}</b></h1></span>
+<span id="upgradeavidadobeappleofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumsingle_avidadobeappleofx }}</b></h1></span>
+<span id="upgradeadobeappleofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumsingle_adobeappleofx }}</b></h1></span>
+from v12 and above<br><br>
+Hosts: 
+<select id="hostsRenewal" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="OFX">OFX</option>
+<option value="Avid">Avid</option>
+<option value="Apple">Apple</option>
+<option value="avidadobeappleofx">Avid/Adobe/Apple/OFX</option>
+<option value="adobeappleofx">Adobe/Apple/OFX</option>
+</select>
+<span id="upgradeadobeCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradeofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradeavidCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradeappleCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradeavidadobeappleofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradeadobeappleofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=continuum&product=continuum" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+<div style="width:5%;"></div>
+<div id="SapphireContinuumMocha" style="border:1px solid #00aeef;padding:15px;justify-content:center;">
+Continuum Legacy<br>Upgrade:<br>
+<hr>
+<span id="upgradelegacyadobeCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumlegacysingle_adobe }}</b></h1></span>
+<span id="upgradelegacyofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumlegacysingle_ofx }}</b></h1></span>
+<span id="upgradelegacyavidCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumlegacysingle_avid }}</b></h1></span>
+<span id="upgradelegacyappleCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumlegacysingle_apple }}</b></h1></span>
+<span id="upgradelegacyavidadobeappleofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumlegacysingle_avidadobeappleofx }}</b></h1></span>
+<span id="upgradelegacyadobeappleofxCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .renewals_continuumlegacysingle_adobeappleofx }}</b></h1></span>
+from v11 and below<br><br>
+Hosts: 
+<select id="hostsRenewalLegacy" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="Adobe">Adobe</option>
+<option value="OFX">OFX</option>
+<option value="Avid">Avid</option>
+<option value="Apple">Apple</option>
+<option value="avidadobeappleofx">Avid/Adobe/Apple/OFX</option>
+<option value="adobeappleofx">Adobe/Apple/OFX</option>
+</select>
+<span id="upgradelegacyadobeCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradelegacyofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradelegacyavidCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradelegacyappleCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradelegacyavidadobeappleofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<span id="upgradelegacyadobeappleofxCont" style="display:none;color:silver;"><br><br>Includes 12 months of free<br>upgrades and support</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=continuum&product=continuum" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<script>
+$(document).ready(function() {
+$('#hostsRenewal option[value="Adobe"]').attr("selected",true);
+	  $("span#upgradeadobeCont").toggle(true);
+$('#hostsRenewalLegacy option[value="Adobe"]').attr("selected",true);
+	  $("span#upgradelegacyadobeCont").toggle(true);
+});
+$('#hostsRenewal').change(function() {
+	  if ( $('#hostsRenewal option[value=""]').is(':selected')) {
+	  $("span#upgradeadobeCont").toggle(false);
+	  $("span#upgradeofxCont").toggle(false);
+	  $("span#upgradeavidCont").toggle(false);
+	  $("span#upgradeappleCont").toggle(false);
+	  $("span#upgradeavidadobeappleofxCont").toggle(false);
+	  $("span#upgradeadobeappleofxCont").toggle(false);
+      }	  
+	  if ($('#hostsRenewal option[value="Adobe"]').is(':selected') ) {
+	  $("span#upgradeadobeCont").toggle(true);
+	  $("span#upgradeofxCont").toggle(false);
+	  $("span#upgradeavidCont").toggle(false);
+	  $("span#upgradeappleCont").toggle(false);
+	  $("span#upgradeavidadobeappleofxCont").toggle(false);
+	  $("span#upgradeadobeappleofxCont").toggle(false);
+	  }	 
+	  if ($('#hostsRenewal option[value="OFX"]').is(':selected') ) {
+	  $("span#upgradeadobeCont").toggle(false);
+	  $("span#upgradeofxCont").toggle(true);
+	  $("span#upgradeavidCont").toggle(false);
+	  $("span#upgradeappleCont").toggle(false);
+	  $("span#upgradeavidadobeappleofxCont").toggle(false);
+	  $("span#upgradeadobeappleofxCont").toggle(false);
+	  }	
+	  if ($('#hostsRenewal option[value="Avid"]').is(':selected') ) {
+	  $("span#upgradeadobeCont").toggle(false);
+	  $("span#upgradeofxCont").toggle(false);
+	  $("span#upgradeavidCont").toggle(true);
+	  $("span#upgradeappleCont").toggle(false);
+	  $("span#upgradeavidadobeappleofxCont").toggle(false);
+	  $("span#upgradeadobeappleofxCont").toggle(false);
+	  }		  
+ if ($('#hostsRenewal option[value="Apple"]').is(':selected')) {
+	  $("span#upgradeadobeCont").toggle(false);
+	  $("span#upgradeofxCont").toggle(false);
+	  $("span#upgradeavidCont").toggle(false);
+	  $("span#upgradeappleCont").toggle(true);
+	  $("span#upgradeavidadobeappleofxCont").toggle(false);
+	  $("span#upgradeadobeappleofxCont").toggle(false);
+}  
+if ( $('#hostsRenewal option[value="avidadobeappleofx"]').is(':selected') ) {
+	  $("span#upgradeadobeCont").toggle(false);
+	  $("span#upgradeofxCont").toggle(false);
+	  $("span#upgradeavidCont").toggle(false);
+	  $("span#upgradeappleCont").toggle(false);
+	  $("span#upgradeavidadobeappleofxCont").toggle(true);
+	  $("span#upgradeadobeappleofxCont").toggle(false);
+}
+if ( $('#hostsRenewal option[value="adobeappleofx"]').is(':selected') ) {
+	  $("span#upgradeadobeCont").toggle(false);
+	  $("span#upgradeofxCont").toggle(false);
+	  $("span#upgradeavidCont").toggle(false);
+	  $("span#upgradeappleCont").toggle(false);
+	  $("span#upgradeavidadobeappleofxCont").toggle(false);
+	  $("span#upgradeadobeappleofxCont").toggle(true);
+}
+});
+$('#hostsRenewalLegacy').change(function() {
+		  if ( $('#hostsRenewalLegacy option[value=""]').is(':selected')) {
+	  $("span#upgradelegacyadobeCont").toggle(false);
+	  $("span#upgradelegacyofxCont").toggle(false);
+	  $("span#upgradelegacyavidCont").toggle(false);
+	  $("span#upgradelegacyappleCont").toggle(false);
+	  $("span#upgradelegacyavidadobeappleofxCont").toggle(false);
+	  $("span#upgradelegacyadobeappleofxCont").toggle(false);
+      }	  
+	  if ($('#hostsRenewalLegacy option[value="Adobe"]').is(':selected') ) {
+	  $("span#upgradelegacyadobeCont").toggle(true);
+	  $("span#upgradelegacyofxCont").toggle(false);
+	  $("span#upgradelegacyavidCont").toggle(false);
+	  $("span#upgradelegacyappleCont").toggle(false);
+	  $("span#upgradelegacyavidadobeappleofxCont").toggle(false);
+	  $("span#upgradelegacyadobeappleofxCont").toggle(false);
+	  }	 
+	  if ($('#hostsRenewalLegacy option[value="OFX"]').is(':selected') ) {
+	  $("span#upgradelegacyadobeCont").toggle(false);
+	  $("span#upgradelegacyofxCont").toggle(true);
+	  $("span#upgradelegacyavidCont").toggle(false);
+	  $("span#upgradelegacyappleCont").toggle(false);
+	  $("span#upgradelegacyavidadobeappleofxCont").toggle(false);
+	  $("span#upgradelegacyadobeappleofxCont").toggle(false);
+	  }	
+	  if ($('#hostsRenewalLegacy option[value="Avid"]').is(':selected') ) {
+	  $("span#upgradelegacyadobeCont").toggle(false);
+	  $("span#upgradelegacyofxCont").toggle(false);
+	  $("span#upgradelegacyavidCont").toggle(true);
+	  $("span#upgradelegacyappleCont").toggle(false);
+	  $("span#upgradelegacyavidadobeappleofxCont").toggle(false);
+	  $("span#upgradelegacyadobeappleofxCont").toggle(false);
+	  }		  
+ if ($('#hostsRenewalLegacy option[value="Apple"]').is(':selected')) {
+	  $("span#upgradelegacyadobeCont").toggle(false);
+	  $("span#upgradelegacyofxCont").toggle(false);
+	  $("span#upgradelegacyavidCont").toggle(false);
+	  $("span#upgradelegacyappleCont").toggle(true);
+	  $("span#upgradelegacyavidadobeappleofxCont").toggle(false);
+	  $("span#upgradelegacyadobeappleofxCont").toggle(false);
+}  
+if ( $('#hostsRenewalLegacy option[value="avidadobeappleofx"]').is(':selected') ) {
+	  $("span#upgradelegacyadobeCont").toggle(false);
+	  $("span#upgradelegacyofxCont").toggle(false);
+	  $("span#upgradelegacyavidCont").toggle(false);
+	  $("span#upgradelegacyappleCont").toggle(false);
+	  $("span#upgradelegacyavidadobeappleofxCont").toggle(true);
+	  $("span#upgradelegacyadobeappleofxCont").toggle(false);
+}
+if ( $('#hostsRenewalLegacy option[value="adobeappleofx"]').is(':selected') ) {
+	  $("span#upgradelegacyadobeCont").toggle(false);
+	  $("span#upgradelegacyofxCont").toggle(false);
+	  $("span#upgradelegacyavidCont").toggle(false);
+	  $("span#upgradelegacyappleCont").toggle(false);
+	  $("span#upgradelegacyavidadobeappleofxCont").toggle(false);
+	  $("span#upgradelegacyadobeappleofxCont").toggle(true);
+}
+});
+</script>
+  </div>
+  <div id="tabs-4" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;color:#00aeef;justify-content: space-evenly;">
+<div id="Sapphire" style="margin-left:auto;margin-right:auto;border:1px solid #00aeef;padding:15px;justify-content:center;">
+Continuum Units:<br>
+<hr>
+<span id="units3dobject" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_3dobjects }}</b></h1>3D Objects Units<br></span>
+<span id="unitsblursharpen" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_blursharpen }}</b></h1>Blur Sharpen Units<br></span>
+<span id="unitscolortone" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_colortone }}</b></h1>Color Tone Units<br></span>
+<span id="unitsfilmstyle" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_filmstyle }}</b></h1>Film Style Units<br></span>
+<span id="unitsimageresto" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_imageresto }}</b></h1>Image Restoration Units<br></span>
+<span id="unitskeyblend" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_keyblend }}</b></h1>Keyblend Units<br></span>
+<span id="unitslights" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_lights }}</b></h1>Lights Units<br></span>
+<span id="unitsmatchmove" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_matchmove }}</b></h1>Match Move Units<br></span>
+<span id="unitsparticles" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_particles }}</b></h1>Particles Units<br></span>
+<span id="unitsperspective" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_perspective }}</b></h1>Perspective Units<br></span>
+<span id="unitsstylize" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_stylize }}</b></h1>Stylize Units<br></span>
+<span id="unitstextures" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_textures }}</b></h1>Textures Units<br></span>
+<span id="unitstime" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_time }}</b></h1>Time Units<br></span>
+<span id="unitstransitionsCont" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_transitions }}</b></h1>Transitions Units<br></span>
+<span id="unitsvr" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_vr }}</b></h1>VR Units<br></span>
+<span id="unitswarp" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_warp }}</b></h1>Warp Units<br></span>
+<span id="unitsbeautystudio" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_beautystudio }}</b></h1>Beauty Studio Units<br></span>
+<span id="unitsprimattestudio" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_primattestudio }}</b></h1>Primatte Studio Units<br></span>
+<span id="unitsmagicsharp" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_magicsharp }}</b></h1>Magic Sharp Units<br></span>
+<span id="unitsstagelight" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_stagelight }}</b></h1>Stage Light Units<br></span>
+<span id="unitsopticalstabilizer" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_opticalstabilizer }}</b></h1>Optical Stabilizer Units<br></span>
+<span id="unitsmotionblur" style="display:none"><h1 style="letter-spacing:0px;color:#00aeef;font-size:400%;"><b>{{ .continuum_units_motionblur }}</b></h1>Motion Blur Units<br></span>
+<br>
+Units: <select id="hostsUnitsCont" style="border-color:#00aeef;">
+<option value=""></option>
+<option value="3dobjects">3D Objects</option>
+<option value="Blur Sharpen">Blur Sharpen</option>
+<option value="colortone">Color Tone</option>
+<option value="filmstyle">Film Style</option>
+<option value="imageresto">Image Restoration</option>
+<option value="keyblend">Key Blend</option>
+<option value="lights">Lights</option>
+<option value="matchmove">Match Move</option>
+<option value="particles">Particles</option>
+<option value="perspective">Perspective</option>
+<option value="stylize">Stylize</option>
+<option value="textures">Textures</option>
+<option value="time">Time</option>
+<option value="transitionsCont">Transitions</option>
+<option value="vr">VR</option>
+<option value="warp">Warp</option>
+<option value="beautystudio">Beauty Studio</option>
+<option value="primattestudio">Primatte Studio</option>
+<option value="magicsharp">Magic Sharp</option>
+<option value="stagelight">Stage Light</option>
+<option value="opticalstabilizer">Optical Stabilizer</option>
+<option value="motionblur">Motion Blur</option>
+</select>
+<span id="units3dobject" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsblursharpen" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitscolortone" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsfilmstyle" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsimageresto" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitskeyblend" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitslights" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsmatchmove" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsparticles" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsperspective" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsstylize" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitstextures" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitstime" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitstransitionsCont" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsvr" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitswarp" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsbeautystudio" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsprimattestudio" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsmagicsharp" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsstagelight" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsopticalstabilizer" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<span id="unitsmotionblur" style="display:none;color:silver;"><br><br>Units are available as permanent licenses only.</span>
+<br><br><center><a title="Buy Now" href="/store/?collection=continuum-units&product=continuum-units-3d-objects" target="_blank"><button class="PriceToggle"><b>BUY NOW</b></button></a></center>
+</div>
+
+<script>
+$(document).ready(function() {
+$('#hostsUnitsCont option[value="keyblend"]').attr("selected",true);
+	  $("span#unitskeyblend").toggle(true);
+});
+$('#hostsUnitsCont').change(function() { 
+	  if ( $('#hostsUnitsCont option[value=""]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+}      
+	  if ( $('#hostsUnitsCont option[value="3dobjects"]').is(':selected')) {
+	  $("span#units3dobject").toggle(true);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+	  }	
+	  if ($('#hostsUnitsCont option[value="Blur Sharpen"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(true);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+	  }	
+	  
+	  if ($('#hostsUnitsCont option[value="colortone"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(true);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+	  }
+	  if ($('#hostsUnitsCont option[value="filmstyle"]').is(':selected')) {
+		  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(true);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+	  }	 
+	  if ($('#hostsUnitsCont option[value="imageresto"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(true);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+	  }	  
+	  if ($('#hostsUnitsCont option[value="keyblend"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(true);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);  
+	  }	 
+	  if ($('#hostsUnitsCont option[value="lights"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(true);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false); 
+	  }	 
+	  if ($('#hostsUnitsCont option[value="matchmove"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(true);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false); 
+	  }  
+	  if ($('#hostsUnitsCont option[value="particles"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(true);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);	  
+	  }
+	  if ($('#hostsUnitsCont option[value="perspective"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(true);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);	  
+	  } 
+	  if ($('#hostsUnitsCont option[value="stylize"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(true);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+	  }  
+	  if ($('#hostsUnitsCont option[value="textures"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(true);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false); 
+	  }
+	  if ($('#hostsUnitsCont option[value="time"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(true);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);  
+	  }	  
+	  if ($('#hostsUnitsCont option[value="transitionsCont"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(true);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+	  }
+	  if ($('#hostsUnitsCont option[value="vr"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(true);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);  
+	  }
+	  if ($('#hostsUnitsCont option[value="warp"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(true);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false); 
+	  } 
+	  if ($('#hostsUnitsCont option[value="beautystudio"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(true);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false); 
+	  }	  
+	  if ($('#hostsUnitsCont option[value="primattestudio"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(true);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false); 
+	  }	  
+	  if ($('#hostsUnitsCont option[value="magicsharp"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(true);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);
+	  }
+	  if ($('#hostsUnitsCont option[value="stagelight"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(true);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(false);  
+	  }  
+	  if ($('#hostsUnitsCont option[value="opticalstabilizer"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(true);
+	  $("span#unitsmotionblur").toggle(false); 
+	  }  
+	  if ($('#hostsUnitsCont option[value="motionblur"]').is(':selected')) {
+	  $("span#units3dobject").toggle(false);
+	  $("span#unitsblursharpen").toggle(false);
+	  $("span#unitscolortone").toggle(false);
+	  $("span#unitsfilmstyle").toggle(false);
+	  $("span#unitsimageresto").toggle(false);
+	  $("span#unitskeyblend").toggle(false);
+	  $("span#unitslights").toggle(false);
+	  $("span#unitsmatchmove").toggle(false);
+	  $("span#unitsparticles").toggle(false);
+	  $("span#unitsperspective").toggle(false);
+	  $("span#unitsstylize").toggle(false);
+	  $("span#unitstextures").toggle(false);
+	  $("span#unitstime").toggle(false);
+	  $("span#unitstransitionsCont").toggle(false);
+	  $("span#unitsvr").toggle(false);
+	  $("span#unitswarp").toggle(false);
+	  $("span#unitsbeautystudio").toggle(false);
+	  $("span#unitsprimattestudio").toggle(false);
+	  $("span#unitsmagicsharp").toggle(false);
+	  $("span#unitsstagelight").toggle(false);
+	  $("span#unitsopticalstabilizer").toggle(false);
+	  $("span#unitsmotionblur").toggle(true);
+	  }
+	  });
+</script>
+  </div>
+    <div id="tabs-5" style="display:flex;flex-direction:row;flex-wrap:wrap;padding-top:10%;padding-bottom:10%;text-align:left;">
+<br><p>Boris FX offers many benefits for enterprise customers, including volume license discounting, RLM floating licenses, render licenses, consolidated billing, and one on one customized on-site training by product experts. Please contact <a style="color:#00aeef;" href="mailto:sales@borisfx.com">sales@borisfx.com</a>&nbsp; to speak to an account representative.</p>
+</div>
+  </div>
+</div>
+</div>

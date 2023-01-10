@@ -1,0 +1,1044 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: FeedbackBubble",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FeedbackBubble.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FeedbackBubble">
+     <h2>
+      S_FeedbackBubble
+     </h2>
+    </a>
+    Similar to Feedback, previous frames are combined
+  with the current frame while distorting by a bubble pattern.  The
+  feedback is reinitialized whenever any non-consecutive frame is
+  processed: either the first frame, reprocessing a given frame, or
+  jumping to another frame.  You must process multiple frames of a
+  clip in a row to observe the effect.
+    <p>
+     In the Sapphire Time category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.  The output of the effect is composited over this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Interpolate between the result and the Source input.  White areas
+use the result of the effect.  Black areas use the Source clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FeedbackBubble.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Prev Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   For each frame, the previous output is scaled by this amount
+  before it is combined with the new input frame.  Normally this value
+  should be less than 1.0 which causes previous frames to fade out
+  over time.  A value of 1.0 causes no fading, and values greater than
+  1.0 cause previous frames to become brighter over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Prev Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   For each frame, the previous output is scaled by this
+  color before it is combined with the new input frame.  This is
+  similar to Prev Brightness but affects the colors of the previous
+  frames instead of just the brightness.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Prev Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   Shifts the hue of the previous frames' colors, for each
+  new frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine New:
+   </b>
+   <i>
+    Popup menu,  Default: Ave
+   </i>
+   .
+   <br/>
+   Selects the method for combining previous frames with the
+  current frame.
+   <br/>
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Ave:
+      </i>
+     </b>
+     The current frame is averaged with the previous
+  output, smearing moving objects out over time.  The output is scaled
+  by Fade and the input is scaled by 1.0-Fade for a weighted average,
+  so Fade must be less than 1.0 for this to work properly.  Unlike the
+  other combine options, Ave should never affect the brightness of
+  stationary objects in the clip.
+     <br/>
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Max:
+       </i>
+      </b>
+      The colors of the current frame and previous frames
+  are combined with a maximum function.  This makes the output frame
+  at least as bright as the current frame, and will make brighter
+  'trails' for example if you have bright objects moving on a dark
+  background.
+      <br/>
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Screen:
+        </i>
+       </b>
+       The colors of the current frame and previous
+  frames are combined with a blend function.  This can be used to
+  accumulate the colors of a moving clip.  However, non-black regions
+  will become brighter with each frame.
+       <br/>
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Add:
+         </i>
+        </b>
+        The colors of the current frame and previous frames
+  are added.  This can also be used to accumulate the colors of a
+  moving clip, with the non-black regions becoming brighter at each
+  frame.
+        <br/>
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Over:
+          </i>
+         </b>
+         The current frame is composited over the previous
+  frames using its Alpha channel.  This uses pre-multiplied
+  compositing, so where the alpha is black the Source image should
+  normally also be black. If the input clip contains no Alpha
+  channel, the luminance is used instead.
+         <br/>
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Under:
+           </i>
+          </b>
+          The current frame is composited under the previous
+  frames.
+          <br/>
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    New Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the current frame.  Set this to the
+  complement of Old Color to offset overly colored trails.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    New Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 10.
+   <br/>
+   Scales the opacity and brightness of the current frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bubble Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The amplitude of the noise pattern used to create
+  the distortion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bubble Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The spatial frequency of the initial noise pattern.
+  Increase to zoom out, decrease to zoom in.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bubble Freq Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative horizontal frequency of the
+  noise pattern.  Increase to stretch it vertically or decrease to
+  stretch it horizontally.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bubble Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The horizontal and vertical translation of the noise
+  pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bubble Shift Speed:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 25],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   If non-zero, the bubble pattern is automatically
+  animated to shift at this speed.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bubble Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 to 10.
+   <br/>
+   The number of summed layers of noise.  Each octave is twice
+  the frequency and half the amplitude of the previous.  A single octave
+  gives a smooth texture.  Adding octaves makes the result approach a
+  fractal (1/f) noise texture.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bubble Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator for
+  the noise pattern.  The actual seed value is not significant, but
+  different seeds give different results and the same value should give
+  a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The previous frames are blurred by this amount for
+  each new frame.  This has no effect unless it is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Diffuse Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The previous frames are passed through a
+  pixel-diffusion process of this magnitude, for each new frame.  This
+  has no effect unless it is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Amount Rel:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [1 1],
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative amounts of horizontal and vertical
+  blurring and/or diffusing.  This has no effect unless Blur Amount or
+  Diffuse Amount are positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen center.
+   <br/>
+   The center position for rotation and scaling, in screen
+coordinates relative to the center of the frame.  This parameter can be adjusted using the Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Z Dist:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.95,
+   <i>
+    Range:
+   </i>
+   0.001 to 10.
+   <br/>
+   For each new frame, the 'distance' of the previous frames is
+scaled by this amount.  This causes zooming during the feedback
+process.  Values greater than 1.0 zoom out and make the previous
+frames smaller, and values less then 1.0 zoom in and enlarge them.  This parameter can be adjusted using the Transform Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   For each new frame, the amount of rotation in degrees to
+apply to the previous frames.  This parameter can be adjusted using the Transform Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the previous frames by this amount for each new frame.
+If this is non-zero the Center location is less meaningful.  This parameter can be adjusted using the Shift Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    No No
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders of the
+source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Mask input channels are used to make a
+monochrome mask.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used, or if there is no
+valid Alpha channel the Red channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.  It has no effect unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.  This has no effect
+unless the Mask input is provided.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#title-key">
+  Apply To Title/Key
+ </a>
+ ,
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../feedback">
+       Feedback
+      </a>
+      <br/>
+      <a href="../feedbackdistort">
+       FeedbackDistort
+      </a>
+      <br/>
+      <a href="../trails">
+       Trails
+      </a>
+      <br/>
+      <a href="../trailsdiffuse">
+       TrailsDiffuse
+      </a>
+      <br/>
+      <a href="../timeaverage">
+       TimeAverage
+      </a>
+      <br/>
+      <a href="../nearestcolor">
+       NearestColor
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../warprepeat">
+       WarpRepeat
+      </a>
+      <br/>
+      <a href="../warpchroma">
+       WarpChroma
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

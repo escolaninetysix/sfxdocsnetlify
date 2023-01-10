@@ -1,0 +1,56 @@
+{
+   "title": "Order Confirmed",
+   "date": "2019-08-22T12:00:00.000Z"
+}
+<div class="col">
+    <h1>Order Confirmed </h1>
+    <h3>Thank you for your subscription order!</h3>
+    <hr/>
+    <p>You'll receive an email with your Activation Key shortly.</p>
+    <div id="buttons">
+        <div id="view-serials">
+            <a href="/account/manage"><button class="btn">View Serial Numbers and Download</button></a>
+        </div>
+    </div>
+    <hr/>
+    <p>If you do not receive your license within 1 business day, please <a href="/store/contact-us">contact us.</a></p>
+</div>
+
+<script>
+    if (window.view_api){
+        handleElectronLoad();
+    }
+    function handleElectronLoad (){
+        var activateButton = document.createElement('button');
+        activateButton.classList.add('btn');
+        activateButton.innerHTML = 'Activate Your License';
+
+        var activateLink = document.createElement('a');
+        activateLink.href = '#';
+        activateLink.onclick = handleElectronActivate;
+        activateLink.appendChild(activateButton);
+
+        var activateContainer = document.createElement('div', {id: 'activate-serials'});
+        activateContainer.appendChild(activateLink);
+
+        var buttonContainer = document.getElementById('buttons');
+        buttonContainer.appendChild(activateContainer);
+    }
+    function handleElectronActivate(event){
+        event.preventDefault();
+        var params = new URLSearchParams(window.location.search);
+        var serials = params.getAll('serials[]');
+        var payload = {};
+        if (serials.length > 0){
+            payload.status = 'success';
+            payload.serials = serials;
+            payload.error = null;
+        }
+        else{
+            payload.status = 'error';
+            payload.serials = [];
+            payload.error = 'no serial passed';
+        }
+        window.view_api.getActKey(payload);
+    }
+</script>

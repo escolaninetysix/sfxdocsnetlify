@@ -1,0 +1,10 @@
+<div class="row">
+<div class="embed-responsive">
+  {{ if in .video_url "https://youtu.be/" }}
+  <a data-fancybox href="{{ .video_url }}">
+<canvas style="background: url('{{ .thumbnail_url_noplay }}');background-repeat: no-repeat;
+  background-size: cover; background-position: center;width:95%;height:100%;padding:30px;">
+</canvas></a>
+  {{ end }}
+</div>
+</div>

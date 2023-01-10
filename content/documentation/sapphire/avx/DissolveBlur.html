@@ -1,0 +1,361 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: DissolveBlur",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolveBlur.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolveBlur">
+     <h2>
+      S_DissolveBlur
+     </h2>
+    </a>
+    Transitions between two input clips while blurring each.
+  The first clip is blurred and faded out while the second clip is
+  unblurred and faded in.  The Dissolve
+  Amount parameter should be animated to control the transition speed.
+    <p>
+     In the Sapphire Transitions category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolveBlur.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The transition ratio between the From and To inputs.
+  A value of 0 gives only the From input and a value of 1 gives only
+  the To input.  By default this parameter automatically animates from
+  0 to 1 to perform a complete transition.  The curve controlling this
+  parameter can be adjusted for more detailed control over the timing
+  of the dissolve.  In the AVX1 version, Auto Trans must be disabled
+  for this parameter to be used.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the width of the blur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Rel:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [1 1],
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative horizontal and vertical blur
+  widths.  Set Blur Rel X to 0 for a vertical-only blur, or set Blur
+  Rel Y to 0 for a horizontal-only blur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Rel From:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of blur applied to the first clip.
+  Set to 0 to fade out with no blur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Rel To:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of blur applied to the second clip.
+  Set to 0 to fade in with no blur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Filter:
+   </b>
+   <i>
+    Popup menu,  Default: Gauss
+   </i>
+   .
+   <br/>
+   The type of convolution filter to blur with.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Box:
+      </i>
+     </b>
+     uses a rectangular shaped filter.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Triangle:
+       </i>
+      </b>
+      smoother, uses a pyramid shaped filter.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Gauss:
+        </i>
+       </b>
+       smoothest, uses a gaussian shaped filter.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../dissolvestatic">
+       DissolveStatic
+      </a>
+      <br/>
+      <a href="../dissolvespeckle">
+       DissolveSpeckle
+      </a>
+      <br/>
+      <a href="../dissolvediffuse">
+       DissolveDiffuse
+      </a>
+      <br/>
+      <a href="../dissolvebubble">
+       DissolveBubble
+      </a>
+      <br/>
+      <a href="../dissolvewaves">
+       DissolveWaves
+      </a>
+      <br/>
+      <a href="../dissolvepuddle">
+       DissolvePuddle
+      </a>
+      <br/>
+      <a href="../dissolvevortex">
+       DissolveVortex
+      </a>
+      <br/>
+      <a href="../dissolvedefocus">
+       DissolveDefocus
+      </a>
+      <br/>
+      <a href="../dissolveluma">
+       DissolveLuma
+      </a>
+      <br/>
+      <a href="../dissolvefilm">
+       DissolveFilm
+      </a>
+      <br/>
+      <a href="../dissolvedistort">
+       DissolveDistort
+      </a>
+      <br/>
+      <a href="../dissolvetiles">
+       DissolveTiles
+      </a>
+      <br/>
+      <a href="../dissolveglow">
+       DissolveGlow
+      </a>
+      <br/>
+      <a href="../dissolvelensflare">
+       DissolveLensFlare
+      </a>
+      <br/>
+      <a href="../dissolveedgerays">
+       DissolveEdgeRays
+      </a>
+      <br/>
+      <a href="../dissolveglint">
+       DissolveGlint
+      </a>
+      <br/>
+      <a href="../dissolveglintrainbow">
+       DissolveGlintRainbow
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../blur">
+       Blur
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

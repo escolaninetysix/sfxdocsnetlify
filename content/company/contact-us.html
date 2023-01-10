@@ -1,0 +1,77 @@
+{
+  "aliases": [
+    "/pages/contact-us/"
+  ],
+  "date": "2017-05-12T15:24:07.503Z",
+  "description": "Have a Sapphire, Continuum, Mocha Pro, or other VFX plugin question for Boris FX? Contact us at 617-451-9900, send us a message or visit borisfx.com.",
+  "title": "Contact Us",
+  "require_recaptcha": "True"
+}
+<div class="row">
+  <div class="col-md-6">
+    <p>Please use this form for questions about pricing, upgrades and more. Our sales team is here to help!</p>
+    <p>If you would like to speak with a sales representative, please call:<br /><br /><strong>1-888-77-BORIS</strong><br /><br />Outside the US, please call 617-451-9900.<br /><br />If you have a technical support or licensing question, please log your case <a href="/support/">here</a>. <br /><br />Business Hours:<br /><br />9am – 6pm Eastern Standard Time (M-F)<br /><br />We do our best to respond to phone messages and email within 24 hours on business days.</p>
+    <p><strong>Contact Information</strong></p>
+    <p>Boris FX<br />65 Franklin St<br />Suite 400<br />Boston, MA 02110 USA<br />Tel: 1-888-77-BORIS<br />Hours: 9AM - 6PM EST</p>
+    <p>Imagineer Systems<br />Surrey Technology Centre<br />40 Occam Road<br />Guildford, GU2 7YG, UK<br />Tel: +44 1483 685 585</p>
+  </div>
+  <div class="col-md-6">
+    <form id="open-a-case-form">
+      <div class="form-group"><label>Email:</label> <input name="email" class="form-control" type="text" /></div>
+      <div class="form-group"><label>First Name:</label> <input name="first_name" class="form-control" type="text" /></div>
+      <div class="form-group"><label>Last Name:</label> <input name="last_name" class="form-control" type="text" /></div>
+      <div class="form-group"><label>Company:</label> <input name="company" class="form-control" type="text" /></div>
+      <div class="form-group"><label>City:</label> <input name="city" class="form-control" type="text" /></div>
+      {{% country-state-dropdown %}}
+      <div class="form-group"><label>Phone:</label> <input name="phone" class="form-control" type="text" /></div>
+      <div class="form-group"><label>Case Type</label>
+        <select name="case_type" class="form-control">
+          <option value="">Choose a Case Type</option>
+          <option>Sales</option>
+          <option>Educational Information</option>
+          <option>Career Opportunities</option>
+          <option>General</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Subject:</label> <input name="subject" class="form-control" type="text" /></div>
+      <div class="form-group"><label>Description:</label> <textarea name="description" rows="6" class="form-control"></textarea></div>
+      <div class="g-recaptcha" data-sitekey="6Le-fEQUAAAAAKNX6zxewTeps8tnPgvzj7o1GfrI"></div>
+      <div class="form-group"><button class="btn btn-block btn-lg" type="submit">Submit</button></div>
+    </form>
+  </div>
+</div>
+
+<script>
+$(function() {
+  $(document).ready(function() {
+    $('#open-a-case-form').submit(function(e) {
+      e.preventDefault();
+      var values = $(this).serializeArray();
+      var error = false;
+      var fields = {};
+      $.each(values, function () {
+        fields[this.name] = this.value;
+        if (this.value == '' && $(this).attr('hidden') == false) {
+          error = true;
+        }
+      });
+      if (error) {
+        alert("Please complete all fields to submit a support case.");
+        return;
+      }
+      $.ajax({
+        type:'POST',
+        url: 'https://backend.borisfx.com/contact',
+        data: JSON.stringify(fields),
+        contentType: 'application/json',
+        success: function (res) {
+          alert('Your message was successfully sent. We will be in touch via email soon!');
+        },
+        error: function (error) {
+          alert('There was an error submitting your case. Please email sales@borisfx.com');
+        },
+      });
+    });
+  });
+});
+</script>

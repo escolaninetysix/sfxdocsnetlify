@@ -1,0 +1,96 @@
+== Painting Splines with the Area Brush Tool [[area_brush_tool]]
+
+The Area Brush produces X-Splines based on paint strokes in the viewer canvas.
+
+You can also paint on an existing layer with the "Add" paint brush.
+
+Paint strokes that cross over an existing layer spline will intersect with that spline, or subtract from it if you are using the `alt` modifier key.
+
+NOTE: Area Brush is currently a single-frame paint effect. It is not keyframeable.
+
+=== Painting new layers with Area Brush
+
+You can select the Area brush from the toolbar:
+
+image:UserGuide/en_US/images/areabrush_toolbar.jpg[]
+
+image:UserGuide/en_US/images/ICON_AreaBrushToolXSpline.jpg[]
+
+Selecting the area brush reveals the Area brush settings further down the toolbar:
+
+image:UserGuide/en_US/images/areabrush_settings.jpg[]
+
+You can now paint on the canvas and a red paint area will appear.
+
+image:UserGuide/en_US/images/areabrush_paint.jpg[]
+
+Once done, you can turn off Quick Mask if it is on or just release the mouse button and a spline will be generated.
+
+image:UserGuide/en_US/images/areabrush_spline.jpg[]
+
+=== Adjusting the size of the brush
+
+You can adjust the brush size using either:
+
+* The radius keys (by default this is '[' and ']').
+* Holding down the CMD/Ctrl key and dragging the cursor
+* Editing the radius field directly in the Area Brush toolbar
+
+For finer control, the brush size will also change according to the set pressure sensitivity from a drawing tablet.
+
+You can turn off pressure sensitivity from Preferences.
+
+=== Quick Mask
+By default, Quick Mask is turned on.
+
+Quick Mask stops the Area Brush tool from generating a spline as soon as you release the mouse or lift the tablet pen
+Once you have painted what you need, you can turn Quick Mask off by pressing the button and the spline will be generated.
+
+=== Fill Gaps
+
+If you want to quickly fill smaller gaps, you can adjust the "Fill Gaps" field.
+
+The number in the field is a pixel diameter. Any gap in a closed painted area that is smaller than the number in the field will be filled.
+For example:
+
+image:UserGuide/en_US/images/areabrush_settings.jpg[]
+
+* A Fill Gap diameter of 1 will only fill tiny gaps.
+* A Fill Gap diameter of 1000 in a 1920x1080 image will close very large gaps.
+
+A large fill gap setting is useful for quickly circling an object with paint to make a filled spline.
+
+
+=== Add Area Brush to Layer
+
+The Add Area Brush will add new paint-generated splines to the selected layer.
+
+image:UserGuide/en_US/images/ICON_AreaBrushToolAddXSpline.jpg[]
+
+The tool is under the main Area Brush icon. Just press and hold the toolbar icon to select the brush from the list:
+
+image:UserGuide/en_US/images/areabrush_tool_selection.jpg[]
+
+Then you can paint on the existing spline:
+
+image:UserGuide/en_US/images/areabrush_addspline.jpg[]
+
+Once done, you can turn off Quick Mask if it is on or just release the mouse button and the resulting spline intersect with the existing layer splines:
+
+image:UserGuide/en_US/images/areabrush_addspline_result.jpg[]
+
+=== Erase
+
+In both Quick Mask mode and normal painting mode, you can hold down the `alt/option` key to switch to erase mode.
+
+In Quick Mask mode, this will erase existing paint:
+
+image:UserGuide/en_US/images/areabrush_erase.jpg[]
+
+If Quick Mask mode is off, this will erase the existing spline if you are using the Add Area Brush tool. Just paint as normal holding down the modifier key:
+
+image:UserGuide/en_US/images/areabrush_addspline_minus.jpg[]
+
+When you release, the erase will eat into the existing spline:
+
+image:UserGuide/en_US/images/areabrush_addspline_minus_result.jpg[]

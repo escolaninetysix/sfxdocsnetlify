@@ -1,0 +1,618 @@
+{
+  "title": "Channel Order Entry",
+  "date": "2019-02-22",
+  "description": "Order Entry form for Resellers"
+}
+
+<style>
+   .portal-section{
+   padding-top: 1em;
+   }
+   .modal-dialog{
+   	padding-top:80px;
+   	max-width: 65%;
+   }
+   /*Prevents slide animations from looking jumpy in Chrome*/
+   .serial-input{
+   border: 1px solid transparent;
+   }
+   #portal-container, h1{
+   	display:none;
+   }
+
+    /*Hide longer Product Desscription on smaller screens to save screen space on table*/
+   	@media (max-width: 768px){
+   	.modal-prod-name, .modal-prod-name-header{
+   		display: none;
+   	}
+   }
+</style>
+
+<div id="portal-container">
+  <form id="order-info-form" enctype="multipart/form-data">
+     <h3 class="mt-5">Purchase Order Info</h3>
+     <div class="row">
+        <div class = "col-md-4">
+           <div class="form-group"><label>PO Number</label> <input name="po-number" class="form-control" type="text" required/></div>
+        </div>
+        <div class = "col-md-4 offset-md-2">
+           <div class="form-group"><label>Upload Purchase Order (Optional)</label> <input name="po-file" id="po" class="form-control-file" type="file"/></div>
+        </div>
+    </div>
+   	<hr/>
+    <div class="row">
+        <div class="col-md-4">
+           <h3>Customer Info</h3>
+           <div class="form-group"><label>Company Name</label> <input name="company" class="form-control" type="text" id="company-name" required/></div>
+           <div class="form-group"><label>Address</label> <textarea name="street" class="form-control" rows="2" required></textarea></div>
+           <div class="form-group"><label>City</label> <input name="city" class="form-control" type="text" required/></div>
+           <div class="form-group"><label>Zip/Postal Code</label> <input name="zip" class="form-control" type="text" required/></div>
+           {{% country-state-dropdown %}}
+        </div>
+        <div class="col-md-4 offset-md-2">
+           <h3>Contact Info</h3>
+           <div class="form-group"><label>First Name</label> <input name="first-name" class="form-control" type="text" required/></div>
+           <div class="form-group"><label>Last Name</label> <input name="last-name" class="form-control" type="text" required/></div>
+           <div class="form-group"><label>Email</label> <input name="email" class="form-control" type="text" required/></div>
+           <div class="form-group"><label>Phone</label> <input name="phone" class="form-control" type="text" required/></div>
+        </div>
+     </div>
+   </form>
+   <hr/>
+   <div id="product-container">
+      <h3>Product Selection</h3>
+      <form class="product-entry">
+         <div class="row">
+            <div class="col-md-2 form-group">
+               <label>Product Family</label>
+               <select name="family" class="form-control product-family" required>
+                  <option value="">-- Product --</option>
+               </select>
+            </div>
+            <div class="col-md-2 form-group">
+               <label>Host</label>
+               <select name="host" class="form-control product-host" required>
+                  <option value="">-- Host --</option>
+               </select>
+            </div>
+            <div class="col-md-2 form-group">
+               <label>Type</label>
+               <select name="type" class="form-control product-type" required>
+                  <option value="" rel="0">-- Type --</option>
+               </select>
+            </div>
+            <div class="col-md-1 form-group">
+               <label>Qty</label><input name="qty" type="number" class="form-control product-qty" min="1" value="1" required disabled/>
+            </div>
+            <div class="col-md-2 form-group">
+               <label>SKU</label>
+               <p name="sku" class="form-control-static font-weight-bold product-sku"></p>
+            </div>
+            <div class="col-md-2 form-group">
+               <label>Total</label>
+               <p class="form-control-static product-total">0.00 USD</p>
+            </div>
+            <div class="col-md-1 form-group">
+               <label>&nbsp;</label>
+               <p class="form-control-static text-center"><a href="javascript:void(0);" class="remove-button">Delete</a></p>
+            </div>
+         </div>
+         <div class="row serial-input" style="display:none">
+            <div class="col-md-3 form-group"><label>Upgraded Serial</label><input name="upgraded-serial" class="form-control product-serial"/></div>
+         </div>
+         <hr/>
+      </form>
+  </div>
+   <div class="">
+      <div class="row font-weight-bold">
+         <div class="col-md-2 offset-md-7">
+            Order Total:
+         </div>
+         <div class="col-md-2" id="order-total">
+            0.00 USD
+         </div>
+      </div>
+      <div><a id="new-entry" href="javascript:void(0);">Add Another Product</a></div>
+      <div class="row">&nbsp;</div>
+      <div class="row">
+         <div class="col">
+            <div class="form-check pl-4">
+            	<input class="form-check-input" id="manual-processing" type='checkbox'><label class="form-check-label">This order requires additional manual processing.</label>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6">
+            <div class="form-group"><textarea class="form-control" id="notes" rows="3" placeholder="Reason(s) for manual processing (Required)" hidden></textarea></div>
+         </div>
+      </div>
+      <div class="form-group"><button class="btn btn-lg" id="submitButton">Submit Order</button></div>
+   </div>
+</div>
+
+<div class="modal" tabindex="1" role="dialog" id="confirmation-modal">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title">Order Submitted Successfully</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modal-close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class=row>
+               <div class="col-md-5">
+                  <h5>Order Details:</h5>
+                  <div class="form-group">
+                     <label class="font-weight-bold">Purchase Order Number</label>
+                     <div class="col-md-9" id="modal-po-num"></div>
+                  </div>
+                  <div class="form-group">
+                     <label class="font-weight-bold">Invoice Number</label>
+                     <div class="col-md-9" id="inv-num"></div>
+                  </div>
+                  <div class="form-group">
+                     <label class="font-weight-bold">Company</label>
+                     <div class="col-md-9" id="modal-company"></div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col">
+                  <h5>Products</h5>
+               </div>
+            </div>
+            <table class="table table-responsive" id="modal-prod-table">
+               <thead>
+                  <tr>
+                     <th scope="col" style="width:40%;">Description</th>
+                     <th scope="col">SKU</th>
+                     <th scope="col">Unit Cost</th>
+                     <th scope="col">Qty</th>
+                     <th scope="col">Total Cost</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="prod-table-row">
+                     <th scope="row" class="modal-prod-name"></th>
+                     <td class="modal-prod-sku"></td>
+                     <td class="modal-prod-unit-cost"></td>
+                     <td class="modal-prod-qty"></td>
+                     <td class="modal-prod-total"></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="modal-footer">
+         	<p class="text-align-left w-100">You will receive a confirmation email with more information shortly. </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+	$(function() {
+	    $(document).ready(function() {
+	    	//Validate Login
+	        var userData = Cookies.getJSON('bfx-login');
+
+	        if (!userData){
+	        	window.location = '/account/login';
+      			return;
+	        }
+	        else if (!userData.email_verified){
+		        window.location = '/account/verify-new';
+		 		return;
+    		}
+    		
+  			//Collect reseller and product information.
+	        var accountId = userData['reseller_id'];
+	        $.ajax({
+	            type: 'GET',
+	            url: 'https://backend.borisfx.com/reseller_portal',
+	            beforeSend: function (request) {
+		        	request.setRequestHeader('Authorization', 'Basic ' + btoa(userData.email + ':' + userData.token));
+		      	},
+	            data: {
+	                resellerId: accountId
+	            },
+	            contentType: 'application/json',
+	            success: function(res) {
+	                results = JSON.parse(res);
+	                //Used queried products to build Product Hierarchy as a new Object. 
+
+	                resellerJson = results.reseller;
+	                resellerJson.email = userData.email;
+                  	$('h1').first().append(' - ' + resellerJson.name);
+	                
+	                productJson = buildProductJson(results.products, results.reseller.margin);
+	                
+                    //Store Reseller info in new object. Append reseller name to header.
+                  
+
+	                //Populate first field in Hierarchy for first product: Product Family.
+	                var $productSelect = $('.product-family');
+	                for (var product in productJson) {
+	                    $productSelect.append('<option value="' + product + '">' + product + '</option>');
+	                }
+	                //Do not reveal form content until full authentication has been performed and data has been initialized. 
+	                $("#portal-container, h1").fadeIn("slow");
+	            },
+	            error: function(error) {
+	            	//If no valid reseller is found, or login is invalid, redirect user to home page.
+					if (error.status == 403){
+						Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+						Cookies.set('redirect_url', window.location.href);
+						window.location.href = '/account/login?session_expired=true';
+					}
+	                else if (error.status == 401) {
+			          window.location.href = '/';
+			        }
+	            },
+	        });
+	    });
+
+	    //submission
+	    $('#submitButton').click(event, function() {
+	    	$(this).attr('disabled', true);
+
+	    	//Ensure that all required fields have been entered.
+	    	var $requiredFields = $('input,textarea,select').filter('[required]:visible');
+	    	for (var i = 0; i < $requiredFields.length; i++){
+	    		if ($requiredFields.eq(i).val() == ''){
+	    			alert('Please ensure all required fields have been entered');
+	    			$(this).attr('disabled', false);
+	    			return '';
+	    		}
+	    	}
+
+	    	var confirmOrder = confirm('Are you sure you\'re ready to submit this order?');
+	    	if(!confirmOrder){
+	    		$(this).attr('disabled', false);
+	    		return '';
+	    	}
+	        var $lineItems = $('.product-entry');
+	        var form_data = new FormData($('#order-info-form')[0]);
+
+	        //Build a list of Product Objects to include in the Form Data
+	        var prods = []
+	        for (var i = 0; i < $lineItems.length; i++) {
+	        	var prod = {};
+	            $.each($lineItems.eq(i).serializeArray(), function(index, field) {
+	                prod[field.name] = field.value;
+	            });
+	            prod.sku = $lineItems.eq(i).find('.product-sku').text();
+              prod.unitPrice = parseFloat($lineItems.eq(i).find('.product-total').text()) / parseFloat(prod.qty);
+	            prods.push(prod);
+	        }
+	        form_data.append('products', JSON.stringify(prods));
+	        
+	        form_data.append('reseller', JSON.stringify(resellerJson));
+
+	        //Perform initial validation, checking for a matching Account and performing Contract validation for any
+	        //Renewal SKUs.
+	        $.ajax({
+	            type: 'POST',
+	            url: 'https://backend.borisfx.com/reseller_validate',
+	            data: form_data,
+	            contentType: false,
+	            processData: false,
+	            success: function(res) {
+	                if (res == 'error') {
+	                    errorMessage();
+	                } else {
+	                    var responseData = JSON.parse(res);
+	                    var submitOrder = true;
+	                    var manualIsChecked = $('#manual-processing').prop('checked');
+	                    
+	                    //If any vaidation errors have come through, give Reseller the choice to make changes and re-submit, or 
+	                    //submit the order for manual review. Skip this step if the order has already been marked for manual processing.
+	                    var errors = responseData.warnings;
+	                    if (errors.length > 0 && !manualIsChecked) {
+	                        var errorString = '';
+	                        for (var i = 0; i < errors.length; i++) {
+	                            errorString += '-' + errors[i] + '\n'
+	                        }
+	                        submitOrder = confirm('Based on the information you have provided, this order will require additional manual processing. Submit Anyway?\n\n' +
+	                            errorString)
+	                    }
+	                    //Send finalized form-data to Heroku App and create order in Salesforce. If processed successfully, display confirmation modal.
+	                    if (!submitOrder) {
+	                    	$('#submitButton').attr('disabled', false);
+	                    	return '';
+	                    }
+	                    else{
+	                    	var $manualNotes = $('#notes');
+	                    	var isManual = (errors.length > 0 || manualIsChecked);
+	                    	form_data.set('manualProcessing', isManual);
+	                    	if ($manualNotes.attr('hidden') == null){
+	                    		form_data.set('resellerNotes', $manualNotes.val());
+	                    	}
+
+	                        for (var key in responseData) {
+	                            form_data.set(key, responseData[key]);
+	                        }
+	                        $.ajax({
+	                            type: 'POST',
+	                            url: 'https://backend.borisfx.com/reseller_order',
+	                            data: form_data,
+	                            contentType: false,
+	                            processData: false,
+	                            success: function(res) {
+	                                if (res == 'error') {
+	                                    errorMessage();
+	                                } else {
+	                                	buildConfirmationModal(JSON.parse(res));
+	                                    $('#confirmation-modal').fadeIn();
+            							$("#portal-container, h1, footer").animate({opacity: 0.25}, 400, function(){});
+	                                }
+	                            },
+	                            error: function(res){
+	                            	errorMessage();
+	                            }
+	                        });
+	                    }
+	                }
+	            },
+	            error: function(error) {
+	            	errorMessage();
+	            },
+	        });
+	    });
+
+		//Any time a line item is changed, check if the full product has been entered, 
+		//and update the corresponding form accordingly.
+	    $('.product-entry').change(event, function() {
+	        var $fields = $(this).find('.product-family, .product-host, .product-type');
+	        var productsEntered = true;
+	        $.each($fields, function(index, value) {
+	            if ($(value).val() == '') {
+	                productsEntered = false;
+	            }
+	        });
+	        if (productsEntered) {
+	            $(this).find('.product-qty').attr('disabled', false);
+	            getProductInfo($(this));
+	        } else {
+	        	//Disable and clear out Quantity and Upgraded Serial fields.
+	            $(this).find('.product-qty').attr('disabled', true);
+	            $(this).find('.product-serial').val('');
+	            $(this).find('.product-serial').prop('required',false);
+	            $(this).find('.serial-input').slideUp();
+	        }
+	    })
+
+	    //Populate Product Hosts based on Product Family selected
+	    $('.product-family').change(event, function() {
+	        var product = $(this).find('option:selected').val();
+	        var $hostField = $(this).parents('.product-entry').find('.product-host');
+          var $typeField = $(this).parents('.product-entry').find('.product-type');
+	        $hostField.children('option').not(':first').remove();
+          $typeField.children('option').not(':first').remove();
+	        for (var host in productJson[product]) {
+	            $hostField.append("<option value=\"" + host + "\">" + host + "</option>");
+	        }
+	    });
+
+	    //Populate Product Types based on Product Host selected
+	    $('.product-host').change(event, function() {
+	        var host = $(this).find('option:selected').val();
+	        var $parent = $(this).parents('.product-entry')
+	        var family = $parent.find('.product-family').find('option:selected').val();
+	        var $typeField = $parent.find('.product-type');
+	        $typeField.children('option').not(':first').remove();
+	        var products = productJson[family][host].products;
+	        for (var i = 0; i < products.length; i++) {
+	            var p = products[i];
+	            $typeField.append("<option value=\"" + p.name + "\" rel=" + (i + 1) + ">" + p.name + "</option>");
+	        }
+	    });
+
+	    //Creates form for new line item by cloning the original, and restoring the default values.
+	    $('#new-entry').click(event, function() {
+	        var $entries = $('.product-entry');
+	        var $clonedEntry = $entries.eq(0).clone(true);
+	        clearProductFields($clonedEntry);
+	        $clonedEntry.appendTo("#product-container");
+	    });
+
+	    //Removes the selected Line Item form from the list.
+	    $('.remove-button').click(event, function() {
+	        var $entries = $('.product-entry');
+	        if ($entries.length > 1) {
+	            $(this).parents(".product-entry").remove();
+	        } else {
+	            alert('Your order must contain at least one product');
+	        }
+	    });
+
+	    //Exposes or hides the Manual Notes section
+	    $('#manual-processing').change(event, function(){
+	    	var checked = !$(this).prop('checked');
+	    	$('#notes').attr('hidden', checked);
+	    });
+
+	    //On Modal close, reset form values to prevent duplicate entry.
+	    $('#modal-close').click(event, function(){
+	        $('.product-entry').not(':first').remove();
+	        clearProductFields($('.product-entry'));
+	        $('#order-total').text('0.00 USD');
+	        $('#order-info-form').find('input, textarea').val('');
+	        $('#stateDiv').attr('hidden', true);
+	        $('#country').val('');
+	        $('#manual-processing').prop('checked', false);
+	        $('#notes').val('');
+	        $('#notes').attr('hidden', true);
+		$('#submitButton').attr('disabled', false);
+	        $('#confirmation-modal').fadeOut();
+	    	$('#portal-container, h1, footer, .topbar').animate({opacity: 1}, 400);
+	    });
+
+	    function getProductInfo($entry) {
+	        var index = $entry.find('.product-type').find('option:selected').attr('rel') - 1;
+	        var family = $entry.find('.product-family').find('option:selected').val();
+	        var host = $entry.find('.product-host').find('option:selected').val();
+	        
+	        //Display the SKU for the currently selected product
+	        var product = productJson[family][host].products[index];
+			    $entry.find('.product-sku').text(product.sku);
+	        
+	        //Determine the total price for a given line item.
+	        var qty = $entry.find('.product-qty').val();
+	        var prodTotal = parseFloat(product.price * qty);
+	        prodTotal = prodTotal.toFixed(2) + ' USD';
+	        $entry.find('.product-total').text(prodTotal);
+	        
+	        //Calculate the grand total for the order
+	        var $allTotals = $('.product-total');
+	        var grandTotal = 0.00;
+	        for (var i = 0; i < $allTotals.length; i++){
+	        	var prodTotal = parseFloat($allTotals.eq(i).text());
+	        	grandTotal += prodTotal;
+	        }
+	        $('#order-total').text(grandTotal.toFixed(2) + ' USD');
+
+	        //Expose or Hide the Upgraded Serial field depending on if the product selected is a Renewal SKU
+	        var $serialInput = $entry.find('.serial-input');
+	        var isRenewal = (index != 0 && (product.name.indexOf('Renewal') >= 0 || product.name.indexOf('Upgrade') >= 0));
+	        var isHidden = $serialInput.css('display') == 'none';
+	        if (isRenewal && isHidden){
+	        	$serialInput.slideDown();
+	        	$entry.find('.product-serial').prop('required',true);
+	        }
+	        else if (!isRenewal && !isHidden){
+	        	$serialInput.val('');
+	        	$serialInput.slideUp();
+	        }
+	    }
+
+	    function buildProductJson(products, margin) {
+	        var productFlow = {};
+	        var baseMargin = resellerJson.basePercentage;
+
+          //Discount field is used to handle Sale pricing. 
+          var baseDiscount = resellerJson.baseDiscount;
+
+          //Create Object that maps products to their special margins.
+          var marginObject = {};
+	        for (var i = 0; i < resellerJson.specialMargins.length; i++){
+            var margin = resellerJson.specialMargins[i];
+            for (var j = 0; j < margin.families.length; j++){
+              var prod = margin.families[j];
+              for (var k = 0; k < margin.types.length; k++){
+                var type = margin.types[k];
+                var discount = baseDiscount;
+                if (margin.discount != null){
+                  discount = margin.discount;
+                }
+                marginObject[prod + type] = {margin: margin.percentage,
+                                             discount: discount};
+              }
+            }
+          }
+
+	        for (var i = 0; i < products.length; i++) {
+	            var p = products[i];
+	            
+              //Check for speciality margin for provided product. If none is found, default to the base percentage.
+              var m = marginObject[p.Family + p.Type__c];
+              if (m == null){
+                m = marginObject[p.Family + 'all'];
+              }
+              if (m == null){
+                m = marginObject['all' + p.Type__c];
+              }
+	            
+              if (m == null){
+	            	margin = baseMargin;
+                discount = baseDiscount;
+	            }
+              else{
+                margin = m.margin;
+                discount = m.discount;
+              }
+
+	            if (productFlow[p.Family] == null) {
+	                productFlow[p.Family] = {};
+	            }
+	            if (productFlow[p.Family][p.Host__c] == null) {
+	                productFlow[p.Family][p.Host__c] = {
+	                    products: []
+	                };
+	            }
+	            var productObject = {
+	                name: p.Display_Name__c,
+	                price: p.Standard_Price__c - (p.Standard_Price__c * margin * .01),
+	                sku: p.ProductCode
+	            };
+
+              //Calculate any disccounts from sales
+              if (discount != null && discount > 0){
+                productObject.price = productObject.price - (productObject.price * discount * .01);
+              }
+	            productFlow[p.Family][p.Host__c].products.push(productObject);
+	        }
+	        return productFlow;
+	    }
+
+	    //Builds the modal that appears when the order has been successfully processed. 
+	    function buildConfirmationModal(opp) {
+	    	var lineItems = opp.OpportunityLineItems.records;
+	    	var $modal = $('#confirmation-modal');
+
+	    	//Set Opportunity Fields
+	    	$modal.find('#modal-po-num').text(opp.Purchase_Order_Num__c);
+	    	$modal.find('#inv-num').text(opp.Invoice_Num__c);
+	    	if (opp.Account != null){
+	    		$modal.find('#modal-company').text(opp.Account.Name);
+	    	}
+	    	else{
+	    		$modal.find('#modal-company').text($('#company-name').val());
+	    	}
+
+	    	//Populate Product Table
+	    	var $table = $modal.find('#modal-prod-table');
+	    	var $original = $table.find('.prod-table-row');
+	    	var $template = $original.clone();
+
+	    	for(var i = 0; i < lineItems.length; i++){
+	    		var prod = lineItems[i];
+	    		$newProd = $template.clone();
+	    		$newProd.find('.modal-prod-name').text(prod.PricebookEntry.Product2.Name);
+	    		$newProd.find('.modal-prod-sku').text(prod.PricebookEntry.Product2.ProductCode);
+	    		$newProd.find('.modal-prod-unit-cost').text(prod.UnitPrice.toFixed(2) + ' USD');
+	    		$newProd.find('.modal-prod-qty').text(prod.Quantity);
+	    		$newProd.find('.modal-prod-total').text((prod.UnitPrice * prod.Quantity).toFixed(2) + ' USD');
+	    		if (i == 0){
+	    			$original.replaceWith($newProd);
+	    		}
+	    		else{
+	    			$table.append($newProd);
+	    		}
+	    	}
+	    }
+
+	    //Restore all fields on a line item form to their default values.
+	    function clearProductFields($entry){
+	    	$entry.find('.product-family').val('');
+	    	$entry.find('.product-host').find('option').not(':first').remove();
+	        $entry.find('.product-type').find('option').not(':first').remove();
+	        $entry.find('.product-qty').val(1);
+	        $entry.find('.product-qty').attr('disabled', true);
+	        $entry.find('.product-sku').text('');
+	        $entry.find('.product-total').text('0.00 USD');
+	        $entry.find('.serial-input').attr("required", false);
+	        $entry.find('.serial-input').hide();
+	        $entry.find('.product-serial').val('');
+	        $entry.find('.product-serial').prop('required',false);
+	    }
+
+	    function errorMessage() {
+	        alert('A system error has occurred. Please try again.');
+	        $(submitButton).attr('disabled', false);
+	    }
+
+	    var productJson
+	    var resellerJson
+	});
+</script>

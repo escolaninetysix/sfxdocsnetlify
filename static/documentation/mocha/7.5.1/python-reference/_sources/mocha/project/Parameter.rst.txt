@@ -1,0 +1,211 @@
+.. module:: mocha.project
+.. _Parameter:
+
+Parameter
+*********
+
+.. inheritance-diagram:: mocha.project.Parameter
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__eq__<Parameter.__eq__>` (rhs)
+    * def :meth:`__ne__<Parameter.__ne__>` (rhs)
+    * def :meth:`get<Parameter.get>` ([time=double( UINT_MAX )[, view=View( 0 )]])
+    * def :meth:`get_full_path<Parameter.get_full_path>` ()
+    * def :meth:`get_keyframes<Parameter.get_keyframes>` ()
+    * def :meth:`get_value<Parameter.get_value>` ()
+    * def :meth:`set<Parameter.set>` (val[, time=double( UINT_MAX )[, view=View( 0 )]])
+    * def :meth:`set_keyframes<Parameter.set_keyframes>` (keyframes)
+    * def :meth:`set_keyframes<Parameter.set_keyframes>` (keyframes)
+    * def :meth:`set_value<Parameter.set_value>` (value)
+
+
+Virtual functions
+^^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`isNull<Parameter.isNull>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`full_path<Parameter.full_path>` [read-only] of list of str
+*    property :attr:`keyframes<Parameter.keyframes>` [read-write] of Keyframes
+*    property :attr:`value<Parameter.value>` [read-write] of unknown type
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Parameter instance associated with some data object of the project.
+
+
+.. class:: Parameter()
+
+
+
+
+
+
+
+
+
+.. method:: Parameter.get([time=double( UINT_MAX )[, view=View( 0 )]])
+
+
+    :type time: double
+    :type view: :class:`mocha.project.View`
+    :rtype: object
+
+
+    :param time: time value for keyframed parameters.
+    :param view: view value for non-keyframed and keyframed parameters.
+    :raise: **AssertionError** - if parameter with given name components does not exist.
+    
+    Returns a value of the parameter by given ``time`` and ``view`` if they are specified.
+    For static parameters no need to specify ``time`` and ``view``. They are ignored in this case.
+    If ``time`` is not specified for keyframed parameter -
+    it will return static value for the parameter for given ``view``.
+
+
+
+.. method:: Parameter.get_full_path()
+
+
+    :rtype: list of strings
+
+
+
+
+
+.. method:: Parameter.get_keyframes()
+
+
+    :rtype: :class:`mocha.project.Keyframes`
+
+
+
+
+
+.. method:: Parameter.get_value()
+
+
+    :rtype: object
+
+
+
+
+
+.. method:: Parameter.isNull()
+
+
+    :rtype: bool
+
+
+
+
+
+.. method:: Parameter.__ne__(rhs)
+
+
+    :type rhs: :class:`mocha.project.Parameter`
+    :rtype: bool
+
+
+
+
+
+.. method:: Parameter.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.Parameter`
+    :rtype: bool
+
+
+
+
+
+.. method:: Parameter.set(val[, time=double( UINT_MAX )[, view=View( 0 )]])
+
+
+    :type val: object
+    :type time: double
+    :type view: :class:`mocha.project.View`
+
+
+    :param val: new value.
+    :param time: time value for keyframed parameters.
+    :param view: view value for non-keyframed and keyframed parameters.
+    :raise: **AssertionError** - if parameter with given name components does not exist.
+    
+    Sets a value of the parameter by given ``time`` and ``view`` if they are specified.
+    For static parameters no need to specify ``time`` and ``view``. They are ignored in this case.
+    If ``time`` is not specified for keyframed parameter -
+    it will change static value for the parameter for given ``view``.
+
+
+
+.. method:: Parameter.set_keyframes(keyframes)
+
+
+    :type keyframes: :class:`mocha.project.Keyframes`
+
+
+
+
+
+.. method:: Parameter.set_keyframes(keyframes)
+
+
+    :type keyframes: list of Keyframe
+
+
+
+
+
+.. method:: Parameter.set_value(value)
+
+
+    :type value: object
+
+
+
+
+
+.. attribute:: Parameter.full_path
+
+
+    :type: list of str
+    :access: read-only    Provides access to the full parameter name list.
+
+
+
+.. attribute:: Parameter.value
+
+
+    :type: unknown type
+    :access: read-write    Provides access to the parameter's static value.
+
+
+
+.. attribute:: Parameter.keyframes
+
+
+    :type: Keyframes
+    :access: read-write    Provides access to list of the parameter keyframes.
+
+
+
+

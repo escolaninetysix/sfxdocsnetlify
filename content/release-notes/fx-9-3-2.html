@@ -1,0 +1,87 @@
+{
+   "date": "2009-04-07T11:27:39-04:00",
+   "tags": [
+      "FX"
+   ],
+   "title": "FX - 9.3.2",
+   "description": "FX 9.3.2 release notes"
+}
+
+<h1>
+ Boris FX 9.3.2 for Windows XP and Windows Vista
+</h1>
+<h2>
+ What's new in Boris FX version 9.3.2?
+</h2>
+<ul id="l1">
+ <li>
+  <p>
+   Library Browser previews entire effect when applied to clips longer than 5 seconds.
+  </p>
+ </li>
+ <li>
+  <p>
+   Library Browser now previews in 16x9.
+  </p>
+  <p>
+   <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_00110.jpg">
+    <img class="alignnone size-full wp-image-5077" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_00110.jpg" alt="Image_001" width="243" height="263">
+   </a>
+  </p>
+  <h3>
+   Fixed Bugs:
+  </h3>
+ </li>
+ <li>
+  <p>
+   Edius - Field Rendering problem with HD project/media has now been fixed.
+  </p>
+ </li>
+ <li>
+  <p>
+   Boris FX 9.3.2 enables installation into Adobe After Effects CS 4 and Adobe Premiere Pro CS 4 on PC systems running Windows XP and Windows Vista.
+  </p>
+ </li>
+</ul>
+<h3>
+ Known Issues:
+</h3>
+<p class="s1">
+ Note: These problems appeared for the first time in the Premiere 4.01 update. Boris FX is working closely with the Adobe engineering team to resolve these integration issues as quickly as possible.
+</p>
+<p>
+ XP/VISTA: OpenGL may be disabled in FX when running in CS 4 due to incompatibilities.
+</p>
+<p>
+ Premiere Pro CS 3/CS 4 - XP: Paint effect created in Premiere Pro CS3 project does not show up correctly when the project is opened in Premiere Pro CS 4.
+</p>
+<p>
+ Premiere Pro CS 4.0.1 - XP/VISTA: Footage from the Premiere Pro timeline may get cropped in Boris Comp window.
+</p>
+<p>
+ Premiere Pro CS 4.0.1 - XP/VISTA: For all plugin types (filter, transition, synthetic importer) the user must manually set the project size and frame rate in Boris FX Project Settings.
+</p>
+<p>
+ Premiere Pro CS 4.0.1 - XP/VISTA: When applied as a filter, the source video may be black if (at a minimum) any of the following are true:
+</p>
+<ul id="l2">
+ <li>
+  <p>
+   The filter is applied to a still image.
+  </p>
+ </li>
+ <li>
+  <p>
+   The filter is applied to a generator clip.
+  </p>
+ </li>
+ <li>
+  <p>
+   The clip that the filter is applied to is trimmed at the head of the clip.
+  </p>
+ </li>
+</ul>
+<p>
+ Premiere Pro CS 4.0.1 - XP/VISTA: When applied as a transition, the V1 video in the FX UI will be black after the cut point. This can be addressed by setting the transition to “End Cut”. In this case, V2 will be static in RED UI but will appear correct when applied back to Premiere Pro. Source update problems affects FX UI only and do not cause any problems when rendering in Premiere.
+ <br>
+</p>

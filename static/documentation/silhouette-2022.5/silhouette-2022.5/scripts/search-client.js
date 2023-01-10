@@ -1,6 +1,6 @@
-// Copyright (c) 2011-2022 Quadralay Corporation.  All rights reserved.
+// Copyright (c) 2011-2020 Quadralay Corporation.  All rights reserved.
 //
-// ePublisher 2022.1
+// ePublisher 2020.1
 //
 
 function GetTermsFromArray(param_set) {

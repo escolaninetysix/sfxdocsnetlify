@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.19. StreamInfo &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.20. UndoGroup" href="UndoGroup.html" />
+    <link rel="prev" title="2.18. RenderStabilizeOperation" href="RenderStabilizeOperation.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UndoGroup.html" title="2.20. UndoGroup"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="RenderStabilizeOperation.html" title="2.18. RenderStabilizeOperation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="streaminfo">
+<span id="id1"></span><h1>2.19. StreamInfo<a class="headerlink" href="#streaminfo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>2.19.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>2.19.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.project.StreamInfo.__repr__" title="mocha.project.StreamInfo.__repr__"><tt class="xref py py-meth docutils literal"><span class="pre">__repr__</span></tt></a> ()</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>2.19.1.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.project.StreamInfo.end_frame" title="mocha.project.StreamInfo.end_frame"><tt class="xref py py-attr docutils literal"><span class="pre">end_frame</span></tt></a> [read-write] of long</li>
+<li>property <a class="reference internal" href="#mocha.project.StreamInfo.index_width" title="mocha.project.StreamInfo.index_width"><tt class="xref py py-attr docutils literal"><span class="pre">index_width</span></tt></a> [read-write] of long</li>
+<li>property <a class="reference internal" href="#mocha.project.StreamInfo.path" title="mocha.project.StreamInfo.path"><tt class="xref py py-attr docutils literal"><span class="pre">path</span></tt></a> [read-write] of str</li>
+<li>property <a class="reference internal" href="#mocha.project.StreamInfo.prefix" title="mocha.project.StreamInfo.prefix"><tt class="xref py py-attr docutils literal"><span class="pre">prefix</span></tt></a> [read-write] of str</li>
+<li>property <a class="reference internal" href="#mocha.project.StreamInfo.start_frame" title="mocha.project.StreamInfo.start_frame"><tt class="xref py py-attr docutils literal"><span class="pre">start_frame</span></tt></a> [read-write] of long</li>
+<li>property <a class="reference internal" href="#mocha.project.StreamInfo.suffix" title="mocha.project.StreamInfo.suffix"><tt class="xref py py-attr docutils literal"><span class="pre">suffix</span></tt></a> [read-write] of str</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>2.19.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mocha.project.StreamInfo">
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">StreamInfo</tt><span class="sig-paren">(</span><span class="optional">[</span><em>path=&quot;&quot;</em><span class="optional">[</span>, <em>prefix=&quot;&quot;</em><span class="optional">[</span>, <em>suffix=&quot;&quot;</em><span class="optional">[</span>, <em>start_frame=-1</em><span class="optional">[</span>, <em>end_frame=-1</em><span class="optional">[</span>, <em>index_width=0</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.StreamInfo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">StreamInfo</tt><span class="sig-paren">(</span><em>StreamInfo</em><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.StreamInfo.__repr__">
+<tt class="descclassname">StreamInfo.</tt><tt class="descname">__repr__</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.StreamInfo.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">unicode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.StreamInfo.path">
+<tt class="descclassname">StreamInfo.</tt><tt class="descname">path</tt><a class="headerlink" href="#mocha.project.StreamInfo.path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Absolute path to clip directory or first clip file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.StreamInfo.prefix">
+<tt class="descclassname">StreamInfo.</tt><tt class="descname">prefix</tt><a class="headerlink" href="#mocha.project.StreamInfo.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Clip prefix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.StreamInfo.suffix">
+<tt class="descclassname">StreamInfo.</tt><tt class="descname">suffix</tt><a class="headerlink" href="#mocha.project.StreamInfo.suffix" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Clip suffix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.StreamInfo.start_frame">
+<tt class="descclassname">StreamInfo.</tt><tt class="descname">start_frame</tt><a class="headerlink" href="#mocha.project.StreamInfo.start_frame" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">long</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Start frame number.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.StreamInfo.end_frame">
+<tt class="descclassname">StreamInfo.</tt><tt class="descname">end_frame</tt><a class="headerlink" href="#mocha.project.StreamInfo.end_frame" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">long</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>End frame number.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.StreamInfo.index_width">
+<tt class="descclassname">StreamInfo.</tt><tt class="descname">index_width</tt><a class="headerlink" href="#mocha.project.StreamInfo.index_width" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">long</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Clip index width.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.19. StreamInfo</a><ul>
+<li><a class="reference internal" href="#synopsis">2.19.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.19.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.19.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.19.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="RenderStabilizeOperation.html"
+                        title="previous chapter">2.18. RenderStabilizeOperation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="UndoGroup.html"
+                        title="next chapter">2.20. UndoGroup</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/StreamInfo.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UndoGroup.html" title="2.20. UndoGroup"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="RenderStabilizeOperation.html" title="2.18. RenderStabilizeOperation"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

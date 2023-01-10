@@ -1,0 +1,1710 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: LensFlareMask",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/LensFlareMask.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="LensFlareMask">
+     <h2>
+      LensFlareMask
+     </h2>
+    </a>
+    In the S_LensFlareMask Plugin.
+    <p>
+     Renders a lens flare image over the background
+  clip, aligning various flare elements between the hotspot and pivot
+  locations. Obscures or colorizes the flare based on a mask clip.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Back:
+      </b>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      The color of the flare is scaled by the color of this clip
+  at the flare's hotspot location.  A black and white mask can be used
+  to create a flare that is obscured by foreground objects. A color
+  mask will colorize the flare, which can give the appearance of the
+  light source passing behind a partially-transparent object.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/LensFlareMask.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hotspot:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-0.444 0.176],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The location of the brightest spot in the flare in screen
+  coordinates.  It can be set by enabling and moving the hotspot
+  widget.  The hotspot parameter is ignored if the AutoTrack effect
+  option is selected.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Pivot:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The elements of the flare will be in a line between the
+  Hotspot and the Pivot locations.  The Pivot is in screen coordinates
+  relative to the center of the frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Widths:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the sizes of all the flare elements.  This
+  parameter can be adjusted using the Scale Widths Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Heights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the vertical dimension of all the flare
+  elements, making them elliptical instead of circular.  This can also
+  be adjusted using the Scale Widths Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lens:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The type of lens flare to apply.  Custom lens flare types
+  can also be made, or existing types modified, by editing the
+  "s_lensflares.text" file.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of all the flare elements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hotspot Bright:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the hotspot elements only.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the ray elements only.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Increasing gamma brightens the flare, and especially boosts
+  the darker elements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the color saturation of the flare elements.
+  Increase for more intense colors.  Set to 0 for a monochrome
+  lens flare.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Shifts the hue of the flare, in revolutions
+  from red to green to blue to red.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the color of all flare elements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hotspot Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the color of the hotspot elements only.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Other Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of all flare elements that
+  are NOT at the hotspot location.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Flare:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If positive, the flare image is blurred by this amount
+  before being combined with the background.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Back:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the background before
+  combining with the flare.  If 0, the result will contain only the
+  flare image over black.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Screen
+   </i>
+   .
+   <br/>
+   Determines how the flare image is combined with the Background.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Screen:
+      </i>
+     </b>
+     performs a blend function which can help prevent
+  overly bright results.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Add:
+       </i>
+      </b>
+      causes the flare image to be added to the background.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Flare Only:
+        </i>
+       </b>
+       gives only the flare image with no background.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Tint Back Whites:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If this is enabled, the chroma of the flare
+  is added only after the result is clamped to the maximum brightness.
+  This allows the color of the flare image to still be visible even
+  over bright white backgrounds.  For the majority of backgrounds
+  there will be no observable difference.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ These parameters allow further adjustment of the
+  hotspot, and enabling of the screen interface widgets.
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Rotates the ray elements of the lens flare, if any,
+  in counter-clockwise degrees.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Num Scale:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Increases or decreases the number of rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Adjusts the length of the rays without changing their thickness, or
+                 changing the size of the other flare elements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Thickness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Adjusts the thickness of the individual rays within the flare.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Other Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the width of all flare elements that
+  are NOT at the hotspot location.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Other Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of all flare elements that
+  are NOT at the hotspot location.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shutter Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the shutter angle for motion blur. This
+  controls the amount of time that the simulated shutter is open, and
+  thus the overall amount of motion blur.  A value of 0 disables
+  motion blur.  A value of 360 degrees will blur over an entire frame,
+  which is the maximum amount of motion blur possible with a real
+  camera. Values above 360 degrees will produce unrealistic results in
+  which the motion of adjacent frames overlaps.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Samples:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   2 or greater.
+   <br/>
+   Controls the number of individual renders that are averaged
+  together when applying motion blur. Increasing the number of samples
+  will give smoother results, but will also increase render times. If
+  too few samples are used, there can be visible aliasing or ghosting
+  artifacts. Faster motion will require more samples to avoid
+  artifacts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hotspot Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Adds this amount to the hotspot location.  This can
+  be helpful if you want the hotspot to follow tracker data.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Negate Shift:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the hotspot shift parameter is negated before
+  affecting the hotspot.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Add Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Adds to the brightness of the flare regardless of
+  the mask brightness at the hotspot. Use this parameter to give the
+  flare a minimum brightness even where the mask is black, or to
+  increase the brightness overall.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Type:
+   </b>
+   <i>
+    Popup menu,  Default: Color
+   </i>
+   .
+   <br/>
+   This setting is ignored unless the Mask input is provided.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     uses the luminance of the Mask input to scale the brightness of the flares.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Color:
+       </i>
+      </b>
+      uses the RGB channels of the Mask input to scale the colors of the flares.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Triggers Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Creates a trigger zone at the edge of the screen which
+  affects the brightness and size of the flare.  This parameter
+  controls the width of the zone. Setting it to zero will disable Edge
+  Triggers.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Falloff:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   Controls the speed with which the intensity of the
+  trigger decreases when moving away from the edge. A value of 1
+  results in a linear ramp. Values greater than one result in a
+  steeper initial drop which gradually levels out. Values less than
+  one result in a slope that starts gradually and gets steeper at the end.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Out:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the trigger zone outward from the edge of the
+  screen, placing the peak off-screen. Negative values will shift the
+  trigger zone inward toward the center of the image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    One Way:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If this box is checked, the trigger will stay at maximum
+  intensity when the Hotspot moves off-screen, instead of ramping back
+  down as it moves farther from the edge.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Edge Zones:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Overlays the output with a grayscale image which
+  shows the location intensity of the Edge Triggers.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Creates a trigger zone centered on the Pivot which
+  affects the brightness and size of the flare.  This parameter
+  controls the radius of the zone. Setting it to zero will disable Center
+  Triggers.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Falloff:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   Controls the speed with which the intensity of the
+  trigger decreases when moving away from the edge. A value of 1
+  results in a linear ramp. Values greater than one result in a
+  steeper initial drop which gradually levels out. Values less than
+  one result in a slope that starts gradually and gets steeper at the end.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Scale Brtness:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the Brightness by this amount when
+  the trigger is at peak intensity. For example, a value of 3 will
+  cause the flare to ramp up to 3 times its normal brightness as it
+  passes through the trigger zone. If less than 1, the trigger will
+  dim the flare instead of brightening it.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Scale Widths:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the width of the flare by this amount when
+  the trigger is at peak intensity. For example, a value of 3 will
+  cause the flare to expand to 3 times its normal size as it
+  passes through the trigger zone. If less than 1, the trigger will
+  shrink the flare instead of growing it.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Scale Brtnss:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the Brightness by this amount when
+  the trigger is at peak intensity. For example, a value of 3 will
+  cause the flare to ramp up to 3 times its normal brightness as it
+  passes through the trigger zone. If less than 1, the trigger will
+  dim the flare instead of brightening it.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Scale Widths:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the width of the flare by this amount when
+  the trigger is at peak intensity. For example, a value of 3 will
+  cause the flare to expand to 3 times its normal size as it
+  passes through the trigger zone. If less than 1, the trigger will
+  shrink the flare instead of growing it.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Occlusion Scale Brt:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Enables a Trigger that adjusts the
+  brighness of the flare as it's occluded. The brightness will ramp up
+  to this value when the Hotspot is 50 percent occluded, then ramp
+  back down to its normal brightness. At the same time, the flare will
+  be fading out due to the occlusion, so its brightness will drop off
+  quickly at the end. Works best when Occlusion Softness is turned up
+  as well. This feature only works with Luma masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Occlusion Scale Wdth:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Enables a Trigger that adjusts the size of
+  the flare as it's occluded. The flare will expand up to this amount
+  when the Hotspot is 50 percent occluded, then shrink back down to
+  its normal size. At the same time, the flare will be fading out due
+  to the occlusion, so it will appear to shrink quickly at the
+  end. Works best when Occlusion Softness is turned up as well. This
+  feature only works with Luma masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Center Zone:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Overlays the output with a grayscale image which
+  shows the location intensity of the Center Trigger.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Diffraction Glow:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Creates a glow on the edges of occluding objects
+  that are near the hotspot, to simulate light bleeding around the
+  edges of the object. This parameter controls the brightness of the
+  glow. This feature only works with Luma masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The width of the Diffraction Glow.
+  </dd>
+ </dl>
+ <h3>
+  Atmosphere Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Atmosphere gives the effect of the flare shining through
+  a dusty atmosphere and picking up light or getting shadowed.
+  This parameter adjusts the amount, or amplitude, of the atmospheric
+  effect.  Zero gives a smoother flare, higher values give more dirty look.
+   <p>
+    Atmosphere affects some parts of the flare but not others. This behavior can be adjusted
+  for each element by toggling the Ignore Atmosphere setting within the Flare
+  Designer. Typically, elements which originate within the camera (such as secondary
+  reflections) should use Ignore Atmosphere, while elements which originate outside it
+  (such as glows) should not.
+   </p>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the spatial frequency of the atmospheric
+  noise.  Turn this up higher to get finer details, turn down for
+  broader overall variation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Detail:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the amount of fine detail in the
+  atmosphere simulation.  Decrease to get smoother atmosphere,
+  increase for a more crunchy or grainy look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Used to initialize the random number generator for
+  the atmospheric noise.  The actual seed value is not significant, but
+  different seeds give different results and the same value should
+  give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The cloudy noise in the atmosphere evolves over
+  time like real dust clouds; this parameter controls how fast the
+  cloud pattern changes over time.  Set to zero for a static pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The color of the Diffraction Glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The distance from the hotspot at which Diffraction Glow is visible. The glow will fall off
+softly as distance from the hotspot increases. Objects outside this radius won't create any glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of random flickering of the flare brightness.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The speed of random flickering.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../lensflare">
+       LensFlare
+      </a>
+      <br/>
+      <a href="../lensflareautotrack">
+       LensFlareAutoTrack
+      </a>
+      <br/>
+      <a href="../lensflareautotrackmask">
+       LensFlareAutoTrackMask
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../glint">
+       Glint
+      </a>
+      <br/>
+      <a href="../glare">
+       Glare
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

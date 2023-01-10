@@ -1,0 +1,38 @@
+=== Most requested feature of all time
+
+* *Zoom scrolling:* You can now mouse scroll to zoom into the canvas.
+
+=== New Lens Module features
+
+* *Spline-based Calibration:* Calibrate lens using Mocha open splines
+* *Import Calibration:* Import previously saved Mocha Lens data
+* *Calibration reset:* You can now easily reset the lens calibration
+
+=== New Surface Controls
+
+* *Right-click Ratios:* You can now set the surface ratio by right-clicking the surface
+* *Right-click Align and Reset:* You can align the surface or reset it to the spline.
+* *Right-click view controls:* You can turn off the insert and surface view
+
+=== Architecture updates
+
+* *Apple silicon GStreamer Support:* You can now import and export video with Apple M1 chipsets under Apple silicon supported systems.
+
+=== Exports
+
+* *After Effects Export rename:* "Mocha shape data for AE" is now called "Adobe After Effects Mask Data" to make it consistent with the other host exports
+
+=== Tracking improvements
+
+* *Preprocessing:* Treat your clip before tracking to get optimal details in difficult shots. Pre-process gamma, contrast, blur etc. In Beta 2, preprocessing has been moved to a dockable panel to reduce parameters in the track module.
+* *Non-destructive gamma view:* Adjust both brightness and gamma in the view controls without affecting the actual clip
+
+=== Minor Updates
+
+* *Foreground switching:* The Mocha UI will now move to the foreground when you switch back to After Effects
+* *Python access to mesh vertex positions:* You can now access mesh vertex positions in normalised space.
+* *Custom frame rate setting:* You can now set any frame rate you like by clicking on the dropdown and editing the value.
+* *Headless Linux Improvements:* Automatically set correct display context for external Mocha Python commands on Linux
+* *Crash Reporting:* We now generate anonymous crash and error reports to make it easier to solve support problems.
+* *RED support:* RED codec support has been updated to 8.2.1
+* *PowerMesh Interface:* We now only enable mesh tracking parameters when a selected layer has a mesh

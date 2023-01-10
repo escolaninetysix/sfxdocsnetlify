@@ -1,0 +1,565 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: FlutterCut",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FlutterCut.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FlutterCut">
+     <h2>
+      S_FlutterCut
+     </h2>
+    </a>
+    Transitions between two clips by rapidly cutting
+  back and forth between them, optionally inserting solid colored or
+  inverted frames as well. The cuts of each clip can get longer or shorter
+  over the length of the transition.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FlutterCut.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    From Start Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames of the From clip in the first cycle of the
+  transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    From End Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames of the From clip in the last cycle of the
+  transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    From Acceleration:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The speed at which cut lengths change. When set to 1,
+  the lengths will change gradually between From Start Frames and From End Frames,
+reaching the final value on the last cycle. As the value increases, the cut length will
+change more quickly and reach its final value more quickly.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    To Start Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames of the To clip in the first cycle of the
+  transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    To End Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames of the To clip in the last cycle of the
+  transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    To Acceleration:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The speed at which cut lengths change. When set to 1,
+  the lengths will change gradually between To Start Frames and To End Frames,
+reaching the final value on the last cycle. As the value increases, the cut length will
+change more quickly and reach its final value more quickly.
+  </dd>
+ </dl>
+ <h3>
+  Colored Frames Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   A solid color added to the pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color1 Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The number of Color 1 frames in each cycle. This stays constant
+throughout the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color1 Position:
+   </b>
+   <i>
+    Popup menu,  Default: After Both
+   </i>
+   .
+   <br/>
+   The position of the Color 1 frames within the pattern.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Before From:
+      </i>
+     </b>
+     at the beginning of the cycle, before the From clip.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        After From:
+       </i>
+      </b>
+      in the middle of the cycle, between the From and To clips.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         After To:
+        </i>
+       </b>
+       at the end of the cycle, after the To clip.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          After Both:
+         </i>
+        </b>
+        in the middle of the cycle, and again at the end (but not at the very end of the transition, after the last cycle).
+        <br/>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Another solid color added to the pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color2 Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The number of Color 2 frames in each cycle. This stays constant
+throughout the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color2 Position:
+   </b>
+   <i>
+    Popup menu,  Default: After Both
+   </i>
+   .
+   <br/>
+   The position of the Color 2 frames within the pattern.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Before From:
+      </i>
+     </b>
+     at the beginning of the cycle, before the From clip.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        After From:
+       </i>
+      </b>
+      in the middle of the cycle, between the From and To clips.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         After To:
+        </i>
+       </b>
+       at the end of the cycle, after the To clip.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          After Both:
+         </i>
+        </b>
+        in the middle of the cycle, and again at the end (but not at the very end of the transition, after the last cycle).
+        <br/>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Invert Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert:
+   </b>
+   <i>
+    Popup menu,  Default: None
+   </i>
+   .
+   <br/>
+   Invert some frames.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       None:
+      </i>
+     </b>
+     nothing is inverted
+     <br/>
+     <dd>
+      <b>
+       <i>
+        From Clip:
+       </i>
+      </b>
+      only frames from the From clip are inverted.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         To Clip:
+        </i>
+       </b>
+       only frames to the To clip are inverted.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Both Clips:
+         </i>
+        </b>
+        frames from the From and To clips are inverted,
+but solid color frames are not.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Custom Pattern:
+          </i>
+         </b>
+         overlays a custom pattern of inverted frames over the
+From/To/color pattern. The pattern of inverted frames is controlled by Invert Length,
+Normal Before, and Normal After.
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Invert Pattern Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Length:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The number of consecutive frames to invert. The
+  cycle of inverted frames is controlled by this parameter, Normal
+  Before, and Normal After, and is independent of the From/To/Color cycle.
+  Has no effect unless Invert is set to Custom Pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Normal Before:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Leave this number of normal, non-inverted frames before each group of
+  inverted frames. Has no effect unless Invert is set to Custom Pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Normal After:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Leave this number of normal, non-inverted frames after each group of
+  inverted frames. Has no effect unless Invert is set to Custom Pattern.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../tvchannelchange">
+       TVChannelChange
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

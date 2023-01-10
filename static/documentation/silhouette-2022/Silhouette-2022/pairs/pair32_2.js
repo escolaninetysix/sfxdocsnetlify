@@ -1,0 +1,23 @@
+var pairs =
+{
+"color":{"alpha":1}
+,"composites":{"rgb":1}
+,"rgb":{"channels":1,"mattes":1}
+,"channels":{"together":1,"roto":1,"output":1}
+,"together":{"places":1}
+,"places":{"result":1}
+,"result":{"alpha":1}
+,"alpha":{"useful":1,"node":1,"created":1}
+,"useful":{"working":1}
+,"working":{"shapes":1}
+,"shapes":{"assigned":1}
+,"assigned":{"different":1}
+,"different":{"rgb":1}
+,"roto":{"connect":1,"channels":1}
+,"connect":{"roto":1}
+,"output":{"color":1}
+,"node":{"rgb":1,"group":1}
+,"mattes":{"corresponding":1}
+,"corresponding":{"alpha":1}
+}
+;Search.control.loadWordPairs(pairs);

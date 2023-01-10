@@ -1,9 +1,57 @@
-baseURL: https://sfxdocsnetlify.netlify.app/
+baseURL: https://borisfx.com/
 metaDataFormat: json
 enableRobotsTXT: true
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    renderer:
+      hardWraps: true
+      unsafe: true
+  asciidocExt:    
+      preserveTOC: true
+ignoreFiles: [ "content\\/support\\/documentation\\/mocha\\/.*\\/UserGuide\\/en_US\\/.*\\.adoc" ]
 outputs:
   home:
     - HTML
     - JSON
   section:
     - HTML
+params:
+    cloudinary_base_url: https://borisfx-com-res.cloudinary.com/
+    cloudinary_base_dir: image/upload/
+permalink:
+effects: /:section/:title/
+downloads: /:section/:title/
+legacy-downloads: /:section/:title/
+videos: /:section/:title/
+effects: /:section/:title/
+date:
+    - date
+    - publishDate
+publishDate:
+    - publishDate
+    - date
+sitemap:
+  changefreq: daily
+  filename: sitemap.xml
+  priority: 0.5  
+security:
+  enableInlineShortcodes: false
+  exec:
+    allow:
+    - ^dart-sass-embedded$
+    - ^go$
+    - ^npx$
+    - ^postcss$
+    - ^asciidoctor$
+    - ^coderay$    
+    osEnv:
+    - (?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$
+  funcs:
+    getenv:
+    - ^HUGO_
+  http:
+    methods:
+    - (?i)GET|POST
+    urls:
+    - .*

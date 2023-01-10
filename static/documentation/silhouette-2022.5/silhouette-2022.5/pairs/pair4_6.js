@@ -2,7 +2,7 @@ var pairs =
 {
 "cycles":{"transform":1,"reshape":1,"preset":1}
 ,"transform":{"shape":1,"points":1,"on-screen":1,"tool":1}
-,"shape":{"transform":1,"feather":1,"outlines":1,"opacity":1,"point":1,"around":1,"points":1,"drag":1,"selection":1,"movement":1}
+,"shape":{"transform":1,"feather":1,"point":1,"around":1,"points":1,"drag":1,"selection":1,"movement":1}
 ,"points":{"modes":1,"simultaneously":1,"nearest":1}
 ,"reshape":{"magnetic":1,"brush":1,"modes":1}
 ,"magnetic":{"reshape":1,"freehand":1,"behavior":1}
@@ -13,12 +13,6 @@ var pairs =
 ,"feather":{"handle":1,"points":1,"handles":1,"outward":1}
 ,"adds":{"weighted":1,"object":1}
 ,"weighted":{"keyframe":1}
-,"draws":{"unselected":1,"straight":1}
-,"unselected":{"inactive":1,"point":1}
-,"inactive":{"shape":1}
-,"outlines":{"using":1}
-,"using":{"shape":1}
-,"opacity":{"value":1}
 ,"b\u00E9zier":{"splines":1,"curve":1}
 ,"key":{"needed":1}
 ,"adjust":{"length":1,"tangents":1}
@@ -118,6 +112,7 @@ var pairs =
 ,"drawn":{"path":1}
 ,"path":{"adding":1}
 ,"adding":{"shape":1}
+,"draws":{"straight":1}
 ,"straight":{"line":1}
 ,"line":{"new":1}
 ,"new":{"previous":1,"tracker":1}
@@ -166,6 +161,7 @@ var pairs =
 ,"start":{"end":1}
 ,"end":{"control":1}
 ,"range":{"control":1}
+,"unselected":{"point":1}
 ,"extends":{"current":1}
 ,"begin":{"selection":1}
 ,"selection":{"release":1}

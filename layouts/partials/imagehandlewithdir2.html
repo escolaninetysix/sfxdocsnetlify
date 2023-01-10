@@ -1,0 +1,11 @@
+{{ if in .image_url "https://borisfx-com-res.cloudinary.com/" }}
+
+<img class="img-fluid"  src="{{ .image_url }}" />
+
+{{ else if .image_url }}
+<div class="embed-responsive">
+<canvas style="background: url('{{ .image_url }}');background-repeat: no-repeat;
+  background-size: cover; background-position:center;width:89.5%;height:100%;padding:70px;">
+</canvas>
+</div>
+{{ end }}

@@ -1,0 +1,1077 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: ZConvolve",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/ZConvolve.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="ZConvolve">
+     <h2>
+      S_ZConvolve
+     </h2>
+    </a>
+    Convolves areas of the source clip using a kernel which
+  is made larger or smaller using depth values from a ZBuffer
+  input. Separates the input into a number of layers and applies
+  different sized convolution blurs depending on the distance from the
+  focal depth, and depth of field.  This is similar to ZDefocus but with
+  an iris shape (or Kernel) that comes from a clip.
+    <p>
+     In the Sapphire Blur+Sharpen effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      The clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Kernel:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      The filter kernel or shape for the convolution.  This
+  should normally be all black around the edges (outside the specified
+  Kernel Crop region), with a non-black central part.  A larger
+  shape normally produces blurrier results.  Only the part of the
+  kernel within the two Kernel Crop params is considered; the part
+  outside that boundary is ignored.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       ZBuffer:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      The input clip containing depth values for each Source
+  pixel.  These values should be in the range of black to white, and
+  it is best if not anti-aliased.  Normally black corresponds to the
+  farthest objects and white to the nearest, though this can be
+  adjusted using Z Buffer parameter.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/ZConvolve.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Focal Depth:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The depth of the focus plane; 0 is near and 1 is far.
+  Areas with this Z value will be in focus.  Objects near this depth
+  may be in focus depending on the Depth of Field parameter.  You can use
+  Show: In Focus Zone to show the Focal Depth when adjusting.  If the
+  effect of this parameter seems backwards, you can invert the depth
+  values using the Z Buffer parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Depth Of Field:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Specifies how wide a range of depths near the Focal
+  Depth will be in focus.  If the Focal Depth is 0.5 and Depth of
+  Field is 0.2, all objects with Z values from 0.4 to 0.6 will be in
+  focus.  Set to zero to have only objects exactly at the Focal Depth
+  in focus.  You can use Show: In Focus Zone to show this when
+  adjusting.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The maximum amount to resize the kernel larger or smaller.  1.0 is the
+  original size.  This parameter can be adjusted using the Size Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to make the kernel fatter or wider
+  without changing its height.  Decrease to shrink it horizontally,
+  making it thinner.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to make the kernel taller
+  without changing its wieght.  Decrease to shrink it vertically,
+  making it flatter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Z Buffer Type:
+   </b>
+   <i>
+    Popup menu,  Default: White is Near
+   </i>
+   .
+   <br/>
+   How to interpret the values in the Z buffer.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Black is Near:
+      </i>
+     </b>
+     Black pixels in the Z buffer indicate that
+the object at that point is near (close to you), and white means far
+away.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        White is Near:
+       </i>
+      </b>
+      White pixels in the Z buffer indicate that
+the object at that point is near (close to you), and black means far
+away.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show:
+   </b>
+   <i>
+    Popup menu,  Default: Result
+   </i>
+   .
+   <br/>
+   Selects the type of output.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Result:
+      </i>
+     </b>
+     Show the final output.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Kernel:
+       </i>
+      </b>
+      Show the convolve kernel over the final output.  Use
+  this to adjust the kernel cropping and threshold parameters.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         In Focus Zone:
+        </i>
+       </b>
+       Show the in-focus zone highlighted over the
+  original image.  Use this to adjust the focal depth and depth of
+  field.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Layers:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   2 to 50.
+   <br/>
+   The number of depth layers to separate the source into.
+  More layers require more processing but give smoother results in Z.
+  More layers are sometimes needed to avoid visible seams between the
+  layers.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Layer Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Interp
+   </i>
+   .
+   <br/>
+   Determines how the differently blurred layers are combined.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Comp:
+      </i>
+     </b>
+     the closer layers are composited over the farther
+  layers.  This method often gives better results if you have objects
+  at different depths overlapping each other with discontinuous values
+  in your depth image.  However, this option can be slower, and sometimes
+  artifacts between layers are visible.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Interp:
+       </i>
+      </b>
+      the layers are interpolated using depth
+  image values.  This method gives smoother transitions between
+  layers, and is usually better if there are no sharp changes in your
+  depth image.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Center:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The center point of the kernel; if you think of
+  convolution as repeated stamping of the kernel at each point of the
+  source, the center is where the stamp aligns with the source pixels
+  it's stamped over.  If you move the center to the right in the
+  kernel, the whole result image will move to the left, and similarly
+  up and down.  This parameter is ignored if AutoCenter is on.  It may
+  be helpful to turn on Show Kernel while adjusting this parameter.
+  Note that if Autocenter is off, the center point is always included
+  in the kernel no matter what this param is set to.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Autocenter:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Automatically finds the center of the kernel image.
+  Turning this on makes the effect ignore the Kernel Center parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Values above 1 cause highlights in the source clip to
+  keep their brightness after the convolution filter is applied.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Boost Highlights:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount to increase the luma of the highlights in the source clip.
+  Increase this parameter to blow out the highlights without affecting the darks or mid-tones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Highlight Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.9,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The minimum luma value for highlights. Pixels brighter than this will be brightened according to the Boost Highlights parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Any source value below this will be treated as
+  black. When combining the convolved result with the original, you
+  can increase this value to only convolve bright areas of the source.
+  Typically when using this parameter, you will also set Combine to
+  Screen or Add to get a glare-like effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold Add Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   This can be used to raise the threshold on a
+  specific color and thereby reduce the convolved result generated on areas of the
+  source clip containing that color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Convolve Only
+   </i>
+   .
+   <br/>
+   Determines how the convolved image is combined with the original source.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Convolve Only:
+      </i>
+     </b>
+     Only show the convolved image. Use this option for a blur
+                           or defocus-like effect
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Screen:
+       </i>
+      </b>
+      Screen the convolved image with the original source. Use this option for a
+                    glow or glare-like effect.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Add:
+        </i>
+       </b>
+       Add the convolved image to the original source.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Difference:
+         </i>
+        </b>
+        Show the difference between the convolved image and the source.
+        <br/>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mix With Source:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Interpolates between the convolved result (0) and
+  the original source (1).  0.1 can give a nice misty effect since it
+  mixes only a little of the source in.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Mode:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    Transparent Transparent
+   </i>
+   ].
+   <br/>
+   Determines the behavior when accessing areas outside the source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Transparent:
+      </i>
+     </b>
+     Areas outside the source image are treated as transparent, which can produce
+                     transparency around the edges of the image.
+             Select this for fastest rendering.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Repeat:
+       </i>
+      </b>
+      Repeats the last pixel outside the border of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       Reflects the image outside the border.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Rel Near:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the kernel size for parts of the image that are nearer than the
+  focal plane.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Rel Far:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the kernel size for parts of the image that
+  are farther away than the focal plane.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.001,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Any kernel value below this will be treated as black.  It's
+  important for the edges of the kernel image to be completely black,
+  or the result will have a grayish cast to it.  If your kernel image
+  may have a little noise in the black areas, turn up threshold a
+  little to remove that background noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Clamp Below Threshold:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   When turned on, values below the threshold
+  are clamped to zero.  This usually gives the best result.  For
+  certain special cases with partially-negative kernels, turning this
+  off gives you additional flexibility in designing your kernel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Crop1:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-0.997 -0.747],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The upper left corner of
+  the kernel area.  Parts of the kernel image outside the rectangle
+  defined by Kernel Crop1 and Kernel Crop2 are assumed to be
+  black.  Making this area smaller to avoid processing the kernel's
+  black edges can speed up the convolution somewhat.  It may be
+  helpful to turn on Show Kernel while adjusting this parameter.  Note
+  that if Autocenter is off, the center point is always included in
+  the kernel no matter what this param is set to.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Crop2:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.997 0.747],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The lower right corner of the kernel area.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Autoscale Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Max Channel
+   </i>
+   .
+   <br/>
+   In convolution, either a larger or brighter
+  kernel will make the result image brighter.  The kernel must be
+  auto-scaled or normalized so the result is, on average, as bright as
+  the input.  The autoscaling can be done in several ways, each of
+  which is best in certain circumstances.  With a monochrome kernel
+  or with Color Kernel turned off, Max Channel, Luma, and Indep Channels
+  all give the same result.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Max Channel:
+      </i>
+     </b>
+     Autoscales the kernel by summing the
+  elements of each channel, and using whichever is brightest as the
+  overall kernel scale factor.  This normalizes a dim kernel to full
+  brightness, and generally preserves the color of the kernel, but
+  allows brightness variations in the dimmer channels to show in the
+  result.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Luma:
+       </i>
+      </b>
+      Autoscales the kernel by summing the
+  luminances of each kernel pixel.  This method preserves changes in
+  the kernel's hue, but normalizes the luma, so a brighter or darker
+  kernel will have no effect.  Use the Scale parameter to adjust the
+  result brightness.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Indep Channels:
+        </i>
+       </b>
+       Independently normalizes each
+  color channel of the kernel.  A colored kernel will give a
+  white/gray result with this method.  Use this method if your kernel
+  channels are independent of each other (i.e. different things going
+  on in each of R, G, and B) but you want normalized results in each
+  channel.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Count Nonzero:
+         </i>
+        </b>
+        Count how many kernel pixels are
+  nonzero (brighter than black), but otherwise ignore how bright they
+  are.  This method is best if you want variations in kernel hue and
+  luma to show up in the result.  But blurring the kernel will give a
+  dimmer result, since there will be more nonzero pixels.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Kernel Size:
+          </i>
+         </b>
+         Ignore the pixel
+         <i>
+          values
+         </i>
+         entirely;
+  only use the size of the kernel rectangle to auto-scale.  Use this
+  if you want all kernel variations to show up in the result, but
+  don't use it if you intend to animate Kernel Crop1 and Crop2, as
+  that would affect the result's brightness.
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Zbuffer Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the ZBuffer input channels make a monochrome z image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Opacity:
+   </b>
+   <i>
+    Popup menu,  Default: Normal
+   </i>
+   .
+   <br/>
+   Determines the method used for dealing with
+opacity/transparency.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       All Opaque:
+      </i>
+     </b>
+     Use this option to render slightly faster when
+the input image is fully opaque with no transparency (alpha=1).
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Normal:
+       </i>
+      </b>
+      Process opacity normally.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         As Premult:
+        </i>
+       </b>
+       Process as if the image is already in
+premultiplied form (colors have been scaled by opacity).  This option
+also renders slightly faster than Normal mode, but the results will
+also be in premultiplied form, which is sometimes less correct.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Size:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Size parameter.This parameter only appears on AE and Premiere,
+where on-screen widgets are supported.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Kernel Crop:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   off.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Kernel Crop1 parameter.This parameter only appears on AE and Premiere,
+where on-screen widgets are supported.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../zdefocus">
+       ZDefocus
+      </a>
+      <br/>
+      <a href="../zblur">
+       ZBlur
+      </a>
+      <br/>
+      <a href="../zglow">
+       ZGlow
+      </a>
+      <br/>
+      <a href="../zfoglinear">
+       ZFogLinear
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../convolve">
+       Convolve
+      </a>
+      <br/>
+      <a href="../rackdefocus">
+       RackDefocus
+      </a>
+      <br/>
+      <a href="../glare">
+       Glare
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

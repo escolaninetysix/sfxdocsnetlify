@@ -1,0 +1,981 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: Convolve",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/Convolve.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="Convolve">
+     <h2>
+      Convolve
+     </h2>
+    </a>
+    Convolves a source image with a kernel.  Convolution is a
+  mathematical operator which uses one image, the kernel, as a filter shape
+  for another image (the source).  Convolution effectively stamps a
+  copy of the kernel at each point of the source, using the source's
+  brightness at that point.  The effect is that a copy of the kernel
+  will appear over all the bright spots of the source.  A kernel image
+  shaped like a circle or polygon will give an effect similar to
+  RackDefocus; a kernel image shaped like a starburst can give
+  something like Glare.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Kernel:
+      </b>
+      The filter kernel or shape for the convolution.  This
+  should normally be all black around the edges (outside the specified
+  Kernel Crop region), with a non-black central part.  A larger
+  shape normally produces blurrier results.  Only the part of the
+  kernel within the two Kernel Crop params is considered; the part
+  outside that boundary is ignored.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/Convolve.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Kernel Size resizes the kernel larger or smaller.  1.0 is the
+  original size.  This parameter can be adjusted using the Kernel Size/Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to make the kernel fatter or wider
+  without changing its height.  Decrease to shrink it horizontally,
+  making it thinner.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to make the kernel taller
+  without changing its wieght.  Decrease to shrink it vertically,
+  making it flatter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Center:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The center point of the kernel; if you think of
+  convolution as repeated stamping of the kernel at each point of the
+  source, the center is where the stamp aligns with the source pixels
+  it's stamped over.  If you move the center to the right in the
+  kernel, the whole result image will move to the left, and similarly
+  up and down.  This parameter is ignored if AutoCenter is on.  It may
+  be helpful to turn on Show Kernel while adjusting this parameter.
+  Note that if Autocenter is off, the center point is always included
+  in the kernel no matter what this param is set to.  This parameter can be adjusted using the Kernel Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Autocenter:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Automatically finds the center of the kernel image.
+  Turning this on makes the effect ignore the Kernel Center parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Boost Highlights:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The amount to increase the luma of the highlights in the source clip.
+  Increase this parameter to blow out the highlights without affecting the darks or mid-tones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Color Kernel:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Use each color channel of the kernel
+  independently.  Turn this on if your kernel is not just black and
+  white and you want the colors of the kernel to be used in the
+  convolution.  Turn off for fastest rendering.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Autoscale:
+   </b>
+   <i>
+    Popup menu,  Default: Max Channel
+   </i>
+   .
+   <br/>
+   In convolution, either a larger or brighter
+  kernel will make the result image brighter.  The kernel must be
+  auto-scaled or normalized so the result is, on average, as bright as
+  the input.  The autoscaling can be done in several ways, each of
+  which is best in certain circumstances.  With a monochrome kernel
+  or with Color Kernel turned off, Max Channel, Luma, and Indep Channels
+  all give the same result.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Max Channel:
+      </i>
+     </b>
+     Autoscales the kernel by summing the
+  elements of each channel, and using whichever is brightest as the
+  overall kernel scale factor.  This normalizes a dim kernel to full
+  brightness, and generally preserves the color of the kernel, but
+  allows brightness variations in the dimmer channels to show in the
+  result.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Luma:
+       </i>
+      </b>
+      Autoscales the kernel by summing the
+  luminances of each kernel pixel.  This method preserves changes in
+  the kernel's hue, but normalizes the luma, so a brighter or darker
+  kernel will have no effect.  Use the Scale parameter to adjust the
+  result brightness.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Indep Channels:
+        </i>
+       </b>
+       Independently normalizes each
+  color channel of the kernel.  A colored kernel will give a
+  white/gray result with this method.  Use this method if your kernel
+  channels are independent of each other (i.e. different things going
+  on in each of R, G, and B) but you want normalized results in each
+  channel.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Count Nonzero:
+         </i>
+        </b>
+        Count how many kernel pixels are
+  nonzero (brighter than black), but otherwise ignore how bright they
+  are.  This method is best if you want variations in kernel hue and
+  luma to show up in the result.  But blurring the kernel will give a
+  dimmer result, since there will be more nonzero pixels.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Kernel Size:
+          </i>
+         </b>
+         Ignore the pixel
+         <i>
+          values
+         </i>
+         entirely;
+  only use the size of the kernel rectangle to auto-scale.  Use this
+  if you want all kernel variations to show up in the result, but
+  don't use it if you intend to animate Kernel Crop1 and Crop2, as
+  that would affect the result's brightness.
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.001,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Any kernel value below this will be treated as black.  It's
+  important for the edges of the kernel image to be completely black,
+  or the result will have a grayish cast to it.  If your kernel image
+  may have a little noise in the black areas, turn up threshold a
+  little to remove that background noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Clamp Below Threshold:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   When turned on, values below the threshold
+  are clamped to zero.  This usually gives the best result.  For
+  certain special cases with partially-negative kernels, turning this
+  off gives you additional flexibility in designing your kernel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Mode:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    BLACK BLACK
+   </i>
+   ].
+   <br/>
+   Determines the behavior when accessing areas outside the source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       BLACK:
+      </i>
+     </b>
+     Areas outside the source image are treated as black, which can produce
+                     dark areas around the edges of the image.
+             Select this for fastest rendering.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        REPEAT:
+       </i>
+      </b>
+      Repeats the last pixel outside the border of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         REFLECT:
+        </i>
+       </b>
+       Reflects the image outside the border.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hilite Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.9,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The minimum luma value for highlights. Pixels brighter than this will be brightened according to the Boost Highlights parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Values above 1 cause highlights in the source clip to
+  keep their brightness after the convolution filter is applied.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Any source value below this will be treated as
+  black. When combining the convolved result with the original, you
+  can increase this value to only convolve bright areas of the source.
+  Typically when using this parameter, you will also set Combine to
+  Screen or Add to get a glare-like effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold Add Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   This can be used to raise the threshold on a
+  specific color and thereby reduce the convolved result generated on areas of the
+  source clip containing that color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mix With Source:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Interpolates between the convolved result (0) and
+  the original source (1).  0.1 can give a nice misty effect since it
+  mixes only a little of the source in.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Convolve Only
+   </i>
+   .
+   <br/>
+   Determines how the convolved image is combined with the original source.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Convolve Only:
+      </i>
+     </b>
+     Only show the convolved image. Use this option for a blur
+                           or defocus-like effect
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Screen:
+       </i>
+      </b>
+      Screen the convolved image with the original source. Use this option for a
+                    glow or glare-like effect.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Add:
+        </i>
+       </b>
+       Add the convolved image to the original source.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Difference:
+         </i>
+        </b>
+        Show the difference between the convolved image and the source.
+        <br/>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Kernel:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Show the kernel over the result, for easier
+  adjustment of kernel parameters.  Turn this off for final rendering.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Crop1 X:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   With Kernel Crop1 Y, forms upper left corner of
+  the kernel area.  Parts of the kernel image outside the rectangle
+  defined by Kernel Crop1 and Kernel Crop2 are assumed to be
+  black.  Making this area smaller to avoid processing the kernel's
+  black edges can speed up the convolution somewhat.  It may be
+  helpful to turn on Show Kernel while adjusting this parameter.  Note
+  that if Autocenter is off, the center point is always included in
+  the kernel no matter what this param is set to.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Crop1 Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Upper left Y coord of kernel crop rect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Crop2 X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1e+04,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The lower right X corner of the kernel area; see Kernel Crop1.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Kernel Crop2 Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1e+04,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The lower right Y corner of the kernel area; see Kernel Crop1.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chroma Distort:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds some chromatic aberration around the edges of
+  the image; red and blue wavelengths of light refract differently in
+  real lenses, producing fringes of color where the rays strike the
+  lens at oblique angles.
+  </dd>
+ </dl>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../rackdefocus">
+       RackDefocus
+      </a>
+      <br/>
+      <a href="../rackdefocusmono">
+       RackDefocusMono
+      </a>
+      <br/>
+      <a href="../defocusprism">
+       DefocusPrism
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../rackdfcomp">
+       RackDfComp
+      </a>
+      <br/>
+      <a href="../blur">
+       Blur
+      </a>
+      <br/>
+      <a href="../blurchannels">
+       BlurChannels
+      </a>
+      <br/>
+      <a href="../blurchroma">
+       BlurChroma
+      </a>
+      <br/>
+      <a href="../zdefocus">
+       ZDefocus
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

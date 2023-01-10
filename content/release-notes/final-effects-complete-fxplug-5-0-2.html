@@ -1,0 +1,167 @@
+{
+   "date": "2008-08-17T16:32:37-04:00",
+   "tags": [
+      "Final Effects Complete"
+   ],
+   "title": "Final Effects Complete FxPlug - 5.0.2",
+   "description": "Final Effects Complete 5.0.2 for FxPlug release notes"
+}
+
+<p>
+ <a name="bookmark0">
+ </a>
+ Boris Final Effects Complete™ Version 5.0.2 for FxPlug Release Notes
+ <a name="bookmark1">
+ </a>
+</p>
+<h1>
+ <a name="bookmark1">
+ </a>
+ ‌
+</h1>
+<p>
+ Welcome to Boris Final Effects Complete 5.0.2 for FxPlug. FEC FxPlug is a plug-ins package with 109 powerful visual effects filters re-designed for Apple's FxPlug plug-in architecture, providing seamless integration with Final Cut Studio’s
+ <i>
+  <b>
+   Apple Final Cut Pro
+  </b>
+ </i>
+ and
+ <i>
+  <b>
+   Motion.
+  </b>
+ </i>
+</p>
+<h2>
+ <a name="bookmark2">
+ </a>
+ What’s New in FEC 5.0.2?
+</h2>
+<p>
+ The following features and enhancements were added to version 5.0.2 of FEC for FxPlug:
+</p>
+<ul id="l1">
+ <li>
+  <p>
+   <a name="bookmark3">
+   </a>
+   <b>
+    Field Rendering Support -
+   </b>
+   Users now have the option to render their filter effects in
+   <i>
+    <b>
+     Speed Optimized
+    </b>
+   </i>
+   mode (Field Rendering) or
+   <i>
+    <b>
+     Quality Optimized
+    </b>
+   </i>
+   mode (Frame Rendering). The
+   <b>
+    Field Rendering
+   </b>
+   menu, located in the Common Controls, sets the rendering optimization. Not all filters include this option. Good to know:
+  </p>
+  <ul id="l2">
+   <li>
+    <p>
+     For most filters, you can use the default of Speed Optimized - which results in faster filter rendering. Some filters default to Quality Optimized; in this case you should not use Speed Optimized.
+    </p>
+   </li>
+   <li>
+    <p>
+     For effects that include edging, DVE moves or fast frame-to-frame movement, you may want to use Quality Optimized. Quality Optimized takes more time to render, but will generally correct any problems with jitter or rough edges on effects.
+    </p>
+    <p>
+     <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0017.jpg">
+      <img class="alignnone size-full wp-image-5039" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0017.jpg" alt="Image_001" width="427" height="376">
+     </a>
+    </p>
+    <p class="s3">
+     The new Field Rendering menu in FEC FxPlug 5.0.2
+    </p>
+   </li>
+  </ul>
+ </li>
+ <li>
+  <h3>
+   <a name="bookmark4">
+   </a>
+   PixelChooser Multi-Processor Support - The PixelChooser is included in many Boris FEC filters and provides several methods to selectively filter an image. All PixelChooser functions are now fully MP’d.
+  </h3>
+ </li>
+ <li>
+  <h3>
+   <a name="bookmark5">
+   </a>
+   Filters now Default to 8-bit Rendering for overall faster results - Unless:
+   <a name="bookmark6">
+   </a>
+   ‌
+   <a name="bookmark7">
+   </a>
+   ‌
+  </h3>
+  <ul id="l3">
+   <li>
+    <p>
+     <a name="bookmark8">
+     </a>
+     The host is set to render 32-bit Float
+    </p>
+    <ul id="l4">
+     <li>
+      <p>
+       In
+       <u>
+        Final Cut Pro
+       </u>
+       , that would be when the “Render all YUV material in high-precision YUV” option is enabled in the Video Processing tab of the Sequence Settings window.
+      </p>
+     </li>
+     <li>
+      <p>
+       In
+       <u>
+        Motion
+       </u>
+       , that would be when the 32 Bit (Float) option is enabled via the “Bit Depth” popup menu in the Project Properties window.
+      </p>
+     </li>
+    </ul>
+   </li>
+   <li>
+    <p>
+     <a name="bookmark9">
+     </a>
+     Transitions are used, where slight color shifts due to the YUV&lt;&gt;RGB8 conversion will be noticeable.
+     <a name="bookmark10">
+     </a>
+     ‌
+     <a name="bookmark11">
+     </a>
+     ‌
+    </p>
+   </li>
+  </ul>
+ </li>
+ <li>
+  <h3>
+   <a name="bookmark12">
+   </a>
+   Faster FxPlug infrastructure
+  </h3>
+ </li>
+ <li>
+  <h3>
+   <a name="bookmark13">
+   </a>
+   Miscellaneous performance improvements - Will significantly improve performance on the faster effects.
+  </h3>
+ </li>
+</ul>

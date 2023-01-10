@@ -1,0 +1,235 @@
+
+== Using the mocha Pro Plugin
+
+
+The mocha Pro plugin is a separate application from the standalone mocha that can be applied as an effect directly onto layers in host applications.
+
+This reduces the need to swap out of your host application and streamlines getting data in and out of mocha.
+
+Apart from a few minor limitations, the mocha Pro plugin is the same as the standalone. You can still track, roto, render, import, export and so on all inside the mocha GUI.
+
+The biggest advantage is you can set up layers and module settings in mocha as normal, and then have the results render directly to the host timeline without having to export.
+
+
+=== Applying the mocha Pro Plugin for Adobe After Effects
+
+The mocha Pro Plugin for Adobe appears in the Effects menu like every other effect.
+Simply apply the effect to the layer you want to work with.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_ae_plugin_full_interface.jpg[width="60%"]
+
+The general workflow for the mocha Adobe Plugin is as follows:
+
+. Select any additional source layers you want to use inside mocha
+. Launch mocha. This will load a full version of the mocha interface that you can use just like the standalone version.
+. Use mocha as required and then close and save. No rendering is required inside mocha unless you want to.
+. Choose whether you want to use mattes, renders or any other data from mocha back in the plugin interface.
+
+==== Using the mocha GUI
+
+Once you have applied the mocha Pro effect, you can click on the mocha button to launch the main interface.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_ae_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of mocha, with a few exceptions.
+First, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+Secondly you don't need to save out a project file (unless you want to export it). You just close and save the mocha view when done and the project is saved inside the Effect like any other Adobe effect.
+For further details on how to use anything inside the mocha GUI, see the rest of the User Guide!
+
+NOTE: The mocha Pro Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+==== Controlling Mattes
+
+Once you have tracked layers in mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_ae_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the current layer,
+* *Visible Layers:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes.
+* *Shape:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside mocha.
+* *Invert Mask:* Inverts the currently visible mattes.
+* *Create AE Mask:* Creates native AE splines on the effect layer just like "Paste mocha mask". This function is only available in After Effects.
+
+
+==== Controlling Module Renders
+
+Once you have set up layers in mocha, you can then control the renders for each module back in the plugin interface.
+Note that you do need to have set up and tracked the correct layers in order for a render to work back in the host.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_ae_plugin_renders_section.jpg[width="60%"]
+
+You have the following options to render a module back in the plugin:
+
+* *Render:* A simple checkbox to turn renders on and off.
+* *Module:* The module render you want to see. You have options of 'Insert: Composite', 'Insert: Cutout', 'Remove', 'Stabilize', 'Lens: Distort' and 'Lens: Undistort'.
+* *Insert Layer:* For any inserts you want to apply to a layer surface and render back to the host.
+
+===== Rendering Insert Layers
+
+To use the Insert Layer in Insert renders:
+
+. Pick the layer you want to use as an insert from the 'Insert Layer' drown down in the mocha Pro effect
+. Launch the mocha GUI
+. Create a layer (or pick an existing layer)
+. On the Layer Properties panel, choose the 'Insert Clip' dropdown
+. Select 'Insert Layer'
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_gui_plugin_insert_layer.jpg[width="60%"]
+
+Your Insert should then appear inside the layer where you have placed your surface.
+
+==== Controlling Tracking Data
+
+If you have a tracked layer in mocha you can see the output of its surface back in the After Effects interface.
+Each point in the Tracking Data section is a point from the layer surface that automatically updates when you modify it inside mocha.
+
+To choose a layer to create tracking data from, click the 'Create Track Data' button in the Tracking Data section of the plugin.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_ae_plugin_tracking_data_section.jpg[width="60%"]
+
+Then choose the layer you want to read tracking data from in the dialog that appears. You can only choose one layer at a time.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_ae_plugin_tracking_data_dialog.jpg[width="60%"]
+
+Once you click okay, the plugin will generate keyframes to populate the tracking parameters in the plugin. You can then use this data to copy to other layers, or link via expressions.
+
+This option is only available in the After Effects version of the plugin.
+
+WARNING: Generating keyframe data can take some time for very long shots. You can cancel generation at any time when the progress bar appears.
+
+=== Applying the mocha Pro Plugin for Adobe Premiere
+
+The mocha Pro Plugin for Adobe appears in the Effects menu like every other effect.
+Simply apply the effect to the layer you want to work with.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_premiere_plugin_full_interface.jpg[width="60%"]
+
+The general workflow for the mocha Adobe Plugin is as follows:
+
+. Select any additional source layers you want to use inside mocha
+. Launch mocha. This will load a full version of the mocha interface that you can use just like the standalone version.
+. Use mocha as required and then close and save. No rendering is required inside mocha unless you want to.
+. Choose whether you want to use mattes, renders or any other data from mocha back in the plugin interface.
+
+NOTE: The mocha Pro Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+==== Using the mocha GUI
+
+Once you have applied the mocha Pro effect, you can click on the mocha button to launch the main interface.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_premiere_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of mocha, with a few exceptions.
+Firstly, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+Secondly you don't need to save out a project file (unless you want to export it). You just close and save the mocha view when done and the project is saved inside the Effect like any other Adobe effect.
+For further details on how to use anything inside the mocha GUI, see the rest of the User Guide!
+
+==== Controlling Mattes
+
+Once you have tracked layers in mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_premiere_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the current layer,
+* *Visible Layers:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes.
+* *Shape:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside mocha.
+* *Invert Mask:* Inverts the currently visible mattes.
+
+==== Controlling Module Renders
+
+Once you have set up layers in mocha, you can then control the renders for each module back in the plugin interface.
+Note that you do need to have set up and tracked the correct layers in order for a render to work back in the host.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_premiere_plugin_renders_section.jpg[width="60%"]
+
+You have the following options to render a module back in the plugin:
+
+* *Render:* A simple checkbox to turn renders on and off.
+* *Module:* The module render you want to see. You have options of 'Insert: Composite', 'Insert: Cutout', 'Remove', 'Stabilize', 'Lens: Distort' and 'Lens: Undistort'.
+* *Insert Layer:* For any inserts you want to apply to a layer surface and render back to the host.
+
+===== Rendering Insert Layers
+
+To use the Insert Layer in Insert renders:
+
+. Pick the video track you want to use as an insert from the 'Insert Layer' drown down in the mocha Pro effect
+. Launch the mocha GUI
+. Create a layer (or pick an existing layer)
+. On the Layer Properties panel, choose the 'Insert Clip' dropdown
+. Select 'Insert Layer'
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_gui_plugin_insert_layer.jpg[width="60%"]
+
+Your Insert should then appear inside the layer where you have placed your surface.
+
+=== Applying the mocha Pro Plugin for Avid Media Composer
+
+The mocha Pro Plugin for Adobe appears in the Effects menu like every other effect.
+Simply apply the effect to the layer you want to work with.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_avid_plugin_full_interface.jpg[width="60%"]
+
+The general workflow for the mocha Adobe Plugin is as follows:
+
+. Select any additional source layers you want to use inside mocha
+. Launch mocha. This will load a full version of the mocha interface that you can use just like the standalone version.
+. Use mocha as required and then close and save. No rendering is required inside mocha unless you want to.
+. Choose whether you want to use mattes, renders or any other data from mocha back in the plugin interface.
+
+NOTE: The mocha Pro Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+
+==== Using the mocha GUI
+
+Once you have applied the mocha Pro effect, you can click on the mocha button to launch the main interface.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_avid_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of mocha, with a few exceptions.
+Firstly, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+Secondly you don't need to save out a project file (unless you want to export it). You just close and save the mocha view when done and the project is saved inside the Effect like any other Adobe effect.
+For further details on how to use anything inside the mocha GUI, see the rest of the User Guide!
+
+==== Controlling Mattes
+
+Once you have tracked layers in mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_avid_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the current layer,
+* *Visible Layers:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes.
+* *Shape:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside mocha.
+* *Invert Mask:* Inverts the currently visible mattes.
+
+==== Controlling Module Renders
+
+Once you have set up layers in mocha, you can then control the renders for each module back in the plugin interface.
+Note that you do need to have set up and tracked the correct layers in order for a render to work back in the host.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_avid_plugin_renders_section.jpg[width="60%"]
+
+You have the following options to render a module back in the plugin:
+
+* *Render:* A simple checkbox to turn renders on and off.
+* *Module:* The module render you want to see. You have options of 'Insert: Composite', 'Insert: Cutout', 'Remove', 'Stabilize', 'Lens: Distort' and 'Lens: Undistort'.
+* *Insert Layer:* For any inserts you want to apply to a layer surface and render back to the host. Choose from the current layer or below the current video track.
+
+===== Rendering Insert Layers
+
+To use the Insert Layer in Insert renders:
+
+. Pick the video track you want to use as an insert from the 'Insert Layer' drown down in the mocha Pro effect. This will most commonly be "1st Below" the current layer with the effect applied.
+. Launch the mocha GUI
+. Create a layer (or pick an existing layer)
+. On the Layer Properties panel, choose the 'Insert Clip' dropdown
+. Select 'Insert Layer'
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_mochapro_gui_plugin_insert_layer.jpg[width="60%"]
+
+Your Insert should then appear inside the layer where you have placed your surface.

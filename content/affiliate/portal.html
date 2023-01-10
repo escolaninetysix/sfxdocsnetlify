@@ -1,0 +1,177 @@
+{"title" : "Affiliate Portal"}
+
+<div id="app">
+    <div class="branded-box">
+        <div class="loading" v-if="loading">Loading. . .</div>
+        <div class="locked" v-else-if="lock">
+            <h1>Not Authorized</h1>
+            <p>You are not permitted to view this page. If you believe you are seeing this in error, please contact us at affiliate@borisfx.com for assistance.</p>
+        </div>
+        <div class="failed" v-else-if="error">
+            <h1>Failed to Retrieve Data</h1>
+            <p>There was an issue retieving your affilliate data. Please try again or contact us at affiliate@borisfx.com for assistance.</p>
+        </div>
+        <div class="content" v-else>
+            <h1>${affiliate.name}'s Affiliate Portal</h1>
+            <div><h2>Quarterly Revenue</h2></div>
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th><strong>Quarter</strong></th>
+                        <th><strong>Order Count</strong></th>
+                        <th><strong>Total Revenue</strong></th>
+                        <th><strong>Total Commission</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="r in rows">
+                        <td><a href="#" @click="loadQuarter(r)">${r.year}-Q${r.quarter}</a></td>
+                        <td>${r.count}</td>
+                        <td>$${r.revenue.toFixed(2)}</td>
+                        <td>$${r.commission.toFixed(2)}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="border-top: solid 2px rgba(0,0,0,.5)">
+                        <td></td>
+                        <td><strong>${finalCount}</strong></td>
+                        <td><strong>$${finalTotal.toFixed(2)}</strong></td>
+                        <td><strong>$${finalCommission.toFixed(2)}</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="quarter-modal" role="dialog" v-if="!loading && !lock">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header"><h4 class="modal-title">${quarter.year}-Q${quarter.quarter} Revenue</h4></div>
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th><strong>Code</strong></th>
+                                <th><strong>Order Count</strong></th>
+                                <th><strong>Revenue</strong></th>
+                                <th><strong>Margin</strong></th>
+                                <th><strong>Commission</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="code in quarter.codes">
+                                <td>${code.code}</td>
+                                <td class="text-center">${code.count}</td>
+                                <td>$${code.total.toFixed(2)}</td>
+                                <td class="text-center">%${code.margin}</td>
+                                <td>$${code.commission.toFixed(2)}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr style="border-top: solid 2px rgba(0,0,0,.5)">
+                                <td></td>
+                                <td class="text-center"><strong>${quarter.finalCount}</strong></td>
+                                <td><strong>$${quarter.finalTotal.toFixed(2)}</strong></td>
+                                <td></td>
+                                <td><strong>$${quarter.finalCommission.toFixed(2)}</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <!--To be implemented at a later date
+                    <button class="btn" @click="downloadQuarterReport">Download Full Report</button>
+                    -->
+                    <button class="btn" data-toggle="modal" data-target="#quarter-modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data:{
+            user: Cookies.getJSON('bfx-login'),
+            affiliate: {
+                name : '',
+                commission: 0,
+            },
+            rows: {},
+            finalCount: 0,
+            finalTotal: 0,
+            finalCommission: 0,
+            quarter: {codes: [], finalCount: 0, finalTotal: 0, finalCommission: 0},
+            lock : false,
+            error : false,
+            loading : true
+        },
+        mounted : function (){
+            var self = this;
+            if (!self.user) window.location.href = '/account/login';
+            if (!self.user.email_verified) window.location.href = '/account/verify-new';
+            if (!self.user.affiliate_id){
+                self.lock = true;
+                self.loading = false;
+                return;
+            }
+            axios.get('https://backend.borisfx.com/affiliate?id=' + self.user.affiliate_id, {auth: {username : self.user.email, password: self.user.token}})
+            .then(function(res){
+                self.rows = res.data.orders;
+                self.affiliate = {name : res.data.affiliateName, commission: res.data.commisionPercentage}
+                for (key in self.rows){
+                    row = self.rows[key]
+                    self.finalCount += row.count;
+                    self.finalTotal += row.revenue;
+                    self.finalCommission += row.commission;
+                }
+                self.loading = false;
+            })
+            .catch(function(err){
+                if (!err.response) self.error = true;
+                else if (err.response != null && err.response.status == 403){
+                    Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                    Cookies.set('redirect_url', window.location.href);
+                    window.location.href = '/account/login?session_expired=true';
+                }
+                else self.error = true;
+                self.loading = false;
+            });
+        },
+        methods : {
+            commission : function(total){
+                return total * (this.affiliate.commission / 100)
+            },
+            loadQuarter : function(row){
+                var self = this;
+                var uri = 'https://backend.borisfx.com/affiliate/quarter';
+                uri += '?id=' + self.user.affiliate_id;
+                uri += '&year=' + row.year;
+                uri += '&quarter=' + row.quarter;
+                axios.get(uri, {auth: {username : self.user.email, password: self.user.token}})
+                .then(function(res){
+                    self.quarter = res.data;
+                    self.quarter.finalCount = 0;
+                    self.quarter.finalTotal = 0;
+                    self.quarter.finalCommission = 0;
+                    for (var code of self.quarter.codes){
+                        self.quarter.finalCount += code.count;
+                        self.quarter.finalTotal += code.total;
+                        self.quarter.finalCommission += code.commission;
+                    }
+                    $('#quarter-modal').modal('show');
+                })
+                .catch(function(err){
+                    if (err.response != null && err.response.status == 403) {
+                        Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                        Cookies.set('redirect_url', window.location.href);
+                        window.location.href = '/account/login?session_expired=true';
+                    }
+                    else alert('There was an error retrieving your order data. Please try again, or contact us at affiliate@borisfx.com for assistance.')
+                });
+            },
+            downloadQuarterReport: function(){}
+        }
+    })
+</script>

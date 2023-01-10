@@ -1,0 +1,191 @@
+.. _LayerGroup:
+
+.. currentmodule:: mocha.project
+
+
+LayerGroup
+**********
+
+.. inheritance-diagram:: mocha.project.LayerGroup
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__eq__<LayerGroup.__eq__>` (group)
+    * def :meth:`find_layers<LayerGroup.find_layers>` (name)
+    * def :meth:`insert_child<LayerGroup.insert_child>` (layer[, index=0])
+    * def :meth:`parameter<LayerGroup.parameter>` (name_components)
+    * def :meth:`parameter_set<LayerGroup.parameter_set>` ([name_components=list()])
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`layers<LayerGroup.layers>` [read-only] of list of :class:`Layer` instances
+*    property :attr:`locked<LayerGroup.locked>` [read-write] of bool
+*    property :attr:`matte_color<LayerGroup.matte_color>` [read-write] of 3-items tuple of float values in range [0.0...1.0]
+*    property :attr:`name<LayerGroup.name>` [read-write] of str
+*    property :attr:`psets<LayerGroup.psets>` [read-only] of ParameterSet
+*    property :attr:`stroke_color<LayerGroup.stroke_color>` [read-write] of 3-items tuple of float values in range [0.0...1.0]
+*    property :attr:`visibility<LayerGroup.visibility>` [read-write] of bool
+*    property :attr:`z_order<LayerGroup.z_order>` [read-write] of int
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Layer class which exposes primary layer group operations.
+
+
+.. class:: LayerGroup()
+
+
+
+
+
+
+
+
+
+
+.. method:: LayerGroup.find_layers(name)
+
+
+    :type name: str
+    :rtype: list of Layer
+
+
+    :param name: Layer name to search.
+    
+    Returns all layers in the group with given name from this group.
+
+
+
+.. method:: LayerGroup.insert_child(layer[, index=0])
+
+
+    :type layer: :any:`Layer`
+    :type index: uint
+
+
+    :param layer: Layer instance which will be inserted to this group.
+    :param index: Insertion index.
+    
+    The same as :meth:`Layer.set_parent`.
+
+
+
+.. method:: LayerGroup.__eq__(group)
+
+
+    :type group: :any:`LayerGroup`
+    :rtype: bool
+
+
+
+
+
+
+.. method:: LayerGroup.parameter(name_components)
+
+
+    :type name_components: list of strings
+    :rtype: :any:`Parameter`
+
+
+    :param name_components: Relative name for a requested parameter.
+    
+    Returns :class:`Parameter` instance bound with given name path.
+
+
+
+.. method:: LayerGroup.parameter_set([name_components=list()])
+
+
+    :type name_components: list of strings
+    :rtype: :any:`ParameterSet`
+
+
+    :param name_components: Relative name for a requested parameter set.
+    
+    Returns :class:`ParameterSet` instance bound with given name path.
+    Pass an empty list ``[]`` to get access to the LayerGroup parameters set.
+
+
+
+.. attribute:: LayerGroup.name
+
+
+    :type: str
+    :access: read-write    Provides access to group name.
+
+
+
+.. attribute:: LayerGroup.layers
+
+
+    :type: list of :class:`Layer` instances
+    :access: read-only    Provides read-only access to list of all layers, sorted in increasing depth order (i.e. top to bottom).
+
+
+
+.. attribute:: LayerGroup.visibility
+
+
+    :type: bool
+    :access: read-write    Provides access to group visibility.
+
+
+
+.. attribute:: LayerGroup.matte_color
+
+
+    :type: 3-items tuple of float values in range [0.0...1.0]
+    :access: read-write    Provides access to group matte color.
+
+
+
+.. attribute:: LayerGroup.stroke_color
+
+
+    :type: 3-items tuple of float values in range [0.0...1.0]
+    :access: read-write    Provides access to group stroke color.
+
+
+
+.. attribute:: LayerGroup.locked
+
+
+    :type: bool
+    :access: read-write    Provides access to layer group locked state.
+
+
+
+.. attribute:: LayerGroup.z_order
+
+
+    :type: int
+    :access: read-write    Provides access to Z order value.
+
+
+
+.. attribute:: LayerGroup.psets
+
+
+    :type: ParameterSet
+    :access: read-only    Provides access to the root parameter set.
+    Mimics parameter_set() call.
+
+
+
+

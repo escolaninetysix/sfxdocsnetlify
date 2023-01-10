@@ -1,6 +1,6 @@
-// Copyright (c) 2010-2022 Quadralay Corporation.  All rights reserved.
+// Copyright (c) 2010-2020 Quadralay Corporation.  All rights reserved.
 //
-// ePublisher 2022.1
+// ePublisher 2020.1
 //
 // Validated with JSLint <http://www.jslint.com/>
 //
@@ -376,14 +376,9 @@ Browser.ReplaceClass = function (param_className, param_existing_class, param_ne
 Browser.SameDocument = function (param_url_1, param_url_2) {
   'use strict';
 
-  var result, is_input_valid;
+  var result, current_path, desired_path;
 
   result = false;
-  is_input_valid = typeof param_url_1 === 'string' && typeof param_url_2 === 'string';
-
-  if (!is_input_valid) {
-    return result;
-  }
 
   if (param_url_1 === param_url_2) {
     // Quick and dirty check
@@ -392,8 +387,6 @@ Browser.SameDocument = function (param_url_1, param_url_2) {
   } else {
     // Try more in-depth test
     //
-    var current_path, desired_path;
-
     current_path = param_url_1;
     desired_path = param_url_2;
 
@@ -404,12 +397,6 @@ Browser.SameDocument = function (param_url_1, param_url_2) {
     }
     if (desired_path.indexOf('#') !== -1) {
       desired_path = desired_path.substring(0, desired_path.indexOf('#'));
-    }
-    if (current_path.indexOf('?') !== -1) {
-      current_path = current_path.substring(0, current_path.indexOf('?'));
-    }
-    if (desired_path.indexOf('?') !== -1) {
-      desired_path = desired_path.substring(0, desired_path.indexOf('?'));
     }
 
     // Same document?
@@ -491,47 +478,11 @@ Browser.RelativePath = function (param_base_url, param_test_url) {
   return result;
 };
 
-Browser.DecodeURIComponent = function (param_uri) {
-  var uri;
-
-  uri = param_uri || '';
-
-  try {
-    while (Browser.IsURIComponentEncoded(uri)) {
-      uri = decodeURIComponent(uri);
-    }
-  }
-  catch (e) {
-    console.error(e.message);
-  }
-
-  return uri;
-};
-
-Browser.EncodeURIComponent = function (param_uri) {
-  var uri;
-
-  uri = param_uri || '';
-  try {
-    uri = encodeURIComponent(uri);
-  }
-  catch (e) {
-    console.error(e.message);
-  }
-
-  return uri;
-};
-
 Browser.EncodeURIComponentIfNotEncoded = function (param_uri) {
   var uri;
 
   uri = param_uri || '';
-  try {
-    uri = Browser.IsURIComponentEncoded(uri) ? uri : encodeURIComponent(uri);
-  }
-  catch (e) {
-    console.error(e.message);
-  }
+  uri = Browser.IsURIComponentEncoded(uri) ? uri : encodeURIComponent(uri);
 
   return uri;
 };
@@ -540,13 +491,7 @@ Browser.IsURIComponentEncoded = function (param_uri) {
   var uri, isEncoded;
 
   uri = param_uri || '';
-  try {
-    isEncoded = uri !== decodeURIComponent(uri);
-  }
-  catch (e) {
-    console.error(e.message);
-    isEncoded = false;
-  }
+  isEncoded = uri !== decodeURIComponent(uri);
 
   return isEncoded;
 };
@@ -790,26 +735,6 @@ Browser.FindParentWithTagName = function (param_element, param_tag_name) {
   return result;
 };
 
-Browser.FirstAncestorElementContainingClass = function (param_element, param_class) {
-  var result, ancestor;
-
-  result = null;
-
-  if (param_element && param_class) {
-    ancestor = param_element.parentNode;
-
-    while (ancestor && !Browser.ContainsClass(ancestor.className, param_class)) {
-      ancestor = ancestor.parentNode;
-    }
-
-    if (ancestor) {
-      result = ancestor;
-    }
-  }
-
-  return result;
-};
-
 Browser.FirstChildElement = function (param_element) {
   'use strict';
 
@@ -937,6 +862,26 @@ Browser.NextSiblingElementWithTagName = function (param_element, param_tag_name)
   result = Browser.NextSiblingElement(param_element);
   while ((result !== null) && (result.nodeName.toLowerCase() !== param_tag_name)) {
     result = Browser.NextSiblingElement(result);
+  }
+
+  return result;
+};
+
+Browser.GetChildTextNodesAsText = function (param_element) {
+  'use strict';
+
+  var result, child_node;
+
+  result = '';
+  if ((param_element.firstChild !== undefined) && (param_element.firstChild !== null)) {
+    child_node = param_element.firstChild;
+    while (child_node !== null) {
+      if (child_node.nodeType === 3) {
+        result += child_node.nodeValue;
+      }
+
+      child_node = child_node.nextSibling;
+    }
   }
 
   return result;
@@ -1751,7 +1696,11 @@ Highlight.RemoveFromDocument = function (param_document, param_css_class) {
     });
 };
 
-function Parcel_KnownParcelURL(param_parcel_prefixes, param_url) {
+// Parcels
+//
+var Parcels = {};
+
+Parcels.KnownParcelURL = function (param_parcel_prefixes, param_url) {
   'use strict';
 
   var result, parcel_base_url;
@@ -1770,7 +1719,7 @@ function Parcel_KnownParcelURL(param_parcel_prefixes, param_url) {
   return result;
 };
 
-function Parcel_KnownBaggageURL(param_parcel_prefixes, param_url) {
+Parcels.KnownParcelBaggageURL = function (param_parcel_prefixes, param_url) {
   'use strict';
 
   var result, parcel_base_url, baggage_url;
@@ -1803,7 +1752,7 @@ function Parcel_OnLoad() {
     // Not supported
     //
   }
-};
+}
 
 function Parcel_Object(param_entry, param_load, param_done, param_complete) {
   this.id = param_entry.id.split(':')[1];
@@ -1812,7 +1761,7 @@ function Parcel_Object(param_entry, param_load, param_done, param_complete) {
   this.load = param_load;
   this.done = param_done;
   this.complete = param_complete;
-};
+}
 
 function Index_OnLoad() {
   try {
@@ -1837,6 +1786,127 @@ function Index_Object(param_entry, param_load, param_done, param_complete) {
   this.done = param_done;
   this.complete = param_complete;
 }
+
+// Progress
+//
+
+function Progress_Reset() {
+  'use strict';
+
+  var progress_bar_div;
+
+  // Reset progress
+  //
+  this.progress = 0;
+
+  // Indicate indeterminate progress
+  //
+  progress_bar_div = Browser.FirstChildElementContainingClass(this.progress_div, 'ww_skin_progress_bar');
+  if (progress_bar_div !== null) {
+    progress_bar_div.className = Browser.AddClass(progress_bar_div.className, 'ww_skin_progress_indeterminate');
+
+    // Reset segments
+    //
+    Browser.ApplyToChildElementsContainingClass(progress_bar_div, 'ww_skin_progress_segment', function (param_element) {
+      param_element.className = Browser.ReplaceClass(param_element.className, 'ww_skin_progress_segment_complete', 'ww_skin_progress_segment_pending');
+    });
+  }
+};
+
+function Progress_Update(param_progress) {
+  'use strict';
+
+  var progress_goal, progress_bar_div, started, this_reference, current_progress;
+
+  // Validate progress goal
+  //
+  progress_goal = param_progress;
+  if (progress_goal > 100) {
+    progress_goal = 100;
+  } else if (progress_goal < 0) {
+    progress_goal = 0;
+  }
+
+  // Update necessary?
+  //
+  if (progress_goal > this.progress) {
+    // Locate progress bar
+    //
+    progress_bar_div = Browser.FirstChildElementContainingClass(this.progress_div, 'ww_skin_progress_bar');
+    if (progress_bar_div !== null) {
+      // Started progress?
+      //
+      started = (this.progress === 0);
+
+      // Update progress
+      //
+      while ((this.progress + 10) <= progress_goal) {
+        this.progress += 10;
+      }
+
+      if (this.progress > 0) {
+        // Started progress updates?
+        //
+        if (started) {
+          // Remove indeterminate progress indicator
+          //
+          progress_bar_div.className = Browser.RemoveClass(progress_bar_div.className, 'ww_skin_progress_indeterminate');
+        }
+
+        // Mark progress
+        //
+        current_progress = 0;
+        this_reference = this;
+        Browser.ApplyToChildElementsContainingClass(progress_bar_div, 'ww_skin_progress_segment', function (param_element) {
+          // Count segments
+          //
+          current_progress += 10;
+          if (current_progress <= this_reference.progress) {
+            param_element.className = Browser.ReplaceClass(param_element.className, 'ww_skin_progress_segment_pending', 'ww_skin_progress_segment_complete');
+          }
+        });
+      }
+    }
+  }
+};
+
+function Progress_Complete() {
+  'use strict';
+
+  this.Hide();
+};
+
+function Progress_Done() {
+  'use strict';
+
+  return (this.progress === 100);
+};
+
+function Progress_Show() {
+  'use strict';
+
+  this.progress_div.style.display = 'block';
+};
+
+function Progress_Hide() {
+  'use strict';
+
+  this.progress_div.style.display = 'none';
+};
+
+function Progress_Object(param_progress_div) {
+  'use strict';
+
+  this.progress = 0;
+  this.progress_div = param_progress_div;
+
+  this.Reset = Progress_Reset;
+  this.Update = Progress_Update;
+  this.Complete = Progress_Complete;
+  this.Done = Progress_Done;
+  this.Show = Progress_Show;
+  this.Hide = Progress_Hide;
+};
 
 if (document.body.hasAttribute('data-is-index')) {
   document.body.onload = Index_OnLoad;

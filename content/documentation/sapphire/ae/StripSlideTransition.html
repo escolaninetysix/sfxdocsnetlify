@@ -1,0 +1,589 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: StripSlideTransition",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/StripSlideTransition.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="StripSlideTransition">
+     <h2>
+      S_StripSlideTransition
+     </h2>
+    </a>
+    Transitions between two clips by breaking
+  them into strips and sliding them off the screen one at a time to
+  reveal the incoming clip.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/StripSlideTransition.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Transition Dir:
+   </b>
+   <i>
+    Popup menu,  Default: Wipe Off to Bg
+   </i>
+   .
+   <br/>
+   Selects the direction of the transition.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Wipe Off to Bg:
+      </i>
+     </b>
+     transitions from the current layer to the Background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Wipe On from Bg:
+       </i>
+      </b>
+      transitions from the Background to the current layer.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Auto Trans:
+   </b>
+   <i>
+    Popup YES-NO,  Default: No
+   </i>
+   .
+   <br/>
+   If enabled, a transition is performed automatically between
+the first and last frames of the layer.  If this is off, the transition is
+performed manually by animating the Strip Percent parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Auto Trans must be disabled for this parameter to be
+  used.  It determines the transition ratio between the From and To
+  inputs, and would normally be animated from 0 to 100 to perform a
+  complete transition.  The curve controlling this parameter can be adjusted
+  for more detailed control over the timing of the wipe.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Style:
+   </b>
+   <i>
+    Popup menu,  Default: Slide Off
+   </i>
+   .
+   <br/>
+   Controls which clip the slide is applied to.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Slide Off:
+      </i>
+     </b>
+     The outgoing clip slides off to reveal the incoming clip.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Slide On:
+       </i>
+      </b>
+      The incoming clip slides on over the outgoing clip.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Side by Side:
+        </i>
+       </b>
+       The outgoing clip slides off while the incoming clip slides on
+next to it.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Motion Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of motion blur to use.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Strip Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The width of the strips. This parameter can
+  affect the timing of the strips, so animating it is not recommended.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Randomize Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Makes some strips larger and some smaller, at random.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Strip Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Controls the angle along which the strips are
+  divided, and also the direction in which they slide. This parameter
+  can affect the timing of the strips, so animating it is not
+  recommended.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Strip Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adjusts the position of the strip boundaries. This parameter
+  can affect the timing of the strips, so animating it is not
+  recommended.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The speed at which each strip moves. As speed increases,
+  the delay between strips becomes larger. If the speed is low, many
+  strips will be in motion at the same time, creating a wave or ripple
+  effect. This parameter affects the timing of the strips, so
+  animating it is not recommended.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Slow Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the acceleration of each strip as it
+  moves. If set to zero, the strip will start moving at full
+  speed. With larger values, the strip will start moving more slowly
+  and accelerate up to its full speed, resulting in smoother motion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Order:
+   </b>
+   <i>
+    Popup menu,  Default: Top Down
+   </i>
+   .
+   <br/>
+   Controls the order in which the strips slide off screen.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Top Down:
+      </i>
+     </b>
+     in order from top to bottom.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Bottom Up:
+       </i>
+      </b>
+      in order from bottom to top.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Random:
+        </i>
+       </b>
+       random order.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Center Out:
+         </i>
+        </b>
+        outward from the center, alternating strips above and below the center.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Edges In:
+          </i>
+         </b>
+         inward from the edges, alternating strips above and below the center.
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Initializes the random number generator for random strips
+  sizes and order.  The actual seed value is not significant, but
+  different seeds give different results and the same value should
+  give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Opacity:
+   </b>
+   <i>
+    Popup menu,  Default: Normal
+   </i>
+   .
+   <br/>
+   Determines the method used for dealing with
+opacity/transparency.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       All Opaque:
+      </i>
+     </b>
+     Use this option to render slightly faster when
+the input image is fully opaque with no transparency (alpha=1).
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Normal:
+       </i>
+      </b>
+      Process opacity normally.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         As Premult:
+        </i>
+       </b>
+       Process as if the image is already in
+premultiplied form (colors have been scaled by opacity).  This option
+also renders slightly faster than Normal mode, but the results will
+also be in premultiplied form, which is sometimes less correct.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Crop Input Parameters:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   These 4 parameters,
+   <b>
+    Crop Top
+   </b>
+   ,
+   <b>
+    Crop Bottom
+   </b>
+   ,
+   <b>
+    Crop Left,
+   </b>
+   and
+   <b>
+    Crop Right
+   </b>
+   ,
+allow selecting a rectangular subsection of the input image to be processed.
+If the Wrap parameters are set to "No" the exposed borders will be transparent.
+If the Wrap is "Tile" or "Reflect" the source image is wrapped on the new cropped borders to fill the frame.
+This can make it easier to avoid artifacts due to distorting an image with bad edges.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../swishpan">
+       SwishPan
+      </a>
+      <br/>
+      <a href="../swish3d">
+       Swish3D
+      </a>
+      <br/>
+      <a href="../cardflip">
+       CardFlip
+      </a>
+      <br/>
+      <a href="../dissolvetiles">
+       DissolveTiles
+      </a>
+      <br/>
+      <a href="../stripslide">
+       StripSlide
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

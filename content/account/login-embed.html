@@ -1,0 +1,96 @@
+{
+  "title": "",
+  "require_recaptcha_v3": "True",
+  "base_display": "false"
+}
+<div class="section" style="margin-top:-10%;margin-bottom:-10%;border:none;">
+  <div class="container">
+<div class="row">
+  
+  <div class="col-md-3"> </div>
+  
+  <div class="col-md-6">
+
+    <h1>Login</h1>
+    <p><br>Looking for the free Particle Illusion standalone installer? Login to your Boris FX account or sign up for free</p><br>
+    <p>
+      <a href="/account/signup/">Sign Up</a> | <a href="/account/forgot/">Forgot Password</a>
+    </p>
+
+    <form id="form">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input id="email" name="email" type="text" class="form-control" required />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <input id="password" name="password" type="password" class="form-control" required />
+      </div>
+
+      <!-- Sign Up -->
+      <div class="form-group">
+        <button id="submit" type="submit" class="btn btn-lg btn-block">Login</button>
+      </div>
+
+    </form>
+
+  </div>
+  <div class="col-md-3"> </div> 
+</div>
+</div>
+</div>
+<script>
+
+$(function () {
+    $('#form').submit(function (e) {
+        e.preventDefault();
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var passed_token = '';
+        $('#submit').attr('disabled', 'disabled');
+        $('#submit').text('Logging In...');
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', {action: 'loginpage'}).then(function(token) {
+                passed_token = token;
+                axios.post('https://backend.borisfx.com/loginv3', {
+                    email: email,
+                    password: password,
+                    'g-recaptcha-response': passed_token,
+                })
+                .then(function (res) {
+                    data = res.data;
+                    Cookies.set('bfx-login', data, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+                    var sso = getQueryParameter('sso');
+                    var sig = getQueryParameter('sig');
+                    if (sso && sig) {
+                      var payload = {
+                        sso: sso,
+                        sig: sig,
+                        email: data.email,
+                        password: password,
+                        'g-recaptcha-response': passed_token,
+                      }
+                      window.location = 'https://backend.borisfx.com/discourse_loginv3?' + $.param(payload);
+                    } else {
+                      var redirect_url = Cookies.get('redirect_url');
+                      if (!redirect_url) {
+                        redirect_url = getQueryParameter('redirect_url') || '/account/manage';
+                      }
+                      Cookies.set('redirect_url', redirect_url)
+                      window.location.href = redirect_url;
+                    }
+                  })
+                  .catch(function (error) {
+                    alert('Incorrect email/password combination. Please try again.')
+                    $('#submit').removeAttr('disabled');
+                    $('#submit').text('Log In');
+                  });
+            });
+        });
+    });
+});
+</script>

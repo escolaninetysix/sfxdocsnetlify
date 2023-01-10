@@ -1,0 +1,382 @@
+.. module:: mocha.project
+.. _Layer:
+
+Layer
+*****
+
+.. inheritance-diagram:: Layer
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`__eq__<Layer.__eq__>` (layer)
+*   def :meth:`__ne__<Layer.__ne__>` (layer)
+*   def :meth:`add_bezier_contour<Layer.add_bezier_contour>` (time, points[, view=View()])
+*   def :meth:`add_xspline_contour<Layer.add_xspline_contour>` (time, points[, view=View()])
+*   def :meth:`get_surface_position<Layer.get_surface_position>` (point_index, time[, view=View( 0 )])
+*   def :meth:`get_transform_matrix<Layer.get_transform_matrix>` (time[, view=View()])
+*   def :meth:`in_point<Layer.in_point>` ([view=View( 0 )])
+*   def :meth:`out_point<Layer.out_point>` ([view=View( 0 )])
+*   def :meth:`parameter<Layer.parameter>` (name_components)
+*   def :meth:`parameter_set<Layer.parameter_set>` ([name_components=list()])
+*   def :meth:`remove<Layer.remove>` ()
+*   def :meth:`set_parent<Layer.set_parent>` (group[, index=0])
+*   def :meth:`tracking_input_clip<Layer.tracking_input_clip>` ([use_linked_layer=false])
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*   property :attr:`contours<Layer.contours>` [read-only] of mixed list of :class:`XSplineContour` and :class:`BezierContour` instances
+*   property :attr:`link_to_track<Layer.link_to_track>` [read-write] of :class:`Layer` or NoneType
+*   property :attr:`locked<Layer.locked>` [read-write] of bool
+*   property :attr:`matte_color<Layer.matte_color>` [read-write] of 3-items tuple of float values in range [0.0...1.0]
+*   property :attr:`name<Layer.name>` [read-write] of str
+*   property :attr:`parent<Layer.parent>` [read-write] of :class:`LayerGroup`
+*   property :attr:`selected<Layer.selected>` [read-write] of bool
+*   property :attr:`stroke_color<Layer.stroke_color>` [read-write] of 3-items tuple of float values in range [0.0...1.0]
+*   property :attr:`visibility<Layer.visibility>` [read-write] of bool
+*   property :attr:`z_order<Layer.z_order>` [read-write] of int
+
+
+Detailed Description
+--------------------
+
+
+
+
+.. class:: Layer(Layer)
+
+
+   :type Layer: :class:`mocha.project.Layer`
+
+
+
+
+
+
+
+   :type Layer: :class:`mocha.project.Layer`
+
+
+
+.. method:: Layer.add_bezier_contour(time, points[, view=View()])
+
+
+   :type time: :class:`PySide2.QtCore.float`
+   :type points: list of BezierControlPointData
+   :type view: :class:`mocha.project.View`
+   :rtype: :class:`mocha.project.BezierContour`
+
+
+
+   
+   :param points: Bezier control points which will be inserted into new contour, keeping the same order.
+   :param view: View.
+   
+   :rtype: :class:`BezierContour`
+   
+   Creates new bezier contour with given bezier control points.
+   
+
+
+
+.. method:: Layer.add_xspline_contour(time, points[, view=View()])
+
+
+   :type time: :class:`PySide2.QtCore.float`
+   :type points: list of XControlPointData
+   :type view: :class:`mocha.project.View`
+   :rtype: :class:`mocha.project.XSplineContour`
+
+
+
+   
+   :param points: X spline control points which will be inserted into new contour, keeping the same order.
+   :param view: View.
+   
+   :rtype: :class:`XSplineContour`
+   
+   Creates new x spline contour with given x spline control points.
+   
+
+
+
+.. method:: Layer.get_surface_position(point_index, time[, view=View( 0 )])
+
+
+   :type point_index: :class:`PySide2.QtCore.uint`
+   :type time: :class:`PySide2.QtCore.float`
+   :type view: :class:`mocha.project.View`
+   :rtype: list of float
+
+
+
+   
+   :param point_index: Point index of a surface corner.
+   :param time: Time.
+   :param view: View.
+   
+   :rtype: 2-value list of floats (x, y).
+   
+   Returns the coordinates of the surface corner with ``point_index``.
+   
+
+
+
+.. method:: Layer.get_transform_matrix(time[, view=View()])
+
+
+   :type time: :class:`PySide2.QtCore.float`
+   :type view: :class:`mocha.project.View`
+   :rtype: :class:`mocha.project.tuple`
+
+
+
+   
+   :param time: Keyframe time.
+   :param view: Clip view.
+   
+   :rtype: tuple of tuples of float values
+   
+   Returns underlying transformation matrix as tuple for given clip view.
+   
+
+
+
+.. method:: Layer.in_point([view=View( 0 )])
+
+
+   :type view: :class:`mocha.project.View`
+   :rtype: :class:`PySide2.QtCore.uint`
+
+
+
+
+
+
+.. method:: Layer.__ne__(layer)
+
+
+   :type layer: :class:`mocha.project.Layer`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. method:: Layer.__eq__(layer)
+
+
+   :type layer: :class:`mocha.project.Layer`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. method:: Layer.out_point([view=View( 0 )])
+
+
+   :type view: :class:`mocha.project.View`
+   :rtype: :class:`PySide2.QtCore.uint`
+
+
+
+
+
+
+.. method:: Layer.parameter(name_components)
+
+
+   :type name_components: list of strings
+   :rtype: :class:`mocha.project.Parameter`
+
+
+
+   
+   :param name_components: Relative name for a requested parameter.
+   
+   :rtype: :class:`Parameter`
+   
+   Returns :class:`Parameter` instance bound with given name path.
+   
+
+
+
+.. method:: Layer.parameter_set([name_components=list()])
+
+
+   :type name_components: list of strings
+   :rtype: :class:`mocha.project.ParameterSet`
+
+
+
+   
+   :param name_components: Relative name for a requested parameter set.
+   
+   :rtype: :class:`ParameterSet`
+   
+   Returns :class:`ParameterSet` instance bound with given name path.
+   Pass an empty list ``[]`` to get access to the Layer parameters set.
+   
+
+
+
+.. method:: Layer.remove()
+
+
+
+
+
+   
+   Removes current layer.
+   
+
+
+
+.. method:: Layer.set_parent(group[, index=0])
+
+
+   :type group: :class:`mocha.project.LayerGroup`
+   :type index: :class:`PySide2.QtCore.uint`
+
+
+
+   
+   :param group: New parent group.
+   :param index: Insertion index.
+   
+   Moves the layer object to the certain group. Pass ``None`` to move it to the top level.
+   
+
+
+
+.. method:: Layer.tracking_input_clip([use_linked_layer=false])
+
+
+   :type use_linked_layer: :class:`PySide2.QtCore.bool`
+   :rtype: :class:`mocha.project.Clip`
+
+
+
+   
+   :param use_linked_layer: If ``True`` then will use the layer that this layer is linked to (See "Link to Track" in the User Guide).
+   
+   :rtype: :class:`Clip` instance.
+   
+   Returns :class:`Clip` instance of the tracking input clip of the layer.
+   
+
+
+
+.. attribute:: Layer.name
+
+
+   :type: str
+   :access: read-write   
+   Provides access to layer name.
+   
+
+
+
+.. attribute:: Layer.contours
+
+
+   :type: mixed list of :class:`XSplineContour` and :class:`BezierContour` instances
+   :access: read-only   
+   Provides access to list of this layer contours.
+   
+
+
+
+.. attribute:: Layer.parent
+
+
+   :type: :class:`mocha.project.LayerGroup`
+   :access: read-write   
+   Provides access to parent layer group.
+   
+
+
+
+.. attribute:: Layer.visibility
+
+
+   :type: bool
+   :access: read-write   
+   Provides access to layer visibility.
+   
+
+
+
+.. attribute:: Layer.matte_color
+
+
+   :type: 3-items tuple of float values in range [0.0...1.0]
+   :access: read-write   
+   Provides access to layer matte color.
+   
+
+
+
+.. attribute:: Layer.stroke_color
+
+
+   :type: 3-items tuple of float values in range [0.0...1.0]
+   :access: read-write   
+   Provides access to layer stroke color.
+   
+
+
+
+.. attribute:: Layer.locked
+
+
+   :type: bool
+   :access: read-write   
+   Provides access to layer locked state.
+   
+
+
+
+.. attribute:: Layer.link_to_track
+
+
+   :type: :class:`Layer` or NoneType
+   :access: read-write   
+   Provides access to Link-to-track property of the layer.
+   Mimics "Link to track" combo box functionality which is on the Layer Properties panel.
+   
+
+
+
+.. attribute:: Layer.z_order
+
+
+   :type: int
+   :access: read-write   
+   Provides access to Z order value.
+   
+
+
+
+.. attribute:: Layer.selected
+
+
+   :type: bool
+   :access: read-write   
+   Provides access to selected state of the layer.
+   
+
+
+
+

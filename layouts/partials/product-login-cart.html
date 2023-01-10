@@ -1,0 +1,89 @@
+<script src='https://www.google.com/recaptcha/api.js?render=6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_'></script>
+
+<div class="row">
+
+  <div id="prodLogin" class="col-md-12" style="display:block;">
+
+    <h1>Login</h1>
+    <p>
+      <a href="/account/signup/">Sign Up</a> | <a href="/account/forgot/">Forgot Password</a>
+    </p>
+
+    <form id="form3">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input id="email3" name="email" type="text" class="form-control" required />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <input id="password3" name="password" type="password" class="form-control" required />
+      </div>
+
+      <!-- Sign Up -->
+      <div class="form-group">
+        <button id="submit" type="submit" class="btn btn-lg btn-block">Login</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+$(function () {
+
+    $('#form3').submit(function (e) {
+        e.preventDefault();
+		Cookies.set('redirect_url', window.location.href);
+        var email = $('#email3').val();
+        var password = $('#password3').val();
+        var passed_token = '';
+        $('#submit').attr('disabled', 'disabled');
+        $('#submit').text('Logging In...');
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', {action: 'loginpage'}).then(function(token) {
+                passed_token=token;
+                axios.post('https://backend.borisfx.com/loginv3', {
+                  email: email,
+                  password: password,
+                  'g-recaptcha-response': passed_token,
+              })
+              .then(function (res) {
+                  data = res.data;
+                  Cookies.set('bfx-login', data, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+                  var sso = getQueryParameter('sso');
+                  var sig = getQueryParameter('sig');
+                  if (sso && sig) {
+                    var payload = {
+                      sso: sso,
+                      sig: sig,
+                      email: data.email,
+                      password: password,
+                      'g-recaptcha-response': passed_token,
+                    }
+                    window.location = 'https://backend.borisfx.com/discourse_loginv3?' + $.param(payload);
+                  } else {
+                    var redirect_url = Cookies.get('redirect_url');
+                    if (!redirect_url) {
+                      redirect_url = getQueryParameter('redirect_url') || '/account/manage';
+                    }
+                    Cookies.set('redirect_url', redirect_url)
+                    window.location.href = redirect_url;
+                    }
+                  }
+                })
+                .catch(function (error) {
+                  alert('Incorrect email/password combination. Please try again.')
+                  $('#submit').removeAttr('disabled');
+                  $('#submit').text('Log In');
+                });
+            });
+        });
+    });
+});
+</script>

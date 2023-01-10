@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.21. View &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.22. ViewInfo" href="ViewInfo.html" />
+    <link rel="prev" title="2.20. UndoGroup" href="UndoGroup.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ViewInfo.html" title="2.22. ViewInfo"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="UndoGroup.html" title="2.20. UndoGroup"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="view">
+<span id="id1"></span><h1>2.21. View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>2.21.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>2.21.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.project.View.__eq__" title="mocha.project.View.__eq__"><tt class="xref py py-meth docutils literal"><span class="pre">__eq__</span></tt></a> (rhs)</li>
+<li>def <a class="reference internal" href="#mocha.project.View.__lt__" title="mocha.project.View.__lt__"><tt class="xref py py-meth docutils literal"><span class="pre">__lt__</span></tt></a> (rhs)</li>
+<li>def <a class="reference internal" href="#mocha.project.View.__repr__" title="mocha.project.View.__repr__"><tt class="xref py py-meth docutils literal"><span class="pre">__repr__</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.project.View.__str__" title="mocha.project.View.__str__"><tt class="xref py py-meth docutils literal"><span class="pre">__str__</span></tt></a> ()</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>2.21.1.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.project.View.id" title="mocha.project.View.id"><tt class="xref py py-attr docutils literal"><span class="pre">id</span></tt></a> [read-only] of int</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>2.21.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Clip view class. Defines views for clips.</div></blockquote>
+<dl class="class">
+<dt id="mocha.project.View">
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">View</tt><a class="headerlink" href="#mocha.project.View" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs new clip view instance with default view id (0).</p>
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">View</tt><span class="sig-paren">(</span><em>View</em><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">View</tt><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.int</span></tt>) &#8211; New view id.</td>
+</tr>
+</tbody>
+</table>
+<p>Constructs new clip view instance with given view id.
+It might be called as implicit constructor using only <tt class="docutils literal"><span class="pre">int</span></tt> value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.View.__repr__">
+<tt class="descclassname">View.</tt><tt class="descname">__repr__</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.View.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">unicode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.View.__str__">
+<tt class="descclassname">View.</tt><tt class="descname">__str__</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.View.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">unicode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.View.__lt__">
+<tt class="descclassname">View.</tt><tt class="descname">__lt__</tt><span class="sig-paren">(</span><em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.View.__lt__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.View.__eq__">
+<tt class="descclassname">View.</tt><tt class="descname">__eq__</tt><span class="sig-paren">(</span><em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.View.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.View.id">
+<tt class="descclassname">View.</tt><tt class="descname">id</tt><a class="headerlink" href="#mocha.project.View.id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to view ID value.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.21. View</a><ul>
+<li><a class="reference internal" href="#synopsis">2.21.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.21.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.21.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.21.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="UndoGroup.html"
+                        title="previous chapter">2.20. UndoGroup</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ViewInfo.html"
+                        title="next chapter">2.22. ViewInfo</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/View.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ViewInfo.html" title="2.22. ViewInfo"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="UndoGroup.html" title="2.20. UndoGroup"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

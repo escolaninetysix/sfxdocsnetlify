@@ -1,0 +1,175 @@
+
+== PowerMesh and Mesh Tracking [[powermesh]]
+
+PowerMesh is designed to help track non-planar surfaces. This is for both rigid and non-rigid surfaces that would otherwise be impossible to track with a regular planar tracker.
+
+Rather than taking an optical flow approach (which can be slow to render and produce cumbersome files), we use a subsurface planar approach which is much faster to generate and track.
+
+IMPORTANT: PowerMesh tracking currently does not support Stereo
+
+=== Mesh Generation
+
+To track a mesh, you first need to generate one.
+
+The initial process is as follows:
+
+
+1. Draw a layer around the area you want to track +
+image:UserGuide/en_US/images/powermesh_tracking_001.jpg[pdfwidth="80%", width="60%"]
+2. Choose the planar tracking parameters (translation, rotation, scale, shear and/or perspective)
+3. Then choose the “Mesh” parameter +
+image:UserGuide/en_US/images/powermesh_tracking_002.jpg[pdfwidth="40%", width="40%"]
+
+An initial Mesh is generated.
+
+image:UserGuide/en_US/images/powermesh_tracking_003.jpg[pdfwidth="80%", width="60%"]
+
+Then you can refine your PowerMesh with the following parameters.
+
+image:UserGuide/en_US/images/powermesh_generation_column.jpg[pdfwidth="40%", width="40%"]
+
+*Generation Mode*
+
+This dropdown contains two options:
+
+* *Automatic:* This determines the best mesh to use based on image information contained in the layer. Automatic is best paired with “Adaptive Contrast” to get the most detail.
+* *Uniform:* Generates a uniform square mesh insead of building based on the existing image.
+
+*Mesh Size*
+
+Mesh Size is the distance between vertices in pixels.
+
+This means that the smaller the Mesh Size, the more potential mesh faces you will have. The larger the Mesh Size, the larger the faces and the less faces you will have.
+
+A good starting point for Mesh Size is 32 for a HD or 4K image.
+
+*Vertices on Spline*
+
+This option makes sure the PowerMesh is generated to the boundaries of your layer spline, rather than just over the most interesting detail within it.
+
+For uniform meshes, this option makes sure at least part of the mesh is overlapping the spline.
+
+*Adaptive Contrast*
+
+Adaptive Contrast boosts details in the underlying image to help the Automatic mesh generate the most useful vertices. Use with care! Sometimes you don’t want too much mesh detail.
+
+*Generate Mesh*
+
+This button generates the Mesh. Click it every time you change a Mesh generation parameter.
+
+*Clear Mesh*
+
+This button clears the Mesh from the layer.
+
+=== Mesh Tracking
+
+Once you have generated your mesh and you’re happy with it, you can move on to tracking.
+
+The Mesh tracker first uses the standard planar tracking per frame and then applies the sub-planar track with the mesh.
+
+Any mesh faces that fall outside of the spline or the image boundary are ignored. Those mesh faces become rigid and try to follow along with the existing mesh.
+
+To perform a Mesh track:
+
+1. Generate a mesh using the method and parameters listed above
+2. Choose the planar motion parameters you want to use
+3. Choose the Mesh Tracking parameters
+4. Track forwards or backwards as needed
+
+Note that choosing the Planar motion parameters is important. For example:
+
+* If the region you are tracking has significant perspective distortion, turn on Perspective
+* If the region doesn’t have much perspective shift, use Shear.
+* If the region doesn’t have much planar distortion, choose the lower order motion parameters only (Translation, rotation, scale)
+
+The Mesh Tracking parameters help control how Mocha approaches the organic surface.
+
+image:UserGuide/en_US/images/powermesh_tracking_column.jpg[pdfwidth="40%", width="40%"]
+
+*Auto Smoothness*
+
+Turning this on tells Mocha to guess the amount of smoothness to apply to the Mesh track. See “Smoothness” below.
+
+*Smoothness*
+
+Also referred to as “Rigidity”, this value determines the amount of smoothness to apply to the Mesh when tracking.
+
+* A high smoothness is like applying starch to your Mesh. It will follow the planar track more rigidly and not distort as much.
+* A low smoothness will follow the subsurface movement more directly and distort the mesh more. In short, you will get more “wobble”.
+
+As a general guideline, we recommend setting a lower smoothness for very warped or wobbly movement and a higher smoothness for more rigid objects that still have some distortion.
+
+For example:
+
+* Faces: This varies, but a smoothness of 50 is about the right amount to balance facial muscles vs general face planes.
+* Liquid: A low smoothness (20-40) works well
+* Cloth: Variable depending on the stiffness of the material
+
+*Warp Spline*
+
+This option deforms the spline shape to match the movement of the Mesh while tracking. This is useful so that you don’t have to worry about animating the shape to keep the mesh inside the bounds of the spline.
+
+As an added bonus, this also means it greatly reduces the keyframes needed to rotoscope an organic object.
+
+==== Mesh Tracking with Existing Planar Data
+
+image:UserGuide/en_US/images/track_options_existing_planar_data.jpg[pdfwidth="40%", width="40%"]
+
+If you want to track a PowerMesh using a layer you have only tracked with planar tracking (Translation, Rotation, Scale, Shear, and/or Perspective)
+you can do so by using the "Existing Planar Data" radio button in the Motion options.
+
+This avoids you having to redo the entire track from scratch with the Mesh.
+
+This option is only available if you have selected the Mesh motion parameter.
+
+To use Existing Planar Data:
+
+1. Track a layer using some form of planar motion type (Translation, Rotation, Scale, Shear, and/or Perspective)
+2. Create a new layer
+3. In the new layer, go to Layer properties and choose "Link to track" and select your tracked layer
+4. In the new layer, select "Mesh" and adjust your mesh parameters (see above)
+5. Select "Existing Planar Data" from the motion options
+6. Track forwards.
+
+You can also do this for the same layer you are on without creating a new layer. Any planar tracked layer can have the Mesh applied later
+and then simply be retracked using "Existing Planar Data".
+
+
+=== Edit Track Mesh
+
+The Edit Track Mesh button is in the Toolbar at the top of the Mocha interface.
+
+image:UserGuide/en_US/images/ToolEditMesh.jpg[]
+
+Selecting this turns on subselection in your mesh and you can move or delete vertices either before or after you have tracked the mesh.
+
+To get out of Edit mode, click the normal selection tool.
+
+After Tracking, You can animate the tracked mesh manually to fix points or make your preferred adjustments.
+Animated meshes are keyframed for the whole set of vertices, rather than individual points. This makes it easier to keyframe states over time, similar to the spline default animation mode.
+
+*Add Vertex*
+
+image:UserGuide/en_US/images/ToolAddVertex.jpg[]
+
+This tool appears when in Edit Mesh mode. When Add Vertex is on, click any Mesh edge to add a new vertex. A new edge will appear joining the created vertex and the vertex opposite.
+
+
+=== Exporting Meshes or Mesh Warped Splines
+
+Using PowerMesh, you can export:
+
+* *Mesh-warped splines (or render their mattes):* Export as normal for Shape data.
+* *After Effects nulls (Adobe plugin only):* In the Adobe plugin, there is a new section called "PowerMesh". Use this section to create nulls from selected layers. See <<powermesh_nulls, Creating PowerMesh Nulls>> for more details.
+* *Alembic tracking data as a mesh:* The exports from the "Tracking Data" export options. Alembic is supported across many hosts. The data format includes the PowerMesh and a camera that fits to the source footage. See <<export_alembic, Exporting to Alembic>> for more details.
+* *Nuke Mesh Tracker:* This will export a single Tracker node for Nuke that contains a single tracker point for every vertex in the PowerMesh.
+
+=== Tips for Mesh Tracking
+
+*Blue mesh faces*
+
+When tracking, if one of your mesh faces turns blue, this means the face has become flipped, normally because the area you are tracking has turned away from the camera.
+
+*Use more than one contour*
+
+You can use more than one contour to cut holes in the mesh generation. This is helpful if you want to ignore details in a surface, such as teeth in a mouth region or a tattoo that is taking up too much of the mesh detail.

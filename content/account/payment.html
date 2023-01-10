@@ -1,0 +1,819 @@
+{
+"title" : "Make Payment"
+}
+
+<script src="https://js.stripe.com/v3/" data-hs-ignore></script>
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js" data-hs-ignore></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" data-hs-ignore>
+
+<style>
+    .content {
+        overflow-x: auto;
+        background-color: white;
+        border: 3px solid #26A9E0;
+        border-radius: 10px;
+        min-height: 50px;
+        max-height: 0px;
+        overflow-y: hidden;
+    }
+    .content-show{
+        max-height: 9999px;
+        transition: max-height 2.5s;
+    }
+
+    .content-error{
+        border: 3px solid #900000;
+        transition: border .5s ease;
+    }
+
+    #payment-form-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        max-width: 550px;
+        height: 100%;
+        background-color: white;
+        border: solid .5px #26A9E0;
+        margin: 1rem auto;
+        box-sizing: border-box;
+    }
+
+    .payment-form-content {
+        margin: 0 auto;
+    }
+
+    .branded-box{
+        padding: 0;
+    }
+</style>
+
+<div id="app">
+    <div class="modal" tabindex="-1" role="dialog" id="billing-country-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Billing Address</h5>
+            </div>
+            <div class="modal-body">
+                <p>Please provide your billing country to continue. If you are making this payment on behalf 
+                    of a business, please enter your business's billing country.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <select class="form-control" v-model="billingCountry">
+                            <option value="">-- Select Country --</option>
+                            <option v-for="c in countries" :key="c.code" :value="c.code">${c.name}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content" v-bind:class="{'content-show': !loading, 'content-error': error}">
+        <div class="mx-3" v-show="loading">
+            <h3>Loading Order Information. . .</h3>
+        </div>
+        <div class="mx-3" v-show="!loading && error">
+            <h3>${error}</h3>
+        </div>
+        <div style="background-color: #26A9E0; color: white; display:flex; align-items: center; padding:.5rem 1rem;" v-show="order.isPending && !loading">
+            <i class="bi-bag-check" style="font-size:1.2rem;"></i>&nbsp;
+              Your payment has been received and is now pending approval. This may take 3-5 business days.
+        </div>
+        <div v-show="!loading && !error" style="padding:3rem">
+            <h2>Invoice ${order.invoiceNum}</h2>
+            <h3 v-if="order.poNum">PO# ${order.poNum}</h3>
+            <h4 v-if="order.isPaid">Payment Completed</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Code</th>
+                        <th>Product</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>License</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in order.lineItems" key="item.Id">
+                        <td>${item.sku}</td>
+                        <td>${item.name}</td>
+                        <td>${item.unitPrice}</td>
+                        <td class="text-center">${item.quantity}</td>
+                        <td>${item.totalPrice}</td>
+                        <td>${item.serial}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <div class="row justify-content-end">
+                <div class="col-2 text-right"><span class="font-weight-bold">Subtotal:</span></div>
+                <div class="col-2">${order.subtotal}</div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-2 text-right"><span class="font-weight-bold">Taxes:</span></div>
+                <div class="col-2">${order.taxes}</div>
+            </div>
+            <div class="row justify-content-end" v-for="p in order.payments">
+                <div class="col-4 text-right" v-if="p.type == 'payment'"><span class="font-weight-bold">Payment (${p.date}):</span></div>
+                <div class="col-4 text-right" v-if="p.type == 'credit'"><span class="font-weight-bold">Credit (${p.date}):</span></div>
+                <div class="col-2">${p.amount}</div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-2 text-right" style="border-top: .5px solid black"><span class="font-weight-bold">Total Due:</span></div>
+                <div class="col-2" style="border-top: .5px solid black">${order.totalDue}</div>
+            </div>
+           
+
+            <div id="payment-form-container" v-if="!order.isPaid">
+                <div class="payment-form-content">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item"><a href="#new-payment-card" class="nav-link active"
+                                data-toggle="tab">Credit
+                                Card</a></li>
+                        <li class="nav-item"><a href="#new-payment-ach" class="nav-link" data-toggle="tab">Bank Account
+                                (ACH)</a></li>
+                        <li class="nav-item"><a href="#saved-payment" class="nav-link" data-toggle="tab"
+                                v-if="stripe.customer.hasSavedCards">Saved Payment Method</a></li>
+                    </ul>
+                    <div class="tab-content mt-2">
+                        <div id="new-payment-card" class="tab-pane active">
+                            <form name="new-card-form" v-on:submit.prevent="handleSubmit">
+
+                                <div class="form-group">
+                                    <h6>Full Name (as written on card)</h6>
+                                    <input class="form-control" name="holderName" />
+                                </div>
+                                <div class="form-group">
+                                    <h6>Card Info</h6>
+                                    <!--Container for Stripe Card Element-->
+                                    <div class="form-control" id="card-container" data-hs-ignore></div>
+                                </div>
+                                <div class="form-group">
+                                    <h6>Billing Address</h6>
+                                    <input class="form-control mb-1" name="address" placeholder="Address" />
+                                    <input class="form-control mb-1" name="address2"
+                                        placeholder="Address 2 (Optional)" />
+                                    <input class="form-control mb-1" name="city" placeholder="City" />
+                                    <input class="form-control mb-1" name="zip" placeholder="Zip/Postal Code" />
+                                    {{% country-state-dropdown %}}
+
+                                    </select>
+                                </div>
+                                <div class="mt-1">
+                                    <button type="submit" class="btn btn-primary" :disabled="submitting">Submit
+                                        Payment</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="new-payment-ach" class="tab-pane">
+                            <!-- For New ACH Bank Account -->
+                            <div name="ach">
+                                <form name="new-ach-form" v-on:submit.prevent="handleSubmit">
+                                    <div class="btn d-block w-75 mx-auto" v-show="!plaid.plaidToken"
+                                        @click="launchPlaid">
+                                        Connect to Your Bank</div>
+                                    <div name="account-select" v-show="plaid.plaidToken">
+                                        <h4>Connected: ${ plaid.institution.name }</h4>
+                                        <h5>Select an Account</h5>
+                                        <div class="radio" v-for="account in plaid.accounts">
+                                            <label><input type="radio" name="account" v-model="plaid.selectedAccountId"
+                                                    :value="account.id">
+                                                <span class="ml-1">${ account.name } (${ account.mask })</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 py-2">
+                                        <button type="submit" class="btn btn-primary"
+                                            :disabled="!plaid.selectedAccountId">Submit
+                                            Payment</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="saved-payment" class="tab-pane">
+                            <div id="payment-info-section" class="p-3 slide-hide">
+                                <form @submit.prevent='handleSubmit'>
+                                    <div class="payment-selection-container" class="my-auto">
+                                        <!-- For Existing Saved Payment Methods -->
+                                        <div class="form-group" v-show="stripe.customer.hasSavedCards">
+                                            <h3>Select Payment Method</h3>
+                                            <div class="radio">
+                                                <template v-for="card in stripe.customer.cards">
+                                                    <label v-if="card.type == 'card'"><input type="radio"
+                                                            name="paymentmethod" v-model="savedPM"
+                                                            :value="card">
+                                                        <span class="ml-1 font-weight-normal">**** **** **** ${
+                                                            card.lastFour }
+                                                            - ${
+                                                            card.brand } - Expires ${ card.endDate }</span>
+                                                    </label>
+                                                    <label v-if="card.type == 'ach'"><input type="radio"
+                                                            name="paymentmethod" v-model="savedPM"
+                                                            :value="card">
+                                                        <span class="ml-1 font-weight-normal">${ card.bankName } -
+                                                            Account
+                                                            Ending in
+                                                            ${ card.lastFour }</span>
+                                                    </label>
+                                                </template>
+                                            </div>
+                                        </div>
+
+                                        <div v-if="!stripe.customer.hasSavedCards">
+                                            <h5>You have no saved payment methods.</h5>
+                                        </div>
+                                        <div>
+                                            <a href="/account/payment-methods?ref=checkout">Manage Payment Methods</a>
+                                        </div>
+                                        <div style="display:flex; justify-content:right; column-gap:1rem;">
+                                            <div><button class="btn" type="submit" :disabled="submitting || !savedPM">Submit
+                                                    Payment</button>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{% country-state-json %}}
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            user: Cookies.getJSON('bfx-login'),
+            loading: true,
+            error: null,
+            orderId: '',
+            paymentIntent: {},
+            transactionId: '',
+            countries: countryJson,
+            billingCountry: '',
+            order: {
+                oppId: '',
+                accountId: '',
+                scheduleId : '',
+                source: '',
+                lineItems: [],
+                invoiceNum: '',
+                poNum: '',
+                subtotal: '',
+                taxes: '',
+                total: '',
+                totalDue: '',
+                totalFloat: 0,
+                paymentMethod: null,
+                isPaid: false,
+                payments: []
+            },
+            savedPM: null,
+            stripe: {
+                stripeJs: undefined,
+                elements: undefined,
+                cardElement: undefined,
+                gatewayKey: '',
+                gatewayId: '',
+                token : {},
+                customer: {
+                    hasSavedCards: false,
+                    hasSavedAddress: false,
+                    address: {}
+                }
+            },
+            plaid: {
+                handler: undefined,
+                publicKey: 'fa31534ec9f4ae2a91ed0cef838fea',
+                plaidToken: undefined,
+                selectedAccountId: '',
+                accounts: [],
+                institution: {}
+            },
+            submitting: false
+        },
+        created : function (){
+        },
+        mounted: function () {
+            var self = this;
+            if (!self.user || !self.user.email_verified){
+                Cookies.set('redirect_url', window.location.href);
+                window.location.href = '/account/login?source=payment';
+                return;
+            }
+            var urlParams = new URLSearchParams(window.location.search);
+            self.orderId = urlParams.get('id');
+            self.getOrder()
+            .then(function (res) {
+                self.formatOrder(res.opportunity);
+                self.stripe.gatewayKey = res.gateway.publicKey;
+                self.stripe.gatewayId = res.gateway.id;
+                self.paymentIntent = JSON.parse(res.intent);
+                if (res.customer != null){
+                    self.stripe.customer = res.customer;
+                    self.stripe.customer.hasSavedCards = res.customer.cards.length > 0;
+                }
+                if(!self.order.isPaid){
+                    self.initializePaymentProcessers()
+                    .then(function(){
+                        self.loading = false;
+                    })
+                    .catch(function(err){
+                        console.error(err);
+                        alert('There was an error initializing your payment link. Please contact us at customerservice@borisfx.com for assistance.');
+                    })
+                }
+                else self.loading = false;
+            })
+            .catch(function (err) {
+                if (self.error == null){
+                    console.error(err);
+                    alert('There was an error initializing your payment link. Please contact us at customerservice@borisfx.com for assistance.');
+                }
+                else{
+                    console.log(self.error)
+                    self.loading = false;
+                }
+            })
+        },
+        methods: {
+            getOrder: function () {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    axios.get('https://backend.borisfx.com/paylink/order?uuid=' + self.orderId, {auth: {username : self.user.email, password: self.user.token}})
+                        .then(function (res) {
+                            resolve(res.data);
+                        })
+                        .catch(function (err) {
+                            console.error(err);
+                            switch(err.response.status){
+                                case 403: 
+                                    Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                    Cookies.set('redirect_url', window.location.href);
+                                    window.location.href = '/account/login?session_expired=true';
+                                    break;
+                                case 404: self.error = 'Order Not Found. Please contact us at sales@borisfx.com to request a new Payment Link.'; reject(); break;
+                                case 401: self.error = 'You are not authorized to view this order.'; reject(); break;
+                                default: self.error = 'There was a problem loading this order. Please contact us at sales@borisfx.com for assistance.'; reject(); break;
+                            }
+                        })
+                })
+            },
+            formatOrder: function (opp) {
+                this.order = {
+                    oppId : opp.Id,
+                    accountId : opp.AccountId,
+                    invoiceNum: opp.Invoice_Num__c,
+                    poNum: opp.Purchase_Order_Num__c,
+                    subtotal: opp.CurrencyIsoCode + ' ' + opp.Amount.toFixed(2),
+                    taxes: opp.CurrencyIsoCode + ' ' + opp.Total_Taxes__c.toFixed(2),
+                    total: opp.CurrencyIsoCode + ' ' + opp.Total__c.toFixed(2),
+                    totalDue: opp.CurrencyIsoCode + ' ' + opp.Amount_Outstanding__c.toFixed(2),
+                    totalFloat: opp.Amount_Outstanding__c,
+                    source: opp.Record_Source__c,
+                    isPaid : opp.Amount_Received__c > 0 || opp.StageName == 'Closed Won' || opp.StageName == 'Payment Pending',
+                    isPending: opp.StageName == 'Payment Pending',
+                    payments : [],
+                    lineItems: []
+                }
+                for (item of opp.OpportunityLineItems.records) {
+                    if (item.Renewed_Contract__r && item.Renewed_Contract__r.Payment_Schedule__c){
+                        if (this.order.scheduleId == null) this.order.scheduleId = item.Renewed_Contract__r.Payment_Schedule__c;
+                        else if (this.order.scheduleId != item.Renewed_Contract__r.Payment_Schedule__c) {
+                            this.error = 'This order requires additional processing. Please contact us at sales@borisfx.com for assistance.'
+                        }
+                    }
+                    this.order.lineItems.push({
+                        sku: item.ProductCode,
+                        name: item.Product2.Name,
+                        listPrice: opp.CurrencyIsoCode + ' ' + item.ListPrice.toFixed(2),
+                        unitPrice: opp.CurrencyIsoCode + ' ' + item.UnitPrice.toFixed(2),
+                        quantity: item.Quantity,
+                        totalPrice: opp.CurrencyIsoCode + ' ' + item.TotalPrice.toFixed(2),
+                        serial: item.Renewed_Contract__r == null ? '' : item.Renewed_Contract__r.External_License__r.Serial__c
+                    })
+                }
+                if (opp.Payments__r != null){
+                    for (var p of opp.Payments__r.records){
+                        this.order.payments.push({
+                            type: 'payment',
+                            amount: opp.CurrencyIsoCode + ' -' + p.Amount__c.toFixed(2),
+                            date : new Date(p.Processed_Date__c).toLocaleDateString()
+                        })
+                    }
+                }
+                if (opp.Credits__r != null){
+                    for (var c of opp.Credits__r.records){
+                        this.order.payments.push({
+                            type: 'credit',
+                            amount: opp.CurrencyIsoCode + ' -' + c.Amount__c.toFixed(2),
+                            date : new Date(c.Processed_Date__c).toLocaleDateString()
+                        })
+                    }
+                }
+                if (opp.Refunds__r != null){
+                    for (var r of opp.Refunds__r.records){
+                        this.order.payments.push({
+                            type: 'refund',
+                            amount: opp.CurrencyIsoCode + ' ' + r.Amount__c.toFixed(2),
+                            date : new Date(r.Processed_Date__c).toLocaleDateString()
+                        })
+                    }
+                }
+            },
+            initializePaymentProcessers : function(){
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    Promise.all([self.initializeStripe(), self.initializePlaid()])
+                    .then(function(results){
+                        resolve(results);
+                    })
+                    .catch(function(err){
+                        reject(err)
+                    })
+                })
+            },
+            initializeStripe : function() {
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    var stripe = self.stripe;
+
+                    stripe.stripeJs = Stripe(stripe.gatewayKey);
+                    stripe.elements = stripe.stripeJs.elements();
+                    stripe.cardElement = stripe.elements.create('card', {
+                        fields: {
+                            billingDetails: {
+                                postalCode: 'never',
+                            }
+                        }
+                    });
+                    stripe.cardElement.mount('#card-container');
+                    resolve();
+                })
+            },
+            initializePlaid: function () {
+                var self = this,
+                    plaid = self.plaid;
+                return new Promise(function(resolve, reject){
+                    plaid.handler = Plaid.create({
+                        env: 'production',
+                        clientName: 'Boris FX',
+                        key: plaid.publicKey,
+                        product: ['auth'],
+                        onLoad: function () {
+                            resolve();
+                        },
+                        onSuccess: function (token, metadata) {
+                            self.plaid.accounts = metadata.accounts;
+                            self.plaid.institution = metadata.institution;
+                            self.plaid.plaidToken = token;
+                        }
+                    })
+                })
+            },
+            launchPlaid: function () {
+                this.plaid.handler.open();
+            },
+            /*
+            getCustomer: function () {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    if (!self.user) reject('no user');
+                    $.ajax({
+                        type: 'GET',
+                        url: 'https://backend.borisfx.com/stripe_customer',
+                        beforeSend: function (request) {
+                            request.setRequestHeader('Authorization', 'Basic ' + btoa(self.user.email + ':' + self.user.token));
+                        },
+                        success: function (res) {
+                            if (res == null) {
+                                resolve();
+                                return;
+                            }
+                            result = JSON.parse(res);
+                            self.stripe.customer = result;
+                            self.stripe.customer.hasSavedCards = result.cards.length > 0;
+                            resolve(result);
+                        },
+                        error: function (res) {
+                            reject();
+                        },
+                    });
+                })
+            },
+            */
+            buildRequest : function(){
+                var request = {
+                    uuid: this.orderId,
+                    opportunityId : this.order.oppId,
+                    transactionId : this.transactionId,
+                    accountId : this.order.accountId,
+                    paymentMethodId : this.order.paymentMethod.id,
+                    paymentScheduleId :this.order.scheduleId,
+                    email : this.user.email,
+                    tokenData : this.stripe.token
+                }
+                return request;
+            },
+            handleSubmit: function (event) {
+                this.submitting = true;
+                var self = this;
+                var paymentType = '';
+                switch(event.currentTarget.name){
+                    case 'new-card-form': paymentType = 'card'; break; 
+                    case 'new-ach-form': paymentType = 'ach'; break;
+                }
+                self.getPaymentMethod(paymentType)
+                .then(function (result) {
+                    self.processPayment()
+                    .then(function(res){
+                        var payload = self.buildRequest();
+                        axios.post('https://backend.borisfx.com/paylink/submit', payload, { auth: { username: self.user.email, password: self.user.token } })
+                        .then(function(res){
+                            self.getOrder()
+                            .then(function(res){
+                                self.formatOrder(res.opportunity);
+                                window.scrollTo(0, 0);
+                            })
+                            self.submitting = false;
+                        })
+                        .catch(function(err){
+                            console.error(err);
+                            if (err.response != null && err.response.status == 403) {
+                                Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                Cookies.set('redirect_url', window.location.href);
+                                window.location.href = '/account/login?session_expired=true';
+                            }
+                            else{
+                                alert('We were unable to submit this payment. Please review your information and try again.');
+                                self.submitting = false;
+                            }
+                        });
+                    })
+                })
+                .catch(function(error){
+                    alert('We were unable to validate the payment information you have provided. Please review your information and try again.\m error: ' + error)
+                    self.submitting = false;
+                });
+            },
+            getPaymentMethod: function(paymentType) {
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    if (self.savedPM != null){
+                        self.order.paymentMethod = {id : self.savedPM.pmId, stripeId : self.savedPM.stripeId, type: self.savedPM.type};
+                        resolve();
+                    };
+                    if (paymentType == 'card') token = self.getCardToken().then(function (result) {
+                        if (result.error) reject('rejected');
+                        self.createPaymentMethod(result)
+                        .then(function(createResult){
+                            self.order.paymentMethod = {id : createResult.Id, stripeId: createResult.stripeId, type: 'card'};
+                            resolve();
+                        })
+                        .catch(function(err){
+                            reject(err);
+                        })
+                    });
+                    else if (paymentType == 'ach') token = self.getBankToken().then(function (result) {
+                        if (result.error) reject('rejected');
+                        self.createPaymentMethod(result)
+                        .then(function(createResult){
+                            self.order.paymentMethod = {id : createResult.id, stripeId: createResult.stripeId, type: 'ach'};
+                            resolve();
+                        })
+                        .catch(function(err){
+                            reject(err);
+                        })
+                    });
+                })
+            },
+            createPaymentMethod : function(token) {
+                var self = this;
+                var payload = {}
+                return new Promise(function(resolve, reject){
+                    payload.token = token.id;
+                    payload.customerId = self.stripe.customer.customerId;
+                    payload.gatewayId = self.stripe.gatewayId;
+                    axios.post('https://backend.borisfx.com/payment_method/add', payload, { auth: { username: self.user.email, password: self.user.token } })
+                    .then(function(res){
+                        resolve(res.data);
+                    })
+                    .catch(function(err){
+                        console.error(err);
+                        if (err.response != null && err.repsonse.status == 403){
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else reject(err)
+                    })
+                })
+            },
+            getCardToken: function () {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    self.stripe.stripeJs.createToken(self.stripe.cardElement, self.getCardTokenData()).then(function (result) {
+                        if (result.error) {
+                            alert('Could not process your order. Please verify your info.\n\nerror: ' + result.error.message)
+                            self.state.submitting = false;
+                            reject('rejected');
+                        }
+                        var tokenData = result.token.card;
+                        tokenData.id = result.token.id;
+                        resolve(tokenData)
+                    })
+                });
+            },
+            getCardTokenData: function () {
+                var form = document.getElementsByName('new-card-form')[0];
+                var tokenData = {};
+                tokenData.address_line1 = form.address.value;
+                tokenData.address_line2 = form.address2.value;
+                tokenData.address_city = form.city.value;
+                tokenData.address_zip = form.zip.value;
+                tokenData.address_country = form.country.value;
+                if (form.state != null) tokenData.address_state = form.state.value;
+                tokenData.name = form.holderName.value;
+                tokenData.type = 'card';
+                return tokenData;
+            },
+            getBankToken: function () {
+                var self = this;
+                var payload = {
+                    publicToken: self.plaid.plaidToken,
+                    accountId: self.plaid.selectedAccountId
+                }
+                return new Promise(function (resolve, reject) {
+                    $.ajax('https://backend.borisfx.com/payment/bank_token', {
+                        type: 'POST',
+                        data: JSON.stringify(payload),
+                        contentType: 'application/json',
+                        success: function (res, status) {
+                            payload = {id : res, card: {}}
+                            resolve(payload);
+                        },
+                        error: function (err) {
+                            alert('Error collecting payment information. Please try again or contact us at customerservice@borisfx.com for assistance.');
+                            self.state.submitting = false;
+                            reject('rejected');
+                        }
+                    });
+                });
+            },
+            processPayment: function(){
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    let stripeJs = self.stripe.stripeJs;
+                    if (self.order.paymentMethod.type == 'ach'){
+                        self.captureACH()
+                        .then(function(res){
+                            self.transactionId = res.data.transactionId;
+                            resolve(res);
+                        })
+                        .catch(function(err){
+                            if (err.repsonse.status == 403) {
+                                Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                Cookies.set('redirect_url', window.location.href);
+                                window.location.href = '/account/login?session_expired=true';
+                            }
+                        })
+                    }
+                    else{
+                        self.confirmPaymentIntent()
+                        .then(function(res){
+                            self.transactionId = res.data.transactionId;
+                            if (res.data.status == 'requires_action'){
+                                stripeJs.handleCardAction(self.paymentIntent.client_secret)
+                                .then(function(res){
+                                    if (res.error){
+                                        alert(res.error.message);
+                                        return;
+                                    }
+                                    self.paymentIntent = res.paymentIntent;
+                                    self.confirmPaymentIntent()
+                                    .then(function(res){
+                                        resolve(res);
+                                    })
+                                    .catch(function(err){
+                                        if (err.repsonse.status == 403) {
+                                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                            Cookies.set('redirect_url', window.location.href);
+                                            window.location.href = '/account/login?session_expired=true';
+                                        }
+                                        else{
+                                            var message = err.response.data;
+                                            alert('There was an error completing this payment. Please contact us at customerservice@borisfx.com for assistance');
+                                        }
+                                    })
+                                })
+                            }
+                            else{
+                                resolve(res);
+                            }
+                        })
+                        .catch(function(err){
+                            let message = err.response.data.error;
+                            alert('There was an error submitting your payment. Please review your payment information and try again\n\n Error: ' + message);
+                        })
+                    }
+                })
+            },
+            confirmPaymentIntent : function(){
+                var self = this;
+                var intent = self.paymentIntent;
+                var payload = {
+                    gatewayId: self.stripe.gatewayId,
+                    gatewayKey: self.stripe.gatewayKey,
+                    clientSecret: intent.client_secret,
+                    intentId: intent.id,
+                    pmId: self.order.paymentMethod.stripeId,
+                    uuid: self.orderId,
+                    oppId: self.order.oppId,
+                    transactionId: self.transactionId,
+                    amount: parseFloat(self.order.totalFloat) * 100,
+                    currency: "USD",
+                };
+                return new Promise(function(resolve, reject){
+                    axios.post('https://backend.borisfx.com/paylink/confirm_intent', payload, { auth: { username: self.user.email, password: self.user.token } })
+                    .then(function(res){
+                        resolve(res);
+                    })
+                    .catch(function(err){
+                        console.error(err);
+                        if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else{
+                            reject(err)
+                        }
+                    })
+                });
+            },
+            captureACH: function(){
+                var self = this;
+                var payload = {
+                    gatewayId: self.stripe.gatewayId,
+                    pmId: self.order.paymentMethod.stripeId,
+                    uuid: self.orderId,
+                    oppId: self.order.oppId,
+                    amount: parseFloat(self.order.totalFloat) * 100,
+                    currency: "USD",
+                }
+                return new Promise(function(resolve, reject){
+                    axios.post('https://backend.borisfx.com/paylink/capture_ach', payload, { auth: { username: self.user.email, password: self.user.token } })
+                    .then(function(res){
+                        resolve(res);
+                    })
+                    .catch(function(err){
+                        console.error(err);
+                        if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else reject(err)
+                    })
+                });
+            }
+            /*
+            getPaymentIntent : function(){
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    var data = {
+                        checkoutId: self.orderId,
+                        gatewayId: self.stripe.gatewayId,
+                        customerId: self.stripe.customer.stripeId,
+                        amount: parseFloat(self.order.totalFloat),
+                    }
+                    axios.post('https://backend.borisfx.com/intent', data)
+                    .then(function(res){
+                        self.paymentIntent = res.data;
+                        resolve();
+                    })
+                    .catch(function(err){
+                        alert('There was an error initializing your payment link. Please contact us at customerservice@borisfx.com for assistance.');
+                        reject();
+                    })
+                })
+            },
+            */
+        }
+    })
+</script>

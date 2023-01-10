@@ -1,0 +1,366 @@
+{{ define "content" }}
+
+{{ $.Scratch.Set "video_count" 0 }}
+<script>
+var videos = [
+  {{ range (.Site.GetPage "section" "effects").Pages }}
+  {{ if isset $.Params "product" }}
+  {{ if eq .Params.product $.Params.product }}
+  {{ if or (not (isset $.Params "unit")) (eq .Params.unit $.Params.unit) }}
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "{{ .Title }}",
+    "url": "{{ .URL }}",
+    "thumbnail_url": "{{ .Params.thumbnail_url }}",
+    "tagging": {
+      {{ if isset .Params "unit" }}
+      "unit": {{ .Params.unit }},
+      {{ end }}
+    },
+    "content": "{{ .Content | plainify }}",
+  },
+  {{ end }}
+  {{ end }}
+  {{ end }}
+  {{ end }}
+];
+</script>
+
+{{ if .Params.carousel }}
+<div style="background-color: black;">
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {{ range $index, $item := .Params.carousel }}
+      <li data-target="#carousel" data-slide-to="{{ $index }}"{{ if eq $index 0 }} class="active"{{ end }}></li>
+      {{ end }}
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      {{ range $index, $item := .Params.carousel }}
+      <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+        <div class="inner">
+          {{ if $item.video_url }}
+          <video autoplay loop muted poster="{{ $item.image_url }}">
+            <source src="{{ $item.video_url }}">
+          </video>
+          {{ else }}
+          <div class="image" style="background-image: url({{ $item.image_url }})"></div>
+          {{ end }}
+          <div class="content text-center {{ if eq $item.color "black" }}black{{ end }}">
+            <div>
+              <p class="mb-0" style="line-height: 1; font-size: 47px; font-weight: 900;">{{ $item.title }}</p>
+              <p>
+                {{ if $item.content }}
+                {{ $item.content | markdownify }}
+                {{ end }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ else }}
+<div class="section" style="background-image: url('https://res.cloudinary.com/borisfx-com/image/upload/default-logo-background.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h1>{{ .Title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+<div class="product-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        <nav>
+          <span class="product-links">
+            {{ if .Params.overview.content }}
+            <a href="#overview">Overview</a>
+            {{ end }}
+            {{ if .Params.whats_new }}
+            <a href="#whats-new">
+              {{ if .Params.whats_new_title }}
+              {{ .Params.whats_new_title }}
+              {{ else }}
+              What's New
+              {{ end }}
+            </a>
+            {{ end }}
+            {{ if .Params.videos }}
+            <a href="#videos">Videos</a>
+            {{ end }}
+            {{ if .Params.features.content }}
+            <a href="#features">Features</a>
+            {{ end }}
+            {{ if .Params.presets }}
+            <a href="#presets">Presets</a>
+            {{ end }}
+            {{ if .Params.hosts.content }}
+            <a href="#hosts">Hosts</a>
+            {{ end }}
+            {{ range .Params.sections }}
+            <a href="#{{ .title | urlize }}">{{ .title }}</a>
+            {{ end }}
+            {{ if gt ($.Scratch.Get "video_count") 0 }}
+            <a href="#effects">Effects</a>
+            {{ end }}
+          </span>
+        </nav>
+      </div>
+      <div class="col-lg-4 col-md-12">
+        <span class="float-lg-right product-btns">
+          <a href="{{ if .Params.download_url }}{{ .Params.download_url }}{{ else }}/downloads{{ end }}" class="btn btn-{{ .Params.key_color }}">FREE TRIAL</a>
+          <a href="{{ .Params.buy_now_url }}" class="btn btn-{{ .Params.key_color }}">BUY NOW</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product-nav-placeholder"></div>
+<script>
+$(function () {
+  $(document).ready(function () {
+    var nav = $('.product-nav');
+    var navPosition = nav.offset().top;
+    navPosition -= $('header').height();
+    function update() {
+      if ($(this).scrollTop() > navPosition) {
+        nav.addClass("fixed");
+      } else {
+        nav.removeClass("fixed");
+      }
+    }
+    $(window).scroll(update);
+    update();
+  });
+});
+</script>
+
+{{ if .Params.overview.content }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-pull">
+        <h3 id="overview">Overview</h3>
+        <p>
+          {{ .Params.overview.content | markdownify }}
+        </p>
+      </div>
+      <div class="col-lg-6 col-lg-push">
+        {{ if .Params.overview.video_url }}
+        {{ partial "video.html" .Params.overview.video_url }}
+        {{ else }}
+        <img class="img-fluid" src="{{ .Params.overview.image_url }}" />
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.whats_new }}
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="whats-new">
+          {{ if .Params.whats_new_title }}
+          {{ .Params.whats_new_title }}
+          {{ else }}
+          What's New
+          {{ end }}
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{ $items := .Params.whats_new }}
+        {{ range $index, $item := .Params.whats_new }}
+        <div class="row py-4">
+          <div class="col-md-6 {{ if eq (mod $index 2) 1 }}push-md-6{{ end }}">
+            {{ if $item.image_url }}
+            <img class="img-fluid" src="{{ $item.image_url }}" />
+            {{ else if $item.video_url }}
+            {{ partial "video.html" $item.video_url }}
+            {{ end }}
+          </div>
+          <div class="col-md-6 {{ if eq (mod $index 2) 1 }}pull-md-6{{ end }}">
+            <h3>{{ $item.title }}</h3>
+            {{ if $item.content }}
+            <p>
+              {{ $item.content | markdownify }}
+            </p>
+            {{ end }}
+          </div>
+        </div>
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.videos }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="videos">Videos</h3>
+      </div>
+    </div>
+    <div class="row">
+      {{ range .Params.videos }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .url }}">
+            <img class="img-fluid" src="{{ .thumbnail_url }}" />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .url }}">{{ .title }}</a>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+    {{ if .Params.video_see_more_url }}
+    <div class="row">
+      <div class="col">
+        <p>
+          <a href="{{ .Params.video_see_more_url }}">See More Videos</a>
+        </p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.features.content }}
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="features">Features</h3>
+        {{ .Params.features.content | markdownify }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.presets }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="presets">Presets</h3>
+        <div class="row">
+          {{ range .Params.presets }}
+          <div class="col-md-3">
+            <img class="img-fluid" src="{{ .thumbnail_url }}" />
+            <p>
+              {{ .title }}
+            </p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.hosts.content }}
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="hosts">Hosts</h3>
+        {{ .Params.hosts.content | markdownify }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ range .Params.sections }}
+<div class="section {{ if (eq .background "Gray") }}gray{{ else }}white{{ end }}">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="{{ .title | urlize }}">{{ .title }}</h3>
+      </div>
+    </div>
+    {{ if (eq .type "Two Up") }}
+    {{ $items := .items }}
+    {{ range $index, $item := .items }}
+    <div class="row py-4">
+      <div class="col-md-6 {{ if eq (mod $index 2) 1 }}push-md-6{{ end }}">
+        {{ if $item.image_url }}
+        <img class="img-fluid" src="{{ $item.image_url }}" />
+        {{ else if $item.video_url }}
+        {{ partial "video.html" $item.video_url }}
+        {{ end }}
+      </div>
+      <div class="col-md-6 {{ if eq (mod $index 2) 1 }}pull-md-6{{ end }}">
+        <h3>{{ $item.title }}</h3>
+        {{ if $item.content }}
+        <p>
+          {{ $item.content | markdownify }}
+        </p>
+        {{ end }}
+      </div>
+    </div>
+    {{ if (ne $index (add (len $items) -1)) }}
+    <hr class="hidden-sm-down"/>
+    {{ end }}
+    {{ end }}
+    {{ else if (eq .type "Thumbnails") }}
+    <div class="row">
+      {{ range .items }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .url }}">
+            <img class="img-fluid" src="{{ .image_url }}" />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .url }}">{{ .title }}</a>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ if .content }}
+    <div class="row">
+      <div class="col">
+        {{ .content | markdownify }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+{{ if gt ($.Scratch.Get "video_count") 0 }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="effects">Effects</h3>
+        {{ partial "video-gallery.html" }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ end }}

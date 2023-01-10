@@ -1,0 +1,868 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: EdgeRays",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/EdgeRays.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="EdgeRays">
+     <h2>
+      EdgeRays
+     </h2>
+    </a>
+    Generates beams of light emitting from the edges of an
+  input clip.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       EdgeGen:
+      </b>
+      Rays of light are emitted from the edges of this input clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Back:
+      </b>
+      The clip to use as background.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/EdgeRays.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The location from which the rays beam outwards.  This parameter can be set by
+enabling and moving the Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   1 or less.
+   <br/>
+   The length of the rays.  A length of 1.0
+  gives rays that continue forever, although they may still
+  fade out as they go.  To make the rays look longer you can also
+  increase the Bias Outer Bright parameter.  If Rays Length is negative
+  the rays can beam inwards instead of outwards.  Note that processing
+  times increase for longer rays.  This parameter can be adjusted using the Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Outer Bright:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative brightness of the outer end of the
+  rays.  This is normally near 0 so the rays fade away at their outer
+  ends, but higher values can cause longer looking rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Back:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of the background before
+combining with the edges.  If 0, the result will contain only the edge
+image over black.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shimmer Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Modulates the ray source image with this amount of
+  noise texture to give the rays a shimmering look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shimmer Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Translation of the shimmer texture.  This has no
+  effect unless Shimmer Amp is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shimmer Speed:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Translation speed of the shimmer texture.  If
+  non-zero, the shimmering is automatically animated to shift at this
+  rate.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shimmer Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   40,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The frequency of the shimmer texture.  Increase for
+  a finer grained shimmer effect, decrease for larger, softer shimmer.
+  This has no effect unless Shimmer Amp is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shimmer Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator for
+  the shimmer texture.  The actual seed value is not significant, but
+  different seeds give different results and the same value should
+  give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the ray beams.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the ray beams.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Thickness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.03,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The thickness of the edges which generate the rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the edges which generate the rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show:
+   </b>
+   <i>
+    Popup menu,  Default: RESULT
+   </i>
+   .
+   <br/>
+   Selects between output options.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       RESULT:
+      </i>
+     </b>
+     outputs the rays over the Background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        EDGES:
+       </i>
+      </b>
+      outputs only the edge image.  This can useful during the
+  adjustment of the edge or shimmer parameters.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         RAYS:
+        </i>
+       </b>
+       outputs only the image of rays on a black background.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Enable Dark Rays:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Allow rays to darken the source as well as
+  brighten it. If enabled, a dark Rays Color will cause rays to darken
+  the source. A bright Rays Color will brighten the source as usual.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Reverse Rays:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Extend rays inward as well as outward. The length of
+  the reversed rays is controlled by Rays Length as well as this parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Res:
+   </b>
+   <i>
+    Popup menu,  Default: FULL
+   </i>
+   .
+   <br/>
+   Selects the resolution factor for the rays.  Higher
+  resolutions give sharper rays, lower resolutions give smoother rays
+  and faster processing.  This 'Res' factor only affects the rays: the
+  background is still combined with the rays at full resolution.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       FULL:
+      </i>
+     </b>
+     Full resolution is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        1/2:
+       </i>
+      </b>
+      The rays are calculated at half resolution.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         1/4:
+        </i>
+       </b>
+       The rays are calculated at quarter resolution.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Atmosphere gives the effect of rays shining through
+  a dusty atmosphere and picking up light or getting shadowed.
+  This parameter adjusts the amount, or amplitude, of the atmospheric
+  effect.  Zero gives smooth rays, higher values give more dusty look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 to 20.
+   <br/>
+   Controls the spatial frequency of the atmospheric
+  noise.  Turn this up higher to get finer details, turn down for
+  broader overall variation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Detail:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the amount of fine detail in the
+  atmosphere simulation.  Decrease to get smoother atmosphere,
+  increase for a more crunchy or grainy look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The cloudy noise in the atmosphere evolves over
+  time like real dust clouds; this parameter controls how fast the
+  cloud pattern changes over time.  Set to zero for a static pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Length Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative length of the red channel of the rays.
+  Adjust this, along with Length Green and Length Blue, to create
+  color fringing effects.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Length Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative length of the green channel of the rays.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Length Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative length of the blue channel of the rays.
+  </dd>
+ </dl>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../edgeraysmsk">
+       EdgeRaysMsk
+      </a>
+      <br/>
+      <a href="../edgerayscmp">
+       EdgeRaysCmp
+      </a>
+      <br/>
+      <a href="../edgeraysmskcmp">
+       EdgeRaysMskCmp
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../rays">
+       Rays
+      </a>
+      <br/>
+      <a href="../streaks">
+       Streaks
+      </a>
+      <br/>
+      <a href="../blurmotion">
+       BlurMotion
+      </a>
+      <br/>
+      <a href="../warpchroma">
+       WarpChroma
+      </a>
+      <br/>
+      <a href="../edgedetect">
+       EdgeDetect
+      </a>
+      <br/>
+      <a href="../glow">
+       Glow
+      </a>
+      <br/>
+      <a href="../dissolveedgerays">
+       DissolveEdgeRays
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

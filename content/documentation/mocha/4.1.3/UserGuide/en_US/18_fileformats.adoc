@@ -1,0 +1,65 @@
+
+== File Formats
+
+
+=== Supported in Version 4
+
+Mocha supports most standard movie clip and image sequence formats.  In order to use clips (i.e. not image sequences) you must have QuickTime installed. Level of QuickTime support can vary depending on the operating system.
+
+
+==== Movie clip formats
+
+* AVI files (.avi)
+* DV Stream files (.dv)
+* MP4 files (.mp4)
+* MPG files (.mpg)
+* QuickTime Movie files (.mov and .qt)
+* RED files (.r3d)
+
+
+==== Image formats
+
+* OpenEXR files (.exr)
+* OpenEXR 2.0 files (.exr)
+* Cineon files (.cin)
+* DPX files (.dpx)
+* JPEG files (.jpg and .jpeg)
+* PNG files (.png)
+* SGI files (.bw, .iris, .rgb, .rgba and .sgi)
+* TGA files (.tga)
+* TIFF files (.tif and .TIFF)
+
+
+=== Not Directly Supported in Version 4
+
+These formats are either not supported directly by mocha or require additional plugins for QuickTime or your system.
+
+
+==== Movie clip formats
+
+* AVCHD files (.mts and .m2t)
+* Windows Media files (.wmv)
+* Cineform files (without supporting codec)
+
+
+==== Image formats
+
+* RAW image files (.RAW)
+
+
+=== What to Do if Mocha Does Not Support Your Footage
+
+In the rare event that you are working in a format that mocha doesn't support, we recommend converting the footage to an image sequence.
+
+If you are just tracking, you can use any compressed format such as a JPG sequence and then use your original footage when you apply the data.  If you are going to be doing rendering, such as using Mocha Pro's remove or insert modules, then we recommend converting to a DPX or TIFF sequence.
+
+Make sure of the following when converting to an image sequence:
+
+. The frame rate, aspect ratio and dimensions are the same as the original footage. 
+. If you are creating proxy footage, make sure the aspect ratio and frame rate are the same. 
+. If you are using a particular bit depth, make sure you convert to the same depth if you are using the footage for rendering inside mocha
+. If using compressed footage, don't set the compression too low, as this will create artifacts that may hinder tracking and roto.
+. Make sure mocha supports the sequence you are converting to!
+
+If you would prefer to convert to a movie clip format then we recommend a standard format that QuickTime would understand, such as Animation. If you are working on OSX, ProRes can also be a good alternative.
+

@@ -1,0 +1,127 @@
+<!--
+    For use with Vue app. Required Methods:
+        -handleNewPmSubmit
+        -handleNewPmModalClose
+        -launchPlaid
+    Required Data:
+        -plaid: object
+            ~plaidToken: string
+            ~accounts: object[]
+            ~selectedAccountId: string
+            ~handler : object
+            ~institution: object
+        ~lockNewPmModal: bool
+-->
+
+<div class="modal fade" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" id="new-pm-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Payment Method</h5>
+                <button type="button" class="close" data-dismiss ="modal" data-target="#new-pm-modal"
+                    aria-label="Close" @click="handleNewPmModalClose" :disabled="lockNewPmModal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item"><a href="#new-payment-card" class="nav-link active" data-toggle="tab">Credit Card</a></li>
+                    <li class="nav-item"><a href="#new-payment-ach" class="nav-link" data-toggle="tab">Bank Account (ACH)</a></li>
+                </ul>
+                <div class="tab-content mt-2">
+                    <div id="new-payment-card" class="tab-pane active">
+                        <form name="new-card-form" v-on:submit.prevent="handleNewPmSubmit">
+                
+                            <div class="form-group">
+                                <h6>Full Name (as written on card)</h6>
+                                <input class="form-control col-5 mx-2" name="holderName" />
+                            </div>
+                            <div class="form-group">
+                                <h6>Card Info</h6>
+                                <!--Container for Stripe Card Element-->
+                                <div class="form-control" id="card-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <h6>Billing Address</h6>
+                                <input class="form-control mb-1" name="address" placeholder="Address" />
+                                <input class="form-control mb-1" name="address2" placeholder="Address 2 (Optional)" />
+                                <input class="form-control mb-1" name="city" placeholder="City" />
+                                <input class="form-control mb-1" name="zip" placeholder="Zip/Postal Code" />
+                                <select id="country" name="country" class="form-control mb-1" required >
+                                    <option value="">-- Select a Country --</option>
+                                </select>
+                                <select id="state" name="state" class="form-control" hidden>
+
+                                </select>
+                            </div>
+                            <div class="modal-footer mt-1">
+                                <button type="submit" class="btn btn-primary" :disabled="lockNewPmModal">Save Card</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    data-target="#new-pm-modal" @click="handleNewPmModalClose" :disabled="lockNewPmModal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="new-payment-ach" class="tab-pane">
+                        <!-- For New ACH Bank Account -->
+                        <div name="ach">
+                        <form name="new-ach-form" v-on:submit.prevent="handleNewPmSubmit">
+                            <div class="btn d-block w-75 mx-auto" v-show="!plaid.plaidToken" @click="launchPlaid">Connect to Your Bank</div>
+                                <div name="account-select" v-show="plaid.plaidToken">
+                                    <h4>Connected: ${ plaid.institution.name }</h4>
+                                    <h5>Select an Account</h5>
+                                    <div class="radio" v-for="account in plaid.accounts">
+                                        <label><input type="radio" name="account" v-model="plaid.selectedAccountId" :value="account.id">
+                                            <span class="ml-1">${ account.name } (${ account.mask })</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            <div class="modal-footer mt-2 py-2">
+                                <button type="submit" class="btn btn-primary" :disabled="lockNewPmModal || !plaid.selectedAccountId">Save Bank Info</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    data-target="#new-pm-modal" @click="handleNewPmModalClose" :disabled="lockNewPmModal">Close</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+      $(document).ready(function() {
+          var $countryField = $('#country');
+          $.each(countryStateJSON, function(index,value) {
+              $countryField.append('<option value=' + value.code + '>' + value.name + '</option>');
+          });
+      });
+
+      $('#country').change(function() {
+          var matchedCountry;
+          for (var i = 0; i < countryStateJSON.length; i++){
+              if (countryStateJSON[i].code === this.value){
+                  matchedCountry = countryStateJSON[i];
+                  break;
+              }
+          }
+          var $stateField = $('#state');
+          if (matchedCountry.states != undefined && matchedCountry.states.length > 0){
+              $stateField.empty();
+              $.each(matchedCountry.states, function(index, value){
+                  $stateField.append('<option value=' + value.code + '>' + value.name + '</option>');
+              });
+              $stateField.attr('hidden', false);
+              $stateField.attr('required', true);
+          }
+          else{
+              $stateField.attr('hidden', true);
+              $stateField.attr('required', false);
+              $stateField.empty('');
+          }
+      });
+
+    })
+    var countryStateJSON = {{ $.Site.Data.CountriesAndStates }};
+</script>

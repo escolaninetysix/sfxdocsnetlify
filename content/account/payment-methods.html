@@ -1,0 +1,862 @@
+{
+"title": "Manage Saved Payment Methods"
+}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+{{% spinner/md/style %}}
+
+<div id="app">
+    <div style="background-color: white; border: 2px solid #26A9E0; padding: 1rem">
+        <div class="d-flex justify-content-center" v-if="loading">
+            <div>{{% spinner/md/element %}}</div>
+        </div>
+        <div v-if="!loading">
+            <div class="row" v-show="redirect.url">
+                <div class="col">
+                    <a :href="redirect.url">${ redirect.title }</a>
+                </div>
+            </div>
+            <h5>Saved Credit Cards</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Last Four Digits</th>
+                        <th>Cardholder</th>
+                        <th>Provider</th>
+                        <th>Expires</th>
+                        <th>Status</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template v-for="card in stripe.customer.cards" v-if="card.type == 'card'" key="c.lastFour">
+                        <tr>
+                            <td>**** **** **** ${ card.lastFour }</td>
+                            <td>${ card.holderName }</td>
+                            <td>${card.brand}</td>
+                            <td>${ card.endDate }</td>
+                            <td v-bind:class="{ 'text-danger' : card.status == 'Invalid'}">${ card.status }</td>
+                            <td v-if="!card.loading"><a href="#" data-toggle="modal" data-target="#update-card-modal"
+                                    @click="toUpdate = card">Update</a> | <a href="#"
+                                    @click="openDeleteCardModal(card)">Delete</a></td>
+                            <td v-else>Please Wait...</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <h5>Saved Bank Accounts</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Last Four Digits</th>
+                        <th>Institution</th>
+                        <th>Status</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template v-for="card in stripe.customer.cards" v-if="card.type == 'ach'" key="c.lastFour">
+                        <tr>
+                            <td>${ card.lastFour }</td>
+                            <td>${ card.bankName }</td>
+                            <td>${ card.status }</td>
+                            <td><a href="#" @click="openDeleteCardModal(card)">Delete</a></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <div class="d-flex flex-row-reverse">
+                <button class="btn btn-primary float-right" @click="openNewPmModal">Add New
+                    Card</button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- New Card Modal -->
+    <div class="modal fade" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" id="new-pm-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="min-height: 500px;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Payment Method</h5>
+                    <button type="button" class="close" data-dismiss="modal" data-target="#new-pm-modal"
+                        aria-label="Close" @click="handleNewPmModalClose" :disabled="lockNewPmModal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item"><a href="#new-payment-card" class="nav-link active"
+                                data-toggle="tab">Credit
+                                Card</a></li>
+                        <li class="nav-item"><a href="#new-payment-ach" class="nav-link" data-toggle="tab">Bank Account
+                                (ACH)</a></li>
+                    </ul>
+                    <div class="tab-content mt-2">
+                        <div id="new-payment-card" class="tab-pane active">
+                            <form name="new-card-form" ref="newCardForm" v-on:submit.prevent="handleNewPmSubmit">
+                                <div class="form-group">
+                                    <h6>Full Name (as written on card)</h6>
+                                    <input class="form-control col-5 mx-2" name="holderName" />
+                                </div>
+                                <div class="form-group">
+                                    <h6>Card Info</h6>
+                                    <!--Container for Stripe Card Element-->
+                                    <div class="form-control" id="new-pm-card-container"></div>
+                                </div>
+                                <div class="form-group">
+                                    <h6>Billing Address</h6>
+                                    <input class="form-control mb-1" name="address" placeholder="Address" />
+                                    <input class="form-control mb-1" name="address2"
+                                        placeholder="Address 2 (Optional)" />
+                                    <input class="form-control mb-1" name="city" placeholder="City" />
+                                    <input class="form-control mb-1" name="zip" placeholder="Zip/Postal Code" />
+                                    <select class="form-control mb-1" id="billing-country" name="country"
+                                        @change="renderStates($event, $event.target.selectedIndex);" required>
+                                        <option value="">Country</option>
+                                        <option v-for="c in countries" :value="c.code">${ c.name }</option>
+                                    </select>
+                                    <select class="form-control mb-1" id="billing-state" name="state" v-if="states"
+                                        required>
+                                        <option value="">State</option>
+                                        <option v-for="s in states" :value="s.code">${ s.name }</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer mt-1">
+                                    <button type="submit" class="btn btn-primary" :disabled="lockNewPmModal">Save
+                                        Card</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        data-target="#new-pm-modal" @click="handleNewPmModalClose"
+                                        :disabled="lockNewPmModal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="new-payment-ach" class="tab-pane">
+                            <!-- For New ACH Bank Account -->
+                            <div name="ach">
+                                <form name="new-ach-form" v-on:submit.prevent="handleNewPmSubmit">
+                                    <div class="btn d-block w-75 mx-auto" v-show="!plaid.plaidToken"
+                                        @click="launchPlaid">
+                                        Connect to Your Bank</div>
+                                    <div name="account-select" v-show="plaid.plaidToken">
+                                        <h4>Connected: ${ plaid.institution.name }</h4>
+                                        <h5>Select an Account</h5>
+                                        <div class="radio" v-for="account in plaid.accounts">
+                                            <label><input type="radio" name="account" v-model="plaid.selectedAccountId"
+                                                    :value="account.id">
+                                                <span class="ml-1">${ account.name } (${ account.mask })</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer mt-2 py-2">
+                                        <button type="submit" class="btn btn-primary"
+                                            :disabled="lockNewPmModal || !plaid.selectedAccountId">Save Bank
+                                            Info</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                            data-target="#new-pm-modal" @click="handleNewPmModalClose"
+                                            :disabled="lockNewPmModal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Card Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="update-card-modal" data-keyboard="false"
+        data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form ref="updateCardForm" v-on:submit.prevent="updateCard(toUpdate)">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Card (Ending in ${ toUpdate.lastFour })</h5>
+                        <button type="button" class="close" data-dismiss="modal" data-target="#update-card-modal"
+                            aria-label="Close" :disabled="lockUpdatePmModal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <h6>Expiration Date</h6>
+                            <div class="row">
+                                <div class="col-2">
+                                    <label class="">Month</label>
+                                    <input class="form-control" name="expMonth" :value="toUpdate.expMonth" maxlength="2"
+                                        size="2" @input="validateMonth" />
+                                </div>
+                                <div class="col-3">
+                                    <label class="">Year</label>
+                                    <input class="form-control" name="expYear" :value="toUpdate.expYear" maxlength="4"
+                                        size="4" @input="validateYear" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6>Billing Address</h6>
+                            <input class="form-control mb-1" name="address" placeholder="Address" />
+                            <input class="form-control mb-1" name="address2" placeholder="Address 2 (Optional)" />
+                            <input class="form-control mb-1" name="city" placeholder="City" />
+                            <input class="form-control mb-1" name="zip" placeholder="Zip/Postal Code" />
+                            <select class="form-control mb-1" id="billing-country" name="country"
+                                @change="renderStates($event, $event.target.selectedIndex);" required>
+                                <option value="">Country</option>
+                                <option v-for="c in countries" :value="c.code">${ c.name }</option>
+                            </select>
+                            <select class="form-control mb-1" id="billing-state" name="state" v-if="states" required>
+                                <option value="">State</option>
+                                <option v-for="s in states" :value="s.code">${ s.name }</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" :disabled="lockUpdatePmModal">Update Card</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            data-target="#update-card-modal" :disabled="lockUpdatePmModal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Card Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="delete-pm-modal" data-keyboard="false"
+        data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Payment Method (Ending in ${ deleteModal.toDelete.lastFour })</h5>
+                    <button type="button" class="close" @click="resetDeleteModal" aria-label="Close"
+                        :disabled="deleteModal.submitting">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div name="existingSchedule" v-show="deleteModal.page == 'existingSchedule'" style="min-height: 250px;">
+                    <div class="p-3">
+                        <h2>Subscription Settings</h2>
+                        <p>This payment method is currently in use by an ongoing subscription. You will need to select a
+                            new payment method to continue.</p>
+                        <div class="d-flex justify-content-center"><button @click="openDeleteCardPmSelect"
+                                class="btn">Select Payment Method</button></div>
+                    </div>
+                    <div class="modal-footer py-2">
+                        <a style="font-size: .8rem;" href="" @click.prevent="handleDeleteCardCancelSub">No thanks.
+                            Cancel my subscription.</a>
+                    </div>
+                </div>
+                <div name="newPm" v-show="deleteModal.page == 'newPm'">
+                    <div id="payment-form-container" class="p-3">
+                        <div class="payment-form-content">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item" style="font-size: .9rem;"><a href="#delete-new-payment-card" class="nav-link active"
+                                        data-toggle="tab">Credit
+                                        Card</a></li>
+                                <li class="nav-item" style="font-size: .9rem;"><a href="#delete-new-payment-ach" class="nav-link"
+                                        data-toggle="tab">Bank
+                                        Account
+                                        (ACH)</a></li>
+                                <li class="nav-item" style="font-size: .9rem;"><a href="#delete-saved-payment" class="nav-link" data-toggle="tab"
+                                        v-if="stripe.customer.cards.length > 0">Saved Payment Method</a></li>
+                            </ul>
+                            <div class="tab-content mt-2">
+                                <div id="delete-new-payment-card" class="tab-pane active">
+                                    <form name="delete-modal-new-card-form" v-on:submit.prevent="submitDeletePmSelect">
+                                        <div class="form-group">
+                                            <h6>Full Name (as written on card)</h6>
+                                            <input class="form-control" name="holderName" />
+                                        </div>
+                                        <div class="form-group">
+                                            <h6>Card Info</h6>
+                                            <!--Container for Stripe Card Element-->
+                                            <div class="form-control" id="delete-card-container"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h6>Billing Address</h6>
+                                            <input class="form-control mb-1" name="address" placeholder="Address" />
+                                            <input class="form-control mb-1" name="address2"
+                                                placeholder="Address 2 (Optional)" />
+                                            <input class="form-control mb-1" name="city" placeholder="City" />
+                                            <input class="form-control mb-1" name="zip" placeholder="Zip/Postal Code" />
+                                            {{% country-state-dropdown %}}
+
+                                            </select>
+                                        </div>
+                                        <div class="mt-1">
+                                            <button type="submit" class="btn btn-primary" :disabled="deleteModal.submitting">${ deleteModal.submitting ? 'Please Wait' : 'Next'}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="delete-new-payment-ach" class="tab-pane">
+                                    <!-- For New ACH Bank Account -->
+                                    <div name="ach">
+                                        <form name="delete-modal-new-ach-form"
+                                            v-on:submit.prevent="submitDeletePmSelect">
+                                            <div class="btn d-block w-75 mx-auto" v-show="!plaid.plaidToken"
+                                                @click="launchPlaid">
+                                                Connect to Your Bank</div>
+                                            <div name="account-select" v-show="plaid.plaidToken">
+                                                <h4>Connected: ${ plaid.institution.name }</h4>
+                                                <h5>Select an Account</h5>
+                                                <div class="radio" v-for="account in plaid.accounts">
+                                                    <label><input type="radio" name="account"
+                                                            v-model="plaid.selectedAccountId" :value="account.id">
+                                                        <span class="ml-1">${ account.name } (${ account.mask })</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 py-2">
+                                                <button type="submit" class="btn btn-primary"
+                                                    :disabled="deleteModal.submitting && !plaid.selectedAccountId">${
+                                                    deleteModal.submitting ? 'Please Wait' : 'Next'}</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div id="delete-saved-payment" class="tab-pane">
+                                    <div id="payment-info-section" class="p-3 slide-hide">
+                                        <form name="delete-modal-existing-pm-form"
+                                            @submit.prevent='submitDeletePmSelect'>
+                                            <div class="payment-selection-container" class="my-auto">
+                                                <!-- For Existing Saved Payment Methods -->
+                                                <div class="form-group" v-show="stripe.customer.cards.length > 0">
+                                                    <h3>Select Payment Method</h3>
+                                                    <div class="radio">
+                                                        <template v-for="card in stripe.customer.cards" v-if="card.pmId != deleteModal.toDelete.pmId">
+                                                            <label v-if="card.type == 'card'"><input type="radio"
+                                                                    name="paymentmethod" v-model="deleteModal.savedPM"
+                                                                    :value="card">
+                                                                <span class="ml-1 font-weight-normal">**** **** **** ${
+                                                                    card.lastFour }
+                                                                    - ${
+                                                                    card.brand } - Expires ${ card.endDate }</span>
+                                                            </label>
+                                                            <label v-if="card.type == 'ach'"><input type="radio"
+                                                                    name="paymentmethod" v-model="deleteModal.savedPM"
+                                                                    :value="card">
+                                                                <span class="ml-1 font-weight-normal">${ card.bankName }
+                                                                    -
+                                                                    Account
+                                                                    Ending in
+                                                                    ${ card.lastFour }</span>
+                                                            </label>
+                                                        </template>
+                                                    </div>
+                                                </div>
+
+                                                <div v-if="!stripe.customer.hasSavedCards">
+                                                    <h5>You have no saved payment methods.</h5>
+                                                </div>
+                                                <div style="display:flex; justify-content:right; column-gap:1rem;">
+                                                    <div><button type="submit" class="btn btn-primary"
+                                                            :disabled="deleteModal.submitting">${ deleteModal.submitting
+                                                            ?
+                                                            'Please Wait' : 'Next'}</button>
+                                                    </div>
+                                                </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-show="deleteModal.page == 'confirm'" class="p-3">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <p>
+                        <span>Delete ${deleteModal.toDelete.brand} ending in
+                            ${deleteModal.toDelete.lastFour}?&nbsp;</span>
+                        <span v-if="deleteModal.cancelSubscription">Any subscriptions using this card will be
+                            cancelled.</span>
+                        <span v-else-if="deleteModal.newPmLastFour">Subscriptions using this card will now use
+                            ${deleteModal.newPmType} ending in ${deleteModal.newPmLastFour}</span>
+                        <span v-else>This action cannot be undone.</span>
+                    </p>
+                    <div>
+                        <div v-if="deleteModal.hasSubscriptions" class="d-inline"><button class="btn"
+                                @click="deleteModalGoBack">Back</button></div>
+                        <div v-else class="d-inline"><button class="btn" @click="resetDeleteModal">Cancel</button></div>
+                        <div class="d-inline">
+                            <button class="btn" @click="handleDeleteModalSubmit"
+                                :disabled="deleteModal.submitting">${deleteModal.submitting ? 'Please Wait' : 'Delete Payment Method'}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+{{% country-state-json %}}
+<script>
+    var vm = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            loading: true,
+            login: Cookies.getJSON('bfx-login'),
+            lockUpdatePmModal: false,
+            lockNewPmModal: false,
+            stripe: {
+                customer: { cards: [] },
+                stripeJs: undefined,
+                cardElement: undefined,
+                gatewayKey: undefined,
+                gatewayId: undefined,
+            },
+            plaid: {
+                plaidToken: undefined,
+                publicKey: 'fa31534ec9f4ae2a91ed0cef838fea',
+                accounts: [],
+                selectedAccountId: '',
+                handler: {},
+                institution: {}
+            },
+            deleteModal: {
+                toDelete: {},
+                page: 'confirm',
+                previousPage: '',
+                cancelSubscription: false,
+                savedPM: null,
+                newPmTokenId: null,
+                newPmLastFour: null,
+                newPmType: null,
+                hasSubscriptions: null,
+                submitting: false
+            },
+            countries: countryJson,
+            states: undefined,
+            redirect: { title: undefined, url: undefined },
+            toUpdate: {}
+        },
+        created: function () {
+            var params = new URLSearchParams(window.location.search);
+            switch (params.get('ref')) {
+                case 'account':
+                    this.redirect.title = 'Return to Account Management'
+                    this.redirect.url = '/account/manage';
+                    break;
+                case 'checkout':
+                    this.redirect.title = 'Return to Checkout'
+                    this.redirect.url = '/store/checkout';
+                    break;
+            }
+        },
+        mounted: function () {
+            this.initializePlaid();
+            this.getAccountInfo();
+        },
+        methods: {
+            getAccountInfo: function () {
+                var self = this;
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://backend.borisfx.com/stripe_customer',
+                    beforeSend: function (request) {
+                        request.setRequestHeader('Authorization', 'Basic ' + btoa(self.login.email + ':' + self.login.token));
+                    },
+                    success: function (res) {
+                        var data = JSON.parse(res);
+                        var stripe = self.stripe;
+                        stripe.customer = data;
+                        stripe.gatewayKey = data.gatewayKey;
+                        stripe.gatewayId = data.gatewayId;
+                        self.loading = false;
+                    },
+                    error: function (xhr) {
+                        alert('There was an issue displaying your information. Please reload this page, or contact us at customerservice@borisfx.com for assistance');
+                        window.location.href = this.redirect.url != null ? this.redirect.url : "/account/manage";
+                    },
+                });
+            },
+            mountStripeElement: function (containerId) {
+                //First, remove existing stripeJS card elements. 
+                if (this.stripe.cardElement != null) {
+                    this.stripe.cardElement.unmount();
+                    this.stripe.cardElement.destroy();
+                    this.stripe.cardElement = null;
+                }
+                var stripe = this.stripe;
+                stripe.stripeJs = Stripe(this.stripe.gatewayKey);
+                var elements = stripe.stripeJs.elements();
+                stripe.cardElement = elements.create('card');
+                stripe.cardElement.mount('#' + containerId);
+            },
+            initializePlaid: function () {
+                var self = this,
+                    plaid = self.plaid;
+                plaid.handler = Plaid.create({
+                    env: 'production',
+                    clientName: 'Boris FX',
+                    key: plaid.publicKey,
+                    product: ['auth'],
+                    onLoad: function () { },
+                    onSuccess: function (token, metadata) {
+                        self.plaid.accounts = metadata.accounts;
+                        self.plaid.institution = metadata.institution;
+                        self.plaid.plaidToken = token;
+                    }
+                })
+            },
+            launchPlaid: function () {
+                this.plaid.handler.open();
+            },
+            getCardToken: function (formName) {
+                var self = this;
+                var form = document.getElementsByName(formName)[0];
+                var tokenData = {};
+                tokenData.address_line1 = form.address.value;
+                tokenData.address_line2 = form.address2.value;
+                tokenData.address_city = form.city.value;
+                tokenData.address_zip = form.zip.value;
+                tokenData.address_country = form.country.value;
+                if (form.state != null) tokenData.address_state = form.state.value;
+                tokenData.name = form.holderName.value;
+                tokenData.type = 'card';
+                return new Promise(function (resolve, reject) {
+                    self.stripe.stripeJs.createToken(self.stripe.cardElement, tokenData).then(function (result) {
+                        if (result.error) {
+                            alert('Could not process your order. Please verify your info.\n\nerror: ' + result.error.message)
+                            reject('rejected');
+                        }
+                        resolve(result.token);
+                    })
+                });
+            },
+            getBankToken: function () {
+                var self = this;
+                var payload = {
+                    publicToken: self.plaid.plaidToken,
+                    accountId: self.plaid.selectedAccountId
+                }
+                return new Promise(function (resolve, reject) {
+                    $.ajax('https://backend.borisfx.com/payment/bank_token', {
+                        type: 'POST',
+                        data: JSON.stringify(payload),
+                        contentType: 'application/json',
+                        success: function (res, status) {
+                            resolve(res);
+                        },
+                        error: function (err) {
+                            alert('Error collecting payment information. Please try again or contact us at customerservice@borisfx.com for assistance.');
+                            reject('rejected');
+                        }
+                    });
+                });
+            },
+            getToken: function (paymentType, formName) {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    if (paymentType == 'card') token = self.getCardToken(formName).then(function (result) {
+                        if (result.error) reject('rejected');
+                        resolve(result);
+                    });
+                    else if (paymentType == 'ach') token = self.getBankToken(formName).then(function (result) {
+                        if (result.error) reject('rejected');
+                        resolve(result);
+                    });
+                });
+            },
+            handleNewPmSubmit: function (event) {
+                this.lockNewPmModal = true;
+                var self = this;
+                var payload = {};
+
+                var formName = event.currentTarget.name;
+                var paymentType = '';
+                if (formName == 'new-card-form') {
+                    paymentType = 'card';
+                    $('form[name = "new-card-form"]').serializeArray().forEach(function (item) {
+                        payload[item.name] = item.value;
+                    });
+                }
+                else if (formName == 'new-ach-form') paymentType = 'ach';
+
+                self.getToken(paymentType, formName)
+                    .then(function (result) {
+                        if (result.error) {
+                            this.disableNewPmModal = false;
+                            return;
+                        }
+                        payload.token = paymentType == 'card' ? result.id : result;
+                        payload.customerId = self.stripe.customer.customerId;
+                        payload.gatewayId = self.stripe.gatewayId;
+                        return axios.post('https://backend.borisfx.com/payment_method/add', payload, { auth: { username: self.login.email, password: self.login.token } })
+                    })
+                    .then(function (res) {
+                        self.lockNewPmModal = false;
+                        self.getAccountInfo();
+                        self.handleNewPmModalClose();
+                        $('#new-pm-modal').modal('hide');
+                    })
+                    .catch(function (err) {
+                        if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else {
+                            alert('Failed to create new payment method. Please review data and try again.')
+                            self.lockNewPmModal = false;
+                        }
+                    });
+            },
+
+            addCard: function (tokenId, formData) {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    var payload = {};
+                    payload.token = tokenId;
+                    payload.customerId = self.stripe.customer.customerId;
+                    payload.gatewayId = self.stripe.gatewayId;
+                    axios.post('https://backend.borisfx.com/payment_method/add', payload,
+                        { auth: { username: self.login.email, password: self.login.token } })
+                        .then(resolve)
+                        .catch(reject)
+                })
+            },
+
+            //Delete Modal Functions
+            openDeleteCardModal: function (paymentMethod) {
+                var self = this;
+                //paymentMethod.loading = true;
+                axios.get('https://backend.borisfx.com/payment_method/schedules?id=' + paymentMethod.pmId, { auth: { username: self.login.email, password: self.login.token } })
+                .then(function (res) {
+                    self.deleteModal.toDelete = paymentMethod;
+                    self.deleteModal.hasSubscriptions = res.data.length > 0;
+                    self.deleteModal.page = (self.deleteModal.hasSubscriptions ? 'existingSchedule' : 'confirm');
+                    self.mountStripeElement('delete-card-container');
+                    $('#delete-pm-modal').modal('show');
+                })
+                .catch(function (err) {
+                    console.error(err);
+                    alert('There was an issue deleting this payment method. Please contact us at customerservice@borisfx.com for assistance.');
+                })
+                .finally(function(){
+                    paymentMethod.loading = false;
+                })
+            },
+            resetDeleteModal: function () {
+                $('#delete-pm-modal').modal('hide');
+                this.deleteModal.page = 'existingSubscription';
+                this.deleteModal.previousPage = '';
+                this.deleteModal.newPmType = null;
+                this.deleteModal.newPmLastFour = null;
+                this.deleteModal.newPmTokenId = null;
+                this.deleteModal.savedPM = null;
+                this.deleteModal.cancelSubscription = false;
+            },
+            setDeleteModalPage: function (pageName) {
+                this.deleteModal.previousPage = this.deleteModal.page;
+                this.deleteModal.page = pageName;
+            },
+            deleteModalGoBack: function () {
+                this.deleteModal.page = this.deleteModal.previousPage;
+            },
+            openDeleteCardPmSelect: function () {
+                this.setDeleteModalPage('newPm');
+            },
+            submitDeletePmSelect: function () {
+                var self = this;
+                self.deleteModal.submitting = true;
+                var formName = event.currentTarget.name
+                var paymentType;
+                switch (formName) {
+                    case 'delete-modal-new-card-form': paymentType = 'card'; break;
+                    case 'delete-modal-new-ach-form': paymentType = 'ach'; break;
+                    case 'delete-modal-existing-pm-form': paymentType = self.deleteModal.savedPM.type; break;
+                }
+                if (formName == 'delete-modal-existing-pm-form') {
+                    var pm = self.deleteModal.savedPM;
+                    self.deleteModal.newPmType = paymentType == 'card' ? pm.brand : 'Bank Account';
+                    self.deleteModal.newPmLastFour = pm.lastFour;
+                    self.deleteModal.newPmId = pm.pmId;
+                    self.deleteModal.page = 'confirm';
+                    self.deleteModal.submitting = false;
+                }
+                else {
+                    this.getToken(paymentType, formName).then(function (token) {
+                        if (paymentType == 'card') self.deleteModal.newPmLastFour = token.card.last4;
+                        else if (paymentType == 'ach') {
+                            var plaidAccount = self.fetchPlaidAccount(self.plaid.selectedAccountId);
+                            if (plaidAccount != null) self.deleteModal.newPmLastFour = plaidAccount.mask;
+                        }
+
+                        self.deleteModal.newPmType = paymentType == 'card' ? token.card.brand : 'Bank Account';
+                        self.deleteModal.newPmTokenId = paymentType == 'card' ? token.id : token;
+                        self.setDeleteModalPage('confirm');
+                        self.deleteModal.submitting = false;
+                    })
+                }
+            },
+            handleDeleteCardCancelSub() {
+                this.deleteModal.cancelSubscription = true;
+                this.setDeleteModalPage('confirm');
+            },
+            handleDeleteModalSubmit() {
+                var self = this;
+                self.deleteModal.submitting = true;
+                var pmId = this.deleteModal.toDelete.pmId;
+                if (self.deleteModal.newPmTokenId != null) {
+                    self.addCard(self.deleteModal.newPmTokenId)
+                        .then(function (res) {
+                            return self.removeCard(pmId, res.data.id, self.deleteModal.cancelSubscription);
+                        })
+                        .then(function (res) {
+                            setTimeout(function () { self.getAccountInfo(); self.resetDeleteModal(); self.deleteModal.submitting = false;}, 3000);
+                        })
+                        .catch(function (err) {
+                            if (err.response != null && err.response.status == 403) {
+                                Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                Cookies.set('redirect_url', window.location.href);
+                                window.location.href = '/account/login?session_expired=true';
+                            }
+                            else {
+                                console.error(err);
+                                alert('There was an issue saving your new Payment Method. Please contact us at customerservice@borisfx.com for assistance.');
+                            }
+                        })
+                }
+                else {
+                    self.removeCard(self.deleteModal.toDelete.pmId, self.deleteModal.newPmId, self.deleteModal.cancelSubscription)
+                        .then(function () {
+                            setTimeout(function () { self.getAccountInfo(); self.resetDeleteModal(); self.deleteModal.submitting = false;}, 3000);
+                        })
+                        .catch(function (err) {
+                            if (err.response != null && err.response.status == 403) {
+                                Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                Cookies.set('redirect_url', window.location.href);
+                                window.location.href = '/account/login?session_expired=true';
+                            }
+                            else {
+                                console.error(err);
+                                alert('There was an issue saving your new Payment Method. Please contact us at customerservice@borisfx.com for assistance.');
+                            }
+                        })
+                }
+            },
+            removeCard: function (cardId, newCardId, cancel) {
+                var self = this;
+                var uri = 'https://backend.borisfx.com/payment_method/remove?id=' + cardId;
+                if (newCardId != null) uri += '&newid=' + newCardId;
+                if (cancel) uri += '&cancel=true';
+                return new Promise(function (resolve, reject) {
+                    axios.get(uri, { auth: { username: self.login.email, password: self.login.token } })
+                        .then(function (res) {
+                            resolve(res);
+                        })
+                        .catch(function (err) {
+                            reject(err);
+                        })
+                })
+            },
+            validateMonth: function (event) {
+                var val = event.target.value;
+                val = val.replace(/[^0-9]/g, '');
+                if (val.length == 1 && parseInt(val) > 1) {
+                    val = '0' + val;
+                }
+                else if (parseInt(val) > 12) {
+                    val = '12'
+                }
+                event.target.value = val;
+            },
+            validateYear: function (event) {
+                var val = event.target.value;
+                val = val.replace(/[^0-9]/g, '');
+                event.target.value = val;
+            },
+            validateExpiry: function (monthString, yearString) {
+                var isValid = true,
+                    today = new Date(),
+                    month = parseInt(monthString),
+                    year = parseInt(yearString),
+                    expDate = new Date(year, month + 1, 1),
+                    error = undefined
+                if (expDate <= today) {
+                    error = 'Card has expired'
+                }
+                else if (expDate.year > 2099) {
+                    error = 'Invalid Expiration Date'
+                }
+                return error;
+            },
+            updateCard: function (card) {
+                this.lockUpdatePmModal = true;
+                var self = this;
+                var form = self.$refs.updateCardForm;
+                var data = self.parseForm(form);
+                data.cardId = card.pmId;
+                var dateError = self.validateExpiry(data.expMonth, data.expYear);
+                if (dateError != null) {
+                    form.setCustomValidity(dateError);
+                    return;
+                }
+                if (data.address2) {
+                    data.address += ' ' + data.address2;
+                    delete data.address2;
+                }
+                axios.post('https://backend.borisfx.com/payment_method/update', data, { auth: { username: self.login.email, password: self.login.token } })
+                    .then(function (res) {
+                        setTimeout(function () {
+                            self.getAccountInfo();
+                            form.reset();
+                            $('#update-card-modal').modal('hide');
+                            this.lockUpdatePmModal = false;
+                        }, 3000);
+                    })
+                    .catch(function (err) {
+                        if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else {
+                            alert('Unable to update card. Please check your provided info and try again.')
+                            this.lockUpdatePmModal = false;
+                        }
+                    })
+            },
+            openNewPmModal: function () {
+                this.mountStripeElement('new-pm-card-container');
+                $('#new-pm-modal').modal('show');
+            },
+            handleNewPmModalClose: function () {
+                var form = this.$refs.newCardForm;
+                form.reset();
+                this.stripe.cardElement.clear();
+            },
+            renderStates: function (event, index) {
+                var i = index - 1;
+                var selectedCountry = this.countries[i];
+                this.state = '';
+                this.states = selectedCountry.states;
+            },
+            parseForm: function (form) {
+                var data = {}
+                for (var i = 0; i < form.elements.length; i++) {
+                    var element = form.elements[i];
+                    if (element.type == 'button') continue;
+                    data[element.name] = element.value
+                }
+                return data;
+            },
+            fetchPlaidAccount: function (accountId) {
+                for (var a of this.plaid.accounts) {
+                    if (a.id == accountId) return a;
+                }
+                return null;
+            }
+        }
+    });
+</script>

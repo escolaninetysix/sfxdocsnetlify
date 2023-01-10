@@ -1,0 +1,313 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: Dissolve",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/Dissolve.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="Dissolve">
+     <h2>
+      S_Dissolve
+     </h2>
+    </a>
+    A basic cross fade between two input clips.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Foreground:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      Ends the transition with this clip.  If this input is
+  not provided, a fully transparent background is used, showing
+  whatever is behind it.  Note that the background can not be
+  warped during the transition unless this input is provided.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/Dissolve.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Transition Dir:
+   </b>
+   <i>
+    Popup menu,  Default: Dissolve Off to Bg
+   </i>
+   .
+   <br/>
+   Selects the direction of the transition.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Dissolve Off to Bg:
+      </i>
+     </b>
+     transitions from the current layer to the Background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Dissolve On from Bg:
+       </i>
+      </b>
+      transitions from the Background to the current layer.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Auto Trans:
+   </b>
+   <i>
+    Popup YES-NO,  Default: No
+   </i>
+   .
+   <br/>
+   If enabled, a transition is performed automatically between
+the first and last frames of the layer.  If this is off, the transition is
+performed manually by animating the Dissolve Percent parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Percent:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Auto Trans must be disabled for this parameter to be
+  used.  It determines the transition ratio between the Foreground and Background
+  inputs, and would normally be animated from 0 to 100 to perform a
+  complete transition.  The curve controlling this parameter can be adjusted
+  for more detailed control over the timing of the dissolve.
+  The Slow In and Slow Out
+  parameters, if positive, also adjust the transition ratio internally
+  for a smoother start and/or end to the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The speed of the dissolve between the From and To clips.
+  When set to 1, the dissolve takes place over the entire duration of
+  the effect. When set higher, the dissolve is
+  shorter, although the glow ramp-up and ramp-down still takes the
+  entire duration.  Setting this to 10 can make the transition
+  snappier and more like a flash-frame cut.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Slow In:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   If positive, causes the transition to start more gradually.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Slow Out:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   If positive, causes the transition to end more gradually.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../dissolveblur">
+       DissolveBlur
+      </a>
+      <br/>
+      <a href="../dissolvebubble">
+       DissolveBubble
+      </a>
+      <br/>
+      <a href="../dissolvediffuse">
+       DissolveDiffuse
+      </a>
+      <br/>
+      <a href="../dissolvefilm">
+       DissolveFilm
+      </a>
+      <br/>
+      <a href="../dissolveglow">
+       DissolveGlow
+      </a>
+      <br/>
+      <a href="../dissolveluma">
+       DissolveLuma
+      </a>
+      <br/>
+      <a href="../dissolvepuddle">
+       DissolvePuddle
+      </a>
+      <br/>
+      <a href="../dissolvespeckle">
+       DissolveSpeckle
+      </a>
+      <br/>
+      <a href="../dissolvestatic">
+       DissolveStatic
+      </a>
+      <br/>
+      <a href="../dissolvevortex">
+       DissolveVortex
+      </a>
+      <br/>
+      <a href="../dissolvewaves">
+       DissolveWaves
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

@@ -1,0 +1,43 @@
+
+== Command Line
+
+Below you will find a list of command line arguments that can be used to load mocha with preset parameters.
+
+Note that loading a project file on the command line will ignore all other parameters.
+
+Standard usage:
+
++mocha [arguments] [file...] +
+
+.Arguments
+
+|===============
+|+--in frame+|Specifies an in-point frame for your footage. The +frame+ value is zero-indexed, so all in points assume a base of 0.  For example, If your frames start at 250 and you want to begin at 261, you would type +mocha --in 12 myFootage.mov+. A 0.5 value will let you set on the second field in interlaced footage, for example: +mocha --in 12.5+ 
+|+--out frame+|Specifies an out-point frame for your footage. The +frame+ value is zero-indexed, so all out points assume a base of 0.  For example, If your frames start at 250 and you want to end at 261, you would type +mocha --out 12 myFootage.mov+. A 0.5 value will let you set on the second field in interlaced footage, for example: +mocha --in 12.5+ 
+|+--frame-rate fps+|Set the frame rate for the imported footage. For example +mocha --frame-rate 24 myFootage.mov+ 
+|+--par par+|Set the Pixel Aspect Ratio for the imported footage. For example +mocha --par 0.5 myFootage.mov+ 
+|+--interlace-mode mode+|Set the interlacing mode for field ordering and pulldown for the imported footage. For example +mocha --interlace-mode 1 myFootage.mov+ See Table 18.2 below for interlace mode codes.
+
+|===============
+
+
+.Interlace Modes
+
+|===============
+|+0+|Progressive
+|+1+|Sets interlaced mode UPPER FIELD FIRST
+|+2+|Sets interlaced mode LOWER FIELD FIRST
+|+3+|Sets interlaced mode 3:2 PULLDOWN UPPER FIELD FIRST AA
+|+4+|Sets interlaced mode 3:2 PULLDOWN UPPER FIELD FIRST BB
+|+5+|Sets interlaced mode 3:2 PULLDOWN UPPER FIELD FIRST BC
+|+6+|Sets interlaced mode 3:2 PULLDOWN UPPER FIELD FIRST CD
+|+7+|Sets interlaced mode 3:2 PULLDOWN UPPER FIELD FIRST DD
+|+8+|Sets interlaced mode 3:2 PULLDOWN LOWER FIELD FIRST AA
+|+9+|Sets interlaced mode 3:2 PULLDOWN LOWER FIELD FIRST BB
+|+10+|Sets interlaced mode 3:2 PULLDOWN LOWER FIELD FIRST BC
+|+11+|Sets interlaced mode 3:2 PULLDOWN LOWER FIELD FIRST CD
+|+12+|Sets interlaced mode 3:2 PULLDOWN LOWER FIELD FIRST DD
+
+|===============
+
+

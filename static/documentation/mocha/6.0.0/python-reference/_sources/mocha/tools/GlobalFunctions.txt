@@ -1,0 +1,76 @@
+.. module:: mocha.tools
+
+Global functions
+****************
+
+.. container:: function_list
+
+*   :func:`mocha.tools.set_license_search_path`
+*   :func:`mocha.tools.get_license_path`
+*   :func:`mocha.tools.get_current_project`
+*   :func:`mocha.tools.register_custom_tool_type`
+*   :func:`mocha.tools.tool_instance`
+*   :func:`mocha.tools.registered_tool_types`
+*   :func:`mocha.tools.set_overlay_renderer`
+
+
+Detailed Description
+--------------------
+
+.. function:: mocha.tools.set_license_search_path(path)
+
+      :type path: unicode
+
+
+.. function:: mocha.tools.get_license_path()
+
+      :rtype: unicode
+
+
+.. function:: mocha.tools.get_current_project()
+
+      :rtype: :class:`mocha.project.Project`
+
+
+.. function:: mocha.tools.register_custom_tool_type(tool_type)
+
+      :type tool_type: :class:`PyTypeObject`
+
+
+      
+      :param tool_type: Custom tool type that must inherit from :class:`AbstractTool`.
+      
+      Registers a custom tool type.
+      
+
+.. function:: mocha.tools.tool_instance(tool_type)
+
+      :type tool_type: :class:`PyTypeObject`
+      :rtype: :class:`PyObject`
+
+
+      
+      :param tool_type: Custom tool type that must inherit from :class:`AbstractTool`.
+      
+      Returns either None or a tool instance if it was created.
+      
+
+.. function:: mocha.tools.registered_tool_types()
+
+      :rtype: :class:`PyObject`
+
+
+      
+      Returns a list of registered tool types.
+      
+
+.. function:: mocha.tools.set_overlay_renderer(arg__1)
+
+      :type arg__1: :class:`PyObject`
+
+
+      
+      Sets the callback function which is called each time when canvas rendering.
+      The callback must accept 3 positional arguments (QOpenGLWidget instance, X Scale, Y Scale).
+      
+

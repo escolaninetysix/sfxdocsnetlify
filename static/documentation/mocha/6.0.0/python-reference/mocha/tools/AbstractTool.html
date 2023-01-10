@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4.2. AbstractTool &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="4. mocha.tools" href="index.html" />
+    <link rel="next" title="4.3. InputEvent" href="InputEvent.html" />
+    <link rel="prev" title="4.1. Global functions" href="GlobalFunctions.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="InputEvent.html" title="4.3. InputEvent"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="GlobalFunctions.html" title="4.1. Global functions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">4. mocha.tools</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.tools"></span><div class="section" id="abstracttool">
+<span id="id1"></span><h1>4.2. AbstractTool<a class="headerlink" href="#abstracttool" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>4.2.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>4.2.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.tools.AbstractTool.action" title="mocha.tools.AbstractTool.action"><tt class="xref py py-meth docutils literal"><span class="pre">action</span></tt></a> ()</li>
+</ul>
+</div>
+<div class="section" id="virtual-functions">
+<h3>4.2.1.2. Virtual functions<a class="headerlink" href="#virtual-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.tools.AbstractTool.on_activate" title="mocha.tools.AbstractTool.on_activate"><tt class="xref py py-meth docutils literal"><span class="pre">on_activate</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.tools.AbstractTool.on_deactivate" title="mocha.tools.AbstractTool.on_deactivate"><tt class="xref py py-meth docutils literal"><span class="pre">on_deactivate</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.tools.AbstractTool.on_mouse_move" title="mocha.tools.AbstractTool.on_mouse_move"><tt class="xref py py-meth docutils literal"><span class="pre">on_mouse_move</span></tt></a> (event)</li>
+<li>def <a class="reference internal" href="#mocha.tools.AbstractTool.on_mouse_press" title="mocha.tools.AbstractTool.on_mouse_press"><tt class="xref py py-meth docutils literal"><span class="pre">on_mouse_press</span></tt></a> (event)</li>
+<li>def <a class="reference internal" href="#mocha.tools.AbstractTool.on_mouse_release" title="mocha.tools.AbstractTool.on_mouse_release"><tt class="xref py py-meth docutils literal"><span class="pre">on_mouse_release</span></tt></a> (event)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>4.2.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Abstract tool class that provides overridable methods to determine custom tools.
+Every overridable method must be implemented.</div></blockquote>
+<dl class="class">
+<dt id="mocha.tools.AbstractTool">
+<em class="property">class </em><tt class="descclassname">mocha.tools.</tt><tt class="descname">AbstractTool</tt><span class="sig-paren">(</span><span class="optional">[</span><em>action=NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.AbstractTool" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>action</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtWidgets.QAction</span></tt>) &#8211; A <tt class="xref py py-class docutils literal"><span class="pre">PySide.QtGui.QAction</span></tt> instance associated with the tool.</td>
+</tr>
+</tbody>
+</table>
+<p>Creates a custom tool instance. <cite>action</cite> will be added automatically to mocha tool bar and tool menu
+if it is passed in.
+If the argument is None, an associated action will be created anyway, but will not be added to
+mocha tool bar and tool menu and be available from <a class="reference internal" href="#mocha.tools.AbstractTool.action" title="mocha.tools.AbstractTool.action"><tt class="xref py py-meth docutils literal"><span class="pre">action()</span></tt></a>.
+Don&#8217;t create the instance manually.
+Mocha backend creates the instance upon project opening and destroys it upon project closing.
+Please note that you must redefine __init__ method, as mocha passes a <a class="reference internal" href="../project/Project.html#mocha.project.Project" title="mocha.project.Project"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Project</span></tt></a>
+instance as the single argument.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyTool</span><span class="p">(</span><span class="n">AbstractTool</span><span class="p">):</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_instance</span><span class="p">):</span>
+      <span class="o">...</span>
+      <span class="n">action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">()</span>
+      <span class="o">...</span>
+      <span class="n">AbstractTool</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+   <span class="o">...</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.tools.AbstractTool.action">
+<tt class="descclassname">AbstractTool.</tt><tt class="descname">action</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.AbstractTool.action" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtWidgets.QAction</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Returns associated <tt class="xref py py-class docutils literal"><span class="pre">PySide.QtGui.QAction</span></tt> instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.tools.AbstractTool.on_activate">
+<tt class="descclassname">AbstractTool.</tt><tt class="descname">on_activate</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.AbstractTool.on_activate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements a handler on the tool activation event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.tools.AbstractTool.on_deactivate">
+<tt class="descclassname">AbstractTool.</tt><tt class="descname">on_deactivate</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.AbstractTool.on_deactivate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements a handler on the tool activation event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.tools.AbstractTool.on_mouse_move">
+<tt class="descclassname">AbstractTool.</tt><tt class="descname">on_mouse_move</tt><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.AbstractTool.on_mouse_move" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event</strong> (<a class="reference internal" href="InputEvent.html#mocha.tools.InputEvent" title="mocha.tools.InputEvent"><tt class="xref py py-class docutils literal"><span class="pre">mocha.tools.InputEvent</span></tt></a>) &#8211; Input event instance.</td>
+</tr>
+</tbody>
+</table>
+<p>Implements a handler on the mouse move event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.tools.AbstractTool.on_mouse_press">
+<tt class="descclassname">AbstractTool.</tt><tt class="descname">on_mouse_press</tt><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.AbstractTool.on_mouse_press" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event</strong> (<a class="reference internal" href="InputEvent.html#mocha.tools.InputEvent" title="mocha.tools.InputEvent"><tt class="xref py py-class docutils literal"><span class="pre">mocha.tools.InputEvent</span></tt></a>) &#8211; Input event instance.</td>
+</tr>
+</tbody>
+</table>
+<p>Implements a handler on the mouse press event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.tools.AbstractTool.on_mouse_release">
+<tt class="descclassname">AbstractTool.</tt><tt class="descname">on_mouse_release</tt><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.AbstractTool.on_mouse_release" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event</strong> (<a class="reference internal" href="InputEvent.html#mocha.tools.InputEvent" title="mocha.tools.InputEvent"><tt class="xref py py-class docutils literal"><span class="pre">mocha.tools.InputEvent</span></tt></a>) &#8211; Input event instance.</td>
+</tr>
+</tbody>
+</table>
+<p>Implements a handler on the mouse release event.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.2. AbstractTool</a><ul>
+<li><a class="reference internal" href="#synopsis">4.2.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">4.2.1.1. Functions</a></li>
+<li><a class="reference internal" href="#virtual-functions">4.2.1.2. Virtual functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">4.2.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="GlobalFunctions.html"
+                        title="previous chapter">4.1. Global functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="InputEvent.html"
+                        title="next chapter">4.3. InputEvent</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/tools/AbstractTool.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="InputEvent.html" title="4.3. InputEvent"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="GlobalFunctions.html" title="4.1. Global functions"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >4. mocha.tools</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

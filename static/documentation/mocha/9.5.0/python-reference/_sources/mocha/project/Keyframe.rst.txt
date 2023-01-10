@@ -1,0 +1,181 @@
+.. _Keyframe:
+
+.. currentmodule:: mocha.project
+
+
+Keyframe
+********
+
+.. inheritance-diagram:: mocha.project.Keyframe
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__eq__<Keyframe.__eq__>` (rhs)
+    * def :meth:`__gt__<Keyframe.__gt__>` (rhs)
+    * def :meth:`__lt__<Keyframe.__lt__>` (rhs)
+    * def :meth:`__ne__<Keyframe.__ne__>` (rhs)
+    * def :meth:`__repr__<Keyframe.__repr__>` ()
+    * def :meth:`get_time<Keyframe.get_time>` ()
+    * def :meth:`get_value<Keyframe.get_value>` ()
+    * def :meth:`get_view<Keyframe.get_view>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`time<Keyframe.time>` [read-only] of float
+*    property :attr:`value<Keyframe.value>` [read-only] of object
+*    property :attr:`view<Keyframe.view>` [read-only] of float
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Keyframe instance holding the target time, view and value fields.
+
+
+.. class:: Keyframe(value, time[, view=View{ 0 }])
+
+
+    :type value: object
+    :type time: double
+    :type view: :any:`View`
+
+
+
+
+
+
+.. class:: Keyframe(Keyframe)
+
+
+    :type Keyframe: :any:`Keyframe`
+
+
+
+
+
+
+
+
+
+.. method:: Keyframe.__repr__()
+
+
+    :rtype: str
+
+
+
+
+
+
+.. method:: Keyframe.get_time()
+
+
+    :rtype: double
+
+
+
+
+
+
+.. method:: Keyframe.get_value()
+
+
+    :rtype: object
+
+
+
+
+
+
+.. method:: Keyframe.get_view()
+
+
+    :rtype: :any:`View`
+
+
+
+
+
+
+.. method:: Keyframe.__ne__(rhs)
+
+
+    :type rhs: :any:`Keyframe`
+    :rtype: bool
+
+
+
+
+
+
+.. method:: Keyframe.__lt__(rhs)
+
+
+    :type rhs: :any:`Keyframe`
+    :rtype: bool
+
+
+
+
+
+
+.. method:: Keyframe.__eq__(rhs)
+
+
+    :type rhs: :any:`Keyframe`
+    :rtype: bool
+
+
+
+
+
+
+.. method:: Keyframe.__gt__(rhs)
+
+
+    :type rhs: :any:`Keyframe`
+    :rtype: bool
+
+
+
+
+
+
+.. attribute:: Keyframe.time
+
+
+    :type: float
+    :access: read-only    Provides access to the time field.
+
+
+
+.. attribute:: Keyframe.view
+
+
+    :type: float
+    :access: read-only    Provides access to the view field.
+
+
+
+.. attribute:: Keyframe.value
+
+
+    :type: object
+    :access: read-only    Provides access to the value field.
+
+
+
+

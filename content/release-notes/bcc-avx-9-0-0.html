@@ -1,0 +1,161 @@
+{
+   "date": "2014-04-07T13:15:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC AVX - 9.0.0"
+}
+
+<p>Boris Continuum Complete AVX 9.0.0 was released on 4/7/2014.</p>
+<p><strong> Registration: </strong> <a href="/account/manage/" target="_blank"> Make sure to register your product in order to receive the latest technical and upgrade information. </a></p>
+<p><strong> BCC AVX 9 supports the following Avid host applications:</strong></p>
+<p><strong> </strong> Macintosh:</p>
+<ul>
+<li>Avid Media Composer 6, 6.5, and 7 running Macintosh OS™ X 10.7, 10.8, and 10.9.</li>
+<li>Avid Symphony 6, 6.5, and 7 running Macintosh OS™ X 10.7, 10.8, and 10.9.</li>
+</ul>
+Windows:
+<ul>
+<li>Avid Media Composer Media Composer 6, 6.5, and 7 running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+<li>Avid Symphony 6, 6.5, and 7 running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+<li>Avid NewsCutter 10, 10.5, and 11 running Windows 7 Professional (64-bit) or Windows 8 Professional or Enterprise (64-bit).</li>
+</ul>
+<strong> What's New in BCC AVX 9 (Summary of major changes since BCC8): </strong>
+<ul>
+<li>FX Browser™ - our best-in-class new graphical preset browser. Preview your preset library over moving host video, not just static frames, with two different workflows. The Integrated FX Browser™ is available inside every effect and allows intuitive preview of all presets for that effect. The Standalone FX Browser™ is applied as a separate standalone effect and allows browsing presets from EVERY effect in the full BCC library.</li>
+<li>10 new effects and 25 new transitions for a total of 35 new filters:</li>
+</ul>
+Effects:
+<table border="0" width="600" cellspacing="1" cellpadding="1">
+<tbody>
+<tr>
+<td>2-Strip Color</td>
+<td>Grunge</td>
+<td>Magic Sharp</td>
+</tr>
+<tr>
+<td>Chroma Key Studio</td>
+<td>Laser Beam</td>
+<td>Pan &amp; Zoom - now 3D</td>
+</tr>
+<tr>
+<td>Edge Grunge</td>
+<td>Lens Correction</td>
+<td>Vignette</td>
+</tr>
+</tbody>
+</table>
+Transitions:
+<table border="0" width="600" cellspacing="1" cellpadding="1">
+<tbody>
+<tr>
+<td>Blobs Wipe</td>
+<td>Lens Distortion Wipe</td>
+<td>Rings Wipe</td>
+</tr>
+<tr>
+<td>Blur Dissolve</td>
+<td>Lens Flare Dissolve</td>
+<td>Ripple Dissolve</td>
+</tr>
+<tr>
+<td>Checker Wipe</td>
+<td>Lens Flare Round</td>
+<td>Tile Wipe</td>
+</tr>
+<tr>
+<td>Composite Dissolve</td>
+<td>Lens Flare Spiked</td>
+<td>Tritone Dissolve</td>
+</tr>
+<tr>
+<td>Damaged TV Dissolve</td>
+<td>Lens Flash</td>
+<td>Twister</td>
+</tr>
+<tr>
+<td>Film Glow Dissolve</td>
+<td>Light Wipe</td>
+<td>Vector Blur Dissolve</td>
+</tr>
+<tr>
+<td>Flutter Cut</td>
+<td>Rays Dissolve</td>
+<td>Vignette Wipe</td>
+</tr>
+<tr>
+<td>Grid Wipe</td>
+<td>Ribbon Wipe</td>
+<td>Water Waves Dissolve</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Support for 3D moves and built in cropping in Pan and Zoom</li>
+<li>Animation Tuning heads up display overlays in all transitions for intuitive tweaking of transition timing directly in your Composition/Preview pane.</li>
+<li>New HTML-based help system offering richer and more dynamic learning guides.</li>
+<li>GPU acceleration of important filters such as Film Glow and Film Process.</li>
+<li>Major performance improvements in some OpenGL filters such as Damaged TV, Scanlines, and Glint.</li>
+<li>New Gradient feature in many BCC Wipe transitions.</li>
+<li>Film Damage Flicker Bias allows controlling the direction of the brightness flickering - always brighter, always darker, or centered.</li>
+<li>Numerous bug fixes.</li>
+</ul>
+<strong> BCC AVX 9.x Compatibility Notes: </strong> While in general your previously saved projects should render identically in the newer version, bug fixes and quality improvements can sometimes change the look of older projects. While every effort is made to ensure project compatibility, the following notable areas may see some change to the look of previously saved projects.
+<ul>
+<li>In all wipe-style transitions which contain Border options, the opacity of the border elements fades automatically at the start/end of transitions (except in manual mode) to fix potential jumps in the renders at the start and end of the transitions even when border offsets were non-zero.</li>
+<li>The largely unnecessary Hold In / Hold Out parameters were removed from the Animation Tuning group in all transitions which could cause changes in the transition timing in the unlikely event these parameters had been changed from their defaults.</li>
+<li>As part of the major performance optimizations implemented in Damaged TV for BCC9, some details can such as the randomization patterns can render differently although the overall feel of the effect should remain the same.</li>
+<li>BCC9 fixes a bug introduced in BCC8.2 that affected the perceived rate of progress of the underlying dissolve in BCC Lens Transition. Projects saved in BCC8.2 maybe appear to render somewhat differently now that the dissolve rate has been fixed.</li>
+<li>BCC9 fixes a gamma shift in some externally loaded images on Mac systems (such as those loaded by Pan and Zoom, or the particle files in Particle Emitter 3D, Organics Strands, or Particle Array) which caused the images to appear slightly too dark as compared to the same image when imported on Windows. These images now render identically on Mac and Windows but Mac projects saved with these filters prior to BCC9 may display slight brightness boosts in such images.</li>
+<li>The Pixel Chooser and Motion Tracker were removed from Swish Pan since they did not make sense in the context of a transition. In the unlikely event that these controls were used in previously saved projects, the pixel chooser and motion tracker settings would be ignored in new renders.</li>
+</ul>
+<strong> BCC AVX 9.0.0 - Known Issues and Limitations: </strong>
+<ul>
+<li>28732 - BCC Extruded Text and BCC Type On Text use a custom text entry window and some of the changes that can be made through in this window are not reflected in the preview within the text window on Mac OS (although they will be apparent in the effect when previewed/rendered back in the host). The following text attributes do not preview within the text window:</li>
+<li>Justification (when Word Wrap is not enabled)</li>
+</ul>
+<ol>
+<li>Top Down Text</li>
+<li>Right to Left Reading</li>
+<li>Negative Line Leading</li>
+<li>Italics (for fonts that don't include an italic typeface)</li>
+<li>Superscript and Subscript</li>
+</ol>
+<ul>
+<li>26068 - In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.</li>
+<li>27591 - As part of the new Motion Tracker workflow, if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must now reset the tracker data with the reset button in the tracker banner before starting a second tracker pass. (This extra step is not necessary if the tracker point picker location has changed.)</li>
+<li>25867 - In BCC Type On Text the Line Leading in the text entry preview window does not accurately match up with the leading in the rendered result, and the leading may need to be adjusted to generate the desired final render.</li>
+<li>27313 - The Beat Reactor propagation options generate unexpected results in Organic Strands. Use non-propagation modes which work as expected as a temporary workaround.</li>
+<li>28749 - In Media Composer 6.5 and higher you may find the alpha channel failing to propagate from a 3D Object filter to another BCC effect in a stacked multi-filter start/end setup when rendering in 16bit. As a temporary workaround you can render in 8bit instead of 16bit or render in Media Composer 6.0 which does not show the problem.</li>
+<li>27736 - When using a host image layer as the particle type in Particle Emitter 3D, the particles can appear squished/stretched in projects with non-square pixel aspect ratios.</li>
+<li>26750 - The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. Use lower values near the default setting of 32 as a workaround.</li>
+<li>26845 - BCC LED shows occasional mis-colored dots on Quadro FX 3500 cards.</li>
+<li>25671 - When stacking multiple effects on a track and then rearranging the order of those effects, parameter errors may occur such as button parameters functioning as simple checkboxes instead of true buttons. We are working with Avid to resolve this issue.</li>
+<li>27292 - Effect stacks will occasionally display an error stating "Connect failed to connect" when preview at less than full resolution. This error does not affect final render and can be worked around by switching to full green/green preview resolution. We are working with Avid to resolve this issue.</li>
+<li>28774 - When using a video track to define a texture in the 3D Objects filters, the scaling of that texture can vary incorrectly when changing resolutions so effects that use layers as textures should be set up in full resolution.</li>
+<li>29839 - Scanline and 3D Extruded Image Shatter and show vertical stretching in interlaced AVX projects.</li>
+<li>29693 - Motion Blur is not working properly in Laser Beam.</li>
+<li>30043 - Triangle and Saw edge shapes don’t animate properly in Damaged TV</li>
+<li>30144 - Some ATI systems will render incorrect error message concerning Cuda drivers when using Fast Film Glow, Fast Film Glow Dissolve, or Fast Film Process.</li>
+<li>29745 - With the Radeon HD 5450 Card on Windows 8, Grunge textures render as black in 8 &amp; 16bit (but not 32bit).</li>
+<li>29533 - The apply modes Boost Expo 1, 2, and 50/50 mix do not give the expected result in Grunge.</li>
+<li>30151 - In 4K projects with Grunge the displacement map doesn’t work when 4K host media is selected as the displacement map.</li>
+<li>30148 - In Grunge with "Use Texture" turned off, displacement map and erosion map uses source layer as map even when map is set to texture.</li>
+<li>29502 - In Grunge, the Spot Light Cone Feather doesn’t follow the cone size</li>
+<li>29994 - In Grunge, the Opacity parameter in the scratches group does not function correctly.</li>
+<li>29841 - In Grunge when using the Chromatic Aberration feature, white pixels render over blur region when the Vignette feature is also enabled.</li>
+<li>29777 - In Grunge the Edge Offset control in the Chromatic Aberration group is not working as designed.</li>
+<li>29758 - (Mac Only) In Grunge the noise does not animate smoothly and can yield unexpected repeating patterns at some settings on mac</li>
+<li>29914 - When Grunge is applied to a Title Matte, Post-Apply geometrics affect the background layer but the background should remain unaffected.</li>
+</ul>
+<p><strong> Copying Presets from Earlier Versions of BCC AVX: </strong> To use presets created in earlier versions of BCC AVX, you need to copy the older presets from their previous preset location to the new BCC AVX 9 preset folder location. Filter presets are located in individual effect folders inside the "BCC Presets 9 AVX" folder.</p>
+<p><strong> Applying BCC Effects as Transitions: </strong> BCC provides two methods to use effects as transitions (as opposed to the filters in the standard BCC Transitions category which are already customized to function as transitions). The first method is to apply the effect directly to the transition between two clips. The second method is to overlap two clips and apply a BCC effect to one or both layers depending on the desired result. Each method offers advantages. Applying directly to a transition offers the convenience of an Avid transition. For example, trimming and duration changes are easily made and you only have to render a single effect. However, to create a wider range of transition effects, you can use the second method: overlap two clips and apply a filter to each layer. This method provides greater control over parameters.</p>
+<p><strong> Applying BCC Effects to Titles and Mattes: </strong> To apply a BCC effect to a title or to an imported matte, drag the effect onto the title. If you Option /Alt-drag to the effect, the effect is applied to the title as well as to any tracks beneath the title in the timeline. For example, to apply a Pyramid Blur to a title, drag the BCC Pyramid Blur effect onto the title. To apply a Pyramid Blur to a title and the background video, Option-drag the BCC Pyramid Blur effect to the title.</p>
+<p><strong> Applying Multiple Filters to Avid Titles and Mattes: </strong> BCC AVX allows you to apply two or more effects to an Avid title or matte without affecting the background. For example, you could apply a BCC Emboss to a title and then blur it. The Title Matte parameter group’s Multi-Filter controls can also be used to apply multiple effects to existing keys, such as chroma keys, without applying them to the entire image.</p>
+<p><strong> Working with Presets and Effect Templates: </strong> After you apply and adjust a BCC AVX filter, you can save the parameter settings by pressing the Preset menu and choosing Save. A dialog box allows you to name and save the file. Presets are only compatible with the filter in which they were created. For example, if you attempt to load a Cartooner preset into a Blur filter, the preset is ignored. However, you can also save PixelChooser parameters as presets. Boris Continuum Complete AVX includes a selection of preset effects for each filter. These presets are an excellent way to learn the capabilities of a filter.</p>
+<p><strong> Resetting Effects: </strong> The Preset menu allows you to save filter settings independently of the media or project. You can return to the Boris Continuum Complete default settings or to a custom default that you create yourself.</p>
+<p><strong> Loading Preset Effects: </strong> To load a previously saved filter settings file, you must first apply the same filter to your media. A list of existing presets also appears in the menu.</p>
+<p><strong> Saving Effects as Presets: </strong> You can save favorite filter settings as presets and apply them to multiple projects.</p>
+<p><strong> Saving Effect Templates in a Bin: </strong> You can save parameter settings in a bin as an Effect template, just as you save other Avid effects. Effect templates allow you to save effect parameters and use them again to create or modify other effects. Effect templates save parameters set at multiple keyframes.</p>
+<p><strong> Applying Effect Templates from a Bin: </strong> To apply all the values from the template, drag the Effect template from the bin to either the Timeline or the Effect Preview monitor in the Effect Editor window.</p>
+<p><strong> Saving BCC AVX Effects as Custom Transitions: </strong> You can now save custom transitions to the Avid Quick Transition menu for easy access. This means that custom BCC AVX transitions appear in the Quick Transitions dialog box.</p>

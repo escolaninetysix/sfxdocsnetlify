@@ -1,0 +1,396 @@
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/twentytwenty.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/jquery.fancybox.min.css" />  
+
+  <!-- Scripts -->
+  <script src="/jquery-3.5.1.min.js"></script>
+  <script src="/jquery-ui.min.js"></script>
+  <script src="//borisfx-com-res.cloudinary.com/raw/upload/v1537763163/js/jquery.cookie-1.4.1.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.min.js"></script>
+  <script src="/jquery.event.move.js" type="text/javascript" async></script>
+  <script src="/jquery.twentytwenty.js" type="text/javascript" async></script>
+  <script src="/jquery.fancybox.min.js" async></script>
+  <script src="/bootstrap.bundle.min.js"></script>
+  
+  
+  
+ <div style="background-color: black;-margin-top:-10%;"> 
+{{ $.Scratch.Set "video_count" 0 }}
+
+
+<script>
+$(document).ready(function() {
+$("#dl").click(function() {
+Cookies.set('bfx-pi', { url: '/downloads/?&product=Boris Continuum 2020.5 Particle Emitters&host=Particle Illusion' });
+});
+});
+</script>
+
+
+{{ if .Params.carousel }}
+<div style="background-color: black;margin-top:-5%;">
+<div style="background-color: black;margin-top:-5%;">
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {{ range $index, $item := .Params.carousel }}
+      <li data-target="#carousel" data-slide-to="{{ $index }}"{{ if eq $index 0 }} class="active"{{ end }}></li>
+      {{ end }}
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      {{ range $index, $item := .Params.carousel }}
+      <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+        <div class="inner">
+          {{ if $item.video_url }}
+          <video autoplay loop muted poster="{{ $item.image_url }}">
+            <source src="{{ $item.video_url }}">
+          </video>
+          {{ else }}
+
+		  {{ partial "imagehandlecarousel.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+
+          {{ end }}
+          <div class="content text-center {{ if eq $item.color "black" }}black{{ end }}">
+            <div>
+              <p class="mb-0" style="line-height: 1; font-size: 47px; font-weight: 900;">{{ $item.title }}</p>
+              <p>
+                {{ if $item.content }}
+                {{ $item.content | markdownify }}
+                {{ end }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ else }}
+<div class="section" style="background-image: url('https://borisfx-com-res.cloudinary.com/image/upload/default-logo-background.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h1>{{ .Title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+<div class="product-nav-placeholder"></div>
+<script>
+$(function () {
+  $(document).ready(function () {
+    var nav = $('.product-nav');
+    var navPosition = nav.offset().top;
+    navPosition -= $('header').height();
+    function update() {
+      if ($(this).scrollTop() > navPosition) {
+        nav.addClass("fixed");
+      } else {
+        nav.removeClass("fixed");
+      }
+    }
+    $(window).scroll(update);
+    update();
+  });
+});
+</script>
+
+{{ if .Params.overview.content }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-pull">
+	  <div id="overview"></div>
+        <h3>Overview</h3>
+		
+        <p>
+          {{ .Params.overview.content | markdownify }}
+        </p>
+      </div>
+      <div class="col-lg-6 col-lg-push">
+
+        {{ if .Params.overview.video_url }}
+        {{ partial "video.html" .Params.overview.video_url }}
+		{{ end }}
+		
+				{{ if and (.Params.overview.vid_url) (.Params.overview.thumbnail_url) }}
+			    {{ partial "video-play.html" (dict "thumbnail_url" .Params.overview.thumbnail_url "video_url" .Params.overview.vid_url) }}
+		{{ end }}
+		
+		{{ if not (.Params.overview.image_url2) }}
+      
+					  {{ partial "imagehandlewithdir.html" (dict "image_url" .Params.overview.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ else }}
+		<div id="container1">
+        <img class="img-fluid" src="{{ .Params.overview.image_url1 }}" />
+		<img class="img-fluid" src="{{ .Params.overview.image_url2 }}" />
+		</div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+</script>
+{{ if .Params.whats_new }}
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="whats-new">
+          {{ if .Params.whats_new_title }}
+          {{ .Params.whats_new_title }}
+          {{ else }}
+          What's New
+          {{ end }}
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{ $items := .Params.whats_new }}
+        {{ range $index, $item := .Params.whats_new }}
+        <div class="row py-4">
+          <div class="col-md-6 {{ if eq (mod $index 2) 1 }}push-md-6{{ end }}">
+            
+			{{ if $item.image_url }}
+			
+						 {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			
+			{{ end }}
+			
+			{{ if and ($item.image_url1) ($item.image_url2) }}
+			
+			<div id="contain">
+			 {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url1 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+             {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url2 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+
+			
+			{{ end }}
+			
+			{{ if and ($item.image_url3) ($item.image_url4) }}
+						<div id="contain1">
+			 {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url3 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+             {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url4 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}
+			{{ if and ($item.image_url5) ($item.image_url5) }}
+						<div id="contain2">
+			 {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url5 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+             {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url6 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}
+			{{ if and ($item.image_url7) ($item.image_url8) }}
+						<div id="contain3">
+			 {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url7 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+             {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url8 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}
+			{{ if and ($item.image_url9) ($item.image_url10) }}
+						<div id="contain4">
+			 {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url9 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+             {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url10 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}	
+			{{ if and ($item.image_url11) ($item.image_url12) }}
+						<div id="contain5">
+			 {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url11 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+             {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url12 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}
+			{{ if and ($item.image_url13) ($item.image_url14) }}
+						<div id="contain6">
+			 {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url13 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+             {{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url14 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+			</div>
+			{{ end }}
+
+            {{ if $item.video_url }}
+            {{ partial "video.html" $item.video_url }}
+            {{ end }}
+			
+          </div>
+          <div class="col-md-6 {{ if eq (mod $index 2) 1 }}pull-md-6{{ end }}">
+            <h3>{{ $item.title }}</h3>
+            {{ if $item.content }}
+            <p>
+              {{ $item.content | markdownify }}
+            </p>
+            {{ end }}
+          </div>
+        </div>
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}
+
+{{ if .Params.videos }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="videos">Videos</h3>
+      </div>
+    </div>
+    <div class="row">
+      {{ range .Params.videos }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .url }}">
+            <img class="img-fluid" src="{{ .thumbnail_url }}" />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .url }}">{{ .title }}</a>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+    {{ if .Params.video_see_more_url }}
+    <div class="row">
+      <div class="col">
+        <p>
+          <a href="{{ .Params.video_see_more_url }}">See More Videos</a>
+        </p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.features.content }}
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="features">Features</h3>
+        {{ .Params.features.content | markdownify }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.presets }}
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="presets">Presets</h3>
+        <div class="row">
+          {{ range .Params.presets }}
+          <div class="col-md-3">
+            <img class="img-fluid" src="{{ .thumbnail_url }}" />
+            <p>
+              {{ .title }}
+            </p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.hosts.content }}
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="hosts">Hosts</h3>
+        {{ .Params.hosts.content | markdownify }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+
+
+{{ range .Params.sections }}
+<div class="section {{ if (eq .background "Gray") }}gray{{ else }}white{{ end }}">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="{{ .title | urlize }}">{{ .title }}</h3>
+      </div>
+    </div>
+    {{ if (eq .type "Two Up") }}
+    {{ $items := .items }}
+    {{ range $index, $item := .items }}
+    <div class="row py-4">
+      <div class="col-md-6 {{ if eq (mod $index 2) 1 }}push-md-6{{ end }}">
+        {{ if not ($item.image_url2) }}
+		
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ else }}
+		<div id="container1">		
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url1 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url2 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+
+		</div>
+		{{ end }}
+        {{ if $item.video_url }}
+        {{ partial "video.html" $item.video_url }}
+        {{ end }}
+		
+      </div>
+      <div class="col-md-6 {{ if eq (mod $index 2) 1 }}pull-md-6{{ end }}">
+        <h3>{{ $item.title }}</h3>
+        {{ if $item.content }}
+        <p>
+          {{ $item.content | markdownify }}
+        </p>
+        {{ end }}
+      </div>
+    </div>
+    {{ if (ne $index (add (len $items) -1)) }}
+    <hr class="hidden-sm-down"/>
+    {{ end }}
+    {{ end }}
+    {{ else if (eq .type "Thumbnails") }}
+    <div class="row">
+      {{ range .items }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .url }}">
+            <img class="img-fluid" src="{{ .image_url }}" />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .url }}">{{ .title }}</a>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ if .content }}
+    <div class="row">
+      <div class="col">
+        {{ .content | markdownify }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+

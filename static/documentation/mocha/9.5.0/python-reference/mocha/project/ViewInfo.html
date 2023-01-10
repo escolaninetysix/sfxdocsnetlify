@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.24. ViewInfo &#8212; mocha  documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.25. XControlPoint" href="XControlPoint.html" />
+    <link rel="prev" title="2.23. View" href="View.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="XControlPoint.html" title="2.25. XControlPoint"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="View.html" title="2.23. View"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="viewinfo">
+<span id="id1"></span><h1><span class="section-number">2.24. </span>ViewInfo<a class="headerlink" href="#viewinfo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.24.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.24.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.ViewInfo.__eq__" title="mocha.project.ViewInfo.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ViewInfo.__repr__" title="mocha.project.ViewInfo.__repr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__repr__</span></code></a> ()</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.24.1.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.ViewInfo.abbr" title="mocha.project.ViewInfo.abbr"><code class="xref py py-attr docutils literal notranslate"><span class="pre">abbr</span></code></a> [read-write] of str</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ViewInfo.color" title="mocha.project.ViewInfo.color"><code class="xref py py-attr docutils literal notranslate"><span class="pre">color</span></code></a> [read-write] of 3-items tuple of float values in range [0.0…1.0]</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ViewInfo.name" title="mocha.project.ViewInfo.name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a> [read-write] of str</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.24.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>Class representing common view information (name, abbreviation, color).</p>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.project.ViewInfo">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">ViewInfo</code><a class="headerlink" href="#mocha.project.ViewInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">ViewInfo</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">abbr</em><span class="optional">[</span>, <em class="sig-param">color=Color()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – New view name.</p></li>
+<li><p><strong>abbr</strong> (<em>str</em>) – View name abbreviation (shows on mocha toolbar).</p></li>
+<li><p><strong>color</strong> (<code class="xref any docutils literal notranslate"><span class="pre">Color</span></code>) – 3-items tuple of floats in range [0.0…1.0] representing RGB.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Constructs new view info instance with given name, abbreviation and col</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="id2">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">ViewInfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ViewInfo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ViewInfo.__repr__">
+<code class="sig-prename descclassname">ViewInfo.</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ViewInfo.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ViewInfo.__eq__">
+<code class="sig-prename descclassname">ViewInfo.</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ViewInfo.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ViewInfo.name">
+<code class="sig-prename descclassname">ViewInfo.</code><code class="sig-name descname">name</code><a class="headerlink" href="#mocha.project.ViewInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to view name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ViewInfo.abbr">
+<code class="sig-prename descclassname">ViewInfo.</code><code class="sig-name descname">abbr</code><a class="headerlink" href="#mocha.project.ViewInfo.abbr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to view abbreviation (shows on mocha toolbar).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ViewInfo.color">
+<code class="sig-prename descclassname">ViewInfo.</code><code class="sig-name descname">color</code><a class="headerlink" href="#mocha.project.ViewInfo.color" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>3-items tuple of float values in range [0.0…1.0]</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to view RGB color.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.24. ViewInfo</a><ul>
+<li><a class="reference internal" href="#synopsis">2.24.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.24.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.24.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.24.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="View.html"
+                        title="previous chapter"><span class="section-number">2.23. </span>View</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="XControlPoint.html"
+                        title="next chapter"><span class="section-number">2.25. </span>XControlPoint</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="XControlPoint.html" title="2.25. XControlPoint"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="View.html" title="2.23. View"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2021, Boris FX, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

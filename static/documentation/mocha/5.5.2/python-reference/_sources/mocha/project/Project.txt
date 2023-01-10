@@ -1,0 +1,757 @@
+.. module:: mocha.project
+.. _Project:
+
+Project
+*******
+
+.. inheritance-diagram:: Project
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`__eq__<Project.__eq__>` (rhs)
+*    def :meth:`__ne__<Project.__ne__>` (rhs)
+*    def :meth:`add_clip<Project.add_clip>` (detached_clip, clip_name)
+*    def :meth:`add_group<Project.add_group>` ([name=Project.tr( "New group" )[, layers=list()]])
+*    def :meth:`add_layer<Project.add_layer>` (clip[, name=Project.tr( "New layer" )[, frame_number=0[, view=0]]])
+*    def :meth:`export_rendered_shapes<Project.export_rendered_shapes>` (layers, colorizeOutput, directory, extension, prefix, suffix, index_start, index_finish[, index_width=1[, views=list()[, separate_streams=false[, offset=0]]]])
+*    def :meth:`find_groups<Project.find_groups>` (name)
+*    def :meth:`find_layers<Project.find_layers>` (name)
+*    def :meth:`get_output_dir<Project.get_output_dir>` ()
+*    def :meth:`layer<Project.layer>` (layer_index)
+*    def :meth:`new_output_clip<Project.new_output_clip>` (input_clip, clip_name)
+*    def :meth:`parameter<Project.parameter>` (name_components)
+*    def :meth:`parameter_set<Project.parameter_set>` ([name_components=list()])
+*    def :meth:`render<Project.render>` (operation, start_index, stop_index[, layers=list()[, view=View(0)[, step=0]]])
+*    def :meth:`save<Project.save>` ()
+*    def :meth:`save_as<Project.save_as>` (file)
+*    def :meth:`set_output_dir<Project.set_output_dir>` (path[, validate=false])
+*    def :meth:`track_layers<Project.track_layers>` ([start_index=0[, stop_index=UINT_MAX[, layers=list()[, views=list()]]]])
+*    def :meth:`undo_group<Project.undo_group>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`clips<Project.clips>` [read-only] of dict of {unicode: :class:`Clip`}
+*    property :attr:`default_hero_view<Project.default_hero_view>` [read-write] of :class:`View`
+*    property :attr:`default_trackable_clip<Project.default_trackable_clip>` [read-only] of :class:`Clip`
+*    property :attr:`first_frame_offset<Project.first_frame_offset>` [read-write] of int
+*    property :attr:`frame_rate<Project.frame_rate>` [read-write] of float
+*    property :attr:`groups<Project.groups>` [read-only] of list of :class:`LayerGroup`'s
+*    property :attr:`in_out_range<Project.in_out_range>` [read-write] of 2-values tuple of long
+*    property :attr:`interlace_mode<Project.interlace_mode>` [read-only] of :class:`InterlaceMode`
+*    property :attr:`layers<Project.layers>` [read-only] of list of :class:`Layer`'s
+*    property :attr:`length<Project.length>` [read-write] of int
+*    property :attr:`notes<Project.notes>` [read-write] of unicode
+*    property :attr:`playback_in_point<Project.playback_in_point>` [read-write] of uint
+*    property :attr:`playback_out_point<Project.playback_out_point>` [read-write] of uint
+*    property :attr:`progress_watcher<Project.progress_watcher>` [read-only] of :class:`ProgressWatcher`
+*    property :attr:`project_file<Project.project_file>` [read-only] of unicode
+*    property :attr:`views<Project.views>` [read-write] of list of :class:`ViewInfo`'s
+
+
+Detailed Description
+--------------------
+
+
+    
+    Main project class. Provides methods and properties for general project management
+    of layers, groups, rendering and output directories.
+    
+
+
+.. class:: Project(detached_clip[, interlace_mode=NotInterlaced[, parent=NULL]])
+
+
+    :type detached_clip: :class:`mocha.project.Clip`
+    :type interlace_mode: :attr:`mocha.project.InterlaceMode`
+    :type parent: :class:`PySide.QtCore.QObject`
+
+
+
+    
+    :param detached_clip: Detached clip instance.
+    :param interlace_mode: Interlace mode for creating clip.
+    :param parent: Parent QObject or None.
+    
+    Creates a new mocha project from existing clip.
+    
+
+
+
+.. class:: Project(project_file[, parent=NULL])
+
+
+    :type project_file: unicode
+    :type parent: :class:`PySide.QtCore.QObject`
+
+
+
+    
+    :param project_file: Path to mocha project file.
+    :param parent: Parent QObject or None.
+    
+    Opens existing mocha project.
+    
+
+
+
+
+    :type project_file: unicode
+    :type parent: :class:`PySide.QtCore.QObject`
+    :type interlace_mode: :attr:`mocha.project.InterlaceMode`
+    :type detached_clip: :class:`mocha.project.Clip`
+
+
+
+.. method:: Project.add_clip(detached_clip, clip_name)
+
+
+    :type detached_clip: :class:`mocha.project.Clip`
+    :type clip_name: unicode
+    :rtype: :class:`mocha.project.Clip`
+
+
+
+    
+    :param detached_clip: Detached clip instance.
+    :param clip_name: New clip name to register.
+    
+    :rtype: :class:`Clip`
+    
+    Creates a copy of ``detached_clip`` and add this to the project. Returns the copy.
+    
+
+
+
+.. method:: Project.add_group([name=Project.tr( "New group" )[, layers=list()]])
+
+
+    :type name: unicode
+    :type layers: list of Layer
+    :rtype: :class:`mocha.project.LayerGroup`
+
+
+
+    
+    :param name: Name for creating group.
+    :param layers: Layers which will be added to new group.
+    
+    Creates and adds a new group of given ``layers``. New group will get the new ``name``.
+    
+    Example::
+    
+       >>> proj.add_group('new_group', (layer1, layer2))
+       <project.LayerGroup object at 0x25263b0>
+    
+
+
+
+.. method:: Project.add_layer(clip[, name=Project.tr( "New layer" )[, frame_number=0[, view=0]]])
+
+
+    :type clip: :class:`mocha.project.Clip`
+    :type name: unicode
+    :type frame_number: :class:`PySide.QtCore.uint`
+    :type view: :class:`PySide.QtCore.uint`
+    :rtype: :class:`mocha.project.Layer`
+
+
+
+    
+    :param clip: Clip instance which will contain new layer.
+    :param name: Name for creating layer.
+    :param frame_number: Number of frame where new layer is going to be added.
+    :param view_index: View index.
+    
+    Creates a new layer with ``name`` and attaches it to ``clip`` starting from ``frame_number``.
+    
+    Example::
+    
+       >>> proj.add_layer('new_group', (layer1, layer2))
+       <project.LayerGroup object at 0x25263b0>
+    
+
+
+
+.. method:: Project.export_rendered_shapes(layers, colorizeOutput, directory, extension, prefix, suffix, index_start, index_finish[, index_width=1[, views=list()[, separate_streams=false[, offset=0]]]])
+
+
+    :type layers: list of Layer
+    :type colorizeOutput: :attr:`mocha.project.ColorizeOutput`
+    :type directory: unicode
+    :type extension: unicode
+    :type prefix: unicode
+    :type suffix: unicode
+    :type index_start: :class:`PySide.QtCore.uint`
+    :type index_finish: :class:`PySide.QtCore.uint`
+    :type index_width: :class:`PySide.QtCore.uint`
+    :type views: list of View
+    :type separate_streams: :class:`PySide.QtCore.bool`
+    :type offset: :class:`PySide.QtCore.uint`
+    :rtype: :class:`mocha.project.Clip`
+
+
+
+    
+    :param layers: Layers which will be exported.
+    :param colorize_output: Colorize output option.
+    :param directory: Output directory for rendered clip.
+    :param extension: File extension for rendered clip.
+    :param prefix: File prefix for rendered clip.
+    :param suffix: File suffix for rendered clip.
+    :param index_start: Start frame number.
+    :param index_finish: Stop frame number.
+    :param index_width: Digits count in clip index.
+    :param views: Views to export.
+    :param offset: Frame offset for the exported image sequence.
+    
+    Exports matte clip to file system ``directory``.
+    This method represents mocha **File - Export Rendered Shapes...** dialog.
+    
+
+
+
+.. method:: Project.find_groups(name)
+
+
+    :type name: unicode
+    :rtype: list of LayerGroup
+
+
+
+    
+    :param name: Group name for searching.
+    
+    Returns all groups with the given name.
+    
+
+
+
+.. method:: Project.find_layers(name)
+
+
+    :type name: unicode
+    :rtype: list of Layer
+
+
+
+    
+    :param name: Layer name for searching.
+    
+    Returns all layers with the given name.
+    
+
+
+
+.. method:: Project.get_output_dir()
+
+
+    :rtype: unicode
+
+
+
+    
+    Returns path to the current output directory.
+    
+
+
+
+.. method:: Project.layer(layer_index)
+
+
+    :type layer_index: :class:`PySide.QtCore.uint`
+    :rtype: :class:`mocha.project.Layer`
+
+
+
+    
+    :param layer_index: Layer index.
+    
+    Access a :class:`Layer` by ``layer_index``.
+    Layers are indexed by their position in a flattened depth sorted list.
+    If ``layer_index`` is out of range, :meth:`layer` should return :class:`None`.
+    
+    Example::
+    
+       >>> print len(proj.layers)
+       4
+       >>> print proj.layer(0)
+       <project.Layer object at 0x2514d40>
+       >>> print proj.layer(4)
+       None
+    
+    See also:
+    
+    - :meth:`find_layers`
+    
+    - :attr:`layers`
+    
+
+
+
+.. method:: Project.new_output_clip(input_clip, clip_name)
+
+
+    :type input_clip: :class:`mocha.project.Clip`
+    :type clip_name: unicode
+    :rtype: :class:`mocha.project.Clip`
+
+
+
+    
+    :param input_clip: Input clip instance.
+    :param clip_name: New clip name to register.
+    
+    :rtype: :class:`Clip`
+    
+    Creates a new output clip.
+    
+
+
+
+.. method:: Project.__ne__(rhs)
+
+
+    :type rhs: :class:`mocha.project.Project`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: Project.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.Project`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: Project.parameter(name_components)
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.Parameter`
+
+
+
+    
+    :param name_components: Fully qualified name for a requested parameter.
+    
+    :rtype: :class:`Parameter`
+    
+    Returns :class:`Parameter` instance bound with given name path. The project instance is a root of
+    the parameter system.
+    
+
+
+
+.. method:: Project.parameter_set([name_components=list()])
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.ParameterSet`
+
+
+
+    
+    :param name_components: Fully qualified name for a requested parameter set.
+    
+    :rtype: :class:`ParameterSet`
+    
+    Returns :class:`ParameterSet` instance bound with given name path. The project instance is a root of
+    the parameter system. Pass an empty list ``[]`` to get access to the root.
+    
+
+
+
+.. method:: Project.render(operation, start_index, stop_index[, layers=list()[, view=View(0)[, step=0]]])
+
+
+    :type operation: :class:`mocha.project.RenderOperation`
+    :type start_index: :class:`PySide.QtCore.int`
+    :type stop_index: :class:`PySide.QtCore.int`
+    :type layers: list of Layer
+    :type view: :class:`mocha.project.View`
+    :type step: :class:`PySide.QtCore.int`
+    :rtype: :class:`mocha.project.Clip`
+
+
+
+    
+    :param render_operation: instance of some render operation.
+    :param start_index: Start frame number.
+    :param stop_index: Stop frame number.
+    :param layers: Layers to render.
+    :param views: Views to render.
+    :param step: Step value.
+    
+    Renders given render operation, e.g. :class:`RenderRemoveOperation`.
+    
+
+
+
+.. method:: Project.save()
+
+
+
+
+
+    
+    Saves the project to a file with the name specified in the :attr:`project_file` property.
+    
+
+
+
+.. method:: Project.save_as(file)
+
+
+    :type file: unicode
+
+
+
+    
+    :param file_name: Path to new project file.
+    :raise: **RuntimeError** - on failure.
+    
+    Saves the project to a file with the given ``file_name``.
+    On success, changes the :attr:`project_file` property value to ``file_name`` value.
+    
+
+
+
+.. method:: Project.set_output_dir(path[, validate=false])
+
+
+    :type path: unicode
+    :type validate: :class:`PySide.QtCore.bool`
+
+
+
+    
+    :param path: Path to new output directory.
+    :param validate: validate given path.
+    :raise: **AssertionError** - if validate was set as True and path does not exist or is not writable.
+    
+    Changes this project output directory.
+    
+
+
+
+.. method:: Project.track_layers([start_index=0[, stop_index=UINT_MAX[, layers=list()[, views=list()]]]])
+
+
+    :type start_index: :class:`PySide.QtCore.uint`
+    :type stop_index: :class:`PySide.QtCore.uint`
+    :type layers: list of Layer
+    :type views: list of View
+
+
+
+    
+    :param start_index: Index of the first frame to track. If not passed, tracking starts from the beginning.
+    :param stop_index: Index of the last frame to track. If not passed, tracking processed till the end.
+    :param layers: List of layers to track. If not passed, cogged and not locked layers are processed.
+    :param views: List of views to track. If not passed, default views is processed.
+    
+    Performs tracking process for the project.
+    
+
+
+
+.. method:: Project.undo_group()
+
+
+    :rtype: :class:`mocha.project.UndoGroup`
+
+
+
+
+
+
+.. attribute:: Project.notes
+
+
+    :type: unicode
+    :access: read-write    
+    Provides access to **project notes** which are available via mocha **View - Project Notes** menu.
+    
+    Example::
+    
+       >>> proj.notes = "Foo"
+       >>> print proj.notes
+       Foo
+    
+
+
+
+.. attribute:: Project.project_file
+
+
+    :type: unicode
+    :access: read-only    
+    Provides access to absolute project file path.
+    If the project wasn't saved before, should return an empty string.
+    
+    Example::
+    
+       >>> print proj.project_file
+       /home/jc/Imagineer/mocha_projects/test_project.mocha
+    
+
+
+
+.. attribute:: Project.clips
+
+
+    :type: dict of {unicode: :class:`Clip`}
+    :access: read-only    
+    Provides access to :class:`dict` of clip names and appropriate :class:`Clip`'s.
+    
+    Example::
+    
+       >>> print proj.clips
+       {u'Ceremony': <project.Clip object at 0x1a30b90>, u'Logo': <project.Clip object at 0x25211b8>}
+       >>> print proj.clips['Ceremony']
+       'Ceremony' clip object
+    
+
+
+
+.. attribute:: Project.in_out_range
+
+
+    :type: 2-values tuple of long
+    :access: read-write    
+    Provides access to project in and out points.
+    
+    Example::
+    
+       >>> print proj.in_out_range
+       (0L, 6L)
+       >>> proj.in_out_range = (0, 5)
+       >>> print proj.in_out_range
+       (0L, 5L)
+    
+
+
+
+.. attribute:: Project.frame_rate
+
+
+    :type: float
+    :access: read-write    
+    Provides access to project frame rate. Reflects mocha **File - Project settings... - Frame rate**.
+    
+    Example::
+    
+       >>> print proj.frame_rate
+       24.0
+       >>> proj.frame_rate = 30.0
+       >>> print proj.frame_rate
+       30.0
+    
+
+
+
+.. attribute:: Project.interlace_mode
+
+
+    :type: :class:`mocha.project.InterlaceMode`
+    :access: read-only    
+    Provides access to project interlace mode.
+    
+    Example::
+    
+       >>> print proj.interlace_mode
+       project.InterlaceMode.NotInterlaced
+    
+
+
+
+.. attribute:: Project.layers
+
+
+    :type: list of :class:`Layer`'s
+    :access: read-only    
+    Provides access to all project layers ordered from front to rear.
+    
+    Example::
+    
+       >>> print proj.layers
+       [<project.Layer object at 0x2522c68>, <project.Layer object at 0x2522cb0>, <project.Layer object at 0x2522d88>, <project.Layer object at 0x2522cf8>]
+       >>> print proj.layers[0].name
+       branch
+    
+    See also:
+    
+    - :meth:`find_layers`
+    - :meth:`layer`
+    
+
+
+
+.. attribute:: Project.groups
+
+
+    :type: list of :class:`LayerGroup`'s
+    :access: read-only    
+    Provides access to all project layers ordered from front to rear.
+    
+    Example::
+    
+       >>> print proj.groups
+       [<project.LayerGroup object at 0x42ab098>]
+       >>> print proj.groups[0].name
+       my group
+    
+    See also:
+    
+    - :meth:`find_groups`
+    
+
+
+
+.. attribute:: Project.first_frame_offset
+
+
+    :type: int
+    :access: read-write    
+    Provides access to project first frame offset. Reflects mocha **File - Project settings... - First frame offset**.
+    
+    Example::
+    
+       >>> print proj.first_frame_offset
+       1
+       >>> proj.first_frame_offset = 3
+       >>> print proj.first_frame_offset
+       3
+    
+
+
+
+.. attribute:: Project.length
+
+
+    :type: int
+    :access: read-write    
+    Provides access to project length. Reflects mocha **File - Project settings... - Length (frames)**.
+    
+    Example::
+    
+       >>> print proj.length
+       7
+       >>> proj.length = 3
+       >>> print proj.length
+       3
+    
+
+
+
+.. attribute:: Project.views
+
+
+    :type: list of :class:`ViewInfo`'s
+    :access: read-write    
+    :raises RuntimeError: if trying to set stereo/multi-view project without appropriate license feature.
+    :raises AssertionError: if names or abbreviations of given :class:`ViewInfo`'s are not unique.
+    
+    Provides access to project :class:`ViewInfo` objects. It contains a single instance
+    for mono projects and may contain more instances for stereo/multi-view ones.
+    To make the project multi-view (if the active license allows),
+    assign a list of several :class:`ViewInfo` instances.
+    
+    Example::
+    
+       >>> print proj.views
+       [mocha.project.ViewInfo("mono", "M", (1, 0.3, 0.3))]
+       >>> proj.views = [ViewInfo('left', 'L', (0, 0, 0)), ViewInfo('right', 'R', (0, 0, 0))]
+       >>> print proj.views
+       [mocha.project.ViewInfo("left", "L", (0, 0, 0)), mocha.project.ViewInfo("right", "R", (0, 0, 0))]
+    
+
+
+
+.. attribute:: Project.default_hero_view
+
+
+    :type: :class:`mocha.project.View`
+    :access: read-write    
+    :raises: **AssertionError** – if the project does not contain a given view.
+    
+    Provides access to project default hero view.
+    
+    Example::
+    
+       >>> print proj.default_hero_view
+       View(0)
+       >>> proj.default_hero_view = 0
+       >>> print proj.default_hero_view
+       View(0)
+       >>> proj.default_hero_view = 1
+       >>> print proj.default_hero_view
+       View(1)
+       >>> proj.default_hero_view = View(1)
+       >>> proj.default_hero_view
+       View(1)
+    
+    See also:
+    
+       - :attr:`views`
+    
+
+
+
+.. attribute:: Project.playback_in_point
+
+
+    :type: uint
+    :access: read-write    
+    Provides access to the valid project ``in point`` value.
+    
+
+
+
+.. attribute:: Project.playback_out_point
+
+
+    :type: uint
+    :access: read-write    
+    Provides access to the valid project ``out point`` value.
+    
+
+
+
+.. attribute:: Project.progress_watcher
+
+
+    :type: :class:`mocha.project.ProgressWatcher`
+    :access: read-only    
+    Provides access to the current progress watcher object of exporting operations.
+    
+
+
+
+.. attribute:: Project.default_trackable_clip
+
+
+    :type: :class:`mocha.project.Clip`
+    :access: read-only    
+    Provides access to default trackable clip of the project.
+    
+
+
+
+

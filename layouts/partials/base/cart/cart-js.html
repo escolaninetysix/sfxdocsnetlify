@@ -1,0 +1,266 @@
+<script src="https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+<script>
+var shopifyClient = ShopifyBuy.buildClient({
+    domain: 'borisfx.myshopify.com',
+    storefrontAccessToken: '3f231af7322de13fabe8e3e7ff3ef003',
+});
+</script>
+
+<script>
+    var cartApp = new Vue({
+        el: '#cart-app',
+        delimiters: ['${', '}'],
+        data: {
+            open: false,
+            loading: true,
+            empty: false,
+            checkout: {},
+            lineItems: {},
+            quantity: {},
+            coupon: '',
+            subtotal: '',
+            total: '',
+            discount: '',
+
+        },
+        created: function(){
+            $('#cart-app').css('display', 'block');
+        },
+        methods:{
+            toggle : function(){
+                var self = cartApp;
+                self.open = !self.open;
+                $('#cart-modal').modal('show');
+                if (self.open){
+                    self.loading = true;
+                    self.loadCheckout().then(function(){});
+                }
+            },
+            show : function(){
+                var self = cartApp;
+                self.open = true;
+                self.loading = true;
+                self.loadCheckout().then(function(){});
+            },
+            hide : function(){
+                var self = cartApp;
+                self.open = false;
+            },
+            loadCheckout : function(){
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    var checkoutId = Cookies.get('bfx-checkout-id')
+                    if (!checkoutId) {
+                        self.loading = false
+                        self.empty = true
+                    } else {
+                        Cookies.set('redirect_url', '/store/cart/');
+                        shopifyClient.checkout.fetch(checkoutId).then(function(checkout) {
+                            self.processCheckout(checkout);
+                            resolve('completed');
+                        })
+                    }
+                })
+            },
+            processCheckout : function(checkout){
+                if (checkout.orderStatusUrl) {
+                    this.loading = false
+                    this.empty = true
+                    return
+                }
+                this.assignLineItems(checkout.lineItems);
+                this.loading = false
+                this.empty = false
+                this.checkout = checkout
+                this.quantity = {}
+                if (checkout.discountApplications.length > 0){
+                    this.coupon = checkout.discountApplications[0].code
+                }
+                else{
+                    this.coupon = '';
+                }
+                this.subtotal = parseFloat(checkout.lineItemsSubtotalPrice.amount).toFixed(2);
+                this.discount = (parseFloat(checkout.lineItemsSubtotalPrice.amount) - parseFloat(checkout.totalPrice.amount)).toFixed(2)
+                this.total = checkout.totalPrice.amount;
+                for (var i in this.checkout.lineItems) {
+                    var lineItem = this.checkout.lineItems[i]
+                    if (lineItem.id) {
+                        this.quantity[lineItem.id] = lineItem.quantity
+                    }
+                }
+            },
+            assignLineItems(items) {
+                var result = [];
+                for (item of items){
+                    variantSplit = item.variant.title.split(' / ');
+                    result.push({
+                        id: item.id,
+                        img : item.variant.image.src,
+                        product: item.title,
+                        productId: item.variant.product.id,
+                        host: variantSplit.length > 1 ? variantSplit[0] : '',
+                        type: variantSplit.length > 1 ? variantSplit[1] : variantSplit[0],
+                        sku: item.sku,
+                        quantity: item.quantity,
+                        newQty: item.quantity,
+                        unitPrice: item.variant.price.amount,
+                        totalPrice: (item.quantity * item.variant.price.amount).toFixed(2),
+                        editMode: false,
+                        attributes: item.customAttributes
+                    });
+                }
+                this.lineItems = result;
+            },
+            setEditMode(item, value){
+                item.editMode = value;
+                if (value == false) item.newQty = item.quantity;
+            },
+            updateQuantity(item, newQty){
+                var self = this;
+                self.loading = true;
+                var checkoutId = Cookies.get('bfx-checkout-id');
+                var updates = [{id: item.id, quantity: parseInt(newQty)}];
+                shopifyClient.checkout.updateLineItems(checkoutId, updates).then(function(){
+                    item.quantity = newQty;
+                    self.loadCheckout().then(function(){
+                        item.editMode = false;
+                        self.loading = false;
+                        if (window.location.href.includes('checkout')) window.location.reload();
+                    })
+                })
+            },
+            removeLineItem : function(lineItem) {
+                var self = this;
+                self.loading = true;
+                shopifyClient.checkout.removeLineItems(self.checkout.id, lineItem.id).then(function (checkout) {
+                    self.processCheckout(checkout);
+                    self.loading = false;
+                    self.gaRemoveFromCartEvent(lineItem);
+                    if (window.location.href.includes('checkout')) window.location.reload();
+                })
+            },
+            /*
+            openShopifyCheckout: function() {
+                window.open(this.checkout.webUrl);
+            },
+            */
+            gotoCheckout: function() {
+                var login = Cookies.get('bfx-login');
+                /*
+                var useStripe = false;
+                for (var i = 0; i < this.checkout.lineItems.length ; i++){
+                    var lineItem = this.checkout.lineItems[i]
+                    if(this.isRecurring(lineItem)){
+                        useStripe = true;
+                        break;
+                    }
+                }
+                */
+                if (login == null || login.email_verified == false){
+                    Cookies.set('redirect_url', '/store/checkout');
+                    window.location.href = '/account/login?source=cart';
+                }
+                else{
+                    window.location.href = '/store/checkout'
+                }
+            },
+            isRenewal: function(lineItem) {
+                var hasSerial = false;
+                for (var i = 0; i < lineItem.attributes.length; i++) {
+                    if (lineItem.attributes[i].key == 'Current Serial Number' && lineItem.attributes[i].value != '') {
+                        hasSerial = true;
+                    }
+                }
+                return hasSerial;
+            },
+            isRecurring: function(lineItem) {
+                var usProducts = [
+                    'boris fx suite', 'sapphire', 'continuum', 'continuum fcp', 'mocha pro', 'optics', 'silhouette', 'silhouette paint'
+                ];
+                var recurringVariants = [
+                    'new license', 'subscription', 'annual subscription', 'monthly subscription', 'upgrade/support renewal'
+                ];
+                let title = lineItem.title.toLowerCase()
+                let variantSplit = lineItem.variant.title.split(' / ')
+                let variant = variantSplit[variantSplit.length -1].trim().toLowerCase()
+                let isRecurring = false;
+                if ( (usProducts.includes(title) || title.includes('bundle')) && (recurringVariants.includes(variant) || variant.includes('legacy renewal'))){
+                    isRecurring = true;
+                }
+                else if (title == 'continuum filter - particle illusion' && variant.includes('subscription')){
+                    isRecurring = true;
+                }
+                return isRecurring
+            },
+            applyDiscountCode() {
+                var self = this;
+                var codeInput = self.$refs['discount-code'];
+                var discountCode = codeInput.value;
+                shopifyClient.checkout.addDiscount(self.checkout.id, discountCode).then(function (checkout) {
+                    if (checkout.userErrors != null && checkout.userErrors.length > 0) {
+                        alert('Could not apply discount code');
+                        return
+                    }
+                    self.loadCheckout(checkout);
+                    codeInput.value = '';
+                    if (window.location.href.includes('checkout')) window.location.reload();
+                });
+            },
+            errorAlert: function(){
+                alert('Something has gone wrong. Please contact our customer service team at customerservice@borisfx.com for assistance with this order.');
+                return '';
+            },
+            clearDiscount() {
+                var self = this;
+                shopifyClient.checkout.removeDiscount(self.checkout.id).then(function (shopifyCheckout) {
+                    if (shopifyCheckout.orderStatusUrl) {
+                        alert('Could not remove discount code');
+                        return
+                    }
+                    self.loadCheckout(shopifyCheckout).then(function(res){
+                        if (window.location.href.includes('checkout')) window.location.reload();
+                    })
+                })
+            },
+            gaRemoveFromCartEvent: function(lineItem, quantity){
+                var self = this;
+                var item = lineItem;
+                try{
+                    window.dataLayer.push({ 'ecommerce': null });
+                    window.dataLayer.push({
+                        'event': 'removeFromCart',
+                        'ecommerce': {
+                            'currencyCode': 'USD',
+                            'remove': {                                
+                                'products': [{                        
+                                    'name': item.product,
+                                    'id': item.sku,
+                                    'price': item.unitPrice,
+                                    'brand': null,
+                                    'category': item.host.replaceAll('/', ' + '),
+                                    'variant': item.type,
+                                    'quantity': item.quantity 
+                                }]
+                            }
+                        }
+                    });
+                }
+                catch(err){
+                    console.error(err);
+                }
+            }
+        },
+    })
+</script>
+
+<script>
+    function toggleCart(){
+        cartApp.$options.methods.toggle()
+    }
+    function showCart(){
+        cartApp.$options.methods.show()
+    }
+    function hideCart(){
+        cartApp.$options.methods.hide()
+    }
+</script>

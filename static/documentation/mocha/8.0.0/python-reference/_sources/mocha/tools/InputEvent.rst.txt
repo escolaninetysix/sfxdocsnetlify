@@ -1,0 +1,83 @@
+.. module:: mocha.tools
+.. _InputEvent:
+
+InputEvent
+**********
+
+.. inheritance-diagram:: mocha.tools.InputEvent
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`get_contour<InputEvent.get_contour>` ()
+    * def :meth:`get_control_point<InputEvent.get_control_point>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`contour<InputEvent.contour>` [read-only] of :class:`BezierContour` or :class:`XSplineContour`
+*    property :attr:`control_point<InputEvent.control_point>` [read-only] of :class:`BezierControlPoint` or :class:`XControlPoint`
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Mouse event data class.
+
+
+
+.. attribute:: InputEvent.layer
+
+
+.. attribute:: InputEvent.pos_on_image
+
+
+.. attribute:: InputEvent.pos_on_canvas
+
+
+.. method:: InputEvent.get_contour()
+
+
+    :rtype: :class:`PyObject`
+
+
+
+
+
+.. method:: InputEvent.get_control_point()
+
+
+    :rtype: :class:`PyObject`
+
+
+
+
+
+.. attribute:: InputEvent.contour
+
+
+    :type: :class:`BezierContour` or :class:`XSplineContour`
+    :access: read-only    Provides access to a contour instance.
+
+
+
+.. attribute:: InputEvent.control_point
+
+
+    :type: :class:`BezierControlPoint` or :class:`XControlPoint`
+    :access: read-only    Provides access to a control point instance.
+
+
+
+

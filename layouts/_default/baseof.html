@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PCR9XWG');</script>
+<!-- End Google Tag Manager -->
+
+<!--	
+<script
+  src="https://browser.sentry-cdn.com/6.16.1/bundle.min.js"
+  integrity="sha384-WkFzsrcXKeJ3KlWNXojDiim8rplIj1RPsCbuv7dsLECoXY8C6Cx158CMgl+O+QKW"
+  crossorigin="anonymous"
+></script>
+
+<script src="https://browser.sentry-cdn.com/6.16.1/bundle.tracing.min.js"
+  integrity="sha384-hySah00SvKME+98UjlzyfP852AXjPPTh2vgJu26gFcwTlZ02/zm82SINaKTKwIX2" crossorigin="anonymous"></script>
+<script>
+  Sentry.init({
+      dsn: "https://aa961520701c4ec9a0b4fdccb8dd9a8f@o1087374.ingest.sentry.io/6146210",
+
+      release: "test-website@1.0.0",
+      integrations: [new Sentry.Integrations.BrowserTracing()],
+      environment: 'production',
+      tracesSampleRate: .015,
+      beforeSend: function (event, hint) {
+        var error = hint.originalException;
+        if (hint.originalException === "Timeout") return null;
+        return event;
+      }
+    });
+</script>
+-->
+
+<style>.grecaptcha-badge { visibility: hidden; }</style>
+{{ if isset .Params "og" }}
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
+
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="How to edit a film in DaVinci Resolve with filmmaker Damien LeVeck" />
+
+<meta name="description" prefix="og: http://ogp.me/ns#" property="og:description" content="Join the Boris FX team as we chat with award-winning independent filmmaker and Sapphire power user Damien LeVeck on what it takes to edit a feature completely in Blackmagic DaVinci Resolve!" />
+
+<meta name="image" prefix="og: http://ogp.me/ns#" property="og:image" content="https://img.youtube.com/vi/7FzCI0XpLZQ/hqdefault.jpg" />
+
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://borisfx.com/livestream/" />
+
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:image" content="https://img.youtube.com/vi/7FzCI0XpLZQ/hqdefault.jpg" />
+
+<meta name="twitter:site" content="@borisfx" />
+
+<meta name="twitter:domain" content="https://borisfx.com/livestream/" />
+
+<meta name="twitter:title" content="How to edit a film in DaVinci Resolve with filmmaker Damien LeVeck" />
+
+<meta name="twitter:description" content="Join the Boris FX team as we chat with award-winning independent filmmaker and Sapphire power user Damien LeVeck on what it takes to edit a feature completely in Blackmagic DaVinci Resolve!" />
+{{ end }}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Boris FX, Continuum, Sapphire, Mocha Pro, Silhouette, Silhouette Paint, Particle Illusion, Title Studio, Motion Graphics, Editing, Visual Effects, Plugins">
+  <meta name="google-site-verification" content="c5NpKnGRHgCN800QSWZYJOy9jMWFVIzSmdgsJYl3J-8" />
+  
+  <title>Boris FX{{ if .Title }} | {{ .Title }}{{ end }}</title>
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ if .Params.excerpt }}{{ .Params.excerpt }}{{ else }}{{ if .Summary }}{{ .Summary }}{{ else }}{{ if .Title }}{{ .Title }}{{ end }}{{ end }}{{ end }}{{ end }}">
+  <meta name="facebook-domain-verification" content="g5ydaqx5wx4rqbbicxmi649djnkh60" />
+
+<script src="https://kit.fontawesome.com/b5d3fd119e.js" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/twentytwenty.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/bootstrap.min.css">
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="/algolia-min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/jquery-ui.css">
+  <link rel="stylesheet" href="/jquery.fancybox.min.css" />  
+  <link rel="stylesheet" href="/slick.css"/>	
+  <link rel="stylesheet" href="/slick-theme.css"/>	
+	
+  <!-- Scripts -->
+  
+  <script src="/jquery-3.6.0.min.js"></script>
+  <script src="/jquery-ui.min.js"></script>
+  <script src="/jquery.cookie-1.4.1.min.js"></script>
+  <script src="/tether.min.js"></script>
+  <script src="/vue.min.js"></script>
+  <script src="/js.cookie.min.js"></script>
+  <script src="/jquery.event.move.js" type="text/javascript" async></script>
+  <script src="/jquery.twentytwenty.js" type="text/javascript" async></script>
+  <script src="/jquery.fancybox.min.js" async></script>
+  <script src="/bootstrap.bundle.min.js"></script>
+  <script src="/axios.min.js"></script>
+
+
+  <!-- Temporary measure. Reassign bfx-user cookie to bfx-login -->
+  <script>
+    var bfxUserCookie = Cookies.get('bfx-user');
+    if (bfxUserCookie != null){
+      Cookies.remove('bfx-user');
+      Cookies.set('bfx-login', bfxUserCookie, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+    }
+  </script>
+ 
+  <script>
+  function parseQuery(qstr) {
+    var query = {};
+    var a = (qstr[0] === '?' ? qstr.substr(1) : qstr).split('&');
+    for (var i = 0; i < a.length; i++) {
+      var b = a[i].split('=');
+      query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+    }
+    return query;
+  }
+  function getQueryParameter(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+  </script>
+  {{ if isset .Params "require_login" }}
+  <script>
+$(window).on('load',function() {  
+  var redirect_url = Cookies.get('redirect_url');
+  var user = Cookies.getJSON('bfx-login');
+  if (user && user.password) {
+    Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+    user = undefined;
+  }
+  if (!user) {
+    window.location = '/account/login?redirect_url=' + encodeURIComponent(window.location.href);
+    return;
+  }
+  else if (user.email_verified == 'false') {
+    window.location = '/account/verify?redirect_url=' + encodeURIComponent(window.location.href);
+    return;
+  }
+});  
+  </script>
+  {{ end }}
+  
+  {{ if isset .Params "require_recaptcha" }}
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  {{ end }}
+  {{ if isset .Params "require_recaptcha_v3" }}
+  <script src='https://www.google.com/recaptcha/api.js?render=6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_'></script>
+  {{ end }}
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+</head>
+
+<body>
+	  <script>
+$(document).ready(function() { 
+    var user = Cookies.getJSON('bfx-login');
+   var json = JSON.stringify(user);
+   if (json) {
+   var obj = JSON.parse(json);
+   } else {
+   return;
+   }
+    var loggedIn = Cookies.get('bfx-login');
+	if (!(loggedIn)) {
+    $("i#logged").removeClass('fa fa-fw fa-user-circle-o').addClass('fa fa-fw fa-user');
+    } else if (loggedIn) {
+	$("a#logged").removeAttr('href');
+  $('[data-toggle="popover"]').popover({ html: true }); 
+    $("i#logged").removeClass().addClass('fa fa-fw fa-user-circle-o');
+	$("i#logged").attr('style', 'color:#00aeef;font-size:20px;');
+	
+	$("a#logged").attr('data-content', '<span style=padding:10px;><center>Logged in as:</center>' + obj.email + "<br><center><a href='/account/manage/'>Account</a><br><a href='/account/logout/'>Log Out</a></center></span>");
+	} 
+});
+	  </script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCR9XWG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+{{ with .Params.base_display }}
+<script>
+$(document).ready(function() { 
+    var user = Cookies.getJSON('bfx-login');
+   var json = JSON.stringify(user);
+   if (json) {
+   var obj = JSON.parse(json);
+   } else {
+   return;
+   }
+    var loggedIn = Cookies.get('bfx-login');
+	if (!(loggedIn)) {
+
+  } else if (loggedIn) {
+    var loggedInHtml = '';
+    if (obj.administrator){
+      loggedInHtml = "<span><a data-toggle=\"popover\" data-placement=\"bottom\"  href=\"#\" id=\"logged\" data-content=\"<center style=padding:10px;>Logged in as:<br>" + obj.email + "<br><a href=/account/manage/>Account</a><br><a href=/account/logout/>Log Out</a><br><a href=/account/login-as/>Log In As...</a></center>\">MY ACCOUNT</a><br></span>"
+    }
+    else{
+      loggedInHtml = "<span><a data-toggle=\"popover\" data-placement=\"bottom\"  href=\"#\" id=\"logged\" data-content=\"<center style=padding:10px;>Logged in as:<br>" + obj.email + "<br><a href=/account/manage/>Account</a><br><a href=/account/logout/>Log Out</a></center>\">MY ACCOUNT</a><br></span>";
+    }
+    $("#loggedin").html(loggedInHtml);
+    $('[data-toggle="popover"]').popover({ html: true }); 
+	} 
+});
+</script>
+{{ else }}
+
+  <header class="topbar">
+    <div class="container">
+      <a class="topbar-logo" href="/"></a>
+      <ul class="topbar-item-list">
+        {{ range .Site.Data.menus.topbar }}
+
+        <li class="topbar-dropdown" id="{{ .title }}">
+          <a href="{{ .url }}">{{ .title }}</a>
+		  
+          <ul class="list-inline">
+            {{ range .subitems }}
+			<div id="subnav">
+									{{ if eq .title "App Manager" }}
+			
+			<li id="rule" class="list-inline-item" style="height:1px;width:150px;border-top:solid 2px white;padding-bottom:10px;margin-left:42px;"></li><br>
+
+			{{ end }}
+			<li class="list-inline-item" style="padding-left:40px;padding-right:40px;" id="{{ .title }}"><a href="{{ .url }}">{{ .title }}</a></li>
+			</div>
+			<div id="toggler">
+				<li id="{{ .title }}" class="list-inline-item float-right align-text-top" style="padding-right:10%;width:65%;color:white;  white-space: nowrap; overflow: hidden;text-overflow: ellipsis;display:none;">
+			{{ if .link }} <a href="{{ .link }}">{{ .link_desc }}</a><br><br>{{ end }} {{ if .link0 }} <a href="{{ .link0 }}">{{ .link_desc0 }}</a><br><br>{{ end }} {{ if .link1 }} <a href="{{ .link1 }}">{{ .link_desc1 }}</a><br><br>{{ end }} {{ if .link2 }} <a href="{{ .link2 }}">{{ .link_desc2 }}</a><br><br>{{ end }} {{ if .link3 }} <a href="{{ .link3 }}">{{ .link_desc3 }}</a>{{ end }} {{ if .vid_title }} <a id="{{ .vid_title }}" href="{{ .vid_url }}">{{ .vid_title }}</a><br><br>{{ end }} {{ if .vid_title1 }} <a id="{{ .vid_title1 }}" href="{{ .vid_url1 }}">{{ .vid_title1 }}</a><br><br>{{ end }} {{ if .vid_title2 }} <a id="{{ .vid_title2 }}" href="{{ .vid_url2 }}">{{ .vid_title2 }}</a><br><br>{{ end }} {{ if .vid_title3 }} <a id="{{ .vid_title3 }}" href="{{ .vid_url3 }}">{{ .vid_title3 }}</a><br><br>{{ end }} {{ if .vid_title4 }} <a id="{{ .vid_title4 }}" href="{{ .vid_url4 }}">{{ .vid_title4 }}</a><br><br>{{ end }} {{ if .lic_link }} <a id="{{ .title }}{{ .lic_link_title }}" href="{{ .lic_link }}">{{ .lic_link_title }}</a><br><br>{{ end }} {{ if .lic_link1 }} <a id="{{ .title }}{{ .lic_link_title1 }}" href="{{ .lic_link1 }}">{{ .lic_link_title1 }}</a><br><br>{{ end }} {{ if .lic_link2 }} <a id="{{ .title }}{{ .lic_link_title2 }}" href="{{ .lic_link2 }}">{{ .lic_link_title2 }}</a><br><br>{{ end }} {{ if .lic_link3 }} <a id="{{ .title }}{{ .lic_link_title3 }}" href="{{ .lic_link3 }}">{{ .lic_link_title3 }}</a><br><br>{{ end }} {{ if .lic_link4 }} <a id="{{ .title }}{{ .lic_link_title4 }}" href="{{ .lic_link4 }}">{{ .lic_link_title4 }}</a><br><br>{{ end }}  {{ if .dl_link }} <a id="{{ .title }}{{ .dl_link_title }}" href="{{ .dl_link }}">{{ .dl_link_title }}</a><br><br>{{ end }} {{ if .dl_link1 }} <a id="{{ .title }}{{ .dl_link_title1 }}" href="{{ .dl_link1 }}">{{ .dl_link_title1 }}</a><br><br>{{ end }} {{ if .dl_link2 }} <a id="{{ .title }}{{ .dl_link_title2 }}" href="{{ .dl_link2 }}">{{ .dl_link_title2 }}</a><br><br>{{ end }} {{ if .dl_link3 }} <a id="{{ .title }}{{ .dl_link_title3 }}" href="{{ .dl_link3 }}">{{ .dl_link_title3 }}</a><br><br>{{ end }} {{ if .dl_link4 }} <a id="{{ .title }}{{ .dl_link_title4 }}" href="{{ .dl_link4 }}">{{ .dl_link_title4 }}</a><br><br>{{ end }} {{ if .dl_link5 }} <a id="{{ .title }}{{ .dl_link_title5 }}" href="{{ .dl_link5 }}">{{ .dl_link_title5 }}</a><br><br>{{ end }} {{ if .dl_link_am }} <a id="{{ .title }}{{ .dl_link_am_title }}" href="{{ .dl_link_am }}">{{ .dl_link_am_title }}</a><br><br>{{ end }} {{ if .comm_link }} <a href="{{ .comm_link }}" id="{{ .comm_link_title }}">{{ .comm_link_title }}</a><br><br>{{ end }} {{ if .comm_link1 }} <a href="{{ .comm_link1 }}" id="{{ .comm_link_title1 }}">{{ .comm_link_title1 }}</a><br><br>{{ end }} {{ if .comm_link2 }} <a href="{{ .comm_link2 }}" id="{{ .comm_link_title2 }}">{{ .comm_link_title2 }}</a><br><br>{{ end }} {{ if .comm_link3 }} <a href="{{ .comm_link3 }}" id="{{ .comm_link_title3 }}">{{ .comm_link_title3 }}</a><br><br>{{ end }}  {{ if .comm_link4 }} <a href="{{ .comm_link4 }}" id="{{ .comm_link_title4 }}">{{ .comm_link_title4 }}</a><br><br>{{ end }} {{ if .specs_link }} <a href="{{ .specs_link }}" id="{{ .title }}{{ .specs_link_title }}">{{ .specs_link_title }}</a><br><br>{{ end }} {{  if .specs_link2 }} <a href="{{ .specs_link2 }}" id="{{ .title }}{{ .specs_link_title2 }}">{{ .specs_link_title2 }}</a><br><br>{{ end }} {{  if .specs_link3 }} <a href="{{ .specs_link3 }}" id="{{ .title }}{{ .specs_link_title3 }}">{{ .specs_link_title3 }}</a><br><br>{{ end }} {{  if .specs_si }} <a href="{{ .specs_si }}" id="{{ .title }}{{ .specs_link_si }}">{{ .specs_link_si }}</a><br><br>{{ end }}  {{  if .specs_link4 }} <a href="{{ .specs_link4 }}" id="{{ .title }}{{ .specs_link_title4 }}">{{ .specs_link_title4 }}</a><br><br>{{ end }} {{  if .specs_link5 }} <a href="{{ .specs_link5 }}" id="{{ .title }}{{ .specs_link_title5 }}">{{ .specs_link_title5 }}</a><br><br> {{ end }} {{  if .specs_link6 }} <a href="{{ .specs_link6 }}" id="{{ .title }}{{ .specs_link_title6 }}">{{ .specs_link_title6 }}</a><br><br>{{ end }}{{ if .edu_link }} <a href="{{ .edu_link }}" id="{{ .edu_link_title }}">{{ .edu_link_title }}</a><br><br>{{ end }} {{ if .edu_link1 }} <a href="{{ .edu_link1 }}" id="{{ .edu_link_title1 }}">{{ .edu_link_title1 }}</a><br><br>{{ end }}
+			</li>
+			</div><br>
+            {{ end }}
+			<style>
+		    #subnav:hover {
+			overflow: visible;
+			}
+			</style>
+          </ul>
+        </li>
+        {{ end }}
+			  <script src="/megamenu.js"></script>
+  </ul>
+      <ul id="hideme" class="topbar-product-icons" style="height:80px;">
+	  <li class="list-inline-item" id="loggedin" style="color:white;font-size:small;"><span><a data-fancybox data-src="#hidden-content" href="javascript:;">Login</a></span></li>
+	  <div style="display: none;" id="hidden-content">
+	  {{ partial "product-login-new.html" . }}
+	  </div>
+	  <script>
+$(document).ready(function() { 
+    var user = Cookies.getJSON('bfx-login');
+   var json = JSON.stringify(user);
+   if (json) {
+   var obj = JSON.parse(json);
+   } else {
+   return;
+   }
+    var loggedIn = Cookies.get('bfx-login');
+	if (!(loggedIn)) {
+
+  } else if (loggedIn) {
+    var loggedInHtml = '';
+    if (obj.administrator){
+      loggedInHtml = "<span><a data-toggle=\"popover\" data-placement=\"bottom\"  href=\"#\" id=\"logged\" data-content=\"<center style=padding:10px;>Logged in as:<br>" + obj.email + "<br><a href=/account/manage/>Account</a><br><a href=/account/logout/>Log Out</a><br><a href=/account/login-as/>Log In As...</a></center>\">MY ACCOUNT</a><br></span>"
+    }
+    else{
+      loggedInHtml = "<span><a data-toggle=\"popover\" data-placement=\"bottom\"  href=\"#\" id=\"logged\" data-content=\"<center style=padding:10px;>Logged in as:<br>" + obj.email + "<br><a href=/account/manage/>Account</a><br><a href=/account/logout/>Log Out</a></center>\">MY ACCOUNT</a><br></span>";
+    }
+    $("#loggedin").html(loggedInHtml);
+    $('[data-toggle="popover"]').popover({ html: true }); 
+	} 
+});
+	  </script>
+</ul>
+      <ul class="topbar-right-list">
+        <li><a href="/search/"><i class="fa fa-fw fa-search" style="font-size: 20px"></i></a></li>
+        <li><a href="javascript:void(0)" onclick="toggleCart()"><i class="fa fa-fw fa-shopping-cart" style="font-size: 20px"></i></a></li>
+        {{ partial "base/cart/cart-body" }}
+ </ul>
+      <a href="/sitemap/" class="topbar-toggle">
+        <i class="fa fa-fw fa-lg fa-bars"></i>
+      </a>
+    </div>
+  </header>
+{{ if isset .Params "banner" }}
+<div style="color:#FFFFFFFF;background-color:#0ab0f6;height:24px;" id="banner">
+    <p style="text-align: center;font-weight: bold;font-size: large;">Sorry! Boris FX is currently experiencing issues with our web store and account logins. Our team is busy restoring service. Thank you for your patience.</p>
+</div>
+{{ end }}
+{{ end }}
+
+  {{ block "content" . }}
+  {{ end }}
+
+{{ with .Params.base_display }}
+
+{{ else }}
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        {{ range .Site.Data.menus_backup.topbar }}
+        <div class="col">
+          <h4><a href="{{ .url }}">{{ .title }}</a></h4>
+          <ul class="list-unstyled">
+            {{ range .subitems }}
+            <li><a href="{{ .url }}">{{ .title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+        <div class="w-100 d-lg-none"></div>
+        {{ end }}
+      </div>
+      <div class="row social">
+        <div class="col">
+          <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.facebook.com/borisfx">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/borisfx">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.linkedin.com/company/boris-fx">
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.youtube.com/user/BorisFXco">
+            <i class="fa fa-youtube"></i>
+          </a>
+          <a target="_blank" rel="nofollow noopener noreferrer" href="https://vimeo.com/borisfx">
+            <i class="fa fa-vimeo"></i>
+          </a>
+          <a target="_blank" rel="nofollow noopener noreferrer" href="/news/">
+            <i class="fa fa-pencil"></i>
+          </a>
+          <p>© 2023 Boris FX, Inc. All Rights Reserved.</p>
+		  <p>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply. <a href="javascript:;" onClick="CookieControl.open()">Manage Cookie Settings</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+ {{ end }} 
+  <!-- Start Nav Icon Animated -->
+  <script>
+    $(document).ready(function(){
+    $('#nav-icon3').click(function(){
+      $(this).toggleClass('open');
+    });
+  });
+  </script>
+  <!-- End Nav Icon Animated -->
+
+  {{ partial "base/cart/cart-js" }}
+</body>
+</html>

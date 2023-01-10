@@ -1,0 +1,21 @@
+{
+  "title": "Student License Request Submitted",
+  "date": "",
+  "description": ""
+}
+<div id="caseconf">
+    <p id="caseId">Thank you for your interest in our products! Your Boris FX Student License Request has been sent. Your request number is  
+    </p>
+    <p id="emailId">Once your request has been approved, we will send your new licenses to  
+    </p>
+    <p>Please give our Customer Service team up to <strong>30 days</strong> to process your request. If you still have not received your license in that time, please contact us at student_licenses@borisfx.com.</p>
+</div>
+
+<script>
+    word = window.location.search.substring(1);
+    var vars = word.split('=');
+    var caseNumEmail = vars[1];
+    var params = caseNumEmail.split('*');
+    $("#caseId").html($('#caseId').html() + params[0]);
+    $("#emailId").html($('#emailId').html() + params[1]);
+</script>

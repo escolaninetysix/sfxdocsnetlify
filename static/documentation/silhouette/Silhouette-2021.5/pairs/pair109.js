@@ -1,0 +1,26 @@
+var pairs =
+{
+"ocio":{"lut":1,"luts":1}
+,"applies":{"custom":1,"lut":1}
+,"custom":{"ocio":1}
+,"lut":{"scene":1,"file":1,"normally":1}
+,"node":{"group":1}
+,"appendix":{"ocio":1}
+,"luts":{"chapter":1}
+,"chapter":{"detailed":1}
+,"detailed":{"list":1}
+,"list":{"supported":1}
+,"supported":{"luts":1}
+,"selects":{"lut":1}
+,"inverts":{"lut":1}
+,"nearest":{"neighbor":1}
+,"neighbor":{"interpolation":1}
+,"linear":{"interpolation":1}
+,"tetrahedral":{"interpolation":1}
+,"chooses":{"best":1}
+,"best":{"interpolation":1}
+,"interpolation":{"type":1}
+,"type":{"selected":1}
+,"selected":{"lut":1}
+}
+;Search.control.loadWordPairs(pairs);

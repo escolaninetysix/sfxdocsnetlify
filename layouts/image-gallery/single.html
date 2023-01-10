@@ -1,0 +1,40 @@
+{{ define "content" }}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+	{{ if .Params.slider }}
+	<div id="{{ .Params.slider }}">
+	  <img class="img-fluid" src="{{ .Params.video_url }}">
+      <img class="img-fluid"  src="{{ .Params.thumbnail_url }}">
+    </div>
+	{{ else if .Params.single_thumbnail_url }}
+	 <img class="img-fluid"  src="{{ .Params.single_thumbnail_url }}">
+	{{ end }}
+	</div>
+  </div>  
+  <div class="row">
+    <div class="col">
+      <h1 class="mb-0">{{ .Title }}</h1>
+    </div>
+  </div>
+  {{ if .Content }}
+  <div class="row">
+    <div class="col">
+      {{ .Content }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+<script>
+
+$(window).on('load',function() {
+var slider = {{ .Params.slider }}
+
+$("#" + slider).twentytwenty(); 
+});
+</script>
+
+{{ end }}

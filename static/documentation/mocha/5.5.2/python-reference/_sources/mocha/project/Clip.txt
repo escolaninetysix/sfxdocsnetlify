@@ -1,0 +1,476 @@
+.. module:: mocha.project
+.. _Clip:
+
+Clip
+****
+
+.. inheritance-diagram:: Clip
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`__eq__<Clip.__eq__>` (rhs)
+*    def :meth:`__ne__<Clip.__ne__>` (rhs)
+*    def :meth:`add_stream<Clip.add_stream>` (first_clip_file, view, start_frame, stop_frame[, validate=false])
+*    def :meth:`apply<Clip.apply>` (stream_info[, view=View()])
+*    def :meth:`assign_project_view<Clip.assign_project_view>` (view, proj_view)
+*    def :meth:`base_parameter_set<Clip.base_parameter_set>` ([name_components=list()])
+*    def :meth:`delete_stream<Clip.delete_stream>` (view)
+*    def :meth:`export<Clip.export>` (revertToClip, directory, extension, prefix, suffix, index_start, index_finish[, index_width=1[, views=list()[, separate_streams=false[, offset=0[, step=1]]]]])
+*    def :meth:`get_info<Clip.get_info>` (view)
+*    def :meth:`image<Clip.image>` (frame[, view=View()[, allocate=false]])
+*    def :meth:`parameter<Clip.parameter>` (name_components)
+*    def :meth:`parameter_set<Clip.parameter_set>` ([name_components=list()])
+*    def :meth:`relink<Clip.relink>` ([path=""[, prefix=""[, suffix=""[, start_frame=UINT_MAX[, end_frame=UINT_MAX[, view=View()]]]]]])
+*    def :meth:`relink<Clip.relink>` (stream_info[, view=View()])
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`color_parameters<Clip.color_parameters>` [read-write] of :class:`ColorParameters`
+*    property :attr:`discrete_frames<Clip.discrete_frames>` [read-only] of tuple
+*    property :attr:`first_frame_offset<Clip.first_frame_offset>` [read-write] of int
+*    property :attr:`frame_rate<Clip.frame_rate>` [read-write] of float
+*    property :attr:`frame_size<Clip.frame_size>` [read-write] of float
+*    property :attr:`id<Clip.id>` [read-only] of long
+*    property :attr:`name<Clip.name>` [read-only] of str
+*    property :attr:`progress_watcher<Clip.progress_watcher>` [read-only] of :class:`ProgressWatcher`
+*    property :attr:`view_mapping<Clip.view_mapping>` [read-only] of dict of { :class:`View`: :class:`View` }
+*    property :attr:`views<Clip.views>` [read-only] of list of :class:`View`
+
+
+Detailed Description
+--------------------
+
+
+    
+    Clip class which provides primary manipulations on clip.
+    
+
+
+.. class:: Clip(clip_path[, clip_name="NewClip"[, validate=false[, width=0[, height=0[, length=0[, parent=NULL]]]]]])
+
+
+    :type clip_path: unicode
+    :type clip_name: unicode
+    :type validate: :class:`PySide.QtCore.bool`
+    :type width: :class:`PySide.QtCore.uint`
+    :type height: :class:`PySide.QtCore.uint`
+    :type length: :class:`PySide.QtCore.uint`
+    :type parent: :class:`PySide.QtCore.QObject`
+
+
+
+    
+    :param clip_path: Absolute path to first clip file.
+    :param validate: Validate creating clip if set to True
+    :param width: Clip width in pixels.
+    :param height: Clip height in pixels.
+    :param length: Clip length.
+    :param parent: Parent object.
+    
+    Creates detached clip instance.
+    
+
+
+
+
+    :type width: :class:`PySide.QtCore.uint`
+    :type validate: :class:`PySide.QtCore.bool`
+    :type height: :class:`PySide.QtCore.uint`
+    :type length: :class:`PySide.QtCore.uint`
+    :type clip_name: unicode
+    :type parent: :class:`PySide.QtCore.QObject`
+    :type clip_path: unicode
+
+
+.. method:: Clip.add_stream(first_clip_file, view, start_frame, stop_frame[, validate=false])
+
+
+    :type first_clip_file: unicode
+    :type view: :class:`mocha.project.View`
+    :type start_frame: :class:`PySide.QtCore.uint`
+    :type stop_frame: :class:`PySide.QtCore.uint`
+    :type validate: :class:`PySide.QtCore.bool`
+
+
+
+    
+    :param first_clip_file: Absolute path to first clip file.
+    :param view: Project view which is not used in this clip.
+    :param start_frame: Start frame index for new stream.
+    :param stop_frame: Stop frame index for new stream.
+    :param validate: Validate adding stream if it is set to True.
+    
+    :raises IndexError: If project does not have given ``view``,
+                        or clip already has such view, or current frame range is invalid.
+    :raises IOError: If given first_clip_file is inaccessible.
+    
+    Adds a new clip stream on unoccupied view.
+    
+
+
+
+.. method:: Clip.apply(stream_info[, view=View()])
+
+
+    :type stream_info: :class:`mocha.project.StreamInfo`
+    :type view: :class:`mocha.project.View`
+
+
+
+    
+    :param stream_info: Stream data which will be applied immediately.
+    :param view: Clip view.
+    
+    Relinks clip without any checking.
+    
+
+
+
+.. method:: Clip.assign_project_view(view, proj_view)
+
+
+    :type view: :class:`mocha.project.View`
+    :type proj_view: :class:`mocha.project.View`
+
+
+
+    
+    :param view: Clip view.
+    :param proj_view: Project view.
+    
+    :raises: **IndexError** - If project does not contain the given proj_view or the clip does not.
+    
+    Assigns given clip view to given project view.
+    
+    See also:
+       - :attr:`view_mapping`
+    
+
+
+
+.. method:: Clip.base_parameter_set([name_components=list()])
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.ParameterSet`
+
+
+
+    
+    :param name_components: Relative name for a requested parameter set.
+    
+    :rtype: :class:`ParameterSet`
+    
+    Returns :class:`ParameterSet` instance bound with given name path.
+    Pass an empty list ``[]`` to get access to the base clip parameters set.
+    
+
+
+
+.. method:: Clip.delete_stream(view)
+
+
+    :type view: :class:`mocha.project.View`
+
+
+
+    
+    :param view: Clip view.
+    :raises: **IndexError** - If the clip does not have the given ``view``.
+    
+    Deletes the stream for given ``view``.
+    
+
+
+
+.. method:: Clip.export(revertToClip, directory, extension, prefix, suffix, index_start, index_finish[, index_width=1[, views=list()[, separate_streams=false[, offset=0[, step=1]]]]])
+
+
+    :type revertToClip: :class:`mocha.project.Clip`
+    :type directory: unicode
+    :type extension: unicode
+    :type prefix: unicode
+    :type suffix: unicode
+    :type index_start: :class:`PySide.QtCore.uint`
+    :type index_finish: :class:`PySide.QtCore.uint`
+    :type index_width: :class:`PySide.QtCore.uint`
+    :type views: list of View
+    :type separate_streams: :class:`PySide.QtCore.bool`
+    :type offset: :class:`PySide.QtCore.uint`
+    :type step: :class:`PySide.QtCore.uint`
+
+
+
+    
+    :param revert_to_clip: Revert to clip option.
+    :param directory: Output clip directory.
+    :param extension: File format extension.
+    :param prefix: Prefix to add to exported clip.
+    :param suffix: Suffix to append to exported clip.
+    :param index_start: The starting index.
+    :param index_stop: The ending index.
+    :param index_width: Width of the sequence number, padded by zeroes.
+    :param views: Views to export.
+    :param offset: Frame offset for the exported image sequence.
+    :param step: Step value.
+    
+    Exports current clip to filesystem directory.
+    Same options provides mocha main menu item **File - Export Rendered Clip...**
+    
+
+
+
+.. method:: Clip.get_info(view)
+
+
+    :type view: :class:`mocha.project.View`
+    :rtype: :class:`mocha.project.StreamInfo`
+
+
+
+    
+    :param view: Clip view.
+    
+    Returns stream info for given view.
+    
+
+
+
+.. method:: Clip.image(frame[, view=View()[, allocate=false]])
+
+
+    :type frame: :class:`PySide.QtCore.uint`
+    :type view: :class:`mocha.project.View`
+    :type allocate: :class:`PySide.QtCore.bool`
+    :rtype: :class:`mocha.project.ImageData`
+
+
+
+    
+    :param frame: Index of frame to query the source image from.
+    :param view: View.
+    :param allocate: If True and the clip has no image on given frame, the frame image will be allocated.
+    
+    :rtype: :class:`ImageData`
+    
+    Returns :class:`ImageData` instance bearing the pixel data and metainformation
+    of the querying clip source image.
+    Any changes made on the pixel data will immediately invalidate the image cache.
+    
+
+
+
+.. method:: Clip.__ne__(rhs)
+
+
+    :type rhs: :class:`mocha.project.Clip`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: Clip.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.Clip`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: Clip.parameter(name_components)
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.Parameter`
+
+
+
+    
+    :param name_components: Relative name for a requested parameter.
+    
+    :rtype: :class:`Parameter`
+    
+    Returns :class:`Parameter` instance bound with given name path.
+    
+
+
+
+.. method:: Clip.parameter_set([name_components=list()])
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.ParameterSet`
+
+
+
+    
+    :param name_components: Relative name for a requested parameter set.
+    
+    :rtype: :class:`ParameterSet`
+    
+    Returns :class:`ParameterSet` instance bound with given name path.
+    Pass an empty list ``[]`` to get access to the Clip parameters set.
+    
+
+
+
+.. method:: Clip.relink([path=""[, prefix=""[, suffix=""[, start_frame=UINT_MAX[, end_frame=UINT_MAX[, view=View()]]]]]])
+
+
+    :type path: unicode
+    :type prefix: unicode
+    :type suffix: unicode
+    :type start_frame: :class:`PySide.QtCore.uint`
+    :type end_frame: :class:`PySide.QtCore.uint`
+    :type view: :class:`mocha.project.View`
+
+
+
+    
+    :param path: Absolute path to first clip file.
+    :param prefix: Clip prefix.
+    :param suffix: Clip suffix.
+    :param start_frame: Start frame number.
+    :param end_frame: Stop frame number.
+    :param view: View.
+    
+    Relinks current clip with given parameters.
+    
+
+
+
+.. method:: Clip.relink(stream_info[, view=View()])
+
+
+    :type stream_info: :class:`mocha.project.StreamInfo`
+    :type view: :class:`mocha.project.View`
+
+
+
+    
+    :param stream_info: :class:`StreamInfo` instance.
+    :param view: View.
+    
+    Relinks current clip with given ```stream_info``` parameters.
+    
+
+
+
+.. attribute:: Clip.name
+
+
+    :type: str
+    :access: read-only    
+    Provides access to clip name.
+    
+
+
+
+.. attribute:: Clip.views
+
+
+    :type: list of :class:`View`
+    :access: read-only    
+    Provides access to clip views.
+    
+
+
+
+.. attribute:: Clip.frame_size
+
+
+    :type: float
+    :access: read-write    
+    Provides access to clip frame size in pixels.
+    
+
+
+
+.. attribute:: Clip.frame_rate
+
+
+    :type: float
+    :access: read-write    
+    Provides access to clip frame rate.
+    
+
+
+
+.. attribute:: Clip.first_frame_offset
+
+
+    :type: int
+    :access: read-write    
+    Provides access to first frame offset.
+    
+
+
+
+.. attribute:: Clip.color_parameters
+
+
+    :type: :class:`mocha.project.ColorParameters`
+    :access: read-write    
+    Provides access to clip color parameters object.
+    
+
+
+
+.. attribute:: Clip.view_mapping
+
+
+    :type: dict of { :class:`View`: :class:`View` }
+    :access: read-only    
+    Provides access to view mapping as dict instance where keys are project views and values are clip views.
+    
+    See also:
+       - :meth:`assign_project_view`
+    
+
+
+
+.. attribute:: Clip.progress_watcher
+
+
+    :type: :class:`mocha.project.ProgressWatcher`
+    :access: read-only    
+    Provides access to the current progress watcher object of render operation.
+    
+
+
+
+.. attribute:: Clip.id
+
+
+    :type: long
+    :access: read-only    
+    Provides access to the current clip ID.
+    
+
+
+
+.. attribute:: Clip.discrete_frames
+
+
+    :type: tuple
+    :access: read-only    
+    Provides access to discrete frames of the clip instance.
+    
+
+
+
+

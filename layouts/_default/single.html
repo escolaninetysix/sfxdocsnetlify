@@ -1,0 +1,44 @@
+{{ define "content" }}
+
+<style>
+#article img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {{ if .Title }}
+      <h1 class="mb-0">{{ .Title }}</h1>
+      <p class="mb-0">
+        {{ if .Params.tags }}
+        Tags:
+        {{ $tags := .Params.tags }}
+        {{ range $i, $tag := $tags }}
+        <a href="../?tags={{ $tag }}">{{ $tag }}</a>{{ if lt $i (add (len $tags) -1) }}, {{ end }}
+        {{ end }}
+        {{ end }}
+      </p>
+      {{ end }}
+
+      <div class="mb-3"></div>
+
+      {{ if .Content }}
+      <div class="row">
+        <div class="col">
+          <div id="article">
+            {{ .Content }}
+            <br>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    <div class="col-md-4">
+      {{ partial "sidebar.html" . }}
+    </div>
+  </div>
+</div>
+
+{{ end }}

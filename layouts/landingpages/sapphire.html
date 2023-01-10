@@ -1,0 +1,420 @@
+        {{ define "content" }}
+		
+		<style>
+
+        /* --------------------------------------------------------------
+            FORM STYLES
+        ----------------------------------------------------------------- */
+
+            /* Border-box box model FTW! */
+            #pardot-form,
+            #pardot-form *,
+            #pardot-form *:before,
+            #pardot-form *:after {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            /* Override form margin and padding set in the default stylesheet. Inherit font and color from page. */
+            #pardot-form {
+                margin: 0;
+                padding: 0;
+                font: inherit;
+                color: inherit;
+            }
+
+            /* Override form field wrapper margin and padding set in the default stylesheet. */
+            #pardot-form .form-field,
+            #pardot-form .submit {
+                margin: 15px 0 15px 0;
+                padding: 0;
+            }
+
+            /* Remove top margin from first from field wrapper. */
+            #pardot-form .form-field:first-child {
+                margin-top: 0;
+            }
+
+            /* Set default input style. */
+            #pardot-form input {
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                box-sizing: border-box;
+                color: #2c3e50;
+                font-size: 14px;
+                padding: 7px 15px;
+                width: 100%;
+            }
+
+            /* When labels are not floated left, set width on text inputs, textareas, and selects to 100%. */
+            #pardot-form input.text,
+            #pardot-form input.date,
+            #pardot-form textarea,
+            #pardot-form select {
+                width: 100%;
+                font-family: inherit;
+                color: inherit;
+            }
+
+            /* When labels are floated left, set width on field labels to a percentage of available width. In browsers that support calc(), use static label width instead and the form field will consume the remaining width. */
+            #pardot-form.label-left .field-label {
+                width: 35%;
+                width: calc(115px);
+            }
+
+            /* When labels are floated left, set width on text inputs, textareas, and selects to a percentage. In supported browsers, set width to 100% minus the width of the label instead. */
+            #pardot-form.label-left input.text,
+            #pardot-form.label-left input.date,
+            #pardot-form.label-left textarea,
+            #pardot-form.label-left select {
+                width: 65%;
+                width: calc(100% - 115px);
+            }
+
+            /* When labels are floated left, indent supporting form elements by the same amount as the field label. */
+            #pardot-form.label-left span.value,
+            #pardot-form.label-left .description,
+            #pardot-form.label-left .no-label > *,
+            #pardot-form.label-left .submit,
+            #pardot-form.label-left .error.no-label {
+                margin-left: 35%;
+                margin-left: calc(115px);
+            }
+
+            /* Remove unnecessary left padding on required radio/checkbox field labels when label alignment is set to above and the required symbol is set to default in form styling options. */
+            #pardot-form label.inline {
+                padding-left: 0;
+            }
+
+            /* Backup styles in case padding is added to text inputs. */
+            #pardot-form input.date {
+                padding-left: 20px;
+                background-position: left center;
+            }
+
+            #pardot-form .submit input {
+                background-color: #337ab7;
+                color: #fff;
+            }
+
+        /* --------------------------------------------------------------
+            BASE
+        ----------------------------------------------------------------- */
+
+            /* Set the base font */
+            body {
+                color: #444;
+                font-family: inherit;
+                line-height: 27px;
+                font-size: 15px;
+            }
+
+            /* Set heading fonts */
+            h1 {  }
+            h2 {  }
+            h3 { font-size:20px; }
+            h4 {  }
+
+            /* Set default background colour */
+            .bgcolour {
+                background-color: #000000;
+            }
+
+            /* Set custom background colours for specific blocks, also must update font colours if dark BG  */
+            .header.bgcolour { /* background-color: #000000; */ }
+            .footer.bgcolour { /* background-color: #eee; */ }
+            .block-one.bgcolour { background-color: #e0e0e0; }
+            .block-two.bgcolour { /* background-color: #eee; */ }
+
+        /* --------------------------------------------------------------
+            TEMPLATE DETAILS
+        ----------------------------------------------------------------- */
+
+            /* Set dynamic width to images in block two */
+            .block-two .thumbnail img {
+                max-width: 100%;
+            }
+
+            /* Align copyright menu in footer to the right */
+            footer > div {
+                text-align:right;
+            }
+
+            /* Enable strong control over editable table cell widths */
+            table.editable-table {
+                table-layout: fixed;
+                width: 100%;
+            }
+                table.editable-table td {
+                    padding:0px 15px;
+                }
+
+            /* Set default editable table cell spacing & widths */
+            table.editable-table.3col td {
+                padding:0px 15px;
+                width:33%;
+            }
+            table.editable-table.2col td {
+                padding:0px 15px;
+                width:50%;
+            }
+
+        /* --------------------------------------------------------------
+            SPACING
+        ----------------------------------------------------------------- */
+
+            /* make element edge to edge */
+            .flush {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            /* vertical padding */
+            .vpadding {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            /* top padding only */
+            .tpadding {
+                padding-top: 20px;
+                padding-bottom: 0px;
+            }
+
+            /* bottom padding only */
+            .bpadding {
+                padding-top:0px;
+                padding-bottom:20px;
+            }
+
+            /* large vertical padding */
+            .vpaddingLG {
+                padding-top:50px;
+                padding-bottom:50px;
+            }
+
+            /* space below headings */
+            h1, h2, h3, h4, h5, h6 {
+                margin-bottom:15px;
+            }
+
+            /* space below paragraph */
+            p {
+                margin-bottom:20px;
+            }
+
+			.responsive {
+  width: 100%;
+  height: auto;
+}
+        /* --------------------------------------------------------------
+            SOCIAL
+        ----------------------------------------------------------------- */
+
+            /* Social container spacing */
+            .social {
+                padding-top:15px;
+                line-height: 20px;
+            }
+
+                /* Make everything within social display next to one another */
+                .social * {
+                    display:inline;
+                    line-height: 20px;
+                }
+
+            /* Social list spacing */
+            .social-list {
+                padding-left:10px;
+                margin:0px;
+            }
+
+                /* Disable underlines on image link hover */
+                .social-list a:hover{
+                    text-decoration: none;
+                }
+
+            /* Share button image specific style */
+            #share-buttons img {
+                width: 20px;
+                border: 0;
+                box-shadow: 0;
+                display: inline;
+            }
+
+        /* --------------------------------------------------------------
+            RESPONSIVE
+        ----------------------------------------------------------------- */
+            /* xs */
+            @media(max-width:767px){
+                .pull-right{
+                    float: none !important;
+                    text-align: center;
+                }
+                .social{
+                    text-align: center;
+                }
+                .cta{
+                    padding-top: 20px;
+                }
+                .cta p{
+                    margin-bottom: 0;
+                }
+                .logo{
+                    text-align:center;
+                }
+                .jumbotron{
+                    margin-bottom: 0;
+                }
+                .flush{
+                    padding-left:15px;
+                    padding-right:15px;
+                }
+                footer > div {
+                    text-align: center;
+                }
+            }
+            /* sm */
+            @media (max-width:768px){
+                #pardot-form.label-left .field-label {
+                    width: 100%;
+                    text-align: left;
+                }
+                #pardot-form.label-left input.text, #pardot-form.label-left input.date, #pardot-form.label-left textarea, #pardot-form.label-left select {
+                    width: 100%;
+                }
+                #pardot-form.label-left span.value,
+                #pardot-form.label-left .description,
+                #pardot-form.label-left .no-label > *,
+                #pardot-form.label-left .submit,
+                #pardot-form.label-left .error.no-label {
+                    width: 100%;
+                }
+                #pardot-form.label-left span.value, #pardot-form.label-left .description, #pardot-form.label-left .no-label > *, #pardot-form.label-left .submit, #pardot-form.label-left .error.no-label {
+                    margin-left: 0;
+                }
+                form.form p {
+                    margin-left: 0px !important;
+                    padding-left:0px !important;
+                }
+                table.editable-table td {
+                    display: block;
+                    width: 100% !important;
+                }
+            }
+            /* md */
+            @media(min-width:992px){
+
+            }
+            /* lg */
+            @media(min-width:1200px){
+
+            }
+        </style>
+		
+
+    <div class="container">
+      <div class="row vpaddingLG">
+        <div class="col-md-8">
+                <div class="" pardot-region="main_heading">
+                  <h1>Save 15% On Sapphire</h1>
+                  <h2 class="tagline">Use code at checkout: sapphire15</h2>
+                </div>
+                <div class="bpadding" pardot-region="main_content">
+                  <p><a href="https://borisfx.com/products/sapphire/?utm_source=google&utm_medium=landing&utm_campaign=retarget&utm_content=sapphire" target="_blank">Boris FX Sapphire</a> {{ .Params.content1 }}</p>
+                  <p>{{ .Params.content2 }} <a href="https://borisfx.com/store/?collection=sapphire&product=sapphire&utm_source=google&utm_medium=landing&utm_campaign=retarget&utm_content=saphhire-buy" target="_blank"><strong>BUY NOW</strong></a></p>
+          </div>
+        </div><!-- div-md-8 -->
+        <div class="col-md-4">
+               
+			<div><img src="https://borisfx-com-res.cloudinary.com/image/upload/v1562939846/landing-pages/FlareDesigner2019__2.png" alt="Sapphire 2019" class="responsive"/></div>
+			<br>
+			<div align="center"><a href="https://borisfx.com/store/?collection=sapphire&product=sapphire&utm_source=google&utm_medium=landing&utm_campaign=retarget&utm_content=saphhire-buy" target="_blank" title="Buy Sapphire"><button id="buynow" style="border:1px solid black;color:white;background-color:#00aeed;padding-top:5px;padding-bottom:5px;padding-left:30px;padding-right:30px;">BUY NOW</button></a></div>
+            </div>
+		  
+        </div><!-- row vpadding -->
+    </div>
+
+    <div class="block-one vpadding bgcolour" >
+        <div class="container" pardot-region="block_one_table"> 
+                <table class="editable-table 3col">
+                    <tr>
+                        <td colspan="3"><h2 style="text-align: center;">Top Reasons to Buy Sapphire</h2></td>
+                    </tr>
+                    <tr>
+                        <td><h3>› Lighting</h3>                          
+							<p>{{ .Params.content3 }}</p></td>
+                        <td><h3>› Stylize & Distort</h3>
+                        <p>{{ .Params.content4 }} 
+</p></td>
+                        <td><h3>› Transitions </h3>
+                        <p>{{ .Params.content5 }} </p></td>
+                    </tr>
+                    <tr>
+                        <td><h3>› Builder</h3>                          
+							<p>{{ .Params.content6 }}</p></td>
+                        <td><h3>› Integrated Mocha </h3>
+                        <p>{{ .Params.content7 }}</p></td>
+                        <td><h3>› Streamlined Workflows</h3>
+                        <p>{{ .Params.content8 }}</p></td>
+                    </tr>
+                </table><!-- table -->
+        </div><!-- container -->
+    </div><!-- block-one vpadding -->
+
+    <div class="block-two vpadding">
+        <div class="container" pardot-region="block_two_table"> 
+                <table class="editable-table 2col">
+                  <tr>
+                        <td colspan="2"><h3 style="text-align: center;" class="bpadding"><em>"{{ .Params.content9 }}"</em></h3>                          <h3 style="text-align: center;" class="bpadding"> —  Jesse Michael Newman, Award-winning VFX Artist </h3></td>
+                    </tr>
+<tr> </tr>
+                </table><!-- table -->
+        </div><!-- container -->
+    </div><!-- block-one vpadding -->
+       
+    
+
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+    <script>
+
+    /* --------------------------------------------------------------
+        FUNCTIONS
+    ----------------------------------------------------------------- */
+        /**
+         * Replace all occurences of https://simplesharebuttons.com in the
+         * social sharing list with the url of this page, and all occurrence
+         * of "Check this out" with the page title
+         */
+            $(".social-list a").each(function() {
+                // get values
+                var thisPage = window.location.href;
+                var url = $(this).attr('href');
+
+                // get title of this page
+                var title = $(document).find("title").text();
+              
+                // replace values
+                url = url.replace("http://www.pardot.com", thisPage);
+                url = url.replace("template-title", title);
+
+                //update value of the link anchor
+                $(this).attr('href', url);
+            });
+
+        /**
+         * Pardot label alignment fix
+         */
+            pardot.$(function() {
+                var $ = window.pardot.$;
+                // Add label-left class to the <form> if label alignment is set to Default or Left in form styling
+                var $labelAlignment = $('#pardot-form .field-label').css('float');
+                if ($labelAlignment == 'left') { $('#pardot-form').addClass('label-left'); }
+            });
+
+    </script>	
+	
+	{{ end }}

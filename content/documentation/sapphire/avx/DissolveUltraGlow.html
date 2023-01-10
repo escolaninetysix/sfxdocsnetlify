@@ -1,0 +1,921 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: DissolveUltraGlow",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolveUltraGlow.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolveUltraGlow">
+     <h2>
+      S_DissolveUltraGlow
+     </h2>
+    </a>
+    Transitions between two input clips while generating varieties of
+  glowing flashes.  The clips dissolve into each other, while each one gets a glow which
+  ramps up and down over the duration of the effect.
+  Adjust After Glow parameters to generate a secondary glow on the result of the
+  primary glow.  Optionally enhance the edges or combine the result with atmospheric noise.
+  The Dissolve Amount parameter should be animated
+  to control the transition speed.
+    <p>
+     In the Sapphire Transitions category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolveUltraGlow.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The transition ratio between the From and To inputs.
+  A value of 0 gives only the From input and a value of 1 gives only
+  the To input.  By default this parameter automatically animates from
+  0 to 1 to perform a complete transition.  The curve controlling this
+  parameter can be adjusted for more detailed control over the timing
+  of the dissolve.  In the AVX1 version, Auto Trans must be disabled
+  for this parameter to be used.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.7,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of all the glows.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the primary glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Glows are generated from locations in the source clip
+  that are brighter than this value.  A value of 0.9 causes glows at
+  only the brightest spots.  A value of 0 causes glows for every
+  non-black area.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold Add Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   This can be used to raise the threshold on a
+  specific color and thereby reduce the glows generated on areas of the
+  source clip containing that color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.371,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Falloff:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.35,
+   <i>
+    Range:
+   </i>
+   -2 to 2.
+   <br/>
+   Boost or cut the distance that the glow extends.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Bias:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -3 to 3.
+   <br/>
+   Amount to grow the outskirts of the thresholded result, or shrink if negative.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow From Alpha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Set to 1 to generate glows from the alpha channel
+  of the source input instead of the RGB channels.  In this case the glows
+  will not pick up color from the source and will typically be brighter.
+  Values between 0 and 1 interpolate between using the RGB and the Alpha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the horizontal glow width.  Set to 0 for vertical only.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the vertical glow width.  Set to 0 for horizontal only.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the red glow width. If the red, green, and blue widths
+are all equal, the glow will match Glow Color. Otherwise it will have a fringe
+of varying color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the green glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the blue glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show:
+   </b>
+   <i>
+    Popup menu,  Default: Result
+   </i>
+   .
+   <br/>
+   Selects the type of output
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Result:
+      </i>
+     </b>
+     Shows the final result of combining the glow, source, and background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Threshold:
+       </i>
+      </b>
+      Shows the thresholded image that is used to generate the glow.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    After Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.8,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the glow distance for the secondary glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    After Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the secondary glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    After Glow Stretch X:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the horizontal secondary glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    After Glow Stretch Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the vertical secondary glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Horizontal Streaks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the appearance of narrow trails in the horizontal direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vertical Streaks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the appearance of narrow trails in the vertical direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Detect:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Enables edge detection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Edges Only
+   </i>
+   .
+   <br/>
+   Determines how the detected edges are combined with the Source.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Screen:
+      </i>
+     </b>
+     detected edges are blended with the Source using a screen operation.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Add:
+       </i>
+      </b>
+      detected edges are added to the Source.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Edges Only:
+        </i>
+       </b>
+       gives only the detected edges with no Source.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Smooth:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase for thicker and smoother edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Transparent
+   </i>
+   .
+   <br/>
+   Determines the behavior when accessing areas outside the source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Transparent:
+      </i>
+     </b>
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Reflect:
+       </i>
+      </b>
+      Reflects the image outside the border.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Fill:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Make areas within detected edges opaque
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Thin:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Subtracts this value from the detected edge result.  Increase to
+  remove unwanted noise from minor edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Atmosphere gives the effect of the glow shining through
+  a dusty atmosphere and picking up light or getting shadowed.
+  This parameter adjusts the amount, or amplitude, of the atmospheric
+  effect.  Zero gives a smooth glow, higher values give more dusty look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Atmosphere gives the effect of the glow shining through
+  a dusty atmosphere and picking up light or getting shadowed.
+  This parameter adjusts the amount, or amplitude, of the atmospheric
+  effect.  Zero gives a smooth glow, higher values give more dusty look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   11.6,
+   <i>
+    Range:
+   </i>
+   0.1 to 20.
+   <br/>
+   Controls the spatial frequency of the atmospheric
+  noise.  Turn this up higher to get finer details, turn down for
+  broader overall variation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Detail:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.506,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the amount of fine detail in the
+  atmosphere simulation.  Decrease to get smoother atmosphere,
+  increase for a more crunchy or grainy look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The cloudy noise in the atmosphere evolves over
+  time like real dust clouds; this parameter controls how fast the
+  cloud pattern changes over time.  Set to zero for a static pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the atmosphere layer by this value.
+  Increase for a more intense result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adds this gray value to the darker regions of the atmosphere layer.
+  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Atmosphere Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator for
+  the atmospheric noise.  The actual seed value is not significant, but
+  different seeds give different results and the same value should
+  give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Apply Pre-Glow:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Enables combining atmosphere with the Source prior to any glows.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../dissolveglow">
+       DissolveGlow
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../ultraglow">
+       UltraGlow
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

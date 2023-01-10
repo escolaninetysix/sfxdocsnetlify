@@ -1,0 +1,188 @@
+.. module:: mocha.project
+.. _Parameter:
+
+Parameter
+*********
+
+.. inheritance-diagram:: Parameter
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`__eq__<Parameter.__eq__>` (rhs)
+*    def :meth:`__ne__<Parameter.__ne__>` (rhs)
+*    def :meth:`delete_keyframe<Parameter.delete_keyframe>` (time, view)
+*    def :meth:`get<Parameter.get>` ([time=double( UINT_MAX )[, view=View( 0 )]])
+*    def :meth:`get_keyframes<Parameter.get_keyframes>` ()
+*    def :meth:`get_name_components<Parameter.get_name_components>` ()
+*    def :meth:`set<Parameter.set>` (val[, time=double( UINT_MAX )[, view=View( 0 )]])
+
+
+Virtual functions
+^^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`isNull<Parameter.isNull>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`keyframes<Parameter.keyframes>` [read-only] of list of 2-value tuples
+*    property :attr:`name_components<Parameter.name_components>` [read-only] of list of str
+
+
+Detailed Description
+--------------------
+
+
+    
+    Parameter instance associated with some data object of the project.
+    
+
+
+.. class:: Parameter(Parameter)
+
+
+    :type Parameter: :class:`mocha.project.Parameter`
+
+
+
+
+
+
+
+    :type Parameter: :class:`mocha.project.Parameter`
+
+
+
+.. method:: Parameter.delete_keyframe(time, view)
+
+
+    :type time: :class:`PySide.QtCore.double`
+    :type view: :class:`mocha.project.View`
+
+
+
+    
+    :param time: time value for keyframed parameters.
+    :param view: view value for non-keyframed and keyframed parameters.
+    
+    Drops keyframe for given ``time`` and ``view``.
+    
+
+
+
+.. method:: Parameter.get([time=double( UINT_MAX )[, view=View( 0 )]])
+
+
+    :type time: :class:`PySide.QtCore.double`
+    :type view: :class:`mocha.project.View`
+    :rtype: object
+
+
+
+    
+    :param time: time value for keyframed parameters.
+    :param view: view value for non-keyframed and keyframed parameters.
+    :raise: **AssertionError** - if parameter with given name components does not exist.
+    
+    Returns a value of the parameter by given ``time`` and ``view`` if they are specified.
+    For static parameters no need to specify ``time`` and ``view``. They are ignored in this case.
+    If ``time`` is not specified for keyframed parameter -
+    it will return static value for the parameter for given ``view``.
+    
+
+
+
+.. method:: Parameter.get_keyframes()
+
+
+    :rtype: list of QPairView,double
+
+
+
+
+
+
+.. method:: Parameter.get_name_components()
+
+
+    :rtype: list of strings
+
+
+
+
+
+
+.. method:: Parameter.isNull()
+
+
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: Parameter.__ne__(rhs)
+
+
+    :type rhs: :class:`mocha.project.Parameter`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: Parameter.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.Parameter`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: Parameter.set(val[, time=double( UINT_MAX )[, view=View( 0 )]])
+
+
+    :type val: object
+    :type time: :class:`PySide.QtCore.double`
+    :type view: :class:`mocha.project.View`
+
+
+
+
+
+
+.. attribute:: Parameter.name_components
+
+
+    :type: list of str
+    :access: read-only    
+    Provides access to the full parameter name list.
+    
+
+
+
+.. attribute:: Parameter.keyframes
+
+
+    :type: list of 2-value tuples
+    :access: read-only    
+    Provides access to list of the parameter keyframes.
+    
+
+
+
+

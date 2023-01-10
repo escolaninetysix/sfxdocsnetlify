@@ -1,0 +1,258 @@
+{
+   "date": "2013-04-11T12:07:04-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC FxPlug - 8.2.0 Release Notes"
+}
+
+<p>
+ <b>
+  Boris Continuum Complete FxPlug 8.2.0 supports the following host applications:
+ </b>
+</p>
+<p>
+ • Apple Final Cut Pro X and Motion 5 running Mac OSX 10.6, 10.7, and 10.8
+</p>
+<p>
+ • Apple Final Cut Pro 7 running Mac OSX 10.6, 10.7, 10.8
+</p>
+<p>
+ <b>
+  What's New in BCC8 for FxPlug (Summary of major changes since BCC7):
+ </b>
+</p>
+<p>
+ • Support for FCP X and Motion 5 including many new effect and transition templates customized for FCP X.
+</p>
+<p>
+ • Seven new filters for all FxPlug hosts: Film Glow, Flicker Fixer, Lens Flare 3D, Organic Strands, Particle Emitter 3D, Stage Light, and Wild Cards.
+</p>
+<p>
+ • Addition of the Integrated Beat Reactor with external audio file support which enables simple audio driven animations without complex keyframing.
+</p>
+<p>
+ • New/Revised Filter Categories.
+</p>
+<p>
+ <b>
+  Getting Started with BCC8 for FCP X and Motion5:
+ </b>
+</p>
+<p>
+ • The Read Me doc included with the installer provides many helpful details in getting started with using BCC8 in the new 64bit FCP X and Motion 5 hosts. 
+</p>
+<p>
+ • Note that in FCP X and Motion 5, Apple linearized the alpha compositing colorspace which can cause some filters which generate smooth alpha gradients to render differently than in other BCC hosts. This can for example give the appearance of an overly abrupt edge in a region that should ideally fade away gradually. When problematic this can to some extent be worked around by applying the BCC Alpha Process filter as a post process and reducing the alpha gamma slider to a value of roughly 0.5.
+</p>
+<p>
+ <b>
+  BCC8 FxPlug Project Compatibility Matrix:
+ </b>
+</p>
+<p>
+ • FCP 7 projects created with BCC7 will open correctly when running FCP 7 with BCC8.
+</p>
+<p>
+ • Due to complications arising from the new FxPlug2 API for 64bit Apple hosts, projects created in Motion 4 with BCC7 will display the BCC effects as missing/unknown when opened in Motion 5 with BCC8 and those effects will need to be re-created. Saving BCC presets in Motion 4 may provide a partial workaround for recreating the effects in Motion 5.
+</p>
+<p>
+ • Due to limitations in the FCP X host, it is not possible to bring forward FCP 7 projects with 3rd party filters intact in FCP X.
+</p>
+<p>
+ <b>
+  BCC FxPlug 8.2.0 – What's New:
+ </b>
+</p>
+<p>
+ • 8.2.0 contains numerous stability improvements and this update is strongly recommended for all users.
+</p>
+<p>
+ • In FCP 7 the Boris Continuum Shader (BCS) filters can now be installed in Mac OSX 10.7 and 10.8 whereas previously they could be installed only when running on 10.6.8. See the Known Issues section below for further details.
+</p>
+<p>
+ • Added new FCP X effect templates for Unsharp Mask and Optical Flow.
+</p>
+<p>
+ • Made significant performance improvements to many of our openGL filters such as Lens Flare 3D and the new Particle filters.
+</p>
+<p>
+ • Particle Emitter 3D has two new blend modes (Lighten and Screen) in addition to the previous Normal and Add modes for interparticle compositing.
+</p>
+<p>
+ • In FCP X the template for Pin Art has been modified to fix the Pin FX behavior. An input well must be explicitly used now to drive the Pin FX.
+</p>
+<p>
+ • The Motion Key template in FCP X now includes parameters for Start/End frames when using the Motion Tracker.
+</p>
+<p>
+ • Numerous quality and performance improvements were made when using Depth of Field in the new particle filters.
+</p>
+<p>
+ • Improved help files for Noise Map 2 and Turbulence.
+</p>
+<p>
+ • Fixed Videoscope problem where the Log feature didn't work properly on 32bit mac hosts.
+</p>
+<p>
+ • Fixed problem where Wipe Transitions did not correctly handle alpha in the outgoing layer even in alpha aware mode.
+</p>
+<p>
+ • Fixed unwanted alpha seam when wipe transitions are used in alpha aware mode.
+</p>
+<p>
+ • Fixed rendering issues in some bit depths in Wipe Transition filters when incoming layer is translucent and composite settings are changed.
+</p>
+<p>
+ • Fixed problem where Halftone looked very different at reduced resolution when using pre/post blur options.
+</p>
+<p>
+ • Fixed incorrect offset amounts when using the motion tracker Offset controls when applied to the Pixel Chooser Oval or Rectangle options.
+</p>
+<p>
+ • Fixed longstanding problem with flickering along the edges in all BCC filters that used large blur amounts such as Pyramid Blur, Gaussian Blur, Film Glow.
+</p>
+<p>
+ • Fix problem with Lens Flare 3d where the Edge map results change when viewed at reduced resolution.
+</p>
+<p>
+ • Fixed problem on Retina Display systems where the left side parameters in Text Window, such as Font, Size, etc. did not work for Extruded Text &amp; Type On Text filters.
+</p>
+<p>
+ • Fixed the behavior of the Motion Tracker Auto-Man parameter in many filters.
+</p>
+<p>
+ • In Pan and Zoom the Video Safe Colors option now scales to the range 16-235 instead of just doing a hard clamp to safe levels.
+</p>
+<p>
+ • Fixed problems in 3D Objects filters with gaps in shapes jumping between filled and unfilled states while animating shape geometries.
+</p>
+<p>
+ • Fixed problems in BCC Prism when selecting Reflect for outside pattern.
+</p>
+<p>
+ • Fixed incorrect results in BCC Radial Wipe and MultiStretch Wipe for some larger values of radius.
+</p>
+<p>
+ • In Particle Emitter 3D the Spawn particle birth rate is no longer capped at 100.
+</p>
+<p>
+ • The Motion Tracker has been removed from all BCC transition filters.
+</p>
+<p>
+ • Expanded the range for the Shadow slider in Page Turn to allow for more visually prominent shadows.
+</p>
+<p>
+ • Fixed incorrect colors in Colorize when using HSV.
+</p>
+<p>
+ • Fixed color artifacts in Correct Selected Color when using the mix with original control.
+</p>
+<p>
+ • Noise Map rendering in FCP X / Motion 5 now matches the previous behavior in FCP 7 for the same settings.
+</p>
+<p>
+ • Fixed incorrect clamping of out of range inputs in Match Grain in FCP X / Motion 5.
+</p>
+<p>
+ • Fixed incorrect rendering in Noise Map 2 in FCP X / Motion 5 when rendering a less than full quality.
+</p>
+<p>
+ • Fixed the blend mode in Corner Pin and Match Move in FCP X / Motion 5.
+</p>
+<p>
+ • Fixed incorrect positioning in Rays when rendering in float or 16bit.
+</p>
+<p>
+ • Fixed problems in Noise Reduction with the Cb noise reduction control being non-functional.
+</p>
+<p>
+ • Fixed non-random behavior in Film Damage where alternating patterns of dirt and hair seemed to progress diagonally across the screen over time.
+</p>
+<p>
+ • Fixed sporadic instability in Multi Shadow.
+</p>
+<p>
+ • Fixed problems with the Lens Flare 3D obscuration feature not fully obscuring the light.
+</p>
+<p>
+ <b>
+  BCC FxPlug 8.2.0 - Known Issues and Limitations
+ </b>
+ :
+</p>
+<p>
+ • In FCP 7 the Boris Continuum Shader (BCS) filters can now be installed in Mac OS 10.7 and 10.8 without causing stability problems when launching the hosts, whereas in earlier BCC releases the BCS filters could only run under 10.6.8. Note however that some BCS rendering features in 10.7 and 10.8 can exhibit problems, for example failure to auto-animate as expected. For maximum reliability the BCS filters should still be used in 10.6.8.
+</p>
+<p>
+ • In FCP X an effect can sometimes render with a bad frame - often with a green/pink cast and distorted. Apple has acknowledged this issue and is working on a fix.
+</p>
+<p>
+ • In FCP X, some of the plugins in the BCC 3D Objects category use a custom window for text entry (BCC Extruded Text, BCC Type On Text, etc.), and currently some changes that can be made through text window controls are not reflected in the preview within the text window (although they will be apparent in the effect when previewed in FCP X or Motion). The following text attributes do not preview within the text window:
+</p>
+<p>
+      - Justification (when Word Wrap is not enabled)
+</p>
+<p>
+      - Top Down Text
+</p>
+<p>
+      - Right to Left Reading
+</p>
+<p>
+      - Negative Line Leading
+</p>
+<p>
+      - Italics (for fonts that don't include an italic typeface)
+</p>
+<p>
+      - Superscript and Subscript
+</p>
+<p>
+ • In FCP X, the Motion Tracker does not currently have a Reset button. Making a minor tweak to the tracker starting coordinates before a subsequent retracking pass should ensure that frames are correctly retracked without need for a Reset button.
+</p>
+<p>
+ • BCC8 includes improvements to the Motion Tracker but when opening projects created with BCC7 in FCP 7 you will notice that the older Tracker UI is displayed instead of the newer Tracker UI. The tracker should still function normally for you although you may see tracker messages referring to parameters that are only available in the newer tracker UI. The newer tracker UI is available when applying new instances of effects (as opposed to effect instances that were present in previously saved BCC7 projects).
+</p>
+<p>
+ • When using the 3D Objects category of effects on Mac OS, enabling the "Transparent Object" checkbox will result in the object becoming fully transparent.
+</p>
+<p>
+ • Previewing/Rendering BCC Damaged TV in FCP 7, particularly on older graphics cards, can lead to low memory warnings. Increasing the memory available to the application may help work around this problem.
+</p>
+<p>
+ • In the new particle filters, particularly Particle Array 3D, particles with the same Z depth can sometimes exhibit clipping errors when Depth of Field is enabled.
+</p>
+<p>
+ • In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.
+</p>
+<p>
+ • As part of the new Motion Tracker workflow, if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must now reset the tracker data (with the reset button in the tracker banner if available) before starting a second tracker pass. (This is not necessary if the only change was to the tracker point picker location.)
+</p>
+<p>
+ • In Type on Text the Line Leading in the text entry preview window does not accurately match up with the leading in the rendered result and the leading may need to be adjusted to generate the desired final render.
+</p>
+<p>
+ • Due to fixes in random number generators, you may see differences between random patterns in saved BCC7 projects when opened in BCC8. The overall “look” will remain the same but the details of the patterns may be differently randomized.
+</p>
+<p>
+ • In Particle Emitter 3D, Organic Strands, Particle Array 3D, and Pin Art 3D when using the pre-installed Image Collection files to define the particle shape, particles with soft alpha boundaries will render with unexpectedly hard edges if you select 10-bit high precision rendering and Apple Pro Res codecs. As a temporarily workaround you can use a well layer to define the particle shape which renders the alpha channels with proper softness.
+</p>
+<p>
+ • You may notice a slight discontinuity in the Stage Light gradient when applied in SD resolutions. This issue is minimized in HD projects.
+</p>
+<p>
+ • The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. As a temporary workaround use low values near the default setting of 32.
+</p>
+<p>
+ • The Beat Reactor propagation options generate unexpected results in Organic Strands. Use non-propagation modes which work as expected as a temporary workaround.
+</p>
+<p>
+ • Glyph fonts such as IMG Extreme or HolidayPi BT will sometimes render incorrectly or cause unexpected behavior in Extruded Text or Type On Text.
+</p>
+<p>
+ • Gaps in text characters in Extruded Text and Type on Text will sometimes jump between filled and unfilled states while animating with changing geometry such as text on a path or jittering text. Increasing the Polygon Count or adjusting the font or font size my provide a temporary workaround.
+</p>
+<p>
+ • Images brought in through well layers in BCC Generators are flipped horizontally and vertically in Motion 5. A non-generator version of the effect may be used as a workaround for the time being.
+</p>

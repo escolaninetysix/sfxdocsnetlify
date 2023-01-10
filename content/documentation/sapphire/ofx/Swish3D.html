@@ -1,0 +1,907 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: Swish3D",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/Swish3D.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="Swish3D">
+     <h2>
+      S_Swish3D
+     </h2>
+    </a>
+    Dissolves between two input clips while performing 3D
+  moves on each.  During the transition the From clip is transformed
+  by the Zdist, Rotate, Swivel, Tilt, Shift, Scale, and Shear
+  parameters, and the To clip is transformed by the opposite of these
+  values.  The overall amount of motion for each image can
+  be scaled by the Rel Amp From and Rel Amp To parameters.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/Swish3D.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Effect:
+   </b>
+   <i>
+    Popup menu,  Default: Blur Warp
+   </i>
+   .
+   <br/>
+   Selects the type of motion blur to apply when moving the From and To clips.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Blur Warp:
+      </i>
+     </b>
+     Normal motion blur, similar to BlurMotion effect.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Chroma Warp:
+       </i>
+      </b>
+      Move the color channels by different amounts,
+  creating a color fringing effect similar to WarpChroma.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wipe Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -0.5 to 1.5.
+   <br/>
+   Determines the transition ratio between the From and To
+  inputs, and would normally be animated from 0 to 1 to perform a
+  complete transition.  The curve controlling this parameter can be adjusted
+  for more detailed control over the timing of the wipe.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The location of the d center in screen coordinates
+  relative to the center of the frame.  This parameter can be set by
+  enabling and moving the Center Widget.  Note that moving the d
+  center can also cause the d size to change so that the current
+  value of Wipe Amt remains correct.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Motion Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of motion blur to use.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Z Dist:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0.001 or greater.
+   <br/>
+   The 'distance' to transform the From clip.  Values greater
+  than 1.0 move it farther away and make it smaller.  Values less then
+  1.0 move the image closer and enlarge it.  By default, the To clip
+  is also transformed by the opposite of this value.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates by the specified angle in counter-clockwise degrees.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Swivel:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates left or right in 3D about a vertical
+  axis.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Tilt:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates up or down in 3D about a horizontal
+  axis.  You can use Swivel and Tilt together to rotate about
+  arbitrary diagonal axes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Perspective Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.25 to 4.
+   <br/>
+   Controls the amount of lens telescoping while
+  applying Swivel and Tilt.  Increase for more 3D perspective.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Translation of the d pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the size of the clips.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Rel:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [1 1],
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the relative horizontal or vertical size of the clips.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shear:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shears horizontally or vertically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Amp From:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the amount of transformation applied to the From
+  clip.  Set to zero to disable moving the From clip.  Make negative
+  to reverse the motion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Amp To:
+   </b>
+   <i>
+    Default:
+   </i>
+   -1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the amount of transformation applied to the To
+  clip.  By default, the To clip is transformed in the opposite direction of the From clip.
+  Set to zero to disable moving the To clip.  Make positive to move the To clip in the same
+  direction as the From clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fade:
+   </b>
+   <i>
+    Popup menu,  Default: From and To
+   </i>
+   .
+   <br/>
+   Determines which clips are faded in or out during the
+  transition.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       From and To:
+      </i>
+     </b>
+     Cross fades both clips during the transition.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Only From:
+       </i>
+      </b>
+      Fades out the From clip and composites that
+  over the To clip.  This causes the To clip to remain fully opaque in
+  areas where the From clip does not overlap with it.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Only To:
+        </i>
+       </b>
+       Fades in the To clip and composites that over the
+  From clip.  This causes the From clip to remain fully opaque in
+  areas where the To clip does not overlap with it.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fade Mid Time:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The midpoint in time of the image dissolve.
+  Decrease for an earlier dissolve or increase for a
+  later dissolve.  If this is 1.0 the From clip will remain fully
+  opaque for the entire transition.  You can use this in combination
+  with the Combine parameter to create various reveals without fading
+  either clip.  For example set Dissolve Mid Time to 1.0, Combine to
+  Fade From, and then Shift and/or Rotate to cause the From clip to
+  move off the screen.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Slow In:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   If positive, causes the transition to start more gradually.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Slow Out:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   If positive, causes the transition to end more gradually.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap From:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    Reflect Reflect
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders
+  of the From image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap To:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    Reflect Reflect
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders
+  of the To image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Filter:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   If enabled, the image is adaptively filtered when it is
+  resampled.  This gives better quality results when the image is warped smaller.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result.  This can be
+  animated to brighten the result during the transition, but should
+  typically start and end at 1.0 to avoid any pop at the start or end
+  of the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mid Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the result at the middle
+  of the transition by this amount.  Automatically ramps to this
+  brightness and then back again during the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Steps:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   8,
+   <i>
+    Range:
+   </i>
+   3 to 100.
+   <br/>
+   The number of spectrum samples to include along the path
+  between the From (red) and To (blue) transformations.  More steps give a
+  smoother result, but require more time to process.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0 0].
+   <br/>
+   The color at the From transformation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 1 0].
+   <br/>
+   The color midway between the From and To transformations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color3:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 1].
+   <br/>
+   The color at the To transformation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    White Balance:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   When enabled, the three colors are adjusted
+  internally so they sum to white.  In this case, the colors of
+  unwarped regions are not affected and the average color of the result
+  remains the same.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../wipeline">
+       WipeLine
+      </a>
+      <br/>
+      <a href="../wipecircle">
+       WipeCircle
+      </a>
+      <br/>
+      <a href="../wiperectangle">
+       WipeRectangle
+      </a>
+      <br/>
+      <a href="../wipestar">
+       WipeStar
+      </a>
+      <br/>
+      <a href="../wipeclock">
+       WipeClock
+      </a>
+      <br/>
+      <a href="../wipewedge">
+       WipeWedge
+      </a>
+      <br/>
+      <a href="../wipedoublewedge">
+       WipeDoubleWedge
+      </a>
+      <br/>
+      <a href="../wipefourwedges">
+       WipeFourWedges
+      </a>
+      <br/>
+      <a href="../wipedots">
+       WipeDots
+      </a>
+      <br/>
+      <a href="../wipechecker">
+       WipeChecker
+      </a>
+      <br/>
+      <a href="../wipestripes">
+       WipeStripes
+      </a>
+      <br/>
+      <a href="../wiperings">
+       WipeRings
+      </a>
+      <br/>
+      <a href="../wipeblobs">
+       WipeBlobs
+      </a>
+      <br/>
+      <a href="../wipecells">
+       WipeCells
+      </a>
+      <br/>
+      <a href="../wipetiles">
+       WipeTiles
+      </a>
+      <br/>
+      <a href="../wipepixelate">
+       WipePixelate
+      </a>
+      <br/>
+      <a href="../wipediffuse">
+       WipeDiffuse
+      </a>
+      <br/>
+      <a href="../wipebubble">
+       WipeBubble
+      </a>
+      <br/>
+      <a href="../wipeclouds">
+       WipeClouds
+      </a>
+      <br/>
+      <a href="../wipemoire">
+       WipeMoire
+      </a>
+      <br/>
+      <a href="../wipeplasma">
+       WipePlasma
+      </a>
+      <br/>
+      <a href="../wipepointalize">
+       WipePointalize
+      </a>
+      <br/>
+      <a href="../wipeweave">
+       WipeWeave
+      </a>
+      <br/>
+      <a href="../wipeflux">
+       WipeFlux
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

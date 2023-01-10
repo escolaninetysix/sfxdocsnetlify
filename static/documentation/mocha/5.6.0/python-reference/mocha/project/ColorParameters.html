@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.6. ColorParameters &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.7. ImageData" href="ImageData.html" />
+    <link rel="prev" title="2.5. Clip" href="Clip.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ImageData.html" title="2.7. ImageData"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Clip.html" title="2.5. Clip"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="colorparameters">
+<span id="id1"></span><h1>2.6. ColorParameters<a class="headerlink" href="#colorparameters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>2.6.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>2.6.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.project.ColorParameters.__eq__" title="mocha.project.ColorParameters.__eq__"><tt class="xref py py-meth docutils literal"><span class="pre">__eq__</span></tt></a> (color_parameters)</li>
+<li>def <a class="reference internal" href="#mocha.project.ColorParameters.__ne__" title="mocha.project.ColorParameters.__ne__"><tt class="xref py py-meth docutils literal"><span class="pre">__ne__</span></tt></a> (color_parameters)</li>
+<li>def <a class="reference internal" href="#mocha.project.ColorParameters.__repr__" title="mocha.project.ColorParameters.__repr__"><tt class="xref py py-meth docutils literal"><span class="pre">__repr__</span></tt></a> ()</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>2.6.1.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.project.ColorParameters.colorspace" title="mocha.project.ColorParameters.colorspace"><tt class="xref py py-attr docutils literal"><span class="pre">colorspace</span></tt></a> [read-write] of <tt class="xref py py-class docutils literal"><span class="pre">Colorspace</span></tt></li>
+<li>property <a class="reference internal" href="#mocha.project.ColorParameters.conversion" title="mocha.project.ColorParameters.conversion"><tt class="xref py py-attr docutils literal"><span class="pre">conversion</span></tt></a> [read-write] of <tt class="xref py py-class docutils literal"><span class="pre">ColorConversion</span></tt></li>
+<li>property <a class="reference internal" href="#mocha.project.ColorParameters.gamma" title="mocha.project.ColorParameters.gamma"><tt class="xref py py-attr docutils literal"><span class="pre">gamma</span></tt></a> [read-write] of float</li>
+<li>property <a class="reference internal" href="#mocha.project.ColorParameters.log_reference_black" title="mocha.project.ColorParameters.log_reference_black"><tt class="xref py py-attr docutils literal"><span class="pre">log_reference_black</span></tt></a> [read-write] of float</li>
+<li>property <a class="reference internal" href="#mocha.project.ColorParameters.log_reference_white" title="mocha.project.ColorParameters.log_reference_white"><tt class="xref py py-attr docutils literal"><span class="pre">log_reference_white</span></tt></a> [read-write] of float</li>
+<li>property <a class="reference internal" href="#mocha.project.ColorParameters.offset" title="mocha.project.ColorParameters.offset"><tt class="xref py py-attr docutils literal"><span class="pre">offset</span></tt></a> [read-write] of float</li>
+<li>property <a class="reference internal" href="#mocha.project.ColorParameters.softclip" title="mocha.project.ColorParameters.softclip"><tt class="xref py py-attr docutils literal"><span class="pre">softclip</span></tt></a> [read-write] of float</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>2.6.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Clip color parameters class.</div></blockquote>
+<dl class="class">
+<dt id="mocha.project.ColorParameters">
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">ColorParameters</tt><span class="sig-paren">(</span><span class="optional">[</span><em>colorspace=LinearColorspace</em><span class="optional">[</span>, <em>conversion=NoneConversion</em><span class="optional">[</span>, <em>offset=0.f</em><span class="optional">[</span>, <em>softclip=0.f</em><span class="optional">[</span>, <em>log_reference_white=685.f</em><span class="optional">[</span>, <em>log_reference_black=0.f</em><span class="optional">[</span>, <em>gamma=1.f</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ColorParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.ColorParameters.__repr__">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">__repr__</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ColorParameters.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PyObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.ColorParameters.__ne__">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">__ne__</tt><span class="sig-paren">(</span><em>color_parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ColorParameters.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.ColorParameters.__eq__">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">__eq__</tt><span class="sig-paren">(</span><em>color_parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ColorParameters.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.ColorParameters.colorspace">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">colorspace</tt><a class="headerlink" href="#mocha.project.ColorParameters.colorspace" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Colorspace</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to colorspace value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.ColorParameters.conversion">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">conversion</tt><a class="headerlink" href="#mocha.project.ColorParameters.conversion" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.ColorConversion</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to color conversion value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.ColorParameters.offset">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">offset</tt><a class="headerlink" href="#mocha.project.ColorParameters.offset" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to log reference offset value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.ColorParameters.softclip">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">softclip</tt><a class="headerlink" href="#mocha.project.ColorParameters.softclip" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to softclip value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.ColorParameters.log_reference_white">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">log_reference_white</tt><a class="headerlink" href="#mocha.project.ColorParameters.log_reference_white" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to log reference white value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.ColorParameters.log_reference_black">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">log_reference_black</tt><a class="headerlink" href="#mocha.project.ColorParameters.log_reference_black" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to log reference black value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.ColorParameters.gamma">
+<tt class="descclassname">ColorParameters.</tt><tt class="descname">gamma</tt><a class="headerlink" href="#mocha.project.ColorParameters.gamma" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to gamma value.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.6. ColorParameters</a><ul>
+<li><a class="reference internal" href="#synopsis">2.6.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.6.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.6.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.6.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Clip.html"
+                        title="previous chapter">2.5. Clip</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ImageData.html"
+                        title="next chapter">2.7. ImageData</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/ColorParameters.txt"
+            >Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ImageData.html" title="2.7. ImageData"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Clip.html" title="2.5. Clip"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

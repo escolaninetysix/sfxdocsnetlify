@@ -1,0 +1,1782 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: FilmRoll",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FilmRoll.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FilmRoll">
+     <h2>
+      S_FilmRoll
+     </h2>
+    </a>
+    Transitions between two clips by rolling one off screen vertically
+while rolling the other on, while applying various film damage effects such as shaking, stains,
+scratches, and flicker.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Foreground:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FilmRoll.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Transition Dir:
+   </b>
+   <i>
+    Popup menu,  Default: Wipe Off to Bg
+   </i>
+   .
+   <br/>
+   Selects the direction of the transition.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Wipe Off to Bg:
+      </i>
+     </b>
+     transitions from the current layer to the Background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Wipe On from Bg:
+       </i>
+      </b>
+      transitions from the Background to the current layer.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Auto Trans:
+   </b>
+   <i>
+    Popup YES-NO,  Default: No
+   </i>
+   .
+   <br/>
+   If enabled, a transition is performed automatically between
+the first and last frames of the layer.  If this is off, the transition is
+performed manually by animating the Film Percent parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Auto Trans must be disabled for this parameter to be
+  used.  It determines the transition ratio between the From and To
+  inputs, and would normally be animated from 0 to 100 to perform a
+  complete transition.  The curve controlling this parameter can be adjusted
+  for more detailed control over the timing of the wipe.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Slow In:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If positive, causes the transition to start more gradually.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Slow Out:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If positive, causes the transition to end more gradually.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Roll Speed:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The amount of vertical rolling, in screen heights. The clips will move
+this distance over the full course of the transition, ending with the To clip in its
+normal position.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Motion Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the result proportionally to the amount of shaking.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The height of the border that appears between the From and To clips
+as they are rolling.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the peak amount of glow. Glow will automatically
+fall off to zero at the beginning and end of the effect, to provide a smooth transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.224,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Damage Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the peak amount of all damage effects. Increase for a more
+damaged look, or decrease for a cleaner look. The damage will automatically fall off at
+the beginning and end of the transition. Individual damage types
+can also be adjusted with their respective parameters, such as Stain Density, Hairs,
+Scratches, etc.
+  </dd>
+ </dl>
+ <h3>
+  Stains Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stain Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 to 500.
+   <br/>
+   The number of stains on each frame. A fractional value is treated as
+                 the probability of a single stain appearing on any given frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stain Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the stain density from frame to frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stain Print:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Relative density of stains on the print.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stain Negative:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Relative density of stains on the negative.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stain Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the width and height of stains.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stain Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the size from one stain to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stain Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Scales the opacity of the stains.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stain Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary opacity from one stain to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stain Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary brightness from one stain to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stain Color:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount of additional, random color variation for each stain. If
+                   this parameter is greater than zero, stain colors can vary outside the
+                   range defined by color1 and color2.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stain Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   Beginning of the range of colors for stains.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stain Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.25 0.125 0].
+   <br/>
+   End of the range of colors for stains. Each stain will have a random
+                color between color1 and color2.
+  </dd>
+ </dl>
+ <h3>
+  Dust Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dust Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   60,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The average number of dust pieces on each frame. A fractional value is
+  treated as the probability of a single dust speck appearing on any
+  given frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Dust Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the dust density from frame to frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dust On Print:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Relative density of dust on the print.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dust On Negative:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Relative density of dust on the negative.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dust Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the width and height of dust.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Dust Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the size from one piece of dust to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dust Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Scales the opacity of the dust.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Dust Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary opacity from one piece of dust to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Dust Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary brightness from one piece of dust to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Dust Color:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount of additional, random color variation for each piece of dust. If
+                   this parameter is greater than zero, dust colors can vary outside the
+                   range defined by color1 and color2.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dust Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   Beginning of the range of colors for dust.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dust Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   End of the range of colors for dust. Each piece of dust will have a random
+                color between color1 and color2.
+  </dd>
+ </dl>
+ <h3>
+  Hairs Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hairs:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Number of hairs stuck in the projector gate.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hair Persistence:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Controls the length of time that hairs persist,
+  and the frequency with which new hairs appear. Increase this value
+  for long-lived hairs, and decrease it to get new hairs more often.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hair Wiggle Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls the amount of random movement and
+  stretching that each hair exhibits.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hair Wiggle Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls the frequency of the hair wiggle.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hair Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Scales the opacity of the hairs.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hair Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the width and height of the hairs.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Hair Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the size from one hair to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hair Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   The color of the hairs.
+  </dd>
+ </dl>
+ <h3>
+  Scratches Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scratches:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls the number of scratches on each frame, on
+  average.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Black Scratches:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Number of black scratches, relative to the Scratches parameter value.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    White Scratches:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Number of white scratches, relative to the Scratches parameter value.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Black Scratch Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The length of the black scratches in frames,
+  on average.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    White Scratch Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The length of the white scratches in frames,
+  on average.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scratch Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.15,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Width of the average scratch, in approximate
+  NTSC-sized pixels.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Scratches Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   If this is 0 all the scratches will be the same
+  width.  Increase to let each scratch have its own width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scratches Taper:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the pointiness of the ends of each
+  scratch.  Larger value makes a longer taper on each end.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scratch Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Maximum opacity of the scratches.  Setting
+  this to 0 will fade the scratches out.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scratch Roughness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to roughen the edges of each scratch to
+  simulate the random character of a real scratch.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scratch Roughness Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   150,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   Sets the frequency of the roughness on the
+  scratch edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gaps:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.28,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Like real analog scratches, the dust particle
+  creating the scratch sometimes rolls around and the scratch 'skips'.
+  This controls how much that happens.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gaps Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   120,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   How often do the scratch gaps occur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scratch Area Center:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -2 or greater.
+   <br/>
+   The center coordinate of the area of the screen
+  covered by the scratches.  0 is in the middle of the screen, -1 is
+  the left edge, and 1 is the right edge.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scratch Area Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the area of the screen covered by
+  scratches.  1 means the scratches cover the full screen area.  To
+  get scratches only in one strip, adjust scratch area width smaller.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Weave Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   How much does each scratch weave around on the screen,
+  on average.  This is in frame-widths, so 1.0 will let a scratch
+  wander all over the screen.  If set to zero, the scratches will all
+  be straight vertical.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Weave Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   How fast do the scratches weave around on the
+  screen, in cycles per frame.  Normally less than one.
+  </dd>
+ </dl>
+ <h3>
+  Shake Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Amplitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount of vertical shaking to add.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the frequency of the shaking. Increase for faster shaking
+                   with more frequent hops and changes in direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Jumpiness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount of large-scale, jumpy shaking.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Random:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount of small-scale, random shaking.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Time Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the shake pattern in time. Adjust this value to control the
+                     exact time when shaking occurs.
+  </dd>
+ </dl>
+ <h3>
+  Vignette Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Darkness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Vignetting is darkening of the image towards the
+  corners and sides of the image.  This parameter controls how much
+  the outer corners of the screen should be darkened (vignetted).  0
+  gives no vignetting, 1 gives maximum darkening.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Distance from the center to apply the vignette.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Edge Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the vignette's soft edge.  Larger values
+  give softer, less visible edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Controls the aspect ratio of the vignette
+  ellipse.  This should normally be set to the aspect ratio of the
+  image, e.g. .75 for NTSC.
+  </dd>
+ </dl>
+ <h3>
+  Flicker Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the colors of the source clip by different
+  amounts over time for a flickering effect.  The pattern of flickering
+  can be random, a periodic wave, or a combination of the two.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Rand Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amplitude of random brightness flickering.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Rand Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of the random flickering.  Increase for
+  more variation between frames.  Decrease for slower flickering.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Wave Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amplitude of periodic wave flickering.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Wave Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of the wave flickering.  Increase for
+  faster flickering, decrease for slower.  This has no effect if Wave
+  Amp is 0.
+  </dd>
+ </dl>
+ <h3>
+  Defocus Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the source clip by different amounts over time to
+  simulate focus problems in the projector.  The pattern of defocus
+  can be random, a periodic wave, or a combination of the two.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus Rand Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amplitude of defocusing that changes randomly over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus Rand Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the frequency of the random
+  defocus. Increase for more variation between frames. Decrease for slower defocus changes over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus Wave Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amplitude of periodic wave defocus.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus Wave Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of the wave defocus. Increase for
+  more variation between frames.
+  </dd>
+ </dl>
+ <h3>
+  Other Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flip Stamps Vertically:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Flip all stamps (hairs, scratches, dust, etc) vertically.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../swishpan">
+       SwishPan
+      </a>
+      <br/>
+      <a href="../swish3d">
+       Swish3D
+      </a>
+      <br/>
+      <a href="../filmdamage">
+       FilmDamage
+      </a>
+      <br/>
+      <a href="../tvchannelchange">
+       TVChannelChange
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../flickerremove">
+       FlickerRemove
+      </a>
+      <br/>
+      <a href="../flickermatch">
+       FlickerMatch
+      </a>
+      <br/>
+      <a href="../shake">
+       Shake
+      </a>
+      <br/>
+      <a href="../huesatbright">
+       HueSatBright
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

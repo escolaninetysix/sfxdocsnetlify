@@ -1,0 +1,1724 @@
+{
+   "date": "2015-10-22T00:00:00-00:00",
+   "description": "Mocha Pro 4.1.3 Release Notes",
+   "excerpt": "This is a patch update to add MochaBlend exports to mocha Pro:\u003cbr /\u003e\u0026bull; **MochaBlend tracking Data**: Tracking data for setting up camera rigs in MochaBlend\u003cbr /\u003e\u0026bull; **MochaBlend shape Data**: Shape data for setting up 3D splines in MochaBlend",
+   "image_url": "",
+   "tags": [
+      "Mocha"
+   ],
+   "title": "Mocha Pro 4.1.3 - Release Notes"
+}
+
+mocha(R) Pro v4.1.3 Release Note
+=================================
+
+:Author:    (C) Boris FX
+:Email:     support@borisfx.com
+:Date:      22/10/2015
+:Revision:  mocha Pro 4.1.3
+
+Introduction
+-----------
+These release notes accompany *{revision}*. 
+
+Documentation is available inside *{revision}* by pressing the F1 key.
+
+
+New Features Guide
+-----------------
+
+This is a patch update to add MochaBlend exports to mocha Pro:
+
+* *MochaBlend tracking Data*: Tracking data for setting up camera rigs in MochaBlend
+* *MochaBlend shape Data*: Shape data for setting up 3D splines in MochaBlend
+
+Fixed Issues
+------------	
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE4022 Export to BCC Centre Point is missing headers
+| *Platform:* | All Platforms
+| *Bug Description:* | Exports to Boris FX BCC Centre Point data was missing the correct headers and therefore would not import correctly.
+|====
+
+
+Known Issues
+------------
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3949 mocha crashes on exit after creating a project based on ProRes footage if there are no ProRes codecs but Blackmagic codec is installed
+| *Platform:* | OS X
+| *Bug Description:* | mocha crashes on exit after creating a project based on ProRes footage if there are no ProRes codecs but Blackmagic codec is installed
+| *Workaround:* | Install ProRes codecs
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3943 Twisted loops occur in beziers for some exports
+| *Platform:* | All Platforms
+| *Bug Description:* | Exported Beziers can sometimes have looped splines in closely animated points.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3942 Corner pin collapses to a single point if surface was tracked and adjusted outside of layer in/out points
+| *Platform:* | All Platforms
+| *Bug Description:* |  Corner pin collapses to a single point if surface was tracked and adjusted outside of layer in/out points
+| *Workaround:* | Adjust surface inside in/out points
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3935 Mocha loads behind After Effects when launching from "Track in mocha AE" on OS X
+| *Platform:* | OS X
+| *Bug Description:* | Mocha always loads in the background when launching it from After Effects.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3932 Gamma Shifts when exporting rendered clips to tiff/dpx formats on Mac
+| *Platform:* | OS X
+| *Bug Description:* | Gamma problems can occur when rendering to TIFF or DPX
+| *Workaround:* | Remove Blackmagic codec
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3890 Maximized mocha window size never remembers state on Mac
+| *Platform:* | OS X
+| *Bug Description:* | Opening mocha on OS X will resize the window, even if you have adjusted it to full screen previously.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3880 Exporting rendered clips from ProRes4444 can sometimes render garbage on Mac
+| *Platform:* | OS X
+| *Bug Description:* | Exporting renders to any QuickTime format using ProRes4444 as source can show malformed renders.
+| *Workaround:* | Use a different source format.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3860 Render buttons are disabled if the playhead is out of the frame range of the selected layer
+| *Platform:* | All Platforms
+| *Bug Description:* | You cannot render a layer if the playhead is resting outside of a layer in or out point.
+| *Workaround:* | Move the playhead to inside the layer in/out points.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3856 Sometimes mocha crashes upon rendering Inserts for several layers if one of them has different In Layer Point
+| *Platform:* | All Platforms
+| *Bug Description:* | Rendering multiple Insert layers that have different in points may crash mocha.
+| *Workaround:* | Render separately.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3855 Inserting process cannot be stopped immediately if some predefined clip is selected as insert clip
+| *Platform:* | All Platforms
+| *Bug Description:* | Inserting predefined clips like Logo and Grid8x8 can make it difficult to stop a render.
+| *Workaround:* | Use custom Insert clips.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3811 Exporting data for a single layer defaults to an untitled file name instead of using the layer name
+| *Platform:* | All Platforms
+| *Bug Description:* | Saving exported data for a single layer sets the default filename to "untitled".
+| *Workaround:* | Rename the file when saving.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3807 Crash when duplicating several layers after undo of duplicating these layers
+| *Platform:* | All Platforms
+| *Bug Description:* | Undoing the duplication of several layers can crash mocha if you try to duplicate them again.
+| *Workaround:* | Reopen the project file if you want to duplicate layers after undoing the same duplication.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3796 Cannot add a control point in the left bottom corner of an image
+| *Platform:* | All Platforms
+| *Bug Description:* | There is an issue with adding a point to the exact bottom left corner of a frame.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3789 Cannot detect and move spline points if they are located near spline line of another spline in the same layer
+| *Platform:* | All Platforms
+| *Bug Description:* | Points that are close to other splines are hard to select and move.
+| *Workaround:* | Zoom in further to make selection easier.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3786 There is no message about unsupported formats if mocha launches from command line with an unsupported footage
+| *Platform:* | All Platforms
+| *Bug Description:* | The usual error message for unsupported footage does not show if mocha is launched from command line.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3778 Previous and Next keyframes zoom windows change according to the position of the current keyframe when moving surface corners in manual track mode
+| *Platform:* | All Platforms
+| *Bug Description:* | The previous keyframe zoom window is referencing the current keyframe when adjusting in manual track mode.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3776 It is possible to open or start a project while another is loading.
+| *Platform:* | All Platforms
+| *Bug Description:* | If you are quick enough, or the project is large, it is possible to start or open another project while the first is still loading.
+| *Workaround:* | Wait until the project finishes loading before opening a new one.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3775 Wrong surface behavior in adjusting on a frame which is before the master frame and contains a layer keyframe
+| *Platform:* | All Platforms
+| *Bug Description:* | Reference points are adjusted instead of the surface points when adjusting on a frame before the master keyframe
+| *Workaround:* | Reset the AdjustTrack solution and try again.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3762 Cache and rendered clips files aren't removed after closing a non-modified project
+| *Platform:* | All Platforms
+| *Bug Description:* | If you don't edit a project that has "Cache original clip" turned on, the cache files are not removed on exit.
+| *Workaround:* | Don't cache the original clip unless you have to.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3751 Crash for multi-pass removing
+| *Platform:* | All Platforms
+| *Bug Description:* | Attempting to use a previous remove clip as the input of a new remove clip can cause a crash.
+| *Workaround:* | Import the previously rendered clip separately from the original render and use that to remove with.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3742 mocha crashes on start if it was installed without Python feature on Windows
+| *Platform:* | All Windows Platforms
+| *Bug Description:* | You cannot run mocha on Windows without installing the Python option in the installer.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3739 Sometimes there is no ability to create a project based on footage that contains % and non-Latin characters in the path on Mac
+| *Platform:* | OS X
+| *Bug Description:* | Some character combinations in a footage name can stop a project from being created.
+| *Workaround:* | Use standard unicode characters and avoid some symbols like / or %.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3737 Wrong project and clip names if the footage contains % and digits characters in the file name
+| *Platform:* | All Platforms
+| *Bug Description:* | Incorrect project and clip names are created if % is in the file name followed by digits.
+| *Workaround:* | Don't use % in your file name.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3736 There is no ability to enter footage path in the Relink dialog manually
+| *Platform:* | All Platforms
+| *Bug Description:* | The relink dialog can prevent you from entering a footage path.
+| *Workaround:* | Use the Choose button instead.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3734 Remove "Dissolve" Mode parameter isn't saved in mocha project file
+| *Platform:* | All Platforms
+| *Bug Description:* | Dissolve Mode parameter state isn't saved in mocha project file.
+| *Workaround:* | Remodify the state on loading the project.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3725 Matte clip of a duplicated layer remains after undo of the layer duplication
+| *Platform:* | All Platforms
+| *Bug Description:* | If you undo a layer duplication its matte clip may not also remove.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3723 Crash when changing Camera model after solving for a new project
+| *Platform:* | All Platforms
+| *Bug Description:* | Camera Solving and then selecting a new camera type can crash mocha.
+| *Workaround:* | Reopen file before resolving.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3708 There are two "Matte for a layer" clips for the same layer after reselecting None as a Matte clip for it
+| *Platform:* | All Platforms
+| *Bug Description:* | Selecting "None" in the Matte clip dropdown for a layer adds a new layer matte clip if you add another contour.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3701 Crash when copy/pasting keyframes in the Dope Sheet
+| *Platform:* | All Platforms
+| *Bug Description:* | Copying and pasting keyframes in the dopesheet can crashe mocha.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3686 Removing "activate/deactivate" layer keyframe doesn't update layer state on the canvas
+| *Platform:* | All Platforms
+| *Bug Description:* | The canvas doesn't refresh after removing activate or deactivate keyframes from a layer.
+| *Workaround:* | Move mouse cursor to the canvas or switch between frames
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3684 Exported camera nulls names are shuffled
+| *Platform:* | All Platforms
+| *Bug Description:* | Camera null naming is flipped around compared to the expected orientation to the original surface placement.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3674 Cannot read rendered clips for projects that were based on EXR footage
+| *Platform:* | All Platforms
+| *Bug Description:* | Rendered files based on EXR source may not read correctly in mocha.
+| *Workaround:* | Use a different source format
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3663 Cannot paste mocha masks in AE if some layer has more than 32 characters in its name
+| *Platform:* | All Platforms
+| *Bug Description:* | Shape layers with very long names cannot be pasted into After Effects.
+| *Workaround:* | Use a shorter name.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3657 Beziers warp incorrectly when moving them in Lock Tangents mode.
+| *Platform:* | All Platforms
+| *Bug Description:* | If Lock Tangents mode is on, moving Bezier points as a group will move tangents incorrectly.
+| *Workaround:* | Turn off Lock Tangents mode from the Tools menu.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3628 Wrong distortion maps export to .EXR and .SXR formats
+| *Platform:* | All Platforms
+| *Bug Description:* | Lens distortion maps can render incorrectly to EXR/SXR formats.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3610 There is ability to nudge shapes during tracking process
+| *Platform:* | All Platforms
+| *Bug Description:* | Shape nudging shortcuts are not disabled while tracking.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3597 Crash when closing a project if the project before was closed without "Retain cached renders"
+| *Platform:* | All Platforms
+| *Bug Description:* | If you close a project that was opened after a previous project was closed without retaining cached renders, mocha will crash.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3593 Changing the Results clip format in Preferences does nothing for projects based on .dpx or .tif footage
+| *Platform:* | All Platforms
+| *Bug Description:* | If you change the default Results clip rendering format in Preferences, mocha still renders to DPX.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3588 Wrong exported tracking data for Fusion format for interlaced projects
+| *Platform:* | All Platforms
+| *Bug Description:* | Exports to Blackmagic Fusion based on interlaced footage have the wrong height and y scale.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3582 Quick Stabilize button is not working when tracking
+| *Platform:* | All Platforms
+| *Bug Description:* | The Quick Stabilize button in view controls doesn't stabilize when tracking.
+| *Workaround:* | Track then scrub the timeline.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3570 Edge is shown for open splines that were made from closed splines
+| *Platform:* | All Platforms
+| *Bug Description:* | If you created an edge for a closed spline, then open it the edge for the close spine still shows.
+| *Workaround:* | Reset edge with before opening spline.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3554 There is ability to step between control points for locked or invisible layers
+| *Platform:* | All Platforms
+| *Bug Description:* | You can use the "Next control point" controls to cycle through locked or invisible layers.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3549 Cannot move points of a Bezier layer after undoing the creation of a new layer
+| *Platform:* | All Platforms
+| *Bug Description:* | If you have created a bezier layer then make another shape, undoing the second layer causes the bezier to be unadjustable.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3547 Cache and rendered clips files aren't removed after closing a project
+| *Platform:* | All Platforms
+| *Bug Description:* | Sometimes caches are not being cleared when closing a project.
+| *Workaround:* | Clear the cache manually.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3541 Redundant parameters are shown In the Dope Sheet after switching project mode from stereo to mono
+| *Platform:* | All Platforms
+| *Bug Description:* | Redundant keyframes are pasted when copying keys from a stereo project and pasting them to a mono project.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3538 Video gamma for Log colorspace remains from the previous project
+| *Platform:* | All Platforms
+| *Bug Description:* | Video gamma does not reset for log color space when starting a new project.
+| *Workaround:* | Restart mocha before beginning a new project.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3537 Inconsistent layer mode after undo moving points of several layers
+| *Platform:* | All Platforms
+| *Bug Description:* | Multiple changes to different layers then undoing them can cause problems with some layers.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3535 Relinked clip images are shown instead of images from the original clip if the project was closed with "Retain cached renders" on
+| *Platform:* | All Platforms
+| *Bug Description:* | Sometimes relinked clip images are shown instead of images from the original clip if the project was closed with "Retain cached renders" on.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3527 Tangents of slave neighbouring points are changed when moving a master point
+| *Platform:* | All Platforms
+| *Bug Description:* | Lock Tangents doesn't work correctly if moving the point by attaching it to a master point on another layer.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3526 Inconsistent mode for Bezier tangents after undo/redo their changes
+| *Platform:* | All Platforms
+| *Bug Description:* | Bezier tangent handles can sometimes follow the cursor after undoing Bezier layer adjustments.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3506 Low accuracy warning shows after Save dialog when exporting camera solve data
+| *Platform:* | All Platforms
+| *Bug Description:* | A low accuracy warning can show after the Save dialog when exporting camera solve data.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3505 Wrong spline IDs after merging projects
+| *Platform:* | All Platforms
+| *Bug Description:* | Spline control point IDs are not unique when merging.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3503 Error when clicking on the "-" edge width button for open splines
+| *Platform:* | All Platforms
+| *Bug Description:* | An error shows when trying to adjust the negative edge width of an open spline.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3502 Quality of the stereo solver depends on the current view
+| *Platform:* | All Platforms
+| *Bug Description:* | You can get different stereo camera solve results depending on what view you are in.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3498 Edge width minus doesn't compensate edge width plus for complicated layers
+| *Platform:* | All Platforms
+| *Bug Description:* | Edge curve doesn't match the spline curve and error is shown when adding large edge widths then reducing them again on complicated shapes
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3495 Canvas shows garbage when opening a project created by earlier mocha versions based on currently unsupported footage
+| *Platform:* | Mac OS and Windows: all
+| *Bug Description:* | Some projects created with codecs that were supported in earlier versions of mocha are now loading with artifacts and black frames.
+| *Workaround:* | Convert the footage to a different format.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3494 mocha cannot load some video files that could be loaded by earlier versions.
+| *Platform:* | Mac OS and Windows: all
+| *Bug Description:* | Some codecs that were supported in earlier versions of mocha are now showing as unsupported.
+| *Workaround:* | Convert the footage to a different format.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3490 Wrong clip location path is shown on the Clip page if the original clip was relinked
+| *Platform:* | All Platforms
+| *Bug Description:* | The original path of the clip is shown in the Clip page after relinking to a new path.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3487 Crash when showing a frame that is out of clip range if mocha is launched from the command line with arguments
+| *Platform:* | All Platforms
+| *Bug Description:* | Loading mocha with command line arguments that set in/out points out of range of the clip will crash mocha if you try to navigate the timeline.
+| *Workaround:* | None.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3485 Cannot move a layer point that was selected before switching to the Lens or Clip pages
+| *Platform:* | All Platforms
+| *Bug Description:* | If you select a point and switch to the Lens or Clip tab, switching back to Track will make the point immovable.
+| *Workaround:* | Select another point and reselect the original point.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3480 Endless error message when moving a layer point in unavailable clip
+| *Platform:* | All Platforms
+| *Bug Description:* | "Failed to open file" error is repeatedly shown when attempting to move layer points in a project with a missing clip.
+| *Workaround:* | Relink the clip before modifying layers.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3475 Extra step in undo/redo history after using Set and +/- edge width actions
+| *Platform:* | All Platforms
+| *Bug Description:* | An additional undo step is created when performing edge width operations.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3471 Video gamma resets when switching colorspace
+| *Platform:* | All Platforms
+| *Bug Description:* | If you switch between log and linear, Video Gamma resets back to 1.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3470 Cannot create a new clean plate clip by clicking "Create" button after changing clips in the corresponding dropdown
+| *Platform:* | All Platforms
+| *Bug Description:* | Attempting to create a new clean plate while another clip or "None" is selected in the dropdown an error will occur.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3469 Wrong state of "Use Cleanplates Exclusively" checkbox for some clean plate clips
+| *Platform:* | All Platforms
+| *Bug Description:* | "Use Cleanplates Exclusively" will not become enabled when selecting particular clips in the clean plate dropdown and will not disable when choosing "None".
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3466 Sometimes a slave point is unconstrained after constraining a master point
+| *Platform:* | All Platforms
+| *Bug Description:* | Chaining multiple layers with the vertex attach tool can sometimes unconstrain the points.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3460 There is ability to check both "Convert to" checkboxes in the Clip page
+| *Platform:* | All Platforms
+| *Bug Description:* | You can check both "Convert to float" and "Convert to 8-bit" in the colorspace tab.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3458 The original clip attributes are changed after relinking a clip that inherits attributes from the original clip
+| *Platform:* | All Platforms
+| *Bug Description:* | If you relink a clip that inherits attributes from the clip you created the project with, the original clip attributes will also be changed.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3457 GUI isn't updated correctly for a layer that was created with Python
+| *Platform:* | All Platforms
+| *Bug Description:* | Creating or modifying a layer in Python while in the mocha GUI will not immediately update the view or layer controls.
+| *Workaround:* | Perform another action such as layer selection in the GUI or switch out and back to the application.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3443 Undo doesn't work correctly for successively changed reference points in the AdjustTrack page
+| *Platform:* | All Platforms
+| *Bug Description:* | Moving reference points in AdjustTrack will not undo correctly.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3442 Extra undo/redo operation is required for changing a master reference point position in the AdjustTrack page
+| *Platform:* | All Platforms
+| *Bug Description:* | You have to undo or redo twice when changing the Master in AdjustTrack.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3440 Multi-part EXR files containing channel-based multi-view images do not load correctly
+| *Platform:* | All Platforms
+| *Bug Description:* | If the individual parts of a multi-part EXR file have their own channel-based multi-view images, they do not load correctly into the stream lists.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3438 No ability to enter more than 5 digits in the Frame Offset field in the Create New Project dialog
+| *Platform:* | All Platforms
+| *Bug Description:* | Frame offset is limited to 5 digits in the New Project dialog.
+| *Workaround:* | Adjust the frame offset in Project Settings after creating the project.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3437 There is no undo operation for changing corners mode for all layer handles after clicking right mouse button on some handle
+| *Platform:* | All Platforms
+| *Bug Description:* | Switching to corner mode for all layer handles using right click cannot be undone.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3436 Sometimes "Apply keyframe changes to all views" doesn't work when Überkey mode is selected
+| *Platform:* | All Platforms
+| *Bug Description:* | In stereo shots, "Apply keyframe changes to all views" can sometimes not work across views with Überkey.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3435 Inconsistent behavior when removing AdjustTrack keyframe for a master frame
+| *Platform:* | All Platforms
+| *Bug Description:* | Some keyframes can be restored when trying to remove other AdjustTrack keyframes
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3434 Redundant AdjustTrack keyframe is created after attempt to delete keyframe for the master frame
+| *Platform:* | All Platforms
+| *Bug Description:* | A redundant AdjustTrack keyframe is created in the dopesheet after an attempt to delete the master frame
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3429 Timeline changes to spline keys when using timeline controls to adjust or review parameter keys
+| *Platform:* | All Platforms
+| *Bug Description:* | If you create any parameter keys you cannot review them with the timeline controls without jumping back to spline keys.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3428 Exported rendered clips to .exr or .sxr formats have wrong height if the project is interlaced
+| *Platform:* | All Platforms
+| *Bug Description:* | If you use EXR to render out an interlaced project, the render will have the wrong height dimension.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3427 Layer in/out point fields are too narrow when working with timecodes
+| *Platform:* | All Platforms
+| *Bug Description:* | Layer in/out point fields are too narrow when working with timecodes so they become hard to see.
+| *Workaround:* | Stretch the left panel out further.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3426 Tangent parameters are keyframed when creating a bezier layer in Überkey mode
+| *Platform:* | All Platforms
+| *Bug Description:* | If you create Bezier layers with Überkey on, it will create keyframes only for the tangents.
+| *Workaround:* | Create a layer with Autokey.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3417 "Stabilizer failed to smooth motion parameters" error on the Stabilize page if an open spline is selected and there is some lens distortion
+| *Platform:* | All Platforms
+| *Bug Description:* | Attempting to stabilize with an open spline layer will throw an error.
+| *Workaround:* | Use a close spline layer.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3415 OK button doesn't become enabled after selecting the required file for QuickTime export in Export Rendered Data dialogs
+| *Platform:* | All Platforms
+| *Bug Description:* | If you select outside of the QuickTime movie field in Export Rendered Shape/Clip dialogs, OK will become disabled after choosing the file.
+| *Workaround:* | Select another field elsewhere in the dialog.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3409 Crash in opening or creating a stereo project if mocha launched via Remote Desktop
+| *Platform:* | All Platforms
+| *Bug Description:* | If you try to create a stereo project in mocha over remote desktop, mocha will crash.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3408 Incorrect Bezier handles at spline ends when exporting X-Splines to After Effects
+| *Platform:* | All Platforms
+| *Bug Description:* | Smoothed X-Splines may export with incorrect Bezier handles when exported to After Effects.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3407 Project out point doesn't change correctly after changing project length in the Project Settings dialog
+| *Platform:* | All Platforms
+| *Bug Description:* | Changing the project length will not move the outpoint correctly.
+| *Workaround:* | Reset or adjust out point manually.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3401 Prefix field in the Export Rendered Shapes dialog doesn't change according to a selected layer
+| *Platform:* | All Platforms
+| *Bug Description:* | The prefix for export rendered shapes chooses the top layer rather than the selected layer.
+| *Workaround:* | Change the prefix manually.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3400 "mocha Pro: No such file or directory" error when launching mocha from Terminal on Linux
+| *Platform:* | Linux
+| *Bug Description:* | "mocha Pro: No such file or directory" error when launching mocha from Terminal on Linux
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3391 Interpolation of stereo offset between hero and non-hero views doesn't work for layers when changing depth
+| *Platform:* | All Platforms
+| *Bug Description:* |  Interpolation of stereo offset between hero and non-hero views doesn't work for layers when changing depth
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3389 Clip has 1*1 dimensions after relinking when opening a mocha project created via python script if it has wrong clip path
+| *Platform:* | All Platforms
+| *Bug Description:* | If you create a project with a nonexistent clip and try to relink inside mocha, the clip dimensions will be 1*1.
+| *Workaround:* | Create a project with the correct clip path in Python.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3388 Wrong Output Directory in the project that was created via Python with "UTF-8" encoding on Windows
+| *Platform:* | All Windows Platforms
+| *Bug Description:* | Setting an output directory with Python using UTF-8 encoding can show the wrong directory in mocha.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3382 Activation can sometimes be unable to write license to disk
+| *Platform:* | All Platforms
+| *Bug Description:* | On some systems mocha is unable to write the license to disk when activating.
+| *Workaround:* | Allow write permissions on the mocha license directory before activation.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3375 Autosave still works after switching off the corresponding checkbox in the Preferences
+| *Platform:* | All Platforms
+| *Bug Description:* | Autosave works regardless when you turn it off in Preferences
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3370 Clip parameters don't change after relinking a stream of a stereo clips
+| *Platform:* | All Platforms
+| *Bug Description:* | Relinking stereo streams of different bit depths will not update the actual bit depth in the clip.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3364 Sometimes there is crash when exporting distortion maps
+| *Platform:* | All Platforms
+| *Bug Description:* | In rare cases the Lens module will crash mocha when trying to render the distortion map.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3360 Selected Absolute Path isn't saved after switching to Relative Path and back in Preferences
+| *Platform:* | All Platforms
+| *Bug Description:* | Switching between Relative and Absolute paths doesn't save the Absolute path.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3341 Undo for adding keyframes by moving a point handle doesn't remove keyframe from the timeline and the Dope Sheet
+| *Platform:* | All Platforms
+| *Bug Description:* | When you undo a handle movement, the keyframe does not disappear from the dopesheet.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3337 Points jump to the current mouse position after changing activeness state or point mode on Mac
+| *Platform:* | OS X
+| *Bug Description:* | Once you have changed the active state, the point will jump to where the mouse pointer is.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3335 Redundant keyframe is created when switching on the right view after tracking in both views if point mode was changed for a layer point
+| *Platform:* | OS X
+| *Bug Description:* | Redundant keyframe is created when switching on the right view after tracking in both views if point mode was changed for a layer point.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3330 Unix-style Absolute Output directory path results in a wrong folder being created on Windows
+| *Platform:* | Windows
+| *Bug Description:* | If you open an OS X project on Windows, accepting the saved absolute folder output directory will create the wrong folder.
+| *Workaround:* | Change the Absolute path before accepting the dialog.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3321 Changes of colorspace parameters aren't implemented for projects based on .dpx till conversion to float
+| *Platform:* | All Platforms
+| *Bug Description:* | Unless you turn on "Convert to Float", you cannot used the colorspace parameters to alter the viewer image for DPX.
+| *Workaround:* | Turn on "Convert to Float" first.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3319 Interlaced parameters are enabled for non-interlaced projects
+| *Platform:* | All Platforms
+| *Bug Description:* | Interlaced parameters are turned on in progressive projects. 
+| *Workaround:* | None.  They have no effect on the project.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3315 Cannot create a project based on image sequence with very large frame numbers
+| *Platform:* | All Platforms
+| *Bug Description:* | You cannot create a project based on image sequence with very large frame numbers
+| *Workaround:* | Reduce the frame number index of the sequence.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3309 "Frame not rendered" error if the right clip is shorter than the base clip for projects created via Python
+| *Platform:* | All Platforms
+| *Bug Description:* | If you set a right clip to a smaller frame range than the left in Python, an error occurs rather than repeating the frame.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3299 A layer point cannot be moved with cmd/ctrl + shift if the point wasn't selected before
+| *Platform:* | All Platforms
+| *Bug Description:* | If you try to move a point while holding cmd/ctrl+shift and it wasn't already selected, it won't move.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3292 Sometimes changing stereo offset parameters causes changing another parameters
+| *Platform:* | All Platforms
+| *Bug Description:* | Altering some Stereo Offset shear and perspective parameters may affect other fields in the tab.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3290 Canvas pixels are incorrectly detected after relinking the original clip to a clip with different dimensions
+| *Platform:* | All Platforms
+| *Bug Description:* | If you relink a clip to a new clip with different dimensions, drawing a spline will be offset incorrectly.
+| *Workaround:* | Zoom the Canvas to reset the viewer.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3268 Stereo Offset controls have different widths when changing mocha main window size
+| *Platform:* | All Platforms
+| *Bug Description:* | If you change the window size, the Stereo Offset tab fields no not resize uniformly.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3245 Sometimes there is no ability to use Relative path on Unix platforms
+| *Platform:* | All Unix
+| *Bug Description:* | If you open a project that needs to change the output directory, you cannot select Relative in some cases.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3146 A layer will not track if tracking starts on non-hero view and "Track from other views" is switched on
+| *Platform:* | All Platforms
+| *Bug Description:* | If you track from the non-hero view while "Track from other views" is switched on, the layer will not track
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3206 Symbol ⎋ is shown in shortcuts instead of Esc on OS X
+| *Platform:* | OS X
+| *Bug Description:* | When you enter "Esc" into the Keyboard shortcuts, it appears as a symbol instead of "Esc"
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3111 Clip parameters don't change after relinking a clip
+| *Platform:* | All Platforms
+| *Bug Description:* | Clip parameters will remain the same after relinking a different clip
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3062 Layers created by Bezier tool jump to the first layer position after changing activeness state of layer points on Mac
+| *Platform:* | OS X
+| *Bug Description:* | If you deactivate a point in one bezier layer and create another layer and deactivate points in that, the second layer points can jump to the position of the first layer.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3024 Stereo Offset parameters cannot be changed on the frame the layer was created on after changing hero view
+| *Platform:* | All Platforms
+| *Bug Description:* | If you change the hero view of a layer and try to change its stereo offset parameters nothing happens.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE3017 Some MOV clips load without the last frame
+| *Platform:* | OS X and Windows: all
+| *Bug Description:* | If you load some QuickTime files they will import missing the last frame
+| *Workaround:* | Convert the QuickTime to an image sequence and import that instead.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2971 Wrong zoom windows after relinking footage streams to another dimension
+| *Platform:* | All Platforms
+| *Bug Description:* | Image dimensions inside the zoom windows change if you relink a different sized piece of footage.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2957 Extra points are moved on the right view in moving some point if "Apply keyframes changes to all views" is switched on
+| *Platform:* | All Platforms
+| *Bug Description:* | Extra points are moved on the right view in moving some point if "Apply keyframes changes to all views" is switched on
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2911 Wrong layers selection after changing matte or spline colors on Mac
+| *Platform:* | OS X
+| *Bug Description:* | If you select the color options on a layer after creating several layers, sometimes more than one layer is selected afterwards.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2896 The last selected kind of footage isn't saved in the Export Rendered Shapes/Clip dialogs in mocha
+| *Platform:* | OS X and Windows: all
+| *Bug Description:* | The last selected kind of footage isn't saved in the Export Rendered Shapes/Clip dialogs
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2895 Option checkboxes aren't saved in Export Rendered Shapes/Clip dialogs in mocha
+| *Platform:* | All Platforms
+| *Bug Description:* | Option checkboxes aren't saved in Export Rendered Shapes/Clip dialogs in mocha
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2894 Some settings are saved between Export Rendered Clip and Export Rendered Shapes dialogs in mocha
+| *Platform:* | All Platforms
+| *Bug Description:* | Some settings are saved between Export Rendered Clip and Export Rendered Shapes dialogs in mocha
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2893 Render Mattes settings are not saved in the Export Rendered Shapes dialog in mocha
+| *Platform:* | All Platforms
+| *Bug Description:* | Render Mattes settings are not saved in the Export Rendered Shapes dialog in mocha
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2871 "Undo render" for inserting doesn't work in mocha
+| *Platform:* | All Platforms
+| *Bug Description:* | Undoing rendering in the Insert module is currently not working.
+| *Workaround:* | Delete the rendered clips from the clip tab
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2857 Crash in trying to change extension for rendered clips with Alpha channel to .jpg format in output Setting dialog
+| *Platform:* | All Platforms
+| *Bug Description:* | If you try to change the extension of a clip with alpha channel to jpg format in the Output settings, mocha will crash
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2856 Mocha freezes upon changing extension to ".png" format in Output Setting of a rendered clip on Windows
+| *Platform:* | All Windows Platforms
+| *Bug Description:* | If you try to change the extension of a clip png format in the Output settings, mocha will freeze
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2745 Stabilize export destroys footage view on large perspective warp
+| *Platform:* | All Platforms
+| *Bug Description:* | A very large warp in perspective can cause footage to become too large or too warped when exporting the Stabilized data to corner pin.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2636 Mac Mavericks with external monitor hangs in resizing mocha main window
+| *Platform:* | OS X
+| *Bug Description:* | Sometimes moving the main window to a secondary monitor will hang the system
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2577 Cannot nudge reference points by buttons after moving them by mouse on the right-view
+| *Platform:* | All Platforms
+| *Bug Description:* | Cannot nudge reference points by buttons after moving them by mouse on the right-view
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2559 There are no right-view keyframes when changing AdjustTrack parameters
+| *Platform:* | All Platforms
+| *Bug Description:* | You cannot see right-view keyframes when changing AdjustTrack parameters
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2479 Distortion maps rendered to EXR show different results to TIF or DPX
+| *Platform:* | All Platforms
+| *Bug Description:* | EXRs do not render correctly for Distortion maps
+| *Workaround:* | Use TIF or DPX instead
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2426 Clicking in the Layer Controls pane when adding a spline causes spline to close without reverting back to arrow tool
+| *Platform:* | All Platforms
+| *Bug Description:* | If you click in the layer controls panel while drawing a spline, the spline will finish but the draw tool will remain active yet unusable.
+| *Workaround:* | None.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2420 Playhead continues to advance frames after the Contour shuttle controller jog is released
+| *Platform:* | All Platforms
+| *Bug Description:* | When using the Contour Design ShuttlePRO jog controller to drive frame advancement, the playhead will over compensate and keep moving after you have stopped rotating.
+| *Workaround:* | Rotate the jog slower.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2361 Relinking frames does not set in/out points
+| *Platform:* | All Platforms
+| *Bug Description:* | When relinking a clip from a freshly opened file, the in/out points set to the ends of the timeline, rather than what they were set to in the file.
+| *Workaround:* | Save and reopen the relinked file.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2359 Switching on Project Notes pane causes mocha window jumping upon tracking on Mac
+| *Platform:* | OS X
+| *Bug Description:* | If you have Project Notes open on the mac, tracking will cause the GUI to jump.
+| *Workaround:* | Close Project Notes.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2356 Sometimes autosave project cannot be saved on Windows
+| *Platform:* | All Windows Platforms
+| *Bug Description:* | Autosave sometimes will not work if license drops during the autosave.
+| *Workaround:* | None
+|====
+	
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2353 Project that was saved after connection to the license server was lost doesn't appear in MRU files
+| *Platform:* | All Platforms
+| *Bug Description:* | If the license drops when you save a project, it will not appear in the recently opened list.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2351 Footage is displayed corrupted after moving a file with mocha still open
+| *Platform:* | All Platforms
+| *Bug Description:* | If footage is moved after closing a project, reopening the project will show a corrupted image.
+| *Workaround:* | Restart mocha.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2344 Canvas errors jump when zooming into the canvas
+| *Platform:* | All Platforms
+| *Bug Description:* | Zooming in when there is an error message on the canvas will cause it to jump.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2343 Sometimes there are overlapping messages on the canvas
+| *Platform:* | All Platforms
+| *Bug Description:* | If more than one error is shown on the canvas, they overlap.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2342 Wrong matte clip is removed when deleting a layer
+| *Platform:* | All Platforms
+| *Bug Description:* | If you import a matte clip to a layer and remove the layer, the imported clip is removed as well.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2339 Sometimes error messages are out of the Canvas
+| *Platform:* | All Platforms
+| *Bug Description:* | Some error messages are too long to fit on the canvas.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2337 "Failed to allocate memory buffer" error in creating a project based on some EXR footage
+| *Platform:* | All Platforms
+| *Bug Description:* | In some cases EXR files will not open correctly for new projects and throw a memory error.
+| *Workaround:* | Try a different sequence.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2316 A master key is set as soon as you switch to AdjustTrack module
+| *Platform:* | All Platforms
+| *Bug Description:* | If you switch to the AdjustTrack Module, a master key is set immediately.
+| *Workaround:* | Set a new master key and delete the old one.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2307 Floating client license always overrides node-locked
+| *Platform:* | All Platforms
+| *Bug Description:* | If you have two client licenses and one of them is for a floating license, it will always be used as the license even if it fails to find a server.
+| *Workaround:* | Remove the floating client license from the license directory if not in use
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2294 Color boxes of the base clip and all inherited clips are changed after relinking an inherited clip
+| *Platform:* | All Platforms
+| *Bug Description:* | If you relink a clip, the icon for the base clip and its inherited clips changes color.
+| *Workaround:* | None.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2277 Resizing/moving of GUI when creating a project with small screen resolution
+| *Platform:* | OS X
+| *Bug Description:* | On very small screen resolutions the mocha interface blinks and adjusts when creating a project.
+| *Workaround:* | Use a larger screen resolution.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2220 Some timeline buttons are enabled if there are no opened projects
+| *Platform:* | All Platforms
+| *Bug Description:* | On opening mocha or after closing a project, some of the timeline buttons are still clickable.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2215 After undo changes to some parameters the corresponding dopesheet keyframes aren't removed
+| *Platform:* | All Platforms
+| *Bug Description:* | Some changes in the Lens and Insert modules were not removing keys in the dopesheet after undo.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2211 Crash in solving some projects
+| *Platform:* | All Platforms
+| *Bug Description:* | For some projects the camera solver will hang or crash.
+| *Workaround:* | Try a different set of tracks to solve with.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2206 Spline and point numbers do not reset when starting a new project
+| *Platform:* | All Platforms
+| *Bug Description:* | If you have worked on one project and start another, the splines and point ids keep incrementing from the last one drawn.
+| *Workaround:* | Restart mocha.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2203 AdjustTrack reference points have incorrect view when switching active state of a layer
+| *Platform:* | All Platforms
+| *Bug Description:* | Reference points are shown incorrectly when the active state of the layer is toggled off on one frame then on with another.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2202 Wrong selection of points when restoring a point that was removed by "Delete" key
+| *Platform:* | All Platforms
+| *Bug Description:* | If you undo the deletion of a point, it will also be selected when you try to select another point.
+| *Workaround:* | Click the canvas to deselect everything, then reselect.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2190 Sometimes shape data exported to After Effects "Paste mocha mask" gets corrupted spline points
+| *Platform:* | Windows and OS X
+| *Bug Description:* | Sometimes shape points can throw spline data out when using "Paste mocha mask".
+| *Workaround:* | Find the problem point in mocha and delete or adjust it.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2188 Holding down cmd/ctrl + shift while moving spline points jumps to the cursor position after release
+| *Platform:* | All Platforms
+| *Bug Description:* | Cmd/Ctrl + Shift will slow down the movement of a point, but then suddenly jump to the cursor position when you stop using the shortcut.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2187 Error when saving shape data to "mocha shape for Final Cut" format if there is custom pixel aspect ratio
+| *Platform:* | All Platforms
+| *Bug Description:* | "Failed to write shape data to disc!" error will pop up if there is a custom PAR.  The file will still save correctly.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2182 Imported matte clip shows track mattes incorrectly.
+| *Platform:* | All Platforms
+| *Bug Description:* | When you import a matte clip it does not show the correct track matte.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2176 Custom modifier keys malfunction in Mac Remote Management (VNC)
+| *Platform:* | OS X
+| *Bug Description:* | If you open mocha remotely some of the key shortcuts and toggles will not work.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2175 File name in the "Save shape data as..." dialog is empty if a selected layer has the same name as any folder in the last selected directory
+| *Platform:* | All Platforms
+| *Bug Description:* | If your layer name matches the folder you save your data to, then the filename field will be empty when you go to save shape data.
+| *Workaround:* | Rename the folder or layer, or just type a new name.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2171 K shortcut doesn't work for adding/removing keyframes
+| *Platform:* | All Platforms
+| *Bug Description:* | Nothing happens when you press "K" when working with keyframes.
+| *Workaround:* | Use the add and remove keyframe buttons on the timeline.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2155 Moving tracking keyframes sometimes breaks tracking
+| *Platform:* | All Platforms
+| *Bug Description:* | Sometimes if you manipulate the tracking keys in the dope sheet, additional tracking for the layer will not work.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2148 Cannot create a project based on QuickTime footage after closing and reopening remote desktop session
+| *Platform:* | Windows and OS X
+| *Bug Description:* | There is a "Corrupt or unsupported format" error if you try to use QuickTime after closing and reopening a remote desktop session to mocha.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2130 Field parameters are not showing keyframes correctly in timeline
+| *Platform:* | All Platforms
+| *Bug Description:* | When changing or clicking on field parameter values, the timeline does not show the keyframes. If you click on a non-field parameter, such as a check box, they suddenly show.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2097 Pan and Zoom keys don't work when tracking
+| *Platform:* | All Platforms
+| *Bug Description:* | When tracking you can't pan or zoom in the view.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2081 Sometimes camera solve settings doesn't reset between projects
+| *Platform:* | All Platforms
+| *Bug Description:* | If you start a new project after solving a camera, sometimes the 3D Motion setting and Quality are the set the same as previously open project.
+| *Workaround:* | Restart mocha.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2075 Wrong height for interlaced .mov footage
+| *Platform:* | Windows and OS X
+| *Bug Description:* | The clip height is listed wrong in the Clip page for interlaced QuickTime footage.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2070 Crash when trying to create a project based on footage in a location has a too long path
+| *Platform:* | All Platforms
+| *Bug Description:* | Footage in a very long directory path can cause mocha to crash when trying to create a project.
+| *Workaround:* | Choose a shorter path.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2069 Wrong data in the first frame in After Effects after importing camera data from an interlaced project.
+| *Platform:* | All Platforms
+| *Bug Description:* | Nulls based on the surface corners don't have the same place in AE as they do in mocha at the first frame when using interlaced footage.
+| *Workaround:* | Use progressive footage.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2068 Projects that were unsuccessfully created show in Recent Files
+| *Platform:* | All Platforms
+| *Bug Description:* | If a project cannot be created successfully due to read only directories or other problems, they still show in Recent Files.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2067 An extra error message is shown if unable to create a project file
+| *Platform:* | All Platforms
+| *Bug Description:* | There are two messages shown instead of one when a project file cannot be created.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2064 Frame numbers are shown in progress bar instead of fields for projects based on interlaced footage
+| *Platform:* | All Platforms
+| *Bug Description:* | Frame numbers are shown in the progress bar instead of fields for projects based on interlaced footage.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2063 Incorrect fields numbers in progress bar for projects based on interlaced footage
+| *Platform:* | All Platforms
+| *Bug Description:* | Progress bar shows frames instead of fields when tracking or rendering interlaced footage.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE2055 Process icon isn't updated immediately when changing Link To Track dropdown
+| *Platform:* | All Platforms
+| *Bug Description:* | The process icon does not immediately turn off or on when updating the Link to Track property.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1970 Sometimes the Welcome Screen doesn't contain information about a license error
+| *Platform:* | All Platforms
+| *Bug Description:* | Sometimes reopening mocha when it has a broken license will not show the license error, only the LE mode message.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1864 "Frame out of range" error in opening mocha from AE with setting frame range in the "New project" dialog
+| *Platform:* | All Platforms
+| *Bug Description:* | Since frame range is define by the in and out points from AE, setting the frame range can cause problems when loading the project
+| *Workaround:* | Don't change the frame range when loading footage to mocha from AE
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1836 'toggle active layer' makes render fail
+| *Platform:* | All Platforms
+| *Bug Description:* | You can only render from the last set "active" toggle keyframe in the timeline.
+| *Workaround:* | Make all frames active
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1797 Creating a clean plate with a file that has a number on the end will append the number directly
+| *Platform:* | All Platforms
+| *Bug Description:* | Creating a clean plate with a file that has a number on the end does not separate the number of the clean plate frame from the number in the file.
+| *Workaround:* | Rename footage so it does not contain numbers other than sequence numbers.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1724 Bounding box isn't shown for multiple selected layers if the clicked one was out of range
+| *Platform:* | All
+| *Bug Description:* | The bounding box isn't shown for multiple selected layers if the first one clicked is out of range
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1717 Cannot create a new layer group by clicking on the corresponding icon
+| *Platform:* | All
+| *Bug Description:* | You can't create a group by itself. You need to select layers first.
+| *Workaround:* | Select a layer you want to group before you click the group icon
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1663 mocha is unresponsive after the second attempt to export rendered shapes to H.264 codec
+| *Platform:* | OS X and Windows: all
+| *Bug Description:* | Sometimes rendering to H.264 the second time will do nothing and mocha will become unresponsive
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1649 Undoing adding a layer point, selecting Layer Controls pane and clicking on the canvas cause an error
+| *Platform:* | All
+| *Bug Description:* | Undoing adding a layer point, selecting Layer Controls pane and clicking on the canvas cause an error
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1590 Sometimes there is wrong layers order after duplicating
+| *Platform:* | All
+| *Bug Description:* | Duplicating multiple layers at once can sometimes throw them out of order.
+| *Workaround:* | Duplicate single layers at a time.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1589 Cannot rename layouts
+| *Platform:* | All
+| *Bug Description:* | If you rename a layout it does not change the name in the menu.
+| *Workaround:* | Restart mocha. The names will be updated.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | r	Wrong layers order after redo including in a group
+| *Platform:* | All
+| *Bug Description:* | If you group more than 2 layers and undo moving a layer outside of the group, it may not return to the right position
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1560	Wrong group position after grouping selected layers
+| *Platform:* | All
+| *Bug Description:* | The group should be created and remain in position where the top-most selected layer was positioned, rather than moving to the top
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1555	Incorrect behavior for "Selected mattes" mode for several selected layers
+| *Platform:* | All Platforms
+| *Bug Description:* | If you select "Selected mattes" mode and switch on Mattes, only one matte is turned on
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1554	Wrong surface detection for several selected layers
+| *Platform:* | All Platforms
+| *Bug Description:* | Try to select and move the surface of different layers in a multi-selection it will only let you move one.
+| *Workaround:* | Adjust one at a time
+|====
+	
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1539	Wrong layer state when clicking on icons in the Layer Controls pane except Layer Name	
+| *Platform:* | All Platforms
+| *Bug Description:* | Layers become selected when clicking on their layer icons, such as lock, render and view.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1510	There is no ability to toggle active for several selected layers
+| *Platform:* | All Platforms
+| *Bug Description:* | While you can apply all other right-click options to multiple layers, you can only apply "toggle active" to the layer you were over when you right clicked.
+| *Workaround:* | Choose "toggle active" on separate layers rather than a selection of layers.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1500	Wrong spline behavior in AdjustTrack
+| *Platform:* | All Platforms
+| *Bug Description:* | Sometimes using AdjustTrack on a surface will not adjust the spline as well.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1494	Transform tool sometimes interferes with tangents
+| *Platform:* | All Platforms
+| *Bug Description:* | Sometimes the transform tool can get in the way of adjusting tangents
+| *Workaround:* | Turn off transform tool
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1490	There is incorrect importing QuickTime footage with pulldown on windows
+| *Platform:* | Windows
+| *Bug Description:* | There are some artifacts when playing back QuickTime footage that contains pulldown.
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1442	Dope Sheet: Cannot select several blocks of keyframes
+| *Platform:* | All Platforms
+| *Bug Description:* | You cannot use the shift key to marquee-select multiple blocks of keyframes
+| *Workaround:* | None
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1433	An error appears in using Point Insertion tool for multiple selected layers
+| *Platform:* | All Platforms
+| *Bug Description:* | If you select 2 layers and try to use the point insertion tool you get the error:  "Error: Could not find parent contour of the point."
+| *Workaround:* | Add points to one layer at a time
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE526 OpenEXR error messages
+| *Platform:* | All Platforms
+| *Bug Description:* | Attempt to open an unsupported EXR format (e.g. image with single channel named "G") results in  error message.
+| *Workaround:* | None.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE566 Crash when resizing with no docked sidebar panes
+| *Platform:* | All Platforms
+| *Bug Description:* |  mocha crashes after the canvas is resized to zero-height.
+| *Workaround:* | None.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE653 Using Ctrl+Z to undo values on the Parameters tab doesn't work
+| *Platform:* | OS X and Windows: 32-bit
+| *Bug Description:* |  
+| *Workaround:* | None.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE877 A layer is messed up if spline points are being dragged without holding ALT
+| *Platform:* | All Platforms
+| *Bug Description:* | A layer is messed up if ALT is held down while moving spline points and then releasing ALT before finishing the move
+| *Workaround:* | None.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1146 Crash in changing log/panalog to linear colorspace for projects based on video footage
+| *Platform:* | All Platforms
+| *Bug Description:* | Crash in changing log/panalog to linear colorspace for projects based on video footage
+| *Workaround:* | None.
+|====
+
+[frame="top", grid="cols", cols="1,3", width="100%"]
+|====
+| *Issue:* | DE1241 Zoom window can be manipulated when switched off
+| *Platform:* | All Platforms
+| *Bug Description:* |   If you turn off the zoom window it can still be panned and zoomed into, which can cause problems when it gets in the way and no one can see it.  
+| *Workaround:* | None.
+|====
+
+
+Hardware Requirements
+---------------------
+
+Recommended Hardware
+~~~~~~~~~~~~~~~~~~~~
+- Processor: Intel Core 2 Duo or equivalent
+- Memory: 4 GB + 
+- Disk: High-speed disk array 
+- Graphics Card: NVDIA Quadro FX 1500 or equivalent 
+- Monitor: 1920x1200
+- Network: Must have an enabled network adapter (wifi or ethernet)
+
+Minimal Requirements
+~~~~~~~~~~~~~~~~~~~~	
+- At least 1-GHz Pentium IV
+- Memory: At least 1 GB
+- Disk: At least 1 GB
+- Graphics Card: Must support OpenGL 2.0
+- Monitor: Minimum resolution 1200x800 pixels
+- Network: Must have an enabled network adapter (wifi or ethernet)
+
+Working with high-resolution footage such as 2K or HD is very demanding on system resources; a system with at least 4 GB of system memory and 256 MB of texture memory should be used.</para>
+
+
+Software Requirements
+---------------------
+
+Operating System
+~~~~~~~~~~~~~~~~
+	
+- *Mac:* OS X 10.7.x or higher, on Intel. PowerPC is not supported.
+- *Windows:* Windows XP Professional SP2 or higher, Windows Vista Business or Ultimate, Windows 7, Windows 8 on x64.
+- *Linux:* Red Hat Enterprise Linux 5, CentOS 5, or a compatible Linux distribution on x86_64.
+
+Compatible Third-Party Software
+-------------------------------
+
+*{revision}* can export tracking and shape data to a selection of third-party visual effects software. These are the versions we have tested:
+[frame="none", cols="4,3,2,2,3,4", width="80%", options="header"]
+|====
+|Application |Version |Track |Shape |Camera |Comments
+|Adobe After Effects|'CS3+'|X|X|CS6+|Exporting Corner Pin data to non-English versions of After Effects requires CS4+. Exporting shape data requires CS6+.
+|Adobe Premiere Pro|CC '2014+'| |X| | 
+|Apple Final Cut Pro|6.0.5-7.0.3|X|X| |Shape export requires *mocha shape for Final Cut* plug-in.
+|Apple Final Cut Express|4.0.1|X|X| |Shape export requires *mocha shape for Final Cut* plug-in.
+|Apple Shake|4.1|X|X| |
+|Apple Motion|'3.0.2+'|X| | |Shape export can be done via Final Cut
+|Assimilate SCRATCH|'7.0+'|X| | | 
+|Autodesk Flame|9.5+|X|X| |Also known to work with newer releases
+|Autodesk Smoke|7.0+|X|X| |Also known to work with newer releases
+|Autodesk Combustion|3.0|X|X| | 
+|Autodesk Maya|2012| | |X|
+|Avid DS|7.6|X| | |Also known to work with v8.0 and newer
+|Boris FX BCC plugins| |X| | |Tracking export requires Boris BCC plugin that supports importing of tracking data.
+|Blackmagic Fusion|5.0X |X| | |
+|FXhome HitFilm|'2.0+'| |X|X| Shape export is available for HitFilm 3 Pro only.
+|Good Spirit Graphics MochaBlend|'1.0+'|X|X| |
+|Maxon Cinema 4D|'13.0+'| | |X|
+|Quantel eQ, iQ, etc.|4.2|X| | |Requires mocha Track for Quantel plug-in, available free from imagineersystems.com
+|The Foundry Nuke|'6.0+'|X|X|6.3v7+|
+|====
+
+Community-supplied importers are known to work but are not supported by Imagineer.
+
+Installation
+------------
+Windows
+~~~~~~~
+. Once the installation file, mochapro-4.1.3-xxxx.exe, has been downloaded onto the system, double click the file to begin installation
+. Follow the instructions on screen
+	
+OS X
+~~~~~~
+. Once the installation file, mochapro-4.1.3-xxxx.dmg, has been downloaded onto the system double click the application this will open a new window
+. Drag the *{revision}* application bundle to the folder where *mocha* will be installed. The conventional place to install applications is in the ‘Applications’ folder on Macintosh HD.
+. Run *{revision}*
+
+Linux
+~~~~~~
+. Once the installation file, mochapro-4.1.3-xxxx.x86_64.rpm, has been downloaded, change into the directory you saved it into. Note that the ‘x’ in the file name is substituted by the current release number.
+. Become root using the command su or login as root
+. Install the package with the command: +rpm –Uvh mochapro-4.1.3-xxxx.rpm+
+. rpm may prompt you to install additional dependencies, such as compat-glibc or xrandr. If these are required, download and install them using the appropriate method for your distribution, for example ‘yum’ or ‘up2date’.

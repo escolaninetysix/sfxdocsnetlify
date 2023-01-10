@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>7. aux_exporters &#8212; mocha  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. aux_importers" href="aux_importers.html" />
+    <link rel="prev" title="6. ui" href="ui.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aux_importers.html" title="8. aux_importers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ui.html" title="6. ui"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mocha  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-aux_exporters"></span><div class="section" id="module-mocha.aux_exporters">
+<span id="aux-exporters"></span><h1><span class="section-number">7. </span>aux_exporters<a class="headerlink" href="#module-mocha.aux_exporters" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="mocha.aux_exporters.Matrix3x3">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.aux_exporters.</code><code class="sig-name descname">Matrix3x3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.Matrix3x3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simple Matrix 3x3 implementation</p>
+<dl class="py method">
+<dt id="mocha.aux_exporters.Matrix3x3.ident">
+<code class="sig-name descname">ident</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.Matrix3x3.ident" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.Matrix3x3.inverted">
+<code class="sig-name descname">inverted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.Matrix3x3.inverted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.Matrix3x3.transposed">
+<code class="sig-name descname">transposed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.Matrix3x3.transposed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mocha.aux_exporters.Matrix4x4">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.aux_exporters.</code><code class="sig-name descname">Matrix4x4</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.Matrix4x4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simple Matrix 4x4 implementation</p>
+<dl class="py method">
+<dt id="mocha.aux_exporters.Matrix4x4.ident">
+<code class="sig-name descname">ident</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.Matrix4x4.ident" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.Matrix4x4.inverted">
+<code class="sig-name descname">inverted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.Matrix4x4.inverted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.Matrix4x4.transposed">
+<code class="sig-name descname">transposed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.Matrix4x4.transposed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mocha.aux_exporters.MistikaExporter">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.aux_exporters.</code><code class="sig-name descname">MistikaExporter</code><a class="headerlink" href="#mocha.aux_exporters.MistikaExporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mocha/exporters/AbstractTrackingDataExporter.html#mocha.exporters.AbstractTrackingDataExporter" title="mocha.exporters.AbstractTrackingDataExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.exporters.AbstractTrackingDataExporter</span></code></a></p>
+<p>Implementation of the Mistika Track exporter.</p>
+<dl class="py method">
+<dt id="mocha.aux_exporters.MistikaExporter.do_export">
+<code class="sig-name descname">do_export</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project</span></em>, <em class="sig-param"><span class="n">layer</span></em>, <em class="sig-param"><span class="n">tracking_file_path</span></em>, <em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">view</span></em>, <em class="sig-param"><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.MistikaExporter.do_export" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.MistikaExporter.error_string">
+<code class="sig-name descname">error_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.MistikaExporter.error_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.MistikaExporter.get_surface_parameters">
+<code class="sig-name descname">get_surface_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">layer</span></em>, <em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">view</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.MistikaExporter.get_surface_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mocha.aux_exporters.SilhouetteExporter">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.aux_exporters.</code><code class="sig-name descname">SilhouetteExporter</code><a class="headerlink" href="#mocha.aux_exporters.SilhouetteExporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mocha/exporters/AbstractShapeDataExporter.html#mocha.exporters.AbstractShapeDataExporter" title="mocha.exporters.AbstractShapeDataExporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.exporters.AbstractShapeDataExporter</span></code></a></p>
+<p>This Silhouette shape exporter has been replaced with a C++ implementation
+but is left as an example of a complex shape exporter.</p>
+<dl class="py method">
+<dt id="mocha.aux_exporters.SilhouetteExporter.default_sfx_node">
+<code class="sig-name descname">default_sfx_node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">type_name</span></em>, <em class="sig-param"><span class="n">label</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.SilhouetteExporter.default_sfx_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a XML node with given attributes and tag name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.SilhouetteExporter.do_export">
+<code class="sig-name descname">do_export</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project</span></em>, <em class="sig-param"><span class="n">layers</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">views</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.SilhouetteExporter.do_export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs underlying export operation to the Silhouette shape format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.SilhouetteExporter.error_string">
+<code class="sig-name descname">error_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.SilhouetteExporter.error_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.SilhouetteExporter.id_counter">
+<em class="property">property </em><code class="sig-name descname">id_counter</code><a class="headerlink" href="#mocha.aux_exporters.SilhouetteExporter.id_counter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.aux_exporters.SilhouetteExporter.properties_node">
+<em class="property">static </em><code class="sig-name descname">properties_node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">constant_props</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.SilhouetteExporter.properties_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a XML nodes tree with child SFX property nodes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="mocha.aux_exporters.new_sfx_uuid">
+<code class="sig-prename descclassname">mocha.aux_exporters.</code><code class="sig-name descname">new_sfx_uuid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.aux_exporters.new_sfx_uuid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ui.html"
+                        title="previous chapter"><span class="section-number">6. </span>ui</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aux_importers.html"
+                        title="next chapter"><span class="section-number">8. </span>aux_importers</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aux_importers.html" title="8. aux_importers"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ui.html" title="6. ui"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mocha  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2021, Boris FX, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

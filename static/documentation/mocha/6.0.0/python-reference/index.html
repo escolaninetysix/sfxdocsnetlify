@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mocha Python API Reference &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="#" />
+    <link rel="next" title="1. mocha package" href="init.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="init.html" title="1. mocha package"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">mocha 1.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mocha-python-api-reference">
+<span id="reference-index"></span><h1>mocha Python API Reference<a class="headerlink" href="#mocha-python-api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="init.html">1. mocha package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mocha/project/index.html">2. mocha.project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/GlobalFunctions.html">2.1. Global functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/BezierContour.html">2.2. BezierContour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/BezierControlPoint.html">2.3. BezierControlPoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/BezierControlPointData.html">2.4. BezierControlPointData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/Clip.html">2.5. Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/ColorParameters.html">2.6. ColorParameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/ImageData.html">2.7. ImageData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/Layer.html">2.8. Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/LayerGroup.html">2.9. LayerGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/Parameter.html">2.10. Parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/ParameterSet.html">2.11. ParameterSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/ProgressWatcher.html">2.12. ProgressWatcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/Project.html">2.13. Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/RenderInsertOperation.html">2.14. RenderInsertOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/RenderOperation.html">2.15. RenderOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/RenderRemoveOperation.html">2.16. RenderRemoveOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/RenderReorientOperation.html">2.17. RenderReorientOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/RenderStabilizeOperation.html">2.18. RenderStabilizeOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/StreamInfo.html">2.19. StreamInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/UndoGroup.html">2.20. UndoGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/View.html">2.21. View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/ViewInfo.html">2.22. ViewInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/XControlPoint.html">2.23. XControlPoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/XControlPointData.html">2.24. XControlPointData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/project/XSplineContour.html">2.25. XSplineContour</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mocha/exporters/index.html">3. mocha.exporters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mocha/exporters/GlobalFunctions.html">3.1. Global functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/exporters/AbstractCameraSolveExporter.html">3.2. AbstractCameraSolveExporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/exporters/AbstractShapeDataExporter.html">3.3. AbstractShapeDataExporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/exporters/AbstractTrackingDataExporter.html">3.4. AbstractTrackingDataExporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/exporters/CameraSolveExporter.html">3.5. CameraSolveExporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/exporters/ShapeDataExporter.html">3.6. ShapeDataExporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/exporters/ShapeExportData.html">3.7. ShapeExportData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/exporters/TrackingDataExporter.html">3.8. TrackingDataExporter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mocha/tools/index.html">4. mocha.tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mocha/tools/GlobalFunctions.html">4.1. Global functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/tools/AbstractTool.html">4.2. AbstractTool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/tools/InputEvent.html">4.3. InputEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mocha/mediaio/index.html">5. mocha.mediaio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mocha/mediaio/GlobalFunctions.html">5.1. Global functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha/mediaio/AbstractImageIOModule.html">5.2. AbstractImageIOModule</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">6. ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aux_exporters.html">7. aux_exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aux_importers.html">8. aux_importers</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">mocha Python API Reference</a><ul>
+<li><a class="reference internal" href="#contents">Contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="init.html"
+                        title="next chapter">1. mocha package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="init.html" title="1. mocha package"
+             >next</a> |</li>
+        <li><a href="#">mocha 1.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

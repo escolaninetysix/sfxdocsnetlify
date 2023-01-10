@@ -1,0 +1,258 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: FlickerMatch",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FlickerMatch.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FlickerMatch">
+     <h2>
+      S_FlickerMatch
+     </h2>
+    </a>
+    Adds flicker to the Source clip using the flicker
+from a second Match clip.  For example, a clip can be brightened in
+synchrony with a flashing light in another clip.  To use this effect,
+first position the corners of the rectangle over an area of the Match
+clip which has brightness changes you want to copy.  A middle or light
+gray area is best for this.  Then select a frame where you want the
+Source brightness unchanged, and hit the Set Match Level button.  When
+other frames are processed, the Source brightness will be scaled by
+the average Match brightness within the rectangle, relative to the
+Match Level.
+    <p>
+     In the Sapphire Time effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to add flicker to.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Match:
+      </b>
+      The clip to copy flicker from.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FlickerMatch.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rect Corner1:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-0.583 -0.441],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The upper left corner of the rectangle which is used to
+  measure the flicker, in screen coordinates.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rect Corner2:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.583 0.441],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The lower right corner of the rectangle which is used to
+  measure the flicker, in screen coordinates.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Match Level:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The average Match brightness in the rectangle for which
+  the Source input is unchanged.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Set Match Level:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Pressing this button sets the Match Level
+  parameter to the average Match clip brightness in the rectangle at
+  the current frame.  It causes the output to equal the Source at this
+  frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Rect:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface widget
+  for adjusting the Rect Corner corner parameters.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../flickermatchcolor">
+       FlickerMatchColor
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../flickerremove">
+       FlickerRemove
+      </a>
+      <br/>
+      <a href="../flickerremovecolor">
+       FlickerRemoveColor
+      </a>
+      <br/>
+      <a href="../flickerremovematte">
+       FlickerRemoveMatte
+      </a>
+      <br/>
+      <a href="../flickerrmmattecolor">
+       FlickerRmMatteColor
+      </a>
+      <br/>
+      <a href="../flickermatchmatte">
+       FlickerMatchMatte
+      </a>
+      <br/>
+      <a href="../flickermchmattecolor">
+       FlickerMchMatteColor
+      </a>
+      <br/>
+      <a href="../flicker">
+       Flicker
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

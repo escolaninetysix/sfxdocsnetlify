@@ -1,0 +1,1883 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: TVDamage",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/TVDamage.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="TVDamage">
+     <h2>
+      S_TVDamage
+     </h2>
+    </a>
+    Simulates a TV with transmission and reception problems,
+  VCR issues, and TV hardware difficulties.  Simulates static, interference,
+  ghosting, horizontal and vertical hold, hum bars, color stripes, visible scanlines,
+  VCR fast-forward, dropouts, vignetting, orthicon, fisheye, and turn-off.
+    <p>
+     In the Sapphire Stylize effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      The clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      Interpolate between the result and the Source input.  White areas
+use the result of the effect.  Black areas use the Source clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/TVDamage.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mode:
+   </b>
+   <i>
+    Popup menu,  Default: TVDamage Color
+   </i>
+   .
+   <br/>
+   Type of TV to simulate: color or black &amp; white.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       TVDamage Color:
+      </i>
+     </b>
+     simulates a color TV.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        TVDamage Mono:
+       </i>
+      </b>
+      simulates a black &amp; white TV.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Project:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Reception Master:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Master control for all reception-oriented artifacts: static,
+  interference, ghosting, horizontal and vertical hold, hum bars, and color stripes.
+  Turn to zero to get perfect reception, i.e. zero of each of the above artifacts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Interference Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Simulates interference from nearby electrical devices (electric
+  motors, cordless phones, and so on).  The look is a pattern of semi-regularly spaced
+  random color dots.  The dot size is controlled by the TV Pixels parameter.
+  Scaled by Reception Master.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Ghost Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Ghosts are copies of the image that result from multipath distortion
+  between the transmitter and the TV.  Turn up this parameter to get stronger ghosts.
+  Scaled by Reception Master.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Horizontal Hold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   This causes the image to shift horizontally in a semi-random
+  way, simulating a TV with a bad horizontal hold circuit, or a signal not strong enough to
+  engage the horizontal hold.  Scaled by Reception Master.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vertical Hold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   This causes the image to shift vertically
+  in a rolling motion, and is normally caused by a weak signal
+  preventing the TV from locking on.  This parameter controls the
+  fraction of the time that the image is having hold problems.  Set to zero
+  for no vertical hold problems.  Scaled by Reception Master.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bars Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Power line hum and other TV problems can cause rolling light and dark
+  bars to crawl up the screen.  This can also be caused by failure to synchronize
+  a video camera to the TV output.  This parameter controls the overall strength
+  of these bars.  There are two sets of bars, one large and one small, that mutually interfere.
+  This parameter controls the overall brightness scale of the bars.  Turn to zero for no bars.
+  Scaled by Reception Master.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Stripes Amplitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Another common form of interference, color stripes are caused
+  by phase shifts in the chroma signal, among other things.  This parameter controls
+  the overall brightness of the color stripes.  Scaled by Reception Master.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fast Forward Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Generates a VCR fast-forward look with torn bars across the screen.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Tape Dropout Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Generates VCR dropouts on random frames, at random times.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Darkness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Vignetting is darkening of the image towards the
+  corners and sides of the image.  This parameter controls how much
+  the outer corners of the screen should be darkened (vignetted).  0
+  gives no vignetting, 1 gives maximum darkening.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Static Amplitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the static noise.  Scaled by Reception Master.
+  The static dot size is controlled by the TV Pixels parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Static Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.7,
+   <i>
+    Range:
+   </i>
+   0.01 to 1.
+   <br/>
+   Density of the static; turn up to get more static
+  pixels; turn down to get only occasional static pixels.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.28,
+   <i>
+    Range:
+   </i>
+   0 to 500.
+   <br/>
+   Interference frequency.  The look is very sensitive to this parameter.
+  Fractional values like 0.3 or 1.23 look better than integers.  Animating it very slightly,
+  say from 1.27 to 1.3 gives a nice look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dots Speed:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [100 -10],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The dot pattern moves with this speed over time in X and Y.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Jitter Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   0 to 1000.
+   <br/>
+   Turning this up makes the dot pattern jitter randomly between frames
+  for more realism.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Num Ghosts:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   0 to 30.
+   <br/>
+   The number of ghost images.  Some may be ahead (to the
+  left of) the source image, most will be to the right.  Some will be
+  positive and some negative (inverted).  See Shift and Negative Ghosts below.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Negative Ghosts:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The fraction of the ghosts that are negative (inverted), on average.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Spacing:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The fraction of the image width over which ghost images are spread out.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Position:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the regularity of the ghost image spacing.  Set to zero for
+  regularly spaced ghosts; set to one for random positioning.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   Shifts the ghost images to the left or right, without shifting the main image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the ghost images without blurring the main image or any other artifacts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    H Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Vertical frequency of the horizontal-hold waves.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    H Time Vary:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Modulates the horizontal-hold waves over time by this
+  amount.  When increased, some frames will have more horizontal
+  shifting while other frames will have less.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    H Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 to 10.
+   <br/>
+   Octaves for the horizontal hold waves.  Increase for spikier look,
+  decrease for smoother waves.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   A TV signal has a black border outside the displayed area; this
+  becomes visible when the horizontal hold isn't working.  This parameter controls
+  the width of that black border.  On the other side of the border, you see another
+  copy of the image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    V Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of vertical hold jumps.  Decrease to get a
+  more consistent rolling motion, or increase to get a jumpier look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    V Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The average speed of the vertical hold rolling motion over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    V Random:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how much randomness there is in the vertical hold
+  rolling motion.  Set to zero for smooth rolling, 1 or more for jittery
+  behavior.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Like Border Width, this controls the vertical
+  border between frames that becomes visible when vertical hold is not
+  locked.  Some static and closed-captioning and timecode information
+  will typically be visible in this border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Data:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 10.
+   <br/>
+   Brightness of the dots and lines that appear in the vertical blanking
+  interval specified by Border Width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bar Roll Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   -10 to 10.
+   <br/>
+   The speed of the bars rolling up the screen.  Turn negative
+  for downward rolling.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bar Sharpness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0.1 to 10.
+   <br/>
+   Sharpens or smooths the top and bottom edges of the
+  main bars.  Set to zero for no main bars; you will only see the
+  smaller bars.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bar Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The frequency of the bars; turn up for more thinner bars,
+  turn down for fewer fat bars.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bar1 Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.35,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Fraction of the main bar that is light; the rest is dark.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bar2 Rel Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   6,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   Controls the frequency of the smaller bars.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bar2 Sharpness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0.01 to 10.
+   <br/>
+   Sharpens or smooths the top and bottom edges of the
+  smaller bars.  Set to zero for no small bars; you will only see the
+  main bars.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   1 to 40.
+   <br/>
+   Spatial frequency of the color stripes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   160,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Angle of the stripes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Roll Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how fast the stripes roll over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Band Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   How many fast-forward bands to create.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Band Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Shifts the fast-forward bands up or down.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Band Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.16,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The height of each fast-forward band.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dropout Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The average length of each dropout scanline.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dropout Gap Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The average length of the gaps between the dropouts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dropout Y Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   0 to 50.
+   <br/>
+   The dropouts appear on random scanlines according
+  to a noise function with this frequency.  Decrease to get a few
+  large bands of dropouts; increase to get lots of small bands of
+  dropouts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dropout Y Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Increase to cover more of the screen with
+  dropouts (on average); decrease to cover less of it.  If you don't
+  see any dropouts at all on some frames, increase this parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dropouts Always:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Dropouts only appear on some frames;
+  increase this parameter to see dropouts on more frames, so they
+  occur more frequently in time.  If you don't see dropouts on any
+  frames, increase this parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Distance from the center where the vignetting starts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Edge Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the vignette's soft edge.  Larger values
+  give softer, less visible edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Controls the aspect ratio of the vignette
+  ellipse.  This should normally be set to the aspect ratio of the
+  image, e.g. .75 for NTSC.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scanlines:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Creates visible scanlines in the image.
+  Increase to get more intense scanlines, or set to zero for no scanlines.
+  The width of the scanlines is controlled by the TV Pixels parameter and Scanlines Rel Freq.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scanlines Rel Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Relative frequency of the TV scanlines.  Increase to get
+  more scanlines, decrease to get fewer large scanlines.  Note that the number of
+  scanlines is also controlled by the TV Pixels parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Orthicon:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Darkens the clip at areas around parts of the source clip that are
+  brighter than the given threshold, to simulate a 1950s 'orthicon' TV camera look.
+  Most useful in black &amp; white mode.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.7,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Darkening will occur around locations in the source
+  clip that are brighter than this value.  A value of 0.9 causes dark
+  glows from only the brightest spots.  A value of 0 causes glows for
+  every non-black area.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Darks Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the dark glow distance.
+  </dd>
+ </dl>
+ <h3>
+  Color Correct Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shift the color hues by this amount.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the color saturation.  Increase for more intense
+colors.  Set to 0 for monochrome.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the result by this gray value.  Increase for
+  a brighter result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds this gray value to the darker regions of
+the result.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Tint Lights:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the result by this color, thus tinting the
+  lighter regions.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Tint Darks:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   Adds this color to the darker regions of the result.
+  Set this to a dark red-orange color for a negative-film effect look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Turn Off:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Animate this parameter from 0 to 1 to simulate the TV turning off.
+  The image will turn white and shrink to a dot in the center, with a flash near the end.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flare Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Width of the flare or flash near the end of the turn-off sequence.
+  Set to zero to omit this flash.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flare Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brightness of the flare or flash near the end of the turn-off sequence.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fade Out Time:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.7,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The length of the fade out during the Turn Off
+  sequence. A value of one produces a smooth, gradual fade as Turn Off increases. As the value decreases,
+the fade will start later (at higher values of Turn Off), and progress more quickly. When Fade Out Time is
+set to zero, the fade will cut to black instantly when Turn Off reaches one.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fish Eye:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Expands the center of the source clip as if viewed
+  through a fish-eye lens.  This gives an old-time slightly rounded TV
+  look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Tv Pixels:
+   </b>
+   <i>
+    Default:
+   </i>
+   720,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of 'TV pixels' across the screen.  Controls the size of the static,
+  interference, scanlines, and dropouts. Lower this to simulate a lower resolution TV.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Mask input channels are used to make a
+monochrome mask.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Matte input by this amount before using.  This
+can provide a smoother transition between the matted and unmatted
+areas.  It has no effect unless the Matte input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the Matte input so the effect is applied
+to areas where the Matte is black instead of white.  This has no effect
+unless the Matte input is provided.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../jpegdamage">
+       JpegDamage
+      </a>
+      <br/>
+      <a href="../filmdamage">
+       FilmDamage
+      </a>
+      <br/>
+      <a href="../digitaldamage">
+       DigitalDamage
+      </a>
+      <br/>
+      <a href="../filmeffect">
+       FilmEffect
+      </a>
+      <br/>
+      <a href="../scanlines">
+       ScanLines
+      </a>
+      <br/>
+      <a href="../tvchannelchange">
+       TVChannelChange
+      </a>
+      <br/>
+      <a href="../vignette">
+       Vignette
+      </a>
+      <br/>
+      <a href="../halftone">
+       HalfTone
+      </a>
+      <br/>
+      <a href="../diffuse">
+       Diffuse
+      </a>
+      <br/>
+      <a href="../grainstatic">
+       GrainStatic
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

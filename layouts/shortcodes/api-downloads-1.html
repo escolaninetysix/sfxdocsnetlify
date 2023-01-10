@@ -1,0 +1,46 @@
+{{- $.Scratch.Set "downloads" slice -}}
+{{- range intersect (where $.Site.Pages "Kind" "page") (union (where $.Site.Pages "Section" "downloads") (where $.Site.Pages "Section" "legacy-downloads")) -}}
+{{- $ps := .Scratch -}}
+  {{- $ps.SetInMap "fields" "title"       .Title -}}
+  {{- $ps.SetInMap "fields" "date"        .Date -}}
+  {{- $ps.SetInMap "fields" "description" .Description -}}
+  {{- $ps.SetInMap "fields" "permalink" .RelPermalink -}}
+  
+
+  {{- if eq .Section "legacy-downloads" -}}
+    {{- $ps.SetInMap "fields" "legacy" true -}}
+  {{- end -}}
+
+  {{- with .Params -}}
+    {{- $ps.SetInMap "fields" "host"            .host -}}
+    {{- $ps.SetInMap "fields" "host_products"   (default "" .host_products   ) -}}
+    {{- $ps.SetInMap "fields" "platform"        .platform -}}
+    {{- $ps.SetInMap "fields" "product"         .product -}}
+    {{- $ps.SetInMap "fields" "version"         (string .version) -}}
+    {{- $ps.SetInMap "fields" "refresh_secs"    (default 0  .refresh_secs   ) -}}
+    {{- $ps.SetInMap "fields" "download_url"    (default "" .download_url   ) -}}
+    {{- $ps.SetInMap "fields" "tracking_url"    (default "" .tracking_url   ) -}}
+    {{- $ps.SetInMap "fields" "upgrade_topic"   (default "" .upgrade_topic  ) -}}
+    {{- $ps.SetInMap "fields" "release_notes"   (default "" .release_notes  ) -}}
+    {{- $ps.SetInMap "fields" "webstore_page"   (default "" .webstore_page  ) -}}
+    {{- $ps.SetInMap "fields" "license_names"   (default "" .license_names  ) -}}
+    {{- $ps.SetInMap "fields" "license_engines" (default "" .license_engines) -}}
+    {{- $ps.SetInMap "fields" "log_file_path"   (default "" .log_file_path  ) -}}
+    {{- $ps.SetInMap "fields" "key_path_code"   (default "" .key_path_code  ) -}}
+    {{- $ps.SetInMap "fields" "product_line"    (default "" .license_identity.productline) -}}
+    {{- $ps.SetInMap "fields" "app_mgr_tags"    (default "" .app_mgr_tags   ) -}}
+
+    {{- with .license_identity -}}
+      {{- $opts := "" -}}
+      {{- range $key, $val := . -}}{{/* map[string]string */}}
+        {{- $ps.Add "opts" (print "--" $key " " $val " ") -}}
+      {{- end -}}
+      {{- $ps.SetInMap "fields" "lic_tool_opts" ($ps.Get "opts") -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $.Scratch.Add "downloads" ($ps.Get "fields") -}}
+
+{{- end -}}
+
+{{- jsonify ($.Scratch.Get "downloads") -}}

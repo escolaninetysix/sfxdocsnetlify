@@ -1,0 +1,65 @@
+
+== Stereo Tracking [[stereo_tracking]]
+
+NOTE: Please note that stereo features is only available in Mocha Pro
+
+Tracking in Stereo is very similar to tracking in Mono. In fact we've designed it specifically to be as transparent as possible to those used to the standard Mono workflow.
+
+.To track a stereo clip automatically:
+. Select your hero view (By default this is the Left view)
+. Draw your shape as you would normally in mono mode (See Mocha User Guide for an introduction to mono Mocha tracking techniques)
+. Press the "Operate in all views" button on the right side of the tracking buttons.
+. Select your tracking parameters as normal
+. Track forwards (and/or backwards if required).
+
+image::UserGuide/en_US/images/Operate_All_Views.jpg[]
+
+If you now switch between Left and Right views you will see the Right view has automatically been tracked and offset from the Left view.
+
+=== Manual Stereo Offset
+
+If you would prefer to only track and work with the Hero view initially then offset your data manually, you can also do this using the Stereo Offset tab in Track.
+
+.To track and manually offset a view:
+. Select your hero view (By default this is the Left view)
+. Draw your shape as you would normally in mono mode (See Mocha User Guide for an introduction to mono Mocha tracking techniques)
+. Make sure the "Track in all views" button on the right side of the tracking buttons is switched off.
+. Select your tracking parameters as normal
+. Track forwards (and/or backwards if required).
+
+This will only track the current view you are on.  If you switch to the other view you will see the layer still moves with the track, but is not offset like when you do an all-views track.
+
+You can then use the Stereo Offset parameters in the Track module to offset your view.
+
+image::UserGuide/en_US/images/Stereo_Offset.jpg[]
+
+If you decide later that you want to track the non-hero view, you can do so by selecting the non-tracked view then track as normal.
+
+You have the following options in the Stereo Offset tab (see above) when tracking another view based on the hero view:
+
+* *Track from other views:* This will reference the existing track to help track and correctly offset the current view.
+* *Track this view:* This will reference the current view to get the tracking information.
+
+Note that by default these are both selected to give best results.  If you only use *Track this view* and not *Track from other views*, the current view will be tracked independently of the hero view and will not offset.
+
+You can also open existing mono projects that have additional views and track them without having to manually offset.  Just set the mono project to Multiview in the Project Settings and add the additional footage streams to the clip.
+
+=== Offset Frame Tracking
+
+For simpler tracks, you can also do a technique called "Offset Frame Tracking" which is a combined stereo track and hero track.
+
+.To perform an offset frame track:
+. Select your hero view (By default this is the Left view)
+. Draw your shape as you would normally in mono mode (See Mocha User Guide for an introduction to mono Mocha tracking techniques)
+. Turn ON the "Operate in all views" button on the right side of the tracking buttons.
+. Select your tracking parameters as normal
+. Track ONE frame forwards (You can track more if you prefer, but only one is required)
+. Check the track in both views to verify the stereo offset has occurred correctly
+. Turn OFF the the "Operate in all views" button on the right side of the tracking buttons.
+. Continue tracking forwards with just the hero view
+
+If your initial stereo track was offset correctly, that offset will then carry onwards through the rest of the track.
+Keep in mind that things like convergence and disparity in the moving stereo image may not work accurately in this scenario,
+but it will increase performance of the process because you only have to track one eye.
+
+You can also then apply additional manual stereo offsets as described in the manual offset section above.

@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.23. XControlPoint &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.24. XControlPointData" href="XControlPointData.html" />
+    <link rel="prev" title="2.22. ViewInfo" href="ViewInfo.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="XControlPointData.html" title="2.24. XControlPointData"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ViewInfo.html" title="2.22. ViewInfo"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="xcontrolpoint">
+<span id="id1"></span><h1>2.23. XControlPoint<a class="headerlink" href="#xcontrolpoint" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>2.23.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>2.23.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.project.XControlPoint.__eq__" title="mocha.project.XControlPoint.__eq__"><tt class="xref py py-meth docutils literal"><span class="pre">__eq__</span></tt></a> (rhs)</li>
+<li>def <a class="reference internal" href="#mocha.project.XControlPoint.get_point_data" title="mocha.project.XControlPoint.get_point_data"><tt class="xref py py-meth docutils literal"><span class="pre">get_point_data</span></tt></a> (time[, view=View()])</li>
+<li>def <a class="reference internal" href="#mocha.project.XControlPoint.parameter" title="mocha.project.XControlPoint.parameter"><tt class="xref py py-meth docutils literal"><span class="pre">parameter</span></tt></a> (name_components)</li>
+<li>def <a class="reference internal" href="#mocha.project.XControlPoint.parameter_set" title="mocha.project.XControlPoint.parameter_set"><tt class="xref py py-meth docutils literal"><span class="pre">parameter_set</span></tt></a> ([name_components=list()])</li>
+<li>def <a class="reference internal" href="#mocha.project.XControlPoint.remove" title="mocha.project.XControlPoint.remove"><tt class="xref py py-meth docutils literal"><span class="pre">remove</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.project.XControlPoint.set_master_point" title="mocha.project.XControlPoint.set_master_point"><tt class="xref py py-meth docutils literal"><span class="pre">set_master_point</span></tt></a> (arg__1[, time=0.f[, view=View(0)]])</li>
+<li>def <a class="reference internal" href="#mocha.project.XControlPoint.set_point_data" title="mocha.project.XControlPoint.set_point_data"><tt class="xref py py-meth docutils literal"><span class="pre">set_point_data</span></tt></a> (time, xcpd[, view=View()])</li>
+<li>def <a class="reference internal" href="#mocha.project.XControlPoint.update_point_data" title="mocha.project.XControlPoint.update_point_data"><tt class="xref py py-meth docutils literal"><span class="pre">update_point_data</span></tt></a> (time, xcpd[, view=View()])</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>2.23.1.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.project.XControlPoint.master_point" title="mocha.project.XControlPoint.master_point"><tt class="xref py py-attr docutils literal"><span class="pre">master_point</span></tt></a> [read-only] of <a class="reference internal" href="BezierControlPoint.html#mocha.project.BezierControlPoint" title="mocha.project.BezierControlPoint"><tt class="xref py py-class docutils literal"><span class="pre">BezierControlPoint</span></tt></a> or <a class="reference internal" href="#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><tt class="xref py py-class docutils literal"><span class="pre">XControlPoint</span></tt></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>2.23.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>X-Spline control point class. Provides access to X-Spline contour control points.</div></blockquote>
+<dl class="class">
+<dt id="mocha.project.XControlPoint">
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">XControlPoint</tt><span class="sig-paren">(</span><em>XControlPoint</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.XControlPoint.get_point_data">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">get_point_data</tt><span class="sig-paren">(</span><em>time</em><span class="optional">[</span>, <em>view=View()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint.get_point_data" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="XControlPointData.html#mocha.project.XControlPointData" title="mocha.project.XControlPointData"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.XControlPointData</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.float</span></tt>) &#8211; Keyframe time.</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Keyframe view.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns control point data by time and view.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.XControlPoint.__eq__">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">__eq__</tt><span class="sig-paren">(</span><em>rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.XControlPoint.parameter">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">parameter</tt><span class="sig-paren">(</span><em>name_components</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint.parameter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Parameter</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_components</strong> (<em>list of strings</em>) &#8211; Relative name for a requested parameter.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">Parameter</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Returns <a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">Parameter</span></tt></a> instance bound with given name path.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.XControlPoint.parameter_set">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">parameter_set</tt><span class="sig-paren">(</span><span class="optional">[</span><em>name_components=list()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint.parameter_set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.ParameterSet</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_components</strong> (<em>list of strings</em>) &#8211; Relative name for a requested parameter set.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">ParameterSet</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Returns <a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">ParameterSet</span></tt></a> instance bound with given name path.
+Pass an empty list <tt class="docutils literal"><span class="pre">[]</span></tt> to get access to the X-Spline control point parameters set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.XControlPoint.remove">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">remove</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the this control point.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.XControlPoint.set_master_point">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">set_master_point</tt><span class="sig-paren">(</span><em>arg__1</em><span class="optional">[</span>, <em>time=0.f</em><span class="optional">[</span>, <em>view=View(0)</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint.set_master_point" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.float</span></tt>) &#8211; Keyframe time.</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Keyframe view.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Set the given point as constraining one for the point.
+Set None value to break the constraint.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.XControlPoint.set_point_data">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">set_point_data</tt><span class="sig-paren">(</span><em>time</em>, <em>xcpd</em><span class="optional">[</span>, <em>view=View()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint.set_point_data" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.float</span></tt>) &#8211; Keyframe time.</li>
+<li><strong>xcpd</strong> (<a class="reference internal" href="XControlPointData.html#mocha.project.XControlPointData" title="mocha.project.XControlPointData"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.XControlPointData</span></tt></a>) &#8211; keyframe data reflected in XControlPointData instance</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Keyframe view.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Sets keyframe data for given time and view erasing all old keyframe data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.XControlPoint.update_point_data">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">update_point_data</tt><span class="sig-paren">(</span><em>time</em>, <em>xcpd</em><span class="optional">[</span>, <em>view=View()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPoint.update_point_data" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.float</span></tt>) &#8211; Keyframe time.</li>
+<li><strong>xcpd</strong> (<a class="reference internal" href="XControlPointData.html#mocha.project.XControlPointData" title="mocha.project.XControlPointData"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.XControlPointData</span></tt></a>) &#8211; Keyframe data reflected in XControlPointData instance</li>
+<li><strong>view</strong> (<a class="reference internal" href="View.html#mocha.project.View" title="mocha.project.View"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.View</span></tt></a>) &#8211; Keyframe view.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Updates keyframe data for given time and view.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.XControlPoint.master_point">
+<tt class="descclassname">XControlPoint.</tt><tt class="descname">master_point</tt><a class="headerlink" href="#mocha.project.XControlPoint.master_point" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="BezierControlPoint.html#mocha.project.BezierControlPoint" title="mocha.project.BezierControlPoint"><tt class="xref py py-class docutils literal"><span class="pre">BezierControlPoint</span></tt></a> or <a class="reference internal" href="#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><tt class="xref py py-class docutils literal"><span class="pre">XControlPoint</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to constraining point.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.23. XControlPoint</a><ul>
+<li><a class="reference internal" href="#synopsis">2.23.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.23.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.23.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.23.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ViewInfo.html"
+                        title="previous chapter">2.22. ViewInfo</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="XControlPointData.html"
+                        title="next chapter">2.24. XControlPointData</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/XControlPoint.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="XControlPointData.html" title="2.24. XControlPointData"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ViewInfo.html" title="2.22. ViewInfo"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

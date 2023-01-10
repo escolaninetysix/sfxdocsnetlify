@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. ui &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="index.html" />
+    <link rel="next" title="7. aux_exporters" href="aux_exporters.html" />
+    <link rel="prev" title="5.1. AbstractImageIOModule" href="mocha/mediaio/AbstractImageIOModule.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aux_exporters.html" title="7. aux_exporters"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mocha/mediaio/AbstractImageIOModule.html" title="5.1. AbstractImageIOModule"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">mocha 1.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-ui"></span><div class="section" id="module-mocha.ui">
+<span id="ui"></span><h1>6. ui<a class="headerlink" href="#module-mocha.ui" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="mocha.ui.ActionTriggerHandler">
+<em class="property">class </em><tt class="descclassname">mocha.ui.</tt><tt class="descname">ActionTriggerHandler</tt><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.ActionTriggerHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">PySide.QtCore.QObject</span></tt></p>
+<p>Wraps a handler of given action with custom one.
+Set <cite>handler</cite> attribute to functional object which accepts only one argument. This argument is a
+callable object which calls the original action handler.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>action_handler = ui.ActionTriggerHandler(mocha_action)
+def my_handler(f):
+    # Custom code before
+    f()  # calls the original action handler
+    # Custom code after
+action_handler.handler = my_handler</pre>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.down_cast_qobject">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">down_cast_qobject</tt><span class="sig-paren">(</span><em>tp</em>, <em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.down_cast_qobject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>tp</strong> (<em>type</em>) &#8211; Target type</li>
+<li><strong>obj</strong> (<em>QObject</em>) &#8211; Pristine object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Down cast the given QObject instance.
+Note that the function returns a new wrapper instance instead of object type changing (Python denies this).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.find_widget">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">find_widget</tt><span class="sig-paren">(</span><em>name</em>, <em>convert_to_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.find_widget" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) &#8211; Name of an existing widget</li>
+<li><strong>convert_to_type</strong> (<em>type</em>) &#8211; Optional target type to convert found widget instance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Find a widget by name and convert to a specific type (optional).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.get_current_frame">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">get_current_frame</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.get_current_frame" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+<p>Return the current frame index on canvas.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.get_displayed_clip">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">get_displayed_clip</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.get_displayed_clip" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><cite>mocha.project.Clip</cite></td>
+</tr>
+</tbody>
+</table>
+<p>Return the current displayed clip on canvas.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.get_displayed_view">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">get_displayed_view</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.get_displayed_view" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><cite>mocha.project.View</cite></td>
+</tr>
+</tbody>
+</table>
+<p>Return the current displayed view on canvas.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.get_menus">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">get_menus</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.get_menus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all mocha menu items as a list of QMenu instances</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.get_widgets">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">get_widgets</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.get_widgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all underlying mocha widgets</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.gui_api">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">gui_api</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.gui_api" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><cite>PySide.QtCore.QObject</cite></td>
+</tr>
+</tbody>
+</table>
+<p>Returns mocha GUI API entry point as a mediator object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.set_current_frame">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">set_current_frame</tt><span class="sig-paren">(</span><em>frame</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.set_current_frame" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>frame</strong> (<em>int</em>) &#8211; New current frame index</td>
+</tr>
+</tbody>
+</table>
+<p>Set the current frame index on canvas.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.set_displayed_clip">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">set_displayed_clip</tt><span class="sig-paren">(</span><em>clip</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.set_displayed_clip" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>clip</strong> (<a class="reference internal" href="mocha/project/Clip.html#mocha.project.Clip" title="mocha.project.Clip"><em>mocha.project.Clip</em></a>) &#8211; New displayed clip.</td>
+</tr>
+</tbody>
+</table>
+<p>Set current displayed clip on canvas.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.set_displayed_view">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">set_displayed_view</tt><span class="sig-paren">(</span><em>view</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.set_displayed_view" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>view</strong> (<a class="reference internal" href="mocha/project/View.html#mocha.project.View" title="mocha.project.View"><em>mocha.project.View</em></a>) &#8211; New displayed view.</td>
+</tr>
+</tbody>
+</table>
+<p>Set current displayed view on canvas.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.ui.swap_action_proxy">
+<tt class="descclassname">mocha.ui.</tt><tt class="descname">swap_action_proxy</tt><span class="sig-paren">(</span><em>action</em>, <em>new_proxy</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.ui.swap_action_proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swap QAction proxy object with custom one.</p>
+<p>Note: use ActionTriggerHandler instead</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mocha/mediaio/AbstractImageIOModule.html"
+                        title="previous chapter">5.1. AbstractImageIOModule</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aux_exporters.html"
+                        title="next chapter">7. aux_exporters</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ui.txt"
+            >Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aux_exporters.html" title="7. aux_exporters"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mocha/mediaio/AbstractImageIOModule.html" title="5.1. AbstractImageIOModule"
+             >previous</a> |</li>
+        <li><a href="index.html">mocha 1.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

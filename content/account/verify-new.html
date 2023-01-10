@@ -1,0 +1,273 @@
+{
+"title" : "Verify Your Email Address",
+"require_recaptcha_v3": "True"
+}
+
+<!--
+<script>
+    grecaptcha.ready(() => {
+        grecaptcha.render('html_element', {
+            'sitekey': '6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_'
+        });
+    });
+</script>
+-->
+
+<style>
+    .container>.row {
+        margin-top: 0;
+    }
+
+    label {
+        font-size: 14.5px;
+    }
+
+    .form-control-lg {
+        font-size: 1.75rem;
+        padding: .2rem .5rem;
+    }
+
+    .g-recaptcha>div {
+        margin: 0 auto;
+    }
+
+    @media (min-width: 576px) {
+        .modal-dialog {
+            max-width: 600px;
+        }
+    }
+</style>
+
+{{< spinner/md/style>}}
+
+    <div id="app" style="min-height: 200px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-12 branded-box verify-container">
+                <div class="row justify-content-center" v-if="!verifyViaCode && !error">
+                    <div class="col-auto">
+                        {{< spinner/md/element >}}
+                    </div>
+                </div>
+                <div class="row justify-content-center" v-show="verifyViaLink">
+                    <p v-show="!verified">Confirming verification link, please wait. . .</p>
+                    <p v-show="verified">Verification complete! Returning to last visited page. . .</p>
+                </div>
+                <div class="row justify-content-center" v-show="error">
+                    <span>Something has gone wrong. Please wait a few minutes and try again.&nbsp;</span>
+                    <span>Error: ${error}</span>
+                </div>
+                <div class="row" v-show="verifyViaCode">
+                    <div class="col">
+                        <p class="text-center">We have sent a confirmation code to the email address you've provided.
+                            Please
+                            check your email
+                            for this code, and enter it in the box below.
+                        </p>
+                        <div class="d-flex justify-content-center">
+                            <template v-for="(d, index) of verifyData.digits">
+                                <input :key="index" class="form-control-lg mx-1 text-center" :ref="'verify-' + index"
+                                    @keyDown="handleDigitInput(index, event)" @paste.prevent="handleCodePaste"
+                                    maxlength="1" size="1" v-model="verifyData.digits[index]"
+                                    style="border: 2px solid #26A9E0" />
+                            </template>
+                        </div>
+                        <div>
+                            <p class="text-center mt-2" style="font-size: .8rem">
+                                <span style="color:red;" v-show="verifyData.error">${verifyData.error}<br /></span>
+                                <span v-show="!verifyData.resent">Didn't receive your confirmation code? <a href="#"
+                                        @click="handleCodeResend">Resend Code</a></span>
+                                <span v-show="verifyData.resent">Code resent! <br />Still having trouble? Contact us at
+                                    customerservice@borisfx.com</span>
+                            </p>
+                        </div>
+                        <div class="g-recaptcha" id="recaptcha" v-show="verifyData.recaptchaRequired"></div>
+                        <div class="text-center">
+                            <button :disabled="submitting" ref="verify-button" type="button" class="btn btn-primary"
+                                @click="codeVerify">Verify</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            delimiters: ['${', '}'],
+            data: {
+                verifyViaLink: false,
+                verifyViaCode: false,
+                verified: false,
+                error: '',
+                submitting: false,
+                email: '',
+                code: '',
+                login: Cookies.get('bfx-login') != null ? JSON.parse(Cookies.get('bfx-login')) : null,
+                verifyData: {
+                    digits: ['', '', '', '', ''],
+                    resent: false,
+                    error: '',
+                    recaptchaRequired: false,
+                    getCode: function () { return this.digits.join(''); },
+                },
+            },
+            mounted: function () {
+                if (this.login != null && this.login.email_verified) {
+                    this.completeVerify();
+                    return;
+                }
+                var params = new URLSearchParams(window.location.search);
+                this.code = params.get('code');
+                this.email = params.get('email');
+                if (this.code && this.email) this.linkVerify();
+                else if (this.login) {
+                    this.email = this.login.email;
+                    this.verifyViaCode = true;
+                    return;
+                }
+                else {
+                    window.location.href = '/account/login'
+                }
+            },
+            methods: {
+                linkVerify: function () {
+                    var self = this;
+                    self.verifyViaLink = true;
+                    self.$refs['verify-button'].innerText = 'Please Wait. . .';
+                    self.handleVerify(self.email, self.code)
+                        .then(function (res) {
+                            self.verified = true;
+                            self.completeVerify(res.return_url);
+                        })
+                        .catch(function (err) {
+                            self.verifyViaCode = true;
+                        })
+                        .finally(function () {
+                            self.submitting = false;
+                            self.verifyViaLink = false;
+                            self.$refs['verify-button'].innerText = 'Verify';
+                        })
+                },
+                codeVerify: function () {
+                    var self = this;
+                    self.code = self.verifyData.getCode();
+                    self.handleVerify(self.email, self.code)
+                        .then(function (res) {
+                            self.verified = true;
+                            setTimeout(self.completeVerify(res.return_url), 1500);
+                        })
+                        .catch(function (err) {
+                        })
+                        .finally(function () {
+                            self.submitting = false;
+                            self.verifyViaLink = false;
+                            self.$refs['verify-button'].innerText = 'Verify';
+                        })
+                },
+                handleVerify: function (email, code) {
+                    var self = this;
+                    return new Promise(function (resolve, reject) {
+                        var payload = {
+                            email: email, 
+                            code: code, 
+                            recaptchaRequired: self.verifyData.recaptchaRequired,
+                        }
+                        if (payload.recaptchaRequired) payload['g-recaptcha-response'] = grecaptcha.getResponse();
+                        axios.post('https://backend.borisfx.com/verify2/signup/confirm', payload)
+                            .then(function (res) {
+                                var loginData = JSON.parse(Cookies.get('bfx-login'));
+                                if (loginData != null) loginData.email_verified = true;
+                                else window.location.href = '/account/login';
+                                Cookies.set('bfx-login', loginData, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+                                resolve(res.data);
+                            })
+                            .catch(function (err) {
+                                switch (err.response.status) {
+                                    case 403:
+                                        self.verifyData.error = 'Code does not match. Please review your code and try again.';
+                                        break;
+                                    case 410:
+                                        self.verifyData.resent = false;
+                                        self.verifyData.error = 'Code has expired. Please click resend to receive a new code.';
+                                        break;
+                                    case 429:
+                                        self.verifyData.recaptchaRequired = true;
+                                        break;
+                                    default:
+                                        self.verifyData.error = 'Something has gone wrong. Please try again.';
+                                        break;
+                                }
+                                self.submitting = false;
+                                self.$refs['verify-button'].innerText = 'Verify';
+                                reject(self.verifyData.error);
+                            })
+                    })
+                },
+                completeVerify: function (returnUrl) {
+                    var location = '/';
+                    if (returnUrl) location = return_url;
+                    else if (Cookies.get('redirect_url') != null) {
+                        location = Cookies.get('redirect_url');
+                    }
+                    window.location.href = location;
+                },
+                handleCodeResend: function () {
+                    var self = this;
+                    axios.post('https://backend.borisfx.com/verify2/signup/send', { email: self.email })
+                        .then(function (res) {
+                            self.verifyData.resent = true;
+                        })
+                },
+                handleDigitInput: function (indexStr, event) {
+                    var digits = this.verifyData.digits;
+                    var index = parseInt(indexStr);
+                    var previousValue = digits[index];
+                    var validDigits = '0123456789';
+                    var key = event.key;
+                    var ctrlHeld = event.ctrlKey || event.metaKey;
+
+                    if (ctrlHeld && key == 'v') return;
+
+                    //Handle backspace and arrow keys
+                    if (key == 'Backspace') {
+                        var i = digits[index] == '' ? index - 1 : index;
+                        this.$set(digits, i, '');
+                        if (index != 0) this.$refs['verify-' + (index - 1)][0].focus();
+                    }
+                    if (key == 'ArrowLeft' && index > 0) {
+                        var el = this.$refs['verify-' + (index - 1)][0].focus();
+                    }
+                    else if (key == 'ArrowRight' && index < 7) {
+                        this.$refs['verify-' + (index + 1)][0].focus();
+                    }
+
+                    //Handle invalid inputs
+                    if (index == 4 && digits[4] != '') { event.preventDefault(); return; }
+                    if (index != 0 && digits[index - 1] == '') { event.preventDefault(); return; }
+
+                    //Handle valid inputs
+                    if (validDigits.includes(key)) {
+                        this.$set(digits, index, key);
+                        if (index < 4) this.$refs['verify-' + (index + 1)][0].focus();
+                    }
+                    event.preventDefault();
+
+                },
+                handleCodePaste: function (event) {
+                    var validDigits = '0123456789';
+                    var pastedData = event.clipboardData.getData('Text');
+                    var scrubbedString = '';
+                    for (var char of pastedData) {
+                        if (validDigits.includes(char)) scrubbedString += char;
+                    }
+                    if (scrubbedString.length != 5) return;
+
+                    for (var i = 0; i < scrubbedString.length; i++) {
+                        this.$set(this.verifyData.digits, i, scrubbedString[i]);
+                    }
+                }
+            }
+        })
+    </script>

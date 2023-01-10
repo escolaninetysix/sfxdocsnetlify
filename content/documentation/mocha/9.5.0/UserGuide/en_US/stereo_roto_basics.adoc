@@ -1,0 +1,39 @@
+== Stereo Rotoscoping [[stereo_roto]]
+
+Stereo Roto works in a very similar fashion to stereo tracking.
+
+.To roto an object in stereo with tracking:
+. Select the hero view (by default this is Left)
+. Draw a new basic shape and track the object you want to rotoscope as outlined above in "Stereo Tracking"
+. Draw a new refined roto layer around your tracked object
+. Click the "Link to track" drop down in Layer Properties and choose the previously tracked layer
+. Continue to refine the Hero view roto until you are happy with that view
+. Switch to the non-Hero view and begin refining this view.
+
+When you switch to the non-Hero view the rotoscoping will be offset by the tracking data.  While this will not completely refine the result, it will save you a lot of time.
+
+Whenever you manipulate a control point in the Hero view it will offset that control point in the non-Hero view.
+
+When you start to tweak the non-Hero view it will also generate new keyframes for that view only and will not affect the Hero view.  You can see these keyframes represented in the timeline by split left and right keys.
+
+image:UserGuide/en_US/images/Left_Right_Keys.jpg[]
+
+If you wish to directly modify the control point in both views when working in either view, you can turn on the "Apply Keyframe Changes to All Views" button at the very end of the timeline controls to the right.
+
+IMPORTANT: If you insert additional points to a shape while in the non-Hero view, they will be automatically deactivated in the Hero view to avoid destroying the work done in the Hero view.
+You can reactivate these points in the Hero view by right clicking them and choosing "Point > Activate"
+
+=== Working with Difference Mode and Stereo Offsets
+
+If you need to offset your tracking or roto manually (see below), you can use the Difference 3D view to help align the layer.
+
+.To align using Difference Mode:
+. Select the layer you want to align
+. Turn on Difference mode.
+image:UserGuide/en_US/images/4.0.0_Difference_Mode.png[]
+. Go to the Stereo tab in the Track module
+. Select your Non-Hero View.
+. Offset X and Y until the screen gets as close to blank middle grey as possible.  You can optionally also adjust the other Stereo parameters.
+image:UserGuide/en_US/images/Stereo_OffsetX_Position_Lining_Up_Difference.jpg[]
+image:UserGuide/en_US/images/4.0.0_Lining_Up_Difference.png[]
+. Turn off Difference view and review your results on your Non-Hero view.

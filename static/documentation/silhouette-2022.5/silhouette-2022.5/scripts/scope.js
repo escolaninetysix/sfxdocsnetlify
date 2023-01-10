@@ -15,7 +15,7 @@ Scope.AddSearchScope = function (param_parcel_anchor,
   // Create entry
   //
   entry = {
-    title: param_parcel_anchor.innerText,
+    title: Browser.GetChildTextNodesAsText(param_parcel_anchor),
     id: param_id,
     context: param_context,
     data_index: param_data_index
@@ -35,9 +35,9 @@ Scope.AddSearchScope = function (param_parcel_anchor,
     parent_scope_div = Browser.FirstChildElementWithTagName(grandparent_li, 'div');
     parent_scope_a = Browser.FirstChildElementWithTagName(parent_scope_div, 'a');
     if (parent_scope_a !== null) {
-      parent_scope_title = parent_scope_a.innerText;
+      parent_scope_title = Browser.GetChildTextNodesAsText(parent_scope_a);
     } else {
-      parent_scope_title = parent_scope_div.innerText;
+      parent_scope_title = Browser.GetChildTextNodesAsText(parent_scope_div);
     }
     parent_scopes.push(parent_scope_title);
 
@@ -119,7 +119,7 @@ Scope.SearchScopeCheckbox = function (param_id) {
     Scope.UpdateSearchScopeSelections();
 
     if (Connect.SearchEnabled()) {
-      Navigation.HandleSearchURL();
+      Connect.HandleSearchURL();
     }
   }
 };
@@ -306,10 +306,10 @@ Scope.WriteSelectionsToHandlerObject = function () {
 
     handler_object_scope_string = selections_as_array.join('/');
 
-    Navigation.url_handler_object['scope'] = handler_object_scope_string;
+    Connect.url_handler_object['scope'] = handler_object_scope_string;
   }
   else {
-    delete Navigation.url_handler_object['scope'];
+    delete Connect.url_handler_object['scope'];
   }
 };
 

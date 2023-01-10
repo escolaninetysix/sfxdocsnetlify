@@ -1,0 +1,124 @@
+.. module:: mocha.project
+.. _StreamInfo:
+
+StreamInfo
+**********
+
+.. inheritance-diagram:: mocha.project.StreamInfo
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__repr__<StreamInfo.__repr__>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`end_frame<StreamInfo.end_frame>` [read-write] of long
+*    property :attr:`index_width<StreamInfo.index_width>` [read-write] of long
+*    property :attr:`path<StreamInfo.path>` [read-write] of str
+*    property :attr:`prefix<StreamInfo.prefix>` [read-write] of str
+*    property :attr:`start_frame<StreamInfo.start_frame>` [read-write] of long
+*    property :attr:`suffix<StreamInfo.suffix>` [read-write] of str
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+
+
+.. class:: StreamInfo([path=""[, prefix=""[, suffix=""[, start_frame=-1[, end_frame=-1[, index_width=0]]]]]])
+
+
+    :type path: unicode
+    :type prefix: unicode
+    :type suffix: unicode
+    :type start_frame: uint
+    :type end_frame: uint
+    :type index_width: uint
+
+
+
+
+
+.. class:: StreamInfo(StreamInfo)
+
+
+    :type StreamInfo: :class:`mocha.project.StreamInfo`
+
+
+
+
+
+
+
+
+.. method:: StreamInfo.__repr__()
+
+
+    :rtype: unicode
+
+
+
+
+
+.. attribute:: StreamInfo.path
+
+
+    :type: str
+    :access: read-write    Absolute path to clip directory or first clip file.
+
+
+
+.. attribute:: StreamInfo.prefix
+
+
+    :type: str
+    :access: read-write    Clip prefix.
+
+
+
+.. attribute:: StreamInfo.suffix
+
+
+    :type: str
+    :access: read-write    Clip suffix.
+
+
+
+.. attribute:: StreamInfo.start_frame
+
+
+    :type: long
+    :access: read-write    Start frame number.
+
+
+
+.. attribute:: StreamInfo.end_frame
+
+
+    :type: long
+    :access: read-write    End frame number.
+
+
+
+.. attribute:: StreamInfo.index_width
+
+
+    :type: long
+    :access: read-write    Clip index width.
+
+
+
+

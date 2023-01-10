@@ -1,0 +1,276 @@
+.. module:: mocha.mediaio
+.. _AbstractImageIOModule:
+
+AbstractImageIOModule
+*********************
+
+.. inheritance-diagram:: AbstractImageIOModule
+    :parts: 2
+
+Detailed Description
+--------------------
+
+
+   
+   Abstract image IO class that provides overridable methods to determine custom
+   image input and output operations. Every overridable method must be implemented.
+   The methods should not call each other.
+   
+
+
+.. class:: AbstractImageIOModule()
+
+
+
+
+
+
+
+
+.. class:: AbstractImageIOModule(format_name, extensions, save_image_formats, save_image_types[, is_clip_loader=false])
+
+
+   :type format_name: unicode
+   :type extensions: list of strings
+   :type save_image_formats: list of PixelFormat
+   :type save_image_types: list of ChannelType
+   :type is_clip_loader: :class:`PySide2.QtCore.bool`
+
+
+
+   
+   :param format_name: Short description of custom format, e.g. "Maya Image Format".
+   :param extensions: List of supported extensions, e.g. ['.iff'].
+   :param save_image_formats: List of supported :class:`PixelFormat` to persist.
+   :param save_image_types: List of supported :class:`ChannelType` to persist.
+   :param is_clip_loader: True if the loader returns multiple frames from a single file (such as with .MOV or .AVI).
+   
+   Creates and registers custom image IO module. Create its instance in custom
+   Python bootstrapping code to obtain appropriate image format in mocha backend.
+   
+
+
+
+
+   :type extensions: list of strings
+   :type save_image_types: list of ChannelType
+   :type is_clip_loader: :class:`PySide2.QtCore.bool`
+   :type save_image_formats: list of PixelFormat
+   :type format_name: unicode
+
+
+
+.. method:: AbstractImageIOModule.accepts_ext(extension)
+
+
+   :type extension: unicode
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+   
+   :param extension: Absolute path to an image file.
+   
+   Implements checking whether given file extension is acceptable by the module.
+   
+
+
+
+.. method:: AbstractImageIOModule.accepts_file(file_name)
+
+
+   :type file_name: unicode
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+   
+   :param file_name: Absolute path to an image file.
+   
+   Implements checking whether image file is acceptable by the module.
+   Being called upon project opening.
+   
+
+
+
+.. method:: AbstractImageIOModule.channel_type(file_name)
+
+
+   :type file_name: unicode
+   :rtype: :attr:`mocha.project.ChannelType`
+
+
+
+   
+   :param file_name: Absolute path to an image file.
+   
+   Implements channel type getting for given file.
+   
+
+   
+   :param file_name: Absolute path to an image file.
+   
+   Implements channel type getting for given file.
+   
+
+
+
+.. method:: AbstractImageIOModule.get_fps(path)
+
+
+   :type path: unicode
+   :rtype: :class:`PySide2.QtCore.float`
+
+
+
+
+
+
+.. method:: AbstractImageIOModule.get_frame_count(path)
+
+
+   :type path: unicode
+   :rtype: :class:`PySide2.QtCore.float`
+
+
+
+
+
+
+.. method:: AbstractImageIOModule.get_gamma(file_name)
+
+
+   :type file_name: unicode
+   :rtype: :class:`mocha.project.OptionalFloat`
+
+
+
+   
+   :param file_name: Absolute path to an image file.
+   
+   Implements gamma value getting. Return None if the module does not support this.
+   
+
+
+
+.. method:: AbstractImageIOModule.get_interlace_mode(file_name)
+
+
+   :type file_name: unicode
+   :rtype: :class:`mocha.project.InterlaceMode or None`
+
+
+
+   
+   :param file_name: Absolute path to an image file.
+   
+   Implements interlace mode getting. Return None if the module does not support this.
+   
+
+
+
+.. method:: AbstractImageIOModule.get_metadata(path, frame_number, stream_name)
+
+
+   :type path: unicode
+   :type frame_number: :class:`PySide2.QtCore.int`
+   :type stream_name: unicode
+   :rtype: Dictionary with keys of type QString and values of type QVariant.
+
+
+
+
+
+
+.. method:: AbstractImageIOModule.get_stream_names(path)
+
+
+   :type path: unicode
+   :rtype: list of QString
+
+
+
+
+
+
+.. method:: AbstractImageIOModule.image_size(file_name)
+
+
+   :type file_name: unicode
+   :rtype: :class:`PySide2.QtCore.QSize`
+
+
+
+
+
+
+.. method:: AbstractImageIOModule.load_image(image, path, frame_number, stream_name)
+
+
+   :type image: :class:`mocha.project.ImageData`
+   :type path: unicode
+   :type frame_number: :class:`PySide2.QtCore.int`
+   :type stream_name: unicode
+
+
+
+
+
+
+.. method:: AbstractImageIOModule.pixel_format(file_name)
+
+
+   :type file_name: unicode
+   :rtype: :attr:`mocha.project.PixelFormat`
+
+
+
+   
+   :param file_name: Absolute path to an image file.
+   
+   Implements checking whether given file extension is acceptable by the module.
+   
+
+
+
+.. method:: AbstractImageIOModule.save_image(image, path)
+
+
+   :type image: :class:`mocha.project.ImageData`
+   :type path: unicode
+
+
+
+   
+   :param image: Complete image instance.
+   :param path: Absolute path to an image file to save.
+   
+   Implements image saving.
+   
+   **Important**: mocha presents vertically flipped images only.
+   
+
+
+
+.. method:: AbstractImageIOModule.supports_image(file_name, format, pixels_type)
+
+
+   :type file_name: unicode
+   :type format: :attr:`mocha.project.PixelFormat`
+   :type pixels_type: :attr:`mocha.project.ChannelType`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+   
+   :param file_name: Absolute path to an image file.
+   :param format: Image format.
+   :param pixels_type: Pixels type.
+   
+   Implements checking whether the module supports image persisting with given
+   path, image format and pixels type.
+   
+
+
+
+

@@ -1,0 +1,252 @@
+{
+	"title": "Search",
+	"layout": "search"
+}
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+
+<div id="desc" style="display:block;">
+<div class="row">
+<div class="col-12">	
+<div class="row my-3">
+<div class="col-12">
+<div id="search-box">
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-3">
+<b>Sort By:</b><br>
+<a href="javascript:;" id="latest">Latest</a><br>
+<a href="javascript:;" id="oldest">Oldest</a><br><br>
+<b>Filters:</b><br>
+<div id="refinement-list" style="position: sticky; top: 115px"></div>
+</div>
+<div class="col-9">
+<div id="hits"></div>
+<div id="pagination"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="asc" style="display:none;">
+<div class="row">
+<div class="col-12">	
+<div class="row my-3">
+<div class="col-12">
+<div id="search-box-asc">
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-3">
+<b>Sort By:</b><br>
+<a href="javascript:;" id="latest">Latest</a><br>
+<a href="javascript:;" id="oldest">Oldest</a><br><br>
+<b>Filters:</b><br>
+<div id="refinement-list-asc" style="position: sticky; top: 115px"></div>
+</div>
+<div class="col-9">
+<div id="hits-asc"></div>
+<div id="pagination-asc"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="discourse" style="display:none;">
+<div class="row">
+<div class="col-12">	
+<div class="row my-3">
+<div class="col-12">
+<div id="discourse-search-box"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-3">
+<b>Sort By:</b><br>
+<a href="javascript:;" id="latest">Latest</a><br>
+<a href="javascript:;" id="oldest">Oldest</a><br><br>
+<b>Filters:</b><br>
+</div>
+<div class="col-9">
+<div id="discourse-hits"></div>
+<div id="discourse-pagination"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+
+const searchClient = algoliasearch('KUHTAWO3GL', 'e72b3074c8734a05423d510d93011520');
+
+const asc = instantsearch({
+  indexName: 'order_ascending',
+  searchClient,
+});
+
+const search = instantsearch({
+  indexName: 'web',
+  searchClient, 
+  routing: true,  
+  searchFunction(helper) {
+    asc.helper.setQuery(helper.state.query).search();
+    helper.search();
+  },
+});
+
+asc.addWidgets([
+	instantsearch.widgets.searchBox({
+		container: '#search-box-asc',
+		placeholder: 'Search',
+		magnifier: false,
+	}),
+  instantsearch.widgets.refinementList({
+    container: '#refinement-list-asc',
+    attribute: 'section',
+    operator: 'or',
+    limit: 10,
+    templates: {
+      label: 'Filter:'
+    }
+  }),
+	instantsearch.widgets.hits({
+		container: '#hits-asc',
+		templates: {
+		item: `
+	<article>
+		{{#image_url}}
+		<center><img class="img-fluid" src="{{{image_url}}}" width="100%"></center>
+		{{/image_url}}
+		{{#thumbnail_url}}
+		<center><img class="img-fluid" src="{{{thumbnail_url}}}" width="100%"></center>
+		{{/thumbnail_url}}
+		<div>
+			<p>
+				<a href="{{{objectID}}}">
+					{{{title}}}
+				</a> 
+			</p>
+			{{#date}}<p><span><b>Date:</b> {{{date}}}</span></p>{{/date}}
+			<p style="white-space: normal !important;">{{#helpers.snippet}}{ "attribute": "content" }{{/helpers.snippet}}</p>
+		</div>
+	</article>
+		`,
+		},
+	}),
+    instantsearch.widgets.pagination({
+      container: '#pagination-asc',
+      maxPages: 20,
+      scrollTo: false
+    }),
+]);	
+
+search.addWidgets([
+	instantsearch.widgets.searchBox({
+		container: '#search-box',
+		placeholder: 'Search',
+		magnifier: false,
+	}),
+  instantsearch.widgets.refinementList({
+    container: '#refinement-list',
+    attribute: 'section',
+    operator: 'or',
+    limit: 10,
+    templates: {
+      label: 'Filter:'
+    }
+  }),
+	instantsearch.widgets.hits({
+		container: '#hits',
+		templates: {
+		item: `
+	<article>
+		{{#image_url}}
+		<center><img class="img-fluid" src="{{{image_url}}}" width="100%"></center>
+		{{/image_url}}
+		{{#thumbnail_url}}
+		<center><img class="img-fluid" src="{{{thumbnail_url}}}" width="100%"></center>
+		{{/thumbnail_url}}
+		<div>
+			<p>
+				<a href="{{{objectID}}}">
+					{{{title}}}
+				</a> 
+			</p>
+			{{#date}}<p><span><b>Date:</b> {{{date}}}</span></p>{{/date}}
+			<p style="white-space: normal !important;">{{#helpers.snippet}}{ "attribute": "content" }{{/helpers.snippet}}</p>
+		</div>
+	</article>
+		`,
+		},
+	}),
+    instantsearch.widgets.pagination({
+      container: '#pagination',
+      maxPages: 20,
+      scrollTo: false
+    }),
+]);	
+
+
+const discourse = instantsearch({
+  indexName: 'discourse-posts',
+  searchClient, 
+  routing: true,
+  searchFunction(helper) {
+    helper.search();
+  },
+});
+
+discourse.addWidgets([
+	instantsearch.widgets.searchBox({
+		container: '#discourse-search-box',
+		placeholder: 'Search',
+		magnifier: false,
+	}),
+	instantsearch.widgets.hits({
+		container: '#discourse-hits',
+		templates: {
+		item: `
+	<article>
+		<div>
+			<p>
+				<a href="https://forum.borisfx.com/{{{url}}}">
+					{{{topic.title}}}
+				</a> 
+			</p>
+			<p><b>Views:</b> {{{topic.views}}} - <b>Likes:</b> - {{{like_count}}} - <b>Username:</b> <a href="https://forum.borisfx.com/{{{user.url}}}" target="_blank">{{{user.username}}}</a></p>
+			<p>{{#helpers.snippet}}{ "attribute": "content" }{{/helpers.snippet}}</p>
+		</div>
+	</article>
+		`,
+		},
+	}),
+    instantsearch.widgets.pagination({
+      container: '#discourse-pagination',
+      maxPages: 20,
+      scrollTo: false
+    }),
+]);	
+
+discourse.start();
+search.start();
+asc.start();
+</script>
+
+<script>
+
+$("a#latest").click(function() {
+$("#asc").toggle(false);
+$("#desc").toggle(true);
+});
+
+$("a#oldest").click(function() {
+$("#asc").toggle(true);
+$("#desc").toggle(false);
+});
+
+</script>

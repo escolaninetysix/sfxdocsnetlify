@@ -1,0 +1,1364 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: MuzzleFlash",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/MuzzleFlash.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="MuzzleFlash">
+     <h2>
+      S_MuzzleFlash
+     </h2>
+    </a>
+    Simulates the flash and smoke that is generated when a gun is fired. The flash from
+                 several types of gun can be simulated. All guns have a primary flash, and guns with suppressors
+                 may have secondary flashes. The gun may easily be fired repeatedly.
+                 Note: All time units in this effect are in frames.
+    <p>
+     In the Sapphire Render effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      Interpolate between the result and the Source input.  White areas
+use the result of the effect.  Black areas use the Source clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/MuzzleFlash.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Project:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Location:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The position (on the image) of the end of the gun barrel.  This parameter can be adjusted using the MuzzleFlash Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Location Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the location is controlled by the Location parameter or follows
+  the Location tracked inside of Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Location Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Elevation:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -360 to 360.
+   <br/>
+   The angle of the gun barrel in the vertical plane relative to horizontal.  This parameter can be adjusted using the MuzzleFlash Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotation:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -360 to 360.
+   <br/>
+   The angle of the gun barrel in the horizontal plane relative to due east.  This parameter can be adjusted using the MuzzleFlash Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0.05 or greater.
+   <br/>
+   The overall size of the gun blast.  This parameter can be adjusted using the MuzzleFlash Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The overall brightness of the flash.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Out:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The muzzle flash will be drawn this far from the end of the gun barrel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gun:
+   </b>
+   <i>
+    Popup menu,  Default: M16
+   </i>
+   .
+   <br/>
+   The type of gun being fired.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       AK47:
+      </i>
+     </b>
+     AK47 assault rifle.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Beretta:
+       </i>
+      </b>
+      Beretta pistol.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Colt45:
+        </i>
+       </b>
+       Colt 45 revolver.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          M16:
+         </i>
+        </b>
+        M16 assault rifle.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           12Gauge:
+          </i>
+         </b>
+         Shotgun.
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Variant:
+   </b>
+   <i>
+    Popup menu,  Default: Two
+   </i>
+   .
+   <br/>
+   Variations on the muzzle flash pattern.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       One:
+      </i>
+     </b>
+     First variation.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Two:
+       </i>
+      </b>
+      Second variation.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Three:
+        </i>
+       </b>
+       Third variation.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Random:
+         </i>
+        </b>
+        Randomly pick one of the variations each time a shot is fired.
+        <br/>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Random number seed. Many aspects of the muzzle flash appearence depend on the seed. To get a different
+          result for a given set of control values, try changing this seed value.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Animate Seed:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Selecting this will subtly change the shape of each flash generated so that they differ from
+                  frame to frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Octaves:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 to 6.
+   <br/>
+   Increasing this increases the detail in the smoke.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.0015,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   How much blur is to be applied to the muzzle flash.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mid Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0.01 to 0.99.
+   <br/>
+   How dense the muzzle flash should be at half its radius.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mid Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0.792 0.6].
+   <br/>
+   The color of the muzzle flash at half its radius.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Affect Alpha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this value is positive the output Alpha channel
+  will include some opacity from the muzzle flash.  The maximum of the red,
+  green, and blue muzzle flash brightness is scaled by this value and combined
+  with the Background Alpha at each pixel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Screen
+   </i>
+   .
+   <br/>
+   Determines how the muzzle flash is combined with the Background.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Screen:
+      </i>
+     </b>
+     The muzzle flash is blended with the Background using a screen operation.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Add:
+       </i>
+      </b>
+      The muzzle flash is added to the Background.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         MuzzleFlash Only:
+        </i>
+       </b>
+       Gives only the muzzle flash with no Background.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Primary Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.21,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Length of the primary flash. This is always aligned with the gun barrel and is present in all guns.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Primary Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.035,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Width of the primary flash.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Primary Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Overall density and brightness of the primary flash.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Primary Puff:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   How puffy (as opposed to smooth) the primary flash should appear.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Primary Detail:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   How much detail should appear in the primary flash specifically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Number:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   6,
+   <i>
+    Range:
+   </i>
+   0 to 10.
+   <br/>
+   How many secondary flashes should be generated for those guns that have secondary flashes. These flashes
+                      appear from holes in the suppressor and only guns with suppressors have them. The flashes appear at an angle
+                      in the vertical plane with respect to the gun barrel direction. This control specifies how many holes there
+                      are in the suppressor. The holes are assumed to be evenly distributed around the circumference of the suppressor.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   66,
+   <i>
+    Range:
+   </i>
+   0 to 89.
+   <br/>
+   The angle the secondary flashes make in the vertical plane with respect to the gun barrel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.11,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The length of the secondary flashes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.02,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the secondary flashes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The overall density and brightness of the secondary flashes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Puff:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.7,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   How puffy (as opposed to smooth) the secondary flashes should appear.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Detail:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   How much detail should appear in the secondary flashes specifically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Time Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Always
+   </i>
+   .
+   <br/>
+   How to draw flashes as the frame number changes.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Always:
+      </i>
+     </b>
+     Always draw the flash. Whether or not the flash appears must be controlled manually by key framing the controls.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Repeat:
+       </i>
+      </b>
+      Fire the weapon at regular intervals between a start and end time. This is appropriate for automatic weapons,
+                      but can also be used to generate a single flash for a non-automatic weapon. The flash is drawn on a single frame.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Repeat+Fade:
+        </i>
+       </b>
+       As Repeat, but the flash will fade out over a number of frames.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Time:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   In Repeat and Repeat+Fade mode, this is the first frame on which a flash will appear.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Duration:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   0 to 500.
+   <br/>
+   In Repeat and Repeat+Fade mode, this is the length of time after start time in which a flash may appear.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gap Time:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 to 50.
+   <br/>
+   In Repeat and Repeat+Fade mode, this is number of frames between flashes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fade Time:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 to 5.
+   <br/>
+   In Repeat+Fade mode, this is time in frames over which the flash will fade away.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.1 0.1 1].
+   <br/>
+   The color of an overall glow around the bright parts of the muzzle flash.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Bright:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   0 to 8.
+   <br/>
+   The brightness of an overall glow around the muzzle flash.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The size of an overall glow around the muzzle flash.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0.01 to 1.
+   <br/>
+   Muzzle flash intensities above this threshold will glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Opacity:
+   </b>
+   <i>
+    Popup menu,  Default: Normal
+   </i>
+   .
+   <br/>
+   Determines the method used for dealing with
+opacity/transparency.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       All Opaque:
+      </i>
+     </b>
+     Use this option to render slightly faster when
+the input image is fully opaque with no transparency (alpha=1).
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Normal:
+       </i>
+      </b>
+      Process opacity normally.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         As Premult:
+        </i>
+       </b>
+       Process as if the image is already in
+premultiplied form (colors have been scaled by opacity).  This option
+also renders slightly faster than Normal mode, but the results will
+also be in premultiplied form, which is sometimes less correct.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Mask input channels are used to make a
+monochrome mask.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Matte input by this amount before using.  This
+can provide a smoother transition between the matted and unmatted
+areas.  It has no effect unless the Matte input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the Matte input so the effect is applied
+to areas where the Matte is black instead of white.  This has no effect
+unless the Matte input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show MuzzleFlash:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Location parameter.This parameter only appears on AE and Premiere,
+where on-screen widgets are supported.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

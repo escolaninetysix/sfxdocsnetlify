@@ -1,0 +1,378 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: FlickerRemoveColor",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FlickerRemoveColor.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FlickerRemoveColor">
+     <h2>
+      FlickerRemoveColor
+     </h2>
+    </a>
+    In the S_FlickerRemove Plugin.
+    <p>
+     Removes temporal color changes from the Source
+clip.  Similar to FlickerRemove but the process is applied to each
+color channel.  To use this effect, first position the rectangle over
+an area where the average color should remain constant.  A middle or
+light gray area is best for this.  Then select a Source frame that has
+the desired color within the rectangle, and hit the Set Hold Color
+button.  When other frames are processed, their colors will be scaled
+so the average color within the rectangle is equal to the Hold Color.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to remove color changes from.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FlickerRemoveColor.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rect Center:
+   </b>
+   <i>
+    X &amp; Y,  Integer,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The center of the rectangle which is used to measure
+  the flicker, in screen coordinates.  This parameter can be adjusted using the Rect Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rect Size:
+   </b>
+   <i>
+    X &amp; Y,  Integer,   Default:
+   </i>
+   [1.67 1.23],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The size in pixels of the rectangle used to measure the
+  flicker.  This parameter can be adjusted using the Rect Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Set Hold Color:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Pressing this button sets the Hold
+  Color parameter to the average Source color in the rectangle at the
+  current frame.  It causes the output to equal the Source at this frame.
+  (This will not work properly when in 'Redraw:Never' mode.)
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hold Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.5 0.5 0.5].
+   <br/>
+   The requested average output color for the
+  area within the rectangle.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Measured Flicker R:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   When processing, this parameter is automatically adjusted to record the
+  amount of flicker in the red color channel at each frame.
+  You can copy the keyframes to a parameter in other effect in
+  order to match the flicker in a different clip, or adjust the brightness on certain frames.
+  Changing this parameter manually has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Measured Flicker G:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   When processing, this parameter is automatically adjusted to record the
+  amount of flicker in the green color channel at each frame.
+  You can copy the keyframes to a parameter in other effect in
+  order to match the flicker in a different clip, or adjust the brightness on certain frames.
+  Changing this parameter manually has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Measured Flicker B:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   When processing, this parameter is automatically adjusted to record the
+  amount of flicker in the blue color channel at each frame.
+  You can copy the keyframes to a parameter in other effect in
+  order to match the flicker in a different clip, or adjust the brightness on certain frames.
+  Changing this parameter manually has no effect.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Shift:
+   </b>
+   <i>
+    X &amp; Y,  Integer,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   These values are added to the Rect Center, and are meant to help
+  when using data from the Tracker.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Negate Shift:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the Center Shift is subtracted from the Center
+  instead of added.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../flickerremove">
+       FlickerRemove
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../flickerremovematte">
+       FlickerRemoveMatte
+      </a>
+      <br/>
+      <a href="../flickerrmmattecolor">
+       FlickerRmMatteColor
+      </a>
+      <br/>
+      <a href="../flickermatch">
+       FlickerMatch
+      </a>
+      <br/>
+      <a href="../flickermatchcolor">
+       FlickerMatchColor
+      </a>
+      <br/>
+      <a href="../flickermatchmatte">
+       FlickerMatchMatte
+      </a>
+      <br/>
+      <a href="../flickermchmattecolor">
+       FlickerMchMatteColor
+      </a>
+      <br/>
+      <a href="../flicker">
+       Flicker
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

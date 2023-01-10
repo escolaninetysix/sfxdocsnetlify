@@ -1,0 +1,8 @@
+{{ if in .image_url "https://borisfx-com-res.cloudinary.com/" }}
+
+<div class="image" style="background-image: url({{ .image_url }});"></div>
+
+{{ else if .image_url }}
+<div class="image" style="background-image: url({{ .baseURL }}{{ .baseDIR }}w_1000,f_auto,q_auto{{ .image_url }});"></div>
+{{ end }}
+

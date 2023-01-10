@@ -1,0 +1,22 @@
+{
+   "date": "2015-05-27T10:47:00-04:00",
+   "tags": [
+      "RED"
+   ],
+   "title": "Launching Boris RED/Boris FX as Transition in FCP"
+}
+
+<div id="BorisRedTransitionFCP" class="hidden-faq">
+<p><strong> Subject </strong> :  Boris RED/FX does not launch as Transition in FCP.</p>
+<p><strong> Issue </strong> :  When user applies Boris RED/FX as a Transition in Final Cut Pro 7, the plugin is recognized but when called upon from the Viewer window, the interface does not load.</p>
+<p><strong> Cause </strong> :  Intermittent limitation of old-style plug-in architecture.</p>
+<p><strong> Steps to work around this issue </strong> : </p>
+<p>NOTE:  Any one of these might be enough to get the interface to load, so it might work before you reach the end of list below.</p>
+<p>1. Move the Playhead to the point of the specific Transition you are attempting to create/edit.</p>
+<p><a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/05/n1.jpg"> <img class=" size-medium wp-image-3816 alignright" src="https://cdn.shopify.com/s/files/1/1222/4522/files/blog_n1-190x300.jpg?16570274186780694468" alt="n" width="190" height="300"> </a></p>
+<p>2. Highlight the Transition.</p>
+<p>3. Go into your RT settings (located in your FCP System Settings) and make sure that your RT is set to ʻSafeʼ rather than ʻUnlimitedʼ.</p>
+<p>4. If steps 1~3 do not work, delete the Transition and reapply it.</p>
+<p>5. If steps 1~4 do not work, delete the ʻFinal Cut Pro Obj Cacheʼ &amp; ʻFinal Cut Pro Prof Cacheʼ files from this directory -</p>
+<p>#  Macintosh HD :: Users :: [ Current User ] :: Library :: Preferences :: Final Cut Pro User Data</p>
+</div>

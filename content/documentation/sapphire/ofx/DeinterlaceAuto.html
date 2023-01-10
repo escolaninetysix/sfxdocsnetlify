@@ -1,0 +1,306 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: DeinterlaceAuto",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DeinterlaceAuto.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DeinterlaceAuto">
+     <h2>
+      S_DeinterlaceAuto
+     </h2>
+    </a>
+    Can automatically detect an interlaced pulldown
+  pattern, and deinterlace or reinterlace a clip.  To deinterlace,
+  first click on the Find Pattern button. If the effect fails to find
+  a pattern, move to a frame with plenty of motion and click Find
+  Pattern again.  If the pulldown pattern seems longer than usual,
+  increase the Max Pattern Fields accordingly.  Once the pattern is
+  found, the plug-in will output progressive frames.  To reinterlace
+  back to the original pattern, copy the node (or create a new node
+  and copy the pattern parameters).  Then change the mode to
+  Reinterlace and connect the progressive footage to the Source input.
+  The plug-in will output reinterlaced frames using the original
+  pulldown pattern.  Note that the output of this effect may be longer
+  or shorter than the input clip, depending on the pattern.
+    <p>
+     In the Sapphire Time effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be processed.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DeinterlaceAuto.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Effect:
+   </b>
+   <i>
+    Popup menu,  Default: Deinterlace
+   </i>
+   .
+   <br/>
+   Switches between Deinterlace and Reinterlace modes.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Deinterlace:
+      </i>
+     </b>
+     Convert interlaced source footage into
+  unique progressive frames, using the specified pattern.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Reinterlace:
+       </i>
+      </b>
+      Convert progressive source footage
+  into interlaced frames using the specified pattern.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Find Pattern:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Clicking on this will search for a pulldown
+  pattern in the source clip, starting at the current frame.  This
+  fills in parameter values for the Pattern, Pattern Phase, and
+  optionally the Field Dominance.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Detect Dominance:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   If enabled, Find Pattern will also automatically
+  set the Field Dominance value.  Otherwise Field Dominance can be set
+  manually and will remain as is.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Pattern:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.
+   <br/>
+   Describes the pulldown pattern found in the clip.  This
+  pattern refers to the source clip when deinterlacing, but when
+  reinterlacing it describes the desired pattern to recreate in the
+  destination clip.  Thus the pattern should remain the same for
+  deinterlace and reinterlace.  The pattern shows how many fields
+  comprise each progressive frame.  A pattern of '3 2' indicates a
+  typical 3:2 pulldown pattern.  A pattern of just '1' would indicate
+  all fields are unique.  A pattern of just '2' indicates normal
+  progressive frames with no interlacing, and causes the result clip
+  to equal the source clip.  Negative values in a pattern indicate
+  out-of-order fields that match a previous progressive frame.
+  Note that a problem with Toxik 2008 causes this Pattern string parameter to be
+  invisible to the user.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Pattern Phase:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shows the field number of the clip where the
+  pattern begins. This parameter is set automatically when the Find
+  Pattern button is clicked.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Field Dominance:
+   </b>
+   <i>
+    Popup menu,  Default: 1
+   </i>
+   .
+   <br/>
+   The field dominance of the source footage.  This
+  is set automatically by Find Pattern if Detect Dominance is
+  enabled.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       1:
+      </i>
+     </b>
+     Field 1 occurs first in time, then field 2.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        2:
+       </i>
+      </b>
+      Field 2 occurs first in time, then field 1.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Pattern Fields:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   5 to 100.
+   <br/>
+   The maximum number of fields expected in the
+  repeating pulldown pattern.  Decreasing this value will cause it to
+  inspect fewer frames and speed up the pattern finding.  Increasing
+  it will allow the detection of longer pulldown patterns.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../fieldremove">
+       FieldRemove
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

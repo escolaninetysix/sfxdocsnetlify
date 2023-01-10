@@ -1,0 +1,58 @@
+{
+   "title": "",
+  "require_recaptcha_v3": "True"
+}
+
+<div class="row">
+  <div class="col-md-4">
+
+    <h1>Reset Password</h1>
+
+    <form id="form">
+
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <input id="password" name="password" type="password" class="form-control" required />
+      </div>
+
+      <!-- Sign Up -->
+      <div class="form-group">
+        <button id="submit" type="submit" class="btn btn-lg btn-block">Reset password</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+$(function () {
+  $('#form').submit(function (e) {
+  e.preventDefault();
+  var email = getQueryParameter('email');
+  var password = $('#password').val();
+  var hash = getQueryParameter('hash');
+  var passed_token = '';
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', {action: 'resetpage'}).then(function(token) {
+            passed_token=token;
+            axios.post('https://backend.borisfx.com/password_resetv3', {
+              email: email,
+              password: password,
+              hash: hash,
+              'g-recaptcha-response': passed_token,
+            })
+            .then(function (res) {
+              data = res.data;
+              window.location = '/account/login';
+            })
+            .catch(function (error) {
+              alert('There was a problem resetting your password.')
+            });
+        });
+    });
+  });
+});
+</script>

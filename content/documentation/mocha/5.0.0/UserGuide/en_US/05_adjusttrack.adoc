@@ -1,0 +1,156 @@
+
+== Adjust Track
+
+
+
+=== Overview
+
+There will be times when tracks can drift due to lack of detail or introduction of small obstructions.  When this occurs, manual refinements can be made by using the AdjustTrack tool.
+
+AdjustTrack is primarily used for eradicating drift by utilizing the four-corner surface area to generate keyframable data to compensate.  It is generally not practical to use it to remove jitter.
+
+To achieve an adjusted track you would ideally line up the surface area where you want to place your insert or lock down your roto. In situations where you don&rsquo;t require an insertion you should place the corners of the surface area in distinctive locations, as you will need to refer to these locations when you add keyframes to correct the drift.
+
+
+
+=== Starting the Track Adjustment
+
+When you have the Surface where you want it to stay locked and are ready to refine the track, flip over into the AdjustTrack module by hitting the AdjustTrack tab.
+
+
+	
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/AdjustTrack_001.jpg[]	
+
+
+=== Reference Points
+
+Once you select the AdjustTrack tab, a key frame with four reference points is created. 
+
+NOTE: You should be on your desired master frame before selecting the AdjustTrack tab. The reference points can then be positioned on distinctive features, such that any drift in the track can be easily seen and corrected.
+
+
+	
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/IPAD_Screen_008.jpg[]	
+
+
+As you play though the sequence you will be able to manually adjust the position of each point as drift occurs.
+
+If your track is spot on, these reference points should line up properly throughout the shot. If you see a Reference Point drifting, that will indicate the track is drifting. Find the frame where the drift is worst and move the Reference Point back to the position it had in the Master Frame and the track will automatically be adjusted based on your correction.
+
+
+
+=== Reference Point Quality
+
+When you perform an adjust track and you begin to move a newly created reference point, you will notice the dashed lines which connect all of the reference points. These lines change in color to represent the quality of positioning of any given reference point. For best results keep reference points away from one another.
+
+
+	
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/SelectionGuide_001.jpg[]	
+
+When adjusting the track try to always get at least yellow but shoot for green for a more solid adjust track.
+
+The red lines indicate that this reference point position is a poor choice.
+
+
+	
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/IPAD_Screen_009.jpg[]	
+
+
+The green lines indicate that this reference point position is a good choice.
+
+
+	
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/IPAD_Screen_010.jpg[]	
+
+
+=== AdjustTrack with More than Four Reference Points
+
+Often there are times where your reference points are either obscured or exit frame. In AdjustTrack you have the ability to create multiple reference points per surface corner that can be positioned in alternate locations to handle these situations. Simply click the New Ref button to create a new reference point for the selected corner.
+
+You cannot keyframe the Surface — only the Reference Points. The original track and any refinements you make in AdjustTrack cause the Surface to move however.
+
+
+
+=== Working Backwards
+
+Every so often a shot will come along that is easier to track backwards than forwards. This is fairly simple when running the tracker backwards, but introduces some rather obtuse concepts when keyframing is involved. This is why there are two &ldquo;New Ref&rdquo; buttons provided. If you are working backwards and wish to set a new reference point, you will probably want to use the &ldquo;&lt;- New Ref&rdquo; button instead of the forward-thinking &ldquo;New Ref -&gt;&rdquo; button.
+	
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/AdjustTrackRef_001.jpg[]
+
+Because keyframing &ldquo;thinks&rdquo; forward, hitting &ldquo;&lt;-New Ref&rdquo; will not create new Master Reference points on the current frame, but will go backwards in time, looking for any existing keyframes and set new Master Reference points on the frame directly after. For example, if you decide to create a new backwards reference point at frame 20, a new master reference will be created at frame 21.
+
+Some people may be more comfortable doing this manually by moving the playhead themselves and using the traditional &ldquo;New Ref -&gt;&rdquo; button. Others who do a lot of tracking and find themselves working backwards often may find the backwards-thinking New Ref button helpful.
+
+
+=== About Master Reference Points (the red X)
+
+Every Reference Point has one frame in which its initial placement is determined without causing any adjustment to the track. This is called the Master Reference Point; if you step forward or backward in time you will notice the red X change to a red dot.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/AdjustTrackRefCorner_001.jpg[width="60%"]	
+
+The red X indicates that this particular frame is the starting point for calculating adjustments. Moving a Master Reference Point will NOT change the tracking data.
+
+Go ahead and experiment - move the Reference Point when it is a red X (a Master Reference Point). You will notice the Surface isn&rsquo;t adjusted at all. Step forward a frame and move the same point - this time the surface will move because you are now adjusting the track.
+
+
+=== Changing the Master Frame for a Reference Point
+
+By default, the frame in which you create a Reference Point is its Master Reference frame. This Master Reference can occur on a different frame for each reference point. You can change the Master Reference frame by selecting a Reference Point, going to the appropriate frame and hitting the &ldquo;Set Master&rdquo; button.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/AdjustTrackSetMaster_001.jpg[width="60%"]	
+
+You may set a new Master Reference Frame for all active points by hitting the Set Master All button.
+
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/AdjustTrackSetMasterALL_001.jpg[width="60%"]	
+
+
+=== Selecting Different Reference Points
+
+One method for selecting different reference points is to hit the &ldquo;Next&rdquo; button.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/AdjustTrackNEXT_001.jpg[width="60%"]	
+
+The next button simply cycles through the active reference points for that frame. More fine-grained control of reference points can be obtained through the Nudge control panel, described below.
+
+
+
+=== Deleting Reference Points
+
+Deleting Reference Points is done by selecting the point you wish to remove and hitting the delete key. If there are multiple Reference points on a particular corner, the preceding Reference Point will be extended through your time line until a new Reference point is encountered.
+
+
+
+=== Nudging Reference Points
+
+The Nudge section allows you to move Reference points in 0.1 pixel increments, much more fine grained than would be possible by dragging the points manually. You can easily select any active Reference Point by selecting one of the corner buttons in the Nudge section.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/AdjustTrackNUDGE_001.jpg[width="60%"]	
+
+If you hit the Auto button, a tracker will attempt to line up the selected Reference Point based on its position in the Master Reference frame. The Search Region Size and Maximum Motion parameters can be set in pixels in the Auto Nudge section.
+
+You can quickly select any corner by using the Corner selector buttons in the Nudge control panel. In the image below, the user is selecting the upper right corner in preparation for nudging operations.
+
+
+
+=== View Options
+
+The AdjustTrack tab has a View section for cleaning up your AdjustTrack workspace. Deselecting the Inactive Traces button will cause the display to hide the traces of the inactive Reference Points. This is helpful if you have a corner with numerous Reference Points offsetting it.
+
+Deselecting the Unselected Traces button will hide any Reference Point that is not selected.
+
+Finally, deselecting the Search Area button will hide the Search Region Size (in Yellow) and the Maximum Motion search area (in Pink).
+
+
+=== Tips for AdjustTrack
+
+*Adjust frames at the peak of drift*
+
+When you see a drift, carefully cycle through the timeline and look for where the motion starts to change direction. A frame before this, adjust your drift, then go halfway between your master frame and the adjusted frame to check for any further drift.  If you keep working by checking halfway between each keyframe you set, you will reduce the amount of keyframes required.
+
+
+
+*A huge amount of keyframes is not a good sign*
+
+If you end up with adjustment keyframes on a large amount of frames it may be better retry the track.  AdjustTrack is aimed to help reduce small anomalies and fix drift when a tracked corner has become obscured.  If you are fixing every second keyframe it means you have more than a simple drift.
+

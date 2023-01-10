@@ -1,0 +1,653 @@
+
+== Using the Mocha Pro Plugins [[mocha_plugin]]
+
+
+NOTE: In Mocha Pro 2019, the Mocha VR plugin is as a legacy plugin. This is because all Mocha VR features are now inside Mocha Pro.
+The Mocha VR category is maintained for compatibility with Mocha VR V5 plugin projects.
+
+The *Mocha Pro* plugins are separate from the standalone Mocha and can be applied as an effect directly onto layers in host applications.
+
+This reduces the need to swap out of your host application and streamlines getting data in and out of Mocha.
+
+The biggest advantage is you can set up layers and module settings in Mocha as normal, and then have the results render directly to the host timeline without having to export.
+
+In addition to the controls below, VR features also contain a separate area in the Module Renders section to control lens distortions without having to first open the *Mocha Pro* GUI:
+
+image:UserGuide/en_US/images/lens_VR_360_adobe_plugin_interface.jpg[]
+
+NOTE: The guides below are using examples of the *Mocha Pro* plugin. +
+For more information on using the 360 Features in the Mocha Pro Plugin, see <<mochavr_workflow, Using Mocha for 360 workflow>>
+
+=== 360 VR and Stereo Views Workflow [[mocha_plugin_stereo]]
+
+The Mocha Pro plugin supports different types of 360 and Stereo footage via the "Views" drop down:
+
+image:UserGuide/en_US/images/mochapro_ae_plugin_stereo_views.jpg[]
+
+The first 4 Views options are for non-360 footage:
+
+* *Mono:* This is the default option and works with standard (non-stereo) footage.
+* *Stereo (Separate eyes):* This takes two separate footage streams. When chosen, the option to choose another source for the right eye is enabled. If you are using the 'Stereo' option, you will need to select the "Stereo Output" view (Left or Right) that you want to apply output to.
+* *Top/Bottom:* Top/Bottom is also commonly known as "Over/Under". When used, Mocha will split the footage exactly in half horizontally and use the Top and Bottom halves for each eye. The output to the host will automatically double up to the split views.
+* *Left/Right:* Left/Right is also commonly known as "Side by Side". When used, Mocha will split the footage exactly in half vertically and use the Left and Right halves for each eye. The output to the hosr will automatically double up to the split views.
+
+Choosing one of the 360 options automatically sets your Mocha project to be Equirectangular 360. This will enable VR features:
+
+* *360 Mono:* Sets the project to non-stereo 360 footage.
+* *360 Stereo:* This takes two separate 360 footage streams. When chosen, the option to choose another source for the right eye is enabled. If you are using the 'Stereo' option, you will need to select the "Stereo Output" view (Left or Right) that you want to apply output to.
+* *360 Top/Bottom:* Top/Bottom is also commonly known as "Over/Under". When used, Mocha will split the footage exactly in half horizontally and use the Top and Bottom halves for each eye. The output to the host will automatically double up to the split views.
+* *360 Left/Right:* Left/Right is also commonly known as "Side by Side". When used, Mocha will split the footage exactly in half vertically and use the Left and Right halves for each eye. The output to the hosr will automatically double up to the split views.
+
+You can also choose to Swap the Left and Right eye input by checking the *Swap Views* checkbox.
+
+Some hosts will require different handling for Stereo sources:
+
+* *Nuke:* Nuke has native OFX stereo support and so only requires one Source input if you are using the "Stereo" option. If you have separate left and right eye sources, apply a "Join Views" node to combined them and feed the output into the Source input of the Mocha node.
+* *Vegas Pro:* Vegas Pro also has native stereo support. You will only see two options: Mono and Stereo. The "Stereo" option will read the native set up and feed in both eyes to the Mocha GUI.
+* *Media Composer:* Avid's native stereo support is _not_ supported by Mocha at present, so you can only use Top/Bottom or Left/Right combined stereo files.
+
+As you go through the user guide, you will see sections on how to apply Mocha techniques to your stereo footage where relevant.
+
+
+=== Applying the Mocha Plugin for Adobe After Effects
+
+The Mocha Pro Plugin for Adobe appears in the Effects menu like every other effect.
+Simply apply the effect to the layer you want to work with.
+
+image:UserGuide/en_US/images/mochapro_ae_plugin_full_interface.jpg[width="60%"]
+
+The general workflow for the Mocha Adobe Plugin is as follows:
+
+. Select any additional source layers you want to use inside Mocha
+. Launch Mocha. This will load a full version of the Mocha interface that you can use just like the standalone version.
+. Use Mocha as required and then close and save. No rendering is required inside Mocha unless you want to.
+. Choose whether you want to use mattes, renders or any other data from Mocha back in the plugin interface.
+
+==== Using the Mocha GUI
+
+Once you have applied the Mocha Pro effect, you can click on the Mocha button to launch the main interface.
+
+image:UserGuide/en_US/images/5.6.0_mochapro_ae_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of Mocha, with a few exceptions.
+First, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+Secondly you don't need to save out a project file (unless you want to export it). You just close and save the Mocha view when done and the project is saved inside the Effect like any other Adobe effect.
+
+By default, the starting timeline frame will always be zero, which will not affect your data generation back in After Effects.
+
+For users using timecodes instead of frame numbers in After Effects, the correct timecode offset will display inside the Mocha GUI.
+
+For further details on how to use anything inside the Mocha GUI, see the rest of the User Guide!
+
+NOTE: The Mocha Pro Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+==== Controlling Mattes
+
+Once you have tracked layers in Mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ae_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the Mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the current layer,
+* *Visible Layers:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes. You can also edit the Layer names in this window.
+* *Shape:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside Mocha.
+* *Invert Mask:* Inverts the currently visible mattes.
+* *Create AE Mask:* Creates native AE splines on the effect layer just like "Paste Mocha mask". This function is only available in After Effects.
+
+===== Stereo output only
+If you are using the 'Stereo' option in After Effects, you will need to select the "Stereo Output" view (Left or Right) that you want to apply output to.
+If you are using Top/Bottom or Left/Right, the output will automatically double up to the split views.
+
+==== Controlling Module Renders
+
+Once you have set up layers in Mocha, you can then control the renders for each module back in the plugin interface.
+Note that you do need to have set up and tracked the correct layers in order for a render to work back in the host.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ae_plugin_renders_section.jpg[width="60%"]
+
+You have the following options to render a module back in the plugin:
+
+* *Render:* A simple checkbox to turn renders on and off.
+* *Module:* The module render you want to see. You have options of 'Insert: Composite', 'Insert: Cutout', 'Remove', 'Stabilize', 'Lens: Distort', 'Lens: Undistort' and 'Reorient'
+* *Insert Layer:* For any inserts you want to apply to a layer surface and render back to the host.
+
+There are also parameters for controlling the view in Lens:Distortion rendering for VR 360 footage.
+
+See <<mochavr_workflow, Using Mocha for 360 workflow>> for more on how to use the VR Lens controls.
+
+===== Rendering Insert Layers
+
+To use the Insert Layer in Insert renders:
+
+. Pick the layer you want to use as an insert from the 'Insert Layer' drown down in the Mocha Pro effect
+. Launch the Mocha GUI
+. Create a layer (or pick an existing layer)
+. On the Layer Properties panel, choose the 'Insert Clip' dropdown
+. Select 'Insert Layer'
+
+image:UserGuide/en_US/images/mochapro_gui_plugin_insert_layer.jpg[]
+
+Your Insert should then appear inside the layer where you have placed your surface.
+
+==== Controlling Tracking Data
+
+If you have a tracked layer in Mocha you can see the output of its surface back in the After Effects interface.
+Each point in the Tracking Data section is a point from the layer surface that automatically updates when you modify it inside Mocha.
+
+To choose a layer to create tracking data from, click the 'Create Track Data' button in the Tracking Data section of the plugin.
+
+image:UserGuide/en_US/images/5.2.0_mochapro_ae_plugin_tracking_data_section.jpg[]
+
+Then choose ether the name or the cog of the layer you want to read tracking data from in the dialog that appears.
+
+You can only choose one layer at a time.
+
+image:UserGuide/en_US/images/mochapro_ae_plugin_tracking_data_dialog.jpg[width="60%"]
+
+Once you click 'OK', the plugin will generate keyframes to populate the tracking parameters in the plugin. You can then use this data to copy to other layers, or link via expressions.
+
+This option is only available in the After Effects version of the plugin.
+
+WARNING: Generating keyframe data can take some time for very long shots. You can cancel generation at any time when the progress bar appears.
+
+==== Applying Tracking Data Exports to Other layers
+
+The plugin interface also allows you to apply tracking data to other layers without needing to export from the Mocha GUI.
+Do do this, you generate the tracking data from a layer, as described above in Controlling Tracking Data.
+
+You can then choose an export option at the bottom of the Tracking Data section:
+
+* *Corner Pin:* A standard corner pin effect
+* *Corner Pin:* (Support Motion Blur): A corner pin distortion with separate scale, rotation and position.
+* *CC Power Pin:* The CC Power Pin Effect
+* *Transform:* Scale, position and rotation
+
+Clicking 'Apply Export' then copies the information to the specified layer.
+
+
+=== Applying the Mocha Plugin for Adobe Premiere
+
+The Mocha Pro Plugin for Adobe appears in the Effects menu like every other effect.
+Simply apply the effect to the layer you want to work with.
+
+image:UserGuide/en_US/images/mochapro_premiere_plugin_full_interface.jpg[width="60%"]
+
+The general workflow for the Mocha Adobe Plugin is as follows:
+
+. Select any additional source layers you want to use inside Mocha
+. Launch Mocha. This will load a full version of the Mocha interface that you can use just like the standalone version.
+. Use Mocha as required and then close and save. No rendering is required inside Mocha unless you want to.
+. Choose whether you want to use mattes, renders or any other data from Mocha back in the plugin interface.
+
+NOTE: The Mocha Pro Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+==== Using the Mocha GUI
+
+Once you have applied the Mocha Pro effect, you can click on the Mocha button to launch the main interface.
+
+image:UserGuide/en_US/images/mochapro_premiere_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of Mocha, with a few exceptions.
+Firstly, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+Secondly you don't need to save out a project file (unless you want to export it). You just close and save the Mocha view when done and the project is saved inside the Effect like any other Adobe effect.
+For further details on how to use anything inside the Mocha GUI, see the rest of the User Guide!
+
+==== Controlling Mattes
+
+Once you have tracked layers in Mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image:UserGuide/en_US/images/mochapro_premiere_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the Mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the current layer,
+* *Visible Layers:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes. You can also edit the Layer names in this window.
+* *Shape:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside Mocha.
+* *Invert Mask:* Inverts the currently visible mattes.
+
+==== Controlling Module Renders
+
+Once you have set up layers in Mocha, you can then control the renders for each module back in the plugin interface.
+Note that you do need to have set up and tracked the correct layers in order for a render to work back in the host.
+
+image:UserGuide/en_US/images/mochapro_premiere_plugin_renders_section.jpg[width="60%"]
+
+You have the following options to render a module back in the plugin:
+
+* *Render:* A simple checkbox to turn renders on and off.
+* *Module:* The module render you want to see. You have options of 'Insert: Composite', 'Insert: Cutout', 'Remove', 'Stabilize', 'Lens: Distort' and 'Lens: Undistort'.
+* *Insert Layer:* For any inserts you want to apply to a layer surface and render back to the host.
+
+There are also parameters for controlling the view in Lens:Distortion rendering for VR 360 footage.
+
+See <<mochavr_workflow, Using Mocha for 360 workflow>> for more on how to use the VR Lens controls.
+
+===== Rendering Insert Layers
+
+To use the Insert Layer in Insert renders:
+
+. Pick the video track you want to use as an insert from the 'Insert Layer' drown down in the Mocha Pro effect
+. Launch the Mocha GUI
+. Create a layer (or pick an existing layer)
+. On the Layer Properties panel, choose the 'Insert Clip' dropdown
+. Select 'Insert Layer'
+
+image:UserGuide/en_US/images/mochapro_gui_plugin_insert_layer.jpg[width="60%"]
+
+Your Insert should then appear inside the layer where you have placed your surface.
+
+<<<
+
+=== Applying the Mocha Plugin for Avid Media Composer
+
+IMPORTANT: Due to extensive frame access by the Mocha plugin, it is recommended that you use Avid storage media (i.e. DNxHD) when working, rather than linked files. +
+(Use of linked files which use codecs such as H.264 will significantly slow down render time as such media is not designed for random access.)
+
+The Mocha Pro Plugin for Adobe appears in the Effects menu like every other effect.
+Simply apply the effect to the layer you want to work with.
+
+image:UserGuide/en_US/images/5.6.0_mochapro_avid_plugin_full_interface.jpg[width="60%"]
+
+The general workflow for the Mocha Adobe Plugin is as follows:
+
+. Select any additional source layers you want to use inside Mocha
+. Launch Mocha. This will load a full version of the Mocha interface that you can use just like the standalone version.
+. Use Mocha as required and then close and save. No rendering is required inside Mocha unless you want to.
+. Choose whether you want to use mattes, renders or any other data from Mocha back in the plugin interface.
+
+NOTE: The Mocha Pro Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+
+==== Using the Mocha GUI
+
+Once you have applied the Mocha Pro effect, you can click on the Mocha button to launch the main interface.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_avid_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of Mocha, with a few exceptions.
+Firstly, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+Secondly you don't need to save out a project file (unless you want to export it). You just close and save the Mocha view when done and the project is saved inside the Effect like any other AVX effect.
+For further details on how to use anything inside the Mocha GUI, see the rest of the User Guide!
+
+==== Controlling Mattes
+
+Once you have tracked layers in Mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_avid_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the Mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the current layer,
+* *Visible Layers:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes. You can also edit the Layer names in this window.
+* *Visible Layers Dropdown:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside Mocha.
+* *Invert Matte:* Inverts the currently visible mattes.
+
+==== Controlling Module Renders
+
+Once you have set up layers in Mocha, you can then control the renders for each module back in the plugin interface.
+Note that you do need to have set up and tracked the correct layers in order for a render to work back in the host.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_avid_plugin_renders_section.jpg[width="60%"]
+
+You have the following options to render a module back in the plugin:
+
+* *Render:* A simple checkbox to turn renders on and off.
+* *Module:* The module render you want to see. You have options of 'Insert: Composite', 'Insert: Cutout', 'Remove', 'Stabilize', 'Lens: Distort' and 'Lens: Undistort'.
+* *Insert Layer:* For any inserts you want to apply to a layer surface and render back to the host. Choose from the current layer or below the current video track.
+
+There are also parameters for controlling the view in Lens:Distortion rendering for VR 360 footage.
+
+See <<mochavr_workflow, Using Mocha for 360 workflow>> for more on how to use the VR Lens controls.
+
+
+IMPORTANT: Processing larger frame sizes and more complex rendering in Mocha may take a long time per frame. +
+When a frame render exceeds a certain interval in Media Composer, a BlipPlayer error can occur. +
+If you see this message, you should render the effect prior to playing back, or preview the render inside the Mocha UI before rendering back on the timeline.
+
+===== Rendering Insert Layers
+
+To use the Insert Layer in Insert renders:
+
+. Pick the video track you want to use as an insert from the 'Insert Layer' drown down in the Mocha Pro effect. This will most commonly be "1st Below" the current layer with the effect applied.
+. Launch the Mocha GUI
+. Create a layer (or pick an existing layer)
+. On the Layer Properties panel, choose the 'Insert Clip' dropdown
+. Select 'Insert Layer'
+
+image:UserGuide/en_US/images/mochapro_gui_plugin_insert_layer.jpg[width="60%"]
+
+Your Insert should then appear inside the layer where you have placed your surface.
+
+==== Stereo Workflow
+
+To work on a stereo shot in Media Composer:
+
+. Import a Top/Bottom or Left/Right combined stereo file
+. Choose the stereo type from the 'Views' drop down
+. Open Mocha, and the views will be mapped automatically to the left and right views.
+
+IMPORTANT: Avid's native stereo support is _not_ supported by Mocha at present, so you can only use Top/Bottom or Left/Right combined stereo files.
+
+
+=== Applying the Mocha OFX Plugin
+
+NOTE: The OFX version of the Mocha Plugin is fully supported in Nuke, Fusion, HitFilm Pro, Vegas Pro and Silhouette.
+
+If you have a license for the OFX version it will work in any of the OFX hosts listed below.
+Keep in mind that while the Mocha OFX plugin is designed to be used in multiple applications, it does not support all OFX hosts.
+
+In many cases some functionality may be possible for unsupported hosts, but there is no guarantee of functionality or stability, so please take care when experimenting!
+
+
+=== Adding the Mocha Plugin inside Autodesk Flame
+
+Inside Flame, the Mocha Pro Plugin for OFX appears in the OpenFX Plugin loader panel like every other OFX plugin.
+
+To get full use of the Mocha Pro plugin, we recommend using it as a batch effect.
+
+
+. Click on the FX button and then click `Create Batch FX`
++
+image::UserGuide/en_US/images/mochapro_ofx_flame_batchfx.jpg[width="60%"]
++
+. Drag a new OpenFX plugin into the Batch FX graph
++
+image::UserGuide/en_US/images/mochapro_ofx_flame_nodegraph.jpg[width="60%"]
++
+. In the OpenFX plugin panel, click 'Load Plugin' and navigate to 'Boris FX Mocha' and choose 'Mocha Pro'
++
+image::UserGuide/en_US/images/mochapro_ofx_flame_plugin_library.jpg[width="60%"]
++
+. Once loaded into the Effects panel, you can just click the 'Launch Mocha UI' button to open the Mocha Pro interface.
++
+image::UserGuide/en_US/images/mochapro_ofx_flame_plugin_full_interface.jpg[width="60%"]
+
+=== Adding the Mocha Plugin inside Blackmagic Design Fusion Studio
+
+Inside Fusion Studio, the Mocha Pro Plugin for OFX appears in the Tool menu like every other effect.
+Just choose 'Boris FX Mocha' > 'Mocha Pro'.
+
+_Mocha Pro node in Fusion (Footage courtesy of Chris Heuer):_
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ofx_fusion_plugin_flow_graph.jpg[width="60%"]
+
+Once loaded into the flow graph, simply plug the image node you want to work with into the 'Source' input of the Mocha Pro effect node.
+
+image:UserGuide/en_US/images/5.6.0_mochapro_ofx_fusion_plugin_full_interface.jpg[width="60%"]
+
+
+=== Adding the Mocha Plugin inside The Foundry Nuke
+
+Inside Nuke, the Mocha Pro Plugin for OFX appears in the toolbar menu like every other effect.
+
+You can also call the Mocha Pro effect from the Tab key by searching for 'Mocha Pro' or right-click and choose 'Boris FX Mocha' > 'Mocha Pro'.
+
+
+_Mocha Pro node in Nuke node graph (Footage courtesy of Chris Heuer):_
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ofx_nuke_plugin_node_graph.jpg[width="60%"]
+
+Once loaded into the node graph, simply plug the image node you want to work with into the 'Source' input of the Mocha Pro effect node.
+
+image:UserGuide/en_US/images/5.6.0_mochapro_ofx_nuke_plugin_full_interface.jpg[width="60%"]
+
+NOTE: Nuke has native OFX stereo support and so only requires one Source input if you are using the "Stereo" option. +
+If you have separate left and right eye sources, apply a "Join Views" node to combined them and feed the output into the Source input of the Mocha node.
+
+=== Adding the Mocha Plugin inside Blackmagic Fusion Studio
+
+Inside Fusion Studio, the Mocha Pro Plugin for OFX appears in the Tool menu like every other effect.
+Just choose 'Boris FX Mocha' > 'Mocha Pro'.
+
+_Mocha Pro node in Fusion (Footage courtesy of Chris Heuer):_
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ofx_fusion_plugin_flow_graph.jpg[width="60%"]
+
+Once loaded into the flow graph, simply plug the image node you want to work with into the 'Source' input of the Mocha Pro effect node.
+
+image:UserGuide/en_US/images/5.6.0_mochapro_ofx_fusion_plugin_full_interface.jpg[width="60%"]
+
+
+=== Adding the Mocha Plugin inside Silhouette
+
+In Silhouette, Mocha Pro Plugin for OFX appears in the nodes menu like every other effect.
+
+_Mocha Pro node in Silhouette:_
+
+image:UserGuide/en_US/images/5.2.1_mochapro_ofx_silhouette_plugin_trees_window.jpg[width="40%"]
+
+Once loaded into the tree window, simply plug the image node you want to work with into the 'Source' input of the Mocha Pro effect node.
+
+image:UserGuide/en_US/images/5.6.0_mochapro_ofx_silhouette_plugin_full_interface.jpg[width="40%"]
+
+==== Linear Workflow
+
+Silhouette includes Linear support for the Mocha plugin.
+If you are using rec709 8-bit images, you need to enable the 'Mocha > Linearize Images In Mocha Pro' preference in Silhouette so images look correct in the Mocha GUI.
+When using EXR or Cineon images, this preference should remain off.
+
+You can also use the built-in OCIO preferences in the Mocha Viewer Preferences.
+
+=== Adding the Mocha Plugin inside Vegas Pro
+
+Inside Vegas Pro, the Mocha OFX Plugin appears under 'Boris FX Mocha' in the Plug-in Chooser dialog for the following effect chains:
+
+* *Event FX:* Click the effect icon on the video event segment you want and then select the Mocha effect and click OK.
+* *Track FX:* Click the effect icon on the appropriate video track and then select the Mocha effect and click OK.
+* *Track Composite Mode:* Choose 'Custom...' in the Compositing Mode options then select the Mocha effect and click OK.
+
+_Mocha Pro node in Vegas Plug-in Chooser:_
+
+image:UserGuide/en_US/images/5.6.0_mochapro_ofx_vegas_plugin_chooser.jpg[width="40%"]
+
+Once loaded, you can begin with the 'Launch Mocha UI' button at the top of the effect panel.
+
+image:UserGuide/en_US/images/5.6.0_mochapro_ofx_vegas_plugin_full_interface.jpg[width="40%"]
+
+==== Using the Insert Layer clip in Vegas [[vegas_insert_method]]
+
+Mocha uses two sources from the timeline for inserting clips: The main background image source to track from and a secondary image source to insert into a tracked layer.
+
+To use a secondary source input in Vegas for Insert clips you need to composite your tracks together:
+
+. Set the Insert clip you want to use as the parent layer and the plate you want the insert to be rendered over as the child
+. Click the Track Compositing mode on the parent insert layer and select 'Custom...' +
+image:UserGuide/en_US/images/5.6.0_mochapro_ofx_vegas_plugin_insert_layer_setup.jpg[width="60%"]
+. Select the Mocha effect and click OK
+. Launch the Mocha GUI in the Composite Mode panel
+
+This will then load the secondary source into any layer Insert clip dropdown as a clip called 'Insert Layer'. See <<rendering_insert_layers, Rendering Insert Layers>> below.
+
+NOTE: Vegas Pro has native stereo support. When working with stereo in Mocha you will only see two options: Mono and Stereo. The "Stereo" option will read the native set up and feed in both eyes to the Mocha GUI.
+
+
+=== Basic workflow for the Mocha OFX Plugin
+
+One your source clip is hooked up to you Mocha Pro Effect, the general workflow for the Mocha OFX Plugin is as follows:
+
+. Select any additional source you want to use as an insert in Mocha and plug it into the 'Insert' input (See <<rendering_insert_layers, Rendering Insert Layers>> below.)
+. Launch the Mocha UI using the button at the top of the panel. This will load a full version of the Mocha interface that you can use just like the standalone version.
+. Use Mocha as required and then close and save. No rendering is required inside Mocha unless you want to.
+. Choose whether you want to use mattes, renders or any other exported data from Mocha back in the plugin interface.
+
+NOTE: The Mocha Pro Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+Plugin interface examples below use the Nuke UI.
+
+=== Using the Mocha GUI
+
+Once you have applied the Mocha Pro effect, you can click on the 'Launch Mocha UI' button to launch the main interface.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ofx_nuke_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of Mocha, with a few exceptions.
+Firstly, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+Secondly you don't need to save out a project file (unless you want to export it). You just close and save the Mocha view when done and the project is saved inside the effect.
+For further details on how to use anything inside the Mocha GUI, see the rest of the User Guide!
+
+=== Controlling Mattes
+
+Once you have tracked layers in Mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ofx_nuke_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the Mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the source node.
+* *Visible Layers Button:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes. You can also edit the Layer names in this window.
+* *Visible layers Dropdown:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside Mocha.
+* *Invert Matte:* Inverts the currently visible mattes.
+
+=== Controlling Module Renders [[ofx_module_renders]]
+
+Once you have set up layers in Mocha, you can then control the renders for each module back in the plugin interface.
+Note that you do need to have set up and tracked the correct layers in order for a render to work back in the host.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ofx_nuke_plugin_renders_section.jpg[width="60%"]
+
+You have the following options to render a module back in the plugin:
+
+* *Render:* A simple checkbox to turn renders on and off.
+* *Module:* The module render you want to see. You have options of 'Insert: Composite', 'Insert: Cutout', 'Remove', 'Stabilize', 'Reorient', 'Lens: Distort' and 'Lens: Undistort'.
+
+There are also parameters for controlling the view in Lens:Distortion rendering for VR 360 footage.
+
+See <<mochavr_workflow, Using Mocha for 360 workflow>> for more on how to use the VR Lens controls.
+
+
+=== Rendering Insert Layers [[rendering_insert_layers]]
+
+You can use secondary clips in the host application to render tracked inserts into your shots.
+See the User Guide Chapter on the <<insert_module, Insert Module>> for more details on manipulating and warping inserts.
+
+To use the Insert input from your host application in Insert renders:
+
+. Pick the image you want as an insert and make it available for the Mocha plugin to use:
+** For node based compositors you can plug the insert image into the 'Insert' input on the the Mocha Pro effect node.
+** In Vegas you need to make the insert image the parent in compositing mode. See <<vegas_insert_method, Using the Insert Layer clip in Vegas>> for this method.
+** In HitFilm, you select the insert image from one of your other layers in the comp listed in the "Insert" dropdown
+. Launch the Mocha GUI
+. Create a layer (or pick an existing layer)
+. On the Layer Properties panel, choose the 'Insert Clip' dropdown
+. Select 'Insert Layer'
+
+image:UserGuide/en_US/images/mochapro_gui_plugin_insert_layer.jpg[]
+
+Your Insert should then appear inside the layer where you have placed your surface.
+
+Alternatively you can import an image or sequence directly to the plugin:
+
+. Launch the Mocha GUI
+. Create a layer (or pick an existing layer)
+. On the Layer Properties panel, choose the 'Insert Clip' dropdown
+. Select 'Import'
+. Import an image or image sequence
+
+The imported Insert should then appear inside the layer where you have placed your surface.
+
+=== Dealing with Alpha Channel Input and Output
+
+In cases where your input source has an alpha channel, you may wish to change the Alpha view inside the Mocha GUI.
+
+image:UserGuide/en_US/images/5.0.0_mochapro_ofx_nuke_plugin_alpha_view.jpg[]
+
+You can either turn Alpha off entirely by toggling off the button, or choose from one of the following options:
+
+* *Auto alpha:* Reads in alpha if it is not opaque or premultiplied. This is the default setting.
+* *Source alpha:* This option shows the alpha as given from the source.
+
+Auto alpha may be necessary when working with some source inputs in Nuke.
+
+When rendering back out to the host, there are cases where you may also need to premultiply the alpha using the premultiply options in the plugin interface.
+
+In these cases you can choose an option from the 'Premultiply' dropdown:
+
+* *Auto:* Premultiplies based on the original source input
+* *On:* Always premultiply output
+* *Off:* Never premultiply output
+
+You can also choose to premultiply using standard premultiply nodes.
+
+==== Stereo Workflow
+
+To work on a stereo shot in your OFX host:
+
+. Import separate stereo views, a Top/Bottom or Left/Right combined stereo file
+. Choose the stereo type from the 'Views' drop down: 'Top/Bottom', 'Left/Right' or 'Stereo'
+. If you are using the 'Stereo' option, make sure you are applying the effect to the Left eye footage and choose your right-eye source input
+. Open Mocha, and the views will be mapped automatically to the left and right views.
+
+NOTE: Some OFX hosts handle stereo support differently. See your specific host notes in this chapter for instructions. Especially Nuke and Vegas.
+
+=== Applying the Mocha HitFilm or Mocha Pro Plugin inside HitFilm
+
+We now include a light version of Mocha, called Mocha Hitfilm, as a plugin in HitFilm Pro 2017 onwards. This includes:
+
+* Tracking and roto export for HitFilm
+* 3D Camera solving
+* Matte rendering
+
+However, you can also use the Mocha Pro OFX plugins in the HitFilm interface.
+
+==== Adding the Mocha Plugin to a layer
+
+To add Mocha, simply locate it in the Effects panel like any other effect and drag it onto your layer.
+
+_Mocha HitFilm Effect Controls in a HitFilm comp:_
+
+image:UserGuide/en_US/images/5.1.1_mocha_hitfilm_plugin_full_interface.jpg[width="60%"]
+
+==== Basic workflow for the Mocha Plugin in HitFilm
+
+Once your layer is hooked up to your Mocha Effect, the general workflow for the Mocha Plugin is as follows:
+
+. Launch the Mocha UI using the 'Launch Mocha UI' button at the top of the panel. This will load a full version of the Mocha interface that you can use just like the standalone version.
+. Use Mocha as required
+. Export any data if needed (tracks, shapes or camera solve data) then close and save
+. Choose any mattes you want to use from Mocha back in the plugin interface
+. If you are using Mocha Pro, choose the renders you wish to use from the "Module Renders" section and check "Render"
+
+NOTE: The Mocha HitFilm Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+==== Using the Mocha GUI
+
+Once you have applied the Mocha effect, you can click on the 'Launch Mocha UI' button to launch the main interface.
+
+image:UserGuide/en_US/images/5.1.1_mocha_hitfilm_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of Mocha, with a few exceptions.
+
+First, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+
+Secondly, you don't need to save out a project file (unless you want to export it). You just close and save the Mocha view when done and the project is saved inside the effect.
+
+For further details on how to use anything inside the Mocha GUI, see the rest of the User Guide!
+
+==== Controlling Mattes
+
+Once you have tracked layers in Mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image:UserGuide/en_US/images/5.1.1_mocha_hitfilm_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the Mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the source node.
+* *Visible Layers Button:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes. You can also edit the Layer names in this window.
+* *Visible layers Dropdown:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside Mocha.
+* *Invert Matte:* Inverts the currently visible mattes.
+
+==== Controlling Mocha renders in HitFilm
+
+If you are using the Mocha Pro version of the plugin, controlling renders is exactly like the standard OFX rendering controls.
+
+See <<ofx_module_renders, Controlling Renders>> and  <<rendering_insert_layers, Rendering Insert Layers>> in the section above.
+
+
+=== Loading Projects containing the Mocha VR Plugin
+
+When you load a project that contains the old Mocha VR plugin, you will notice that Mocha VR is labelled as "Legacy".
+This is because all Mocha VR features have been rolled into Mocha Pro and a Mocha VR plugin stub is kept to avoid breaking compatibility with your old projects.
+
+When you want to start a new VR project, we highly recommend using the Mocha Pro plugin rather than the legacy Mocha VR plugin, as this compatibility feature may be removed in future versions.
+
+See (<<mocha_plugin_stereo, 360 VR and Stereo Views Workflow>> ) above for how to set the 360 VR modes in new Mocha Pro projects.

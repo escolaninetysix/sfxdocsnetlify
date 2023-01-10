@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.2. AbstractCameraSolveExporter &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="3. mocha.exporters" href="index.html" />
+    <link rel="next" title="3.3. AbstractShapeDataExporter" href="AbstractShapeDataExporter.html" />
+    <link rel="prev" title="3.1. Global functions" href="GlobalFunctions.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="AbstractShapeDataExporter.html" title="3.3. AbstractShapeDataExporter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="GlobalFunctions.html" title="3.1. Global functions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3. mocha.exporters</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.exporters"></span><div class="section" id="abstractcamerasolveexporter">
+<span id="id1"></span><h1>3.2. AbstractCameraSolveExporter<a class="headerlink" href="#abstractcamerasolveexporter" title="Permalink to this headline">¶</a></h1>
+<p><strong>Inherited by:</strong> <a class="reference internal" href="CameraSolveExporter.html#camerasolveexporter"><em>CameraSolveExporter</em></a></p>
+<div class="section" id="synopsis">
+<h2>3.2.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>3.2.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.exporters.AbstractCameraSolveExporter.register" title="mocha.exporters.AbstractCameraSolveExporter.register"><tt class="xref py py-meth docutils literal"><span class="pre">register</span></tt></a> ()</li>
+<li>def <a class="reference internal" href="#mocha.exporters.AbstractCameraSolveExporter.unregister" title="mocha.exporters.AbstractCameraSolveExporter.unregister"><tt class="xref py py-meth docutils literal"><span class="pre">unregister</span></tt></a> ()</li>
+</ul>
+</div>
+<div class="section" id="virtual-functions">
+<h3>3.2.1.2. Virtual functions<a class="headerlink" href="#virtual-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.exporters.AbstractCameraSolveExporter.do_export" title="mocha.exporters.AbstractCameraSolveExporter.do_export"><tt class="xref py py-meth docutils literal"><span class="pre">do_export</span></tt></a> (project, layers, camera_file_path, time, views)</li>
+<li>def <a class="reference internal" href="#mocha.exporters.AbstractCameraSolveExporter.error_string" title="mocha.exporters.AbstractCameraSolveExporter.error_string"><tt class="xref py py-meth docutils literal"><span class="pre">error_string</span></tt></a> ()</li>
+</ul>
+</div>
+<div class="section" id="static-functions">
+<h3>3.2.1.3. Static functions<a class="headerlink" href="#static-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.exporters.AbstractCameraSolveExporter.registered_exporters" title="mocha.exporters.AbstractCameraSolveExporter.registered_exporters"><tt class="xref py py-meth docutils literal"><span class="pre">registered_exporters</span></tt></a> ()</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>3.2.1.4. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.exporters.AbstractCameraSolveExporter.exports_multiple_views" title="mocha.exporters.AbstractCameraSolveExporter.exports_multiple_views"><tt class="xref py py-attr docutils literal"><span class="pre">exports_multiple_views</span></tt></a> [read-only] of bool</li>
+<li>property <a class="reference internal" href="#mocha.exporters.AbstractCameraSolveExporter.registered" title="mocha.exporters.AbstractCameraSolveExporter.registered"><tt class="xref py py-attr docutils literal"><span class="pre">registered</span></tt></a> [read-only] of bool</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>3.2.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Abstract camera solve exporter class. Inherit the class to create own exporter formats.
+Method do_export must be overloaded.</div></blockquote>
+<dl class="class">
+<dt id="mocha.exporters.AbstractCameraSolveExporter">
+<em class="property">class </em><tt class="descclassname">mocha.exporters.</tt><tt class="descname">AbstractCameraSolveExporter</tt><span class="sig-paren">(</span><em>name</em>, <em>extension</em><span class="optional">[</span>, <em>number_of_data_streams=1</em><span class="optional">[</span>, <em>export_multiple_views=false</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractCameraSolveExporter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>unicode</em>) &#8211; name of the exporter which will be displayed in the Export Camera Data dialog drop-down list. Should contain a file mask in brackets e.g. Foo (<a href="#id2"><span class="problematic" id="id3">*</span></a>.bar)</li>
+<li><strong>extension</strong> (<em>unicode</em>) &#8211; additional extension.</li>
+<li><strong>number_of_data_streams</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.uint</span></tt>) &#8211; number of result files. If it equals to 1 then the Copy to Clipboard button will be enabled.</li>
+<li><strong>export_multiple_views</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.bool</span></tt>) &#8211; whether the exporter supports multiple views.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Create an exporter instance. The instance ownership is delegated to Python. To register the exporter inside
+mocha exporters system, call <cite>register()</cite> method. Before deleting the object unregisters itself.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.exporters.AbstractCameraSolveExporter.do_export">
+<tt class="descclassname">AbstractCameraSolveExporter.</tt><tt class="descname">do_export</tt><span class="sig-paren">(</span><em>project</em>, <em>layers</em>, <em>camera_file_path</em>, <em>time</em>, <em>views</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractCameraSolveExporter.do_export" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">Dictionary with keys of type QString and values of type QByteArray.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>project</strong> (<a class="reference internal" href="../project/Project.html#mocha.project.Project" title="mocha.project.Project"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Project</span></tt></a>) &#8211; mocha project instance.</li>
+<li><strong>layers</strong> (<em>list of Layer</em>) &#8211; list of layers to export.</li>
+<li><strong>camera_file_path</strong> (<em>unicode</em>) &#8211; absolute file path to save which has been chosen by a user in a file dialog.</li>
+<li><strong>time</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide2.QtCore.double</span></tt>) &#8211; frame index.</li>
+<li><strong>views</strong> (<em>list of View</em>) &#8211; list of views to export.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict of {file_name: QByteArray}</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Performs main exporter operations. Must return a map (<tt class="docutils literal"><span class="pre">dict</span></tt>) of absolute file path and appropriate contents.
+The exporter should not create those files.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.exporters.AbstractCameraSolveExporter.error_string">
+<tt class="descclassname">AbstractCameraSolveExporter.</tt><tt class="descname">error_string</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractCameraSolveExporter.error_string" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">unicode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.exporters.AbstractCameraSolveExporter.register">
+<tt class="descclassname">AbstractCameraSolveExporter.</tt><tt class="descname">register</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractCameraSolveExporter.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers the exporter instance inside mocha exporters system.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mocha.exporters.AbstractCameraSolveExporter.registered_exporters">
+<em class="property">static </em><tt class="descclassname">AbstractCameraSolveExporter.</tt><tt class="descname">registered_exporters</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractCameraSolveExporter.registered_exporters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Dictionary with keys of type QString and values of type CameraSolveExporter.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">dict</span></tt> of {<tt class="docutils literal"><span class="pre">str</span></tt>: <tt class="xref py py-class docutils literal"><span class="pre">CameraSolveExporter</span></tt>}</td>
+</tr>
+</tbody>
+</table>
+<p>Returns a dict of registered exporters including custom user exporters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.exporters.AbstractCameraSolveExporter.unregister">
+<tt class="descclassname">AbstractCameraSolveExporter.</tt><tt class="descname">unregister</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractCameraSolveExporter.unregister" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unregisters the exporter instance inside mocha exporters system.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.AbstractCameraSolveExporter.exports_multiple_views">
+<tt class="descclassname">AbstractCameraSolveExporter.</tt><tt class="descname">exports_multiple_views</tt><a class="headerlink" href="#mocha.exporters.AbstractCameraSolveExporter.exports_multiple_views" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Whether the exporter supports multiple views.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.AbstractCameraSolveExporter.registered">
+<tt class="descclassname">AbstractCameraSolveExporter.</tt><tt class="descname">registered</tt><a class="headerlink" href="#mocha.exporters.AbstractCameraSolveExporter.registered" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Whether the exporter registered.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.2. AbstractCameraSolveExporter</a><ul>
+<li><a class="reference internal" href="#synopsis">3.2.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">3.2.1.1. Functions</a></li>
+<li><a class="reference internal" href="#virtual-functions">3.2.1.2. Virtual functions</a></li>
+<li><a class="reference internal" href="#static-functions">3.2.1.3. Static functions</a></li>
+<li><a class="reference internal" href="#properties">3.2.1.4. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">3.2.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="GlobalFunctions.html"
+                        title="previous chapter">3.1. Global functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="AbstractShapeDataExporter.html"
+                        title="next chapter">3.3. AbstractShapeDataExporter</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/exporters/AbstractCameraSolveExporter.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="AbstractShapeDataExporter.html" title="3.3. AbstractShapeDataExporter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="GlobalFunctions.html" title="3.1. Global functions"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >3. mocha.exporters</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

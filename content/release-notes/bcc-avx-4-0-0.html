@@ -1,0 +1,524 @@
+{
+   "date": "2009-05-01T16:36:37-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC AVX - 4.0.0"
+}
+
+<p class="s5">
+ <a name="bookmark1">
+ </a>
+ Introduction
+ <a name="bookmark27">
+ </a>
+</p>
+<p>
+ This guide contains information on features that are new to the Version 4.0 release of Boris Continuum Complete AVX (BCC AVX). This document only provides an overview of the many new features. For more detailed information, see your Boris Continuum Complete AVX User Guide. The Boris Continuum Complete AVX User Guide is available as an online pdf file found on your Boris CD-ROM.
+</p>
+<p>
+ The Boris CD-ROM also includes PDF Release Notes, Tutorials and Understanding OpenGL documentation. Consult these documents for the latest information.
+</p>
+<p class="s5">
+ <a name="bookmark2">
+ </a>
+ New Integration Features
+ <a name="bookmark28">
+ </a>
+ ‌
+</p>
+<p>
+ The following new integration features have been added to BCC AVX version 4.0.
+</p>
+<p class="s7">
+ <a name="bookmark3">
+ </a>
+ Working with 8-bit and 16-bit Color Processing
+ <a name="bookmark29">
+ </a>
+ ‌
+</p>
+<p>
+ BCC AVX now works with Avid set to 8-bit-per-channel and 16-bit-per-channel color processing; 16-bit mode makes a larger range of colors available. To render BCC filters in 16 bit, set this preference in the Render tab of Avid’s Media Creation Settings window. See your Avid documentation for details on setting the color depth options.
+</p>
+<p>
+ When you work with high-resolution images that use a narrow range of colors, such as gradients for film effects or HDTV output, 16-bit mode preserves more detail and transitions between colors display less banding.
+</p>
+<p>
+ You can choose to work in 8-bit or 16-bit-per-channel mode for each project. BCC AVX automatically uses the color depth that is set in your Avid preferences. Some filters do not support 16-bit color, for example Star Matte.
+</p>
+<p>
+  
+</p>
+<p>
+ The OpenGL filters (BCC Glare, BCC Glint, BCC Glitter, BCC Lens Flare, BCC Lens Flare Advanced and 3D Extruded Image Shatter) are 8-bit only. They still render if your system is set to 16 bit. However, they will render as 8 bit.
+</p>
+<p class="s7">
+ <a name="bookmark4">
+ </a>
+ Working with Avid’s Advanced Keyframing Model
+ <a name="bookmark30">
+ </a>
+ ‌
+</p>
+<p>
+ The AVX 2.0 architecture allows plug-ins to take advantage of Avid’s advanced keyframe model. The advanced keyframe model lets you set keyframes for individual parameters in the Effect Editor window. Instead of being limited to Linear interpolation, you can now set a keyframe’s interpolation to Shelf, Linear, Spline or Bézier.
+</p>
+<p>
+  
+</p>
+<p>
+ For details on Avid’s advanced keyframe model, see your Avid documentation.
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0041.png">
+  <img class="alignnone size-full wp-image-4961" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0041.png" alt="Image_004" width="347" height="409">
+ </a>
+</p>
+<p>
+  
+</p>
+<p class="s8">
+ Effect track
+</p>
+<p class="s8">
+ Parameter Group track
+</p>
+<p class="s8">
+ Parameter track
+</p>
+<p class="s8">
+ Expanded Keyframe graph for a parameter
+</p>
+<p class="s8">
+ Disclosure triangle
+</p>
+<p class="s7">
+ <a name="bookmark5">
+ </a>
+ Improved Onscreen Help
+ <a name="bookmark31">
+ </a>
+ ‌
+</p>
+<p>
+ BCC AVX includes onscreen Help for each filter. In previous versions, you launched the Help file by clicking the
+ <b>
+  Other Options button
+ </b>
+ at the
+</p>
+<p>
+ top of the Effect Editor window. New to this version, clicking the
+ <b>
+  Launch Help File button
+ </b>
+ opens the PDF documentation for the current filter.
+</p>
+<p>
+ The online Help files have also been improved in this release. Each Help file now includes links to separate Help files on the General Controls, Title Matte, Geometrics, Drop Shadow, Motion Tracker and PixelChooser parameter groups. Previously these parameter groups were only documented in the User Guide.
+</p>
+<p class="s7">
+ <a name="bookmark6">
+ </a>
+ Additional Presets
+ <a name="bookmark32">
+ </a>
+ ‌
+</p>
+<p>
+ Version 4 includes more than 800 additional presets. To load a saved preset, you must first apply the same filter to your media. A list of
+</p>
+<p>
+ existing presets then appears in the menu. New to Version 4.0, parameters in the General Controls, Geometrics and Drop Shadow parameter groups are now saved with the preset.
+</p>
+<p class="s7">
+ <a name="bookmark7">
+ </a>
+ Saving BCC Effects as Custom Transitions
+ <a name="bookmark33">
+ </a>
+ ‌
+</p>
+<p>
+ You can now save custom transitions to the Avid Quick Transition menu for easy access. This means that custom BCC AVX transitions appear in the Quick Transitions dialog box.
+</p>
+<p>
+  
+</p>
+<p>
+ This feature is not included in your Avid documentation. See Chapter 1 in your User Guide for details on this feature.
+</p>
+<p class="s7">
+ <a name="bookmark8">
+ </a>
+ Working with the Updated Title Matte Parameter Group
+ <a name="bookmark34">
+ </a>
+ ‌
+</p>
+<p>
+ Most filters contain a Title Matte parameter group that allows you to apply filters to Avid titles or mattes without affecting the background.A new menu has been added to this parameter group to provide more flexibility when working with imported images.
+</p>
+<p>
+ The
+ <b>
+  Title Alpha menu
+ </b>
+ determines how the image’s alpha information is used.
+</p>
+<ul id="l1">
+ <li>
+  <p>
+   Choose Straight if you are applying a filter to a title created in the Avid Title tool. Straight displays the portion of the image defined by the alpha channel.
+  </p>
+ </li>
+ <li>
+  <p>
+   Choose Premultiplied Black or Premultiplied White for images whose alpha channels are premultiplied with a solid black or white color respectively. This choice is appropriate for imported images.
+  </p>
+ </li>
+</ul>
+<p>
+  
+</p>
+<p>
+ When you set the
+ <b>
+  Title Alpha menu
+ </b>
+ to Premultiplied Black or Premultiplied White, you must select 601/709, non-square in the Image Settings window. You can access this window by clicking the
+ <b>
+  Options button
+ </b>
+ in the Import dialog box.
+</p>
+<p>
+  
+</p>
+<p>
+ For more information on applying BCC effects to Avid titles or matte keys, see Chapter 1 of your User Guide.
+</p>
+<p class="s7">
+ <a name="bookmark9">
+ </a>
+ Working with the Improved Motion Tracker Parameter Groups
+ <a name="bookmark35">
+ </a>
+ ‌
+</p>
+<p>
+ The Motion Tracker parameter group allows you to track the motion of an object in a media file. You can then use the motion path data to control another aspect of the effect. The parameters that can be affected depend upon the filter. For example, apply a Blur filter to a clip and use the Motion Tracker parameters to track a logo on a t-shirt. Apply the Blur to obscure the logo.
+</p>
+<p>
+ In version 4.0, the Motion Tracker includes a number of improvements that increase the accuracy and efficiency of tracking. You can now process your image to improve the tracking results using the parameters in the Preprocess parameter. For example, you could increase the contrast for better results. You can also specify which channel to track and define a tracking range. You can also reflects the background image around the edges of a foreground image to creates the illusion that light from the background is reflected onto the foreground image. This creates a more convincing composite by making it appear as if the images were shot in the same environment.
+</p>
+<p>
+  
+</p>
+<p>
+ See Chapter 1 in your User Guide for details.
+</p>
+<p class="s7">
+ <a name="bookmark10">
+ </a>
+ Working with the Improved PixelChooser Parameter Groups
+ <a name="bookmark36">
+ </a>
+ ‌
+</p>
+<p>
+ The PixelChooser’s Region parameters specify an area in which to apply a filter. In previous versions of BCC AVX, you could use a region-based matte as a garbage matte, then combine it with a channel-based matte. New to this version, the PixelChooser option that creates an animatable vector-based mask now includes bézier handles for more precise control.
+</p>
+<p>
+ Choosing Custom from the
+ <b>
+  Shape menu
+ </b>
+ lets you draw your own custom mask using onscreen controls. Instead of simply creating a garbage mask, you can now create animating masks with adjustable bézier handles.
+</p>
+<p>
+ The shape you draw is animatable and can include up to 40 points. You can also combine multiple shapes. You can drag points to reposition or animate them; Shift-select to reposition multiple points. The number of points is not animatable.
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0111.jpg">
+  <img class="alignnone size-full wp-image-4962" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0111.jpg" alt="Image_011" width="202" height="149">
+ </a>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0121.jpg">
+  <img class="alignnone size-full wp-image-4963" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0121.jpg" alt="Image_012" width="201" height="148">
+ </a>
+</p>
+<p class="s10">
+  
+</p>
+<p class="s11">
+ Custom mask Filtered image
+</p>
+<p>
+ See Chapter 10 of your User Guide for detailed information.
+</p>
+<p class="s5">
+ <a name="bookmark11">
+ </a>
+ New Filters
+ <a name="bookmark37">
+ </a>
+ ‌
+</p>
+<p>
+ Boris Continuum Complete for AVX includes seven new filters. In addition, hundreds of new presets have been added.
+</p>
+<p class="s7">
+ <a name="bookmark12">
+ </a>
+ Additions to the Color &amp; Blurs Category
+ <a name="bookmark38">
+ </a>
+ ‌
+</p>
+<p>
+ Boris Continuum Complete for AVX includes the following new Color &amp; Blurs filters. For details on these filters, see Chapter 2 in your User Guide.
+</p>
+<p class="s3">
+ <a name="bookmark13">
+ </a>
+ New BCC Color Match
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0141.jpg">
+  <img class="alignnone size-full wp-image-4964" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0141.jpg" alt="Image_014" width="216" height="144">
+ </a>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_015.jpg">
+  <img class="alignnone size-full wp-image-4965" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_015.jpg" alt="Image_015" width="216" height="144">
+ </a>
+</p>
+<p>
+ BCC Color Match simplifies the process of matching the color or luma values of two clips in the timeline. For instance, if two clips with different lighting conditions are edited together, the clips color and luma values will differ. Match Color automates the process of removing or balancing the difference between the two clips by setting color or luma values for the highlight, shadow and midtone areas of the image.
+</p>
+<p class="s11">
+ Original image Filtered image (and matched target clip)
+</p>
+<p class="s3">
+ <a name="bookmark14">
+ </a>
+ New BCC Median Filter
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0161.jpg">
+  <img class="alignnone size-full wp-image-4966" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0161.jpg" alt="Image_016" width="216" height="143">
+ </a>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_017.jpg">
+  <img class="alignnone size-full wp-image-4967" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_017.jpg" alt="Image_017" width="216" height="143">
+ </a>
+</p>
+<p>
+ The BCC Median filter makes each pixel look like the majority of its neighboring pixels. It produces a smeary painterly look, but with sharp edges (at neighborhood boundaries). The Median filter also reduces noise by eliminating “spikes,” or pixels that are very different from their neighbors (also referred to as “salt and pepper noise”).
+</p>
+<p class="s11">
+ Original image Filtered image
+</p>
+<p class="s7">
+ <a name="bookmark15">
+ </a>
+ Additions to the Distortion &amp; Perspective Category
+ <a name="bookmark39">
+ </a>
+ ‌
+</p>
+<p>
+ Boris Continuum Complete for AVX includes the following new Distortion &amp; Perspective filters. For details, see Chapter 3 in your User Guide.
+</p>
+<p class="s3">
+ <a name="bookmark16">
+ </a>
+ New BCC Corner Pin Filter
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_020.jpg">
+  <img class="alignnone size-full wp-image-4968" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_020.jpg" alt="Image_020" width="156" height="116">
+ </a>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0181.jpg">
+  <img class="alignnone size-full wp-image-4969" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_0181.jpg" alt="Image_018" width="153" height="116">
+ </a>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_019.jpg">
+  <img class="alignnone size-full wp-image-4970" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_019.jpg" alt="Image_019" width="157" height="116">
+ </a>
+</p>
+<p>
+ The BCC Corner Pin filter allows you to map media to a specific area on a moving object in a media file. For example, suppose your movie includes a moving bus with an advertisement on its side. You could use Corner Pin to track and replace the advertisement with a logo.
+</p>
+<p class="s11">
+ Original image Corner Pin Image Filtered image
+</p>
+<p class="s3">
+ <a name="bookmark17">
+ </a>
+ New BCC 3D Extruded Image Shatter Filter
+</p>
+<p>
+ 3D Extruded Image Shatter shatters the image in 3D space and disperses the image fragments. Unlike the 3D Image Shatter filter, this filter allows you to create three- dimensional particles with adjustable extrusions.
+</p>
+<p>
+ The filter provides a variety of explosion, velocity, and gravity parameters to control particle movement. In addition, 3D Image Shatter has a number of parameters that allow you to control the particle size, rotation, opacity, lighting, and explosion style. This filter is auto- animated by default, but you can manually animate it for more precise control over the movement and dispersion of the particles.
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_022.jpg">
+  <img class="alignnone size-full wp-image-4971" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_022.jpg" alt="Image_022" width="202" height="143">
+ </a>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_021.jpg">
+  <img class="alignnone size-full wp-image-4972" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_021.jpg" alt="Image_021" width="192" height="144">
+ </a>
+</p>
+<p class="s8">
+ 3D Extruded Image Shatter effect
+</p>
+<p class="s11">
+ Original image Filtered image
+</p>
+<p>
+  
+</p>
+<p>
+ You must have a supported OpenGL card and driver to use the BCC 3D Extruded Image Shatter filter. For information on supported configurations, see the Understanding OpenGL PDF on your Boris CD.
+</p>
+<p class="s7">
+ <a name="bookmark18">
+ </a>
+ Additions to the Effects Category
+ <a name="bookmark40">
+ </a>
+ ‌
+</p>
+<p>
+ Boris Continuum Complete for AVX includes the following new Effects filter. For details on this filter, see Chapter 4 in your User Guide.
+</p>
+<p class="s3">
+ <a name="bookmark19">
+ </a>
+ New BCC Halftone Filter
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_025.jpg">
+  <img class="alignnone size-full wp-image-4973" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_025.jpg" alt="Image_025" width="214" height="141">
+ </a>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_024.jpg">
+  <img class="alignnone size-full wp-image-4974" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_024.jpg" alt="Image_024" width="214" height="141">
+ </a>
+ \
+</p>
+<p>
+ The Halftone filter simulates the look of printed material by converting the image to simulated halftone dots. Print images are comprised of a rosette pattern of colored ink dots. To avoid moire or interference patterns, the dots are printed at different angles; this process is known as halftone screening. This is also used in the art world as a creative process such as the work produced by Lichtenstein.
+</p>
+<p class="s11">
+ Original image Filtered image
+</p>
+<p class="s7">
+ <a name="bookmark20">
+ </a>
+ Additions to the Keys &amp; Matte Category
+ <a name="bookmark41">
+ </a>
+ ‌
+</p>
+<p>
+ Boris Continuum Complete for AVX includes the following new Keys &amp; Matte filter.
+</p>
+<p class="s3">
+ <a name="bookmark21">
+ </a>
+ New BCC Motion Key Filter
+</p>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_026.jpg">
+  <img class="alignnone size-full wp-image-4975" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_026.jpg" alt="Image_026" width="229" height="149">
+ </a>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_027.jpg">
+  <img class="alignnone size-full wp-image-4976" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_027.jpg" alt="Image_027" width="222" height="147">
+ </a>
+</p>
+<p>
+ The BCC Motion Key filter allows you to isolate and remove a moving foreground object based on motion estimation. You define the object that you want to remove. For example, you have a static shot of some buildings and a car passes by on the street in front of the buildings. You could use this filter to remove the car and replace it with the buildings.
+</p>
+<p class="s11">
+ Original image Filtered image
+</p>
+<p class="s7">
+ <a name="bookmark22">
+ </a>
+ Additions to the Time Category
+ <a name="bookmark42">
+ </a>
+ ‌
+</p>
+<p>
+ Boris Continuum Complete for AVX includes the following new Time filter. For details on this filter, see Chapter 8 in your User Guide.
+</p>
+<p class="s3">
+ <a name="bookmark23">
+ </a>
+ BCC Optical Stabilizer Filter
+</p>
+<p>
+ The Optical Stabilizer filter allows you to stabilize shaky video footage. The Optical Stabilizer uses optical flow technology to analyze a specified region and then adjusts the track’s position to compensate. Unlike many stabilizing tools, the BCC Optical Stabilizer does not require you to set user-defined tracking points. This is useful for images where tracking data is unreliable.
+</p>
+<p>
+ During playback, the motion appears smooth because the track moves incrementally to offset the unwanted motion. You can also stabilize just a portion of a track to correct isolated camera bumps. The BCC Optical Stabilizer filter appears in the Time category.
+</p>
+<p class="s5">
+ <a name="bookmark24">
+ </a>
+ Changes to Existing Filters
+ <a name="bookmark43">
+ </a>
+ ‌
+</p>
+<p>
+ The following changes have been made to the existing BCC AVX filter set.
+</p>
+<p class="s7">
+ <a name="bookmark25">
+ </a>
+ Removed Parameters
+ <a name="bookmark44">
+ </a>
+ ‌
+</p>
+<p>
+ The
+ <b>
+  Acceleration
+ </b>
+ parameter has been removed from all filters. In previous versions, Acceleration adjusted the interpolation of parameters between a Linear-style and an Ease In/Out interpolation type to create more natural animation by accelerating parameter changes. This parameter is no longer necessary as Avid’s Advanced Keyframing model now allows you to do this.
+</p>
+<p>
+ The
+ <b>
+  DV Size Media checkbox
+ </b>
+ has been removed from the General Controls parameter group. This checkbox automatically corrected an Avid problem rendering 720x480 DV media. Avid has corrected this problem, so this checkbox is no longer required.
+</p>
+<p>
+ The
+ <b>
+  Rebuild Param Cache checkbox
+ </b>
+ has been removed from the General Controls parameter group. This was used to force certain filters to rebuild the parameter cache. This problem has been corrected, so the checkbox is no longer required.
+</p>
+<p class="s7">
+ <a name="bookmark26">
+ </a>
+ Improvements to the BCC GLint, BCC Glitter and BCC Glare Filters
+ <a name="bookmark45">
+ </a>
+ ‌
+</p>
+<p>
+ The BCC Glint, BCC Glitter and BCC Glare filters now correctly work with alpha channels. This means that you can apply the filters to a title and have the light effects originate from the text. In previous versions, the light was constrained to fill the text. As part of this fix, the BCC Glitter filter includes a new parameter, the
+ <b>
+  Glitter on Alpha Layer Only checkbox
+ </b>
+ .
+</p>
+<p>
+  
+</p>

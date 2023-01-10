@@ -1,0 +1,662 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: WipeFourWedges",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/WipeFourWedges.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="WipeFourWedges">
+     <h2>
+      WipeFourWedges
+     </h2>
+    </a>
+    In the S_Wipes Plugin.
+    <p>
+     Performs a wipe transition between two input clips
+  using a pattern of four wedges merging into an 'X' shape.  The Wipe Amt parameter should be
+  animated to control the transition speed.  Increase the Border Width parameter
+  to draw a border at the wipe transition edges.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/WipeFourWedges.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wipe Amt:
+   </b>
+   <i>
+    AutoTransition,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -0.5 to 1.5,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The transition ratio between the From and To inputs.  A
+  value of 0 gives only the From input and a value of 1 gives only the
+  To input.  By default this parameter will automatically animate from
+  0 to 1 to perform a complete wipe.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The rotation angle in counter-clockwise degrees of the wedge pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Aspect Scale:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   Scales the aspect ratio of the wedge pattern.
+  Increase to stretch the shapes in the horizontal direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wipe Direction:
+   </b>
+   <i>
+    Popup menu,  Default: IN
+   </i>
+   .
+   <br/>
+   Selects the direction of motion of the wedges.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       IN:
+      </i>
+     </b>
+     wedges move inwards making an 'X' shape.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        OUT:
+       </i>
+      </b>
+      starts with an 'X' and widens outwards.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The width of the transition edges.  Larger values
+  will cause softer, less visible edges in the wipe pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If positive, a colored border is drawn at the wipe
+  transition edges, using the border color, opacity, softness, and
+  shift parameters below.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.75 0.75 0.75],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The color of the border.  This has no effect unless
+  Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The opacity of the border.  Decrease to make the
+  border transparent and allow the image under it to show through.
+  This has no effect unless Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The softness of the border edges.  This has no
+  effect unless Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Shifts the border ahead of or behind the
+  transition edge.  This has no effect unless Border Width is
+  positive.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Glow:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adds a glow along the border of the wipe. The value
+determines the brightness of the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   The color of the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the red glow width. If the red, green, and blue widths
+are all equal, the glow will match Glow Color. Otherwise it will have a fringe
+of varying color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the green glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the blue glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of noise to add to the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   0.1 to 20.
+   <br/>
+   The spatial frequency of the noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The speed with which the noise changes or boils over time.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../wipeline">
+       WipeLine
+      </a>
+      <br/>
+      <a href="../wipecircle">
+       WipeCircle
+      </a>
+      <br/>
+      <a href="../wiperectangle">
+       WipeRectangle
+      </a>
+      <br/>
+      <a href="../wipestar">
+       WipeStar
+      </a>
+      <br/>
+      <a href="../wipeclock">
+       WipeClock
+      </a>
+      <br/>
+      <a href="../wipewedge">
+       WipeWedge
+      </a>
+      <br/>
+      <a href="../wipedoublewedge">
+       WipeDoubleWedge
+      </a>
+      <br/>
+      <a href="../wipedots">
+       WipeDots
+      </a>
+      <br/>
+      <a href="../wipechecker">
+       WipeChecker
+      </a>
+      <br/>
+      <a href="../wipestripes">
+       WipeStripes
+      </a>
+      <br/>
+      <a href="../wiperings">
+       WipeRings
+      </a>
+      <br/>
+      <a href="../wipeblobs">
+       WipeBlobs
+      </a>
+      <br/>
+      <a href="../wipecells">
+       WipeCells
+      </a>
+      <br/>
+      <a href="../wipetiles">
+       WipeTiles
+      </a>
+      <br/>
+      <a href="../wipepixelate">
+       WipePixelate
+      </a>
+      <br/>
+      <a href="../wipediffuse">
+       WipeDiffuse
+      </a>
+      <br/>
+      <a href="../wipebubble">
+       WipeBubble
+      </a>
+      <br/>
+      <a href="../wipeclouds">
+       WipeClouds
+      </a>
+      <br/>
+      <a href="../wipemoire">
+       WipeMoire
+      </a>
+      <br/>
+      <a href="../wipeplasma">
+       WipePlasma
+      </a>
+      <br/>
+      <a href="../wipepointalize">
+       WipePointalize
+      </a>
+      <br/>
+      <a href="../wipeweave">
+       WipeWeave
+      </a>
+      <br/>
+      <a href="../wipeflux">
+       WipeFlux
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

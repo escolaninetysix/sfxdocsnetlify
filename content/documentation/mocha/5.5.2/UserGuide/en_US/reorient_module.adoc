@@ -1,0 +1,58 @@
+
+== mocha VR: The Reorient Module [[reorient_module]]
+
+NOTE: This section applies specifically to *mocha VR* and not *mocha Pro* or other versions of mocha such as *mocha AE* or *mocha HitFilm*.
+
+To use the Reorient module on a 360 equirectangular shot you need to first set up the 360 image.
+
+See the <<mochavr_workflow, mocha VR: Using mocha for 360 workflow>> section for details on how to set up and work in a 360 shot.
+
+=== Reorienting Equirectangular Footage in mocha VR
+
+The mocha VR Reorient Module provides two useful tools for adjusting the VR camera:
+
+* The ability to track and stabilize the VR horizon in each rotational axis
+* The ability to control the position of the VR horizon in tilt in each rotational axis
+
+==== 1. Adjusting the Horizon
+Like most modules in mocha, to use the Reorient module stabilization you first need a tracked layer.
+
+. Track a layer (or series of layers) near the horizon. It doesn’t have to be exactly on the horizon, but it helps to be as close as possible. Multiple layers will concatenate for a single solution.
+.  Move to the Reorient module. This will turn on the 'View Horizon' checkbox, which shows the red horizon line on screen. It will also disable Preview so you can work with the original clip. +
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/5.5.0_mochavr_reorient_parameters.jpg[width="60%"] +
+. Adjust the red horizon line to fit your horizon using the column “Horizon Align”. You can do this in either 360 mode or in Equirectangular mode. We recommend Equirectangular mode, as it is much easier to see the whole horizon.
+. If you would prefer a visual control, you can turn on “Show Control” under the Horizon Align rotation fields:
+* Move up and down to control tilt
+* Left and right to control pan
+* Rotating the circle controls roll. +
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/5.5.0_mochavr_reorient_horizon_align.jpg[The Horizon Align Control] +
+. Once your line fits the horizon, you can turn off the 'View Horizon' check box.
+. If 'Preview' doesn't turn on immediately, you can toggle it in the view controls. This is the large ‘P’ next to the 360 icon in the view controls.
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/5.5.0_module_preview_button.jpg[]
+
+==== 2. Smoothing the Horizon
+
+You can control the Smoothing to any rotational axis by turning off the tilt, roll and pan controls.
+
+For example, if you’re only interested in stopping the camera from panning, you can just leave “Pan” on.
+
+If you don’t want to lock the smoothing completely, you can turn off “Maximum Smoothing” and adjust the number of frames to stabilize the horizon jitter.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/5.5.0_mochavr_reorient_parameters.jpg[width="60%"]
+
+==== 3. Reorienting the Horizon
+
+Finally, if you want to position the camera exactly, you can do so by using the ‘Horizon Reorient’ column.
+
+This has exactly the same parameters as the Horizon Adjust column, allowing you to either move the camera via the fields, or via the on-screen control.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784130/documentation/mocha/images/5.5.2/5.5.0_mochavr_reorient_horizon_orient.jpg[The Horizon Orient Control]
+
+If you have the Preview button turned on, it will update in the view automatically.
+
+
+
+==== 4. Rendering
+Like all modules, you can choose to either render in the mocha GUI, or choose “Reorient” from the render options in the main plugin interface back in the host.
+
+(Footage images courtesy of Makoto Hirose, SeaPics Japan)

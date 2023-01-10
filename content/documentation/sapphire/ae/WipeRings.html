@@ -1,0 +1,858 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: WipeRings",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/WipeRings.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="WipeRings">
+     <h2>
+      S_WipeRings
+     </h2>
+    </a>
+    Performs a wipe transition between two input clips
+  using a pattern of concentric rings.  The Wipe Percent parameter should be
+  animated to control the transition speed.
+  Increase the Grad Add parameter to make the timing of the rings
+  pattern move across the screen during the wipe.
+  Increase the Border Width parameter
+  to draw a border at the wipe transition edges.
+    <p>
+     In the Sapphire Transitions effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Foreground:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/WipeRings.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Transition Dir:
+   </b>
+   <i>
+    Popup menu,  Default: Wipe Off to Bg
+   </i>
+   .
+   <br/>
+   Selects the direction of the transition.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Wipe Off to Bg:
+      </i>
+     </b>
+     transitions from the current layer to the Background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Wipe On from Bg:
+       </i>
+      </b>
+      transitions from the Background to the current layer.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Auto Trans:
+   </b>
+   <i>
+    Popup YES-NO,  Default: No
+   </i>
+   .
+   <br/>
+   If enabled, a transition is performed automatically between
+the first and last frames of the layer.  If this is off, the transition is
+performed manually by animating the Wipe Percent parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wipe Percent:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Auto Trans must be disabled for this parameter to be
+  used.  It determines the transition ratio between the From and To
+  inputs, and would normally be animated from 0 to 100 to perform a
+  complete transition.  The curve controlling this parameter can be adjusted
+  for more detailed control over the timing of the wipe.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the transition edges.  Larger values
+  will cause softer, less visible edges in the wipe pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The frequency of the rings pattern.  Increase for more
+  and smaller elements, or decrease for fewer and larger.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The relative horizontal size of the rings.  Increase for
+  wider rings, decrease for taller ones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Stripes:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -5 to 5.
+   <br/>
+   Translation of the stripe pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The center location of the ring pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bulge:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   Increase to make the inner rings thicker than the outer rings,
+  or set negative to make the outer rings thicker.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The rotation angle of the ring pattern in
+   degrees.  Note that you will not notice any
+  rotation when the Rel Width value is 1.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grad Add:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -10 to 10.
+   <br/>
+   If positive, a gradient will be added to the timing of
+  the transition pattern so it moves across the screen during the
+  wipe.  This parameter can be adjusted using the Wipe Widget if
+  enabled, but the value must be positive to make this widget
+  visible.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grad Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The direction of the wipe gradient in
+   degrees.  This will have no effect unless Grad Add
+  is positive.  The Wipe Widget also allows adjusting this parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Radial Grad:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   If non-zero, a radial gradient will be added to the timing of
+  the rings pattern so it moves outwards from the center during the
+  wipe. If negative, it moves inwards towards the center.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If positive, a colored border is drawn at the wipe
+  transition edges, using the border color, opacity, softness, and
+  shift parameters below.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.75 0 0].
+   <br/>
+   The color of the border.  This has no effect unless
+  Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The opacity of the border.  Decrease to make the
+  border transparent and allow the image under it to show through.
+  This has no effect unless Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The softness of the border edges.  This has no
+  effect unless Border Width is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the border ahead of or behind the
+  transition edge.  This has no effect unless Border Width is
+  positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Glow:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adds a glow along the border of the wipe. The value
+determines the brightness of the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the red glow width. If the red, green, and blue widths
+are all equal, the glow will match Glow Color. Otherwise it will have a fringe
+of varying color.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the green glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.4,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the blue glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   The color of the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of noise to add to the glowing border.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   0.1 to 20.
+   <br/>
+   The spatial frequency of the noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The speed with which the noise changes or boils over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Opacity:
+   </b>
+   <i>
+    Popup menu,  Default: Normal
+   </i>
+   .
+   <br/>
+   Determines the method used for dealing with
+opacity/transparency.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       All Opaque:
+      </i>
+     </b>
+     Use this option to render slightly faster when
+the input image is fully opaque with no transparency (alpha=1).
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Normal:
+       </i>
+      </b>
+      Process opacity normally.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         As Premult:
+        </i>
+       </b>
+       Process as if the image is already in
+premultiplied form (colors have been scaled by opacity).  This option
+also renders slightly faster than Normal mode, but the results will
+also be in premultiplied form, which is sometimes less correct.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Wipe:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface widget
+  for adjusting the Grad Add, Grad Angle, and Wipe Percent parameters.  The
+  value of the Grad Add parameter must first be positive for this
+  widget to be visible.This parameter only appears on AE and Premiere,
+where on-screen widgets are supported.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Glow Width:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   off.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Glow Width parameter.This parameter only appears on AE and Premiere,
+where on-screen widgets are supported.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../wipeline">
+       WipeLine
+      </a>
+      <br/>
+      <a href="../wipecircle">
+       WipeCircle
+      </a>
+      <br/>
+      <a href="../wiperectangle">
+       WipeRectangle
+      </a>
+      <br/>
+      <a href="../wipestar">
+       WipeStar
+      </a>
+      <br/>
+      <a href="../wipeclock">
+       WipeClock
+      </a>
+      <br/>
+      <a href="../wipewedge">
+       WipeWedge
+      </a>
+      <br/>
+      <a href="../wipedoublewedge">
+       WipeDoubleWedge
+      </a>
+      <br/>
+      <a href="../wipefourwedges">
+       WipeFourWedges
+      </a>
+      <br/>
+      <a href="../wipedots">
+       WipeDots
+      </a>
+      <br/>
+      <a href="../wipechecker">
+       WipeChecker
+      </a>
+      <br/>
+      <a href="../wipestripes">
+       WipeStripes
+      </a>
+      <br/>
+      <a href="../wipeblobs">
+       WipeBlobs
+      </a>
+      <br/>
+      <a href="../wipecells">
+       WipeCells
+      </a>
+      <br/>
+      <a href="../wipetiles">
+       WipeTiles
+      </a>
+      <br/>
+      <a href="../wipepixelate">
+       WipePixelate
+      </a>
+      <br/>
+      <a href="../wipediffuse">
+       WipeDiffuse
+      </a>
+      <br/>
+      <a href="../wipebubble">
+       WipeBubble
+      </a>
+      <br/>
+      <a href="../wipeclouds">
+       WipeClouds
+      </a>
+      <br/>
+      <a href="../wipemoire">
+       WipeMoire
+      </a>
+      <br/>
+      <a href="../wipeplasma">
+       WipePlasma
+      </a>
+      <br/>
+      <a href="../wipepointalize">
+       WipePointalize
+      </a>
+      <br/>
+      <a href="../wipeweave">
+       WipeWeave
+      </a>
+      <br/>
+      <a href="../wipeflux">
+       WipeFlux
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

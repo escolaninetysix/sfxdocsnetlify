@@ -1,0 +1,70 @@
+{{ define "content" }}
+
+<style>
+#article img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
+.tg .tg-hmp3{background-color:#D2E4FC;text-align:left;vertical-align:top}
+.tg .tg-iat6{background-color:#ffffff;font-weight:bold;color:#000000;text-align:left;vertical-align:top}
+.tg .tg-ij4v{font-weight:bold;background-color:#ffffff;color:#000000;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {{ if .Title }}
+      <h1 class="mb-0">{{ .Title }}</h1>
+      <p class="mb-0">
+        {{ if not .Date.IsZero }}
+        {{ dateFormat "January 2, 2006" .Date }}<br />
+        {{ end }}
+        {{ if .Params.tags }}
+        tags:
+        {{ $tags := .Params.tags }}
+        {{ range $i, $tag := $tags }}
+        <a href="">{{ $tag }}</a>{{ if lt $i (add (len $tags) -1) }}, {{ end }}
+        {{ end }}
+        {{ end }}
+      </p>
+      {{ end }}
+
+      <div class="mb-3">
+
+	<div id="share"></div>
+
+    <link rel="stylesheet" type="text/css" href="/jssocials.css" />
+    <link rel="stylesheet" type="text/css" href="/jssocials-theme-flat.css" />
+    <script src="/jssocials.min.js"></script>	
+
+<script>	  
+$("#share").jsSocials({
+    shareIn: "popup",
+    shares: ["twitter", "facebook", "linkedin"]
+});
+</script>
+  </div>
+
+      {{ if .Content }}
+      <div class="row">
+        <div class="col">
+          <div id="article">
+            {{ .Content | markdownify }}
+            <br>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    <div class="col-md-4">
+      {{ partial "sidebar.html" . }}
+    </div>
+  </div>
+</div>
+
+{{ end }}

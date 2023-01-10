@@ -1,0 +1,381 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: WarpCornerPin",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/WarpCornerPin.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="WarpCornerPin">
+     <h2>
+      S_WarpCornerPin
+     </h2>
+    </a>
+    Performs a 3D perspective warp of the source image
+  to align the corners with the four indicated points.  This can be
+  useful for positioning the source over an object in another clip,
+  such as a billboard or computer screen.
+    <p>
+     In the Sapphire Distort effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The input clip to be warped.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/WarpCornerPin.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Top Left:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-0.806 0.133],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Location of the upper-left corner of the source.  This parameter can be adjusted using the Top Left Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Top Right:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.389 0.577],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Location of the upper-right corner of the source.  This parameter can be adjusted using the Top Right Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bottom Left:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-0.556 -0.441],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Location of the lower-left corner of the source.  This parameter can be adjusted using the Bottom Left Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bottom Right:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.611 -0.485],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Location of the lower-right corner of the source.  This parameter can be adjusted using the Bottom Right Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Filter:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   If enabled, the image is adaptively filtered when it is
+resampled.  This gives a better quality result when parts of the image
+are warped smaller.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bulge:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   Distorts the perspective of the warped image, so that it appears to bulge in one
+           direction. A value of 1 gives no distortion. A value of less than one
+           causes the image to stretch toward the upper/right corner, while a value of
+           greater than one causes it to stretch to the lower/left corner.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    No No
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders of the
+source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Crop Input Parameters:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   These 4 parameters,
+   <b>
+    Crop Top
+   </b>
+   ,
+   <b>
+    Crop Bottom
+   </b>
+   ,
+   <b>
+    Crop Left,
+   </b>
+   and
+   <b>
+    Crop Right
+   </b>
+   ,
+allow selecting a rectangular subsection of the input image to be processed.
+If the Wrap parameters are set to "No" the exposed borders will be transparent.
+If the Wrap is "Tile" or "Reflect" the source image is wrapped on the new cropped borders to fill the frame.
+This can make it easier to avoid artifacts due to distorting an image with bad edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Top Left:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Top Left parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Top Right:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Top Right parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Bottom Left:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Bottom Left parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Bottom Right:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Bottom Right parameter.
+  </dd>
+ </dl>
+ See general info for
+ <a href="../general-info#motion-blur">
+  Motion Blur
+ </a>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

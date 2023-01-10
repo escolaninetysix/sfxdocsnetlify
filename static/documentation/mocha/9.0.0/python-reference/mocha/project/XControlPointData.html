@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.26. XControlPointData &#8212; mocha 9.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.27. XSplineContour" href="XSplineContour.html" />
+    <link rel="prev" title="2.25. XControlPoint" href="XControlPoint.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="XSplineContour.html" title="2.27. XSplineContour"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="XControlPoint.html" title="2.25. XControlPoint"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 9.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="xcontrolpointdata">
+<span id="id1"></span><h1><span class="section-number">2.26. </span>XControlPointData<a class="headerlink" href="#xcontrolpointdata" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.26.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.26.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.XControlPointData.__eq__" title="mocha.project.XControlPointData.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a> (xcpd)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.XControlPointData.__ne__" title="mocha.project.XControlPointData.__ne__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__ne__</span></code></a> (xcpd)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.26.1.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.XControlPointData.active" title="mocha.project.XControlPointData.active"><code class="xref py py-attr docutils literal notranslate"><span class="pre">active</span></code></a> [read-write] of bool or NoneType</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.XControlPointData.corner" title="mocha.project.XControlPointData.corner"><code class="xref py py-attr docutils literal notranslate"><span class="pre">corner</span></code></a> [read-write] of bool or NoneType</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.XControlPointData.edge_angle_ratio" title="mocha.project.XControlPointData.edge_angle_ratio"><code class="xref py py-attr docutils literal notranslate"><span class="pre">edge_angle_ratio</span></code></a> [read-write] of float or NoneType</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.XControlPointData.edge_width" title="mocha.project.XControlPointData.edge_width"><code class="xref py py-attr docutils literal notranslate"><span class="pre">edge_width</span></code></a> [read-write] of float or NoneType</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.XControlPointData.weight" title="mocha.project.XControlPointData.weight"><code class="xref py py-attr docutils literal notranslate"><span class="pre">weight</span></code></a> [read-write] of float or NoneType</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.XControlPointData.x" title="mocha.project.XControlPointData.x"><code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code></a> [read-write] of float or NoneType</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.XControlPointData.y" title="mocha.project.XControlPointData.y"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y</span></code></a> [read-write] of float or NoneType</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.26.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>XControlPointData class. Provides access to individual parameters for each X-Spline contour control point.</p>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.project.XControlPointData">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">XControlPointData</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">active=OptionalBool()</em><span class="optional">[</span>, <em class="sig-param">corner=OptionalBool()</em><span class="optional">[</span>, <em class="sig-param">x=OptionalFloat()</em><span class="optional">[</span>, <em class="sig-param">y=OptionalFloat()</em><span class="optional">[</span>, <em class="sig-param">weight=OptionalFloat()</em><span class="optional">[</span>, <em class="sig-param">edge_width=OptionalFloat()</em><span class="optional">[</span>, <em class="sig-param">edge_angle_ratio=OptionalFloat()</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPointData" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>active</strong> (<code class="xref any docutils literal notranslate"><span class="pre">OptionalBool</span></code>) – Active state of keyframe.</p></li>
+<li><p><strong>corner</strong> (<code class="xref any docutils literal notranslate"><span class="pre">OptionalBool</span></code>) – Corner state of keyframe.</p></li>
+<li><p><strong>x</strong> (<code class="xref any docutils literal notranslate"><span class="pre">OptionalFloat</span></code>) – X coordinate value of keyframe.</p></li>
+<li><p><strong>y</strong> (<code class="xref any docutils literal notranslate"><span class="pre">OptionalFloat</span></code>) – Y coordinate value of keyframe.</p></li>
+<li><p><strong>weight</strong> (<code class="xref any docutils literal notranslate"><span class="pre">OptionalFloat</span></code>) – Weight value of keyframe.</p></li>
+<li><p><strong>edge_width</strong> (<code class="xref any docutils literal notranslate"><span class="pre">OptionalFloat</span></code>) – Edge width of keyframe.</p></li>
+<li><p><strong>edge_angle_ratio</strong> (<code class="xref any docutils literal notranslate"><span class="pre">OptionalFloat</span></code>) – Edge angle ratio value of keyframe.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Constructs new XControlPointData instance with given parameters.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">XControlPointData</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">XControlPointData</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XControlPointData.__ne__">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xcpd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPointData.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XControlPointData.__eq__">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xcpd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XControlPointData.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XControlPointData.active">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">active</code><a class="headerlink" href="#mocha.project.XControlPointData.active" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool or NoneType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to <code class="docutils literal notranslate"><span class="pre">active</span></code> state of keyframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XControlPointData.corner">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">corner</code><a class="headerlink" href="#mocha.project.XControlPointData.corner" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool or NoneType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to <code class="docutils literal notranslate"><span class="pre">corner</span></code> state of keyframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XControlPointData.x">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">x</code><a class="headerlink" href="#mocha.project.XControlPointData.x" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float or NoneType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to <code class="docutils literal notranslate"><span class="pre">X</span></code> keyframe point coordinate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XControlPointData.y">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">y</code><a class="headerlink" href="#mocha.project.XControlPointData.y" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float or NoneType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to <code class="docutils literal notranslate"><span class="pre">Y</span></code> keyframe point coordinate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XControlPointData.weight">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">weight</code><a class="headerlink" href="#mocha.project.XControlPointData.weight" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float or NoneType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to <code class="docutils literal notranslate"><span class="pre">weight</span></code> value of keyframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XControlPointData.edge_width">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">edge_width</code><a class="headerlink" href="#mocha.project.XControlPointData.edge_width" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float or NoneType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to <code class="docutils literal notranslate"><span class="pre">edge</span> <span class="pre">width</span></code> value of keyframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XControlPointData.edge_angle_ratio">
+<code class="sig-prename descclassname">XControlPointData.</code><code class="sig-name descname">edge_angle_ratio</code><a class="headerlink" href="#mocha.project.XControlPointData.edge_angle_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float or NoneType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to <code class="docutils literal notranslate"><span class="pre">edge</span> <span class="pre">angle</span> <span class="pre">ratio</span></code> value of keyframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.26. XControlPointData</a><ul>
+<li><a class="reference internal" href="#synopsis">2.26.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.26.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.26.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.26.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="XControlPoint.html"
+                        title="previous chapter"><span class="section-number">2.25. </span>XControlPoint</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="XSplineContour.html"
+                        title="next chapter"><span class="section-number">2.27. </span>XSplineContour</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="XSplineContour.html" title="2.27. XSplineContour"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="XControlPoint.html" title="2.25. XControlPoint"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 9.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2021, Boris FX, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

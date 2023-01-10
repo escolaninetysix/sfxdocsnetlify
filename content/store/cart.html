@@ -1,0 +1,261 @@
+{
+	"date": "2017-05-02T18:27:08.476Z",
+	"title": "Cart"
+}
+
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    if (typeof Object.assign != 'function') {
+        // Must be writable: true, enumerable: false, configurable: true
+        Object.defineProperty(Object, "assign", {
+            value: function assign(target, varArgs) { // .length of function is 2
+                'use strict';
+                if (target == null) { // TypeError if undefined or null
+                    throw new TypeError('Cannot convert undefined or null to object');
+                }
+
+                var to = Object(target);
+
+                for (var index = 1; index < arguments.length; index++) {
+                    var nextSource = arguments[index];
+
+                    if (nextSource != null) { // Skip over if undefined or null
+                        for (var nextKey in nextSource) {
+                            // Avoid bugs when hasOwnProperty is shadowed
+                            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                                to[nextKey] = nextSource[nextKey];
+                            }
+                        }
+                    }
+                }
+                return to;
+            },
+            writable: true,
+            configurable: true
+        });
+    }
+    if (!String.prototype.endsWith) {
+        String.prototype.endsWith = function(search, this_len) {
+            if (this_len === undefined || this_len > this.length) {
+                this_len = this.length;
+            }
+            return this.substring(this_len - search.length, this_len) === search;
+        };
+    }
+
+</script>
+<!-- <script src="https://sdks.shopifycdn.com/js-buy-sdk/v1/latest/index.umd.min.js"></script> -->
+<script src="https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+<!--<script src="/shopify.js"></script> -->
+<script>
+    var shopifyClient = ShopifyBuy.buildClient({
+        domain: 'borisfx.myshopify.com',
+        storefrontAccessToken: '3f231af7322de13fabe8e3e7ff3ef003',
+    });
+
+</script>
+
+<div id="app">
+
+    <template>
+
+        <div class="container">
+            <div v-if="loading" class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+            <div v-else-if="empty || checkout.lineItems.length === 0">
+                <h1>Cart</h1>
+                <p>
+                    You have no items in your cart
+                </p>
+            </div>
+            <div v-else class="row">
+                <div class="col-md-12">
+
+                    <h1>Cart</h1>
+                    <table id="bfx-order-table" class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="lineItem in checkout.lineItems" :key="lineItem.id">
+                                <td>
+                                    ${ lineItem.title }
+                                    <br />
+                                    ${ lineItem.variant.title }
+                                    <span v-for="attribute in lineItem.customAttributes" v-if="attribute.value">
+                                        <br />
+                                        ${ attribute.key }: ${ attribute.value }
+                                    </span>
+                                </td>
+                                <td>
+                                    $${ parseFloat(lineItem.variant.priceV2.amount).toFixed(2) }
+                                </td>
+                                <td>
+                                    <input size="3" v-model="quantity[lineItem.id]" :disabled="isRenewal(lineItem)" />
+                                </td>
+                                <td>
+                                    <a href='#' @click="removeLineItem(lineItem)"><span style="color:red; font-weight:bold">X</span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row justify-content-end">
+                        <div class="col-md-4 col-12">
+                            <div class="row justify-content-end mb-2 font-weight-bold" v-if="coupon">
+                                <div class="col-9 text-right">Coupon Applied:</div>
+                                <div class="col-3 text-right">${ coupon }</div>
+                            </div>
+                            <div class="row justify-content-end" v-if="coupon">
+                                <div class="col-9 text-right">Subtotal:</div>
+                                <div class="col-3 text-right">&nbsp;$${ subtotal }</div>
+                            </div>
+                            <div class="row justify-content-end" v-if="coupon">
+                                <div class="col-9 text-right">Discounts Applied:</div>
+                                <div class="col-3 text-right">-$${ discount }</div>
+                            </div>
+                            <div class="row justify-content-end font-weight-bold">
+                                <div class="col-9 text-right">Total:</div>
+                                <div class="col-3 text-right">&nbsp;$${ parseFloat(checkout.totalPriceV2.amount).toFixed(2) }</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="text-right">
+                            <a href="/store"><button class="btn btn-lg btn-primary">Continue Shopping</button></a>
+                            <button @click="update()" class="btn btn-lg btn-primary">Update</button>
+                            <button @click="submitOrder()" class="btn btn-lg btn-primary">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </template>
+
+</div>
+<script>
+    new Vue({
+
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            loading: true,
+            empty: undefined,
+            checkout: undefined,
+            coupon : undefined,
+            subtotal : undefined,
+            quantity: {},
+        },
+
+        created: function() {
+            var self = this;
+            var checkoutId = Cookies.get('bfx-checkout-id')
+            if (!checkoutId) {
+                self.loading = false
+                self.empty = true
+            } else {
+				Cookies.set('redirect_url', '/store/cart/');
+                shopifyClient.checkout.fetch(checkoutId).then(function(checkout) {
+                    if (checkout.orderStatusUrl) {
+                        self.loading = false
+                        self.empty = true
+                        return
+                    }
+                    self.loading = false
+                    self.empty = false
+                    self.checkout = checkout
+                    self.quantity = {}
+                    if (checkout.discountApplications.length > 0){
+                        self.coupon = checkout.discountApplications[0].code
+                    }
+                    self.subtotal = parseFloat(checkout.lineItemsSubtotalPrice.amount).toFixed(2);
+                    self.discount = (parseFloat(checkout.lineItemsSubtotalPrice.amount) - parseFloat(checkout.totalPriceV2.amount)).toFixed(2)
+                    for (var i in self.checkout.lineItems) {
+                        var lineItem = self.checkout.lineItems[i]
+                        if (lineItem.id) {
+                            self.quantity[lineItem.id] = lineItem.quantity
+                        }
+                    }
+                })
+            }
+        },
+
+        methods: {
+            update: function() {
+                var updates = []
+                for (lineItemId in this.quantity) {
+                    updates.push({
+                        id: lineItemId,
+                        quantity: parseInt(this.quantity[lineItemId]),
+                    })
+                }
+                var checkoutId = Cookies.get('bfx-checkout-id')
+                shopifyClient.checkout.updateLineItems(checkoutId, updates).then(function() {
+                    window.location.href = '/store/cart'
+                })
+            },
+            removeLineItem : function(lineItem) {
+                var self = this;
+                shopifyClient.checkout.removeLineItems(self.checkout.id, lineItem.id).then(function (checkout) {
+                    self.checkout = checkout;
+                    for (var i in self.checkout.lineItems) {
+                        var lineItem = self.checkout.lineItems[i]
+                        if (lineItem.id) {
+                            self.quantity[lineItem.id] = lineItem.quantity
+                        }
+                    }
+                })
+                
+            },
+            submitOrder: function() {
+                var login = Cookies.get('bfx-login');
+                if (login == null || login.email_verified == false){
+                    Cookies.set('redirect_url', '/store/checkout');
+                    window.location.href = '/account/login?source=cart';
+                }
+                else{
+                    window.location.href = '/store/checkout'
+                }
+            },
+            /*
+            openShopifyCheckout: function() {
+                window.open(this.checkout.webUrl);
+            },
+            */
+            isRenewal: function(lineItem) {
+                var hasSerial = false;
+                for (var i = 0; i < lineItem.customAttributes.length; i++) {
+                    if (lineItem.customAttributes[i].key == 'Current Serial Number' && lineItem.customAttributes[i].value != '') {
+                        hasSerial = true;
+                    }
+                }
+                return hasSerial;
+            },
+            isRecurring: function(lineItem) {
+                var usProducts = [
+                    'boris fx suite', 'sapphire', 'continuum', 'mocha pro', 'optics', 'silhouette', 'silhouette paint'
+                ]
+                let title = lineItem.title.toLowerCase()
+                let variantSplit = lineItem.variant.title.split(' / ')
+                let variant = variantSplit[variantSplit.length -1].trim().toLowerCase()
+                return (
+                    (usProducts.includes(title) || title.includes('bundle'))
+                    && (['new license', 'subscription', 'annual subscription', 'monthly subscription', 'upgrade/support renewal'].includes(variant) || variant.includes('legacy renewal'))
+                );
+            },
+            errorAlert: function(){
+                alert('Something has gone wrong. Please contact our customer service team at customerservice@borisfx.com for assistance with this order.');
+                return '';
+            }
+        },
+    });
+
+</script>

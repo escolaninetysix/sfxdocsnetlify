@@ -1,0 +1,2507 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: Grunge",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/Grunge.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="Grunge">
+     <h2>
+      S_Grunge
+     </h2>
+    </a>
+    Simulates many different kinds of grunge including dirt,
+stains, flecks, grime, scratches, and paint. Up to three different
+kinds of grunge can be combined.  There are master controls for
+adjusting all grunge together as well as a set of detailed controls
+for adjusting the look of each of the grunge collections.
+    <p>
+     In the Sapphire Render category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The clip to shake.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.  The output of the effect is composited over this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Optional.
+      </i>
+      If provided, the blur is only performed on regions of the
+  source clip specified by the bright areas of this input.  Pixels
+  outside this mask are not blurred, and do not contribute to the
+  resulting blurred pixels within it.  This input can be affected
+  using the Invert Mask, or Mask Use parameters.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/Grunge.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   500,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The overall number of stamps over the frame.
+Increase for more stamps, decrease to get fewer.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the overall size of the grunge stamps.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The overall opacity of the grunge stamps.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls the brightness of the grunge stamps.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp Center:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen center.
+   <br/>
+   The overall position of the center of the grunge stamps.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the stamp center is controlled by the Stamp Center parameter or follows
+the Stamp Center point tracked inside of Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Stamp Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fade Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls how fast individual grunge stamps fade.
+When set to zero, stamps will pop on and off.  When set to one, they
+will fade in and out. Stamps will fade if they are blinking,
+along the edge of the grunge framing the background, or along the grey
+areas of the matte.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blink Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls how many stamps are blinking on a single frame.
+With a blink amount of 0 all stamps will be visible.  With a blink amount
+of 1 approximately half of the stamps will be blinking on a given frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blink Coherence:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Changes the pattern of the stamps that blink.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blink Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how fast the stamps blink in and out.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frame Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.35,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the brightness of the grunge inside the frame or
+border.  If frame amount is set to anything other than 0, Grunge will create
+a picture frame border of grunge around the frame center.
+At a frame amount of 1, stamps inside the frame are completely invisible
+and at a frame amount of 0, there is no frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frame Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the frame's soft edge.  Larger values give
+the grunge frame a softness as the grunge brightness fades on the edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frame Center:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen center.
+   <br/>
+   The position of the center of the grunge frame.  This parameter can be adjusted using the Frame Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frame Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the frame center is controlled by the Frame Center parameter or follows
+the Frame Center point tracked inside of Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Frame Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frame Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Distance from the center to apply the grunge frame.  This parameter can be adjusted using the Frame Radius Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Frame Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The relative vertical size of the frame shape.  Increase for
+a taller shape, decrease for a wider one.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Frame:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, shows the grunge in the center of the frame instead
+of at the edge of the frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp1:
+   </b>
+   <i>
+    Popup menu,  Default: Garage Floor
+   </i>
+   .
+   <br/>
+   The style of grunge to apply.  Up to three styles may be selected.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       None:
+      </i>
+     </b>
+     no grunge.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Plaster:
+       </i>
+      </b>
+      large low detail grunge simulating plaster.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Garage Floor:
+        </i>
+       </b>
+       large speckled grunge reminiscent of pavement.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Speckles:
+         </i>
+        </b>
+        groups of small, similar sized, dots of grunge, similar to paint spray.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Paint Spray:
+          </i>
+         </b>
+         groups of small and medium splashes of paint, similar to speckles.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Paint Splatters:
+           </i>
+          </b>
+          long splashes of paint.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Hairline Cracks:
+            </i>
+           </b>
+           long, narrow, wiggly cracks with no branches.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Tile Cracks:
+             </i>
+            </b>
+            long, straight jagged cracks.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Pavement Cracks:
+              </i>
+             </b>
+             very branchy cracks with very varied widths.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Hairs:
+               </i>
+              </b>
+              curly and straight hairs of varying sizes.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Scratches:
+                </i>
+               </b>
+               straight scratches biased towards the diagonals.
+               <br/>
+               <dd>
+                <b>
+                 <i>
+                  Frost:
+                 </i>
+                </b>
+                patches of frost.
+                <br/>
+                <dd>
+                 <b>
+                  <i>
+                   Glass Cracks:
+                  </i>
+                 </b>
+                 patches of webbed glass cracks.
+                 <br/>
+                 <dd>
+                  <b>
+                   <i>
+                    Clouds:
+                   </i>
+                  </b>
+                  puffs of clouds, similar to smoke and watercolor drops.
+                  <br/>
+                  <dd>
+                   <b>
+                    <i>
+                     Smoke:
+                    </i>
+                   </b>
+                   whisps of smoke, similar to clouds and watercolor drops.
+                   <br/>
+                   <dd>
+                    <b>
+                     <i>
+                      Splotches:
+                     </i>
+                    </b>
+                    paint splotches with lots of streaks of paint spreading outward.
+                    <br/>
+                    <dd>
+                     <b>
+                      <i>
+                       Corrosion:
+                      </i>
+                     </b>
+                     patches of rust like damage.
+                     <br/>
+                     <dd>
+                      <b>
+                       <i>
+                        Watercolor Drops:
+                       </i>
+                      </b>
+                      low detail splashes of grunge, similar to clouds and smoke.
+                      <br/>
+                      <dd>
+                       <b>
+                        <i>
+                         Dust:
+                        </i>
+                       </b>
+                       small particles of grunge varying in shape, similar to flecks.
+                       <br/>
+                       <dd>
+                        <b>
+                         <i>
+                          Stains:
+                         </i>
+                        </b>
+                        coffee and water stains.
+                        <br/>
+                        <dd>
+                         <b>
+                          <i>
+                           Flecks:
+                          </i>
+                         </b>
+                         small to medium particles of grunge varying in shape and size, similar to dust.
+                         <br/>
+                        </dd>
+                       </dd>
+                      </dd>
+                     </dd>
+                    </dd>
+                   </dd>
+                  </dd>
+                 </dd>
+                </dd>
+               </dd>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp1 Rel Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the density for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp1 Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.01 0.01 0.01].
+   <br/>
+   Beginning of the range of colors for the stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp1 Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.3 0.3 0.3].
+   <br/>
+   End of the range of colors for the stamp collection.
+Each piece of grunge will have a random color between color1 and color2.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp1 Rel Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightess for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp1 Rel Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the opacity for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp1 Rel Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the size for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp1 Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the brightness from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp1 Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the opacity from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp1 Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the size from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp2:
+   </b>
+   <i>
+    Popup menu,  Default: Paint Spray
+   </i>
+   .
+   <br/>
+   The style of grunge to apply.  Up to three styles may be selected.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       None:
+      </i>
+     </b>
+     no grunge.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Plaster:
+       </i>
+      </b>
+      large low detail grunge simulating plaster.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Garage Floor:
+        </i>
+       </b>
+       large speckled grunge reminiscent of pavement.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Speckles:
+         </i>
+        </b>
+        groups of small, similar sized, dots of grunge, similar to paint spray.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Paint Spray:
+          </i>
+         </b>
+         groups of small and medium splashes of paint, similar to speckles.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Paint Splatters:
+           </i>
+          </b>
+          long splashes of paint.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Hairline Cracks:
+            </i>
+           </b>
+           long, narrow, wiggly cracks with no branches.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Tile Cracks:
+             </i>
+            </b>
+            long, straight jagged cracks.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Pavement Cracks:
+              </i>
+             </b>
+             very branchy cracks with very varied widths.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Hairs:
+               </i>
+              </b>
+              curly and straight hairs of varying sizes.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Scratches:
+                </i>
+               </b>
+               straight scratches biased towards the diagonals.
+               <br/>
+               <dd>
+                <b>
+                 <i>
+                  Frost:
+                 </i>
+                </b>
+                patches of frost.
+                <br/>
+                <dd>
+                 <b>
+                  <i>
+                   Glass Cracks:
+                  </i>
+                 </b>
+                 patches of webbed glass cracks.
+                 <br/>
+                 <dd>
+                  <b>
+                   <i>
+                    Clouds:
+                   </i>
+                  </b>
+                  puffs of clouds, similar to smoke and watercolor drops.
+                  <br/>
+                  <dd>
+                   <b>
+                    <i>
+                     Smoke:
+                    </i>
+                   </b>
+                   whisps of smoke, similar to clouds and watercolor drops.
+                   <br/>
+                   <dd>
+                    <b>
+                     <i>
+                      Splotches:
+                     </i>
+                    </b>
+                    paint splotches with lots of streaks of paint spreading outward.
+                    <br/>
+                    <dd>
+                     <b>
+                      <i>
+                       Corrosion:
+                      </i>
+                     </b>
+                     patches of rust like damage.
+                     <br/>
+                     <dd>
+                      <b>
+                       <i>
+                        Watercolor Drops:
+                       </i>
+                      </b>
+                      low detail splashes of grunge, similar to clouds and smoke.
+                      <br/>
+                      <dd>
+                       <b>
+                        <i>
+                         Dust:
+                        </i>
+                       </b>
+                       small particles of grunge varying in shape, similar to flecks.
+                       <br/>
+                       <dd>
+                        <b>
+                         <i>
+                          Stains:
+                         </i>
+                        </b>
+                        coffee and water stains.
+                        <br/>
+                        <dd>
+                         <b>
+                          <i>
+                           Flecks:
+                          </i>
+                         </b>
+                         small to medium particles of grunge varying in shape and size, similar to dust.
+                         <br/>
+                        </dd>
+                       </dd>
+                      </dd>
+                     </dd>
+                    </dd>
+                   </dd>
+                  </dd>
+                 </dd>
+                </dd>
+               </dd>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp2 Rel Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the density for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp2 Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.1 0 0].
+   <br/>
+   Beginning of the range of colors for the stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp2 Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.2 0.1 0.05].
+   <br/>
+   End of the range of colors for the stamp collection.
+Each piece of grunge will have a random color between color1 and color2.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp2 Rel Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightess for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp2 Rel Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the opacity for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp2 Rel Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the size for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp2 Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the brightness from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp2 Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the opacity from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp2 Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the size from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp3:
+   </b>
+   <i>
+    Popup menu,  Default: None
+   </i>
+   .
+   <br/>
+   The style of grunge to apply.  Up to three styles may be selected.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       None:
+      </i>
+     </b>
+     no grunge.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Plaster:
+       </i>
+      </b>
+      large low detail grunge simulating plaster.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Garage Floor:
+        </i>
+       </b>
+       large speckled grunge reminiscent of pavement.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Speckles:
+         </i>
+        </b>
+        groups of small, similar sized, dots of grunge, similar to paint spray.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Paint Spray:
+          </i>
+         </b>
+         groups of small and medium splashes of paint, similar to speckles.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Paint Splatters:
+           </i>
+          </b>
+          long splashes of paint.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Hairline Cracks:
+            </i>
+           </b>
+           long, narrow, wiggly cracks with no branches.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Tile Cracks:
+             </i>
+            </b>
+            long, straight jagged cracks.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Pavement Cracks:
+              </i>
+             </b>
+             very branchy cracks with very varied widths.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Hairs:
+               </i>
+              </b>
+              curly and straight hairs of varying sizes.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Scratches:
+                </i>
+               </b>
+               straight scratches biased towards the diagonals.
+               <br/>
+               <dd>
+                <b>
+                 <i>
+                  Frost:
+                 </i>
+                </b>
+                patches of frost.
+                <br/>
+                <dd>
+                 <b>
+                  <i>
+                   Glass Cracks:
+                  </i>
+                 </b>
+                 patches of webbed glass cracks.
+                 <br/>
+                 <dd>
+                  <b>
+                   <i>
+                    Clouds:
+                   </i>
+                  </b>
+                  puffs of clouds, similar to smoke and watercolor drops.
+                  <br/>
+                  <dd>
+                   <b>
+                    <i>
+                     Smoke:
+                    </i>
+                   </b>
+                   whisps of smoke, similar to clouds and watercolor drops.
+                   <br/>
+                   <dd>
+                    <b>
+                     <i>
+                      Splotches:
+                     </i>
+                    </b>
+                    paint splotches with lots of streaks of paint spreading outward.
+                    <br/>
+                    <dd>
+                     <b>
+                      <i>
+                       Corrosion:
+                      </i>
+                     </b>
+                     patches of rust like damage.
+                     <br/>
+                     <dd>
+                      <b>
+                       <i>
+                        Watercolor Drops:
+                       </i>
+                      </b>
+                      low detail splashes of grunge, similar to clouds and smoke.
+                      <br/>
+                      <dd>
+                       <b>
+                        <i>
+                         Dust:
+                        </i>
+                       </b>
+                       small particles of grunge varying in shape, similar to flecks.
+                       <br/>
+                       <dd>
+                        <b>
+                         <i>
+                          Stains:
+                         </i>
+                        </b>
+                        coffee and water stains.
+                        <br/>
+                        <dd>
+                         <b>
+                          <i>
+                           Flecks:
+                          </i>
+                         </b>
+                         small to medium particles of grunge varying in shape and size, similar to dust.
+                         <br/>
+                        </dd>
+                       </dd>
+                      </dd>
+                     </dd>
+                    </dd>
+                   </dd>
+                  </dd>
+                 </dd>
+                </dd>
+               </dd>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp3 Rel Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the density for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp3 Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   Beginning of the range of colors for the stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp3 Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.25 0.25 0.25].
+   <br/>
+   End of the range of colors for the stamp collection.
+Each piece of grunge will have a random color between color1 and color2.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp3 Rel Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightess for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp3 Rel Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the opacity for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stamp3 Rel Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the size for the specific stamp collection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp3 Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the brightness from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp3 Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the opacity from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Stamp3 Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to vary the size from one piece of grunge to the next.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Emboss Bumps Scale:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.15,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amplitude of the bumps.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Emboss Light Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   135,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adjusts the angle of light for the emboss.  This parameter can be adjusted using the Emboss Light Angle Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Emboss Smooth:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.0001,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Smooths the small details of the image so they don't
+get embossed as strongly as the big features.  Set to 0 to emboss all
+details.  Increase to smooth out more details.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Emboss Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   -0.5 to 1.5.
+   <br/>
+   Any grunge brighter the threshold will be a bump and any grunge
+darker than the threshold will be a pit.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Grunge:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the grunge.  Increase for more blur.  Doesn't affect the background.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Grunge Rel:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [1 1],
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the width of the blur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Amplitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of random shaking motion that is applied to the stamps.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Amplitude Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative horizontal amount of shaking.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Amplitude Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative vertical amount of shaking.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shake Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   60,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase for faster shaking, decrease for slower
+  shaking.  (Be careful if you animate frequency values because the
+  resulting shake frequency is also affected by the rate of change of
+  the value.)
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Per Stamp Amplitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of random shaking applied independently to each stamp.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Per Stamp Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The frequency of per-stamp shaking. Increase
+  for faster shaking, decrease for slower shaking.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Comp
+   </i>
+   .
+   <br/>
+   Determines how the grunge image is combined with the background.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Grunge Only:
+      </i>
+     </b>
+     gives only the grunge image with no background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Comp:
+       </i>
+      </b>
+      composites the grunge image over the background.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mult:
+        </i>
+       </b>
+       this can be used as an 'intersection' operation
+  on matte images.  White is the identity for Multiply, where one
+  image contains white the other is not affected, so the result only
+  contains white where both inputs are white.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Add:
+         </i>
+        </b>
+        causes the grunge image to be added to the background.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Screen:
+          </i>
+         </b>
+         performs a blend function which can help prevent
+  overly bright results.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Difference:
+           </i>
+          </b>
+          similar to Subtract but the absolute value of
+  the result is used, which tends to give more resulting colors in
+  bounds.  This can be used to select the regions of two matte
+  images where one or the other is white, but not both.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Subtract:
+            </i>
+           </b>
+           subtracts the grunge image from the background.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Overlay:
+             </i>
+            </b>
+            combines foreground and background using an
+  overlay function.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Hard Light:
+              </i>
+             </b>
+             similar to overlay but with foreground and
+  background swapped.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Soft Light:
+               </i>
+              </b>
+              darkens or lightens the background depending on
+  the foreground.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Color Dodge:
+                </i>
+               </b>
+               brightens the background depending on the grunge image.
+               <br/>
+               <dd>
+                <b>
+                 <i>
+                  Color Burn:
+                 </i>
+                </b>
+                darkens the background depending on the grunge image.
+                <br/>
+                <dd>
+                 <b>
+                  <i>
+                   Darken:
+                  </i>
+                 </b>
+                 the minimum of grunge image and background.  This can
+  also be used as an 'intersection' operation with slightly different
+  results than Multiply.
+                 <br/>
+                 <dd>
+                  <b>
+                   <i>
+                    Lighten:
+                   </i>
+                  </b>
+                  the maximum of grunge image and background.  This
+  can also be used as a 'union' operation with slightly different
+  results than Screen.
+                  <br/>
+                  <dd>
+                   <b>
+                    <i>
+                     Exclusion:
+                    </i>
+                   </b>
+                   similar to Difference but with smoother results.
+                   <br/>
+                   <dd>
+                    <b>
+                     <i>
+                      Linear Dodge:
+                     </i>
+                    </b>
+                    adds the grunge image to the background and clamps the
+  result at white.
+                    <br/>
+                    <dd>
+                     <b>
+                      <i>
+                       Linear Burn:
+                      </i>
+                     </b>
+                     adds the grunge image to the background but offsets to
+  make the result darker.  Similar to multiply in that combining with
+  white gives no change and combining with black gives black.
+                     <br/>
+                     <dd>
+                      <b>
+                       <i>
+                        Linear Light:
+                       </i>
+                      </b>
+                      performs a linear burn or linear dodge
+  depending on if the foreground is more or less than 50 percent gray.
+                      <br/>
+                     </dd>
+                    </dd>
+                   </dd>
+                  </dd>
+                 </dd>
+                </dd>
+               </dd>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Bg Alpha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   When enabled, ignore the alpha generated by the grunge and use
+the alpha from the background.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Background:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the background before
+combining with the grunges.  If 0, the result will contain only the grunge
+image over black.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator for the
+stamp positioning, size, and variation.  The actual seed value is
+not significant, but different seeds give different results and the
+same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.  It has no effect unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.  This has no effect
+unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Mask input channels are used to make a
+monochrome mask.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used, or if there is no
+valid Alpha channel the Red channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Crop Grunge To Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the grunge has a sharp edge along the
+edge of the mask.  If enabled, the grunge will crop to the mask.  This allows
+grunge to be applied to specific sections of the input clip. If disabled,
+each grunge stamp will be checked against the mask.  If most of the grunge stamp
+falls inside the mask, the entire grunge stamp will be added.  If most of the grunge
+stamp falls outside the mask, the entire grunge stamp will be hidden.  This allows for
+a Vignette like application of grunge.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flip Stamps Vertically:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#title-key">
+  Apply To Title/Key
+ </a>
+ ,
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../emboss">
+       Emboss
+      </a>
+      <br/>
+      <a href="../blur">
+       Blur
+      </a>
+      <br/>
+      <a href="../vignette">
+       Vignette
+      </a>
+      <br/>
+      <a href="../filmdamage">
+       FilmDamage
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../flicker">
+       Flicker
+      </a>
+      <br/>
+      <a href="../warptransform">
+       WarpTransform
+      </a>
+      <br/>
+      <a href="../blurmotion">
+       BlurMotion
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

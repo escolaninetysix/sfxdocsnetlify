@@ -1,0 +1,160 @@
+.. module:: mocha.tools
+.. _AbstractTool:
+
+AbstractTool
+************
+
+.. inheritance-diagram:: AbstractTool
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`action<AbstractTool.action>` ()
+
+
+Virtual functions
+^^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`on_activate<AbstractTool.on_activate>` ()
+*    def :meth:`on_deactivate<AbstractTool.on_deactivate>` ()
+*    def :meth:`on_mouse_move<AbstractTool.on_mouse_move>` (event)
+*    def :meth:`on_mouse_press<AbstractTool.on_mouse_press>` (event)
+*    def :meth:`on_mouse_release<AbstractTool.on_mouse_release>` (event)
+
+
+Detailed Description
+--------------------
+
+
+    
+    Abstract tool class that provides overridable methods to determine custom tools.
+    Every overridable method must be implemented.
+    
+
+
+.. class:: AbstractTool([action=NULL])
+
+
+    :type action: :class:`PySide.QtGui.QAction`
+
+
+
+    
+    :param action: A :class:`PySide.QtGui.QAction` instance associated with the tool.
+    
+    Creates a custom tool instance. `action` will be added automatically to mocha tool bar and tool menu
+    if it is passed in.
+    If the argument is None, an associated action will be created anyway, but will not be added to
+    mocha tool bar and tool menu and be available from :meth:`action`.
+    Don't create the instance manually.
+    Mocha backend creates the instance upon project opening and destroys it upon project closing.
+    Please note that you must redefine __init__ method, as mocha passes a :class:`mocha.project.Project`
+    instance as the single argument.
+    
+    Example::
+    
+       class MyTool(AbstractTool):
+          def __init__(self, project_instance):
+             ...
+             action = QAction()
+             ...
+             AbstractTool.__init__(self, action)
+          ...
+    
+    
+
+
+
+
+    :type action: :class:`PySide.QtGui.QAction`
+
+
+.. method:: AbstractTool.action()
+
+
+    :rtype: :class:`PySide.QtGui.QAction`
+
+
+
+    
+    Returns associated :class:`PySide.QtGui.QAction` instance.
+    
+
+
+
+.. method:: AbstractTool.on_activate()
+
+
+
+
+
+    
+    Implements a handler on the tool activation event.
+    
+
+
+
+.. method:: AbstractTool.on_deactivate()
+
+
+
+
+
+    
+    Implements a handler on the tool activation event.
+    
+
+
+
+.. method:: AbstractTool.on_mouse_move(event)
+
+
+    :type event: :class:`mocha.tools.InputEvent`
+
+
+
+    
+    :param event: Input event instance.
+    
+    Implements a handler on the mouse move event.
+    
+
+
+
+.. method:: AbstractTool.on_mouse_press(event)
+
+
+    :type event: :class:`mocha.tools.InputEvent`
+
+
+
+    
+    :param event: Input event instance.
+    
+    Implements a handler on the mouse press event.
+    
+
+
+
+.. method:: AbstractTool.on_mouse_release(event)
+
+
+    :type event: :class:`mocha.tools.InputEvent`
+
+
+
+    
+    :param event: Input event instance.
+    
+    Implements a handler on the mouse release event.
+    
+
+
+
+

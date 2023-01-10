@@ -1,0 +1,347 @@
+{
+   "date": "2012-11-08T14:45:34-05:00",
+   "tags": [
+      "Final Effects Complete"
+   ],
+   "title": "Final Effects Complete AVX - 7.0.0 Release Notes",
+   "description": "Final Effects Complete 7.0.0 for AVX release notes"
+}
+
+<h2>
+ <u>
+  <b>
+   Final Effects Complete AVX 7.0.0 Release Notes
+  </b>
+ </u>
+</h2>
+<p>
+ <b>
+  Welcome to BorisFX
+ </b>
+</p>
+<p>
+ Final Effects Complete AVX (FEC AVX) runs on the AVX 2.0 architecture. 
+</p>
+<p>
+ <b>
+  Final Effects Complete AVX 7 supports the following Avid host applications:
+ </b>
+</p>
+<p>
+ <b>
+  Macintosh OSX 10.7 and 10.8:
+ </b>
+</p>
+<p>
+ • Avid Media Composer 6 and 6.5
+</p>
+<p>
+ • Avid Symphony 6 and 6.5
+</p>
+<p>
+ <b>
+  Windows 7 64:
+ </b>
+</p>
+<p>
+ • Avid Media Composer 6 and 6.5
+</p>
+<p>
+ • Avid Symphony 6 and 6.5
+</p>
+<p>
+ • Avid NewsCutter 10 and 10.5
+</p>
+<p>
+ <b>
+  What's New in FEC 7 AVX (Summary of features changes since FEC 6):
+ </b>
+</p>
+<p>
+ • Ten new filters including an array of unique new transitions:
+</p>
+<p>
+      -Difference Blend
+</p>
+<p>
+      -Difference Wipe
+</p>
+<p>
+      -Glow Dissolve
+</p>
+<p>
+      -Spiral Blur Dissolve
+</p>
+<p>
+      -Toner Dissolve
+</p>
+<p>
+      -Threshold Dissolve
+</p>
+<p>
+      -Threshold RGB Dissolve
+</p>
+<p>
+      -Turbulence Dissolve
+</p>
+<p>
+      -Vector Blur Dissolve
+</p>
+<p>
+      -Water Waves Dissolve
+</p>
+<p>
+ • Performance enhancements when using 16bit rendering and when using RT filters.
+</p>
+<p>
+ • Motion Tracker workflow improvements including the ability to jump ahead in the timeline instead of tracking frame by frame.
+</p>
+<p>
+ • View Displacement option added to Water Waves allowing for interesting self-animating gradients.
+</p>
+<p>
+ • Numerous bug fixes and render quality improvements.
+</p>
+<p>
+ <b>
+  FEC AVX 7.0.0 Bug Fixes - (Summary of major fixes since FEC 6):
+ </b>
+</p>
+<p>
+ • RT versions of the filters were reintroduced.
+</p>
+<p>
+ • Vector Blur used an edge treatment mechanism that allowed unexpected transparency to creep in around the edges of the image.
+</p>
+<p>
+ • Using the integrated Beat Reactor to control the vertical blur amount in FEC Blur did not generate the proper vertical blur amounts.
+</p>
+<p>
+ • On Mac OS, FEC filters could not open presets that used names with non-ASCII text characters, and saving a preset named with non-ASCII characters resulted in a file with unexpected garbage characters in the name.
+</p>
+<p>
+ • On Mac OS, loading Pixel Chooser subpresets did not update the values of the pixel chooser parameters.
+</p>
+<p>
+ • Light Wipe generated artifacts for moderately high values of Intensity.
+</p>
+<p>
+ • The Beat Reactor did not properly drive the threshold parameters in ThresholdRGB.
+</p>
+<p>
+ • Mr. Mercury did not properly adjust for non-square pixel aspect ratios.
+</p>
+<p>
+ • The Mr. Mercury emitter location was shifted by half the image dimension away from the correct point when using the Motion tracker to define the position.
+</p>
+<p>
+ • When the density parameter was low in Glue Gun (i.e when distinct blobs were visible) the blobs were rendered in the wrong location when field rendering leading to potentially jittery playback.
+</p>
+<p>
+ • FEC Sphere showed aliasing artifacts at some settings.
+</p>
+<p>
+ • Bulge showed sporadic instability when the height parameter was less than 0.
+</p>
+<p>
+ • 24bit AIF files were not properly handled by the Beat Reactor.
+</p>
+<p>
+ • In some filters the Compare Mode did not preview correctly when using the Pixel Chooser.
+</p>
+<p>
+ • Empty parameter groups unexpectedly opened/closed when changing checkboxes or menus.
+</p>
+<p>
+ • When selecting a single channel in the integrated Beat Reactor the audio levels would sometimes flicker unexpectedly.
+</p>
+<p>
+ <b>
+  FEC AVX 7.0.0 - Known Issues and Limitations:
+ </b>
+</p>
+<p>
+ • The Motion Tracker has been removed from all filters in the Transition category.
+</p>
+<p>
+ • As part of the new Motion Tracker workflow, if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must now reset the tracker data with the reset button in the tracker banner before starting a second tracker pass. (This is not necessary if tracker point picker location has changed.)
+</p>
+<p>
+ • The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. As a temporary workaround you can lower the Smoothing amount to preserve accuracy when the Frequency Resolution is high or you can use lower values of Frequency Resolution such as the default setting of 32.
+</p>
+<p>
+ • When the emitter position in Mr. Mercury is animated or mapped to a motion tracker, the use of the Prestart parameter causes the emitter position to prematurely travel the emitter path. As a workaround for using the prestart parameter when the emitter position is animated, you can apply the tracker to a slightly longer clip which can be faded/cut in to give the particles time to develop before the desired beginning point of the animation.
+</p>
+<p>
+ • The 3D Relief filter does not preview accurately at less than full resolution and this effect should be set up at full resolution.
+</p>
+<p>
+ • When stacking multiple effects on a track and then rearranging the order of those effects, parameter errors may occur such as button parameters functioning as simple checkboxes instead of true buttons. We are working with Avid to resolve this issue.
+</p>
+<p>
+ • Effect stacks will occasionally display an error stating "Connect failed to connect" when preview at less than full resolution. This error does not affect final render and can be worked around by switching to full green/green preview resolution. We are working with Avid to resolve this issue.
+</p>
+<p>
+ <b>
+  Supported Real-Time Systems:
+ </b>
+</p>
+<p>
+ The filters in the FEC AVX RT category play back in real-time on Avid systems with Nitris hardware. FEC AVX RT filters apply, render and use presets the same way that FEC AVX filters do. The real-time filters are a subset of the existing filters.
+</p>
+<p>
+ <b>
+  Supported Real-Time Avid Hosts:
+ </b>
+</p>
+<p>
+ Supported real-time systems include Media Composer 4.0 or later, and systems with Nitris hardware. Real-time playback is largely determined by the speed of the system hardware. These filters are intended to provide real-time Draft-Quality previews. You should render these filters before outputting to tape, even on systems with Nitris hardware. You do not have to replace the real-time filters with the corresponding non-real-time filter. Simply render the real-time filter.
+</p>
+<p>
+ <b>
+  Important Notes on the FEC Real-time Effects:
+ </b>
+</p>
+<p>
+ The real-time effect playback is largely determined by the speed of the system hardware. Additionally, real-time playback depends on the settings you adjust in the effect. If you adjust multiple parameters, it is likely the effect will not play back in realtime. For example, if you apply blur and choke to a PixelChooser matte, the filter may require rendering. When you work with the real-time filters, the Fields menu only applies when you render the effect. It does not affect previews and playback. Although some real-time filters may include the Motion Tracker parameter groups, you should not use the real- time version of a filter to motion track. Use the non-real-time version.
+</p>
+<p>
+ FEC AVX RT filters cannot apply to Avid titles and play back in real time. Therefore, the real-time version of FEC AVX filters do not include a Title Matte parameter group. Use the non-real-time version to apply to a title or matte. To achieve real-time playback of FEC AVX RT plug-ins without dropped frames, make sure that your system meets the following requirements:
+</p>
+<p>
+ • Set your Avid to real-time Playback mode (green dot in the Timeline, not blue dot).
+</p>
+<p>
+ • Open your project’s Video Display settings and set Real-time Effect Quality to High Performance (more simultaneous effects). This increases the system’s ability to process effects at the expense of reducing image quality.
+</p>
+<p>
+ • Use the Expert Render command on parts of the sequence where the system has difficulties during playback. The system marks these sections of the sequence in the Timeline. For more information, see your Avid documentation.
+</p>
+<p>
+ • If possible, start playback earlier in the sequence, before the effects that cause difficulties. This allows the system to process some of the effect frames before displaying them, decreasing the chance of playback difficulties.
+</p>
+<p>
+ • If you still experience dropped frames, open your project’s Video Display settings and set a Video Pre-Fill amount of a few seconds. This preloads the specified amount of video and can help if the system has trouble maintaining real-time playback.
+</p>
+<p>
+ • Some FEC AVX RT effects can play in real time with Real-time Effect Quality set to High Quality within the Video Display Settings. Experiment with combinations of the Real-time Effect Quality and Pre-Filled Frames settings to find the settings that best suit your project and workflow.
+</p>
+<p>
+ Some aspects of FEC AVX RT effects appear a bit different during real-time preview than non-real-time preview and final render. This is particularly true of effects using geometric distortions (Scale, Tumble, Spin, Rotate) and effects that blur and choke edges. While fine-tuning these parameters, it is recommended to toggle to non-real-time mode to check the quality of the final render. To do this, click the green dot in the Timeline and step to another frame or change a parameter to force the Composer window to update. In non-real-time mode you can also check the output on an external (NTSC or PAL) monitor.
+</p>
+<p>
+ <b>
+  Copying Presets from Earlier Versions of FEC AVX:
+ </b>
+</p>
+<p>
+ To use presets created in earlier versions of FEC AVX, you need to copy the older presets from their previous preset location "FEC Presets 5 AE" to the new "FEC Presets 6" preset folder location.
+</p>
+<p>
+ <b>
+  Applying FEC Effects
+ </b>
+</p>
+<p>
+ Some effects can be applied as either a transition or a filter. If an effect can be applied as a transition, it appears in the FEC Two-Input Effects category. For example, to apply FEC Burn Film as a filter, choose FEC Burn Film from the FEC Stylize category. However, to apply it as a transition, you would choose FEC Burn Film TR from the FEC Two-Input Effects category. Similarly transition-style fitlers which naturally autoanimate and work as true out-of-the-box transitions can be applied as effects from the FEC Transition Effect category or as true transitions from the FEC Transition category. You can also apply FEC effects to titles created in the Avid Title tool or to imported mattes:
+</p>
+<p>
+ 1. Choose Effect Palette from the Tools menu .
+</p>
+<p>
+ 2. Click to select the appropriate Final Effects Complete effect category on the left. Choose the appropriate effect on the right.
+</p>
+<p>
+ 3. Drag the icon for the desired effect onto a clip or transition.
+</p>
+<p>
+ 4. Enter Effects mode and adjust the effect parameters in the Effect Editor window.
+</p>
+<p>
+ <b>
+  Applying FEC Effects as Transitions:
+ </b>
+</p>
+<p>
+ FEC provides two methods to use effects as transitions. The first method is to apply a FEC Two-Input effect to the transition between two clips. The second method is to overlap two clips and apply a FEC filter effect to each layer. Each method offers advantages. FEC Two-Input effects offer the convenience of an Avid transition. For example, trimming and duration changes are easily made and you only have to render a single effect. However, to create a wider range of transition effects, you can use the second method: overlap two clips and apply a filter to each layer. This method provides greater control over parameters.
+</p>
+<p>
+ <b>
+  Applying FEC Effects to Titles and Mattes:
+ </b>
+</p>
+<p>
+ To apply a FEC effect to a title or to an imported matte, drag the effect onto the title. If you Option /Alt-drag to the effect, the effect is applied to the title as well as to any tracks beneath the title in the timeline. For example, to apply a blur to a title, drag the FEC Blur effect onto the title. To apply a blur to a title and the background video, Option-drag the FEC Blur effect to the title.
+</p>
+<p>
+ <b>
+  Applying Multiple Filters to Avid Titles and Mattes:
+ </b>
+</p>
+<p>
+ FEC AVX allows you to apply two or more effects to an Avid title or matte without affecting the background. For example, you could apply an FEC Emboss to a title and then blur it. The Title Matte parameter group’s Multi-Filter controls can also be used to apply multiple effects to existing keys, such as chroma keys, without applying them to the entire image.
+</p>
+<p>
+ <b>
+  Rendering Final Effects Complete Effects:
+ </b>
+</p>
+<p>
+ Boris effects render exactly the same as native Avid effects. Render effects individually or render in to out. In addition, if you re-digitize material, you simply re-render any effects; all parameters are preserved. For more information, consult your Avid documentation.
+</p>
+<p>
+ <b>
+  Working with Presets and Effect Templates:
+ </b>
+</p>
+<p>
+ After you apply and adjust a FEC AVX filter, you can save the parameter settings by pressing the Preset menu and choosing Save. A dialog box allows you to name and save the file. Presets are only compatible with the filter in which they were created. For example, if you attempt to load a Brightness and Contrast preset into a Blur filter, the preset is ignored. However, you can also save PixelChooser parameters as presets. Boris Final Effects Complete AVX includes a selection of preset effects for each filter. These presets are an excellent way to get an initial introduction to the capabilities of a filter.
+</p>
+<p>
+ <b>
+  Resetting Effects:
+ </b>
+</p>
+<p>
+ The Preset menu allows you to save filter settings independently of the media or project. You can return to the Final Effects Complete default settings or to a custom default that you create yourself.
+</p>
+<p>
+ <b>
+  Loading Preset Effects:
+ </b>
+</p>
+<p>
+ To load a previously saved filter settings file, you must first apply the same filter to your media. A list of existing presets also appears in the menu.
+</p>
+<p>
+ <b>
+  Saving Effects as Presets:
+ </b>
+</p>
+<p>
+ You can save favorite filter settings as presets and apply them to multiple projects.
+</p>
+<p>
+ <b>
+  Saving Effect Templates in a Bin:
+ </b>
+</p>
+<p>
+ You can save parameter settings in a bin as an Effect template, just as you save other Avid effects. Effect templates allow you to save effect parameters and use them again to create or modify other effects. Effect templates save parameters set at multiple keyframes.
+</p>
+<p>
+ <b>
+  Applying Effect Templates from a Bin:
+ </b>
+</p>
+<p>
+ To apply all the values from the template, drag the Effect template from the bin to either the Timeline or the Effect Preview monitor in the Effect Editor window.
+</p>
+<p>
+ <b>
+  Saving FEC AVX Effects as Custom Transitions:
+ </b>
+</p>
+<p>
+ You can now save custom transitions to the Avid Quick Transition menu for easy access. This means that custom FEC AVX transitions appear in the Quick Transitions dialog box.
+</p>

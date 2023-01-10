@@ -1,0 +1,70 @@
+{{ define "content" }}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>{{ .Title }}</h1>
+	  	  <script>
+	  $(document).ready(function() {
+
+	  if (window.location.pathname == "/downloads/continuum-2020-5-adobe-mac/") {	  
+	  $("#dlalert").toggle(true);
+	  } else {
+	  $("#dlalert").toggle(false); 
+	  }
+	  });
+	  </script>
+	  <div style="display:none;" id="dlalert"><b>Concerning After Effects 17.1.1 on Mac OS 10.15 (Catalina):</b><br><br>After Effects 17.1.1 running on MacOS 10.15 (Catalina) is not compatible with Continuum 2020.5 (13.5.0) and earlier.<br>If you are experiencing instability with Continuum 2020.5 (13.5.0) please update to version 13.5.1.<br><br></div>
+      <ul class="list-unstyled">
+        <li>Product: {{ .Params.product }}</li>
+        <li>Version: {{ .Params.version }}</li>
+        <li>Host: {{ .Params.host }}</li>
+        <li>Platform: {{ .Params.platform }}</li>
+		<li>Release Notes: {{ if (not (isset .Params "release_notes")) }}  {{ print "N/A" }} {{ else if (isset .Params "release_notes") }} <a href="{{ .Params.release_notes }}" title="{{ .Params.title }} Release Notes">{{ .Params.title }} Release Notes</a> {{ end }}</li>
+      </ul>
+      <p>
+        <a id="download-button" class="btn btn-dl">Download Now</a>
+      </p>
+    </div>
+  </div>
+  {{ if .Content }}
+  <div class="row">
+    <div class="col">
+      <div id="article">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+<script>
+var login = Cookies.getJSON('bfx-login');
+var payload = {
+  email: login.email,
+  product: "{{ .Params.download_url }}",
+  version: "{{ .Params.version }}",
+  platform: "{{ .Params.platform }}"
+}
+
+$('#download-button').click(function() {
+    axios.post('https://backend.borisfx.com/track', payload, {auth : { username: login.email, password: login.token }})
+    .then(function (data) {
+      window.location = "{{ .Params.download_url }}";
+    })
+    .catch(function (err) {
+      if (err.response != null && err.response.status == 403){
+        Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+        Cookies.set('redirect_url', window.location.href);
+        window.location.href = '/account/login?session_expired=true';
+        return;
+      }
+      else{
+          console.error(err);
+          window.location = "{{ .Params.download_url }}";
+      }
+    });
+});
+</script>
+
+{{ end }}

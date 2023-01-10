@@ -1,0 +1,718 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: Feedback",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/Feedback.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="Feedback">
+     <h2>
+      Feedback
+     </h2>
+    </a>
+    In the S_Feedback Plugin.
+    <p>
+     The previous frames of the input clip are transformed
+  and combined with the current frame to give a variety of effects
+  inspired by video feedback.  The output of each processed frame is
+  stored and then combined with the next frame.  The feedback is
+  reinitialized whenever any non-consecutive frame is processed:
+  either the first frame, reprocessing a given frame, or jumping to
+  another frame.  You must process multiple frames of a clip in a row
+  to observe the effect.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be processed.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/Feedback.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fade:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   For each frame, the previous output is scaled by this amount
+  before it is combined with the new input frame.  Normally this value
+  should be less than 1.0 which causes previous frames to fade out
+  over time.  A value of 1.0 causes no fading, and values greater than
+  1.0 cause previous frames to become brighter over time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the brightness of all frames.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The previous frames are blurred by this amount for
+  each new frame.  This has no effect unless it is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Diffuse Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The previous frames are passed through a
+  pixel-diffusion process of this magnitude, for each new frame.  This
+  has no effect unless it is positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Amount Rel:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [1 1],
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative amounts of horizontal and vertical
+  blurring and/or diffusing.  This has no effect unless Blur Amount or
+  Diffuse Amount are positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Ave
+   </i>
+   .
+   <br/>
+   Selects the method for combining previous frames with the
+  current frame.
+   <br/>
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Ave:
+      </i>
+     </b>
+     The current frame is averaged with the previous
+  output, smearing moving objects out over time.  The output is scaled
+  by Fade and the input is scaled by 1.0-Fade for a weighted average,
+  so Fade must be less than 1.0 for this to work properly.  Unlike the
+  other combine options, Ave should never affect the brightness of
+  stationary objects in the clip.
+     <br/>
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Max:
+       </i>
+      </b>
+      The colors of the current frame and previous frames
+  are combined with a maximum function.  This makes the output frame
+  at least as bright as the current frame, and will make brighter
+  'trails' for example if you have bright objects moving on a dark
+  background.
+      <br/>
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Screen:
+        </i>
+       </b>
+       The colors of the current frame and previous
+  frames are combined with a blend function.  This can be used to
+  accumulate the colors of a moving clip.  However, non-black regions
+  will become brighter with each frame.
+       <br/>
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Add:
+         </i>
+        </b>
+        The colors of the current frame and previous frames
+  are added.  This can also be used to accumulate the colors of a
+  moving clip, with the non-black regions becoming brighter at each
+  frame.
+        <br/>
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Min:
+          </i>
+         </b>
+         The colors of the current frame and previous frames
+  are combined with a minimum function.  This makes the output frame
+  no brighter than the current frame, and will often fade quickly to a black frame.
+         <br/>
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fade Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   For each frame, the previous output is scaled by this
+  color before it is combined with the new input frame.  This is
+  similar to Fade but affects the colors of the previous frames
+  instead of just the brightness.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the color of all frames.  Set this color to the complement
+  of Fade Color to offset overly colored trails.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The center position for rotation and scaling, in screen
+coordinates relative to the center of the frame.  This parameter can be adjusted using the Center Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Z Dist:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.95,
+   <i>
+    Range:
+   </i>
+   0.001 or greater.
+   <br/>
+   For each new frame, the 'distance' of the previous frames is
+scaled by this amount.  This causes zooming during the feedback
+process.  Values greater than 1.0 zoom out and make the previous
+frames smaller, and values less then 1.0 zoom in and enlarge them.  This parameter can be adjusted using the Transform Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   For each new frame, the amount of rotation in degrees to
+apply to the previous frames.  This parameter can be adjusted using the Transform Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Shifts the hue of the previous frames' colors, for each
+  new frame.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the previous frames by this amount for each new frame.
+If this is non-zero the Center location is less meaningful.  This parameter can be adjusted using the Shift Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    No No
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders of the
+source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../trails">
+       Trails
+      </a>
+      <br/>
+      <a href="../trailsdiffuse">
+       TrailsDiffuse
+      </a>
+      <br/>
+      <a href="../feedbackdistort">
+       FeedbackDistort
+      </a>
+      <br/>
+      <a href="../timeaverage">
+       TimeAverage
+      </a>
+      <br/>
+      <a href="../nearestcolor">
+       NearestColor
+      </a>
+      <br/>
+      <a href="../feedbackbubble">
+       FeedbackBubble
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../feedbackmatte">
+       FeedbackMatte
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../warprepeat">
+       WarpRepeat
+      </a>
+      <br/>
+      <a href="../warpchroma">
+       WarpChroma
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

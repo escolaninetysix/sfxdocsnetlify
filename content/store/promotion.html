@@ -1,0 +1,87 @@
+{
+    "title": "Putting Your Order Together",
+    "date": "2020-08-19T12:00:00.000Z"
+}
+<div id="app">
+    <h2>Please Wait. . .</h2>
+</div>
+<script src="https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+<script>
+    var shopifyClient = ShopifyBuy.buildClient({
+        domain: 'borisfx.myshopify.com',
+        storefrontAccessToken: '3f231af7322de13fabe8e3e7ff3ef003',
+    });
+</script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            products : {},
+            checkout : {},
+            lineItems : [],
+            coupon : ''
+        },
+        mounted: function () {
+            var self = this;
+            var urlParams = new URLSearchParams(window.location.search);
+            if (!urlParams) window.location.href = '/store';
+            var sku = urlParams.get('product');
+            if (!sku) window.location.href = '/store';
+            sku = sku.toUpperCase();
+            self.coupon = urlParams.get('coupon');
+
+            self.getShopifyProds()
+            .then(function(res){
+                self.createLineItem(sku);
+                self.createCheckout();
+            })
+        },
+        methods : {
+            getShopifyProds: function () {
+                var self = this;
+                var prods = {}
+                return new Promise(function(resolve, reject){
+                    shopifyClient.collection.fetchAllWithProducts(50)
+                    .then(function (c) {
+                        for (var i in c) {
+                            var collection = c[i];
+                            for (var j in collection.products) {
+                                var product = collection.products[j];
+                                if (product.variants == null) continue;
+                                for (var k in product.variants) {
+                                    var v = product.variants[k];
+                                    prods[v.sku] = v.id;
+                                }
+                            }
+                        }
+                        self.products = prods;
+                        resolve('');
+                    })
+                    .catch(function (err){reject(err)});
+                });
+            },
+            createCheckout : function () {
+                var self = this;
+                shopifyClient.checkout.create()
+                .then(function(checkout) {
+                    Cookies.set('bfx-checkout-id', checkout.id)
+                    shopifyClient.checkout.addDiscount(checkout.id, self.coupon)
+                    .then(function (checkout) {
+                        shopifyClient.checkout.addLineItems(checkout.id, self.lineItems).then(function() {
+                            window.location.href = '/store/cart'
+                        })
+                    })
+                    .catch(function(err){window.location.href = '/store'});
+                })
+                .catch(function(err){window.location.href = '/store'});
+            },
+            createLineItem : function (sku){
+                this.lineItems.push({
+                    variantId : this.products[sku],
+                    quantity: 1
+                })
+            }
+        }
+    });
+</script>

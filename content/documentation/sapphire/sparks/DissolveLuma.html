@@ -1,0 +1,399 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: DissolveLuma",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolveLuma.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolveLuma">
+     <h2>
+      DissolveLuma
+     </h2>
+    </a>
+    In the S_Dissolves Plugin.
+    <p>
+     Transitions between two input clips using a pattern
+  derived from their luminances.  One clip often appears to emerge
+  through the other.  The Dissolve
+  Amt parameter should be animated to control the transition speed.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolveLuma.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Amt:
+   </b>
+   <i>
+    AutoTransition,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -0.5 to 1.5,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The transition ratio between the From and To inputs.  A
+  value of 0 gives only the From input and a value of 1 gives only the
+  To input.  By default this parameter automatically animates from 0
+  to 1 to perform a complete transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Increase for softer and slower transitions.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Pattern:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   If positive, a blur is applied to the transition
+  pattern.  This can reduce noise and give clearer edges to
+  transition lines.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Luma Of:
+   </b>
+   <i>
+    Popup menu,  Default: Difference
+   </i>
+   .
+   <br/>
+   Determines how the transition pattern is generated from
+  the clips' luminance values.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Difference:
+      </i>
+     </b>
+     similar areas transition first, different areas last.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Subtract:
+       </i>
+      </b>
+      areas where the first clip is brighter
+  transition first, and areas where the second clip is brighter
+  transition last.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mult:
+        </i>
+       </b>
+       areas where both images are bright transition first, and
+  areas where either is dark are last.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Screen:
+         </i>
+        </b>
+        areas where either image is bright transition first,
+  and areas where both are dark transition last.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           From:
+          </i>
+         </b>
+         dark areas of the first clip disappear first,
+  bright areas last.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            To:
+           </i>
+          </b>
+          bright areas of the second clip appear first, dark
+  areas last.
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Pattern:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the transition pattern is reversed in
+  time.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../dissolve">
+       Dissolve
+      </a>
+      <br/>
+      <a href="../dissolveblur">
+       DissolveBlur
+      </a>
+      <br/>
+      <a href="../dissolvebubble">
+       DissolveBubble
+      </a>
+      <br/>
+      <a href="../dissolveclouds">
+       DissolveClouds
+      </a>
+      <br/>
+      <a href="../dissolvedefocus">
+       DissolveDefocus
+      </a>
+      <br/>
+      <a href="../dissolvediffuse">
+       DissolveDiffuse
+      </a>
+      <br/>
+      <a href="../dissolvedistort">
+       DissolveDistort
+      </a>
+      <br/>
+      <a href="../dissolveedgerays">
+       DissolveEdgeRays
+      </a>
+      <br/>
+      <a href="../dissolvefilm">
+       DissolveFilm
+      </a>
+      <br/>
+      <a href="../dissolveglint">
+       DissolveGlint
+      </a>
+      <br/>
+      <a href="../dissolveglintrainbow">
+       DissolveGlintRainbow
+      </a>
+      <br/>
+      <a href="../dissolveglow">
+       DissolveGlow
+      </a>
+      <br/>
+      <a href="../dissolvelensflare">
+       DissolveLensFlare
+      </a>
+      <br/>
+      <a href="../dissolvepixelate">
+       DissolvePixelate
+      </a>
+      <br/>
+      <a href="../dissolvepuddle">
+       DissolvePuddle
+      </a>
+      <br/>
+      <a href="../dissolvespeckle">
+       DissolveSpeckle
+      </a>
+      <br/>
+      <a href="../dissolvestatic">
+       DissolveStatic
+      </a>
+      <br/>
+      <a href="../dissolvetiles">
+       DissolveTiles
+      </a>
+      <br/>
+      <a href="../dissolvevortex">
+       DissolveVortex
+      </a>
+      <br/>
+      <a href="../dissolvewaves">
+       DissolveWaves
+      </a>
+      <br/>
+      <a href="../dissolvelightrays">
+       DissolveLightRays
+      </a>
+      <br/>
+      <a href="../dissolvedarkrays">
+       DissolveDarkRays
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

@@ -1,0 +1,242 @@
+{{ define "content" }}
+
+<style>
+.download-row:hover {
+  cursor: pointer;
+}
+.download-row:hover td {
+  text-decoration: underline;
+}
+</style>
+
+<div class="container">
+  <div class="row" style="margin-bottom: 0">
+    <div class="col">
+      <h1 class="mb-0">Legacy Downloads</h1>
+      <p>We have listed legacy download installers below. If you are looking for an installer that is not listed here, <a href="/support/open-a-case/">please contact us</a>.</p>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 0">
+    <div class="col">
+      <label for="filter-product">Product:</label>
+      <select id="filter-product" class="form-control">
+      </select>
+    </div>
+    <div class="col">
+      <label for="filter-host">Host:</label>
+      <select id="filter-host" class="form-control">
+      </select>
+    </div>
+	    <div class="col">
+      <label for="filter-version">Version:</label>
+      <select id="filter-version" class="form-control">
+      </select>
+    </div>
+    <div class="col">
+      <label for="filter-platform">Platform:</label>
+      <select id="filter-platform" class="form-control">
+      </select>
+    </div>
+  </div>
+  <table id="download-table" class="table table-responsive table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Version</th>
+        <th>Host</th>
+        <th>Platform</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script>
+(function($) {
+  $(document).ready(function() {
+
+    var rows = [
+      {{ range sort (.Site.GetPage "section" "legacy-downloads").Pages ".Params.Date" "desc" }}
+      {
+        "title": "{{ .Params.title }}",
+        "product": "{{ .Params.product }}",
+        "version": "{{ .Params.version }}",
+        "host": "{{ .Params.host }}",
+        "platform": "{{ .Params.platform }}",
+        "download_url": "{{ .Params.download_url }}",
+        "url": "{{ .Permalink }}",
+      },
+      {{ end }}
+    ];
+
+    function stableSort(arr, cmpFunc) {
+      var arrOfWrapper = arr.map(function(elem, idx){
+        return {elem: elem, idx: idx};
+      });
+      arrOfWrapper.sort(function(wrapperA, wrapperB){
+        var cmpDiff = cmpFunc(wrapperA.elem, wrapperB.elem);
+        return cmpDiff === 0
+          ? wrapperA.idx - wrapperB.idx
+          : cmpDiff;
+      });
+      return arrOfWrapper.map(function(wrapper){
+        return wrapper.elem;
+      });
+    }
+    rows = stableSort(rows, function(a, b) {
+      return a.product < b.product ? -1 : (a.product > b.product ? 1 : 0);
+    });
+    rows = stableSort(rows, function(a, b) {
+      if (a.product.startsWith('Continuum') && !b.product.startsWith('Continuum')) {
+        console.log(a, b);
+        return -1;
+      } else if (b.product.startsWith('Continuum') && !a.product.startsWith('Continuum')) {
+        return 1
+      } else if (a.product.startsWith('Sapphire') && !b.product.startsWith('Sapphire')) {
+        return -1;
+      } else if (b.product.startsWith('Sapphire') && !a.product.startsWith('Sapphire')) {
+        return 1;
+      } else if (a.product.startsWith('Mocha') && !b.product.startsWith('Mocha')) {
+        return -1;
+      } else if (b.product.startsWith('Mocha') && !a.product.startsWith('Mocha')) {
+        return 1;
+      }
+      return 0;
+    });
+
+    function update() {
+      var product = $('#filter-product').val();
+	  var version = $('#filter-version').val();
+      var host = $('#filter-host').val();
+      var platform = $('#filter-platform').val();
+      var url = window.location.protocol + "//" + window.location.host + window.location.pathname + '?';
+      if (product != 'All Options') {
+        url += '&product=' + product;
+      }
+	  if (version != 'All Options') {
+        url += '&version=' + version;
+      }
+      if (host != 'All Options') {
+        url += '&host=' + host;
+      }
+      if (platform != 'All Options') {
+        url += '&platform=' + platform;
+      }
+       window.history.replaceState({}, '', url);
+      $('#download-table > tbody').empty();
+      html = ''
+      for (var i in rows) {
+        var row = rows[i];
+        if (product != 'All Options' && row['product'] != product) {
+          if (!(product == 'Soundbite' && row['product'].startsWith('Soundbite'))) {
+            continue;
+          }
+        }
+        if (host != 'All Options') {
+          var found = false;
+          for (var j in row['host'].split(', ')) {
+            var subhost = row['host'].split(', ')[j]
+            if (host == subhost) { found = true; }
+          }
+          if (!found) {
+            continue;
+          }
+        }
+        if (platform != 'All Options' && row['platform'] != platform) {
+          continue;
+        }
+        if (version != 'All Options' && row['version'] != version) {
+          continue;
+        }
+        html += '<tr class="download-row" data-link="' + row['url'] + '">';
+        html += '<td>' + row['product'] + '</td>';
+        html += '<td>' + row['version'] + '</td>';
+        html += '<td>' + row['host'] + '</td>';
+        html += '<td>' + row['platform'] + '</td>';
+        html += '</tr>';
+      }
+      $('#download-table > tbody').html(html);
+      $('.download-row').click(function() {
+        window.location = $(this).data('link');
+      });
+    };
+
+    $('#filter-product, #filter-version, #filter-host, #filter-platform').change(function () {
+      update();
+    });
+
+    var products = [];
+    $('#filter-product').append($('<option></option>').text('All Options').attr('value', 'All Options'))
+	    var versions = [];
+    $('#filter-version').append($('<option></option>').text('All Options').attr('value', 'All Options'))
+    var hosts = [];
+    $('#filter-host').append($('<option></option>').text('All Options').attr('value', 'All Options'))
+    var platforms = [];
+    $('#filter-platform').append($('<option></option>').text('All Options').attr('value', 'All Options'))
+    for (var i in rows) {
+      if (products.indexOf(rows[i]['product']) == -1) {
+        products.push(rows[i]['product'])
+      }
+	      if (versions.indexOf(rows[i]['version']) == -1) {
+        versions.push(rows[i]['version'])
+      }
+      for (var j in rows[i]['host'].split(', ')) {
+        var host = rows[i]['host'].split(', ')[j]
+        if (hosts.indexOf(host) == -1) {
+          hosts.push(host)
+        }
+      }
+      if (platforms.indexOf(rows[i]['platform']) == -1) {
+        platforms.push(rows[i]['platform'])
+      }
+    }
+
+    products.sort();
+    for (var i in products) {
+      $('#filter-product').append(
+        $('<option></option>')
+        .text(products[i])
+        .attr('value', products[i])
+      )
+    }
+	
+		    versions.sort();
+    for (var i in versions) {
+      $('#filter-version').append(
+        $('<option></option>')
+        .text(versions[i])
+        .attr('value', versions[i])
+      )
+    }
+
+    hosts.sort();
+    for (var i in hosts) {
+      $('#filter-host').append(
+        $('<option></option>')
+        .text(hosts[i])
+        .attr('value', hosts[i])
+      )
+    }
+
+    platforms.sort();
+    for (var i in platforms) {
+      $('#filter-platform').append(
+        $('<option></option>')
+        .text(platforms[i])
+        .attr('value', platforms[i])
+      )
+    }
+
+    $('#filter-product').val(getQueryParameter('product') || 'All Options');
+		$('#filter-version').val(getQueryParameter('version') || 'All Options');
+    $('#filter-host').val(getQueryParameter('host') || 'All Options');
+    $('#filter-platform').val(getQueryParameter('platform') || 'All Options');
+
+    update();
+
+  });
+})(jQuery);
+</script>
+
+{{ end }}

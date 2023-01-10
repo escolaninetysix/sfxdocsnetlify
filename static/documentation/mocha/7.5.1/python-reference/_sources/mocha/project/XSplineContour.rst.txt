@@ -1,0 +1,187 @@
+.. module:: mocha.project
+.. _XSplineContour:
+
+XSplineContour
+**************
+
+.. inheritance-diagram:: mocha.project.XSplineContour
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__eq__<XSplineContour.__eq__>` (rhs)
+    * def :meth:`control_point<XSplineContour.control_point>` (index)
+    * def :meth:`get_bounding_rect<XSplineContour.get_bounding_rect>` ([time=0.f[, view=View( 0 )]])
+    * def :meth:`insert_point<XSplineContour.insert_point>` (time, xcp[, index=UINT_MAX[, view=View()]])
+    * def :meth:`insert_point<XSplineContour.insert_point>` (time, xcpd[, index=UINT_MAX[, view=View()]])
+    * def :meth:`parameter<XSplineContour.parameter>` (name_components)
+    * def :meth:`parameter_set<XSplineContour.parameter_set>` ([name_components=list()])
+    * def :meth:`remove<XSplineContour.remove>` ()
+    * def :meth:`set_control_points<XSplineContour.set_control_points>` (points)
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`control_points<XSplineContour.control_points>` [read-write] of list of :class:`XControlPoint` instances
+*    property :attr:`psets<XSplineContour.psets>` [read-only] of ParameterSet
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    X-Spline contour class. Provides access to X-Spline contours and their control points.
+
+
+
+.. method:: XSplineContour.control_point(index)
+
+
+    :type index: uint
+    :rtype: :class:`mocha.project.XControlPoint`
+
+
+    :param index: Control point index.
+    :return: ``XControlPoint`` or ``None`` if index is invalid.
+    
+    Returns x spline control point by index.
+
+
+
+.. method:: XSplineContour.get_bounding_rect([time=0.f[, view=View( 0 )]])
+
+
+    :type time: float
+    :type view: :class:`mocha.project.View`
+    :rtype: list of float
+
+
+    :param time: Time
+    :param view: View
+                
+    Returns coordinates of top left and bottomRight points of the contour bounding rectangle,
+    considering its handles, as a list of floats [x1, y1, x2, y2]
+
+
+
+.. method:: XSplineContour.insert_point(time, xcp[, index=UINT_MAX[, view=View()]])
+
+
+    :type time: float
+    :type xcp: :class:`mocha.project.XControlPoint`
+    :type index: uint
+    :type view: :class:`mocha.project.View`
+    :rtype: :class:`mocha.project.XControlPoint`
+
+
+    :param time: Keyframe time.
+    :param xcp: Keyframe data.
+    :param index: Inserting index.
+    :param view: View.
+    
+    Inserts new control point into index position.
+
+
+
+.. method:: XSplineContour.insert_point(time, xcpd[, index=UINT_MAX[, view=View()]])
+
+
+    :type time: float
+    :type xcpd: :class:`mocha.project.XControlPointData`
+    :type index: uint
+    :type view: :class:`mocha.project.View`
+    :rtype: :class:`mocha.project.XControlPoint`
+
+
+    :param time: Keyframe time.
+    :param xcpd: Keyframe data.
+    :param index: Inserting index.
+    :param view: View.
+    
+    Inserts new control point into index position.
+
+
+
+.. method:: XSplineContour.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.XSplineContour`
+    :rtype: bool
+
+
+
+
+
+.. method:: XSplineContour.parameter(name_components)
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.Parameter`
+
+
+    :param name_components: Relative name for a requested parameter.
+    
+    Returns :class:`Parameter` instance bound with given name path.
+
+
+
+.. method:: XSplineContour.parameter_set([name_components=list()])
+
+
+    :type name_components: list of strings
+    :rtype: :class:`mocha.project.ParameterSet`
+
+
+    :param name_components: Relative name for a requested parameter set.
+    
+    Returns :class:`ParameterSet` instance bound with given name path.
+    Pass an empty list ``[]`` to get access to the X-Spline contour parameters set.
+
+
+
+.. method:: XSplineContour.remove()
+
+
+
+
+    Removes this contour.
+
+
+
+.. method:: XSplineContour.set_control_points(points)
+
+
+    :type points: list of XControlPoint
+
+
+
+
+
+.. attribute:: XSplineContour.control_points
+
+
+    :type: list of :class:`XControlPoint` instances
+    :access: read-write    Provides access to list of :class:`XControlPoint` instances.
+
+
+
+.. attribute:: XSplineContour.psets
+
+
+    :type: ParameterSet
+    :access: read-only    Provides access to the root parameter set.
+    Mimics parameter_set() call.
+
+
+
+

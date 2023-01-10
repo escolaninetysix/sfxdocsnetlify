@@ -1,0 +1,171 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+<style>
+    .cart-container{
+        position: absolute;
+        width: 375px;
+        top: 60px;
+        right: 10px;
+        z-index: 9999;
+        max-height: 600px;
+        overflow-y: auto;
+        line-height: 1.1!important;
+    }
+
+    @media screen and (max-width: 992px){
+        .cart-container {
+            position: fixed;
+            width: 325px;
+            top: 65px;
+            right: 20px;
+        }
+    }
+
+    @media screen and (min-width: 993px) and (max-width: 1242px){
+        .cart-container {
+            position: fixed;
+            width: 325px;
+            top: 65px;
+            right: 5%;
+        }
+    }
+
+    .cart-container span, .cart-container label{
+        font-size: .85rem!important;
+    }
+
+    .cart-container a{
+        color: #0ab0f6;
+        text-transform: unset;
+        font-family: unset;
+        font-size: unset;
+        font-weight:unset;
+        letter-spacing:unset;
+        height: unset;
+    }
+
+    .cart-container a:hover{
+        color: unset;
+    }
+
+    .cart-input {
+        font-size: .85rem;
+        line-height: .85rem;
+        width: 35px;
+        padding: .1rem .25rem 0 .25rem;
+    }
+
+    .cart-text {
+        font-size: .85rem;
+        
+    }
+
+    .btn-sm {
+        padding: .25rem .5rem !important;
+    }
+
+    .cart-thumbnail {
+        max-width:75%!important;
+    }
+
+    .close-btn {
+        background-color: grey;
+    }
+    .close-btn:hover{
+        background-color: #666666;
+    }
+</style>
+<div id="cart-app" style="display: none">
+    <div class="cart-container branded-box p-0" v-show="open">
+        <div
+            style="background-color: #0ab0f6; color:white; font-weight: 600; padding: .5rem; display: flex; align-items: center;">
+            <div class="d-inline-block"><i class="bi-cart2" style="font-size:1.5rem;"></i><span>&nbsp; My Shopping Cart</span></div>
+            <div class="d-inline-block ml-auto">
+                <a href="javascript:void(0)" style="color:white" onclick="hideCart()"><i class="bi-x-square"></i></a>
+            </div>
+        </div>
+        <div class="container-fluid m-0 p-3">
+            <div v-if="loading" class="row mx-0 my-2">
+                <div class="col-md-12">
+                    <h5>Loading . . .</h5>
+                </div>
+            </div>
+            <div v-else-if="empty || checkout.lineItems.length === 0">
+                <p>
+                    You have no items in your cart
+                </p>
+            </div>
+            <div v-else class="row m-0">
+                <div class="col-12">
+                    <div v-for="(item, index) in lineItems">
+                        <div class="row py-2">
+                            <div class="col-4 p-0">
+                                <a class="pl-1" href="javascript:void(0)" @click="removeLineItem(item)" style="color: #d06060; vertical-align: top;"><i style="font-size:.9rem;" class="bi-dash-circle-fill"></i></a>
+                                <img :src="item.img" class="d-inline-block cart-thumbnail" />
+                            </div>
+                            <div class="col-8">
+                                <span class="cart-text">${item.product}<br /></span>
+                                <span class="cart-text" v-if="item.host">${item.host}<br /></span>
+                                <span class="cart-text">${item.type}<br /></span>
+                                <span class="cart-text" v-show="!item.editMode">Quantity: ${item.quantity} <span v-if="!isRenewal(item)">(<a href="javascript:void(0)" @click="setEditMode(item, true)">edit</a>)</span><br /></span>
+                                <span class="cart-text" v-show="item.editMode">Quantity: <input class="form-control form-control-sm d-inline cart-input" maxlength="2" size="1" v-model="item.newQty"> (<a href="javascript:void(0)" @click="updateQuantity(item, item.newQty)">save</a> | <a href="javascript:void(0)" @click="setEditMode(item, false)">cancel</a>) </span>
+                                <span class="cart-text"><strong>$${item.totalPrice}</strong><br /></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="form-group mr-3 my-2">
+                            <div class="input-group" v-if="!coupon">
+                                <input type="text" class="form-control form-control-sm cart-input" ref="discount-code" id="discount-code-input" size="14" placeholder="Discount Code" />
+                                <div class="input-group-append">
+                                    <span>
+                                    <button class="btn my-0 mx-2" type="button"
+                                         v-on:click="applyDiscountCode">Apply</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="discount-code-container mr-3" v-else>
+                                <span class="font-weight-bold">Discount Code: ${ coupon } </span><a
+                                    class="font-weight-bold" href="javascript:void(0)" v-on:click="clearDiscount">(Clear)</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end cart-text">
+                        <div class="col-auto">
+                            Subtotal:
+                        </div>
+                        <div class="col-4">
+                            $${subtotal}
+                        </div>
+                    </div>
+                    <div class="row justify-content-end cart-text">
+                        <div class="col-auto">
+                            Taxes:
+                        </div>
+                        <div class="col-4">
+                            TBD
+                        </div>
+                    </div>
+                    <div class="row justify-content-end cart-text">
+                        <div class="col-auto">
+                            Discount:
+                        </div>
+                        <div class="col-4">
+                            $${discount}
+                        </div>
+                    </div>
+                    <div class="row justify-content-end cart-text">
+                        <div class="col-auto">
+                            Total:
+                        </div>
+                        <div class="col-4">
+                            <strong>$${total}</strong>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end mt-2">
+                        <a href="javascript:void(0)" @click="gotoCheckout"><button class="btn my-0 mx-1">Checkout</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

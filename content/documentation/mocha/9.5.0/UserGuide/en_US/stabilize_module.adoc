@@ -1,0 +1,397 @@
+
+== The Stabilize Module
+
+=== Overview
+
+NOTE: This section only relates to *Mocha Pro*. +
+The Stabilize module is unsupported for 360 Equirectangular footage in VR Mode. Use the Reorient module to stabilize 360 footage. +
+This feature is not available in *Mocha HitFilm or Mocha AE*.  +
+For a full comparison of features, please refer to the comparison chart online.
+
+The stabilize feature in uses the data you have tracked to lock down a moving shot. You can think of it as the inverse of what tracking does: It moves the footage around an area rather than an area around the footage. Stabilization is useful for:
+
+* Removing camera jitter and bumps
+* Locking off a shot so it is easier to work with, before restoring the motion back into the final composition
+
+
+=== The Main Stabilization Parameters Interface
+
+Stabilization is a fairly straightforward operation. Once you have selected the tracked layer you wish to work with you have options to restrict the stabilization to key details.
+
+image::UserGuide/en_US/images/StabilizeParameters_001.jpg[]
+
+
+*Input Tab*
+
+Select the clip that you wish to use to stabilize here.
+
+image::UserGuide/en_US/images/StabilizeInput_001.jpg[pdfwidth="40%", width="40%"]
+
+
+*Range Tab*
+
+Select the frame range for the stabilization.
+
+image::UserGuide/en_US/images/StabilizeRange_001.jpg[pdfwidth="40%", width="40%"]
+
+
+*Fixed Frames*
+
+Here you can enter the frames you want to be unaffected by stabilization. Mocha will adjust the stabilization between these frames. You can either enter them into the field, or go to a frame and press the + key.
+
+image::UserGuide/en_US/images/StabilizeFrameList_001.jpg[pdfwidth="40%", width="40%"]
+
+Fixed frames can be useful when you want stabilization across a shot but would like to keep the general motion of the original shot intact.
+
+When using Warp Mapping, the fixed frames list is limited to one frame. Warping is reset to warp from that frame.
+
+*Smooth*
+
+This is the main section for controlling how you want the shot to stabilize.
+
+image::UserGuide/en_US/images/StabilizeMotion_001.jpg[]
+
+
+*All Motion*
+
+This checkbox sets all the options below it.
+
+
+*X Translation*
+
+Stabilize translation in X
+
+
+*Y Translation*
+
+Stabilize translation in Y
+
+
+*Rotation*
+
+Stabilize rotation
+
+
+*Zoom*
+
+Stabilize the scale/zoom
+
+
+*X Shear*
+
+Distort the footage according to the tracked surface's shear data in X
+
+
+*Y Shear*
+
+Distort the footage according to the tracked surface's shear data in Y
+
+
+*X Perspective*
+
+Distort the footage according to the tracked surface's perspective data in X
+
+
+*Y Perspective*
+
+Distort the footage according to the tracked surface's perspective data in Y
+
+Shear and Perspective stabilization can be useful when you want to straighten out a plane in your footage to work on it flat before restoring it to its original perspective and motion.
+
+
+*Maximum Smoothing*
+
+Stabilize across the entire track. Setting this value will override the #Frames value beneath it.
+
+
+*# Frames*
+
+Stabilize variation across a certain amount of frames. Setting this to a low value will focus the stabilization to only pick up motion that occurs in short bursts (such as a bump in the road). A higher value will try to adjust longer movements.
+
+=== Warp Mapping [[warp_mapping]]
+
+Warp Mapping utilizes the <<powermesh, PowerMesh>> tracking to lock down warping areas.
+
+==== Warp Mapping parameters
+
+image::UserGuide/en_US/images/warp_mapping_parameters.jpg[pdfwidth="40%", width="40%"]
+
+To use warp mapping:
+
+. Track using the <<powermesh, Mesh tracking parameter>> in the Track Module
+. Switch to Stabilize
+. Turn on "Mesh Warp" under the Warp Mapping column
+. Choose if you want to add a fixed frame to the Frame List
+. Choose whether you want to Unwarp or Warp to the tracked area
+. Check "Use Matte" if you want to matte out the stabilized region
+. Choose the render quality in the drop down
+
+Warp Mapping will preview in the Viewer.
+
+The Warp Mapping Parameters have the following effects:
+
+*Mesh Warp*
+
+This turns on the Warp Mapping. When it is turned off, Stabilize will use regular the regular planar stabilization controls.
+
+*Unwarp*
+
+Unwarp locks the frame to the "Fixed Frame" value set in "Frame List" to the right of the stabilize module parameters. +
+By default, this is set to the frame the PowerMesh frame was generated on.
+
+*Warp*
+
+This is the inverse of the Unwarp render. It warps the area to the motion of the tracked mesh.
+
+*Use Matte*
+
+The Matte uses the warped layer matte to mask out the warped region.
+
+*Quality*
+
+You can set 3 types of render quality for Warp Mapping:
+
+* *Draft:* A very fast render preview, but lower quality. Draft can produce triangulation on warped edges and is not recommended for final renders.
+* *Normal:* A balance of render quality and speed.
+* *High:* A much denser render warp mapping that produces high quality results but will render slower.
+
+=== Warp Mapping Workflow
+
+You can use warp mapping in two main ways:
+
+* Directly applying warping to images or footage with the intention of compositing back over the top of the footage.
+* Unwarping, editing then rewarping the original footage
+
+==== Direct Warping Workflow
+
+Direct Warping is the recommended workflow for Warp Mapping as it is a one-way change that avoids losing pixel information.
+
+Warping workflow utilises the singular "Warp" option in Warp Mapping to modify an overlay, usually with alpha.
+
+===== Direct Warping Workflow in the Plug-In
+
+. Apply the Mocha Pro Plug-In to your footage layer or node
+. Open the Mocha GUI
+. Track the area you want to stabilize using the Mesh option
+. Switch to Stabilize and turn on "Mesh Warp"
+. Preview the warp and unwarp
+. Close and save the project
+. Create an overlay clip or image that you want to warp to the original shot.
+
+From there, the workflow can depend on the host you're using the Plug-In with:
+
+.For layer-based workflow such as After Effects, Premiere, HitFilm, etc.:
+. Create a new layer above the source footage track using the overlay image you want to warp over your footage,
+. Copy the Mocha Pro effect that contains your tracked mesh data
+. Paste the Mocha Pro Plug-In to the overlay image as a new layer above the source image. +
+image:UserGuide/en_US/images/warp_overlay_layers_aftereffects.jpg[pdfwidth="80%", width="40%"]
+. In the Mocha Pro Plug-In interface, select "Stabilize: Warp" from the Module render drop down. +
+image:UserGuide/en_US/images/warp_mapping_aftereffects.jpg[pdfwidth="80%", width="40%"]
+. If required, turn on "Apply Matte" in the Plug-In  to isolate the region
+
+.For Node-based compositors such as Nuke, Silhouette, Flame and Fusion:
+. Create a new image/clip node containing the overlay you want to warp over the source.
+. Copy the Mocha Pro node that contains your tracked mesh data
+. Paste the Mocha node again and then change the Source input to the overlay image node
+. In the plug-in interface, select "Stabilize: Warp" from the Module render drop down. +
+image:UserGuide/en_US/images/warp_mapping_nuke.jpg[pdfwidth="80%", width="40%"]
+. If required, turn on "Apply Matte" in the Plug-In  to isolate the region
+. Use a Merge to composite the warped overlay back on the source +
+image:UserGuide/en_US/images/warp_overlay_nodes_nuke.jpg[pdfwidth="80%", width="40%"]
+
+Note than in Fusion you need to make sure single-frame images or effects are read as the same length as your source footage or Mocha may not read the frames.
+
+You can do this via a merge over the top of the original source footage and setting the merge up to only show the foreground. This will then adopt the frames of the footage when you feed the merge into Mocha.
+
+To view the matte masking out the render, you may need to set 'Premultiply Output' from "Auto" to "On":
+
+image:UserGuide/en_US/images/premultiply_output.jpg[]
+
+.For Media Composer:
+. Create a new video track above the source footage track and place your overlay on this new video track
+. Drag the Mocha Pro efect that contains your tracked mesh data onto the track above and use the "Apply Mate" to mask RGB items over the top. Keep in mind however than alpha and blending is not supported in Media Composer without addtional plug-ins. +
+image:UserGuide/en_US/images/warp_overlay_layers_avid.jpg[pdfwidth="80%", width="40%"]
+. In the plug-in interface, select "Stabilize: Warp" from the Module render drop down. +
+image:UserGuide/en_US/images/warp_mapping_avid.jpg[pdfwidth="80%", width="40%"]
+. Turn on "Apply Matte" in the Plug-In to isolate the region
+
+IMPORTANT: Avid Media Composer doesn't currently overlay alpha in the Warp Render, so masking is necessary to composite the warped shot.
+
+This now warps the image back over the top of the original.
+
+==== Overlay Images
+
+Overlay images can either be transformed images (for example brand logos) set in place then comped on top of your reference frame, or painted areas on top of a full frame alpha.
+As long as the final image matches the dimensions of the original source image, the frame should line up and be warped correctly.
+
+For example, if your shot is 1920x1080, you would want to make a 1920x1080 overlay image and keep alpha in the area you don't need modified.
+
+You can also choose to just directly paint on top of a single still frame of the source footage and then use the masking tool to mask out the remainder of the frame.
+
+==== Unwarping and Warping Workflow
+
+When you want to make changes to the pixels of the whole stabilized sequence, the Unwarp/Warp method can be helpful.
+
+It is important to know however that Unwarping and Warping is a destructive process. You may not be able to fully recover pixels lost to Unwarping when you rewarp it back into position.
+
+For example, if you are tracking a person's eyes opening and closing, the Unwarp process may be able to stabilize the skin until it crunches up and disappears, but rewarping means those stabilized pixels may stretch or tear unnaturally.
+
+This doesn't of course mean that unwarping and rewarping isn't a valid approach. You just need to be aware of the limitations.
+
+
+Unwarp/Rewarp workflow is a 3 stage process:
+
+. Render the stabilized and unwarped area
+. Make modifications to the stabilized region, such as paint, clean up etc
+. Render a Warp of the modified result to restore back to the original motion.
+
+In the Mocha Pro Plug-In most of this happens in the Plug-In interface.
+
+===== Unwarp/Rewarp Workflow in After Effects
+
+. Apply the Mocha Pro Plug-In to your footage layer
+. Open the Mocha GUI
+. Track the area you want to stabilize using the Mesh option
+. Switch to Stabilize and turn on "Mesh Warp"
+. Preview the warp and unwarp
+. Close and save the project
+. In the plug-in interface, select "Stabilize: Unwarp" from the Module render drop down.
+. Turn on the Render checkbox. If you scrub the timeline you should now see the unwarp.
+. Make a copy of the Mocha Pro Plug-In
+. Precomp your existing layer and move all attributes into the new composition
+. Paste the copied effect on top of the Precomp
+. In the plug-in interface for the pasted effect, select "Stabilize: Warp" from the Module render drop down.
+. Either Turn on "Apply Matte" or use the "Use matte" option in the Warp mapping to isolate the region
+
+Now you can make any changes to the precomped version of the warp and it will rewarp correctly in the parent composition.
+
+===== Unwarp/Rewarp Workflow in Node-based workflow (Nuke/Fusion/Silhouette/Flame)
+
+. Apply the Mocha Pro Plug-In to your footage node
+. Open the Mocha GUI
+. Track the area you want to stabilize using the Mesh option
+. Switch to Stabilize and turn on "Mesh Warp"
+. Preview the warp and unwarp
+. Turn on "Use Matte" if you want to matte out the render using the stabilized mask
+. Close and save the project
+. In the plug-in interface, select "Stabilize: Unwarp" from the Module render drop down.
+. Turn on the Render checkbox. If you scrub the timeline you should now see the unwarp.
+. Make a copy of the Mocha Pro node
+. Paste the copied node on top of the original
+. In the plug-in interface for the pasted node, select "Stabilize: Warp" from the Module render drop down.
+
+
+To view the matte masking out the render, you may need to set 'Premultiply Output' from "Auto" to "On":
+
+image:UserGuide/en_US/images/premultiply_output.jpg[]
+
+Now you can make any changes in the middle of the two Mocha Pro nodes and it will rewarp correctly in the parent composition.
+
+
+
+===== Unwarp/Rewarp Workflow in the Standalone Application
+
+The Standalone application is slightly more involved as you need to use an external application to make any changes to the rendered result.
+
+. Track the area you want to stabilize using the Mesh option
+. Switch to Stabilize and turn on "Mesh Warp"
+. Preview the Unwarp
+. Render forwards
+. Export the clip to a lossless format, such as TIF
+. Work on the rendered clip
+. Go to the Clip module in Mocha and Import the modified clip back to your Mocha Project
+. While in the import dialog, inherit the attributes of the origial clip via the "Inherit Attributes from" dropdown
+. Go to the Stabilize module and choose the new clip from the "Input" dropdown on the far right
+. Turn on Warp.
+
+The modified clip should now warp back to the correct spot.
+
+
+
+
+
+
+==== The Borders Tab
+
+This tool helps automate removing the black edges you gain from the footage being stabilize.
+
+*Center*
+
+This centers the footage around the stabilized area.
+
+*Zoom*
+
+This zooms into the footage to push the edges out of frame.
+
+*Apply Crop*
+
+This applies the Clip mask from the <<clip_module, Clip Module>> to crop down the edges.
+If this is not applied, the stabilize will render outside the clip mask to the full dimensions of the original source footage.
+
+
+==== The Auto Fill Tab
+
+You can use Auto Fill to help fill in the black edges with previously tracked layers, similar to how the Remove Module uses tracked background layers to remove foreground objects.
+
+If you have sufficient usable background available, you can avoid reducing the quality or resolution of footage, which is a common problem in stabilization.
+
+For a better understanding of background fills, please refer to the <<remove_module, Remove documentation>>.
+
+*Auto Fill*
+
+This turns on the auto fill function.  You will not see the effect of fill however until you render the result.
+
+*Search Range*
+
+The range of frames to look for possible fill frames.
+
+*Model Illumination*
+
+Like the Illumination modeling in the remove tool, this tries to calculate the correct lighting for a filled-in edge.
+
+*Dissolve*
+
+This gives the option of dissolving the edge of frame into the filled frame to reduce obvious mismatches.
+
+*Fill from Background*
+
+If you haven't set up a tracked background layer to use to help fill the edges, you can let Mocha attempt to fill by analyzing the footage. This is mostly useful for filling in frames where there is only position and rotation jitter.
+
+
+=== Stabilizing Shaky Camera Footage
+
+One of the most common reasons to stabilize is to remove jitter from a shaky camera shot.  With shaky camera footage you are primarily concerned with removing position and rotation data.  This means you do not have to use the shear or perspective options when tracking.  Here is the common method:
+
+. Track a static area of the shot using Translation, Scale and Rotation only. You don't want to track a moving object within the shot as this will throw off the stabilization.
+. Once tracked, switch to the Stabilization tool.
+. Choose which fields of motion you wish to stabilize in the Smooth parameters.  By default, translation is automatically selected.  In many cases you may only be interested in position stabilization, but hand-held cameras can introduce scale and rotation jitter as well.
+. Adjust the number of frames you want to look for jitter over.  A small amount of frames will look for tiny adjustments in the overall motion, whereas bigger values in this field will adjust larger ranges of motion.
+. If there is a significant amount of motion being stabilized and you are losing a lot of your picture in some frames, try fixing those frames by adding them to the Frame List on the left.  Mocha will then interpolate the stabilization between these fixed frames.
+
+
+=== Locking Down Areas of Motion
+
+Sometimes you want to be able to completely lock down a section of the footage so that it stays in one place and everything else moves around it.  For this you can use more aggressive stabilization:
+
+. Track the area you want to lock down using whichever of the motion parameters  you require.  Tracking perspective also works for this technique.
+. Once tracked, switch to the Stabilization tool.
+. Choose which fields of motion you wish to lock down in the Smooth parameters.  By default, translation is automatically selected.  If you want to completely lock down everything, just choose the "All Motion" checkbox.
+. Adjust the number of frames you want to use to look for stabilization.   A small amount of frames will look for tiny adjustments in the overall motion, whereas bigger values in this field will adjust larger ranges of motion.  Again, if you want to completely lock down everything for all motion, choose the "Maximum Smoothing" option.
+. When you play back the timeline you will see the rest of the footage warp and move around your locked off area.
+
+
+=== Exporting Stabilized Tracking Data
+
+image::UserGuide/en_US/images/Stabilize_Export.jpg[]
+
+Exporting Stabilization is similar to exporting tracking. When you hit the Export Stabilized Tracking Data button you will be presented with a dropdown box with options for various applications.
+
+
+image::UserGuide/en_US/images/StabilizeExportOptions_001.jpg[]
+
+=== Stabilize in Stereo
+
+All stabilization occurs in stereo if you have tracked both views.
+You can render the stabilization for both views by selecting *Operate on All Views* button next to the Render buttons on the timeline.
+
+image::UserGuide/en_US/images/operate_on_all_views_render.jpg[]

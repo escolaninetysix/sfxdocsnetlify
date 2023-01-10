@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.6. ShapeExportData &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="3. mocha.exporters" href="index.html" />
+    <link rel="next" title="3.7. TrackingDataExporter" href="TrackingDataExporter.html" />
+    <link rel="prev" title="3.5. ShapeDataExporter" href="ShapeDataExporter.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="TrackingDataExporter.html" title="3.7. TrackingDataExporter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ShapeDataExporter.html" title="3.5. ShapeDataExporter"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3. mocha.exporters</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.exporters"></span><div class="section" id="shapeexportdata">
+<span id="id1"></span><h1>3.6. ShapeExportData<a class="headerlink" href="#shapeexportdata" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>3.6.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>3.6.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.exporters.ShapeExportData.get_baked_in_keyframes" title="mocha.exporters.ShapeExportData.get_baked_in_keyframes"><tt class="xref py py-meth docutils literal"><span class="pre">get_baked_in_keyframes</span></tt></a> ()</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>3.6.1.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.baked_in_keyframes" title="mocha.exporters.ShapeExportData.baked_in_keyframes"><tt class="xref py py-attr docutils literal"><span class="pre">baked_in_keyframes</span></tt></a> [read-only] of dict</li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.extra_matrix" title="mocha.exporters.ShapeExportData.extra_matrix"><tt class="xref py py-attr docutils literal"><span class="pre">extra_matrix</span></tt></a> [read-only] of bool</li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.filmback_aspect_ratio" title="mocha.exporters.ShapeExportData.filmback_aspect_ratio"><tt class="xref py py-attr docutils literal"><span class="pre">filmback_aspect_ratio</span></tt></a> [read-only] of float</li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.frame_height" title="mocha.exporters.ShapeExportData.frame_height"><tt class="xref py py-attr docutils literal"><span class="pre">frame_height</span></tt></a> [read-only] of float</li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.frame_width" title="mocha.exporters.ShapeExportData.frame_width"><tt class="xref py py-attr docutils literal"><span class="pre">frame_width</span></tt></a> [read-only] of float</li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.keyframes_only" title="mocha.exporters.ShapeExportData.keyframes_only"><tt class="xref py py-attr docutils literal"><span class="pre">keyframes_only</span></tt></a> [read-only] of bool</li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.layer" title="mocha.exporters.ShapeExportData.layer"><tt class="xref py py-attr docutils literal"><span class="pre">layer</span></tt></a> [read-only] of <tt class="xref py py-class docutils literal"><span class="pre">Layer</span></tt></li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.pixel_aspect_ratio" title="mocha.exporters.ShapeExportData.pixel_aspect_ratio"><tt class="xref py py-attr docutils literal"><span class="pre">pixel_aspect_ratio</span></tt></a> [read-only] of float</li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.transforms" title="mocha.exporters.ShapeExportData.transforms"><tt class="xref py py-attr docutils literal"><span class="pre">transforms</span></tt></a> [read-only] of dict</li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.view" title="mocha.exporters.ShapeExportData.view"><tt class="xref py py-attr docutils literal"><span class="pre">view</span></tt></a> [read-only] of <tt class="xref py py-class docutils literal"><span class="pre">View</span></tt></li>
+<li>property <a class="reference internal" href="#mocha.exporters.ShapeExportData.xspline_support" title="mocha.exporters.ShapeExportData.xspline_support"><tt class="xref py py-attr docutils literal"><span class="pre">xspline_support</span></tt></a> [read-only] of bool</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>3.6.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mocha.exporters.ShapeExportData">
+<em class="property">class </em><tt class="descclassname">mocha.exporters.</tt><tt class="descname">ShapeExportData</tt><span class="sig-paren">(</span><em>layer</em>, <em>firstFrame</em>, <em>lastFrame</em><span class="optional">[</span>, <em>view=View( 0 )</em><span class="optional">[</span>, <em>accuracy_treshold=2.0</em><span class="optional">[</span>, <em>extra_matrix=true</em><span class="optional">[</span>, <em>keyframes_only=true</em><span class="optional">[</span>, <em>xspline_support=true</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.ShapeExportData" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">mocha.exporters.</tt><tt class="descname">ShapeExportData</tt><span class="sig-paren">(</span><em>ShapeExportData</em><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.exporters.ShapeExportData.get_baked_in_keyframes">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">get_baked_in_keyframes</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.ShapeExportData.get_baked_in_keyframes" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PyObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.frame_width">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">frame_width</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.frame_width" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the frame width.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.frame_height">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">frame_height</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.frame_height" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the frame height.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.filmback_aspect_ratio">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">filmback_aspect_ratio</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.filmback_aspect_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the film back aspect ratio.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.pixel_aspect_ratio">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">pixel_aspect_ratio</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.pixel_aspect_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the frame pixel aspect ratio.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.layer">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">layer</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.layer" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">mocha.exporters.Layer</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the layer.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.view">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">view</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.view" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">mocha.exporters.View</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the view.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.baked_in_keyframes">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">baked_in_keyframes</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.baked_in_keyframes" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the baked-in keyframes. They are presented as
+{ (spline_name, spline_type): {</p>
+<blockquote>
+<div>keyframe1: [PointData(...), ...],
+...
+},</div></blockquote>
+<p>...
+}
+For example:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>{ (&#8216;Spline 1&#8217;, &#8216;XSpline&#8217;): {</dt>
+<dd><blockquote class="first">
+<div>0.0: [XControlPointData(...), XControlPointData(...), XControlPointData(...), XControlPointData(...),],
+4.0: [XControlPointData(...), XControlPointData(...), XControlPointData(...), XControlPointData(...),],
+8.0: [XControlPointData(...), XControlPointData(...), XControlPointData(...), XControlPointData(...),],
+...
+},</div></blockquote>
+<p class="last">(&#8216;Spline 2&#8217;, &#8216;Bezier&#8217;): {
+0.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+15.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+16.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+23.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+42.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+},</p>
+</dd>
+</dl>
+<p>...
+}</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.transforms">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">transforms</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.transforms" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to the transforms.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.extra_matrix">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">extra_matrix</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.extra_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Whether the tracking data should be prepared as a keyframed set of transform matrices.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.keyframes_only">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">keyframes_only</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.keyframes_only" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Whether coordinates should be used only at shape keyframes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.exporters.ShapeExportData.xspline_support">
+<tt class="descclassname">ShapeExportData.</tt><tt class="descname">xspline_support</tt><a class="headerlink" href="#mocha.exporters.ShapeExportData.xspline_support" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Whether export X-Spline like X-Spline or convert to Bezier.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.6. ShapeExportData</a><ul>
+<li><a class="reference internal" href="#synopsis">3.6.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">3.6.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">3.6.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">3.6.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ShapeDataExporter.html"
+                        title="previous chapter">3.5. ShapeDataExporter</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="TrackingDataExporter.html"
+                        title="next chapter">3.7. TrackingDataExporter</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/exporters/ShapeExportData.txt"
+            >Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="TrackingDataExporter.html" title="3.7. TrackingDataExporter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ShapeDataExporter.html" title="3.5. ShapeDataExporter"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >3. mocha.exporters</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

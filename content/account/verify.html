@@ -1,0 +1,99 @@
+{
+  "title": "",
+  "date": "2017-12-07T11:38:15-05:00",
+  "require_recaptcha_v3": "True"
+}
+<div id="app">
+
+  <template v-if="show_verify">
+
+    <h1>Please verify your email address</h1>
+
+    <p>Before you can use your account, you need to verify your email address. When you created your account, you should have been sent a verification email. If you have not received one, please click the button below to send another.</p>
+
+    <p>Your email address: {{ user.email }}</p>
+
+    <p><a href="" @click="send_verification_email">Send Another Verification Email</a></p>
+
+    <p><a href="/account/logout/">Log Out</a></p>
+
+  </template>
+
+</div>
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    show_verify: false,
+    user: Cookies.getJSON('bfx-login'),
+  },
+  created: function () {
+    var self = this;
+    var passed_token = '';
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', {action: 'userpage'}).then(function(token) {
+        passed_token=token;
+        $.ajax({
+          url: 'https://backend.borisfx.com/userv3?token=' + token,
+          method: 'GET',
+          beforeSend: function (request) {
+            request.setRequestHeader('Authorization', 'Basic ' + btoa(self.user.email + ':' + self.user.token));
+          },
+          dataType: 'json',
+          success: function (data) {
+            Cookies.set('bfx-login', data, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+            if (data.email_verified) {
+              var redirect_url = Cookies.get('redirect_url');
+              if (redirect_url) {
+                  window.location = redirect_url;
+                  Cookies.remove('redirect_url');
+              } else {
+              window.location = '/account/manage';
+              }
+            } else {
+              self.show_verify = true;
+            }
+          },
+          error: function (error) {
+            if (error.status == 401) {
+              Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+              window.location = '/account/login';
+            }
+            this.show_verify = true;
+          },
+        });
+      });
+    });
+    if (!self.user) {
+      window.location = '/account/login';
+    }
+  },
+  methods: {
+    send_verification_email: function (e) {
+      e.preventDefault();
+      var passed_token = '';
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LeQ58wUAAAAAOO3JdYg_gxcIMwN9GXg8cWkz1i_', {action: 'verifypage'}).then(function(token) {
+          passed_token=token;
+          $.ajax({
+            type: 'POST',
+            url: 'https://backend.borisfx.com/send_verification_emailv3',
+            data: JSON.stringify({
+              email: this.user.email,
+            'g-recaptcha-response': passed_token,
+            }),
+            contentType: 'application/json',
+            success: function (res) {
+              alert('Verification email sent, please check your inbox.');
+            },
+            error: function (error) {
+              alert('There was an error sending a verfication email.');
+            },
+          });
+        });
+      });
+    }
+  },
+});
+</script>

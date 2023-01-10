@@ -1,0 +1,181 @@
+.. module:: mocha.exporters
+.. _AbstractCameraSolveExporter:
+
+AbstractCameraSolveExporter
+***************************
+
+.. inheritance-diagram:: AbstractCameraSolveExporter
+    :parts: 2
+
+**Inherited by:** :ref:`CameraSolveExporter`
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`register<AbstractCameraSolveExporter.register>` ()
+*   def :meth:`unregister<AbstractCameraSolveExporter.unregister>` ()
+
+
+Virtual functions
+^^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`do_export<AbstractCameraSolveExporter.do_export>` (project, layers, camera_file_path, time, views)
+*   def :meth:`error_string<AbstractCameraSolveExporter.error_string>` ()
+
+
+Static functions
+^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`registered_exporters<AbstractCameraSolveExporter.registered_exporters>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*   property :attr:`exports_multiple_views<AbstractCameraSolveExporter.exports_multiple_views>` [read-only] of bool
+*   property :attr:`registered<AbstractCameraSolveExporter.registered>` [read-only] of bool
+
+
+Detailed Description
+--------------------
+
+
+   
+   Abstract camera solve exporter class. Inherit the class to create own exporter formats.
+   Method do_export must be overloaded.
+   
+
+
+.. class:: AbstractCameraSolveExporter(name, extension[, number_of_data_streams=1[, export_multiple_views=false]])
+
+
+   :type name: unicode
+   :type extension: unicode
+   :type number_of_data_streams: :class:`PySide2.QtCore.uint`
+   :type export_multiple_views: :class:`PySide2.QtCore.bool`
+
+
+
+   
+   :param name: name of the exporter which will be displayed in the Export Camera Data dialog drop-down list. Should contain a file mask in brackets e.g. Foo (*.bar)
+   :param extension: additional extension.
+   :param number_of_data_streams: number of result files. If it equals to 1 then the Copy to Clipboard button will be enabled.
+   :param export_multiple_views: whether the exporter supports multiple views.
+   
+   Create an exporter instance. The instance ownership is delegated to Python. To register the exporter inside
+   mocha exporters system, call `register()` method. Before deleting the object unregisters itself.
+   
+
+
+
+
+   :type number_of_data_streams: :class:`PySide2.QtCore.uint`
+   :type extension: unicode
+   :type name: unicode
+   :type export_multiple_views: :class:`PySide2.QtCore.bool`
+
+
+.. method:: AbstractCameraSolveExporter.do_export(project, layers, camera_file_path, time, views)
+
+
+   :type project: :class:`mocha.project.Project`
+   :type layers: list of Layer
+   :type camera_file_path: unicode
+   :type time: :class:`PySide2.QtCore.double`
+   :type views: list of View
+   :rtype: Dictionary with keys of type QString and values of type QByteArray.
+
+
+
+   
+   :param project: mocha project instance.
+   :param layers: list of layers to export.
+   :param camera_file_path: absolute file path to save which has been chosen by a user in a file dialog.
+   :param time: frame index.
+   :param views: list of views to export.
+   
+   :rtype: dict of {file_name: QByteArray}
+   
+   Performs main exporter operations. Must return a map (``dict``) of absolute file path and appropriate contents.
+   The exporter should not create those files.
+   
+
+
+
+.. method:: AbstractCameraSolveExporter.error_string()
+
+
+   :rtype: unicode
+
+
+
+
+
+
+.. method:: AbstractCameraSolveExporter.register()
+
+
+
+
+
+   
+   Registers the exporter instance inside mocha exporters system.
+   
+
+
+
+.. staticmethod:: AbstractCameraSolveExporter.registered_exporters()
+
+
+   :rtype: Dictionary with keys of type QString and values of type CameraSolveExporter.
+
+
+
+   
+   :rtype: ``dict`` of {``str``: :class:`CameraSolveExporter`}
+   
+   Returns a dict of registered exporters including custom user exporters.
+   
+
+
+
+.. method:: AbstractCameraSolveExporter.unregister()
+
+
+
+
+
+   
+   Unregisters the exporter instance inside mocha exporters system.
+   
+
+
+
+.. attribute:: AbstractCameraSolveExporter.exports_multiple_views
+
+
+   :type: bool
+   :access: read-only   
+   Whether the exporter supports multiple views.
+   
+
+
+
+.. attribute:: AbstractCameraSolveExporter.registered
+
+
+   :type: bool
+   :access: read-only   
+   Whether the exporter registered.
+   
+
+
+
+

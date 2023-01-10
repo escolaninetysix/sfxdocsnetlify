@@ -1,0 +1,163 @@
+.. _ColorParameters:
+
+.. currentmodule:: mocha.project
+
+
+ColorParameters
+***************
+
+.. inheritance-diagram:: mocha.project.ColorParameters
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__eq__<ColorParameters.__eq__>` (color_parameters)
+    * def :meth:`__ne__<ColorParameters.__ne__>` (color_parameters)
+    * def :meth:`__repr__<ColorParameters.__repr__>` ()
+    * def :meth:`propertyChanged<ColorParameters.propertyChanged>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`colorspace<ColorParameters.colorspace>` [read-write] of Colorspace
+*    property :attr:`conversion<ColorParameters.conversion>` [read-write] of ColorConversion
+*    property :attr:`gamma<ColorParameters.gamma>` [read-write] of float
+*    property :attr:`log_reference_black<ColorParameters.log_reference_black>` [read-write] of float
+*    property :attr:`log_reference_white<ColorParameters.log_reference_white>` [read-write] of float
+*    property :attr:`offset<ColorParameters.offset>` [read-write] of float
+*    property :attr:`softclip<ColorParameters.softclip>` [read-write] of float
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Clip color parameters class.
+
+
+.. class:: ColorParameters([colorspace=LinearColorspace[, conversion=NoneConversion[, offset=0.f[, softclip=0.f[, log_reference_white=685.f[, log_reference_black=0.f[, gamma=1.f]]]]]]])
+
+
+    :type colorspace: :any:`Colorspace`
+    :type conversion: :any:`ColorConversion`
+    :type offset: float
+    :type softclip: float
+    :type log_reference_white: float
+    :type log_reference_black: float
+    :type gamma: float
+
+
+
+
+
+
+
+
+.. method:: ColorParameters.__repr__()
+
+
+    :rtype: object
+
+
+
+
+
+
+.. method:: ColorParameters.__ne__(color_parameters)
+
+
+    :type color_parameters: :any:`ColorParameters`
+    :rtype: bool
+
+
+
+
+
+
+.. method:: ColorParameters.__eq__(color_parameters)
+
+
+    :type color_parameters: :any:`ColorParameters`
+    :rtype: bool
+
+
+
+
+
+
+.. method:: ColorParameters.propertyChanged()
+
+
+
+
+
+
+
+
+.. attribute:: ColorParameters.colorspace
+
+
+    :type: Colorspace
+    :access: read-write    Provides access to colorspace value.
+
+
+
+.. attribute:: ColorParameters.conversion
+
+
+    :type: ColorConversion
+    :access: read-write    Provides access to color conversion value.
+
+
+
+.. attribute:: ColorParameters.offset
+
+
+    :type: float
+    :access: read-write    Provides access to log reference offset value.
+
+
+
+.. attribute:: ColorParameters.softclip
+
+
+    :type: float
+    :access: read-write    Provides access to softclip value.
+
+
+
+.. attribute:: ColorParameters.log_reference_white
+
+
+    :type: float
+    :access: read-write    Provides access to log reference white value.
+
+
+
+.. attribute:: ColorParameters.log_reference_black
+
+
+    :type: float
+    :access: read-write    Provides access to log reference black value.
+
+
+
+.. attribute:: ColorParameters.gamma
+
+
+    :type: float
+    :access: read-write    Provides access to gamma value.
+
+
+
+

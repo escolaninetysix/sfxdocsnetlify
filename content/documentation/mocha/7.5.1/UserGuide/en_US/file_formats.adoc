@@ -1,0 +1,95 @@
+
+== File Formats
+
+
+NOTE: Format support is mainly relevant to the standalone version of Mocha Pro. The Mocha plugin reads the native host source, with the exception of imports done inside the Mocha GUI.
+
+=== Reading files via the Mocha Plug-In
+
+If you are using the Mocha plug-in, footage handling is done via the host you are using the plug-in with.
+
+File input happens automatically when you launch the Mocha GUI. Mocha reads the source footage directly from the layer, node or track you have applied Mocha to.
+
+The formats below are only relevant to you if you need to import an external file from disk, such as an additional Insert clip or matte clip.
+
+=== Reading files via Mocha Standalone
+
+Mocha can read in sequences, still images and video clip files.
+
+In order to read in video clip files, you need to set the way video files are read in via Preferences.
+
+Mocha Standalone has two standards for reading in Media files from disk, which you can set via the Clip section in Preferences:
+
+* *QuickTime:* This is the legacy way of reading clip files. This method will only read clip files that QuickTime supports. In order to use clips with QuickTime (i.e. not image sequences) you must have QuickTime installed. Level of QuickTime support can vary depending on the operating system.
+* *GStreamer:* This is an open source multimedia framework for reading many different file formats. It is the current default for reading clips into Mocha.
+
+=== Supported in this version
+
+Mocha supports most standard movie clip and image sequence formats.
+
+Note that some of the file formats and codecs below will vary depending on whether you have QuickTime or GStreamer selected in Preferences (see above).  
+
+==== Movie clip formats
+
+* AVI files (.avi)
+* DV Stream files (.dv)
+* MP4 files (.mp4)
+* MPG files (.mpg)
+* QuickTime Movie files (.mov and .qt)
+* RED files (.r3d)
+* AVCHD files (.mts, .m2t, .m2ts)
+* Windows Media files (.wmv)
+* MKV files (.mkv)
+* MPEG movie files (.mpg, .m2v, .MPG)
+* MXF files (.mxf)
+
+WARNING: Some clip formats such as MXF will use codecs that Mocha does *not* support. +
+In this case you may need to convert the clip to another format. See 'What to Do if Mocha Does Not Support Your Footage' below.
+
+
+==== Image formats
+
+* OpenEXR files (.exr)
+* OpenEXR 2.0 files (.exr)
+* Cineon files (.cin)
+* DPX files (.dpx)
+* JPEG files (.jpg and .jpeg)
+* PNG files (.png)
+* SGI files (.bw, .iris, .rgb, .rgba and .sgi)
+* TGA files (.tga)
+* TIFF files (.tif and .TIFF)
+
+
+=== Not Directly Supported in this version
+
+These formats are either not supported directly by Mocha or require additional plugins for QuickTime or your system.
+
+
+==== Movie clip formats
+
+* Cineform files (without supporting codec)
+
+
+==== Image formats
+
+* RAW image files (.RAW)
+* BMP files (.bmp)
+
+
+=== What to Do if Mocha Does Not Support Your Footage
+
+In the event that you are working in a format that Mocha doesn't support, we recommend converting the footage to an image sequence.
+
+If you are just tracking, you can use any compressed format such as a JPG sequence and then use your original footage when you apply the data.  
+
+If you are going to be doing rendering, such as using Mocha Pro's remove or insert modules, then we recommend converting to a DPX or TIFF sequence.
+
+Make sure of the following when converting to an image sequence:
+
+. The frame rate, aspect ratio and dimensions are the same as the original footage.
+. If you are creating proxy footage, make sure the aspect ratio and frame rate are the same.
+. If you are using a particular bit depth, make sure you convert to the same depth if you are using the footage for rendering inside Mocha
+. If using compressed footage, don't set the compression too low, as this will create artifacts that may hinder tracking and roto.
+. Make sure Mocha supports the sequence you are converting to!
+
+If you would prefer to convert to a movie clip format then we recommend a standard format that QuickTime would understand, such as Animation or ProRes.

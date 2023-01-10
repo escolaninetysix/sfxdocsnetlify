@@ -1,0 +1,977 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: BrushOilMaskComp",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/BrushOilMaskComp.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="BrushOilMaskComp">
+     <h2>
+      BrushOilMaskComp
+     </h2>
+    </a>
+    In the S_BrushMaskComp Plugin.
+    <p>
+     Simulates the look of an oil painting by layering brush strokes of different sizes and directions. This effect can be used with one of the following brushes: felt tip, splat, water color, stipple, pencil, pastel, sponge, splodge, round, or cubes. In addition, there are controls for adjusting shape, size, orientation, density, lighting, and shading.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Back:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The source brush colors are scaled by this input.  A
+    monochrome Mask can be used to choose a subset of Source areas that
+    will generate brushes.  A color Mask can be used to selectively adjust
+    the brush colors in different regions.  The Mask is applied to the
+    source before the brushes are generated so it will not clip the
+    resulting brushes.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Specifies the opacities of the Front clip.  These
+    values are scaled by the Source Opacity parameter before being used.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/BrushOilMaskComp.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.5,
+   <i>
+    Range:
+   </i>
+   0 to 10,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Sets the maximum brush size. No brushes will be larger than this size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Range:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.01,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the range of the brush sizes measured from the maximum brush size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   80,
+   <i>
+    Range:
+   </i>
+   1 to 100,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Sets the overall density of brush strokes per layer.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Layers:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 to 5,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The number of layers to paint.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shape:
+   </b>
+   <i>
+    Popup menu,  Default: Match To Style
+   </i>
+   .
+   <br/>
+   The shape of the brush.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Match To Style:
+      </i>
+     </b>
+     use the brush shape that matches the current paint style. Round matches to Oil and Sponge matches to Chalk.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Felt Tip:
+       </i>
+      </b>
+      an opaque, triangular shape.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Splat:
+        </i>
+       </b>
+       a shape of sparsely packed fine dots.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Water Color:
+         </i>
+        </b>
+        a coarse, blobby shape.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Stipple:
+          </i>
+         </b>
+         a soft, rectangular shape with holes.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Pencil:
+           </i>
+          </b>
+          a long, thin shape.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Pastel:
+            </i>
+           </b>
+           a long, funnel shape, like a comet.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Sponge:
+             </i>
+            </b>
+            a very coarse, rectangular shape.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Splodge:
+              </i>
+             </b>
+             a soft, misty, rectangular shape.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Round:
+               </i>
+              </b>
+              a soft oval shape with coarse trails, like a jellyfish.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Cubes:
+                </i>
+               </b>
+               a square shape.
+               <br/>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   60,
+   <i>
+    Range:
+   </i>
+   0 to 360,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Rotates the orientation of the brushes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   20,
+   <i>
+    Range:
+   </i>
+   0 to 360,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Randomly rotates the brushes up to this amount in one direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel X Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the density of brush strokes in the X-direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Y Density:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the density of brush strokes in the Y-direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Comp Premult:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Enable this for a better composite if the Front
+    pixel values have been pre-multiplied by the Matte pixel values.
+    This is also known as an 'additive' composite.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Contour Alignment:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Interpolates between the brush stroke direction being fully aligned to the angle param (0) and the contours of the original source (1). Vary angle offsets the stroke in both directions from this interpolated direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Position:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 10,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Shifts the brush positions randomly in all directions. A value of zero places all the brushes on a regular grid.
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Roughness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 10.
+   <br/>
+   Scales the intensity of the highlights on the paint, similar to increasing the thickness of paint.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Intensity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 10.
+   <br/>
+   Scales the saturation of the brush opacity, growing the perimeter of the brush.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Deterioration:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 10.
+   <br/>
+   Scales the shadows created by roughness, similar to cracking or peeling paint.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Scales the opacity of the background before combining with the brushes. If 0, the result will contain only the brush image over alpha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Colors:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.08,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the source to smooth the color palette and help reduce some brush stroke jitter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Source Color:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Interpolates between the paint color param (0) and the original source color (1).
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Paint Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1],
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The paint color to use.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.
+  </dd>
+ </dl>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../brushoil">
+       BrushOil
+      </a>
+      <br/>
+      <a href="../brushchalk">
+       BrushChalk
+      </a>
+      <br/>
+      <a href="../sketch">
+       Sketch
+      </a>
+      <br/>
+      <a href="../vangogh">
+       VanGogh
+      </a>
+      <br/>
+      <a href="../cartoon">
+       Cartoon
+      </a>
+      <br/>
+      <a href="../cartoonpaint">
+       CartoonPaint
+      </a>
+      <br/>
+      <a href="../posterize">
+       Posterize
+      </a>
+      <br/>
+      <a href="../vangogh">
+       VanGogh
+      </a>
+      <br/>
+      <a href="../hairypaint">
+       HairyPaint
+      </a>
+      <br/>
+      <a href="../pointalize">
+       Pointalize
+      </a>
+      <br/>
+      <a href="../sketch">
+       Sketch
+      </a>
+      <br/>
+      <a href="../sketchbumpy">
+       SketchBumpy
+      </a>
+      <br/>
+      <a href="../crosshatch">
+       Crosshatch
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

@@ -1,0 +1,17 @@
+{
+   "date": "2015-05-27T10:24:00-04:00",
+   "tags": [
+      "RED"
+   ],
+   "title": "Avid Crash Outputting on Mac"
+}
+
+<div id="AvidCrashOnMac" class="hidden-faq">
+<p><strong> Subject </strong> : Avid Crashing When Outputting</p>
+<p><strong> Issue </strong> :  Avid Crashing When Outputting Timeline with Boris RED/FX/Graffiti.</p>
+<p><strong> Cause </strong> :  A conflict is occurring between the output protocol or the hardware driver and the Boris Frameworks.</p>
+<p><strong> How to Get Around the Issue </strong> :</p>
+<p>1. Quit Avid and locate your Boris plugs in this directory -  <br> Macintosh HD :: Library :: Application Support :: Avid :: AVX2_Plug-Ins</p>
+<p>2. Inside here, 'right-click/Control-click' on each of your Boris RED/FX/Graffiti plugs, and select “Show Package Contents”. </p>
+<p>3. Inside this new window, go into the Contents folder, and then into Frameworks - inside here, you will see a central Framework file for this plug.  Delete this Framework file for each of the plugs and re-launch Avid, and the crashes should no longer continue.</p>
+</div>

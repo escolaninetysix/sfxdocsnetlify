@@ -1,0 +1,133 @@
+== Environment Variables
+
+Mocha can be initialised with several different environment variables to make it easier to configure across studios.
+
+=== Checking and Setting Environment Variables
+
+Depending on your system, there are different ways to setup the environment variables. Here is a general guide.
+
+==== Linux and macOS
+
+The most common way to set environment variables in Linux and macOS is via the command line.
+
+It is best to check if an environment variable is set before you try creating it.
+You can do this on Linux or macOS by typing the following into the terminal:
+
+[listing]
+printenv
+
+Alternatively if you want to check the specific variable you can type it after the command:
+
+[listing]
+printenv MOCHA_INIT_SCRIPT
+
+To set an environment variable on Linux or macOS for any programs run from the current shell, you use the +export+ command:
+
+[listing]
+export MOCHA_INIT_SCRIPT="/path/to/my/scripts"
+
+To set an environment variable persistently, including for programs launched from the UI, varies by platform.
+
+On macOS the recommended way is <transcribe from the shotgun website>.
+
+On Linux, set it in your `bashrc` file or follow directions for your Linux distribution.
+
+
+==== Windows
+
+The most common way to set environment variables in Windows is via the Environment Variables dialog in System Properties.
+
+There are numerous ways to get to this dialog, but the easiest on Windows 10 is to:
+
+   1. Press the Windows key or click the start menu
+   2. Type "environment"
+   3. Select the "Edit the system environment variables" option that appears at the top of the list.
+   4. Click the "Environment Variables..." button at the bottom of the dialog that appears
+
+Once in the dialog, it is best to check if an environment variable is set before you try creating it.
+
+To set an environment variable on Windows:
+
+   1. Click the "New..." button in the user variables section
+   2. Enter your environment variable name into the "Variable name" field (such as MOCHA_INIT_SCRIPT)
+   3. Enter the value you want to set to this variable in the "Variable Value" field (eg. /path/to/my/scripts)
+   4. Click "OK"
+
+=== Path variables
+
+==== MOCHA_INIT_SCRIPT
+
+This is used to set the Python init.py script directory.
+
+If the +MOCHA_INIT_SCRIPT+ environment variable points to a file, that file will be used, if it points to a directory, it will look specifically for init.py in that directory.
+If unset, the default locations be used.
+
+An example of setting the +MOCHA_INIT_SCRIPT+ variable as a directory:
+[listing]
+MOCHA_INIT_SCRIPT='/Users/Mocha/my_scripts/'
+
+See the Mocha Python Guide for more details on how to use init.py and Python scripts in Mocha.
+
+==== OCIO
+
+If you need to point to your OCIO config across many applications, or just want to automate the configuration, you can use the standard +OCIO+ path environment variable.
+
+This should specifically point to the config file rather than the directory, for example:
+[listing]
+OCIO='/Users/Mocha/my_LUTS/ocio.config'
+
+
+=== Display Variables
+
+==== QT_SCREEN_SCALE_FACTORS
+
+While not specific to Mocha, this environment variable is mostly used to adjust the scaling of the graphics and text in the GUI when working on high resolution monitors.
+
+If you are having difficulty getting GUI scaling to work, try this variable.
+
+The default for this variable is 1.0, that is, the same scale as the current display scale.
+
+A scale of 0.5 would be half the current display scale, and a scale of 2.0 would be double the size.
+
+An example of setting the +QT_SCREEN_SCALE_FACTORS+ variable to 2.0:
+[listing]
+QT_SCREEN_SCALE_FACTORS=2.0
+
+If there is more than one screen, you can separate the displays with semicolons. For example in a two-monitor setup with different resolutions:
+[listing]
+QT_SCREEN_SCALE_FACTORS=2;1
+
+
+==== MOCHA_QT_SCREEN_SCALE_FACTORS
+
+If you are already using +QT_SCREEN_SCALE_FACTORS+ to affect other programs, you may get conflicting scales with Mocha.
+
+To get around this, you can use +MOCHA_QT_SCREEN_SCALE_FACTORS+ which overrides the more general environment variable above.
+
+An example of setting the +MOCHA_QT_SCREEN_SCALE_FACTORS+ variable to 2.0:
+[listing]
+MOCHA_QT_SCREEN_SCALE_FACTORS=2.0
+
+If there is more than one screen, you can separate the displays with semicolons. For example in a two-monitor setup with different resolutions:
+[listing]
+MOCHA_QT_SCREEN_SCALE_FACTORS=2;1
+
+
+=== License Variables
+
+If you want to point to a default Mocha license directory or file via environment variable, use +genarts_LICENSE+, which affects all Boris FX products.
+
+It uses the usual RLM syntax, e.g:
+
+[listing]
+`genarts_LICENSE=5053@server-name`
+`genarts_LICENSE=/path/to/file.lic`
+
+
+You can also set up the RLM environment variable to read all .lic files in a directory:
+[listing]
+genarts_LICENSE='your/rlm/directory`
+
+If you wish to point all RLM-based software, including products from other companies such as the Foundry, to a common license server, you can point to RLM_LICENSE instead:
+[listing]
+RLM_LICENSE='your/rlm/directory`

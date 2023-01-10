@@ -1,0 +1,247 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: StretchFrameEdges",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/StretchFrameEdges.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="StretchFrameEdges">
+     <h2>
+      S_StretchFrameEdges
+     </h2>
+    </a>
+    Stretch the edges of a 4x3 image while preserving the center, to hide the black pillars in a 16x9 comp.  This effect takes the middle part of the Source clip and squeezes it, since viewing a 4x3 image in a 16x9 comp normally stretches it out to fit.  The edges are not squeezed, so the image goes all the way out to the edges.  The left and right edge portions of the image will appear stretched horizontally.  Although intended for 4x3 conversion, it can work with any aspect ratios.
+    <p>
+     In the Sapphire Distort effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be processed.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/StretchFrameEdges.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Squeeze:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.33,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Amount to squeeze the center portion of the image.  To fit a 4x3 image into a 16x9, normally squeeze by 4/3 or 1.333.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 to 0.99.
+   <br/>
+   The center of the image (the middle half, if this parameter is 0.5) is squeezed uniformly, with no distortion.  This parameter defines the un-distorted part of the image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Border Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   To reduce distortion at the edges, you can turn up Border Width to allow some black borders.  The edges of the clip won't be distorted as severely because they don't have to stretch as far.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift X:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   Shift the entire image left or right, to keep the interesting part of the image in the non-distorted part of the frame.  Setting this to non-zero will reveal the edge of the clip, unless Wrap is set to Tile or Reflect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   When set to zero, the edges of the image are linearly stretched.  This produces the least distortion at the very edge, but can give a visible seam where the center meets the edge zone.  When set to one, the seam is fully hidden, but the very edges of the image will be fairly seriously distorted.  Compromise values are in between zero and one.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap:
+   </b>
+   <i>
+    Popup menu,  Default: No
+   </i>
+   .
+   <br/>
+   Determines the method for accessing outside the borders of the
+source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

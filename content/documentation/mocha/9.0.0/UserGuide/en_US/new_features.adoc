@@ -1,0 +1,43 @@
+== New features in Mocha Pro 2022 9.0.0
+
+=== Insert Module Updates
+* *Insert Mesh Warp:* Now users can drive inserts with PowerMesh tracking and render organic and warped surfaces with motion blur.
+* *Insert Blend Modes:* Transfer mode blending can now be done inside the Mocha Pro interface, making it easier to visualise final results or render to NLE hosts that have less compositing features.
+* *Improved Insert Render Quality:* The Insert module now renders with high-quality filtering for improved looking results.
+* *Improved User Interface and Source Mesh Warp Controls:* The Insert interface has been streamlined with an improved layout to focus on essential tasks. The new Source Mesh Grid view controls make it easier to preview and edit simple to complex mesh distortions.
+
+See the <<insert_module, Insert Module>> chapter for more details.
+
+=== Architecture updates
+* *Apple silicon support:* Mocha now supports Apple silicon Mac ARM-64 hardware
+* *VFX Platform 2021:* Mocha is updated to support the new reference platform for the VFX industry standard.
+* *After Effects Multithreaded support:* Mocha Pro now supports After Effects MFR (multi-threaded rendering currently in AE beta).
+
+=== Tracking improvements
+* *Quick Stabilize Preview Update:* You can now quick-stabilize pan and zoom via any layer rather than just the currently selected layer. This option is available via a dropdown on the Quick Stabilize button.
+* *Multi-linking:* Link multiple selected layers to the same track using “Link to Track”
+* *Mesh Track Using Existing Data:* Linking PowerMeshes to existing planar tracking layers makes it easier to combine planar tracking with PowerMesh tracking for roto and other tasks.
+* *RGB Tracking:* You can now select individual channels for tracking rather than just Luminance or Auto Channel
+* *RGB views:* Preview each channel separate from the RGB dropdown in View controls.
+
+=== Exports
+* *PowerMesh to Nuke Tracker:* Create a single Nuke tracker node with trackers representing every vertex in the PowerMesh.
+* *PowerMesh to Alembic Transform:* Export the mesh vertex position data to individual transform nulls
+* *Silhouette shapes with split transform data:* Silhouette shapes now export with keyframe data split out to make it easier to add new Silhouette shapes which inherit the tracking data.
+* *Nuke Roto nodes with split transform data:* Nuke Roto now exports with keyframe data split out to make it easier to add new Nuke roto splines which inherit the tracking data
+* *Mistika Corner Pin:* You can now export Mocha planar tracking corner data to Mistika as point tracking data.
+
+See the <<export_tracks, Exporting Tracks>> and <<export_mattes, Exporting Mattes>> chapters for more details.
+
+=== Dopesheet improvements
+* *Slide keyframes:* You can now move all keyframes easily to new positions in the timeline.
+* *Keyframe zooming:* It is now much is easier to zoom into selected keyframes and zoom out to all keyframes
+
+See the <<dopesheet, Dopesheet>> chapter for more details.
+
+=== Minor Updates
+* 360 spline editing has been improved so over warping no longer occurs on large perspective changes
+* Improved AdjustTrack parameters now adjust all track keyframes based on the motion types selected
+* Layer editing is now possible outside set layer frame ranges
+* Channel selection has been changed to a dropdown
+* Data exports from Mocha to Silhouette now contain Silhouette-friendly frame offsets

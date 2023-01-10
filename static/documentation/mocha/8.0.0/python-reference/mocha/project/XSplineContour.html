@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.27. XSplineContour &#8212; mocha 8.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. mocha.exporters" href="../exporters/index.html" />
+    <link rel="prev" title="2.26. XControlPointData" href="XControlPointData.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../exporters/index.html" title="3. mocha.exporters"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="XControlPointData.html" title="2.26. XControlPointData"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 8.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="xsplinecontour">
+<span id="id1"></span><h1><span class="section-number">2.27. </span>XSplineContour<a class="headerlink" href="#xsplinecontour" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.27.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.27.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.XSplineContour.__eq__" title="mocha.project.XSplineContour.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.XSplineContour.control_point" title="mocha.project.XSplineContour.control_point"><code class="xref py py-meth docutils literal notranslate"><span class="pre">control_point</span></code></a> (index)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.XSplineContour.get_bounding_rect" title="mocha.project.XSplineContour.get_bounding_rect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_bounding_rect</span></code></a> ([time=0.f[, view=View( 0 )]])</p></li>
+<li><p>def <a class="reference internal" href="#id0" title="mocha.project.XSplineContour.insert_point"><code class="xref py py-meth docutils literal notranslate"><span class="pre">insert_point</span></code></a> (time, xcp[, index=UINT_MAX[, view=View()]])</p></li>
+<li><p>def <a class="reference internal" href="#id0" title="mocha.project.XSplineContour.insert_point"><code class="xref py py-meth docutils literal notranslate"><span class="pre">insert_point</span></code></a> (time, xcpd[, index=UINT_MAX[, view=View()]])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.XSplineContour.parameter" title="mocha.project.XSplineContour.parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parameter</span></code></a> (name_components)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.XSplineContour.parameter_set" title="mocha.project.XSplineContour.parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parameter_set</span></code></a> ([name_components=list()])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.XSplineContour.remove" title="mocha.project.XSplineContour.remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">remove</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.XSplineContour.set_control_points" title="mocha.project.XSplineContour.set_control_points"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_control_points</span></code></a> (points)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.27.1.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.XSplineContour.control_points" title="mocha.project.XSplineContour.control_points"><code class="xref py py-attr docutils literal notranslate"><span class="pre">control_points</span></code></a> [read-write] of list of <a class="reference internal" href="XControlPoint.html#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">XControlPoint</span></code></a> instances</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.XSplineContour.psets" title="mocha.project.XSplineContour.psets"><code class="xref py py-attr docutils literal notranslate"><span class="pre">psets</span></code></a> [read-only] of ParameterSet</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.27.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>X-Spline contour class. Provides access to X-Spline contours and their control points.</p>
+</div></blockquote>
+<dl class="py method">
+<dt id="mocha.project.XSplineContour.control_point">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">control_point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XSplineContour.control_point" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="XControlPoint.html#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.XControlPoint</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>index</strong> (<em>uint</em>) – Control point index.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">XControlPoint</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code> if index is invalid.</p>
+</dd>
+</dl>
+<p>Returns x spline control point by index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XSplineContour.get_bounding_rect">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">get_bounding_rect</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">time=0.f</em><span class="optional">[</span>, <em class="sig-param">view=View( 0 )</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XSplineContour.get_bounding_rect" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of float</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em>) – Time</p></li>
+<li><p><strong>view</strong> (<a class="reference internal" href="View.html#id0" title="mocha.project.View"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.View</span></code></a>) – View</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns coordinates of top left and bottomRight points of the contour bounding rectangle,
+considering its handles, as a list of floats [x1, y1, x2, y2]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XSplineContour.insert_point">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">insert_point</code><span class="sig-paren">(</span><em class="sig-param">time</em>, <em class="sig-param">xcp</em><span class="optional">[</span>, <em class="sig-param">index=UINT_MAX</em><span class="optional">[</span>, <em class="sig-param">view=View()</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XSplineContour.insert_point" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="XControlPoint.html#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.XControlPoint</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em>) – Keyframe time.</p></li>
+<li><p><strong>xcp</strong> (<a class="reference internal" href="XControlPoint.html#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.XControlPoint</span></code></a>) – Keyframe data.</p></li>
+<li><p><strong>index</strong> (<em>uint</em>) – Inserting index.</p></li>
+<li><p><strong>view</strong> (<a class="reference internal" href="View.html#id0" title="mocha.project.View"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.View</span></code></a>) – View.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Inserts new control point into index position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id0">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">insert_point</code><span class="sig-paren">(</span><em class="sig-param">time</em>, <em class="sig-param">xcpd</em><span class="optional">[</span>, <em class="sig-param">index=UINT_MAX</em><span class="optional">[</span>, <em class="sig-param">view=View()</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="XControlPoint.html#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.XControlPoint</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em>) – Keyframe time.</p></li>
+<li><p><strong>xcpd</strong> (<a class="reference internal" href="XControlPointData.html#id0" title="mocha.project.XControlPointData"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.XControlPointData</span></code></a>) – Keyframe data.</p></li>
+<li><p><strong>index</strong> (<em>uint</em>) – Inserting index.</p></li>
+<li><p><strong>view</strong> (<a class="reference internal" href="View.html#id0" title="mocha.project.View"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.View</span></code></a>) – View.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Inserts new control point into index position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XSplineContour.__eq__">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XSplineContour.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XSplineContour.parameter">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name_components</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XSplineContour.parameter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.Parameter</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>name_components</strong> (<em>list of strings</em>) – Relative name for a requested parameter.</p>
+</dd>
+</dl>
+<p>Returns <a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> instance bound with given name path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XSplineContour.parameter_set">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">parameter_set</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">name_components=list()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XSplineContour.parameter_set" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.ParameterSet</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>name_components</strong> (<em>list of strings</em>) – Relative name for a requested parameter set.</p>
+</dd>
+</dl>
+<p>Returns <a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> instance bound with given name path.
+Pass an empty list <code class="docutils literal notranslate"><span class="pre">[]</span></code> to get access to the X-Spline contour parameters set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XSplineContour.remove">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XSplineContour.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes this contour.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.XSplineContour.set_control_points">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">set_control_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.XSplineContour.set_control_points" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XSplineContour.control_points">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">control_points</code><a class="headerlink" href="#mocha.project.XSplineContour.control_points" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="XControlPoint.html#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">XControlPoint</span></code></a> instances</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to list of <a class="reference internal" href="XControlPoint.html#mocha.project.XControlPoint" title="mocha.project.XControlPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">XControlPoint</span></code></a> instances.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.XSplineContour.psets">
+<code class="sig-prename descclassname">XSplineContour.</code><code class="sig-name descname">psets</code><a class="headerlink" href="#mocha.project.XSplineContour.psets" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet">ParameterSet</a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to the root parameter set.</p>
+</dd>
+</dl>
+<p>Mimics parameter_set() call.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.27. XSplineContour</a><ul>
+<li><a class="reference internal" href="#synopsis">2.27.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.27.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.27.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.27.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="XControlPointData.html"
+                        title="previous chapter"><span class="section-number">2.26. </span>XControlPointData</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../exporters/index.html"
+                        title="next chapter"><span class="section-number">3. </span>mocha.exporters</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../exporters/index.html" title="3. mocha.exporters"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="XControlPointData.html" title="2.26. XControlPointData"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 8.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2020, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+[
+	{{- $.Scratch.Set "count" 0 -}}
+	{{- range $index, $page := $.Site.Pages -}}
+	{{- if ne $page.Section "tags" -}}
+	{{- if (gt ($.Scratch.Get "count") 0) -}},{{- end -}}
+	{{- $.Scratch.Add "count" 1 }}
+	{
+
+		"objectID": {{ $page.Permalink | jsonify }},
+		"path": {{ $page.File.Path | jsonify }},
+		"section": {{ $page.Section | jsonify }},{{ if $page.Params.image_url }}
+		"image_url": {{ $page.Params.image_url | jsonify }},{{ end }}{{ if $page.Params.thumbnail_url }}
+		"thumbnail_url": {{ $page.Params.thumbnail_url | jsonify }},{{ end }}
+		"title": {{ $page.Title | jsonify }},
+		"date": {{ $page.Date | dateFormat "2006-01-02" | jsonify }},
+		"content": {{ trim $page.Plain " \n" | htmlUnescape | truncate 9500 | jsonify }}
+
+	}
+	{{- end -}}
+	{{- end }}
+]

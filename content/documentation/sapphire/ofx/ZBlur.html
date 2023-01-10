@@ -1,0 +1,541 @@
+{
+   "title": "Sapphire Plug-ins for Open Fx: ZBlur",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/ZBlur.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="ZBlur">
+     <h2>
+      S_ZBlur
+     </h2>
+    </a>
+    Blurs areas of the source clip by different amounts
+  using depth values from a ZBuffer input.  Separates the input into a
+  number of layers in depth and blurs them by different amounts
+  depending on each layer's depth.  Linear fog can also be mixed into
+  the result.  To use this effect, first set ZBuffer:Black Is Near or White Is
+  Near according to your Z buffer, then adjust the focus depth and
+  depth of field parameters to get the look you want.  To help set the
+  focus depth, you can use Show: In Focus Zone.
+    <p>
+     In the Sapphire Blur+Sharpen effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be processed.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       ZBuffer:
+      </b>
+      The input clip containing depth values for each Source
+  pixel.  These values should be in the range of black to white, and
+  it is best if not anti-aliased.  Normally black corresponds to the
+  farthest objects and white to the nearest, though this can be
+  adjusted using Z Buffer parameter.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/ZBlur.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Focal Depth:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The depth of the focus plane; 0 is near and 1 is far.
+  Areas with this Z value will be in focus.  Objects near this depth
+  may be in focus depending on the Depth of Field parameter.  You can use
+  Show: In Focus Zone to show the Focal Depth when adjusting.  If the
+  effect of this parameter seems backwards, you can invert the depth
+  values using the Z Buffer parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Depth Of Field:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Specifies how wide a range of depths near the Focal
+  Depth will be in focus.  If the Focal Depth is 0.5 and Depth of
+  Field is 0.2, all objects with Z values from 0.4 to 0.6 will be in
+  focus.  Set to zero to have only objects exactly at the Focal Depth
+  in focus.  You can use Show: In Focus Zone to show this when
+  adjusting.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.168,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the overall amount of blur.  This parameter can be adjusted using the Blur Width Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Rel:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [1 1],
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative horizontal and vertical blur
+  widths.  Set Blur Rel X to 0 for a vertical-only blur, or set Blur
+  Rel Y to 0 for a horizontal-only blur.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Zbuffer Type:
+   </b>
+   <i>
+    Popup menu,  Default: White is Near
+   </i>
+   .
+   <br/>
+   How to interpret the values in the Z buffer.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Black is Near:
+      </i>
+     </b>
+     Black pixels in the Z buffer indicate that
+the object at that point is near (close to you), and white means far
+away.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        White is Near:
+       </i>
+      </b>
+      White pixels in the Z buffer indicate that
+the object at that point is near (close to you), and black means far
+away.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show:
+   </b>
+   <i>
+    Popup menu,  Default: Result
+   </i>
+   .
+   <br/>
+   Selects the type of output
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Result:
+      </i>
+     </b>
+     Shows the normal result of the effect.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        In Focus Zone:
+       </i>
+      </b>
+      Highlights the in-focus areas of the clip to make it easier to select the focal point and depth.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Layers:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   2 to 50.
+   <br/>
+   The number of depth layers to separate the source into.
+  More layers require more processing but give smoother results in Z.
+  More layers are sometimes needed to avoid visible seams between the
+  layers.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Layer Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Interp
+   </i>
+   .
+   <br/>
+   Determines how the differently blurred layers are combined.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Comp:
+      </i>
+     </b>
+     the closer layers are composited over the farther
+  layers.  This method often gives better results if you have objects
+  at different depths overlapping each other with discontinuous values
+  in your depth image.  However, this option can be slower, and sometimes
+  artifacts between layers are visible.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Interp:
+       </i>
+      </b>
+      the layers are interpolated using depth
+  image values.  This method gives smoother transitions between
+  layers, and is usually better if there are no sharp changes in your
+  depth image.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Rel Near:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the blur width for parts of the image that are nearer
+  than the focal plane.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Rel Far:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the blur width for parts of the image that are
+  farther away than the focal plane.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fog Near:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The amount of fog to add to nearby (close) objects.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fog Far:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The amount of fog to add to far away objects.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fog Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.5 0.5 0.5].
+   <br/>
+   The fog color should normally match the sky or
+  background color of the source clip.  Use gray for mist, brown for
+  smog, blue for underwater, etc.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Zbuffer Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the ZBuffer input channels make a monochrome z image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Soft Borders:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, transparent borders are added to the
+input image before processing.  This allows the result to include soft
+edges beyond the original image size.  When off, the effect only
+occurs within the frame and the result will retain an edge
+at the borders.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Blur Width:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Blur Width parameter.
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../zdefocus">
+       ZDefocus
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../zglow">
+       ZGlow
+      </a>
+      <br/>
+      <a href="../zconvolve">
+       ZConvolve
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

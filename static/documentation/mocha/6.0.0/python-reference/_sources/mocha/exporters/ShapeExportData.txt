@@ -1,0 +1,226 @@
+.. module:: mocha.exporters
+.. _ShapeExportData:
+
+ShapeExportData
+***************
+
+.. inheritance-diagram:: ShapeExportData
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`get_baked_in_keyframes<ShapeExportData.get_baked_in_keyframes>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*   property :attr:`baked_in_keyframes<ShapeExportData.baked_in_keyframes>` [read-only] of dict
+*   property :attr:`extra_matrix<ShapeExportData.extra_matrix>` [read-only] of bool
+*   property :attr:`filmback_aspect_ratio<ShapeExportData.filmback_aspect_ratio>` [read-only] of float
+*   property :attr:`frame_height<ShapeExportData.frame_height>` [read-only] of float
+*   property :attr:`frame_width<ShapeExportData.frame_width>` [read-only] of float
+*   property :attr:`keyframes_only<ShapeExportData.keyframes_only>` [read-only] of bool
+*   property :attr:`layer<ShapeExportData.layer>` [read-only] of :class:`Layer`
+*   property :attr:`pixel_aspect_ratio<ShapeExportData.pixel_aspect_ratio>` [read-only] of float
+*   property :attr:`transforms<ShapeExportData.transforms>` [read-only] of dict
+*   property :attr:`view<ShapeExportData.view>` [read-only] of :class:`View`
+*   property :attr:`xspline_support<ShapeExportData.xspline_support>` [read-only] of bool
+
+
+Detailed Description
+--------------------
+
+
+
+
+.. class:: ShapeExportData(layer, firstFrame, lastFrame[, view=View( 0 )[, accuracy_treshold=2.0[, extra_matrix=true[, keyframes_only=true[, xspline_support=true]]]]])
+
+
+   :type layer: :class:`mocha.project.Layer`
+   :type firstFrame: :class:`PySide2.QtCore.int`
+   :type lastFrame: :class:`PySide2.QtCore.int`
+   :type view: :class:`mocha.project.View`
+   :type accuracy_treshold: :class:`PySide2.QtCore.double`
+   :type extra_matrix: :class:`PySide2.QtCore.bool`
+   :type keyframes_only: :class:`PySide2.QtCore.bool`
+   :type xspline_support: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. class:: ShapeExportData(ShapeExportData)
+
+
+   :type ShapeExportData: :class:`mocha.exporters.ShapeExportData`
+
+
+
+
+
+
+
+   :type firstFrame: :class:`PySide2.QtCore.int`
+   :type lastFrame: :class:`PySide2.QtCore.int`
+   :type layer: :class:`mocha.project.Layer`
+   :type ShapeExportData: :class:`mocha.exporters.ShapeExportData`
+   :type extra_matrix: :class:`PySide2.QtCore.bool`
+   :type view: :class:`mocha.project.View`
+   :type xspline_support: :class:`PySide2.QtCore.bool`
+   :type keyframes_only: :class:`PySide2.QtCore.bool`
+   :type accuracy_treshold: :class:`PySide2.QtCore.double`
+
+
+
+.. method:: ShapeExportData.get_baked_in_keyframes()
+
+
+   :rtype: :class:`PyObject`
+
+
+
+
+
+
+.. attribute:: ShapeExportData.frame_width
+
+
+   :type: float
+   :access: read-only   
+   Provides access to the frame width.
+   
+
+
+
+.. attribute:: ShapeExportData.frame_height
+
+
+   :type: float
+   :access: read-only   
+   Provides access to the frame height.
+   
+
+
+
+.. attribute:: ShapeExportData.filmback_aspect_ratio
+
+
+   :type: float
+   :access: read-only   
+   Provides access to the film back aspect ratio.
+   
+
+
+
+.. attribute:: ShapeExportData.pixel_aspect_ratio
+
+
+   :type: float
+   :access: read-only   
+   Provides access to the frame pixel aspect ratio.
+   
+
+
+
+.. attribute:: ShapeExportData.layer
+
+
+   :type: :class:`mocha.exporters.Layer`
+   :access: read-only   
+   Provides access to the layer.
+   
+
+
+
+.. attribute:: ShapeExportData.view
+
+
+   :type: :class:`mocha.exporters.View`
+   :access: read-only   
+   Provides access to the view.
+   
+
+
+
+.. attribute:: ShapeExportData.baked_in_keyframes
+
+
+   :type: dict
+   :access: read-only   
+   Provides access to the baked-in keyframes. They are presented as
+   { (spline_name, spline_type): {
+     keyframe1: [PointData(...), ...],
+     ...
+     },
+   ...
+   }
+   For example:
+   
+      { ('Spline 1', 'XSpline'): {
+        0.0: [XControlPointData(...), XControlPointData(...), XControlPointData(...), XControlPointData(...),],
+        4.0: [XControlPointData(...), XControlPointData(...), XControlPointData(...), XControlPointData(...),],
+        8.0: [XControlPointData(...), XControlPointData(...), XControlPointData(...), XControlPointData(...),],
+        ...
+        },
+       ('Spline 2', 'Bezier'): {
+       0.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+       15.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+       16.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+       23.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+       42.0: [BezierControlPointData(...), BezierControlPointData(...), BezierControlPointData(...),],
+       },
+      ...
+      }
+   
+
+
+
+.. attribute:: ShapeExportData.transforms
+
+
+   :type: dict
+   :access: read-only   
+   Provides access to the transforms.
+   
+
+
+
+.. attribute:: ShapeExportData.extra_matrix
+
+
+   :type: bool
+   :access: read-only   
+   Whether the tracking data should be prepared as a keyframed set of transform matrices.
+   
+
+
+
+.. attribute:: ShapeExportData.keyframes_only
+
+
+   :type: bool
+   :access: read-only   
+   Whether coordinates should be used only at shape keyframes.
+   
+
+
+
+.. attribute:: ShapeExportData.xspline_support
+
+
+   :type: bool
+   :access: read-only   
+   Whether export X-Spline like X-Spline or convert to Bezier.
+   
+
+
+
+

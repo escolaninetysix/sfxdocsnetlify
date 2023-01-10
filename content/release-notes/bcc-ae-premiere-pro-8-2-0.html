@@ -1,0 +1,125 @@
+{
+   "date": "2014-06-23T10:26:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC AE/Premiere Pro - 8.2.0"
+}
+
+<p><b> BCC AE 8.2 supports the following host applications: </b></p>
+<p><b> Mac OSX 10.6, 10.7, and 10.8 </b> :</p>
+<p>• Adobe After Effects and Premiere Pro CS5, CS5.5, and CS6</p>
+<p><b> Windows 7 64 </b> :</p>
+<p>• Adobe After Effects and Premiere Pro CS5, CS5.5, and CS6</p>
+<p><b> What's New in BCC AE 8 (Summary of major changes since BCC7): </b></p>
+<p>• Eight new filters: Film Glow, Flicker Fixer, Lens Flare 3D, Organic Strands, Particle Emitter 3D, Stage Light, Videoscope, and Wild Cards.</p>
+<p>• The five 3DO Objects filters, previously only available in AE, are now available in Premiere CS6: 3D Extruded Text, 3D Extruded EPS, 3D Extruded Spline, Layer Deformer, Type on Text.</p>
+<p>• 32bit float processing in After Effects.</p>
+<p>• Addition of the Integrated Beat Reactor with external audio file support to many filters enabling Beat Reactor usage in Premiere Pro.</p>
+<p>• New/Revised Filter Categories.</p>
+<p><b> BCC AE 8.2.0 – What's New </b> :</p>
+<p>• 8.2.0 contains numerous performance, quality, and stability improvements and is recommended for all users.</p>
+<p>• Substantial performance improvements to Lens Flare 3D.</p>
+<p>• Major upgrade to Depth of Field rendering in the new particle filters offering improved render quality and substantial performance improvements.</p>
+<p>• Major upgrade to Stage Light yielding improved render quality and faster performance. Note that due to the many improvements in the rendering details you may notice some differences in the final render when opening projects created prior to this release.</p>
+<p>• OpenGL transfer speed improvements in all of our OpenGL accelerated filters.</p>
+<p>• UI interactivity improvements for many filters in Premiere.</p>
+<p>• Improved stability for many filters, particularly in Premiere.</p>
+<p>• Improved support for Retina display systems</p>
+<p>• Particle Emitter 3D has two new blend modes (Lighten and Screen) in addition to the previous Normal and Add modes for inter-particle compositing.</p>
+<p>• Fixed problem where Wipe Transitions did not correctly handle alpha in the outgoing layer even in alpha aware mode.</p>
+<p>• Fixed problems with the Motion Tracker not working on Trimmed clips in AE and Premiere.</p>
+<p>• Fixed problems where Load/Save of Motion Tracker data didn't work when the tracker Start Frame parameter was non-zero or when the tracker was applied to trimmed clips in AE or Premiere.</p>
+<p>• Fixed problems in AE and Premiere where Match Grain and Degrain did not refresh their renders with proper grain samples when the sampling params changed.</p>
+<p>• Fixed problem in AE where Match Grain did not re-render immediately after loading a grain signature file.</p>
+<p>• Fixed problems in Lens Transition with outgoing clips containing alpha channels.</p>
+<p>• Fixed problems where the incorrect underlying image was displayed behind the motion track data when tracking with an alternate track source selected.</p>
+<p>• Fixed problem with Corner Pin in Premiere where the tracker params were not re-enabled if the “use motion trackers” checkbox was toggled off and then back on.</p>
+<p>• Improved help files for Noise Map 2 and Turbulence.</p>
+<p>• Fixed Videoscope problem where the Log feature didn't work properly on 32bit mac hosts.</p>
+<p>• Fixed rendering issues in some bit depths in Wipe Transition filters when incoming layer is translucent and composite settings are changed.</p>
+<p>• Fixed problem where Halftone looked very different at reduced resolution when using pre/post blur options.</p>
+<p>• Improved handling when the Motion Tracker is applied to an AE host Mask. The tracker data is now applied in a relative fashion, thus avoiding an initial unexpected shift for default settings. Previous projects which manually corrected for this shift with the Offset controls may need their offset parameters re-tweaked.</p>
+<p>• Fixed incorrect offset amounts when using the motion tracker Offset controls when applied to the Pixel Chooser Oval or Rectangle options. Previous projects which corrected for these incorrect offset amounts may need their offset parameters re-tweaked.</p>
+<p>• Fixed longstanding problem with flickering along the edges in all BCC filters that used large blur amounts such as Pyramid Blur, Gaussian Blur, Film Glow.</p>
+<p>• Fix problem with Lens Flare 3d where the Edge map results change when viewed at reduced resolution.</p>
+<p>• Fixed problem on Retina Display systems where the left side parameters in Text Window, such as Font, Size, etc. did not work for Extruded Text &amp; Type On Text filters.</p>
+<p>• Fixed the behavior of the Motion Tracker Auto-Man parameter in many filters.</p>
+<p>• In Pan and Zoom the Video Safe Colors option now scales to the range 16-235 instead of just doing a hard clamp to safe levels.</p>
+<p>• Fixed problems in 3D Objects filters with gaps in shapes jumping between filled and unfilled states while animating shape geometries.</p>
+<p>• Fixed problems in BCC Prism when selecting Reflect for outside pattern.</p>
+<p>• Fixed incorrect results in BCC Radial Wipe and MultiStretch Wipe for some larger values of radius.</p>
+<p>• The Motion Tracker has been removed from all BCC transition filters to improve usability.</p>
+<p>• The valid range for the Shadow slider in Page Turn has been expanded to allow for more visually prominent shadows.</p>
+<p>• Fixed incorrect colors in Colorize when using HSV in float projects.</p>
+<p>• Fixed color artifacts in Correct Selected Color when using the mix with original control in float projects.</p>
+<p>• Noise Map rendering in float projects now matches the results in 8 and 16 bit.</p>
+<p>• Fixed incorrect clamping of out of range inputs in Match Grain in float projects.</p>
+<p>• Fixed incorrect rendering in Noise Map 2 in float projects when rendering at less than full quality.</p>
+<p>• Fixed the blend mode in Corner Pin and Match Move in float projects.</p>
+<p>• Fixed incorrect positioning in Rays when rendering in float or 16bit.</p>
+<p>• Fixed problems in Noise Reduction with the Cb noise reduction control being non-functional.</p>
+<p>• Fixed non-random behavior in Film Damage where alternating patterns of dirt and hair seemed to progress diagonally across the screen over time.</p>
+<p>• Fixed sporadic instability in Multi Shadow.</p>
+<p>• Fixed problems with the Lens Flare 3D obscuration feature not fully obscuring the light.</p>
+<p>• Fixed problem in Wild Cards when using backface with an AE camera</p>
+<p>• Fixed instability when using time reverse on a precomped layer that uses Looper in AE.</p>
+<p>• Fixed dark fringes around some soft particle edges in the new particle filters.</p>
+<p>• Fixed problem in Premiere CS5.5 and earlier where Lens Flare 3D was incorrectly displaying an "unsupported host" error message.</p>
+<p>• Fixed problem where OpenGL filters were incorrectly clipping out of range float colors to the range 0 to 1.</p>
+<p>• Fixed problem in 32 bit mac hosts where Pan and Zoom could introduce a color shift in 16bit and float projects.</p>
+<p>• Fixed incorrect results in BCC Radial Wipe and MultiStretch Wipe when radius is set to large values.</p>
+<p>• Numerous additional bug fixes.</p>
+<p><b> BCC AE 8.x Compatility Notes </b> :</p>
+<p>While in general your previously saved projects should render identically in the newer version, bug fixes and quality improvements can sometimes change the look of older projects. While every effort is made to ensure project compatibility, the following notable areas may see some change to the look of previously saved projects.</p>
+<p>• The Film Damage fix in v8.2 for occasional non-random patterns of dirt and hair required changes to the random number generators used in this filter. While the overall look and feel of the results should remain the same, the specific random pattern of the elements may have changed.</p>
+<p>• Due to fixes in random number generator pattern differences between mac and win projects, you may see differences between random patterns in saved BCC7 projects when opened in BCC8. The overall “look” will remain the same but the details of the random patterns may shift in some filters. Going forward you should now observe identical patterns of randomization when exchanging projects between Mac and Win hosts.</p>
+<p>• Numerous quality improvements and bug fixes were made to new particle filters (Particle Emitter, Particle Array 3D, Pin Art 3D, Organic Strands, and Wild Cards) which may result in appearance changes in some saved projects.</p>
+<p>• Stage Light has undergone major upgrades to its render quality which may result in appearance changes in some saved projects.</p>
+<p>• Fixes to the way the Motion Tracker is applied to Oval, Rectangle, or AE Mask Pixel Chooser shapes may require manually re-tweaking the Offset parameters in saved projects.</p>
+<p>• The Motion Tracker has been removed from all BCC transitions for improved clarity and usability. In the unlikely event that a transition was used with the Motion Tracker in a saved project, the motion path will need to be reconfigured manually.</p>
+<p>• When taking an AE project that uses BCC 3D Objects created on Mac CS4 or earlier, and opening that project in CS5 (Mac or Windows) Texture Files or Bump Files referenced in the 3D Objects' materials will not be found by the plugins and will need to be manually reset to get the effect to appear as expected. (In this case a warning is displayed.)</p>
+<p>• Several render quality improvements were made to Film Glow, particularly when applied to content with an alpha channel. As a result of these improvements, Film Glow projects saved in 8.0.0 may render somewhat differently when opened in 8.0.1 or higher.</p>
+<p><b> BCC AE 8.2.0 - Known Issues and Limitations </b> :</p>
+<p><b> Known issues that are specific to Mac OS: </b></p>
+<p>• When using the 3D Objects category of effects on Mac OS, enabling the "Transparent Object" checkbox will result in the object becoming fully transparent (so this feature is not useful on Mac).</p>
+<p>• Stage Light renders black on Mac AE CS4 only.</p>
+<p>• Previewing BCC Damaged TV to RAM in AE CS4, particularly on older graphics cards, can lead to low memory warnings. Increasing the reserved memory in the AE preferences may help work around this problem.</p>
+<p>• BCC Extruded Text and BCC Type On Text use a custom window for text entry and currently some changes that can be made through text window controls are not reflected in the preview within the text window (although they will be apparent in the effect when previewed/rendered back in the host). The following text attributes do not preview within the text window:</p>
+<p>     - Justification (when Word Wrap is not enabled)</p>
+<p>     - Top Down Text</p>
+<p>     - Right to Left Reading</p>
+<p>     - Negative Line Leading</p>
+<p>     - Italics (for fonts that don't include an italic typeface)</p>
+<p>     - Superscript and Subscript</p>
+<p><br> <b> Known issues that apply to both Mac OS and Windows OS: </b></p>
+<p>• Using Depth of Field in Particle Emitter 3D with Cylinder particle shapes can cause clipping of the cylinder in some scenarios.</p>
+<p>• In BCC Particle Emitter 3D the interaction layer does not working accurately with 3D Text layers unless they are precomposed at comp dimensions.</p>
+<p>• Some BCC OGL filters can cause unexpected behavior when scrubbing on screen overlay widgets in 4K comps.</p>
+<p>• In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.</p>
+<p>• Using time reversal on a precomped layer containing BCC Looper is not supported and will render an error message.</p>
+<p>• As part of the new Motion Tracker workflow, if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must now reset the tracker data with the reset button in the tracker banner before starting a second tracker pass. (This extra step is not necessary if the tracker point picker location has changed.)</p>
+<p>• In 3D Objects filters when using the Comp Light Spotlight and AE Camera, the spotlight cone gets larger when viewed at lower resolutions so this feature should be previewed at full rez.</p>
+<p>• In Type on Text the Line Leading in the text entry preview window does not accurately match up with the leading in the rendered result, and the leading may need to be adjusted to generate the desired final render.</p>
+<p>• Importing Premiere Pro projects containing BCC effects directly into After Effects can lead to effects with some incorrectly transferred parameters which can lead to incorrect renders or other unexpected behavior. This project import workflow is currently not recommended for BCC filters.</p>
+<p>• Smooth Tone can introduce unexpected opaque pixels into regions of 0 alpha and is it currently recommended that Smooth Tone not be applied to footage with transparent regions, particularly on windows.</p>
+<p>• The Beat Reactor propagation options generate unexpected results in Organic Strands. Use non-propagation modes which work as expected as a temporary workaround.</p>
+<p>• Glyph fonts such as IMG Extreme or HolidayPi BT will sometimes render incorrectly or cause unexpected behavior in Extruded Text or Type On Text.</p>
+<p>• 3D Objects filters can render with their contents incorrectly squeezed into one corner of the image when applied to footage resolutions above 2k.</p>
+<p>• In BCC LED the elements may become partially transparent when using the Tint option.</p>
+<p>• 2D Particles, 3D Image Shatter, and 3D Extruded Image Shatter render incorrectly when applied to trimmed clips in AE. Precomping trimmed clips before applying these filters will provide a temporary workaround.</p>
+<p>• BCC Morph will incorrectly clip when applied to media with resolution above HD and when in a 16bit or float project. As a temporary workaround you can switch the project to 8 bit or precompose the media to HD resolution or less.</p>
+<p>• In BCC Glare the location of the individual glare elements can change when previewing at less than full resolution so to guarantee results match between preview and final render this effect should be viewed at full resolution while being configured.</p>
+<p>• In BCC Pin Art and BCC Particle Array 3D colors can may be incorrectly clipped into the range 0 - 1 in floating point projects when using 2D shape types such as points and lines.</p>
+<p>• Optical Stabilizer does not currently analyze correctly when applied to precomps in AE. As a temporary workaround it should be applied directly to individual clip elements instead of to precomps.</p>
+<p><br> <b> Known issues that are specific to Premiere Pro: </b></p>
+<p>• Versions of Premiere Pro prior to CS6 have problems getting the correct frame with filters that access layers at alternate times when applied to trimmed clips. Adobe resolved this issue in Premiere Pro CS6 but in prior versions of Premiere Pro you may need to export trimmed sections and reimport them as untrimmed in order for time based features such as Optical Stabilizer, Motion Key, or the Motion Tracker to work properly.</p>
+<p>• In Premiere Pro only, enabling the Use Individual Layers control in BCC Pin Art will generate a rendered error message.</p>
+<p>• Currently the only way to select from the list of installed image shapes in the new particle filters on Windows Premiere Pro is to use the prev/next arrow keys to step through the list which is inconvenient due to the length of the list. Using a host layer to define a particle shape can serve as a workaround.</p>
+<p>• Preset banner popup menus do not work in Premiere Pro on Windows. Presets must be loaded with the Load (L) button instead.</p>
+<p>• Features that make reference to host cameras, lights, 3D layers, or mask paths are relevant only when running in After Effects and should be ignored in Premiere Pro hosts.</p>
+<p>• Stacking multiple 3D Objects filters on a single clip can lead to performance degradation or psuedo-hanging. It is recommended that 3D Objects filters be applied to separate tracks or separate clips in Premiere Pro.</p>
+<p>• Incorrect animation/keyframing can occur in when some BCC filters are applied to Adjustment Layers in Premiere Pro and application to Adjustment Layers is currently not recommended in this host.</p>
+<p>• The Beat Reactor does not properly recognize audio levels in AIF files exported from Premiere that use 32bit non-float formatting. As a temporary workaround use 8 bit, 16 bit, or 32bit float formatting for exporting AIF files from Premiere for use in the Beat Reactor.</p>
+<p>• BCC frequently enables/disables individual parameters within the effect control pane to help make clear which parameters are relevant in a particular configuration. Premiere has a host problem where they sometimes fail to fully enable or fully disable parameters in response to other parameter changes. This can at times make parameters appear unavailable when they should in fact be editable. Adobe is working on a solution to this problem and in the mean time you can usually force the UI to refresh correctly by twirling an effect group closed and back open again.</p>
+<p> </p>

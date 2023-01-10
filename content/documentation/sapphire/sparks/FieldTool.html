@@ -1,0 +1,1050 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: FieldTool",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FieldTool.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FieldTool">
+     <h2>
+      FieldTool
+     </h2>
+    </a>
+    Allows arbitrary field reordering of a Source clip.
+The parameters define a pattern that maps Source fields to Dest
+fields; this pattern is repeated for each set of Frame Cycle numbers.  The
+overall speed is altered if DestFrameCycle is not equal to
+SourceFrameCycle.
+    <p>
+     For example a '2-3 pulldown' transferring every
+4 frames of film to 5 frames of video can be performed by setting
+DestFrameCycle to 5, SourceFrameCycle to 4, and the Dfield&lt;-Sfld
+parameters as follows:
+     <tt>
+      1 2 3 4 3 6 5 8 7 8.
+     </tt>
+     In this case odd
+fields are mapped to odd, and even to even, even though the field
+numbers are out of order, because this gives better vertical
+resolution and the source film frames have both fields at the same
+time sample.
+    </p>
+    <p>
+     It may help to draw a picture of the source frames
+and fields on the left and the dest frames and fields on the right,
+with lines between them.  FieldTool can represent any such pattern
+where each dest field comes from exactly one source field, but any
+source may go to multiple dests.
+    </p>
+    <p>
+     To use this tool, you should
+think of both input and output as being composed of fields, even for
+media such as film that are frame-based.
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to access fields from.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FieldTool.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dest Frame Cycle:
+   </b>
+   <i>
+    Popup menu,  Default: 1
+   </i>
+   .
+   <br/>
+   The number of frames in the Destination clip over
+  which the field pattern is repeated.  There are two destination fields
+  for each frame in this cycle.
+   <br/>
+   <dl>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 1&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   -1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The 1st destination field (1st field of frame 1)
+  gets this source field number.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 2&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The 2nd destination field (2nd field of frame 1)
+  gets this source field number.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 3&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The 3rd destination field (1st field of frame 2) gets
+  this source field number.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 4&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The 4th destination field (2nd field of frame 2)
+  gets this source field number.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 5&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The 5th destination field (1st field of frame 3) gets
+  this source field number.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 6&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   6,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   The 6th destination field (2nd field of frame 3) gets
+  this source field number.
+   <br/>
+   Etc. for each destination field...
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   6,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   7,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   8,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    SourceFrameCycle:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   9,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The number of frames in the Source clip over
+which the field pattern is repeated.  This defaults to the current
+setting of DestFrameCycle.  There are 2 source fields for each frame
+in this cycle.  If this is greater than DestFrameCycle the result will
+be faster than the source clip; if it is less than DestFrameCycle the
+result will be slower than the source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 7&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   7,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 8&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   8,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld 9&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   9,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld10&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   10,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld11&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   11,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld12&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   12,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld13&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   13,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld14&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   14,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld15&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   15,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld16&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld17&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   17,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dfld18&lt;-Sfld:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   18,
+   <i>
+    Range:
+   </i>
+   1 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rev Field Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Ave
+   </i>
+   .
+   <br/>
+   Selects the method used when an even field
+  is copied to an odd field or vice versa.  This has no effect if the
+  source and destination fields are both even or both odd.
+   <br/>
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Ave:
+      </i>
+     </b>
+     The average of 1 pixel up
+  and 1 pixel down is used.  This avoids vertical shifting of the image but
+  causes slight vertical blurring.
+     <br/>
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Up1:
+       </i>
+      </b>
+      The image is shifted up one pixel.  This
+  option can cause vertical jitter unless all the fields are reversed,
+  but it avoids vertical blurring.
+      <br/>
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Down1:
+        </i>
+       </b>
+       The image is shifted down one pixel.  This
+  option can also cause vertical jitter unless all fields are reversed,
+  but it avoids vertical blurring.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Field Dominance:
+   </b>
+   <i>
+    Popup menu,  Default: 1
+   </i>
+   .
+   <br/>
+   Selects the field order for both Source and Dest.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       1:
+      </i>
+     </b>
+     Field 1 occurs first in time, then field 2.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        2:
+       </i>
+      </b>
+      Field 2 occurs first in time, then field 1.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../deinterlaceauto">
+       DeinterlaceAuto
+      </a>
+      <br/>
+      <a href="../fieldremove">
+       FieldRemove
+      </a>
+      <br/>
+      <a href="../getframe">
+       GetFrame
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

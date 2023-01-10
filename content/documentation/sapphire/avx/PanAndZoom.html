@@ -1,0 +1,1199 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: PanAndZoom",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/PanAndZoom.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="PanAndZoom">
+     <h2>
+      S_PanAndZoom
+     </h2>
+    </a>
+    Loads a still image from a file and pans, zooms, or rotates it in three dimensions,
+while preserving the original resolution. To get started, click the Load File button and choose an image.
+Supported formats include JPEG, PNG, TIFF, and EXR. Then adjust the parameters such as Shift, Zoom,
+and Rotate to position the image, and set keyframes to create movement.
+    <p>
+     In the Sapphire Distort category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The clip to use as background.  The output of the effect is composited over this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/PanAndZoom.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load File:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Loads an image file. This file will be read from its original location and cached in your project.
+  If you move or modify the file, or move your project to a different machine, the cached image stays in the project
+  until another image is loaded.  Click the Get File Info button to display a dialog box with image file details
+  and cached properties.  Click the Reload File button to re-read the original image file in case it has been
+  modified on disk.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Disk Cache:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass saving the cached image in the project.  When bypassing the disk cache, the image file must be available for reading from its original location every time the project is opened
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Notifications:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off whether a dialog box appears at render upon detecting a change to
+  the original image file.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Point Tracks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking points such as Shift and Vignette Center.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Anchor Point:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Use this point to pan the image instead of shift if you want to always zoom or rotate about the center of the project.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Zoom:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   Zooms in or out on the image.  Values less than 1.0
+move it farther away and make it smaller.  Values greater than 1.0 move
+the image closer and enlarge it.  This parameter can be adjusted using the Shift Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Translates the source image.  This parameter can be adjusted using the Shift Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the image shift is controlled by the Shift parameter or follows
+ the Shift tracked inside of Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Shift Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [1 1],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adjusts the horizontal and vertical scale of the image independently. Use this to
+stretch the image or change its aspect ratio.  This parameter can be adjusted using the Shift Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the source image by the specified angle in
+  counter-clockwise degrees.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Swivel:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the image left or right in 3D about the vertical
+  axis.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Tilt:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the image up or down in 3D about the horizontal
+  axis.  You can use Swivel and Tilt together to rotate about
+  arbitrary diagonal axes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Perspective Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.25 to 4.
+   <br/>
+   Controls the amount of lens telescoping while
+  applying Swivel and Tilt.  Increase for more 3D perspective.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shear:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shears the source image horizontally or vertically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Values greater than 1.0 make the mid-tones brighter, values
+  less than 1.0 make them darker, 1.0 leaves the input unchanged.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the result by this value.  Increase for a
+  brighter result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds this gray value to the darker regions of the result.
+  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Foreground Only
+   </i>
+   .
+   <br/>
+   Determines how the image is combined with the background.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Over:
+      </i>
+     </b>
+     The image is composited over the background.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Foreground Only:
+       </i>
+      </b>
+      The background is ignored and only the image is shown.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrap:
+   </b>
+   <i>
+    X &amp; Y,  Popup menu,  Default:
+   </i>
+   [
+   <i>
+    No No
+   </i>
+   ].
+   <br/>
+   Determines the method for accessing outside the borders of the
+source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Filter:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   If enabled, the image is adaptively filtered when it is
+resampled.  This gives a better quality result when parts of the image
+are warped smaller.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Crop Left:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 100.
+   <br/>
+   Crops the left side of the input image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Crop Right:
+   </b>
+   <i>
+    Default:
+   </i>
+   100,
+   <i>
+    Range:
+   </i>
+   0 to 100.
+   <br/>
+   Crops the right side of the input image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Crop Top:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 100.
+   <br/>
+   Crops the top of the input image.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Crop Bottom:
+   </b>
+   <i>
+    Default:
+   </i>
+   100,
+   <i>
+    Range:
+   </i>
+   0 to 100.
+   <br/>
+   Crops the bottom of the input image.
+  </dd>
+ </dl>
+ <h3>
+  Vignette Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Link To Image:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Animates the vignette to follow the pan and zoom of the image.  When enabled, this overrides the Vignette Center parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Darkness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Vignetting is darkening of the image towards the
+  corners and sides of the image.  This parameter controls how much
+  the outer corners of the screen should be darkened (vignetted).  0
+  gives no vignetting, 1 gives maximum darkening.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Distance from the center where the vignetting starts.  This parameter can be adjusted using the Vignette Radius Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Rel Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The relative horizontal size of the vignette shape.  Increase for
+  a wider shape, decrease for a taller one.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The relative vertical size of the vignette shape.  Increase for
+  a taller shape, decrease for a wider one.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotation in degrees of the vignette shape.  Note that
+  rotation will have no effect if Squareness is zero, and Rel Width
+  and Rel Height are equal.  This parameter can be adjusted using the Vignette Angle Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Center:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adjusts the center of the vignette shape.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Center Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the vignette center is controlled by the Vignette Center parameter or follows the Vignette Center tracked inside of Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Center Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Edge Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the vignette's soft edge.  Larger values
+  give softer, less visible edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   The color of the vignette.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Composite
+   </i>
+   .
+   <br/>
+   Determines how the vignette is combined with the Source.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Composite:
+      </i>
+     </b>
+     composites the vignette over the source clip.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Mult:
+       </i>
+      </b>
+      the vignette color is multiplied by the source clip.
+  If the Color is not black, this will selectively colorize the
+  vignette area.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Add:
+        </i>
+       </b>
+       the vignette color is added to the source clip.  This
+  will have no effect if the vignette color is black.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Screen:
+         </i>
+        </b>
+        the vignette color is combined with the source
+  clip using a screen operation.  This will have no effect if the
+  vignette color is black.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Subtract Inv:
+          </i>
+         </b>
+         the inverse of the vignette color is
+  subtracted from the source clip.  Inverse means white for black,
+  yellow for blue, and so on. This mode looks similar to Mult, but a
+  bit more severe; it crushes the blacks and leaves the highlights
+  more.  This will have no effect if the vignette color is white.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Vignette Only:
+           </i>
+          </b>
+          shows the vignette pattern without the
+  source clip. The output will be white where the amount of vignetting
+  is greatest (e.g. where the source clip would be darkened
+  completely).
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Vignette Only Inv:
+            </i>
+           </b>
+           shows the inverted vignette pattern
+  without the source clip. The output will be white where there is no
+  vignetting (e.g. where the source clip would not be darkened at
+  all).
+           <br/>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Smooth Curve:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   If zero, a linear gradient is used across the screen
+  in the soft edge area.  Increase this value to use a smoother 'S'
+  shaped curve for interpolation which can reduce the visual
+  perception of the gradient's start and end locations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Source Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the source clip.  To
+  see only the vignette, set this to zero.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Squareness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Determines how square the vignette shape is.  Set to
+  1.0 for a square or rectangle shape.  Set to 0 for a circle or
+  ellipse.  Values in between give rectangles with rounded corners by
+  varying amounts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Blur Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the borders of the image in addition to darkening them.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Blur Inside:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If checked, the center (undarkened) area of the image
+  is blurred instead of the border.
+  </dd>
+ </dl>
+ <h3>
+  Drop Shadow Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shadow Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The opacity of the drop shadow. Use values near 0 for subtle
+  transparent shadows, or values near 1.0 for stronger shadows.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shadow Shift:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower right.
+   <br/>
+   The horizontal and vertical offset of the shadow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 0].
+   <br/>
+   Scales the color of the result.  For example, if it is yellow
+[1 1 0], the blue of the result will be 0.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Shadow:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Determines the softness of the shadow.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#motion-blur">
+  Motion Blur
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../warptransform">
+       WarpTransform
+      </a>
+      <br/>
+      <a href="../warpvortex">
+       WarpVortex
+      </a>
+      <br/>
+      <a href="../warpperspective">
+       WarpPerspective
+      </a>
+      <br/>
+      <a href="../warpwaves">
+       WarpWaves
+      </a>
+      <br/>
+      <a href="../warpwaves2">
+       WarpWaves2
+      </a>
+      <br/>
+      <a href="../warppuddle">
+       WarpPuddle
+      </a>
+      <br/>
+      <a href="../warpbubble">
+       WarpBubble
+      </a>
+      <br/>
+      <a href="../warpbubble2">
+       WarpBubble2
+      </a>
+      <br/>
+      <a href="../warpfisheye">
+       WarpFishEye
+      </a>
+      <br/>
+      <a href="../warpmagnify">
+       WarpMagnify
+      </a>
+      <br/>
+      <a href="../warppolar">
+       WarpPolar
+      </a>
+      <br/>
+      <a href="../warprepeat">
+       WarpRepeat
+      </a>
+      <br/>
+      <a href="../warpchroma">
+       WarpChroma
+      </a>
+      <br/>
+      <a href="../warptorect">
+       WarpToRect
+      </a>
+      <br/>
+      <a href="../warpcornerpin">
+       WarpCornerPin
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../shake">
+       Shake
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

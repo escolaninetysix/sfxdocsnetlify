@@ -1,0 +1,172 @@
+.. module:: mocha.project
+.. _ColorParameters:
+
+ColorParameters
+***************
+
+.. inheritance-diagram:: ColorParameters
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`__eq__<ColorParameters.__eq__>` (color_parameters)
+*   def :meth:`__ne__<ColorParameters.__ne__>` (color_parameters)
+*   def :meth:`__repr__<ColorParameters.__repr__>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*   property :attr:`colorspace<ColorParameters.colorspace>` [read-write] of :class:`Colorspace`
+*   property :attr:`conversion<ColorParameters.conversion>` [read-write] of :class:`ColorConversion`
+*   property :attr:`gamma<ColorParameters.gamma>` [read-write] of float
+*   property :attr:`log_reference_black<ColorParameters.log_reference_black>` [read-write] of float
+*   property :attr:`log_reference_white<ColorParameters.log_reference_white>` [read-write] of float
+*   property :attr:`offset<ColorParameters.offset>` [read-write] of float
+*   property :attr:`softclip<ColorParameters.softclip>` [read-write] of float
+
+
+Detailed Description
+--------------------
+
+
+   
+   Clip color parameters class.
+   
+
+
+.. class:: ColorParameters([colorspace=LinearColorspace[, conversion=NoneConversion[, offset=0.f[, softclip=0.f[, log_reference_white=685.f[, log_reference_black=0.f[, gamma=1.f]]]]]]])
+
+
+   :type colorspace: :attr:`mocha.project.Colorspace`
+   :type conversion: :attr:`mocha.project.ColorConversion`
+   :type offset: :class:`PySide2.QtCore.float`
+   :type softclip: :class:`PySide2.QtCore.float`
+   :type log_reference_white: :class:`PySide2.QtCore.float`
+   :type log_reference_black: :class:`PySide2.QtCore.float`
+   :type gamma: :class:`PySide2.QtCore.float`
+
+
+
+
+
+
+
+   :type colorspace: :attr:`mocha.project.Colorspace`
+   :type log_reference_black: :class:`PySide2.QtCore.float`
+   :type log_reference_white: :class:`PySide2.QtCore.float`
+   :type softclip: :class:`PySide2.QtCore.float`
+   :type gamma: :class:`PySide2.QtCore.float`
+   :type offset: :class:`PySide2.QtCore.float`
+   :type conversion: :attr:`mocha.project.ColorConversion`
+
+
+.. method:: ColorParameters.__repr__()
+
+
+   :rtype: :class:`PyObject`
+
+
+
+
+
+
+.. method:: ColorParameters.__ne__(color_parameters)
+
+
+   :type color_parameters: :class:`mocha.project.ColorParameters`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. method:: ColorParameters.__eq__(color_parameters)
+
+
+   :type color_parameters: :class:`mocha.project.ColorParameters`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. attribute:: ColorParameters.colorspace
+
+
+   :type: :class:`mocha.project.Colorspace`
+   :access: read-write   
+   Provides access to colorspace value.
+   
+
+
+
+.. attribute:: ColorParameters.conversion
+
+
+   :type: :class:`mocha.project.ColorConversion`
+   :access: read-write   
+   Provides access to color conversion value.
+   
+
+
+
+.. attribute:: ColorParameters.offset
+
+
+   :type: float
+   :access: read-write   
+   Provides access to log reference offset value.
+   
+
+
+
+.. attribute:: ColorParameters.softclip
+
+
+   :type: float
+   :access: read-write   
+   Provides access to softclip value.
+   
+
+
+
+.. attribute:: ColorParameters.log_reference_white
+
+
+   :type: float
+   :access: read-write   
+   Provides access to log reference white value.
+   
+
+
+
+.. attribute:: ColorParameters.log_reference_black
+
+
+   :type: float
+   :access: read-write   
+   Provides access to log reference black value.
+   
+
+
+
+.. attribute:: ColorParameters.gamma
+
+
+   :type: float
+   :access: read-write   
+   Provides access to gamma value.
+   
+
+
+
+

@@ -1,0 +1,160 @@
+{{ define "content" }}
+
+  <div class="container">
+    <div class="row">
+  <div id="col-md-8">
+
+<h1>Categories</h1>
+
+{{ range .Pages.GroupByParam "category" }}
+
+{{ range (.Pages).Reverse }}	
+	<h3 id="category" style="border:none; background-color:inherit;" class="{{ .Params.category }}"><a id="{{ .Params.category }}">{{ .Params.category }}</a></h3>
+  {{ if in .Params.title "BCC+" }}	
+    <p><a href="../documentation/continuum/{{ .Params.link }}" id="{{ .Params.title }}">{{ .Params.title }}</a></p>
+	<p id="excerpt">{{ .Params.excerpt }}</p>
+  {{ end }}
+  {{ if in .Params.title "BCC " }}
+      <p><a href="../documentation/continuum/{{ .Params.link }}" id="{{ .Params.title }}">{{ .Params.title }}</a></p>
+	<p id="excerpt">{{ .Params.excerpt }}</p> 
+  {{ end }}  
+  {{ if in .Params.title "Removed Gradient Parameters" }}
+      <p><a href="../documentation/continuum/{{ .Params.link }}" id="{{ .Params.title }}">{{ .Params.title }}</a></p>
+	<p id="excerpt">{{ .Params.excerpt }}</p>   
+  {{ end }}  
+  {{ if in .Params.title "Title Studio" }}
+      <p><a href="../documentation/continuum/{{ .Params.link }}" id="{{ .Params.title }}">{{ .Params.title }}</a></p>
+	<p id="excerpt">{{ .Params.excerpt }}</p>   
+  {{ end }}
+{{ end }}
+{{ end }}
+
+<script>
+$(document).ready(function() {
+$("#Uncategorized").toggle(false);
+$(".Uncategorized").toggle(false);
+$("#Tutorial").toggle(false);
+$(".Tutorial").toggle(false);
+$("[id='Title Studio']").toggle(false);
+$("[id='BCC Obsolete']").toggle(false);
+$("[class='BCC Obsolete']").toggle(false);
+$("[class='Title Studio']").toggle(false);
+$("[id='Nested Subgroup']").toggle(false);
+$("[class='Nested Subgroup']").toggle(false);
+$("[id='BCC Common Controls']").toggle(false);
+$("[id='BCC Common Controls - Avid']").toggle(false);
+$("[id='BCC Effects List']").toggle(false);
+$("[id='BCC Overview in Adobe']").toggle(false);
+$("[id='BCC Overview in Avid']").toggle(false);
+$("[id='BCC Overview in FCP']").toggle(false);
+$("[id='BCC Overview in Resolve']").toggle(false);
+$("[id='BCC Overview in Sony Vegas']").toggle(false);
+$("[id='BCC User Guide']").toggle(false);
+$("[id='Title Studio: Image Processors']").toggle(false);
+$("[id='Title Studio: Image Processors - Blur Shaders']").toggle(false);
+$("[id='Title Studio: Image Processors - Glow Shaders']").toggle(false);
+$("[id='Title Studio: Image Processors - Gradient Shaders']").toggle(false);
+$("[id='Title Studio: Image Processors - Key Shaders']").toggle(false);
+$("[id='Title Studio: Image Processors - Light Rays']").toggle(false);
+$("[id='Title Studio: Image Processors - Light Sweep']").toggle(false);
+$("[id='Title Studio: Image Processors - Scan Lines']").toggle(false);
+$("[id='Title Studio: Image Processors - Spotlight']").toggle(false);
+$("[id='Title Studio: Image Processors - Wipe Shaders']").toggle(false);
+$("[id='Title Studio: Image Processors: Linear Ripple']").toggle(false);
+$("[id='Title Studio: The Text Tool']").toggle(false);
+$("[id='Title Studio - The Title Container Parameter Guide']").toggle(false);
+$("[id='Title Studio Basics']").toggle(false);
+$("[id='Title Studio: Animating an Object Using Keyframes']").toggle(false);
+$("[id='Title Studio: Creating A Fade Effect']").toggle(false);
+$("[id='Title Studio: Creating a Credit Roll']").toggle(false);
+$("[id='Title Studio: Creating a Credit Roll Part Two']").toggle(false);
+$("[id='Title Studio: Creating a Type on Effect with Title Containers']").toggle(false);
+$("[id='Title Studio: Keyframe Palette']").toggle(false);
+$("[id='Title Studio: Scene Container Parameter Guide']").toggle(false);
+$("[id='Title Studio: The Animation Tab']").toggle(false);
+$("[id='Title Studio: The Camera Tab']").toggle(false);
+$("[id='Title Studio: The Composite Tab']").toggle(false);
+$("[id='Title Studio: The Container Position Tab']").toggle(false);
+$("[id='Title Studio: The History Palette']").toggle(false);
+$("[id='Title Studio: The Info Window']").toggle(false);
+$("[id='Title Studio: The Lights Tab']").toggle(false);
+$("[id='Title Studio: The Preferences Panel']").toggle(false);
+$("[id='Title Studio: The Project Settings Window']").toggle(false);
+$("[id='Title Studio: The Render Tab']").toggle(false);
+$("[id='Title Studio: The Tools Window']").toggle(false);
+$("[id='Title Studio: The User Marks Window']").toggle(false);
+$("[id='Title Studio: Understanding Track Structure']").toggle(false);
+$("[id='Title Studio: Working With Deformers']").toggle(false);
+$("[id='Title Studio: Working With Image Processor Shaders']").toggle(false);
+$("[id='Title Studio: Working With Spline Media']").toggle(false);
+$("[id='Title Studio: Working with the Composite Window']").toggle(false);
+$("[id='Title Studio: Working with the Controls Window']").toggle(false);
+$("[id='Title Studio: Working with the Timeline Window']").toggle(false);
+$("[id='BCC Apply Modes']").toggle(false);
+$("[id='BCC Beat Reactor Integrated']").toggle(false);
+$("[id='BCC Compare Mode']").toggle(false);
+$("[id='BCC Gradient']").toggle(false);
+$("[id='BCC Motion Tracker']").toggle(false);
+$("[id='BCC Motion Tracker AE']").toggle(false);
+$("[id='BCC Motion Tracker Avid']").toggle(false);
+$("[id='BCC Motion Tracker FCP']").toggle(false);
+$("[id='BCC Motion Tracker Motion']").toggle(false);
+$("[id='BCC Motion Tracker PRM']").toggle(false);
+$("[id='BCC Motion Tracker Red']").toggle(false);
+$("[id='BCC Motion Tracker Resolve']").toggle(false);
+$("[id='BCC Motion Tracker Vegas']").toggle(false);
+$("[id='BCC Pinning Controls']").toggle(false);
+$("[id='BCC Pixel Chooser']").toggle(false);
+$("[id='BCC PixelChooser – Legacy']").toggle(false);
+$("[id='BCC Alpha Pixel Noise']").toggle(false);
+$("[id='BCC Alpha Spotlight']").toggle(false);
+$("[id='BCC Boost Blend']").toggle(false);
+$("[id='BCC Color Palette']").toggle(false);
+$("[id='BCC DeGrain']").toggle(false);
+$("[id='BCC DeNoise']").toggle(false);
+$("[id='BCC Film Glow']").toggle(false);
+$("[id='BCC Film Glow Dissolve']").toggle(false);
+$("[id='BCC Film Process']").toggle(false);
+$("[id='BCC Fire']").toggle(false);
+$("[id='BCC Glow']").toggle(false);
+$("[id='BCC Glow Matte']").toggle(false);
+$("[id='BCC Lens Blur']").toggle(false);
+$("[id='BCC Lens Flare']").toggle(false);
+$("[id='BCC Lens Flare Advanced']").toggle(false);
+$("[id='BCC Lens Transition']").toggle(false);
+$("[id='BCC Light Matte']").toggle(false);
+$("[id='BCC Light Zoom']").toggle(false);
+$("[id='BCC Noise Map']").toggle(false);
+$("[id='BCC Rough Glow']").toggle(false);
+$("[id='BCC Sequencer']").toggle(false);
+$("[id='BCC Star Matte']").toggle(false);
+$("[id='BCC Super Blend']").toggle(false);
+$("[id='BCC Z Space I']").toggle(false);
+$("[id='BCC Z Space II']").toggle(false);
+$("[id='BCC Z Space III']").toggle(false);
+$("[id='BCC FAQ']").toggle(false);
+$("[id='BCC Preferences']").toggle(false);
+$("[id='BCC Presets']").toggle(false);
+$("[id='FEC Bubbles']").toggle(false);
+$("[id='Removed Gradient Parameters']").toggle(false);
+
+});
+</script>
+</div>
+</div>
+<script>
+$(document).ready(function(){
+var map = {};
+$('h3#category').each(function() {
+    var value = $(this).text();
+    if (map[value] == null){
+        map[value] = true;
+    } else {
+        $(this).toggle(false);
+    }
+});
+});
+</script>
+
+</div>
+{{ end }}

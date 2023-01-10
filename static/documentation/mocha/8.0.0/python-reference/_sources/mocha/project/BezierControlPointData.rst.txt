@@ -1,0 +1,167 @@
+.. module:: mocha.project
+.. _BezierControlPointData:
+
+BezierControlPointData
+**********************
+
+.. inheritance-diagram:: mocha.project.BezierControlPointData
+    :parts: 2
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`__eq__<BezierControlPointData.__eq__>` (bcpd)
+    * def :meth:`__ne__<BezierControlPointData.__ne__>` (bcpd)
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`active<BezierControlPointData.active>` [read-write] of bool or NoneType
+*    property :attr:`corner<BezierControlPointData.corner>` [read-write] of bool or NoneType
+*    property :attr:`edge_angle_ratio<BezierControlPointData.edge_angle_ratio>` [read-write] of float or NoneType
+*    property :attr:`edge_width<BezierControlPointData.edge_width>` [read-write] of float or NoneType
+*    property :attr:`handle_offset_backward<BezierControlPointData.handle_offset_backward>` [read-write] of 2-values tuple or NoneType
+*    property :attr:`handle_offset_forward<BezierControlPointData.handle_offset_forward>` [read-write] of 2-values tuple or NoneType
+*    property :attr:`x<BezierControlPointData.x>` [read-write] of float or NoneType
+*    property :attr:`y<BezierControlPointData.y>` [read-write] of float or NoneType
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    BezierControlPointData class. Provides access to individual parameters for each Bezier contour control point.
+
+
+.. class:: BezierControlPointData([active=OptionalBool()[, corner=OptionalBool()[, x=OptionalFloat()[, y=OptionalFloat()[, edge_width=OptionalFloat()[, edge_angle_ratio=OptionalFloat()[, handle_offset_backward=OptionalPoint()[, handle_offset_forward=OptionalPoint()]]]]]]]])
+
+
+    :type active: :class:`mocha.project.OptionalBool`
+    :type corner: :class:`mocha.project.OptionalBool`
+    :type x: :class:`mocha.project.OptionalFloat`
+    :type y: :class:`mocha.project.OptionalFloat`
+    :type edge_width: :class:`mocha.project.OptionalFloat`
+    :type edge_angle_ratio: :class:`mocha.project.OptionalFloat`
+    :type handle_offset_backward: :class:`mocha.project.tuple`
+    :type handle_offset_forward: :class:`mocha.project.tuple`
+
+
+    :param active: Active state of keyframe.
+    :param corner: Corner state of keyframe.
+    :param x: X coordinate value of keyframe.
+    :param y: Y coordinate value of keyframe.
+    :param edge_width: Edge width of keyframe.
+    :param edge_angle_ratio: Edge angle ratio value of keyframe.
+    :param handle_offset_backward: Relative position of backward handle.
+    :param handle_offset_forward: Relative position of forward handle.
+    
+    Constructs new BezierControlPointData instance with given parameters.
+
+
+
+.. class:: BezierControlPointData(BezierControlPointData)
+
+
+    :type BezierControlPointData: :class:`mocha.project.BezierControlPointData`
+
+
+
+
+
+
+
+
+.. method:: BezierControlPointData.__ne__(bcpd)
+
+
+    :type bcpd: :class:`mocha.project.BezierControlPointData`
+    :rtype: bool
+
+
+
+
+
+.. method:: BezierControlPointData.__eq__(bcpd)
+
+
+    :type bcpd: :class:`mocha.project.BezierControlPointData`
+    :rtype: bool
+
+
+
+
+
+.. attribute:: BezierControlPointData.active
+
+
+    :type: bool or NoneType
+    :access: read-write    Provides access to ``active`` state of keyframe.
+
+
+
+.. attribute:: BezierControlPointData.corner
+
+
+    :type: bool or NoneType
+    :access: read-write    Provides access to ``corner`` state of keyframe.
+
+
+
+.. attribute:: BezierControlPointData.x
+
+
+    :type: float or NoneType
+    :access: read-write    Provides access to ``X`` keyframe point coordinate.
+
+
+
+.. attribute:: BezierControlPointData.y
+
+
+    :type: float or NoneType
+    :access: read-write    Provides access to ``Y`` keyframe point coordinate.
+
+
+
+.. attribute:: BezierControlPointData.edge_width
+
+
+    :type: float or NoneType
+    :access: read-write    Provides access to ``edge width`` value of keyframe.
+
+
+
+.. attribute:: BezierControlPointData.edge_angle_ratio
+
+
+    :type: float or NoneType
+    :access: read-write    Provides access to ``edge angle ratio`` value of keyframe.
+
+
+
+.. attribute:: BezierControlPointData.handle_offset_backward
+
+
+    :type: 2-values tuple or NoneType
+    :access: read-write    Provides access to relative coordinates of backward tangent vertex.
+
+
+
+.. attribute:: BezierControlPointData.handle_offset_forward
+
+
+    :type: 2-values tuple or NoneType
+    :access: read-write    Provides access to relative coordinates of forward tangent vertex.
+
+
+
+

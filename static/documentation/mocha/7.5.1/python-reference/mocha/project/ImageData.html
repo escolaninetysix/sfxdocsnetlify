@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.7. ImageData &#8212; mocha 7.5.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.8. Keyframe" href="Keyframe.html" />
+    <link rel="prev" title="2.6. ColorParameters" href="ColorParameters.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Keyframe.html" title="2.8. Keyframe"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ColorParameters.html" title="2.6. ColorParameters"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 7.5.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="imagedata">
+<span id="id1"></span><h1><span class="section-number">2.7. </span>ImageData<a class="headerlink" href="#imagedata" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.7.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.7.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.ImageData.__eq__" title="mocha.project.ImageData.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ImageData.__ne__" title="mocha.project.ImageData.__ne__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__ne__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ImageData.flip" title="mocha.project.ImageData.flip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flip</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ImageData.flipped_pixels" title="mocha.project.ImageData.flipped_pixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flipped_pixels</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ImageData.get_pixels" title="mocha.project.ImageData.get_pixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_pixels</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.ImageData.set_pixels" title="mocha.project.ImageData.set_pixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_pixels</span></code></a> (arg__1)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.7.1.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.ImageData.channel_type" title="mocha.project.ImageData.channel_type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">channel_type</span></code></a> [read-write] of ChannelType</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ImageData.height" title="mocha.project.ImageData.height"><code class="xref py py-attr docutils literal notranslate"><span class="pre">height</span></code></a> [read-write] of int</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ImageData.pixel_format" title="mocha.project.ImageData.pixel_format"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pixel_format</span></code></a> [read-write] of PixelFormat</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ImageData.pixels" title="mocha.project.ImageData.pixels"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pixels</span></code></a> [read-write] of array.array</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.ImageData.width" title="mocha.project.ImageData.width"><code class="xref py py-attr docutils literal notranslate"><span class="pre">width</span></code></a> [read-write] of int</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.7.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>Main class for access to main image data fields.</p>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.project.ImageData">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">ImageData</code><a class="headerlink" href="#mocha.project.ImageData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ImageData.flip">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">flip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ImageData.flip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertically flips the image in-place.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 5.5.2: </span>Use 3rd party libs for images flipping</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ImageData.flipped_pixels">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">flipped_pixels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ImageData.flipped_pixels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">PyObject</span></code></p>
+</dd>
+</dl>
+<p>Returns a flipped upside-down copy of the pixel buffer.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 5.5.2: </span>Use 3rd party libs for images flipping</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ImageData.get_pixels">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">get_pixels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ImageData.get_pixels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">PyObject</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ImageData.__ne__">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ImageData.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ImageData.__eq__">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ImageData.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.ImageData.set_pixels">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">set_pixels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg__1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.ImageData.set_pixels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ImageData.pixels">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">pixels</code><a class="headerlink" href="#mocha.project.ImageData.pixels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array.array</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to a pixel buffer.</p>
+</dd>
+</dl>
+<p><strong>IMPORTANT</strong> The getter returns a weak reference to the array instance as
+mocha owns the pixel buffer exclusively. Do not store the effective array reference anywhere because
+despite the reference counter value mocha kills the array instance as soon as the corresponding internal
+image structure gets destroyed.</p>
+<p>The setter accepts a normal array reference, acquires it immediately and to avoid dangling references
+makes the array reference variable to point to the None object unless it’s an rvalue.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ImageData.width">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">width</code><a class="headerlink" href="#mocha.project.ImageData.width" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to the image width value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ImageData.height">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">height</code><a class="headerlink" href="#mocha.project.ImageData.height" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to the image height value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ImageData.pixel_format">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">pixel_format</code><a class="headerlink" href="#mocha.project.ImageData.pixel_format" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>PixelFormat</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to the pixel format.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.ImageData.channel_type">
+<code class="sig-prename descclassname">ImageData.</code><code class="sig-name descname">channel_type</code><a class="headerlink" href="#mocha.project.ImageData.channel_type" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ChannelType</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to the image channel type.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.7. ImageData</a><ul>
+<li><a class="reference internal" href="#synopsis">2.7.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.7.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.7.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.7.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ColorParameters.html"
+                        title="previous chapter"><span class="section-number">2.6. </span>ColorParameters</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Keyframe.html"
+                        title="next chapter"><span class="section-number">2.8. </span>Keyframe</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Keyframe.html" title="2.8. Keyframe"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ColorParameters.html" title="2.6. ColorParameters"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 7.5.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2020, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

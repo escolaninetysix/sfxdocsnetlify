@@ -1,0 +1,94 @@
+{
+   "date": "2016-04-14T15:05:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC OFX - 10.0.0 Release Notes"
+}
+
+<h3>Boris Continuum Complete 10.0.0 for OFX - Release Notes</h3>
+<p>BCC 10.0.0 for OFX was released on 4/14/2016.</p>
+<p>BCC 10.0.0 for OFX officially supports DaVinci Resolve and Sony Vegas.  Official support for additional OFX hosts will be added in future updates.</p>
+<p> </p>
+<p><strong>What's New in BCC 10 for OFX (Summary of major changes since BCC9):</strong></p>
+<ul>
+<li>New effects:
+<ul>
+<li>Beauty Studio</li>
+<li>Dropout Fixer</li>
+<li>Fast Film Glow</li>
+<li>Fast Film Process</li>
+<li>Fast Lens Blur</li>
+<li>Light Leaks</li>
+<li>Reframer</li>
+<li>Remover</li>
+<li>Title Studio</li>
+<li>Video Glitch</li>
+<li>Unsharp Mask (new in OFX hosts other than Vegas where it was already included in BCC9)</li>
+<li>Videoscope (new in OFX hosts other than Vegas where it was already included in BCC9)</li>
+</ul>
+</li>
+<li>New transitions:
+<ul>
+<li>Cross Glitch</li>
+<li>Cross Melt</li>
+<li>Cross Zoom</li>
+<li>Fast Film Glow Dissolve</li>
+<li>Lens Blur Dissolve</li>
+<li>Light Leaks Dissolve</li>
+</ul>
+</li>
+<li>Render speeds improved by 10-30% as compared to BCC9.</li>
+<li>PixelChooser re-engineered for streamlined UI, enhanced shape masking, and robust color keying.</li>
+<li>Greater use of OpenCL and OpenGL for GPU acceleration in filters such as Beauty Studio, Title Studio, Fast Film Glow, Fast Film Process, Fast Lens Blur, Lens Blur Dissolve, and many more.</li>
+<li>FX Browser™ support in 3D Objects family of effects.</li>
+<li>Change text fields directly from FX Browser™ in 3D objects filters.</li>
+<li>New textures added to BCC Grunge.</li>
+<li>Advanced Optical Flow option in BCC Motion Blur.</li>
+<li>Added View Current Matte feature to Chroma Key Studio.</li>
+<li>New presets for many key filters such as Fast Film Process, Fast Film Glow, Grunge, Glare, Glint, and Glitter.</li>
+<li>Streamlined effect categories with deprecated filters moved to Obsolete category.</li>
+<li>Point picker widgets now include text labels to more easily distinguish between multiple point controls.</li>
+<li>Numerous bug fixes.</li>
+</ul>
+<p> </p>
+<p><strong>BCC 10 OFX officially supports the following host applications:</strong></p>
+<p><em>Note that official support for additional OFX hosts will be added in future updates.</em></p>
+<p>Mac OSX 10.8, 10.9, 10.10, and 10.11:</p>
+<ul>
+<li>DaVinci Resolve Studio and DaVinci Resolve 11 and 12.  (Using the latest 12.x update for Resolve is strongly recommended.)</li>
+</ul>
+<p>Windows 7 x64, Windows 8 x64, Windows 10 x64:</p>
+<ul>
+<li>DaVinci Resolve Studio and DaVinci Resolve 11 and 12. (Using the latest 12.x update for Resolve is strongly recommended.)</li>
+<li>Sony Vegas 13.</li>
+</ul>
+<p> </p>
+<p><strong>Training:</strong></p>
+<p> Numerous resources are available for helping you get the most out of Boris Continuum Complete.</p>
+<ul>
+<li>Help documents for individual BCC effects are accessible directly from each plug-in’s UI.  The entire <a href="/documentation/continuum/bcc-effects-list/" title="BCC Help Documentation">BCC Help Documention</a> library is also available on the BorisFX website, including access to a downloadable version for browsing <a href="https://cdn.borisfx.com/borisfx/store/BCC10Documentation.zip" title="Offline Downloadable BCC Help Documentation">offline BCC Help Documentation</a>.</li>
+<li>
+<a href="/videos/?tags=category:Continuum%20TV&search=">BorisTV</a> video tutorials cover a huge range of topics from introductions to the Fundamentals, to deep training Webinar Replays, to in-depth looks at  key effects and techniques.</li>
+</ul>
+<p> </p>
+<p><strong style="line-height: 1.4;">BCC OFX 10.x Compatibility Notes:</strong></p>
+<p>While in general your previously saved projects should render identically in the newer version, bug fixes and quality improvements can sometimes change the look of older projects. While every effort is made to ensure project compatibility, the following notable areas may see some change to the look of previously saved projects.</p>
+<ul>
+<li>3D Objects Extrusion Styles now scale with text point size but this can in some cases cause different scaling when opening saved projects which might require readjustment.</li>
+<li>The BCC Motion Tracker in OFX hosts will continue to render previously saved motion tracker analysis passes and it will continue to support loading externally generated tracker data files such as those exported from mocha, but conducting new BCC Motion Tracker analysis passes is disabled in OFX hosts other than Vegas in order to ensure full cooperation with host multi-threading requirements.</li>
+<li>Rays Dissolve - a fix to the Region Animation rotation control will cause the region size to appear slightly larger when opening saved projects which used this Region Animation option. </li>
+</ul>
+<p> </p>
+<p><strong>BCC OFX 10.0.0 - Known Issues and Limitations:</strong></p>
+<ul>
+<li>Title Studio Plugin Mac - Menu Bar doesn't update back when toggling apps until you cancel or apply from Title Studio UI. [1539]</li>
+<li>BCC Motion Blur now includes an Advanced optical flow option which uses OpenCL hardware assisted rendering to implement a more sophisticated (and more computationally intensive) motion vector analysis.  The performance of the Advance mode varies widely from one graphics card to another and if you see reduced performance or unexpected results when using the Advanced option it is recommended that you switch to the Simple mode on that card. [706 + 1094]</li>
+<li>Title Studio - The Frame Cache is not automatically Purged when you manually change the PAR (pixel aspect ratio). [1964]</li>
+<li>Title Studio - Some C4D files show inaccurate colors or blocky shape geometries. [2271]</li>
+<li>Title Studio - Japanese Localization is not working in all UI elements. [2571]</li>
+<li>Match Grain - Locking Sample control does not work in Resolve, but samples can still be loaded from the grain sample menu. [2558]</li>
+<li>Flicker Fixer fails to fully eliminate flicker in float bitdepth projects when method set to Frame Analysis or Temporal Smooth YCC.  When working with float images an alternate smoothing method should be chosen.  [2388]</li>
+<li>Applying a Resolve corrector node after BCC Grunge or one of the BCC particle filters can lead to unexpected results.  As a workaround Grunge and Particle filters should not be followed by Resolve corrector nodes. [2535]</li>
+<li>Point picker labels that appear over the image can be too small and appear malformed on some Retina displays. [2574]</li>
+</ul>

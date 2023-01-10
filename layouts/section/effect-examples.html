@@ -1,0 +1,24 @@
+{{ define "content" }}
+
+<script>
+var videos = [
+  {{ range .Data.Pages }}
+  {
+    "title": "{{ .Title }}",
+    "date": "{{ .Date }}",
+    "url": "{{ .Permalink }}",
+    "thumbnail_url": "{{ .Params.thumbnail_url }}",
+    "content": "{{ .Content | plainify }}",
+    "video_id": "{{ .Params.video_id }}",
+	"tags": "{{ .Params.tags }}",
+    {{ if .Params.tagging }}"tagging": {{ .Params.tagging }},{{ end }}
+	"poster": "{{ .Params.poster }}"
+  },
+  {{ end }}
+];
+</script>
+<div class="container">
+  {{ partial "video-gallery-effect-examples.html" . }}
+</div>
+
+{{ end }}

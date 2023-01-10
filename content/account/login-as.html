@@ -1,0 +1,71 @@
+{"title": ""}
+
+<div id="app">
+    <div class="content" v-if="!lock">
+        <h1>Log In As User:</h1>
+        <form v-on:submit.prevent="handleSubmit">
+            <div class="form-group">
+                <input placeholder="Enter User's Email Address" class="form-control" name="email" v-model="email" />
+                <p style="color:red; font-size: .8rem; margin:0;" v-show="error">${error}</p>
+            </div>
+            <button class="btn" type="submit">Log In</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            user : Cookies.getJSON('bfx-login'),
+            lock : true,
+            email : '',
+            error : null
+        },
+        mounted: function(){
+            var self = this;
+            if (!this.user) window.location.href= '/';
+            else if (!this.user.administrator) window.location.href = '/';
+            this.checkAdminStatus()
+            .then(function(res){
+                if (res == true) self.lock = false;
+                else window.location.href = '/';
+            });
+        },
+        methods : {
+            checkAdminStatus : function(){
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    axios.get('https://backend.borisfx.com/admin', {auth: {username : self.user.email, password: self.user.token}})
+                    .then(function(res){
+                        resolve(res.data == true)
+                    })
+                    .catch(function(err){
+                        window.location.href = '/';
+                        reject();
+                    })
+                })
+            },
+            handleSubmit : function(){
+                var self = this;
+                axios.post('https://backend.borisfx.com/login_as', {email: self.email}, {auth: {username : self.user.email, password: self.user.token}})
+                .then(function(res){
+                    result = res.data;
+                    Cookies.set('bfx-login', result, { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname });
+                    window.location.href='/account/manage'
+                })
+                .catch(function(err){
+                    if (err.response != null && err.response.status == 403){
+                        Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                        Cookies.set('redirect_url', window.location.href);
+                        window.location.href = '/account/login?session_expired=true';
+                    }
+                    else{
+                        self.error = 'No Account found for this email address.'
+                    }
+                })
+            }
+        }
+    })
+</script>

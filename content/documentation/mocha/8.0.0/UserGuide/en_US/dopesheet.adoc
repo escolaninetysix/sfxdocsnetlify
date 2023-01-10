@@ -1,0 +1,83 @@
+
+== The Dope Sheet and Curve Editor
+
+
+=== The Dope Sheet
+
+The Dope Sheet is used to move, copy and paste keyframes in your layers.
+
+
+==== Navigating the Dope Sheet
+
+You can navigate the Dope Sheet space by using the scroll bars horizontally and vertically.  Holding CTRL/CMD+Scrolling the mouse wheel will let you scale up and down the timeline.
+
+
+==== Group Keyframes vs Parameter Keyframes
+
+image::UserGuide/en_US/images/DOPESHEET_001.jpg["DOPESHEET_001",link="images/DOPESHEET_001.jpg]				
+
+
+As you create animation or tracking data, you will see a number of hollow keyframes appear in the Dope Sheet.  These are known as Group Keyframes which are keys that contain multiple sets of Parameter Keyframes underneath them.
+
+You can move the Group Keyframes like normal animation keyframes, but instead of a single animation key, they will move all the keyframes underneath them.
+
+This is useful when you need to shift a whole section of animation in a layer, and not just an individual point or parameter.
+
+Expanding a section of the layer tree in the dope sheet will reveal either Parameter Keyframes or more Group Keyframes, depending on how many levels in that layer tree there are.
+
+
+==== Selecting and Moving Keys
+
+To select keyframes, you either click on one of them in the Dope Sheet, or marquee select a section.  You can use SHIFT to pick multiple keys.
+
+
+image::UserGuide/en_US/images/DOPESHEET_002.jpg["DOPESHEET_002",link="images/DOPESHEET_002.jpg]
+
+
+You can move the keyframes manually by dragging them with the mouse, or you can use the standard Copy/Paste keys (CTRL/CMD+C, CTRL/CMD+V) to copy keys and paste them at the current playhead position.
+
+NOTE: At this time you cannot copy and paste Group Keyframes, only Parameter/Animation keyframes.
+
+
+=== The Curve Editor
+
+The Curve Editor is used to review how the data in your animation and tracking looks, as well as some value and frame manipulation options.
+
+
+==== Navigating the Curve Editor
+
+You may navigate the Curve Editor space by using the middle mouse button to Pan and the mouse wheel to zoom. Alternately, you may pan using the ‘x&rsquo; key on the keyboard and zoom using the ‘z&rsquo; key on the keyboard. When zooming with the ‘z&rsquo; key, left/right mouse movements will zoom in/out horizontally and up/down mouse movements will zoom vertically.
+
+
+==== Selecting and Moving Keys
+
+To select keyframes, you must first select the curve, then the keyframes. Keyframes of unselected curves are not selectable.
+
+image::UserGuide/en_US/images/curve_001.jpg["curve_001",link="images/curve_001.jpg]
+
+
+You may move the keyframes manually by dragging them with the mouse, or you may type in a &ldquo;Nudge&rdquo; value at the top right of the Curve Editor.
+
+image::UserGuide/en_US/images/curve_002.jpg["curve_002",link="images/curve_002.jpg]
+
+
+Entering a negative value in the &ldquo;Nudge Time&rdquo; field and hitting the button will move selected keyframes backwards in time by that amount every time you hit the button. Entering a positive value in the &ldquo;Nudge Value&rdquo; field and hitting its button will move selected keyframes up in value by that amount every time you hit the button.
+
+
+==== Changing the Interpolation of Keys
+
+Interpolation describes the method of how values are calculated between keyframes. It defaults to linear interpolations between keyframes but you may wish to convert them to Bezier for easing in and out. Or if you wish them to hold their position until the next keyframe, you may wish to select Constant as the mode of interpolation.
+
+
+image::UserGuide/en_US/images/curve_003.jpg["curve_003",link="images/curve_003.jpg]
+
+Right click on a selected keyframe and choose Interpolation-&gt;Bezier. Bezier tangent controls will appear on your keys and you may adjust them for easing in and out.
+
+
+==== Changing the Extrapolation of Keys
+
+If a keyframe is the first or last keyframe on the curve, its extrapolation can be chosen. Extrapolation describes the method of how values are calculated &ldquo;off into space&rdquo; before the first keyframe or after the last keyframe. It defaults to Constant, which simply holds the value steady.
+
+Choose linear extrapolation and the curve editor will continue the value on its current slope (sometimes called Gradient Extrapolation in other applications).
+
+image::UserGuide/en_US/images/curve_004.jpg["curve_004",link="images/curve_004.jpg]

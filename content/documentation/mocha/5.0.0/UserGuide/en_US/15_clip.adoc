@@ -1,0 +1,99 @@
+
+== The Clip Tab
+
+IMPORTANT: The Clip tab has had an overhaul in V4.0 to accommodate handling multiple footage streams in a single mocha clip.   This is a significant change from the old method of working.  Please take some time to read over the changes so you understand the new workflow.
+
+=== Clip and Footage Stream Workflow
+
+The Clip tab now handles multiple footage streams in a single mocha clip. 
+
+Clips now consist of a container and one or more footage streams. Clips can contain any number of footage streams, which you can then map to a view if required.
+
+Most commonly you will only be working with one footage stream, which is mapped to the Mono view.  If you are working in stereo (mocha Pro only) you will have multiple views.
+
+If you import multiple footage streams into the same clip, you can use the *View Mapping* dropdown to change which footage stream is shown.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/4.0.0_Clip_Tab_Streams.jpg[]
+
+If you are dealing with multi-channel clips such as EXR files, all views are loaded automatically.
+
+If you are working with individual views (TIF, DPX, JPG etc), you can import the additional footage streams using the *Add...* button under the Footage Streams dropdown (mocha Pro only).
+
+
+=== Managing clips
+
+You can import any number of clips into the project. Much like a compositing application, you can have a multitude of assets in the application you may wish to work with at any given time. As clips are imported into the project, they populate Clip list drop-down menus found throughout the application.
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_001.jpg[width="60%"]			
+
+Above is shown a list of clips that have been loaded into a project.
+
+You can also add additional footage streams to each clip in mocha Pro using the *Add...* button.
+
+
+=== Importing New Clips
+
+The first clip is always imported when you start a new project, and the location of the clip's footage stream is shown in the *Footage Streams* section to the right.
+The first clip you start with establishes the aspect ratio and resolution for that project.  This can be adjusted in the clip tab.	
+		
+Additional clips can be imported into the project through the Clip tab.
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_003.jpg[width="60%"]
+		
+The clips should match the original project clip ratio set for the project (the dimensions of the first clip you imported when you started the project). You can choose the "inherit attributes" drop down to match the original project clip settings.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_002.jpg[width="60%"]
+
+
+=== Importing New Footage Streams to an existing Clip
+
+NOTE: This feature is only available in mocha Pro.
+
+If you want to import additional footage streams in mocha Pro, you can do so using the Import button under the *Footage Streams* dropdown.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_stream_addbutton.jpg[]
+
+You can then choose a new footage stream to add to the current clip from the Import dialog.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_importfootagestream.jpg[]
+
+=== Removing Clips
+
+You may clean up the project by deleting clips you no longer need. Select the clip in the clip drop-down list and hit Delete. That clip will be removed from the project.
+
+
+=== Relinking Clips
+
+When moving project files or updating footage, you may need to relocate the footage on your system.  To do this:
+
+. Select the clip you need to relink from the clip drop-down list
++
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_001.jpg[width="60%"]	
++
+. In the *Footage Streams* section of your clip, choose the footage stream you want to relink.  Most commonly for non-stereo projects there will only be one clip stream.
++
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_stream_relinkbutton.jpg[]
++
+. You will be presented with a relink dialog.  Click the *Choose...* button to browse for a new clip you wish the original to be replaced by. 
++
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_relinkfootagestream.jpg[]
++
+. Make sure an imported footage stream has the same aspect ratio as the original project clip.  You can conform your relinked clip to the current settings in the project, or keep them the same.
+
+=== Selecting a Clip to Track
+
+Most often, the first clip you imported will be the one you wish to track. There are times when you may get an updated shot with color correction or some other enhancements to make tracking easier. To use this new clip, you must first import it into the project as described above.
+
+To select to track on this new clip, you must choose it in the Track tab's Input drop-down.
+
+NOTE: An imported clip must have inherited attributes from the original base clip to become trackable. See "Importing Clips" above.
+
+
+=== Selecting a Clip to Rotoscope
+
+Rotoscoping can be done on any of the clips you have imported. To change the clip you are viewing in the canvas, select the clip in the View Controls drop-down list. You will notice that any clip you&rsquo;ve imported into the project will appear here.
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/clip_001.jpg[width="60%"]			
+
+NOTE: An imported clip must have inherited attributes from the original base clip to be able to roto correctly. See "Importing Clips" above.
+

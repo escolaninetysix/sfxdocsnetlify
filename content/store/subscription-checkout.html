@@ -1,0 +1,1212 @@
+{
+"title": "Checkout",
+"date": "2019-08-22T12:00:00.000Z"
+}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+<script src="//www.google-analytics.com/analytics.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+
+<style>
+    label {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .grouped-input {
+        margin: .25rem 0;
+    }
+
+    #payment-form-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        height: 100%;
+        max-height: 475px;
+        background-color: white;
+        border: solid 2px #26A9E0;
+        box-sizing: border-box;
+    }
+
+    #billing-info-section,
+    #payment-info-section {
+        position: relative;
+        top: 0;
+        flex-basis: 100%;
+        flex-shrink: 0;
+        transition-duration: .3s;
+        transition-timing-function: ease-out;
+        width: 100%;
+    }
+
+    #billing-info-section.slide-show {
+        right: 0;
+    }
+
+    #billing-info-section.slide-hide {
+        right: 100%;
+    }
+
+    #payment-info-section.slide-show {
+        right: 100%;
+    }
+
+    #payment-info-section.slide-hide {
+        right: 0;
+    }
+
+    .submitting-overlay{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255,255,255,0.9);
+        z-index: 999;
+    }
+</style>
+
+{{% spinner/md/style %}}
+
+<div id="app">
+    <div v-show="state.loading" style="height:640px;">Loading Checkout. . .</div>
+    <div v-show="!state.loading" class="col">
+        <h2>Checkout</h2>
+        <div class="row">
+            <div class="col-lg-5">
+                <!-- Payment Details Form -->
+                <div id="payment-form-container">
+                    <div id="billing-info-section" class="slide-show p-3">
+                        <form id="address-form" @submit.prevent="saveAddress">
+                            <!-- Billing Address -->
+                            <div class="form-group">
+                                <h4>Invoicing Address</h4>
+                                <p><em>Note: if you are purchasing on behalf of a business, please enter your business's billing address.</em></p>
+                                <input type="text" class="form-control grouped-input" id="billing-address-1"
+                                    v-model="billing.address.line1" placeholder="Line 1" :disabled="!canEditAddress()"
+                                    required />
+                                <input type="text" class="form-control grouped-input" id="billing-address-2"
+                                    v-model="billing.address.line2" placeholder="Line 2 (Optional)"
+                                    :disabled="!canEditAddress()" />
+                                <input type="text" class="form-control grouped-input" id="billing-city"
+                                    v-model="billing.address.city" placeholder="City" :disabled="!canEditAddress()"
+                                    required />
+                                <input type="text" class="form-control grouped-input" id="billing-zip"
+                                    v-model="billing.address.zip" placeholder="Zip/Postal Code"
+                                    :disabled="!canEditAddress()" required />
+                                <select class="form-control grouped-input" id="billing-country"
+                                    v-model="billing.address.country"
+                                    @change="renderStates($event, $event.target.selectedIndex);"
+                                    :disabled="!canEditAddress()" required>
+                                    <option value="">Country</option>
+                                    <option v-for="c in countries" :value="c.code">${ c.name }</option>
+                                </select>
+                                <select class="form-control grouped-input" id="billing-state" v-if="states"
+                                    v-model="billing.address.state"
+                                    :disabled="!canEditAddress()" required>
+                                    <option value="">-- Select State --</option>
+                                    <option v-for="s in states" :value="s.code">${ s.name }</option>
+                                </select>
+                            </div>
+                            <div class="text-right" v-show="canEditAddress()"
+                            style="display:flex; justify-content:right; column-gap:1rem;">
+                            <div><button class="btn mx-auto" v-show="state.addressEditMode" @click='cancelAddressChange'
+                                    :disabled="state.submitting">Cancel</button></div>
+                            <div><button class="btn mx-auto" type="submit"
+                                    :disabled="state.submitting">Save</button></div>
+                            </div>
+                        </form>
+                        
+                        <div v-show="!canEditAddress()" style="display:flex; justify-content:right; column-gap:1rem;">
+                            <div><button class="btn mx-auto" @click='state.addressEditMode = true;'
+                                    :disabled="state.submitting">Edit</button></div>
+                            <div><button class="btn mx-auto" @click='goToPaymentMethods'>Confirm</button></div>
+                        </div>
+                    </div>
+
+                    <div id="payment-info-section" class="p-3 slide-hide">
+                        <div class="submitting-overlay" v-show="state.submitting">
+                            <div class="d-flex flex-column h-100 align-items-center justify-content-center">
+                                {{% spinner/md/element %}}
+                                <p style="color:26A9E0; font-weight: 700;">
+                                    ${overlayText}
+                                </p>
+                            </div> 
+                        </div>
+                        <form @submit.prevent='handleSubmit'>
+                            <div class="payment-selection-container" class="my-auto">
+                                <div v-show="parseFloat(totals.total) > 0">
+
+                                    <!-- For Existing Saved Payment Methods -->
+                                    <div class="form-group" v-show="stripe.customer.hasSavedCards">
+                                        <h3>Select Payment Method</h3>
+                                        <div class="radio">
+                                            <template v-for="card in stripe.customer.cards">
+                                                <label v-if="card.type == 'card'"><input type="radio" name="paymentmethod"
+                                                        v-model="billing.pmId" :value="card.stripeId">
+                                                    <span class="ml-1 font-weight-normal">**** **** **** ${ card.lastFour }
+                                                        - ${
+                                                        card.brand } - Expires ${ card.endDate }</span>
+                                                </label>
+                                                <label v-if="card.type == 'ach'"><input type="radio" name="paymentmethod"
+                                                        v-model="billing.pmId" :value="card.stripeId">
+                                                    <span class="ml-1 font-weight-normal">${ card.bankName } - Account
+                                                        Ending in
+                                                        ${ card.lastFour }</span>
+                                                </label>
+                                            </template>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="!stripe.customer.hasSavedCards">
+                                        <h5>You have no saved payment methods.</h5>
+                                    </div>
+                                    <div>
+                                        <a href="#" data-toggle="modal" data-target="#new-pm-modal">New Payment Method</a>
+                                        <span>&nbsp;|&nbsp;</span>
+                                        <a href="/account/payment-methods?ref=checkout">Manage Payment Methods</a>
+                                    </div>
+                                </div>
+                                <div v-show="totals.total <= 0">
+                                    <p><strong>No payment is required. Please select "Submit" to complete your order.</strong></p>
+                                </div>
+                                <div style="display:flex; justify-content:right; column-gap:1rem;">
+                                    <div><button class="btn" type="button" @click="goToBillingInfo">Back</button></div>
+                                    <div><button class="btn" type="submit" :disabled="state.submitting || (!billing.pmId && totals.total > 0)">${ submitLabel()}</button>
+                                    </div>
+                                </div>
+                                <div class="form-group p-3" v-if="containsUS() && totals.total > 0">
+                                    <input type="checkbox" class="form-check-input" id="autorenew" v-model="autorenew">
+                                    <label class="font-weight-normal" for="autorenew">Renew my Upgrade &amp; Support Plan Automatically (renews annually)</label>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: .9rem" class="mt-3">Please note: Payment will be charged to your Boris FX account at the confirmation of purchase. Subscriptions and Upgrade and Support plans will 
+                automatically renew unless canceled at least 24 hours before the end of the current period. Your account will be charged for any automatic 
+                renewal within 24 hours prior to the end of the current period. You will be notified via email of an upcoming automatic renewal 30 days prior 
+                to the end of the current period for annual plans or 5 days prior for monthly plans. You can always manage and cancel automated billing by 
+                going to your Boris FX account settings after purchase.</p>
+        </div>
+
+        {{% new-payment-method-modal %}}
+
+        <!-- Order Details -->
+        <div class="col-lg-7 mt-5 mt-lg-0 pl-lg-5">
+            <div class="row">
+                <div class="col offset-lg-1">
+                    <h3>Your Order:</h3>
+                </div>
+            </div>
+            <!-- Line Items -->
+            <div class="mb-4">
+                <div class="row mb-2" v-for="item in checkout.lineItems" key="item.id">
+                    <div class="col-5 offset-1">
+                        <img :src="item.variant.image.src" class="img-fluid" />
+                    </div>
+                    <div class="col-6 my-auto">
+                        <span style="font-weight:600">${ item.title }</span><br />
+                        <span>${ item.variant.title } (${ item.quantity })</span><br />
+                        <span style="font-weight:600">$${ item.variant.price }</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" v-if="checkout.discountCodeApplicable == false">
+                <div class="alert alert-warning"><i class="bi bi-exclamation-triangle-fill" style="font-size:1.2rem;"></i> No products found for current discount code. No discount will be applied.</div>
+            </div>
+            <div class="row">
+                <!-- Discount Code Entry-->
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        <label>Discount Code</label>
+                        <div class="input-group" v-if="!checkout.currentDiscountCode">
+                            <input type="text" class="form-control" id="discount-code-input" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button"
+                                    style="font-size:1rem; margin-top:0;" v-on:click="applyDiscountCode">Apply</button>
+                            </div>
+                        </div>
+                        <div class="discount-code-container" v-else>
+                            <span class="font-weight-bold">${ checkout.currentDiscountCode } </span><a
+                                class="font-weight-bold" href="#" v-on:click="clearDiscount">(Clear)</a>
+                        </div>
+                    </div>
+                    <!-- VAT Number Entry -->
+                    <div class="form-group" v-if="state.applyVat && billing.address.country != 'GB'">
+                        <label>VAT Id Number</label>
+                        <div class="input-group" v-bind:class="{ 'has-danger' : vat.error }" v-if="!vat.valid">
+                            <div class="input-group-addon" v-if="billing.address.country">
+                                <span class="input-group-text">${billing.address.country}</span>
+                            </div>                            
+                            <input type="text" class="form-control" id="vat-number-input" v-model="vat.number" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button"
+                                    style="font-size:1rem; margin-top:0;" v-on:click="validateVAT">Verify</button>
+                            </div>
+                        </div>
+                        <div style="color:red; font-size: .8rem;" v-if="vat.error">
+                            ${ vat.error }
+                        </div>
+                        <div class="font-weight-bold" v-if="vat.valid">
+                            <span>Verified: ${ billing.address.country}${ vat.number }</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Totals -->
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-5 text-right">
+                            <h5>Subtotal: </h5>
+                            <h5>Discount: </h5>
+                            <h5>Taxes: </h5>
+                        </div>
+                        <div class="col-7 text-right">
+                            <h5>${ totals.subtotal } USD</h5>
+                            <h5>${ totals.discount } USD</h5>
+                            <h5>${ totals.taxes } USD</h5>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-5 text-right">
+                            <h5>Total: </h5>
+                        </div>
+                        <div class="col-7 text-right">
+                            <h5>${ totals.total } USD</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+          
+        </div>
+    </div>
+    <div class="row">
+	  <div style="display: none;" id="hidden-content">
+	  {{ partial "product-login-cart.html" . }}
+	  </div>
+    </div>
+</div>
+</div>
+<script src="https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+<script>
+    var shopifyClient = ShopifyBuy.buildClient({
+        domain: 'borisfx.myshopify.com',
+        storefrontAccessToken: '3f231af7322de13fabe8e3e7ff3ef003',
+    });
+</script>
+{{% country-state-json %}}
+{{% tax-json %}}
+<script>
+    const vatCountries = ['AD', 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FO', 'FI', 'FR', 'DE', 'GI', 'GR', 'GL', 'GG', 'VA', 'HU', 'IS', 'IE', 'IM', 'IT', 'JE', 'LV', 'LI', 'LT', 'LU', 'MT', 'MC', 'NL', 'NO', 'PL', 'PT', 'RO', 'PM', 'SM', 'SK', 'SI', 'ES', 'SE', 'TR', 'GB']
+</script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            user: Cookies.getJSON('bfx-login'),
+            lockNewPmModal: false,
+            state: {
+                loading: true,
+                isEmpty: true,
+                submitting: false,
+                paymentType: 'card',
+                isImagineer: false,
+                applyVat: false,
+                addressEditMode: false
+            },
+            stripe: {
+                stripeJs: undefined,
+                elements: undefined,
+                cardElement: undefined,
+                customer: {
+                    hasSavedCards: false,
+                    hasSavedAddress: false,
+                    address: {}
+                }
+            },
+            plaid: {
+                handler: undefined,
+                publicKey: 'fa31534ec9f4ae2a91ed0cef838fea',
+                plaidToken: undefined,
+                selectedAccountId: '',
+                accounts: [],
+                institution: {}
+            },
+            totals: {
+                subtotal: '0.00',
+                discount: '0.00',
+                taxRate: 0,
+                taxes: '0.00',
+                total: '0.00'
+            },
+            checkout: {
+                lineItems: [],
+                checkoutId: undefined,
+                currentDiscountCode: undefined,
+                discountCodeApplicable: null,
+                paymentIntent: {},
+                transactionId: '',
+                opportunityId: '',
+                orderId: ''
+            },
+            billing: {
+                firstName: '',
+                lastName: '',
+                company: '',
+                email: '',
+                address: {
+                    line1: '',
+                    line2: '',
+                    city: '',
+                    state: '',
+                    zip: '',
+                    country: '',
+                },
+                pmId: '',
+            },
+            vat: {
+                number: '',
+                valid: false,
+                error: undefined
+            },
+            attribution: {
+                orderid: ''
+            },
+            countries: countryJson,
+            states: undefined,
+            taxRates: taxRates,
+            ga : undefined,
+            autorenew: true,
+            overlayText: 'Please Wait'
+        },
+        created: function () {
+            if (!this.user || !this.user.email_verified || this.user.email_verified == 'false') {
+                Cookies.set('redirect_url', window.location.href)
+                window.location.href = '/account/login';
+                return;
+            }
+        },
+        mounted: function () {
+            var self = this;
+            self.checkout.checkoutId = Cookies.get('bfx-checkout-id')
+            if (!self.checkout.checkoutId) {
+                self.state.empty = true
+                self.state.loading = false
+            } else {
+                shopifyClient.checkout.fetch(self.checkout.checkoutId).then(function (shopifyCheckout) {
+                    if (shopifyCheckout.orderStatusUrl) {
+                        self.state.empty = true
+                        self.state.loading = false
+                        return
+                    }
+                    self.loadCheckout(shopifyCheckout);
+                    self.initializePlaid();
+                    self.getCustomer()
+                    .then(function(){
+                        self.gtmCheckoutEvent(shopifyCheckout.lineItems, 1);
+                        self.state.empty = false;
+                        self.state.loading = false;
+                    })
+                    .catch(function(err){
+                        if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else{
+                            alert('There was an error initializing checkout. Please contact us at customerservice@borisfx.com for assistance.');
+                            window.location.href="/store/cart"
+                        }
+                    })
+                })
+            }
+        },
+        methods: {
+            applyDiscountCode() {
+                var $codeInput = $('#discount-code-input')
+                var discountCode = $codeInput.val();
+                var self = this;
+                shopifyClient.checkout.addDiscount(this.checkout.checkoutId, discountCode).then(function (checkout) {
+                    if (checkout.userErrors != null && checkout.userErrors.length > 0) {
+                        alert('Could not apply discount code: ' + (checkout.userErrors[0].message).replaceAll('Discount code ', ''));
+                        return
+                    }
+                    self.loadCheckout(checkout);
+                    $codeInput.val('');
+                });
+            },
+            initializeStripe() {
+                var stripe = this.stripe;
+                let key = stripe.customer.gatewayKey;
+
+                stripe.stripeJs = Stripe(key);
+                stripe.elements = stripe.stripeJs.elements();
+                stripe.cardElement = stripe.elements.create('card');
+                stripe.cardElement.mount('#card-container');
+            },
+            initializePlaid: function () {
+                var self = this,
+                    plaid = self.plaid;
+                plaid.handler = Plaid.create({
+                    env: 'production',
+                    clientName: 'Boris FX',
+                    key: plaid.publicKey,
+                    product: ['auth'],
+                    onLoad: function () { },
+                    onSuccess: function (token, metadata) {
+                        self.plaid.accounts = metadata.accounts;
+                        self.plaid.institution = metadata.institution;
+                        self.plaid.plaidToken = token;
+                    }
+                })
+            },
+            launchPlaid: function () {
+                this.plaid.handler.open();
+            },
+            clearDiscount: function () {
+                var self = this;
+                shopifyClient.checkout.removeDiscount(self.checkout.checkoutId).then(function (shopifyCheckout) {
+                    if (shopifyCheckout.orderStatusUrl) {
+                        alert('Could not remove discount code');
+                        return
+                    }
+                    self.loadCheckout(shopifyCheckout);
+                })
+            },
+            loadCheckout: function (shopifyCheckout) {
+                var checkout = this.checkout;
+                checkout.lineItems = shopifyCheckout.lineItems;
+                var subtotalFloat = parseFloat(shopifyCheckout.lineItemsSubtotalPrice.amount);
+                var subtotalWithDiscount = shopifyCheckout.subtotalPrice;
+
+
+                this.totals.discount = ((subtotalFloat - subtotalWithDiscount) * -1).toFixed(2);
+                this.totals.subtotal = subtotalFloat.toFixed(2);
+                this.calculateTotal();
+
+                if (shopifyCheckout.discountApplications.length > 0) {
+                    checkout.currentDiscountCode = shopifyCheckout.discountApplications[0].code;
+                    checkout.discountCodeApplicable = shopifyCheckout.discountApplications[0].applicable;
+                }
+                else {
+                    checkout.currentDiscountCode = null;
+                    checkout.discountCodeApplicable = null;
+                }
+            },
+            getCustomer: function () {
+                var self = this;
+                if (!self.user) return;
+                return new Promise(function (resolve, reject) {
+                    axios.get('https://backend.borisfx.com/stripe_customer', {auth:{username: self.user.email, password:self.user.token}})
+                    .then(function (res) {
+                        if (res == null) {
+                            resolve();
+                            return;
+                        }
+                        result = res.data;
+                        if (result.customerId) {
+                            self.stripe.customer = result;
+                            self.billing = {
+                                firstName : result.firstName,
+                                lastName : result.lastName,
+                                email : result.email,
+                                company : result.company,
+                                address : {
+                                    line1: result.address.street,
+                                    city: result.address.city,
+                                    country: result.address.countryCode || '',
+                                    zip: result.address.postalCode
+                                },
+                                pmId: ''
+                            }
+                            if (self.billing.address.country != ''){
+                                var countryIndex = self.getCountryIndex(self.billing.address.country);
+                                self.renderStates(null, countryIndex);
+                                self.billing.address.state = result.address.stateCode || '';
+                            }
+                            self.stripe.customer.hasSavedCards = result.cards.length > 0;
+
+                            self.stripe.customer.hasSavedAddress = Object.keys(result.address).length > 0 && result.address.countryCode != null;
+                            if (!self.vat.valid){
+                                self.vat.number = result.vatNumber || '';
+                            }
+                            if (self.stripe.customer.isTestGateway == null) self.stripe.customer.isTestGateway = false;
+                        }
+                        resolve();
+                    })
+                    .catch(function(err){
+                        reject(err);
+                    })
+                })
+
+            },
+            containsUS(){
+                var items = this.checkout.lineItems;
+                if (items.length == 0) return false;
+                var usFamilies = ['Sapphire', 'Continuum', 'Mocha Pro', 'Silhouette', 'Optics'];
+                for (var item of items){
+                    var productFamily = item.title.toLowerCase();
+                    if (!productFamily.includes('bundle') && !productFamily.includes(usFamilies)) continue;
+                    var variantSplit = item.variant.title.split(' / ');
+                    var variant = variantSplit[variantSplit.length -1].trim().toLowerCase();
+                    if (variant == 'new license' || variant == 'upgrade/support renewal') return true;
+                }
+                return false;
+               
+            },
+            getCountryIndex: function(countryCode) {
+                for (var i = 0 ; i < this.countries.length ; i++){
+                    if (this.countries[i].code == countryCode) return i + 1;
+                }
+            },
+            renderStates: function (event, index) {
+                var i = index - 1;
+                var selectedCountry = this.countries[i];
+                this.states = selectedCountry.states;
+                this.billing.state = '';
+            },
+            updateRegionalInfo: function () {
+                var wasImagineer = this.state.isImagineer;
+                this.state.isImagineer = this.billing.address.country != 'US';
+                this.state.applyVat = vatCountries.includes(this.billing.address.country);
+                if (!this.stripe.customer.vatNumber) this.vat.number = '';
+                this.vat.valid = false;
+                this.calculateTax();
+                this.calculateTotal();
+            },
+            calculateTax: function () {
+                var selectInput;
+                var company;
+                if (this.state.applyVat) {
+                    if (this.vat.valid) {
+                        this.totals.taxRate = 0;
+                        return;
+                    }
+                    company = 'imagineer';
+                    selectInput = document.getElementById('billing-country');
+                }
+                else {
+                    company = 'bfx';
+                    selectInput = document.getElementById('billing-state');
+                }
+                if (!selectInput) {
+                    this.totals.taxRate = 0;
+                    return;
+                }
+                region = selectInput.options[selectInput.selectedIndex].text;
+                rate = this.taxRates[company][region];
+                if (rate == null) rate = 0;
+                this.totals.taxRate = rate;
+            },
+            calculateTotal: function () {
+                var subtotalFloat = parseFloat(this.totals.subtotal)
+                var discountFloat = parseFloat(this.totals.discount)
+                var taxFloat = (subtotalFloat + discountFloat) * (this.totals.taxRate / 100);
+                this.totals.taxes = taxFloat.toFixed(2);
+                this.totals.total = (subtotalFloat + discountFloat + taxFloat).toFixed(2);
+                if (this.totals.total == 0) this.billing.pmId == '';
+            },
+            validateVAT: function () {
+                var self = this;
+                var data = {
+                    userId : self.stripe.customer.accountId,
+                    userType : 'Contact',
+                    number : self.vat.number,
+                    country : self.billing.address.country
+                };
+                axios.post('https://backend.borisfx.com/checkout/check_vat', data)
+                .then(function (res) {
+                    var result = res.data;
+                    if (result.error == 'INVALID_INPUT') {
+                        self.vat.error = 'Invalid VAT Number. Please check your formatting.';
+                    }
+                    else if (result.error) {
+                        alert('Unable to verify VAT number. Please try again in a few minutes.');
+                    }
+                    else {
+                        self.vat.valid = result.valid;
+                        if(result.valid) self.vat.number = result.vatNumber
+                        self.vat.error = self.vat.valid ? undefined : 'No match found for given VAT Number. Please confirm your info and try again. (Tip: try removing your country code and any special characters)';
+                    }
+                    self.calculateTax()
+                    self.calculateTotal()
+                });
+            },
+            buildOrderJson: function (paymentMethodId) {
+                var data = {
+                    date: new Date().getTime() / 1000,
+                    address: this.billing.address,
+                    firstName: this.billing.firstName,
+                    lastName: this.billing.lastName,
+                    company: this.billing.company,
+                    email: this.billing.email,
+                    lineItems: this.checkout.lineItems,
+                    discountCode: this.checkout.currentDiscountCode,
+                    total: parseFloat(this.totals.total),
+                    invoiceFrom: this.state.isImagineer ? 'Imagineer' : 'Boris FX',
+                    checkoutId: this.checkout.checkoutId,
+                    gatewayId: this.stripe.customer.gatewayId,
+                    isTest: this.stripe.customer.isTestGateway,
+                    transactionId: this.checkout.transactionId,
+                    pmId: paymentMethodId,
+                    autorenew : this.autorenew
+                }
+                return data;
+            },
+            getCardTokenData: function () {
+                var form = document.getElementsByName('new-card-form')[0];
+                var tokenData = {};
+                tokenData.address_line1 = form.address.value;
+                tokenData.address_line2 = form.address2.value;
+                tokenData.address_city = form.city.value;
+                tokenData.address_zip = form.zip.value;
+                tokenData.address_country = form.country.value;
+                if (form.state != null) tokenData.address_state = form.state.value;
+                tokenData.name = form.holderName.value;
+                tokenData.type = 'card';
+                return tokenData;
+            },
+            getCardToken: function () {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    self.stripe.stripeJs.createToken(self.stripe.cardElement, self.getCardTokenData()).then(function (result) {
+                        if (result.error) {
+                            reject('Failed to make Token');
+                        }
+                        resolve(result.token.id);
+                    })
+                });
+            },
+            getBankToken: function () {
+                var self = this;
+                var payload = {
+                    publicToken: self.plaid.plaidToken,
+                    accountId: self.plaid.selectedAccountId
+                }
+                return new Promise(function (resolve, reject) {
+                    axios.post('https://backend.borisfx.com/payment/bank_token', payload)
+                    .then(function (res, status) {
+                        resolve(res);
+                    })
+                    .catch(function (err) {
+                        reject('Failed to make Token');
+                    });
+                });
+            },
+            getToken: function (paymentType) {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    if (paymentType == 'card') token = self.getCardToken()
+                    .then(function (result) {
+                        if (result.error) reject(result.error);
+                        resolve(result);
+                    })
+                    .catch(function(err){
+                        reject(err);
+                    })
+                    else if (paymentType == 'ach') token = self.getBankToken()
+                    .then(function (result) {
+                        if (result.error) reject(result.error);
+                        resolve(result);
+                    })
+                    .catch(function(err){
+                        reject(err);
+                    })
+                });
+            },
+            handleNewPmModalClose: function () {
+                var form = this.$refs.newCardForm;
+                form.reset();
+                this.stripe.cardElement.clear();
+            },
+            handleNewPmSubmit: function (event) {
+                this.lockNewPmModal = true;
+                var self = this;
+                var payload = {};
+
+                var formName = event.currentTarget.name;
+                var paymentType = '';
+                if (formName == 'new-card-form') {
+                    paymentType = 'card';
+                    $('form[name = "new-card-form"]').serializeArray().forEach(function (item) {
+                        payload[item.name] = item.value;
+                    });
+                }
+                else if (formName == 'new-ach-form') paymentType = 'ach';
+
+                self.getToken(paymentType).then(function (result) {
+                    if (result.error) {
+                        self.lockNewPmModal = false;
+                        return;
+                    }
+                    payload.token = result;
+                    payload.customerId = self.stripe.customer.customerId;
+                    payload.gatewayId = self.stripe.customer.gatewayId;
+                    axios.post('https://backend.borisfx.com/payment_method/add', payload, {auth: {username: self.user.email, password: self.user.token}})
+                    .then(function (res) {
+                        self.getCustomer();
+                        $('#new-pm-modal').modal('hide');
+                        self.lockNewPmModal = false;
+                    })
+                    .catch(function (err) {
+                        if (err.response && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                            return;
+                        }
+                        alert('There was an error saving this Payment Method. Please checck your provided information and try again.');
+                        self.lockNewPmModal = false;
+                    });
+                })
+                .catch(function(err){
+                    alert('There was an error saving this Payment Method. Please checck your provided information and try again.');
+                    self.lockNewPmModal = false;
+                })
+            },
+            handleSubmit: function () {
+                var self = this;
+                self.state.submitting = true;
+                if (this.vat.number != '' && !this.vat.valid && this.billing.address.country != 'GB') {
+                    alert('Please Verify your supplied VAT Number before submitting your order.');
+                    self.state.submitting = false;
+                    self.overlayText = 'Please Wait. . .'
+                    return;
+                }
+                else {
+                    self.fetchOpportunity()
+                    .then(function(res){
+                        self.processPayment()
+                        .then(function(res){
+                            var data = {
+                                opportunityId: self.checkout.opportunityId,
+                                paymentMethodId: self.billing.pmId,
+                                autoRenew: self.autorenew
+                            };
+                            self.sendRequest(data);
+                        })
+                        .catch(function(err){
+                            if (err.response != null && err.response.status == 403) {
+                                Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                Cookies.set('redirect_url', window.location.href);
+                                window.location.href = '/account/login?session_expired=true';
+                            }
+                            alert('There was an error processing your payment. Please review your details and try again.');	
+                            self.state.submitting = false;
+                            self.overlayText = 'Please Wait'
+                        })
+                    })
+                    .catch(function(err){
+                        self.state.submitting = false;
+                        self.overlayText = 'Please Wait'
+                    })
+                }
+            },
+            fetchOpportunity: function(){
+                var self = this;
+                var payload = self.buildOrderJson();
+                return new Promise(function(resolve, reject){
+                    axios.post('https://backend.borisfx.com/stripe_order', payload, {timeout: 25000, auth:{username: self.user.email, password:self.user.token}})
+                    .then(function(res){
+                        self.checkout.opportunityId = res.data.oppId;
+                        self.checkout.orderId = res.data.orderId;
+                        resolve();
+                    })
+                    .catch(function(err){
+                        if (err.code === 'ECONNABORTED'){
+                            payload.reattempt = true;
+                            self.overlayText = 'Still Processing';
+                            axios.post('https://backend.borisfx.com/stripe_order', payload, {timeout: 25000, auth:{username: self.user.email, password:self.user.token}})
+                            .then(function(res){
+                                self.checkout.opportunityId = res.data.oppId;
+                                self.checkout.orderId = res.data.orderId;
+                                resolve();
+                            })
+                            .catch(function(err){
+                                if (err.code === 'ECONNABORTED' || err.response.status == 401){
+                                    alert('This request is taking longer than expected. Please wait a few minutes then try again.');
+                                }
+                                else if (err.response != null && err.response.status == 403) {
+                                    Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                    Cookies.set('redirect_url', window.location.href);
+                                    window.location.href = '/account/login?session_expired=true';
+                                }
+                                else{
+                                    alert('Something has gone wrong. Please wait a few minutes then try again.');
+                                }
+                                reject(err);
+                            })
+                        }
+                        else if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else{
+                            alert('Something has gone wrong. Please wait a few minutes then try again.');
+                            reject(err);
+                        };
+                    })
+                })
+            },
+            processPayment: function(){
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    if (self.totals.total == 0) {
+                        resolve({});
+                        return;
+                    }
+                    let stripeJs = self.stripe.stripeJs;
+                    self.confirmPaymentIntent()
+                    .then(function(res){
+                        self.checkout.transactionId = res.data.transactionId;
+                        if (res.data.status == 'requires_action'){
+                            stripeJs.handleCardAction(self.checkout.paymentIntent.client_secret)
+                            .then(function(res){
+                                if (res.error){
+                                    alert(res.error.message);
+                                    self.state.submitting = false;
+                                    self.overlayText = 'Please Wait';
+                                    return;
+                                }
+                                self.checkout.paymentIntent = res.paymentIntent;
+                                self.confirmPaymentIntent()
+                                .then(function(res){
+                                    resolve(res);
+                                })
+                                .catch(function(err){
+                                    reject(err)
+                                })
+                            })
+                        }
+                        else{
+                            resolve(res);
+                        }
+                    })
+                    .catch(function(err){
+                        reject(err)
+                    })
+                })
+            },
+            confirmPaymentIntent : function(){
+                var self = this;
+                var intent = self.checkout.paymentIntent;
+                var payload = {
+                    gatewayId: self.stripe.customer.gatewayId,
+                    gatewayKey: self.stripe.customer.gatewayKey,
+                    clientSecret: intent.client_secret,
+                    intentId: intent.id,
+                    pmId: self.billing.pmId,
+                    transactionId: self.checkout.transactionId,
+                    amount: parseFloat(self.totals.total) * 100,
+                    currency: "USD",
+                    orderData: self.buildOrderJson(),
+                    isTest: self.stripe.customer.isTestGateway,
+                    checkoutId: self.checkout.checkoutId,
+                    lineItems : self.checkout.lineItems
+                };
+                return new Promise(function(resolve, reject){
+                    axios.post('https://backend.borisfx.com/intent/confirm', payload, {auth:{username: self.user.email, password:self.user.token}})
+                    .then(function(res){
+                        resolve(res);
+                    })
+                    .catch(function(err){
+                        reject(err)
+                    })
+                });
+            },
+            sendRequest: function (data) {
+                var self = this;
+                axios.post('https://backend.borisfx.com/submit_stripe_checkout', data, {auth: {username:self.user.email, password:self.user.token}})
+                .then(function (res, status) {
+                    if (res == 'error') {
+                        Cookies.remove('bfx-checkout-id');	
+                        self.state.submitting = false;	
+                        window.location.href='/store/stripe_success'
+                        return '';
+                    }
+                    Cookies.remove('bfx-checkout-id');
+                    Cookies.set('bfx-stripe-order-id', res);
+                    self.attribution.orderid = res;
+                    shopifyClient.checkout.removeLineItems(self.checkout.checkoutId, self.checkout.lineItems[0].id).then(function () {
+                        self.captureConversion();
+                        console.log('Complete');
+                    })
+                })
+                .catch(function (err) {
+                    Cookies.remove('bfx-checkout-id');	
+                    self.state.submitting = false;	
+                    window.location.href='/store/stripe_success'
+                    return '';
+                });
+            },
+            goToPaymentMethods: function () {
+                //calculate taxes if it has not already been done.
+                this.updateRegionalInfo();
+                if (!this.stripe.stripeJs) this.initializeStripe();
+                this.getPaymentIntent();
+                var billingSection = document.getElementById('billing-info-section');
+                var paymentSection = document.getElementById('payment-info-section');
+                billingSection.classList.add('slide-hide');
+                billingSection.classList.remove('slide-show');
+                paymentSection.classList.add('slide-show');
+                paymentSection.classList.remove('slide-hide');
+            },
+            getPaymentIntent : function(){
+                var self = this;
+                if (self.totals.total == 0) return;
+                var data = {
+                    checkoutId: self.checkout.checkoutId,
+                    gatewayId: self.stripe.customer.gatewayId,
+                    customerId: self.stripe.customer.stripeId,
+                    amount: parseFloat(self.totals.total),
+                }
+                axios.post('https://backend.borisfx.com/intent', data, {auth:{username: self.user.email, password:self.user.token}})
+                .then(function(res){
+                    self.checkout.paymentIntent = res.data;
+                })
+                .catch(function(err){
+                    if (err.response != null && err.response.status == 403) {
+                        Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                        Cookies.set('redirect_url', window.location.href);
+                        window.location.href = '/account/login?session_expired=true';
+                    }
+                    alert('There was an error initializing checkout. Please contact us at customerservice@borisfx.com for assistance.');
+                    window.location.reload();
+                })
+            },
+            goToBillingInfo: function () {
+                var billingSection = document.getElementById('billing-info-section');
+                var paymentSection = document.getElementById('payment-info-section');
+                paymentSection.classList.add('slide-hide');
+                paymentSection.classList.remove('slide-show');
+                billingSection.classList.add('slide-show');
+                billingSection.classList.remove('slide-hide');
+            },
+            saveAddress: function () {
+                var self = this;
+                payload = {
+                    address: self.billing.address
+                },
+                axios.post('https://backend.borisfx.com/stripe_customer/address', payload, {auth:{username: self.user.email, password:self.user.token}})
+                .then(function (res) {
+                    var result = self.stripe.customer = res.data;
+                    self.stripe.customer.hasSavedCards = result.cards.length > 0;
+                    self.stripe.customer.hasSavedAddress = Object.keys(result.address).length > 0 && result.address.countryCode != null;
+                    self.goToPaymentMethods();
+                    self.state.addressEditMode = false;
+                })
+                .catch(function (err) {
+                    if (err.response != null && err.response.status == 403){
+                        Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                        Cookies.set('redirect_url', window.location.href);
+                        window.location.href = '/account/login?session_expired=true';
+                    }
+                    else alert('There was an error validating this address. Please try again shortly.');
+                });
+            },
+            cancelAddressChange: function () {
+                var address = this.stripe.customer.address;
+                this.billing.address = {
+                    line1: address.street,
+                    city: address.city,
+                    country: address.countryCode || '',
+                    state: address.stateCode || '',
+                    zip: result.address.postalCode
+                }
+                this.state.addressEditMode = false;
+            },
+            canEditAddress: function () {
+                var address = this.stripe.customer.address;
+                var countriesWithStates = ['US', 'CA', 'AU', 'BR', 'CN', 'IN', 'IE', 'IT', 'MX'];
+                var addressEntered = (
+                    address.countryCode != null &&
+                    address.street != null &&
+                    address.city != null &&
+                    (!countriesWithStates.includes(address.countryCode) || address.stateCode != null) &&
+                    address.postalCode != null
+                );
+                return (
+                    this.state.addressEditMode || !addressEntered 
+                )
+            },
+            submitLabel: function(){
+                if (this.state.submitting) return 'Submitting';
+                else if (this.totals.total <= 0) return 'Submit Order';
+                else return 'Submit Payment';
+            },
+            captureConversion : function () {
+                var self = this;
+                try{
+                    self.googleAnalyticsInit();
+                    self.addGAProducts();
+                    self.addGAConversion();
+                    self.addGASendPageview();
+                    self.addGTMConversion();
+                }
+                catch(err){}
+            },
+            googleAnalyticsInit: function () {
+                var gaKey = window["GoogleAnalyticsObject"] || "ga";
+                this.ga = window[gaKey] || function () {
+                    (window[gaKey]["q"] = window[gaKey]["q"] || []).push(arguments);
+                };
+                window[gaKey] = ga;
+            },
+            addGAProducts: function () {
+                try{
+                    var self = this;
+                    var ga = self.ga;
+                    var checkout = self.checkout;
+                    var thisorderid = this.attribution.orderid;
+                    var countLineItems = checkout.lineItems.length;
+                    var itrLineItems = 0;
+                    for (itrLineItems = 0; itrLineItems < countLineItems; ++itrLineItems){
+                        var thisLineItem = {
+                            'id': checkout.lineItems[itrLineItems].variant.sku,
+                            'name': checkout.lineItems[itrLineItems].title + " / " + checkout.lineItems[itrLineItems].variant.title,
+                            'category': checkout.lineItems[itrLineItems].title + " / " + checkout.lineItems[itrLineItems].variant.title,
+                            'brand': 'BorisFX',
+                            'variant': checkout.lineItems[itrLineItems].variant.title,
+                            'price': checkout.lineItems[itrLineItems].variant.priceV2.amount,
+                            'quantity': checkout.lineItems[itrLineItems].quantity
+                        };
+                        ga(function() {
+                            ga.getAll().forEach(function(t) {
+                                ga(t.get("name") + ".ec:addProduct", thisLineItem);
+                            });
+                        });
+                    }
+                }
+                catch(err){console.error(err);}
+            },
+            addGAConversion: function (){
+                try{
+                    var self = this;
+                    var ga = self.ga;
+                    var checkout = self.checkout;
+                    var thisTotal = this.totals.total;
+                    var thisTax = this.totals.taxes;
+                    var thisorderid = this.attribution.orderid;
+                    var thisPurchase = {
+                        'id': thisorderid,
+                        'affiliation': 'Webshop',
+                        'revenue': thisTotal,
+                        'tax': thisTax,
+                        'shipping': 0,
+                        'coupon': self.currentDiscountCode,    // User added a coupon at checkout.
+                        'list': 'borisfx-com-purchase'
+                        };
+                    ga(function() {
+                        ga.getAll().forEach(function(t) {
+                            ga(t.get("name") + ".ec:setAction", 'purchase', thisPurchase);
+                        });
+                    });
+                }
+                catch (err) { console.error(err); }
+            },
+            gtmCheckoutEvent: function(lineItems, step){
+                var self = this;
+                try{
+                    var products = [];
+                    for (var li of lineItems){
+                        var titleSplit = li.variant.title.split(' / ');
+                        var host = titleSplit.length == 2 ? titleSplit[0] : null;
+                        var type = titleSplit.length == 2 ? titleSplit[1] : titleSplit[0];
+
+                        products.push({
+                            'name': li.variant.product.title,
+                            'id': li.variant.sku,
+                            'price': li.price,
+                            'category': host ? host.replaceAll('/', ' + ') : null,
+                            'variant': type,
+                            'quantity': li.quantity
+                        });
+                    }
+
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        'event': 'checkout',
+                        'ecommerce': {
+                            'checkout': {
+                                'actionField': {'step': step},
+                                'products': products
+                            }
+                        }
+                    });
+                }
+                catch(err){
+                    console.error(err);
+                }
+            },
+            addGTMConversion: function (){
+                var dataLayer = window.dataLayer = window.dataLayer || [];
+                try{
+                    var self = this;
+                    var ga = self.ga;
+                    var checkout = self.checkout;
+                    var thisTotal = this.totals.total;
+                    var thisTax = this.totals.taxes;
+                    var thisorderid = this.attribution.orderid;
+
+                    var products = [];
+                    for (var li of checkout.lineItems){
+                        var titleSplit = li.variant.title.split(' / ');
+                        var host = titleSplit.length == 2 ? titleSplit[0] : null;
+                        var type = titleSplit.length == 2 ? titleSplit[1] : titleSplit[0];
+
+                        products.push({
+                            'name': li.variant.product.title,
+                            'id': li.variant.sku,
+                            'price': li.price,
+                            'category': host ? host.replaceAll('/', ' + ') : null,
+                            'variant': type,
+                            'quantity': li.quantity
+                        });
+                    }
+
+                    dataLayer.push({'ecommerce': null})
+                    dataLayer.push({
+                    'event': 'purchase',
+                    'ecommerce': {
+                    'purchase': {
+                    'actionField': {
+                        'id': thisorderid,            // Transaction ID. Required for purchases and refunds.
+                        'affiliation': 'Webshop',
+                        'revenue': thisTotal,          // Total transaction value (incl. tax and shipping)
+                        'tax':thisTax,
+                        'shipping': 0,
+                        'coupon': self.currentDiscountCode
+                    },
+                    'products': products
+                    }
+                    }
+                    });
+                }
+                catch(err){
+                    console.error(err);
+                }
+            },
+            addGASendPageview: function (){
+                var self = this;
+                var ga = self.ga;
+                var checkout = self.checkout;
+                try{
+                    ga.getAll().forEach(function(t) {
+                        ga(t.get("name") + ".send", 'pageview');
+                    });
+                }
+                catch(err){}
+            }
+        },
+    });
+</script>

@@ -1,0 +1,39 @@
+{{ define "content" }}
+
+<div class="container">
+<div class="row">  
+<div class="col-md-12">
+<center><h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>{{ .Title }}</b></h1></center>
+</div>
+</div>
+<div class="row">  
+<div class="col-md-12">
+<center><h2 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>{{ .Params.values.livestream_title }}</b></h2></center>
+<p>{{ .Params.values.content | markdownify }}</p>
+</div>		
+</div>
+<div class="row">
+<div class="col-md-9">
+<center>
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UCFYIs4rin2YgKKnYxEd6JAA&showinfo=0&rel=0" width="100%" height="464" frameborder="0" allowfullscreen></iframe>
+</center>
+<!-- <center><iframe src="https://embed.restream.io/player/index.html?token=1a7d202fc450b1010dc868d5e7831a45" width="100%" height="576" frameborder="0" allowfullscreen></iframe></center> -->
+<!-- <center><img class="img-fluid" src="https://borisfx-com-res.cloudinary.com/image/upload/q_auto,f_auto/v1597847333/SIGG__00115.png"></center> -->
+</div>
+<div class="col-md-3">
+<embed src="https://www.youtube.com/live_chat?v=wEUbIY3sdi8&embed_domain=borisfx.com" width="275" height="464">
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<center><h2 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;" id="signup"><b>SIGN UP HERE TO WIN</b></h2></center>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 text-center">
+<br><center><a class="e-widget no-button generic-loader" href="https://gleam.io/hMCiL/win-12-months-of-the-boris-fx-suite" rel="nofollow">Win 12 months of the Boris FX Suite</a>
+<script type="text/javascript" src="https://widget.gleamjs.io/e.js" async="true"></script></center>
+</div>
+</div>
+</div>
+{{ end }}

@@ -1,0 +1,21 @@
+var pairs =
+{
+"deband":{"removes":1}
+,"removes":{"banding":1}
+,"banding":{"artifacts":1}
+,"artifacts":{"image":1}
+,"image":{"smoothing":1}
+,"smoothing":{"pixels":1}
+,"pixels":{"banded":1}
+,"banded":{"areas":1}
+,"areas":{"retaining":1}
+,"retaining":{"detail":1}
+,"node":{"group":1}
+,"select":{"preset":1}
+,"preset":{"choose":1}
+,"choose":{"presets":1}
+,"presets":{"tab":1}
+,"sets":{"amount":1}
+,"amount":{"debanding":1}
+}
+;Search.control.loadWordPairs(pairs);

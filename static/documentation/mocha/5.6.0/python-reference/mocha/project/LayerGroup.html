@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.9. LayerGroup &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="2. mocha.project" href="index.html" />
+    <link rel="next" title="2.10. Parameter" href="Parameter.html" />
+    <link rel="prev" title="2.8. Layer" href="Layer.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Parameter.html" title="2.10. Parameter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Layer.html" title="2.8. Layer"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.project"></span><div class="section" id="layergroup">
+<span id="id1"></span><h1>2.9. LayerGroup<a class="headerlink" href="#layergroup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>2.9.1. Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>2.9.1.1. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>def <a class="reference internal" href="#mocha.project.LayerGroup.__eq__" title="mocha.project.LayerGroup.__eq__"><tt class="xref py py-meth docutils literal"><span class="pre">__eq__</span></tt></a> (group)</li>
+<li>def <a class="reference internal" href="#mocha.project.LayerGroup.find_layers" title="mocha.project.LayerGroup.find_layers"><tt class="xref py py-meth docutils literal"><span class="pre">find_layers</span></tt></a> (name)</li>
+<li>def <a class="reference internal" href="#mocha.project.LayerGroup.insert_child" title="mocha.project.LayerGroup.insert_child"><tt class="xref py py-meth docutils literal"><span class="pre">insert_child</span></tt></a> (layer[, index=0])</li>
+<li>def <a class="reference internal" href="#mocha.project.LayerGroup.parameter" title="mocha.project.LayerGroup.parameter"><tt class="xref py py-meth docutils literal"><span class="pre">parameter</span></tt></a> (name_components)</li>
+<li>def <a class="reference internal" href="#mocha.project.LayerGroup.parameter_set" title="mocha.project.LayerGroup.parameter_set"><tt class="xref py py-meth docutils literal"><span class="pre">parameter_set</span></tt></a> ([name_components=list()])</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h3>2.9.1.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>property <a class="reference internal" href="#mocha.project.LayerGroup.layers" title="mocha.project.LayerGroup.layers"><tt class="xref py py-attr docutils literal"><span class="pre">layers</span></tt></a> [read-only] of list of <a class="reference internal" href="Layer.html#mocha.project.Layer" title="mocha.project.Layer"><tt class="xref py py-class docutils literal"><span class="pre">Layer</span></tt></a> instances</li>
+<li>property <a class="reference internal" href="#mocha.project.LayerGroup.locked" title="mocha.project.LayerGroup.locked"><tt class="xref py py-attr docutils literal"><span class="pre">locked</span></tt></a> [read-write] of bool</li>
+<li>property <a class="reference internal" href="#mocha.project.LayerGroup.matte_color" title="mocha.project.LayerGroup.matte_color"><tt class="xref py py-attr docutils literal"><span class="pre">matte_color</span></tt></a> [read-write] of 3-items tuple of float values in range [0.0...1.0]</li>
+<li>property <a class="reference internal" href="#mocha.project.LayerGroup.name" title="mocha.project.LayerGroup.name"><tt class="xref py py-attr docutils literal"><span class="pre">name</span></tt></a> [read-write] of str</li>
+<li>property <a class="reference internal" href="#mocha.project.LayerGroup.stroke_color" title="mocha.project.LayerGroup.stroke_color"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_color</span></tt></a> [read-write] of 3-items tuple of float values in range [0.0...1.0]</li>
+<li>property <a class="reference internal" href="#mocha.project.LayerGroup.visibility" title="mocha.project.LayerGroup.visibility"><tt class="xref py py-attr docutils literal"><span class="pre">visibility</span></tt></a> [read-write] of bool</li>
+<li>property <a class="reference internal" href="#mocha.project.LayerGroup.z_order" title="mocha.project.LayerGroup.z_order"><tt class="xref py py-attr docutils literal"><span class="pre">z_order</span></tt></a> [read-write] of int</li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>2.9.2. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Layer class which exposes primary layer group operations.</div></blockquote>
+<dl class="class">
+<dt id="mocha.project.LayerGroup">
+<em class="property">class </em><tt class="descclassname">mocha.project.</tt><tt class="descname">LayerGroup</tt><span class="sig-paren">(</span><em>LayerGroup</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.LayerGroup" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.LayerGroup.find_layers">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">find_layers</tt><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.LayerGroup.find_layers" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of Layer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>unicode</em>) &#8211; Layer name to search.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns all layers in the group with given name from this group.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.LayerGroup.insert_child">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">insert_child</tt><span class="sig-paren">(</span><em>layer</em><span class="optional">[</span>, <em>index=0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.LayerGroup.insert_child" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>layer</strong> (<a class="reference internal" href="Layer.html#mocha.project.Layer" title="mocha.project.Layer"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Layer</span></tt></a>) &#8211; Layer instance which will be inserted to this group.</li>
+<li><strong>index</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PySide.QtCore.uint</span></tt>) &#8211; Insertion index.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The same as <a class="reference internal" href="Layer.html#mocha.project.Layer.set_parent" title="mocha.project.Layer.set_parent"><tt class="xref py py-meth docutils literal"><span class="pre">Layer.set_parent()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.LayerGroup.__eq__">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">__eq__</tt><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.LayerGroup.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PySide.QtCore.bool</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.LayerGroup.parameter">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">parameter</tt><span class="sig-paren">(</span><em>name_components</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.LayerGroup.parameter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.Parameter</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_components</strong> (<em>list of strings</em>) &#8211; Relative name for a requested parameter.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">Parameter</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Returns <a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><tt class="xref py py-class docutils literal"><span class="pre">Parameter</span></tt></a> instance bound with given name path.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mocha.project.LayerGroup.parameter_set">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">parameter_set</tt><span class="sig-paren">(</span><span class="optional">[</span><em>name_components=list()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.LayerGroup.parameter_set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">mocha.project.ParameterSet</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_components</strong> (<em>list of strings</em>) &#8211; Relative name for a requested parameter set.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">ParameterSet</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<p>Returns <a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><tt class="xref py py-class docutils literal"><span class="pre">ParameterSet</span></tt></a> instance bound with given name path.
+Pass an empty list <tt class="docutils literal"><span class="pre">[]</span></tt> to get access to the LayerGroup parameters set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.LayerGroup.name">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">name</tt><a class="headerlink" href="#mocha.project.LayerGroup.name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to group name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.LayerGroup.layers">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">layers</tt><a class="headerlink" href="#mocha.project.LayerGroup.layers" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">list of <a class="reference internal" href="Layer.html#mocha.project.Layer" title="mocha.project.Layer"><tt class="xref py py-class docutils literal"><span class="pre">Layer</span></tt></a> instances</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-only</td>
+</tr>
+</tbody>
+</table>
+<p>Provides read-only access to list of all layers, sorted in increasing depth order (i.e. top to bottom).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.LayerGroup.visibility">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">visibility</tt><a class="headerlink" href="#mocha.project.LayerGroup.visibility" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to group visibility.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.LayerGroup.matte_color">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">matte_color</tt><a class="headerlink" href="#mocha.project.LayerGroup.matte_color" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">3-items tuple of float values in range [0.0...1.0]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to group matte color.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.LayerGroup.stroke_color">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">stroke_color</tt><a class="headerlink" href="#mocha.project.LayerGroup.stroke_color" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">3-items tuple of float values in range [0.0...1.0]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to group stroke color.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.LayerGroup.locked">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">locked</tt><a class="headerlink" href="#mocha.project.LayerGroup.locked" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to layer group locked state.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mocha.project.LayerGroup.z_order">
+<tt class="descclassname">LayerGroup.</tt><tt class="descname">z_order</tt><a class="headerlink" href="#mocha.project.LayerGroup.z_order" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Access:</th><td class="field-body">read-write</td>
+</tr>
+</tbody>
+</table>
+<p>Provides access to Z order value.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.9. LayerGroup</a><ul>
+<li><a class="reference internal" href="#synopsis">2.9.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.9.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.9.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.9.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Layer.html"
+                        title="previous chapter">2.8. Layer</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Parameter.html"
+                        title="next chapter">2.10. Parameter</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/project/LayerGroup.txt"
+            >Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Parameter.html" title="2.10. Parameter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Layer.html" title="2.8. Layer"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >2. mocha.project</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

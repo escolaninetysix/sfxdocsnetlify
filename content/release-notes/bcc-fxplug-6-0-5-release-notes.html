@@ -1,0 +1,110 @@
+{
+   "date": "2009-12-15T11:38:14-05:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC FxPlug - 6.0.5 Release Notes"
+}
+
+<h1>
+ BCC 6.0.5 FxPlug Release Notes
+</h1>
+<p class="s1">
+ BCC 6.0.5 FxPlug includes a new Flicker and Shake filter, a freshly re-designed preset browser for the Boris Continuum Shaders group of filters, and important improvements and bug fixes for FCS 3 and Mac OS X 10.6
+</p>
+<ul id="l1">
+ <li>
+  <p class="s1">
+   BCC Flicker and Shake. This new filter is designed to synchronize randomly-animated stylistic treatments such as glows, lights, and shake for video or graphics elements. An auto-animating filter, Flicker and Shake uses bursts of synchronized Exposure, Glow, Blur, X or Y displacement, and RGB Channel offset to emulate a flicker effect that has been made popular by recent commercials and film trailers.
+  </p>
+ </li>
+ <li>
+  <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_001.png">
+   <img class="alignnone wp-image-4894 size-full" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_001.png" alt="Image_001" width="579" height="355">
+  </a>
+ </li>
+ <li>
+  <p class="s1">
+   Note: Flicker and Shake is only available for FCS and Final Cut Express as part of BCC FxPlug package.
+  </p>
+ </li>
+ <li>
+  <p class="s1">
+   Newly redesigned Boris Continuum Shaders browser. The browser got a new look and semi-transparent style to match Apple’s native User Interface. Very cool!
+  </p>
+ </li>
+</ul>
+<p>
+ <a href="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_002.png">
+  <img class="alignnone wp-image-4895 size-full" src="https://bfxcdn.s3.amazonaws.com/borisfx/wpborisfxuploads/2015/09/Image_002.png" alt="Image_002" width="571" height="723">
+ </a>
+</p>
+<h2>
+ Additional Improvements and Bug Fixes
+</h2>
+<p>
+ The following bugs were fixed:
+</p>
+<ul id="l2">
+ <li>
+  <p>
+   3d Objects cause crash when opening legacy project
+  </p>
+ </li>
+ <li>
+  <p>
+   Extruded EPS crash with file “AIM.eps”
+  </p>
+ </li>
+ <li>
+  <p>
+   Most BCS filters do not respect slider arrows in Inspector menu
+  </p>
+ </li>
+ <li>
+  <p>
+   3D Objects - in Motion, re-opening a saved project can result in some checkbox parameters not functioning correctly
+  </p>
+ </li>
+ <li>
+  <p>
+   BCC 3D Objects - in Motion, Built-in Camera group parameters are available even when Motion camera is being used
+  </p>
+ </li>
+ <li>
+  <p>
+   BCS Preset browser does not show correct renders for presets
+  </p>
+ </li>
+ <li>
+  <p>
+   3D Objects ignore keyframes if the clip is not at the start of the timeline
+  </p>
+ </li>
+ <li>
+  <p>
+   Snow Leopard - BCS filter sliders do not update if value is scrubbed
+  </p>
+ </li>
+ <li>
+  <p>
+   Opening old Optical Stabilizer projects in BCC 6.0.4 or later will post a “must analyze” message, but there is no analyze button.
+  </p>
+ </li>
+ <li>
+  <p>
+   Optical Stabilizer - For some clips, rendering undoes analyzing
+  </p>
+ </li>
+ <li>
+  <p>
+   Optical Stabilizer FxPlug - instability and premature canceling when stress testing progress dialog.
+  </p>
+ </li>
+</ul>
+<h2>
+ Warning about using Optical Stabilizer in Motion
+</h2>
+<p>
+ Since the progress dialog is non-modal in Motion, it's possible to click around the UI while in the middle of the analyze process. For example, you can click the analyze button again to launch another dialog or click any of the effect parameter controls. This action can lead to instability of the application.
+</p>

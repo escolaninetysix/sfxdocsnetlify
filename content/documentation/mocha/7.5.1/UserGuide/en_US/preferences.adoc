@@ -1,0 +1,315 @@
+
+== Preferences [[preferences]]
+
+NOTE: Some of the preferences below relate to *Mocha Pro*. Some preferences may not be available in the *Mocha Pro Plugin*, *Mocha AE* and *Mocha HitFilm*.
+
+
+=== Preferences location
+
+Preferences are accessed through File | Preferences on Windows or Linux (Mocha Pro only) and Application Menu | Preferences on OS X.
+
+
+=== Output Settings
+
+==== File Storage
+
+*Output Directory (Standalone only)*
+
+The Output Directory settings specify the default location of the directory in which the project file and rendered clips are stored. There is a choice between:
+
+* Relative Path: The project directory is a subdirectory of the directory containing the original project clip. By default, the subdirectory is Results. If you often load your project clip over a network, it would be best not to choose Relative Path, because the performance of project and clip I/O will not be as fast as the local disk.
+
+* Absolute Path: The project directory as an absolute path. For the best performance choose a folder on a fast disk, with plenty of disk space available.
+
+==== Autosave
+
+The Autosave box is selected by default. This will automatically save the project you are working on.
+
+Set the interval between saves by increasing or decreasing the value in the Interval (minutes) box.
+The default is 5 minutes. If Save Images Every Frame is checked, rendered frames are saved to disk as soon as they are created in memory; otherwise the render to disk only occurs when rendering a sequence of frames.
+
+You can define the Autosave directory or leave it to the system default.
+
+In the standalone, if there is an autosave file available for the project you have loaded, a dialog will appear asking if you want to open that instead.
+
+In the plugin, the dialog will appear if there is an autosave available for a Mocha project done in that host. You can then choose to open, save or remove the project file.
+
+For example, if you are working in After Effects and there is a problem, recovering your AE project and opening the Mocha GUI will show a Mocha Autosave recovery dialog for the project made in After Effects.
+If you have other autosaves (for example from another Mocha Pro plugin host), the recovery dialog will NOT appear, as it was a project made in another program.
+
+An example autosave file is called: "mochaAE_plugin-6_aftereffects-16.mocha.autosave" Which literally translates to: "Mocha AE Plugin project saved in After Effects v16".
+
+In standalone, Autosave is per-project, i.e it will be directly related to the project you are working on. This is because we work with a 1-to-1 match of the project file name.
+
+In the plugin, we can only save an autosave file per HOST, that is, we have no knowledge of the project/layer that is being worked on, so we can only save based on what we know, i.e the host the mocha project was saved in.
+
+This means that in the plugin, a crash from a previous project will trigger a load prompt in ANY project you open created in the same host. For example:
+
+. Create an After Effects project with Mocha
+. Autosave kicks in
+. Force quit with mocha still open
+. Reopen host
+. Start or open another AE project with Mocha
+. Open mocha GUI
+. A Load-Autosave file prompt shows up
+
+We time-stamp the autosave dialog so you can have a better idea of when the file was saved, but if you open the autosave it will replace your existing work.
+
+If your plugin autosave doesn't automatically prompt to open, you can locate the directory in the support path. By default these are:
+
+* Windows: `C:\Users\[username]\AppData\Roaming\Imagineer Systems Ltd\Autosave`
+* macOS: `~/Library/Application Support/Imagineer Systems Ltd/Autosave`
+* Linux: `~/.config/Imagineer Systems Ltd/Autosave`
+
+You can then Open or Merge the file into a new or existing project.
+
+===== Autosave Backups
+
+We also back up each session autosave just in case a previous autosave has a problem or you want to revert back to an older state.
+
+You can define how many backups in the "Number of Backups field" next to the Autosave interval field.
+
+Autosave backups are saved to an "autosave_history" folder relative to the current autosave file.
+
+
+
+
+==== Cache Directory
+
+Specify here the folder to use for caching image data and storing auto-saved project files. For the best performance, choose a folder on a fast disk with plenty of disk space available. A lot of data is written out in the background while you work, approximately three times as much disk space as the taken up by the original clip will be used.
+
+The Cache Original Clip box (Standalone only) is selected by default. This will cache the original clip to the File Cache when a project is created or opened for a more efficient playback and workflow. It is only necessary to check this if you are getting footage from a slow network.
+
+*Disk Space Available*
+
+The available space in the given disk drive is shown here.
+
+=== System
+
+==== Application
+
+
+*Undo History Size*
+
+The Maximum Size of the history is the number of user interactions stored in the undo/redo command list. The limit is used to conserve memory.
+
+*Maximum Memory Usage*
+
+The Maximum percentage of memory Mocha will attempt to use.
+
+*Maximum threads per thread-pool (Advanced)*
+
+This feature is to limit the number of threads Mocha will use on multi-core machines.
+
+On a machine with many cores, users may wish to limit the number of threads per thread pool
+to prevent Mocha from creating too many threads and potentially crashing.
+
+We recommend turning this feature on if you experience frequent crashes when rendering or tracking on high-core machines.
+
+The default value will be the number of available cores. A value of 16 is a good base value to start from.
+
+
+*Track in Mocha AE*
+
+Check the box if you want to open Mocha Pro via the "Track in Mocha AE" option inside After Effects, rather than loading the bundled Mocha AE.
+
+==== UI Look and Feel
+
+*Number of Shown Layouts*
+
+Set how many layouts you want to appear in the View menu.  The default is 3.
+
+*Field Controls*
+
+You can set either:
+
+* Rotation Controls: Adjusts the value in the field by moving the mouse in a circular motion.  The larger the circle motion, the more refined the adjustment.
+* Linear Controls: Drag left or right in the field to adjust the value.
+
+*Invert Mouse Wheel*
+
+Inverts the motion of when scrolling in a field increases the value or decreases it.
+
+*Enable mouse timeline scrolling*
+
+Toggles scrolling the timeline playhead with the mouse wheel. This is on by default.
+
+*Tablet pressure sensitivity*
+
+Toggles whether Mocha reads tablet pressure sensitivity for tools such as the Area Brush. On by default.
+
+
+==== Layer Settings
+
+*Default Colors*
+
+Defines the default colors for Splines, Mattes and Points
+
+*Default Opacity*
+
+Defines the default opacity for mattes
+
+*X-Spline Default Weight*
+
+Sets the default weight of the x-spline control points
+
+*Default Bezier Length*
+
+Sets the default normalized length of the bezier tangent handles.
+
+=== GPU
+
+NOTE: Any changes to GPU settings requires a restart of Mocha. For standalone, this is simply closing Mocha and reopening. +
+For the Mocha plugin, you need to restart the host environment to reload the plugin completely.
+
+==== Display
+
+*Use Vertical Sync*
+
+Enable vertical sync in the frame display. We highly recommend you keep this on.
+
+*Amount of Texture RAM to Reserve*
+
+The amount of memory that you want to be reserved for textures. This determines how many frames can be played back in real-time.
+
+Textured rendering may not be compatible with Microsoft Windows Remote Desktop Connection.
+
+==== Stereo [Mocha Pro Only]
+
+Here you can enable Active Stereo viewing mode if it is available to you.
+
+==== Matte Rendering
+
+By default, Mocha will generate matte clips and track mattes by rendering with OpenGL to an offscreen buffer.
+If *Disable Offscreen Buffers* is checked, Mocha will fall back to a software-based matte rendering implementation which is slower and produces lower-quality results, but will work on all hardware.
+
+Most users should not need to use this option.
+
+==== GPU Processing
+
+This option is on by default and sets the planar tracker to use the graphics card instead of the CPU.
+If this option is disabled it means you do not have a supported graphics card for GPU tracking.
+
+*OpenCL Device*
+
+This option lets you choose the graphics card you want to use for GPU tracking.
+By default this is set to Automatic, which attempts to choose the best available option.
+
+*Allow unsupported GPUs*
+
+This option lets you override the officially supported graphics card list and choose any GPU on your system.
+Use this option with care as it may lead to unstable results.
+
+=== Software Update [Mocha Pro Only]
+
+Settings to check for software updates.
+
+=== Color
+
+Handles defaults for OCIO color settings. See the <<OCIO, OpenColorIO (OCIO)>> chapter for more details.
+
+=== Clip
+
+If you are working on a number of shots that share the same clip attributes (the same video standard, frame rate and color space), it can be useful to set a default clip setting. Then you will not have to re-enter the same clip information each time you load a clip.
+
+==== Defaults
+
+*FPS*
+
+Sets the default frame rate.
+
+*Custom PAR*
+
+Sets the default Custom option in Pixel Aspect Ratio
+
+*Frame Offset controls*
+
+Options to set you default timeline as frames or timecode, and set a fixed frame offset.
+
+*Output matte clips*
+Check this option to output matte clips to disk when previewing mattes (this option is only available in the standalone version of Mocha).
+
+*Revert in input clip*
+Check this option to revert to the source clip if there is an unrendered frame displayed in the viewer.
+
+A yellow warning telling you the frame is not rendered will appear over the source frame.
+
+
+==== Format
+
+Setting the format defines what results are rendered out to, but also define what your Cleanplate clips will be saved as.
+
+*Integer result clip format*
+
+What to set you rendering result output to for integer clip formats. Currently the choice is between DPX and TIFF.
+
+*Float result clip format*
+
+What to set you rendering result output to for float clip formats. Currently the choice is between EXR and TIFF.
+Float clips will be generated internally as 32-bit float, increasing the precision of compositing operations but using more memory.
+
+==== Interlacing
+
+Select the Separate Fields button if you normally use field-based clips.
+
+This will usually consist of a video clip with options for PAL (upper field first, also used for SECAM) or NTSC (lower field first) field ordering. Separate Fields will de-interlace the clip and display both fields. When a clip is rendered, the fields will automatically be interlaced back together again. There is also a 3:2 Pulldown option if you mainly work with 3:2 pulldown material.
+
+==== Video Files
+
+*Read/write using*
+
+The footage handling process to use. The default is GStreamer. You also have the option to use QuickTime.
+
+Note that your choice of clip media handler does not affect the opening of image sequences such as TIFF, DPX, EXR and so on.
+
+It also doesn't affect any host source material being opened from the Mocha Plug-In, but will affect any clip media you import directly from disk.
+
+===== GStreamer
+
+This is a versatile media handling library for reading in various codecs and footage containers.
+
+GStreamer currently does not support the writing out of clips. This will be available in later versions.
+
+If you need to render out a clip to disk, we recommend using a lossless sequence such as TIFF or DPX.
+
+===== QuickTime
+
+Open files using the QuickTime library. This will only open footage that QuickTime can open.
+
+IMPORTANT: QuickTime is unsupported on macOS 10.15 and above. +
+QuickTime will not work on systems that don't have the QuickTime essentials installed.
+
+You must restart the host or the standalone application for any change to the read/write settings.
+
+==== Mask
+
+Sets the default clip mask.
+
+=== Lens [Mocha Pro Only]
+
+*Camera Model*
+
+Sets the default distortion mode.
+
+
+=== Logging
+
+==== Diagnostic Logging
+
+*Enable Diagnostic Logging*
+
+This is selected by default. The file generated is useful for Boris FX engineers to diagnose error messages and fix any problems. You can view the log by selecting View Log from the Help menu. You can also change the location of the Log File from its default.
+
+*Verbose Mode*
+
+This is set to off by default. If you are working on a labor-intensive project, you can switch to only log errors as they occur, rather than constantly checking. This provides less information in the event of an error, but can marginally improve performance.
+
+Verbose mode also logs render times. If you are interested in measuring render performance in your projects, check your log after rendering.
+
+*Usage Data Collection*
+
+Turn on this option to periodically send anonymous usage data to Boris FX so we can improve our products.
+
+=== Key Shortcuts
+
+See the chapter on *Keyboard Shortcuts* for more information.

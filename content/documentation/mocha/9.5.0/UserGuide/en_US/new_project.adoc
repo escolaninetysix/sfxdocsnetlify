@@ -1,0 +1,230 @@
+
+== Starting a New Project
+
+=== Workflow inside Mocha
+
+Mocha workflow is designed around a project structure.  It is good practice to only work on one shot per project file to minimize layer management and to keep the work streamlined.
+
+.The basic tracking workflow for Mocha is:
+
+. Import your footage
+. Draw a loose spline around the shape you want to track
+. Track the spline
+. Set the 'Surface', or corner pin where you want the inserted image
+. Adjust your track if necessary
+. Export the completed track
+
+.The basic rotoscoping workflow is very similar:
+
+. Import your footage
+. Draw a loose spline around the shape you want to track.
+. Track the spline
+. Adjust your track if necessary
+. Add new shapes for rotoscoping and link them to your track
+. Adjust shapes where necessary
+. Export the rendered mattes or the shape data
+
+
+=== Creating a New Project in the Mocha Standalone application
+
+When you start the application you are presented with an empty workspace. No footage is loaded and most of the controls are consequently disabled.
+To begin working, you must open an existing project or start a new project.
+
+image:UserGuide/en_US/images/MENU_NewProject_001.jpg[pdfwidth="50%", width="50%"]
+
+Select the clip to import by clicking on the Choose... button to the right of the top line. This will bring up a file browser, where you can select almost any industry standard file formats. Image sequences will show up as individual frames. You can select any one of the frames and the application will automatically sequence the frames as a clip when importing.
+
+image:UserGuide/en_US/images/NewProjectDialog_001.jpg[]
+
+*Name*
+
+A project name will automatically be generated based on the filename of the imported footage, but you can change it by editing the Name field.
+
+
+*Location*
+
+Your project file and cache files will output to a directory called "Results" by default. This is created in the same folder your clip is imported from. You can change this using the Change... button or using the dropdown box to set a different relative or absolute path.
+
+
+*Frame Range*
+
+The range of frames to import.  We recommend to only work with the frames you need, rather than importing very large clips or multiple shots edited together.
+
+*Frame offset*
+
+This is set to the starting frame number or timecode by default.  You can also define a fixed frame (You can set a default for the fixed frame in Preferences).
+You also have the option to view as Timecode or Frame numbers. If your clip has an embedded timecode offset and you switch to Timecode, the offset will be used in your project.
+If you need to adjust this value later, you can open Project Settings from the file menu. See "Project Frame Offsets and Clip Frame Offsets" below for more details.
+
+
+*Frame Rate*
+
+Normally this is automatically detected, but you have options to adjust if necessary. Make sure you check the frame rate before you close the New Project dialog.
+If you need to adjust this value later, you can open Project Settings from the file menu.
+
+*Separate Fields*
+
+If you are using interlaced footage, set your field separation here to Upper or Lower. Make sure you check your fields match your footage before you close the New Project dialog.  If you don't set them correctly, you cannot modify them and will have to restart the project.
+
+
+*Remove Pulldown*
+
+If your footage has pulldown, set it here.
+
+==== Advanced options
+
+image:UserGuide/en_US/images/NewProjectAdvanced_001.jpg[pdfwidth="50%", width="50%"]
+
+
+*Caching*
+
+If you wish the clip to be cached into memory, check the Cache clip checkbox here. Caching is recommended if you are working a computer that has fast local storage, but your shot is stored in a slow network location. If your shot is already stored on fast storage, you don't need to cache.  More often than not, you can leave this setting off.
+
+
+*Color space*
+
+Set to Linear, Log and Panalog.
+
+
+*Conversion*
+
+Set to None, Float or 8-Bit
+
+
+*Offset*
+
+If working with log color space, set any offset here.
+
+
+*Soft clip*
+
+If working with log color space, set soft clip value here. Default is zero making falloff linear, rather than curved.
+
+
+*Log reference black*
+
+If working with log color space, set white reference value here.
+
+
+*Log reference black*
+
+If working with log color space, set black reference value here.
+
+
+*Gamma*
+
+If working with log color space, you can adjust Gamma here.
+
+=== Setting Up a New Project For VR 360
+
+Mocha Pro supports Equirectangular 360 Footage. To set the project to be in 360 mode, check the '360 VR Footage' checkbox after you import your clip.
+image:UserGuide/en_US/images/NewProject_360VR.jpg[]
+
+=== Setting Up a New Project For Stereo
+
+When you start a New Project you are also presented with the option of creating a multiview project in the Views tab.
+
+image:UserGuide/en_US/images/NewProject_Views.jpg[]
+
+If you check *Multiview project* you are then presented with the view names and their abbreviated names.
+The abbreviated name is used in the interface for the view buttons, but is also used as the suffix for renders.
+You can also choose the hero view.  By default this is the left.  Defining a hero eye determines the tracking and roto order for working in the views.
+
+If you are using Top/Bottom or Left/Right footage combined in a single frame, select an option from the *Split Views* drop down:
+
+image:UserGuide/en_US/images/SplitViewsStandalone.jpg[pdfwidth="50%", width="50%"]
+
+If you want to define separate streams of footage for the stereo views, you can add additional footage streams view the *Add* button below the initial clip chooser.
+
+image:UserGuide/en_US/images/NewProject_AddStream.jpg[pdfwidth="50%", width="50%"]
+
+If you forget to set up Multiview when you start a new project, you can set it in the new Project Settings Dialog from the File menu.
+
+Once you are in Multiview mode, you will see a colored border around the viewer based on the current view you are in.
+This is to help artists to identify which view they are currently in without having to refer to the buttons
+
+You can switch between Views by pressing the corresponding L|R buttons in the view controls, or using the default 1 and 2 keys on the keyboard.
+
+You can swap views or change the Split View mapping from the View Mapping subtab under the Clip module:
+
+image:UserGuide/en_US/images/SwapViews_Standalone.jpg[pdfwidth="50%", width="50%"]
+
+=== Creating a New Project in the Mocha Pro Plugin
+
+The Mocha Pro plugin has a slightly different project workflow to the stand alone Mocha applications.
+
+.The basic new project workflow for Mocha Pro Plugin is:
+
+. Apply the Mocha Pro effect to your layer or footage track
+. Launch Mocha from effects panel in your host application
+
+image:UserGuide/en_US/images/5.6.0_mochapro_ae_plugin_launch_mocha.jpg[pdfwidth="50%", width="50%"]
+
+This action loads the footage from the host clip you applied the effect to. It automatically applies the correct frame rate and other clip settings, so there is no need for the standard new project dialog.
+
+After you have done the usual work inside the Mocha Pro interface, you simply close and save the Mocha Pro GUI and then you can control the output from the effect editor interface.
+
+For general guide to workflow with the Mocha plugin, see <<mocha_plugin, Using the Mocha Pro Plugin>>.
+
+For setting up a new stereo project with the plugin, see <<mocha_plugin_stereo, Plugin Stereo Workflow>>.
+
+
+=== Creating a New Project in the BCC 10 Mocha PixelChooser
+
+Boris FX introduced the Mocha PixelChooser in BCC 10. The plugin has a slightly different project workflow to the stand alone Mocha applications.
+
+.The basic new project workflow for Mocha PixelChooser is:
+
+. Apply a BCC effect to your layer or footage track
+. Launch Mocha from the PixelChooser section of the plugin
+
+image:UserGuide/en_US/images/5.0.0_mocha_pixelchooser_launch.jpg[pdfwidth="50%", width="50%"]
+
+This action loads the footage from the host clip you applied the effect to. It automatically applies the correct frame rate and other clip settings, so there is no need for the standard new project dialog.
+
+After you have done your tracking and/or roto work, you simply close and save the Mocha PixelChooser and it applies any visible layers as mattes back to the effect.
+
+NOTE: The Mocha PixelChooser plugin is limited to Tracking and Roto and only exports data formats to BCC plugins.
+
+
+=== Setting the In and Out Points
+
+image:UserGuide/en_US/images/Timeline_001.jpg[]
+
+If you will only be working on a section of the shot you can use the In and Out points to set the range on the timeline. Note that the In and Out points affect the range of the Überkey button. You can zoom the timeline to only show you the part between you In and Out points by clicking the Zoom Timeline button.
+
+=== Project Frame Offsets and Clip Frame Offsets
+
+Frame offsets are important to get right in Mocha so that they export correctly to your target program.
+
+There are two kinds of frame offsets:
+
+* *Project Frame Offset:* This frame offset sets the starting frame for keys in your timeline. For example if you have imported a sequence of 100 frames and you need the index of frames to start at 1001, you can change this under the Project Settings in the file menu.
+* *Clip Frame Offset:* This frame offset is to offset the actual clip frames to slide the starting point of the clip back and forth. You can adjust clip frame offset under the Display tab in the Clip module.
+
+For the vast majority of cases the Project Frame Offset is the value you want to adjust for working with data.
+The frame offset is usually already set correctly at the New Project dialog stage, but there may be cases where offsets change, such as adding new clip frames.
+
+=== Tips for New Projects
+
+*Only import as much as you need*
+
+Working with very long files can be time consuming for the artist and can slow down the tracking as it searches for more frames.  Try to only use what you need, and work on individual shots, rather than multiple shots in one piece of footage.
+
+
+
+*Frame rate, dimensions and pixel aspect ratio are important*
+
+Make sure these values match the settings in your compositor or editor, otherwise tracking and shape data will not match when you export it.
+
+
+
+*If you are unsure which field your interlaced footage is in, import it and check*
+
+If you quickly start your project with a guessed field order, you can check to make sure it is correct by using the right arrow key to step through the footage.  If you footage stutters or steps back a frame while you're stepping through, it is probably in the wrong field order, or you may have to set pulldown.
+
+
+
+*Try to avoid interlaced footage where possible*
+
+Interlaced footage is painful to work with.  For your own sanity, try not to use it unless you have to!

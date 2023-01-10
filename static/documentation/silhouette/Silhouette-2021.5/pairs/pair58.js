@@ -1,0 +1,20 @@
+var pairs =
+{
+"edge":{"detect":1}
+,"edges":{"generated":1}
+,"generated":{"values":1}
+,"values":{"either":1}
+,"either":{"rgb":1}
+,"rgb":{"alpha":1,"channels":1}
+,"alpha":{"channels":1,"channel":1}
+,"node":{"group":1}
+,"choose":{"channels":1}
+,"channels":{"perform":1}
+,"perform":{"edge":1}
+,"performs":{"edge":1}
+,"detect":{"rgb":1,"alpha":1}
+,"sets":{"brightness":1}
+,"brightness":{"edges":1}
+,"blurs":{"edges":1}
+}
+;Search.control.loadWordPairs(pairs);

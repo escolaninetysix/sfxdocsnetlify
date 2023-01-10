@@ -1,0 +1,18 @@
+{
+   "date": "2015-01-05T16:26:00-05:00",
+   "tags": [
+      "Mocha Pro",
+      "Support FAQ"
+   ],
+   "title": "How do I fix a 'can't connect to server' or 'server system is down' error when I know the server is running?"
+}
+
+For the -97 error, it's likely that a port number is conflicting. You can edit the server license to fix this. Normally the license server runs in port 27000, but if other FLEXnet license servers are present it may take a different port (Nuke and Maya are common FLEXnet processes that may conflict with <strong>Mocha</strong> and eachother). To be safe, open ports 27000-27009. Also, the vendor daemon uses a port specified at run time. If a static port allocation is required, edit the license file and change:
+<pre>VENDOR isl
+to
+ VENDOR isl PORT=27003</pre>
+On the client license we can change to a different port by editing the SERVER line in the license file:
+<pre>SERVER servername 000000000000
+to
+ SERVER servername 000000000000 27003</pre>
+where 000000000000 is the host id and 27003 is a port chosen by the system administrator. Thisbasically forces the machines to communicate to one another via port 27003.

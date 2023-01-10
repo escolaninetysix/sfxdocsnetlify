@@ -1,0 +1,187 @@
+.. module:: mocha.exporters
+.. _AbstractTrackingDataExporter:
+
+AbstractTrackingDataExporter
+****************************
+
+.. inheritance-diagram:: mocha.exporters.AbstractTrackingDataExporter
+    :parts: 2
+
+**Inherited by:** :ref:`TrackingDataExporter`
+
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`register<AbstractTrackingDataExporter.register>` ()
+    * def :meth:`unregister<AbstractTrackingDataExporter.unregister>` ()
+
+
+Virtual functions
+^^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`do_export<AbstractTrackingDataExporter.do_export>` (project, layer, tracking_file_path, time, view, options)
+    * def :meth:`error_string<AbstractTrackingDataExporter.error_string>` ()
+
+
+Static functions
+^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+    * def :meth:`registered_exporters<AbstractTrackingDataExporter.registered_exporters>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`exports_interlaced<AbstractTrackingDataExporter.exports_interlaced>` [read-only] of bool
+*    property :attr:`exports_multiple_views<AbstractTrackingDataExporter.exports_multiple_views>` [read-only] of bool
+*    property :attr:`exports_removed_lens_distortion<AbstractTrackingDataExporter.exports_removed_lens_distortion>` [read-only] of bool
+*    property :attr:`registered<AbstractTrackingDataExporter.registered>` [read-only] of bool
+
+
+
+Detailed Description
+--------------------
+
+.. _More:
+
+    Abstract tracking data exporter class. Inherit the class to create own exporter formats.
+    Method do_export must be overloaded.
+
+
+.. class:: AbstractTrackingDataExporter(name, extension[, number_of_data_streams=1[, export_interlaced=false[, remove_lens_distortion=false[, export_multiple_views=false]]]])
+
+
+    :type name: unicode
+    :type extension: unicode
+    :type number_of_data_streams: uint
+    :type export_interlaced: bool
+    :type remove_lens_distortion: bool
+    :type export_multiple_views: bool
+
+
+    :param name: name of the exporter which will be displayed in the Export Tracking Data dialog drop-down list. Should contain a file mask in brackets e.g. Foo (*.bar)
+    :param extension: additional extension.
+    :param number_of_data_streams: number of result files. If it equals to 1 then the Copy to Clipboard button will be enabled.
+    :param remove_lens_distortion: whether the exporter supports removing of a lens distortion.
+    :param export_multiple_views: whether the exporter supports multiple views.
+    :param export_interlaced: whether the exporter supports interlaced footage.
+    
+    Create an exporter instance. The instance ownership is delegated to Python. To register the exporter inside
+    mocha exporters system, call `register()` method. Before deleting the object unregisters itself.
+
+
+
+
+
+.. method:: AbstractTrackingDataExporter.do_export(project, layer, tracking_file_path, time, view, options)
+
+
+    :type project: :class:`mocha.project.Project`
+    :type layer: :class:`mocha.project.Layer`
+    :type tracking_file_path: unicode
+    :type time: double
+    :type view: :class:`mocha.project.View`
+    :type options: Dictionary with keys of type QString and values of type bool.
+    :rtype: Dictionary with keys of type QString and values of type QByteArray.
+
+
+    :param project: mocha project instance.
+    :param layer: layer instance.
+    :param tracking_file_path: absolute file path to save which has been chosen by a user in a file dialog.
+    :param time: frame index.
+    :param view: view.
+    :param options: ``dict`` of options {string_option: bool}.
+    
+    :return: ``dict`` of {file_name: QByteArray}
+    
+    Performs main exporter operations. Must return a map (``dict``) of absolute file path and appropriate contents.
+    The exporter should not create those files.
+    
+    There are 3 available ``options``:
+    
+    - ``Invert`` - whether the Invert checkbox is checked.
+    - ``Stabilize`` - whether the exporter will be called from the Stabilize page.
+    - ``RemoveLensDistortion`` - whether the Remove lens distortion checkbox is checked.
+
+
+
+.. method:: AbstractTrackingDataExporter.error_string()
+
+
+    :rtype: unicode
+
+
+
+
+
+.. method:: AbstractTrackingDataExporter.register()
+
+
+
+
+    Registers the exporter instance inside mocha exporters system. The exporter will be registered as a stabilize one as well.
+
+
+
+.. staticmethod:: AbstractTrackingDataExporter.registered_exporters()
+
+
+    :rtype: Dictionary with keys of type QString and values of type TrackingDataExporter.
+
+
+    :return: ``dict`` of {str: :class:`TrackingDataExporter`}
+    
+    Returns a dict of registered exporters including custom user exporters.
+
+
+
+.. method:: AbstractTrackingDataExporter.unregister()
+
+
+
+
+    Unregisters the exporter instance inside mocha exporters system.
+
+
+
+.. attribute:: AbstractTrackingDataExporter.exports_multiple_views
+
+
+    :type: bool
+    :access: read-only    Whether the exporter supports multiple views.
+
+
+
+.. attribute:: AbstractTrackingDataExporter.exports_interlaced
+
+
+    :type: bool
+    :access: read-only    Whether the exporter supports interlaced footage.
+
+
+
+.. attribute:: AbstractTrackingDataExporter.exports_removed_lens_distortion
+
+
+    :type: bool
+    :access: read-only    Whether the exporter supports removing of a lens distortion.
+
+
+
+.. attribute:: AbstractTrackingDataExporter.registered
+
+
+    :type: bool
+    :access: read-only    Whether the exporter registered.
+
+
+
+

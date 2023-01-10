@@ -1,0 +1,111 @@
+{
+   "date": "2012-04-04T16:08:47-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC for Avid DS - 8.0.0"
+}
+
+<p>
+ <b>
+  Boris Continuum Complete AVX 8 for Avid DS supports the following Avid host applications:
+ </b>
+</p>
+<ul>
+ <li>
+  Avid DS 10.5 running Windows Professional OS™ 7x64.
+ </li>
+</ul>
+<p>
+ <b>
+  What's new in BCC 8 AVX (Summary of major changes since BCC7):
+ </b>
+</p>
+<ul>
+ <li>
+  8 new filters including support for the 3D Objects family of 3D extrusion filters:
+ </li>
+</ul>
+<ol>
+ <li>
+  Extruded EPS
+ </li>
+ <li>
+  Extruded Spline
+ </li>
+ <li>
+  Extruded Text
+ </li>
+ <li>
+  Film Glow
+ </li>
+ <li>
+  Layer Deformer
+ </li>
+ <li>
+  Lens Flare 3D
+ </li>
+ <li>
+  Type On Text
+ </li>
+ <li>
+  Videoscope
+ </li>
+</ol>
+<ul>
+ <li>
+  Float bit depth rendering added to most filters.
+ </li>
+ <li>
+  Addition of the Integrated Beat Reactor to many filters.
+ </li>
+ <li>
+  New/Revised filter categories.
+ </li>
+</ul>
+<p>
+ <b>
+  BCC AVX 8.0.0 for Avid DS - Known Issues and Limitations:
+ </b>
+</p>
+<ul>
+ <li>
+   The Beat Reactor audio graph becomes less accurate as the Freqeuncy Resolution is increased to high values. As a temporary workaround use low values near the default setting of 32.
+ </li>
+ <li>
+  In filters with more than one Motion Tracker point (e.g. BCC Witness Protection), saving/loading the motion tracker data only works for the first tracker point.
+ </li>
+ <li>
+  When Burnt Film is applied as a transition the Reverse Transition checkbox does not function properly unless the incoming clip is selected in the Incoming Layer control which should happen automatically instead of of requiring this additional manual step.
+ </li>
+ <li>
+  When choosing grain profiles in Match Grain, you must first manually enable the Lock Samples checkbox or manually change the Sample Layer to none or the newly loaded grain profile will be ignored.
+ </li>
+ <li>
+  Snow sometimes shows differences in the snow pattern between 8 and 16 bit renders.
+ </li>
+ <li>
+  BCC LED shows occasional mis-colored dots on Quadro FX 3500 cards.
+ </li>
+ <li>
+  The 3D Objects filters can show a white fringe around the edges of the objects when using within a compositing container. As a temporary workaround you can process the filters within the container and it will then composite normally as opposed to rendering from outside the container.
+ </li>
+ <li>
+  There is a notable difference in the lighting for Particle Array 3D and Pin Art 3D when changing from RGB to YCC colorspaces. As a temporary workaround these filters will produce more accurate final lighting when used in YCC colorspaces.
+ </li>
+ <li>
+  Occasionally parameter groups which should remain hidden will appear in the UI until a refresh is forced by toggling a parameter or rescaling the effect pane. We are working with Avid to resolve this issue.
+ </li>
+ <li>
+  When saving a BCC preset with the BCC preset menu, it can be difficult to read the filename as it is typed. The preset will still be saved as expected.
+ </li>
+ <li>
+  In 3D Objects filters the texture scales can sometimes shift when viewed at reduced resolution. As a temporary workaround these effects are best prepared at full resolution.
+ </li>
+ <li>
+  BCC RT filters can show color shift when Safe Levels checkbox is enabled. This means that it is necessary to disable the Safe Levels checkbox for the RT effects to get the correct output. If it is necessary to limit the levels of these effects it must then be done as a post process.
+ </li>
+ <li>
+  The names of the DS preset folders have changed between BCC7 and BCC8. When opening BCC7 projects in BCC8 this can cause a host error message about being unable to find the previous preset folder location. This message can be ignored as the projects still come forward and open correctly.
+ </li>
+</ul>

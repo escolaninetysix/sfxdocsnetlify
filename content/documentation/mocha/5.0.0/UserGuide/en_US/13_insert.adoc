@@ -1,0 +1,136 @@
+
+== Mocha Pro - The Insert Module
+
+
+=== Overview
+
+NOTE: This section only relates to *mocha Pro*. This feature is not available in *mocha HitFilm or mocha AE*.  For a full comparison of features, please refer to the comparison chart online.
+
+The Insert module is where you choose the image you would like to insert into your tracked layer. You can import a still frame or a moving sequence. Once imported, the Insert module provides a comprehensive range of tools for matching this new image to the original background layer. The skill here, naturally, is to make the newly imported image look like it was in the original shot all along.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/inserttabfull.jpg[]
+
+=== Input
+
+This is where you choose the Input Clip or background layer and the Insert Clip or foreground layer, and optionally a separate input clip with an alpha channel for compositing.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/insert_input.jpg[]
+
+*Background Clip*
+
+By default *mocha Pro* selects the last clip that was tracked as the input. If you want to change the input, just select a different clip from the pulldown menu.
+
+
+*Insert Clip*
+
+This clip mirrors the Insert Clip inside Layer properties, i.e. if you change one, the other also changes.
+
+By default *_mocha Pro_* selects None as the foreground input, expecting you to make a choice of your own. To choose an insert select the Import button and use the file browser to locate a still frame or a file sequence that you would like to appear over the tracked background clip.
+In the mocha Pro Plugin, you can choose an 'Insert Layer' placeholder that reads from layers back in the host timeline to render in mocha.
+
+
+=== Output
+
+Here you can select the name of the clip to be output. Once a clip has been rendered it is automatically named Composite_&lt;clipname&gt;.
+
+To choose a different name for the output clip select the New... button and choose a new name.
+
+The remainder of the controls in the Insert module dictate both how much of the insert is displayed and how it is displayed during the course of the shot.
+
+
+=== Source
+
+The Source region of interest (ROI) can move anywhere on the insert image, including outside it. It is the area of the insert that you would like to be displayed in the tracked layer. As you adjust the ROI, the insert is scaled to fit the surface. There is also a Reset button to reset the ROI to the corners of the insert image. By default, the aspect ratio is locked. Uncheck Lock Aspect Ratio to allow arbitrary ROI changes.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/insertroi.jpg[]
+
+
+To adjust the ROI aspect ratio to match that of the background image given its current position and shape in the background image, click on Fit ROI to Surface. Conversely, the Fit Surface to ROI button moves the surface position to match the aspect ratio of the insert image, given its ROI settings. These controls will work best if you are in a frame where the insert is as front-on as possible. For them to work correctly, the pixel aspect ratio of both the input clip and insert clip must be correct. A common issue is that if the resolution of either clip was not recognized when the clip was imported, it is assigned the PAL camera type. This often does not give the correct pixel aspect ratio. To check this, switch to the Camera tool and select each clip in turn, checking the appearance on the screen to make sure that each clip appears correct on the screen. If not, change the Film Type. If you know that the pixel aspect ratio of the clip is one (square pixels) select Custom as the Film Type and set the pixel aspect ratio to one.
+
+The number fields are positioned in the menu to relate to the edge of the ROI that they adjust. So, to reduce the height of the insert ROI at the top of the frame, decrease the value in the top ROI number field by dragging or highlighting the current value and typing in a new value. Similarly, to reduce the height of the insert ROI at the bottom of the frame, increase the value in the bottom number field by dragging or highlighting the current value and typing in a new value. The same applies for the left and right edges of the frame with the left and right number fields.
+
+
+=== Comp
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/comp.jpg[]
+
+==== Blend
+
+*Opacity*
+
+This parameter controls the opacity of the foreground image insert. It is a multiplier of the alpha of the insert, applied before the composite.
+
+*Gain*
+
+This is where you color correct the insert once it has been added to the tracked layer.
+
+
+==== Masks
+
+*Use All Foreground Layers*
+
+If you want to mask off an area of your insert, clicking on this tool will cause the rendered insert to only change the pixels within the mattes above the current layer.
+If the checkbox  is switch off, you can select an individual matte to use instead.
+
+*Invert*
+
+Inverts the mattes of the Insert.
+
+*Invert Alpha*
+
+Inverts the Insert Alpha if it exists.
+
+*Erode Alpha*
+
+Change this value from its default zero value to erode the alpha channel of the insert by the given number of pixels.
+
+=== Warp
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_insert_warp.jpg[]
+
+Warp uses a warp mesh to distort your insert. If you turn on "Show Mesh" in the warp tools you can use the dropdown to set the level of detail in the mesh and then warp the grid points in the viewer to adjust your insert, as well as the outer yellow lines to bulge or pinch the edges.
+
+This is especially useful if you have to insert something that does not look completely planar, like a t-shirt logo.
+
+=== Feather
+
+If you want to add a soft edge around the edges of the insert, use the Feather controls. There are separate controls for the left, right, top and bottom edge widths, which are between 0 and 1, where the value 0 indicates no edge and 1 means that the edge covers the whole of the insert.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/edge.jpg[]
+
+
+If you switch on Lock, all four edges are locked to the same edge width. H Lock and V Lock apply lock separately to the left/right and the top/bottom edges respectively.
+
+
+=== Transform
+
+This section controls a level of corner pin control on top of the adjusted track. This feature is particularly useful for curved surfaces. It allows the corners of the surface to be used in the same way as the warp control points (described below) – by aligning the newly imported insert with a region of the tracked image independently of the blue surface contour, which follows the adjusted track.
+
+The offset region is drawn in yellow underneath the existing blue surface. You can use the new points either by dragging the sliders to increase or decrease the value of the coordinates, or by highlighting the numeric field and typing in a new value. In addition to this you can hold down the Alt and Control keys on the keyboard (Alt+Cmd on a Mac) whilst dragging a surface point or line to achieve the same result. The new points created are offset in a controlled way from the adjusted track.
+
+Hold down Alt, Control and Shift (Alt+Shift+Cmd on a Mac) to gear the changes down 10 times. There is finally a Reset button to return the offset parameters to their defaults.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/5.0.0_insert_transform.jpg[]
+
+When using the rotate tool to rotate the offset surface, the pixel aspect ratio of the insert clip will be used to create the correct effect. If it is not correct the offset surface will appear to squeeze or stretch as it is rotated. See the *_ROI_* section to see how to fix this problem.
+
+==== Export Offset Tracking Data
+
+Export the transformed track. The offsets are keyframed settings of the position of the insert.
+
+=== Render
+
+==== Motion Blur
+
+Select this button if you want to apply motion blur to your insert.
+
+==== Render Insert Cutout (RGBA)
+
+This renders the cut out of the insert with alpha along with the composite file. Turn off if you only want the composite render of the insert.
+
+=== Inserting in Stereo
+
+All inserts are warped in stereo if you have tracked both views.
+You can render the insert for both views by selecting *Operate on All Views* button next to the Render buttons on the timeline.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531783954/documentation/mocha/images/5.0.0/operate_on_all_views_render.jpg[]

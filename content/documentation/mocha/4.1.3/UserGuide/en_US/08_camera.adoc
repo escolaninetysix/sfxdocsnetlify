@@ -1,0 +1,200 @@
+
+== The Camera Solve Module
+
+
+=== Overview
+			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/CAMERASOLVE_main.jpg[]			
+
+The Camera Solve module is used to take planar tracking information and convert it to 3d space.
+
+This is particularly useful if you cannot get a good track on the plane you need, as you can track other planes in the shot and use them to give you track in 3D space instead
+
+As we are dealing with 3D calculations rather than 2D planar projections, the workflow is slightly different to a usual planar track.
+
+
+=== Identifying the type of camera movement
+
+In order to get a good camera solve you must first identify what type of track it is. Mocha recognizes three types of camera situations:
+
+==== Pan, Tilt, Zoom (PTZ)
+
+Pan, tilt. zoom cameras are generally fixed in place and do exactly what their name suggests; pan, tilt and zoom.
+
+PTZ cameras are looking for overall movement in the camera plane, rather than changes in the physical planes within your scene.
+
+
+==== Small Parallax
+
+Small Parallax is where the camera is not fixed to one point in space and has a lot of mid-ground planes that can be tracked.
+
+==== Large Parallax
+
+Large Parallax is where the camera is not fixed to one point in space and has trackable planes very close to the camera. It is referred to as Large Parallax because closer objects move at much greater perspective and distance to the camera than objects further away.
+
+
+=== The Camera Solve Process 
+
+Once you have identified the type of camera motion you can start tracking your shot.
+
+
+==== Tracking for PTZ-type Camera Solves
+
+PTZ solves are a little different from perspective solves in that they only need to look for how the camera is behaving when fixed, such as on a tripod.
+
+To set up a PTZ solve, take the following steps:
+
+. Locate a large area in the shot that can be tracked. If you can't find a single large area, you can also use a variety of smaller ones using "Add Spline To Layer".
++
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/CAMERASOLVE_PTZ_001.jpg[]
++														
+. Turn on the grid so you can see how the plane is moving.
+. Set any parameters you need for the track and begin tracking.
+. If your track pans around more than around 60 degrees, stop the track and create another shape to continue tracking.  The second shape will need to start further back in time than where the first one stopped tracking, so their tracking information overlaps on the timeline.  This will help the solver blend together the tracking information of multiple shapes.
++					
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/CAMERASOLVE_PTZ_002.jpg[]						
++									
+. Once you have tracked the shot, switch to the *Camera Solve* tab.
+. Select all tracked layers you wish to use for the solve
+. Choose either Auto to let mocha guess the right solve, or choose *Pan, Tilt, Zoom* from the drop-down.
+. If you select *Pan, Tilt, Zoom*, set the focal length.  Most commonly this will be 35-70mm.  You can choose more than one if the focal length changes.  Also choose *Zooming* if the is any camera zoom in the shot.
+. Once you have chosen your settings, click *Solve*.
+
+Once mocha finishes solving the shot, you can then export the solved scene.  See "Exporting Camera Solves" below for further details.
+
+
+==== Tracking for Small Parallax Camera Solves
+
+Small Parallax shots require at least 2 non-coplanar tracks to solve the scene. Non-coplanar means not on the same plane as each other.  Examples of non-coplanar areas include:
+
+* A floor and a wall
+* The side and back of a truck
+* Two camera-facing areas at noticeably different distances from the camera, such as one building in front of another
+* Two mountain slopes at different angles
+* Two opposing walls of a corridor
+
+To set up a Small Parallax solve, take the following steps:
+
+. Locate planar areas in the mid-ground of the shot that can be tracked.  These objects should not be moving in the shot, so choose areas like walls, ground, tree trunks etc. Planes too close or too far away from the camera may not help a Small Parallax solve.
++					
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/CAMERASOLVE_coplanar.jpg[]						
++			
+. Turn on the grid so you can see how the planes are moving.  Adjust the surface to fit the planar perspective if you need to see this movement more accurately
+. Set any parameters you need for the track and begin tracking.
+. If you lose the track due to obstructions or the object moving off screen, stop the track and create another shape to continue tracking.  The second shape will need to start further back in time than where the first one stopped tracking, so their tracking information overlaps on the timeline.  This will help the solver blend together the tracking information of multiple shapes.
+. Once you have tracked the shot, switch to the *Camera Solve* tab.
+. Select all tracked layers you wish to use for the solve
+. Choose either Auto to let mocha guess the right solve, or choose *Small Parallax* from the drop-down.
+. If you select *Small Parallax*, set the focal length.  Most commonly this will be 35-70mm.  You can choose more than one if the focal length changes.  Also choose *Zooming* if the is any camera zoom in the shot.
+. Once you have chosen your settings, click *Solve*.
+
+Once mocha finishes solving the shot, you can then export the solved scene.  See "Exporting Camera Solves" below for further details.
+
+
+==== Tracking for Large Parallax Camera Solves
+
+Like Small Parallax, Large Parallax shots also require at least 2 non-coplanar tracks to solve the scene. (See examples of non-coplanar areas above)
+
+To set up a Large Parallax solve, take the following steps:
+
+. Locate planar areas in the shot that can be tracked. These objects should not be moving in the shot, so choose areas like walls, ground, tree trunks etc.
+. Turn on the grid so you can see how the planes are moving.  Adjust the surface to fit the planar perspective if you need to see this movement more accurately
+. Set any parameters you need for the track and begin tracking.
+. If you lose the track due to obstructions or the object moving off screen, stop the track and create another shape to continue tracking.  The second shape will need to start further back in time than where the first one stopped tracking, so their tracking information overlaps on the timeline.  This will help the solver blend together the tracking information of multiple shapes.
+. Once you have tracked the shot, switch to the *Camera Solve* tab.
+. Select all tracked layers you wish to use for the solve
+. Choose either Auto to let mocha guess the right solve, or choose *Large Parallax* from the drop-down.
+. If you select *Large Parallax*, set the focal length.  Most commonly this will be 35-70mm.  You can choose more than one if the focal length changes.  Also choose *Zooming* if the is any camera zoom in the shot.
+. Once you have chosen your settings, click *Solve*.
+
+Once mocha finishes solving the shot, you can then export the solved scene.  See "Exporting Camera Solves" below for further details.
+
+
+==== Solve Quality Indicator
+		
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/CAMERASOLVE_SolveQuality.jpg[]				
+
+When a solve is complete, the Solve Quality bar will tell you how accurate the solve has been.  If you get a poor percentage check to make sure your tracks are locked on accurately, add additional layers to help the solver or try a different solve type or focal distance.
+
+=== Stereo Camera Solve
+
+Camera solves now also work with Multiview.  Like with tracking, a stereo camera solve is designed to be as similar to the Mono process as possible.
+
+New additions to the camera solve for Stereo are:
+
+* Providing the user the option of converged or parallel solves 
+* Adjustment for vertical alignment
+* Export of stereo FBX to Maya
+* Export of individual views to other supported applications (AE, Nuke, etc)
+
+.To solve a stereo camera:
+. Go to the *Camera Solve* module
+. Select the layers in the layer control panel you want to solve with. (See full documentation for more information)
+. Select the solve type, or choose "Auto"
+. Select your Focal length types
+. Tell mocha if this is a Parallel Stereo camera or a Converged Stereo camera
+. Check "Vertical Alignment" if you need to estimate vertical alignment for the shot
+. Click Solve
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/4.0.0_Camera_Solve.png[]
+
+You can then export out to left and right views, or for Standard FBX, you can export full Stereo cameras.  The full stereo camera solve FBX presently works in Maya.  
+
+All other exports can only be exported as a single camera view and the solved nulls.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/4.0.0_Export_Camera_Data.jpg[width="60%"]
+
+
+=== Exporting Camera Solves
+
+You have two steps for camera solves:
+
+==== 1. Export Camera Data from Static Objects
+
+This is the standard export. The basic procedure is:
+
+. Select the layers you used to do the initial solve in the layer panel (these are still selected if you have just completed a camera solve).  These layers are normally tracked to static objects, such as walls, ground, a parked vehicle, a dinosaur fossil etc.
+. Do not choose any layers that are tracking moving objects (people, moving cars, badgers etc.)
+. Click *Export Camera Data...*
+. Choose the format you wish to use from the drop-down.
++			
+image://borisfx-com-res.cloudinary.com/image/upload/v1531777181/documentation/mocha/images/4.1.3/EXPORT_CameraSolve.jpg[width="60%"]	
++											
+	* If you are exporting to After Effects, click *Copy to Clipboard*. 
+	* If you choose FBX, click *Save* and create a filename. 
+	* If you choose HitFilm Composite Shot, click *Save* and create a filename. 			
+. You can then paste into After Effects using the "Paste mocha camera" option in the Edit menu, or import your FBX or HitFilm data into the program of your choice.
+
+When you paste into After Effects you will get a camera and a number of nulls depending on the type of solve you did.  PTZ will only export a single null to help define the camera motion.  The other 2 solves will create a null for each corner of your layer surface objects in mocha.
+
+==== 2. Export Camera Data from Moving Objects
+
+This is a secondary export. The basic procedure is:
+
+. Once you have exported a camera from the static solve, select any layers that you used to track moving objects in the shot.  If you have not tracked any moving objects you can do this now.
+. Click *Export Camera Data...*
+. Choose the format you wish to use from the drop-down.
+	* If you are exporting to After Effects, click *Copy to Clipboard*. 
+	* If you choose FBX, click *Save* and create a filename. 
+	* If you choose HitFilm Composite Shot, click *Save*
+	 and create a filename. 				
+. You can then paste into After Effects using the "Paste mocha camera" option in the Edit menu, or import your FBX or HitFilm data into the program of your choice.
+
+When you paste into After Effects you will get a camera and a number of nulls depending on the type of solve you did.  PTZ will only export a single null to help define the camera motion.  The other 2 solves will create a null for each corner of your layer surface objects in mocha.
+
+NOTE: You will get a second camera object when you export moving layers. You can delete this camera if you have already exported the camera from step 1 of the export.
+ 
+
+=== Tips for Camera Solves
+
+*The resulting track drifts or jumps*
+ 
+This can be from the solver not having enough reliable information from the tracks.
+
+* Check the Solve Quality bar to make sure the solve has been accurate
+* Make sure your planar tracks are accurate and locked on well to their static objects.
+* Check that there is enough overlapping frames in the layers if you have had to do more than one track along the timeline. If you start one track exactly where the last finished, the solver may not be able to accurately blend the resulting data.
+* You may not have enough layers tracked to get an accurate solve. Try adding further tracks to help the solve.
+* Try a different solve type. Sometimes one solver may give better results than another.
+* Try a different focal length.
+

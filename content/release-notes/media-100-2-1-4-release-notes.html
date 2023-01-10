@@ -1,0 +1,1300 @@
+{
+   "date": "2013-11-26T15:48:11-05:00",
+   "tags": [
+      "Media 100"
+   ],
+   "title": "Media 100 - 2.1.4 Release Notes"
+}
+
+<h1>
+ Media 100 Suite Version 2.1.4 Release Notes
+</h1>
+<p>
+ Boris FX - Media 100® is pleased to offer Media 100 Suite Version 2.1.4.
+</p>
+<p>
+ This is an upgrade release from all previous versions of Media 100. Media 100 Suite 2.1.4 can run as a standalone, software-only application and it will also work with supported I/O hardware. Media 100 Suite integrates with AJA® hardware including the Kona3, 3G, &amp; LHi cards as well as the Matrox MXO2 line of I/O devices and several devices from Blackmagic Design, including the Intensity Pro, DeckLink SDI, DeckLink Studio and DeckLink HD Extreme. This release supports Apple Inc® Computers with Intel processors running a minimum of Mac OS X 10.6.6 “Snow Leopard.” Mac OS X 10.7 “Lion”, Mac OS X
+</p>
+<p>
+ 10.8 “Mountain Lion” and ” Mac OS X 10.9 “Mavericks” are supported. Mac OS X 10.5 “Leopard” is not supported. Read these Release Notes before using the software. This document provides up-to-date information regarding Media 100 Suite that is not included in other documents.
+</p>
+<h1>
+ A Note About Mac OS X 10.6.8
+</h1>
+<p>
+ Apple released the Mac OS X 10.6.8 update in June 2011. A bug in this update disables playback with the Media 100 i Codec in NTSC 601 format. We are working with Apple to find a solution but the eventual outcome is unknown. We recommend that you not install the 10.6.8 update if you have existing i Codec media.
+</p>
+<h1>
+ A Note About Mac OS X 10.7 “Lion”
+</h1>
+<p>
+ Apple released the Mac OS X 10.7 update in July 2011. A bug in this version disables playback with the Media 100 i Codec in NTSC 601 format. We are working with Apple to find a solution but the eventual outcome is unknown. We recommend that you not install the 10.7 update if you have existing i Codec media.
+</p>
+<h1>
+ What’s new in Version 2.1.4?
+</h1>
+<p>
+ Added support for Mac OS 10.9 “Mavericks”.
+</p>
+<h1>
+ What’s new in Version 2.1.3?
+</h1>
+<p>
+ Added support for AJA Kona LHe Plus, Io XT, Io Express, and T-TAP. Added support for Matrox Mojito.
+</p>
+<p>
+ Note: For customers using Matrox Mojito hardware, you will need to use the 2.6.1 version of the Matrox software.
+</p>
+<p>
+ Bug fixes and Improvements: Improved Media 100 help menu layout.
+</p>
+<p>
+ Fixed a bug that caused incorrect analog output with the playback of NTSC video output with zero IRE pedestal selection (Japan).
+</p>
+<p>
+ No longer show hidden disk volumes in the Media 100 Application’s preference location dialog. This fixed some of the problems with SAN systems.
+</p>
+<h1>
+ What’s new in Version 2.1.2?
+</h1>
+<p class="s3">
+ Added support for Mac OS X 10.8 “Mountain Lion”. Added support for AJA legacy cards Kona LHe and LSe,
+</p>
+<h3>
+ Note: Note: For customers using Matrox hardware, be sure to install the 2.5 version of the Matrox software. The 3.X versions of the Matrox software is not compatible with Media 100.
+</h3>
+<h1>
+ What’s new in Version 2.1.1?
+</h1>
+<h3>
+ AJA and Matrox Drivers: Media 100 version 2.1.1 has been updated to support the AJA driver version
+</h3>
+<p>
+ 10.3.x and Matrox driver version 2.5.
+</p>
+<h3>
+ Note: For customers using the AJA Legacy cards (Kona LHe, Kona LSe and Kona 2) the latest driver version is 9.1. For these cards you should use Media 100 version 2.1.0.
+</h3>
+<h3>
+ Note: Note: For customers using Matrox hardware, be sure to install the 2.5 version of the Matrox software. The 3.X versions of the Matrox software is not compatible with Media 100.
+</h3>
+<h1>
+ What’s new in Version 2.1?
+</h1>
+<h3>
+ MAC OS X: Media 100 Suite now supports Mac OS X 10.7 “Lion.” See the note above about codec compatibility.
+</h3>
+<h3>
+ Audio Clips: The associated video frame rate of audio-only clips is now displayed in the Edit Clip panel and bin list views.
+</h3>
+<h3>
+ Conform: Clips in programs created with the “Conform Program” command with “Resize with Motion
+</h3>
+<p>
+ Editor” now retain their original frame size information.
+</p>
+<h3>
+ Import XML: A bug where alpha information was lost during import has been corrected.
+</h3>
+<h3>
+ Make Preview Frame command: The keyboard shortcut for the “Make Preview Frame” command is now command+control+T. The old shortcut is now assigned to Show/Hide Toolbar.
+</h3>
+<h3>
+ Media Folders: Mac OS X 10.7 restricts users from creating folders at the top level of the boot drive without authentication as an administrator. Media 100 Suite now presents an authentication dialog before creating the top level folder.
+</h3>
+<h3>
+ Project Window: A bug where a new program created with the “New Program…” command would appear in the project window with an incorrect title until it was saved has been corrected.
+</h3>
+<h3>
+ REDCODE Metadata: New controls have been added to the Metadata window: Luma/R/G/B curve editor and Lift/Gamma/Gain.
+</h3>
+<h3>
+ Rendering: Rendering performance has been improved.
+</h3>
+<h3>
+ Toolbars: Mac OS X 10.7 does not support the toolbar button which was at the right of the title bar for windows that have a toolbar. The View menu now has “Show Toolbar” and “Hide Toolbar” commands to
+</h3>
+<p>
+ replace the buttons, keyboard shortcut command+option+T.
+</p>
+<h3>
+ Window State: Mac OS X 10.7 automatically restores windows that had been open the last time an application was stopped. This is separate from the Media 100 Suite general preference settings “Remember Window Positions” and “Remember Last Project Opened.”
+</h3>
+<h1>
+ What was new in Version 2.0.2?
+</h1>
+<h3>
+ Catch Frame: The pixel-accurate catch frame window now displays the frame with the same colors as
+</h3>
+<p>
+ the subsampler.
+</p>
+<h3>
+ Codecs: A problem with poor playback quality of DVCProHD media has been corrected.
+</h3>
+<h3>
+ ColorFX and Metadata windows: If you use the next (or previous) clip keyboard command (see below) while either the ColorFX or Metadata window is frontmost, the next (or previous) clip will be loaded
+</h3>
+<p>
+ into the Edit Clip panel and the ColorFX (or Metadata) window will be made frontmost again.
+</p>
+<p>
+ Next clip command: numeric pad 6, or shift+numeric pad 6 if numlock is on. Previous clip command: numeric pad 4, or shift+numeric pad 4 if numlock is on.
+</p>
+<h3>
+ ColorFX: A bug where the ColorFX window was enabled for clips that are not compatible with ColorFX
+</h3>
+<p>
+ has been corrected.
+</p>
+<h3>
+ Edit Clip: A bug where the ColorFX or Metadata preset name was incorrectly displayed has been corrected.
+</h3>
+<h3>
+ Filters: A crash when using the BCC Optical Stabilization filter has been corrected.
+</h3>
+<h3>
+ Find Media: A bug where Find All Media would sometimes fail with a parameter error has been corrected.
+</h3>
+<h3>
+ Genlock: Media 100 Suite now turns off the genlock option if sync can not be detected.
+</h3>
+<h3>
+ Hardware video output: Media 100 Suite now supports 720p23.98, 720p25 and 720p29.97 output formats on Matrox hardware.
+</h3>
+<h3>
+ Import: A bug where some P2 clips would import at an incorrect frame rate has been corrected.
+</h3>
+<h3>
+ Mixed Formats: A crash which could occur with 1080p media in a 1080i program (or vice versa) has been corrected.
+</h3>
+<h1>
+ What was new in Version 2.0.1?
+</h1>
+<h3>
+ Video Standards: New frame sizes for 3K video, in 16:9 and 2:1 frame aspect ratios, at frame rates from
+</h3>
+<p>
+ 23.98 to 59.94 frames per second. Media 100 Suite now supports the following standards:
+</p>
+<h2>
+ Frame Rate 23.98 24 25 29.97 30 50 59.94 60
+</h2>
+<p>
+ Frame Size
+</p>
+<table width="483" cellspacing="0">
+ <tbody>
+  <tr>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     525i (4:3)
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     525i (16:9)
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     525psf (4:3)
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     525psf (16:9)
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td rowspan="2" bgcolor="#FCF305">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     625i (4:3)
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     625i (16:9)
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     625psf (4:3)
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     625psf (16:9)
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+   <td bgcolor="#FCF305">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     720p
+    </p>
+   </td>
+   <td rowspan="2" bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td rowspan="2" bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td rowspan="2" bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td rowspan="2" bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     1080i
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td rowspan="2" bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     1080p
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td rowspan="2" bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     1080psf
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+   <td bgcolor="#FFCC99">
+     
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p class="s5">
+     2K1024p
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF9900">
+     
+   </td>
+   <td bgcolor="#FF9900">
+     
+   </td>
+   <td bgcolor="#FF9900">
+     
+   </td>
+   <td bgcolor="#FF9900">
+     
+   </td>
+   <td bgcolor="#FF9900">
+     
+   </td>
+   <td bgcolor="#FF9900">
+     
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p class="s5">
+     2K1152p
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF9900">
+     
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF9900">
+     
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p class="s5">
+     3K1536p
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF8080">
+     
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF8080">
+     
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p class="s5">
+     3K1728p
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF8080">
+     
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td>
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF8080">
+     
+   </td>
+  </tr>
+ </tbody>
+</table>
+<table width="481" cellspacing="0">
+ <tbody>
+  <tr>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     4K2048p
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+     
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     4K2160p
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+     
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+     
+   </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     4K2304p
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+     
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+    <p class="s5">
+     •
+    </p>
+   </td>
+   <td bgcolor="#FF6600">
+     
+   </td>
+  </tr>
+ </tbody>
+</table>
+<h3>
+ Bin Settings: A bug which caused the “All” and “None” buttons in the View Settings window to be hidden has been corrected.
+</h3>
+<h3>
+ Edit Clip Panel: A bug which caused playback to stop in some situations when the user set a mark-in or mark-out has been corrected.
+</h3>
+<h3>
+ Motion Editor: The default setting when a clip’s frame aspect ratio differs from the program’s has been changed from black bars to crop. Motion Editor now maintains the state of the onscreen controls display separately for the “full source” and “composited result” preview modes. Holding the shift key while dragging the keyframe’s position or center of rotation will constrain the movement horizontally or vertically.
+</h3>
+<h3>
+ After Effects: A crash in Boris XML Transfer for Media 100 for Adobe After Effects CS5 in 64-bit mode has been corrected.
+</h3>
+<h3>
+ BorisRED: BorisRED 5.0.4 corrects a crash when editing titles.
+</h3>
+<h1>
+ What was new in Version 2.0?
+</h1>
+<h3>
+ Video Standards: New frame sizes for 4K and 2K video.
+</h3>
+<h3>
+ Codecs: REDCODE (R3D) media is now supported and plays natively in Media 100 Suite. REDCODE
+</h3>
+<p>
+ media can play in preview at full speed without a RED ROCKET board. To play REDCODE media in
+</p>
+<p>
+ other QuickTime applications, you may download the free REDCODE decoder component from
+ <a class="a" href="http://www.red.com/" target="_blank">
+  http://www.red.com/
+ </a>
+ <a class="s6" href="http://www.red.com/" target="_blank">
+  .
+ </a>
+</p>
+<h3>
+ Codecs: PhotoJPEG media is now supported natively. Movies in the PhotoJPEG codec can now be “fast imported.”
+</h3>
+<h3>
+ Hardware: Media 100 Suite now supports the RED ROCKET board. The board is optional, and is used for accelerated renders of filters on REDCODE media when it is present.
+</h3>
+<h3>
+ OpenCL: Media 100 Suite uses a software/hardware technology called OpenCL for fast, high quality image manipulation.
+</h3>
+<h3>
+ Metadata: The new Metadata Window can manipulate metadata settings for media in the REDCODE (R3D) format, including camera color space, ISO speed, color temperature, etc.
+</h3>
+<h3>
+ Video Decoder Quality: This preference option allows you to change the speed of playback and quality of the image when Media 100 Suite renders REDCODE media. Use this setting in conjunction with the new Catch Frame pixel accurate option to choose the best setting for your requirements.
+</h3>
+<h3>
+ Catch Frame: The Catch Frame window now has a pixel accurate option, allowing you to examine any image, even 4K video, at full size on your Mac monitor. Use this view in conjunction with the Video Decorder Quality setting (which is settable from the Catch Frame window) to get the right combination of
+</h3>
+<p>
+ speed and quality when rendering REDCODE media.
+</p>
+<h3>
+ Mixed standards in program: Video clips of any standard, size and frame rate can be dropped into any program.
+</h3>
+<h3>
+ Pan and Scan, Picture in Picture: The new Motion Editor allows you to zoom in or out of a selected
+</h3>
+<p>
+ area of your source clip and place it anywhere in the program frame.
+</p>
+<h3>
+ Conform: Conform now uses OpenCL rendering for higher quality upconvert and downconvert.
+</h3>
+<h3>
+ ColorFX Window: The ColorFX dialog has been superseded by the ColorFX window, which allows
+</h3>
+<p>
+ modeless access to all the ColorFX options (Classic, YUV Curves, YUV Levels, RGB Curves and RGB Levels) in one window for a smoother, faster workflow.
+</p>
+<h3>
+ Import: A new option allows better color fidelity when importing QuickTime video from other sources. Media Search: You can identify those disk volumes which never contain media (for example, your Time
+</h3>
+<p>
+ Machine backup volume) in the Project Settings window. This can help media searches find your files faster.
+</p>
+<h3>
+ Media Search: During a media search, you can tell Media 100 Suite to skip the current volume when you
+</h3>
+<p>
+ know it doesn’t contain the files you’re seeking.
+</p>
+<h3>
+ Recent Projects: The Open Project dialog now remembers your last ten projects for easier navigation.
+</h3>
+<h3>
+ Export to After Effects: Boris XML Transfer for Media 100 now computes the pixel aspect ratio correctly for standard definition media in After Effects CS/4 and CS/5.
+</h3>
+<h3>
+ Keyboard Shortcuts: New keyboard shortcuts and contextual menus allow you to quickly navigate from the timeline to the effect you want (ColorFX, Metadata, Motion Editor, Voiceover).
+</h3>
+<h3>
+ Discontinued: PowerPC-based Macs can not run Media 100 Suite 2.0. HDx hardware is not supported in Media 100 Suite 2.0. Mac OS X 10.5 Leopard is not supported. The “Picture-in-Picture” transition has been removed; use the Motion Editor instead.
+</h3>
+<h1>
+ Minimum System Requirements
+</h1>
+<p>
+ Mac OS: Snow Leopard 10.6.8 QuickTime: 7.6.6 Processors: Intel iMac with 1.8 GHz Processor (SD and Uncompressed HD Media only) Ram: 2 GB
+</p>
+<p>
+ AJA Driver for Kona 3G, Kona 3, Kona LHE Plus and Kona LHi: v10.3.1 AJA Driver LHe: v9.1
+</p>
+<p>
+ AJA Driver LSe: v9.0.5
+</p>
+<p>
+ Blackmagic Software for Intensity Pro cards: v3.5.1
+</p>
+<p>
+ Matrox Software for MXO2, MXO2 Mini and MXO2 Rack: v2.5 RED Rocket driver: v1.4.27
+</p>
+<h1>
+ Recommended System Requirements
+</h1>
+<p>
+ Mac OS: Lion 10.7 or 10.8 QuickTime: 7.6.6 Processors: Two 2.66 GHz Quad-Core Intel Xeon "Nehalem" processors Ram: 6 GB
+</p>
+<p>
+ AJA Driver for Kona 3G, Kona 3, Kona LHE Plus and Kona LHi: v10.3.1 AJA Driver LHe: v9.1
+</p>
+<p>
+ AJA Driver LSe: v9.0.5
+</p>
+<p>
+ Blackmagic Software for Intensity Pro cards: v3.5.1
+</p>
+<p>
+ Matrox Software for MXO2, MXO2 Mini and MXO2 Rack: v2.5
+</p>
+<h1>
+ Obtaining Support
+</h1>
+<p>
+ Media 100 provides 30-days of free e-mail Technical Support for new customers. For more information, please visit
+ <a class="a" href="http://www.media100.com/" target="_blank">
+  http://www.media100.com/
+ </a>
+ , call 1-800-922-3220 or contact your local reseller.
+</p>
+<p>
+ Media 100 also offers a wide range of support options including:
+</p>
+<h3>
+ Platinum Plus - One year of technical support, 8am to 8pm ET (Monday-Friday). Platinum 8-8 Support - One year of technical support, 8am to 8pm ET (Monday-Friday). Platinum Software Updates - One year of Software Updates.
+</h3>
+<h1>
+ Installing your new Media 100 Suite Software
+</h1>
+<ul id="l1">
+ <li>
+  <p>
+   Launch the Media 100 Suite v2.1.4 Installer.
+  </p>
+ </li>
+ <li>
+  <p>
+   Enter your Name, Organization and the Trial Install Code sent to you via email.
+  </p>
+ </li>
+ <li>
+  <p>
+   Follow the prompts to perform a “Standard Install.”
+  </p>
+ </li>
+ <li>
+  <p>
+   You will be prompted to restart once the installation is complete.
+  </p>
+  <h1>
+   Upgrading from a version prior to Media 100 Suite v1.0
+  </h1>
+ </li>
+ <li>
+  <p>
+   Launch the installer for your currently installed version of Media 100.
+  </p>
+  <p>
+   If you don't have one, installers can be downloaded here: http://www media100.com/support/downloads.php
+  </p>
+ </li>
+ <li>
+  <p>
+   Enter your Name, Organization and the Trial Install Code sent to you via email.
+  </p>
+ </li>
+ <li>
+  <p>
+   When prompted, switch from “Easy Install" to “Uninstall.”
+  </p>
+ </li>
+ <li>
+  <p>
+   When the uninstall is complete, quit the installer and restart.
+  </p>
+ </li>
+ <li>
+  <p>
+   Launch the Media 100 Suite v2.1 Installer, follow the prompts and restart.
+  </p>
+  <h1>
+   Upgrading from Media 100 Suite v1.0 through v2.0.2
+  </h1>
+ </li>
+ <li>
+  <p>
+   Launch the uninstaller (located in the Media 100 application folder) and follow the prompts to uninstall.
+  </p>
+ </li>
+ <li>
+  <p>
+   Launch the Media 100 Suite v2.1 Installer.
+  </p>
+ </li>
+ <li>
+  <p>
+   Enter your Name, Organization and the Trial Install Code sent to you via email.
+  </p>
+ </li>
+ <li>
+  <p>
+   Follow the prompts to perform a “Standard Install.”
+  </p>
+ </li>
+ <li>
+  <p>
+   You will be prompted to restart once the installation is complete.
+  </p>
+ </li>
+</ul>
+<h1>
+ Support for 3rd Party Hardware
+</h1>
+<h3>
+ AJA drivers can be downloaded at:
+ <a class="a" href="http://www.aja.com/support/index.php" target="_blank">
+  http://www.aja.com/support/index.php
+ </a>
+</h3>
+<h3>
+ Blackmagic Design drivers can be downloaded at:
+ <a class="a" href="http://blackmagic-design.com/support/software/" target="_blank">
+  http://blackmagic-design.com/support/software/
+ </a>
+</h3>
+<h3>
+ Matrox software for the MXO2 line of devices can be downloaded at: http://www matrox.com/video/en/support/downloads
+</h3>
+<h3>
+ RED software including the REDCODE decoder and drivers for the RED Rocket hardware can be downloaded at:
+</h3>
+<p>
+ <a class="a" href="http://www.red.com/" target="_blank">
+  http://www.red.com
+ </a>
+</p>
+<h1>
+ Licensing your new Media 100 Suite Software
+</h1>
+<p>
+ Media 100 Suite uses a trial and purchase (Try and Buy) unlock code scheme. For 15 days after installing the Media 100 Suite application, you may choose to unlock your software or use it in trial mode. When the trial period has expired, the application will no longer launch until it is unlocked.
+</p>
+<p>
+ To purchase an Unlock Code, click the purchase button to be directed to the BorisFX online store or call 888-772-6747 (outside North America, +1-508-573-5100). It is important to provide BorisFX/Media 100 with your most current contact information. Media 100 strongly advises you to register your software so that we may keep you up to date on all information regarding your Media 100 Suite system.
+</p>
+<h1>
+ Platinum Software Update Subscribers
+</h1>
+<p>
+ If you are updating from a version prior to v13, please visit:
+</p>
+<p class="s8">
+ http://www.media100,com/upgrades.php
+</p>
+<p>
+ for information on how to obtain your upgrade. NOTE: For the quickest and easiest installation, provide an internet connection for the computer on which you are installing Media 100 Suite.
+</p>
+<h1>
+ Additional Information
+</h1>
+<h3>
+ HDV Support: Media 100 Suite uses a QuickTime® developer tool kit for HDV support, therefore it is required that users have installed codecs and device drivers to transcode HDV media streams into a format that can be used by Media 100 Suite. These codecs and device drivers are commonly installed with Apple Final Cut Pro®.
+</h3>
+<h3>
+ FireWire Device Control, Video/Audio Input: Media 100 Suite uses the Apple QuickTime API for Video/Audio and Device control and it is possible that not all device functionality can or will be supported. Some devices have inherent functionality that is not available (e.g., jog/shuttle); some devices may need specific functionality to allow them to operate at all. In general, more expensive “High End” devices will have better success with Device Control and Video/Audio input and output.
+</h3>
+<h3>
+ Audio Output Information: Audio output from your computer speaker may be a frame or two out of sync with video. If this occurs stop playback and try again.
+</h3>
+<h1>
+ Known Issues
+</h1>
+<p class="s9">
+ Workarounds as noted
+</p>
+<p>
+ -
+ <b>
+  Acquire
+ </b>
+ - NTSC acquire using less than 5 seconds pre-roll causes a 1 frame shift in timecode of acquired clips on some decks; use the default of 5 if this occurs.
+</p>
+<p>
+ -
+ <b>
+  Audio
+ </b>
+ - Software-only: when switching the Audio Out Preferences to "None" system will still output audio via the Mac speaker.
+</p>
+<p>
+ -
+ <b>
+  Audio
+ </b>
+ - Software-only: User is not notified that the system audio device is disabled when FireWire Video/Audio Output is enabled.
+</p>
+<h3>
+ -Batch Acquire - Some changes made in Change Media Attribute window may not be properly executed/displayed after Batch Reacquiring involved clips.
+</h3>
+<h3>
+ -Batch Acquire - Attempting to batch acquire can result in a loss of sync and "Can't Record" errors in the Batch Acquire window with some FireWire devices.
+</h3>
+<p>
+ -
+ <b>
+  Batch Acquire
+ </b>
+ - Pre-roll / trim handles combination can cause black and/or missing frames at beginning of reacquired clips in NTSC or PAL on some decks; adjust these settings to default if this issue is encountered.
+</p>
+<h3>
+ -Clip Presets - Clip Preset effects do not show up in the Boris RED UI when a Boris Transition is applied between Va &amp; Vb clips which also have Clip Preset effects applied.
+</h3>
+<h3>
+ -Catch Frame - Colors in the Catch Frame “size to fit“ window may not exactly match those in the subsampler window. This is because the subsampler window uses a different mechanism for realtime drawing.
+</h3>
+<p>
+ -
+ <b>
+  Codecs
+ </b>
+ - When acquiring to the DVCPro50 or Motion JPEG B codec this material will get "flagged" that it uses a video color range. Material acquired into the Media 100 HD/i codec does not get this flag. Mixing both of these elements in After Effects (for example) will result in different levels/contrasts from the same material.
+</p>
+<p>
+ -
+ <b>
+  Deck Control
+ </b>
+ - FireWire: If preferences are set to FireWire machine control but video set for composite, machine control may not work when entering Acquire mode.
+</p>
+<p>
+ -
+ <b>
+  Deck Control
+ </b>
+ - FireWire: Some DV devices do not support Jog/Shuttle functionality. In general, device functionality is derived from the deck and Media 100 Suite can only use functions that are present on the device.
+</p>
+<p>
+ -
+ <b>
+  Export
+ </b>
+ - QuickTime: If exporting via QuickTime fails, we recommend that you export as Self- Contained or By-Reference and then export that file from QuickTime Pro to the desired settings.
+</p>
+<h3>
+ -Motion Editor – Colors in the Motion Editor window may not exactly match those in the subsampler when the Motion Editor is not displaying the composite view or when onscreen controls are enabled. This is because the subsampler window uses a different mechanism for realtime drawing.
+</h3>
+<p>
+ -
+ <b>
+  MultiClip
+ </b>
+ - Syncing a video MultiClip and a VoiceOver clip together and then attempting to edit them in the MultiClip edit window may give unexpected results. The features are not intended to work in this way.
+</p>
+<p>
+ -
+ <b>
+  Preferences
+ </b>
+ - When setting your DV deck control the deck ID is a series of numbers and/or letters. This is normal. If the device name or manufacturer information is available to Media 100 Suite, this information will be displayed.
+</p>
+<h3>
+ -Real-time HDV Acquire - The older/slower the Macintosh computer, the less likely that Media 100 Suite will be able to acquire HDV in real-time. In that case Deferred HDV Acquire is recommended.
+</h3>
+<p>
+ -
+ <b>
+  Third-Party Software
+ </b>
+ - Media 100 Suite may report that the hardware is in use by another application if Final Cut Pro's Video Playback is set to Apple FireWire.
+</p>
+<p>
+ -
+ <b>
+  Toolbar
+ </b>
+ - In Mac OS X 10.7 the toolbar button at the upper right of a window’s title bar has been removed. Media 100 Suite has “Show Toolbar” and “Hide Toolbar” menu commands to enable the same functionality. However, those commands are not applicable to floating windows, so if you have enabled floating monitor windows in General Preferences, you will not be able to access the toolbar on those windows. Those settings are still available in Project Settings.
+</p>
+<h3>
+ Additional Notes:
+</h3>
+<h3>
+ Hardware and Software Systems - Media 100 Video Out: If you use the Video Out feature in Adobe After Effects®, it is important to launch the Media 100 Suite software before you launch After Effects. This only affects Media 100 Video Out the first time you launch your new application. Subsequent uses of Media 100 Video Out do not require a launch of the Media 100 Suite application.
+</h3>
+<h3>
+ Hardware and Software Systems - Codecs: Additional codecs such as AVC-Intra, Apple Uncompressed YUV 8 bit and 10 bit, DVC Pro HD, Apple ProRes (and variants) and Sony XDCAM are supported in Media 100 Suite but are not distributed with our software. If they are installed on the system, Media 100 Suite provides full support for these codecs. Some playback codecs are available at
+ <a class="a" href="http://www.calibratedsoftware.com/" target="_blank">
+  http://www.calibratedsoftware.com/
+ </a>
+</h3>
+<h3>
+ Hardware and Software Systems PAL - 16x9 clips conformed to 4:3 (letterbox): When batch acquiring the clip, the clip will appear as though you cropped it in the conform dialog rather than letterbox. You must software-conform because the hardware (with the exception of the Kona3 card) does not support conform-on-the-fly while acquiring.
+</h3>

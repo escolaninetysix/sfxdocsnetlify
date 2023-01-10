@@ -1,0 +1,18 @@
+{{ define "content" }}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <a href="/knowledgebase">Return to Knowledgebase</a>
+        <h1>{{ .Title }}</h1>
+        <h5><em>Posted {{ .Date.Format "Jan 2, 2006" }}</h5></em>
+        <hr />
+        {{ .Content }}
+    </div>
+    <div class="col-md-4">
+        {{ partial "sidebar.html" . }}
+    </div>
+  </div>
+</div>
+
+{{ end }}

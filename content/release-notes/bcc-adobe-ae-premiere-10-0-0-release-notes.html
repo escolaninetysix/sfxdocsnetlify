@@ -1,0 +1,155 @@
+{
+   "date": "2015-12-14T14:07:00-05:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC Adobe AE/Premiere – 10.0.0 Release Notes",
+   "description": "BCC 10.0.0 Adobe AE/Premiere release notes"
+}
+
+<h3>Boris Continuum Complete 10.0.0 for Adobe - Release Notes</h3>
+<p>BCC 10.0.0 for Adobe After Effects and Premiere Pro was released on 12/14/2015.</p>
+<p> </p>
+<p><strong> What's New in BCC 10 for Adobe (Summary of major changes since BCC9): </strong></p>
+<ul>
+<li>mocha planar tracking integrated directly into the PixelChooser.</li>
+<li>8 new effects:
+<ul>
+<li>Beauty Studio</li>
+<li>Dropout Fixer</li>
+<li>Fast Lens Blur</li>
+<li>Light Leaks</li>
+<li>Reframer</li>
+<li>Remover</li>
+<li>Title Studio</li>
+<li>Video Glitch</li>
+</ul>
+</li>
+<li>5 new transitions:
+<ul>
+<li>Cross Glitch</li>
+<li>Cross Melt</li>
+<li>Cross Zoom</li>
+<li>Lens Blur Dissolve</li>
+<li>Light Leaks Dissolve</li>
+</ul>
+</li>
+<li>PixelChooser re-engineered for streamlined UI, enhanced shape masking, and robust color keying (in addition to mocha spline tracking).</li>
+<li>Greater use of OpenCL and OpenGL for GPU acceleration in filters such as Beauty Studio, Title Studio, Fast Lens Blur, Lens Blur Dissolve, and many more.</li>
+<li>New OpenCL rendering engine for enhanced performance and robustness in OpenCL accelerated filters.</li>
+<li>FX Browser™ support in 3D Objects family of effects.</li>
+<li>Change text fields directly from FX Browser™ in 3D objects filters.</li>
+<li>Fast Film Glow:
+<ul>
+<li>Render quality improvements - particularly on alpha clips.</li>
+<li>Additional standard features such as Compare Mode, PixelChooser with mocha, and Beat Reactor.</li>
+</ul>
+</li>
+<li>Fast Film Process:
+<ul>
+<li>Improved OpenCL rendering.</li>
+<li>Additional standard features such as Compare Mode and PixelChooser with mocha.</li>
+</ul>
+</li>
+<li>Witness Protection now includes the PixelChooser with mocha to allow tracking/obscuring multiple simultaneous regions in a single effect instance.</li>
+<li>New textures added to BCC Grunge.</li>
+<li>Advanced Optical Flow option in BCC Motion Blur.</li>
+<li>Added View Current Matte feature to Chroma Key Studio.</li>
+<li>New presets for many key filters such as Fast Film Process, Fast Film Glow, Grunge, Glare, Glint, and Glitter.</li>
+<li>Streamlined effect categories with deprecated filters moved to Obsolete category.</li>
+<li>Numerous bug fixes.</li>
+</ul>
+<p> </p>
+<p><strong> BCC AE/Premiere 10 supports the following Adobe host applications: </strong></p>
+<p>Mac OSX 10.8, 10.9, 10.10, and 10.11:</p>
+<ul>
+<li>Adobe After Effects and Premiere Pro CS6, CC, CC 2014, and CC 2015</li>
+</ul>
+<p>Windows 7 x64, Windows 8 x64, Windows 10 x64:</p>
+<ul>
+<li>Adobe After Effects and Premiere Pro CS6, CC, CC 2014, and CC 2015</li>
+</ul>
+<p> </p>
+<p> <strong>Training:</strong></p>
+<p> Numerous resources are available for helping you get the most out of Boris Continuum Complete.</p>
+<ul>
+<li>Help documents for individual BCC effects are accessible directly from each plug-in’s UI.  The entire <a href="/documentation/continuum/bcc-effects-list/" title="BCC Help Documentation">BCC Help Documention</a> library is also available on the BorisFX website, including access to a downloadable version for browsing <a href="https://cdn.borisfx.com/borisfx/store/BCC10Documentation.zip" title="Offline Downloadable BCC Help Documentation">offline BCC Help Documentation</a>.</li>
+<li>
+<a href="/videos/?tags=category:Continuum%20TV&search=">BorisTV</a> video tutorials cover a huge range of topics from introductions to the Fundamentals, to deep training Webinar Replays, to in-depth looks at  key effects and techniques.</li>
+</ul>
+<p> </p>
+<p><strong style="line-height: 1.4;">BCC Adobe 10.x Compatibility Notes: </strong></p>
+<p>While in general your previously saved projects should render identically in the newer version, bug fixes and quality improvements can sometimes change the look of older projects. While every effort is made to ensure project compatibility, the following notable areas may see some change to the look of previously saved projects.</p>
+<ul>
+<li>Render quality improvements in Fast Film Glow when applied to alpha clips may result in some changes to glow brightness and/or extent.</li>
+<li>3D Objects Extrusion Styles now scale with text point size but this can in some cases cause different scaling when opening saved projects which might require readjustment.</li>
+<li>The BCC Motion Tracker in AE/Premiere will continue to render previously saved motion tracker analysis passes and it will continue to support loading externally generated tracker data files such as those exported from mocha, but conducting new BCC Motion Tracker analysis passes is disabled in After Effects and Premiere in order to ensure full cooperation with host multi-threading requirements. </li>
+</ul>
+<p> </p>
+<p><strong> BCC Adobe 10.0.0 - Known Issues and Limitations: </strong></p>
+<ul>
+<li>28732 - BCC Extruded Text and BCC Type On Text use a custom text entry window. On Mac OS some of the parameters such as Top Down Text, Right to Left Reading, Negative Line Leading, Superscript and Subscript are not accounted for in the custom text entry window.  However previews and renders back in the host will always correctly account for these parameters.  This limitation does not affect Windows users.  We recommend using the new Title Studio effect for more comprehensive typography preview and control.</li>
+<li>23630 - In BCC Particle Emitter 3D the interaction layer does not work accurately with 3D Text layers in AE unless they are precomposed at comp dimensions.</li>
+<li>26068 - In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.</li>
+<li>25867 - In BCC Type On Text the Line Leading in the text entry preview window does not match up with the leading in the rendered result, and the leading may need to be adjusted to generate the desired final render.</li>
+<li>28724 - Importing Premiere Pro projects containing BCC effects directly into After Effects can lead to effects with some incorrectly transferred parameters which can lead to incorrect renders or other unexpected behavior. This project import workflow is currently not recommended for BCC filters. Please contact Boris technical support if represents an important desired workflow</li>
+<li>27313 - The Beat Reactor propagation options in Organic Strands do not work. Use non-propagation modes instead.</li>
+<li>28590 - Optical Stabilizer does not currently analyze correctly when applied to precomps in AE. As a temporary workaround it should be applied directly to individual clip elements instead of to precomps.</li>
+<li>26750 - The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. Use lower values near the default setting of 32 as a workaround.</li>
+<li>26845 - BCC LED shows occasional mis-colored dots on Quadro FX 3500 cards.</li>
+<li>30613 - Flicker Fixer - When using the Key/Mask controls the intensity of the flicker correction is only half as strong as it should be, even in regions that should be fully corrected.</li>
+<li>30351 - Pan and Zoom - Preview Mode rectangle widgets don’t match the final result exactly when using 3D Mode with non-square PAR comps.</li>
+<li>30395 - Combining 3D Objects filters with other OpenGL accelerated BCC filters such as Lens Flare 3D or Grunge requires at least 2GB graphics card memory for HD projects and higher for 4K.</li>
+<li>30949 - AE CC 2015 only - Some effects with custom UI in the parameter pane like 3 Way Color Grade can show artifacts or flickering in the custom UI region which scrubbing controls.</li>
+<li>30965 - Morph- does not work on larger than HD media in 16 bit / 32 bit float projects. It can be used in those higher resolutions with 8 bit projects.</li>
+<li>30844 - Lens Flare transitions - Lens flare position is wrong at full resolution 4K.</li>
+<li>30959 - The integrated Beat Reactor parameters in some filters may default to incorrect values if a BCC preset is loaded prior to enabling the Beat Reactor.</li>
+<li>30968 - Laser Beam and Stage Light - when using an AE 3D Layer as a target layer the rotation on the target layer is the opposite of what it should be.</li>
+<li>28423 - Stacking multiple 3D Objects filters on a single clip can lead to performance degradation or psuedo-hanging. It is recommended that for the time being 3D Objects filters be applied to separate tracks or separate clips in Premiere Pro.</li>
+<li>28714 - The Beat Reactor does not properly recognize audio levels in AIF files exported from Premiere that use 32bit non-float formatting. As a temporary workaround use 8 bit, 16 bit, or 32bit float formatting for exporting AIF files from Premiere for use in the Beat Reactor.</li>
+<li>1604 - FX Browser - Choose Folder dialog box becomes hidden if folder panel location is moved from default workspace location. As a workaround you can Alt-tab out of the host and then back in to make it appear.</li>
+<li>1559 - Reframer - When the background is set to Scale to Fit, the background X/Y Position moves the entire background layer instead of offsetting the video with the available source content.</li>
+<li>1503 - Fast Lens Blur can render slower than expected on older graphics cards - particularly MacBook Pro laptops older than 2015.</li>
+<li>1395 - Lens Flare 3D and other lighting filters can't be applied to alpha clips without explicitly specifying the background layer for compositing.</li>
+<li>645 - mocha PixelChooser - mocha track data is not currently saved along with presets nor with the PixelChooser sub-presets. As a temporary workaround when you wish to clone mocha tracking data from one effect instance or machine or host to another, you can use the File-&gt;Export Project and File-&gt;Merge Project options from within the mocha UI.</li>
+<li>663 - Optical Stabilizer - subtle horizontal banding artifacts when applied to some interlaced clips.</li>
+<li>871 - Video Glitch - Block Damage Freeze Source will jitter back and forth between 2 frames rather than freezing.</li>
+<li>400 - Pixel Chooser - feathering can cause a mirror-edge effect on masks near edge of screen.</li>
+<li>265 - Rays Dissolve - Region Animation doesn't account for non-square aspect ratios or custom downsampling factors.</li>
+<li>1292 - Fast Film Process can show minor flickering around edges for shaky shots.</li>
+<li>1222 - Fast Lens Blur can produce slightly more course gradients near high contrast regions than the original CPU version for large blurs. As a workaround you can increase the Quality setting.</li>
+<li>690 - External files in Pan &amp; Zoom are limited to 16k X 16K in dimension.</li>
+<li>431 - With Optical Stabilizer, inserting a transition at the head of the stabilized clip makes it lose stabilization &amp; the filter has to be re-analyzed</li>
+<li>1605 - 3D Objects - FX Browser - Cannot copy/paste text into text entry field</li>
+<li>1450 - Title Studio - Camera position moves in opposite direction of cursor when dragging the Translate Interactor</li>
+<li>1452 - Title Studio - Drop shadow ignores zoom level in alternate views</li>
+<li>1539 - Title Studio Plugin Mac - Menu Bar doesn't update back to the host when toggling apps until you cancel or apply</li>
+<li>1555 - Title Studio - Imported OBJ object geometry can display incorrect material color attributes.  OBJ models are not currently supported.</li>
+<li>1553 - Title Studio - Scene lighting incorrect with imported OBJ models.  OBJ models are not currently supported.</li>
+<li>1556 - Title Studio - cannot import MTL file associated with OBJ model.  OBJ models are not currently supported.</li>
+<li>1524 - Title Studio - EPS colors are retained upon extrusion. If this is not desirable you can convert the EPS data to a Spline Object.</li>
+<li>1385 - 3D Objects - Text Entry tab in FX Browser does not display text unless preset is changed</li>
+<li>1432 - Title Studio: Camera interactors in world view allow for X/Y/Z movement beyond the parameter limits</li>
+<li>1374 - Title Studio - Rigid Run markers obscure loop region markers</li>
+<li>1207 - Title Studio - Drop Shadow changes brightness of extrusions with opacity</li>
+<li>706 + 1094 - BCC Motion Blur now includes an Advanced optical flow option which uses OpenCL hardware assisted rendering to implement a more sophisticated (and more computationally intensive) motion vector analysis.  The performance of the Advance mode varies widely from one graphics card to another and if you see reduced performance or unexpected results when using the Advanced option it is recommended that you switch to the Simple mode on that card.</li>
+<li>1935 - Title Studio - Changes made to material level parameters break motion blur.</li>
+<li>1934 - Title Studio - Motion Blur does not function correctly if Type On animation is enabled on flat text</li>
+<li>1933 - Title Studio - Premultiplication issue (dark fringe around some text) when motion blur enabled</li>
+<li>1928 - Title Studio - Premiere Pro 2015 - Some presets do not animate in the FX Browser when applied to a colored solid.  As a temporary workaround you can apply Title Studio to a video clip instead of to a solid which will then restore proper animation in the FX Browser UI.</li>
+<li>1911 - Title Studio - Keyboard and mouse commands are temporarily disabled while PTR is in progress</li>
+<li>1906 - Title Studio - Cursor icon is sometimes wrong on first apply in Premiere Pro</li>
+<li>1903 - Title Studio - Two Sided Plane shapes may not correctly show applied textures</li>
+<li>1900 - custom UI views such as mocha PixelChooser and the FX Browser in Premiere Pro will sometimes display the media placeholder view instead of the proper video content if you relaunch the app after the effect was rendered in a previous host session.  As a workaround, change any parameter in the main effect controls which will then restore proper video output when the custom UI is re-launched.</li>
+<li>1886 - mocha PixelChooser - when in the mocha UI, floating panels can remain open even after the main mocha UI is closed.  As a workaround, it is recommended that panels remain flattened instead of floating while using the mocha UI.</li>
+<li>1824 - Title Studio - Texture ripping is apparent on certain specific C4D models</li>
+<li>1675 - mocha - exporting data from the mocha UI that was tracked while the host was in half rez generates incorrect result.  As a workaround you can close the mocha UI, change the host to full rez, then re-launch mocha and export the tracker data at full rez.</li>
+<li>1298 - mocha - filters which can expand the layer to which they are applied can cause mocha PixelChooser masks to be distorted or offset.</li>
+<li>1169 - mocha - When applied to high rez footage in AE CC 2014, the mocha UI can appear to become unresponsive in response to mouse or keyboard events.  Switching to another application and then back into AE/mocha will allow restoration of UI control.  It is recommended that users work in AE CC 2015 to avoid this issue, or if CC 2014 is required, that they track 4k footage at half resolution.</li>
+<li>1075 - mocha - When in Premiere and the Paused resolution is less than full it is possible to launch the mocha UI without getting a warning that the resolution is less than full.</li>
+<li>1067 - mocha - When launching the mocha UI in trimmed clips in AE and Premiere you will see the entire, untrimmed clip in the mocha UI without any visual indication as to the trimmed portion which means it may not be obvious which portions of the clip actually require tracking.</li>
+<li>832 - Cross Zoom - motion blur is not generating a result when enabled</li>
+<li>1503 + 1921 - Macbook Pro laptops with nvidia graphics cards can display slower than expected renders or instability when using OpenCL accelerated filters in BCC, particularly when combined with other hardware accelerated filters.  If you experience problems on nvidia mac laptops you can disable OpenCL rendering in BCC by opening the Preferences pane in any BCC filter and turning off the "Enable OpenCL" option.</li>
+<li>1937 - Due to a host conflict in Premiere Pro 9.0.2 (which was resolved in Premiere 9.1), Extruded Text and Type on Text filters in can cause instability when inside the text entry windows.  It is recommended that all Premiere 9.x installations be upgraded to at least Premiere 9.1</li>
+</ul>
+<p> </p>

@@ -1,0 +1,136 @@
+.. module:: mocha.project
+.. _View:
+
+View
+****
+
+.. inheritance-diagram:: View
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`__eq__<View.__eq__>` (rhs)
+*   def :meth:`__lt__<View.__lt__>` (rhs)
+*   def :meth:`__repr__<View.__repr__>` ()
+*   def :meth:`__str__<View.__str__>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*   property :attr:`id<View.id>` [read-only] of int
+
+
+Detailed Description
+--------------------
+
+
+   
+   Clip view class. Defines views for clips.
+   
+
+
+.. class:: View()
+
+
+
+
+
+   
+   Constructs new clip view instance with default view id (0).
+   
+
+
+
+.. class:: View(View)
+
+
+   :type View: :class:`mocha.project.View`
+
+
+
+
+
+
+.. class:: View(id)
+
+
+   :type id: :class:`PySide2.QtCore.int`
+
+
+
+   
+   :param id: New view id.
+   
+   Constructs new clip view instance with given view id.
+   It might be called as implicit constructor using only ``int`` value.
+   
+
+
+
+
+   :type View: :class:`mocha.project.View`
+   :type id: :class:`PySide2.QtCore.int`
+
+
+
+
+.. method:: View.__repr__()
+
+
+   :rtype: unicode
+
+
+
+
+
+
+.. method:: View.__str__()
+
+
+   :rtype: unicode
+
+
+
+
+
+
+.. method:: View.__lt__(rhs)
+
+
+   :type rhs: :class:`mocha.project.View`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. method:: View.__eq__(rhs)
+
+
+   :type rhs: :class:`mocha.project.View`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. attribute:: View.id
+
+
+   :type: int
+   :access: read-only   
+   Provides access to view ID value.
+   
+
+
+
+

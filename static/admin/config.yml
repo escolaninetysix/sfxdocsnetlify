@@ -1,0 +1,783 @@
+backend:
+  name: git-gateway
+  repo: boris-fx/web
+  branch: master
+publish_mode: editorial_workflow
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: borisfx-com
+    api_key: 793811557583594
+public_folder: "/images/upload"
+display_url: https://borisfx.com
+collections:
+
+  - name: products
+    label: Products
+    folder: "content/products"
+    slug: "{{slug}}"
+    create: true
+    format: json-frontmatter
+    preview_path: products/{{slug}}
+    widget: object
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: buy_now_url
+        label: Buy Now URL
+        widget: string
+      - name: carousel
+        label: Carousel
+        widget: list
+        required: false        
+        fields:
+         - {label: "Color", name: "color", widget: "string", required: false, hint: "Text color"}
+         - {label: "Title", name: "title", widget: "string", required: false, hint: "First text block"}
+         - {label: "Content", name: "content", widget: "string", required: false, hint: "Second text block with button"}         
+         - {label: "video url", name: "video_url", widget: "string", required: false, hint: "MP4 Video - ex. https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1624038417/Marketing/Sapphire_ReDesign/SapphireCarousel2.mp4"}         
+         - {label: "image url", name: "image_url", widget: "string", required: false, hint: "Image - ex. https://borisfx-com-res.cloudinary.com/image/upload/q_auto,f_auto/v1628680021/products/Mad_Scientist_03.png"}         
+      - name: overview
+        label: Overview
+        widget: object
+        required: false        
+        fields:
+         - {label: "Content", name: "content", widget: "markdown", required: false}
+         - {label: "Content", name: "content_block_a", widget: "markdown", required: false}
+         - {label: "Title", name: "title", widget: "string", required: false}
+         - {label: "video id", name: "video_id", widget: "string", required: false, hint: "Youtube Video ID - Example: CZQREjLokgY"}
+         - {label: "thumbnail url", name: "thumbnail_url", widget: "image", required: false, hint: "For video thumbnails with a play button drawn over, can be cloudinary or youtube links."}
+         - {label: "thumbnail url with no play button", name: "thumbnail_url_noplay", widget: "image", required: false, hint: "For video thumbnails which do not require the play button to be drawn over the image"}
+         - {label: "video url", name: "video_url", widget: "string", required: false, hint: "Youtube Video URL - Example: https://youtu.be/hUe4vrEuKHA"}    
+         - {label: "video inline url", name: "video_inline_url", widget: "image", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}    
+         - {label: "inline thumbnail url noplay", name: "inline_thumbnail_url_noplay", widget: "image", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}    
+      - name: whats_new
+        label: What's New
+        widget: list
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}
+         - {label: "video id", name: "video_id", widget: "string", required: false, hint: "Youtube Video ID - Example: CZQREjLokgY"}
+         - {label: "thumbnail url", name: "thumbnail_url", widget: "string", required: false, hint: "For video thumbnails with a play button drawn over, can be cloudinary or youtube links."}
+         - {label: "video url", name: "video_url", widget: "string", required: false, hint: "Youtube Video URL - Example: https://youtu.be/hUe4vrEuKHA"}            
+         - {label: "video inline url", name: "video_inline_url", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}            
+         - {label: "image url", name: "image_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}    
+      - name: why_use_sapphire
+        label: Why Use Sapphire(Sapphire ONLY)
+        widget: list
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}      
+         - {label: "video inline url", name: "video_inline_url", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}            
+         - {label: "image url", name: "image_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}            
+      - name: sections
+        label: Sections
+        widget: list
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}
+         - name: items
+           label: items
+           widget: list
+           required: false  
+           fields:    
+            - {label: "title", name: "title", widget: "string", required: false}
+            - {label: "content", name: "content", widget: "markdown", required: false}
+            - {label: "vid autoplay", name: "vid_autoplay", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}
+            - {label: "video url", name: "video_url", widget: "string", required: false, hint: "Youtube Video URL - Example: https://youtu.be/hUe4vrEuKHA"}
+            - {label: "video id", name: "video_id", widget: "string", required: false, hint: "Youtube Video ID - Example: CZQREjLokgY"}
+            - {label: "image url", name: "image_url", widget: "string", required: false, hint: "Image - ex. https://borisfx-com-res.cloudinary.com/image/upload/q_auto,f_auto/v1628680021/products/Mad_Scientist_03.png"}
+            - {label: "single image url", name: "single_image_url", widget: "string", required: false, hint: "Image - ex. https://borisfx-com-res.cloudinary.com/image/upload/q_auto,f_auto/v1628680021/products/Mad_Scientist_03.png"}
+            - {label: "video inline url", name: "video_inline_url", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}
+            - {label: "thumbnail url", name: "thumbnail_url", widget: "string", required: false, hint: "Thumbnail for popup videos - either cloudinary or youtube image"}
+      - name: specs
+        label: Specs
+        widget: object
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}        
+         - {label: "type", name: "type", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}
+      - name: versions
+        label: Versions
+        widget: object
+        required: false
+        fields:
+         - {label: "background", name: "background", widget: "string", required: false}
+         - {label: "title", name: "title", widget: "string", required: false }
+         - {label: "content", name: "content", widget: "markdown", required: false }        
+         - {label: "image url", name: "image_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"} 
+         
+  - name: themedev
+    label: themedev
+    folder: "content/themedev"
+    slug: "{{slug}}"
+    create: true
+    format: json-frontmatter
+    preview_path: themedev/{{slug}}
+    widget: object
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: buy_now_url
+        label: Buy Now URL
+        widget: string
+      - name: carousel
+        label: Carousel
+        widget: list
+        required: false        
+        fields:
+         - {label: "Color", name: "color", widget: "string", required: false, hint: "Text color"}
+         - {label: "Title", name: "title", widget: "string", required: false, hint: "First text block"}
+         - {label: "Content", name: "content", widget: "string", required: false, hint: "Second text block with button"}         
+         - {label: "video url", name: "video_url", widget: "string", required: false, hint: "MP4 Video - ex. https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1624038417/Marketing/Sapphire_ReDesign/SapphireCarousel2.mp4"}         
+         - {label: "image url", name: "image_url", widget: "string", required: false, hint: "Image - ex. https://borisfx-com-res.cloudinary.com/image/upload/q_auto,f_auto/v1628680021/products/Mad_Scientist_03.png"}         
+      - name: overview
+        label: Overview
+        widget: object
+        required: false        
+        fields:
+         - {label: "Content", name: "content", widget: "markdown", required: false}
+         - {label: "Content", name: "content_block_a", widget: "markdown", required: false}
+         - {label: "Title", name: "title", widget: "string", required: false}
+         - {label: "video id", name: "video_id", widget: "string", required: false, hint: "Youtube Video ID - Example: CZQREjLokgY"}
+         - {label: "thumbnail url", name: "thumbnail_url", widget: "image", required: false, hint: "For video thumbnails with a play button drawn over, can be cloudinary or youtube links."}
+         - {label: "thumbnail url with no play button", name: "thumbnail_url_noplay", widget: "image", required: false, hint: "For video thumbnails which do not require the play button to be drawn over the image"}
+         - {label: "video url", name: "video_url", widget: "string", required: false, hint: "Youtube Video URL - Example: https://youtu.be/hUe4vrEuKHA"}    
+         - {label: "video inline url", name: "video_inline_url", widget: "image", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}    
+         - {label: "inline thumbnail url noplay", name: "inline_thumbnail_url_noplay", widget: "image", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}    
+      - name: whats_new
+        label: What's New
+        widget: list
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}
+         - {label: "video id", name: "video_id", widget: "string", required: false, hint: "Youtube Video ID - Example: CZQREjLokgY"}
+         - {label: "thumbnail url", name: "thumbnail_url", widget: "image", required: false, hint: "For video thumbnails with a play button drawn over, can be cloudinary or youtube links."}
+         - {label: "video url", name: "video_url", widget: "string", required: false, hint: "Youtube Video URL - Example: https://youtu.be/hUe4vrEuKHA"}            
+         - {label: "video inline url", name: "video_inline_url", widget: "image", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}            
+         - {label: "image url", name: "image_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}
+      - name: whats_new_pi
+        label: What's New PI
+        widget: object
+        required: false
+        fields:
+         - {label: "title whats new one", name: "title_whats_new_one", widget: "string", required: false}
+         - {label: "content 1 whats new one", name: "content_1_whats_new_one", widget: "string", required: false}
+         - {label: "content 2 whats new one", name: "content_2_whats_new_one", widget: "string", required: false}
+         - {label: "content 2 video id", name: "content_2_video_id", widget: "string", required: false, hint: "YT Video ID"}
+         - {label: "content 2 video_url", name: "content_2_video_url", widget: "string", required: false, hint: "Youtube Video URL - Example: https://youtu.be/hUe4vrEuKHA"}            
+         - {label: "content 2 video thumbnail", name: "content_2_video_thumbnail", widget: "image", required: false}            
+         - {label: "title whats new two", name: "title_whats_new_two", widget: "string", required: false}     
+         - {label: "content 1 whats new two", name: "content_1_whats_new_two", widget: "markdown", required: false}     
+         - {label: "content 2 whats new two", name: "content_2_whats_new_two", widget: "markdown", required: false}     
+         - {label: "content 2 whats new mp4", name: "content_2_whats_new_mp4", widget: "image", required: false}     
+         - {label: "content 2 whats new thumbnail", name: "content_2_whats_new_thumbnail", widget: "image", required: false}        
+      - name: features_pi
+        label: Features PI
+        widget: object
+        required: false
+        fields:
+         - {label: "title block a", name: "title_block_a", widget: "string", required: false}
+         - {label: "content block a", name: "content_block_a", widget: "markdown", required: false}
+         - {label: "mp4 block a", name: "mp4_block_a", widget: "image", required: false}
+         - {label: "title block b", name: "title_block_b", widget: "string", required: false}
+         - {label: "content block b", name: "content_block_b", widget: "markdown", required: false}
+         - {label: "mp4 block b", name: "mp4_block_b", widget: "image", required: false}
+         - {label: "content expanded block b", name: "content_expanded_block_b", widget: "markdown", required: false}            
+         - {label: "title block c", name: "title_block_c", widget: "string", required: false}            
+         - {label: "content block c", name: "content_block_c", widget: "string", required: false}     
+         - {label: "mp4 block c", name: "mp4_block_c", widget: "image", required: false}     
+         - {label: "content expanded block c", name: "content_expanded_block_c", widget: "markdown", required: false}     
+         - {label: "title block d", name: "title_block_d", widget: "string", required: false}     
+         - {label: "content block d", name: "content_block_d", widget: "markdown", required: false}     
+         - {label: "mp4 block d", name: "mp4_block_d", widget: "image", required: false}     
+         - {label: "content expanded block d", name: "content_expanded_block_d", widget: "markdown", required: false}     
+         - {label: "title block e", name: "title_block_e", widget: "string", required: false}     
+         - {label: "content block e", name: "content_block_e", widget: "markdown", required: false}     
+         - {label: "mp4 block e", name: "mp4_block_e", widget: "image", required: false}     
+         - {label: "title block f", name: "title_block_f", widget: "string", required: false}     
+         - {label: "content block f", name: "content_block_f", widget: "markdown", required: false}     
+         - {label: "mp4 block f", name: "mp4_block_f", widget: "image", required: false}     
+      - name: why_use_sapphire
+        label: Why Use Sapphire(Sapphire ONLY)
+        widget: list
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}      
+         - {label: "video inline url", name: "video_inline_url", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}            
+         - {label: "image url", name: "image_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}            
+         - {label: "background color", name: "background_color", widget: "string", required: false, "hint": "Hex or RGB"}              
+      - name: whats_new_intro
+        label: Whats New Intro(Sapphire ONLY)
+        widget: list
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}      
+         - {label: "video inline url", name: "video_inline_url", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}            
+         - {label: "image url", name: "image_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}                     
+         - {label: "thumbnail url", name: "thumbnail_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}                     
+         - {label: "video id", name: "video_id", widget: "string", required: false, "hint": "Youtube video ID"}                 
+         - {label: "video url", name: "video_url", widget: "string", required: false, "hint": "Youtube video url"}                 
+         - {label: "background color", name: "background_color", widget: "string", required: false, "hint": "Hex or RGB"}                 
+      - name: whats_new_prism
+        label: Whats New Prism(Sapphire ONLY)
+        widget: list
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}      
+         - {label: "video inline url", name: "video_inline_url", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}            
+         - {label: "image url", name: "image_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}                     
+         - {label: "video id", name: "video_id", widget: "string", required: false, "hint": "Youtube video ID"}                     
+         - {label: "video url", name: "video_url", widget: "string", required: false, "hint": "Youtube video url"}                     
+         - {label: "thumbnail url", name: "thumbnail_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}   
+         - {label: "background color", name: "background_color", widget: "string", required: false, "hint": "Hex or RGB"}              
+      - name: sections
+        label: Sections
+        widget: list
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}
+         - name: items
+           label: items
+           widget: list
+           required: false  
+           fields:    
+            - {label: "title", name: "title", widget: "string", required: false}
+            - {label: "content", name: "content", widget: "markdown", required: false}
+            - {label: "vid autoplay", name: "vid_autoplay", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}
+            - {label: "video url", name: "video_url", widget: "string", required: false, hint: "Youtube Video URL - Example: https://youtu.be/hUe4vrEuKHA \n\nCan also be a URL: /videos/how-to-install-bcc-looks-for-fcp/"}
+            - {label: "video id", name: "video_id", widget: "string", required: false, hint: "Youtube Video ID - Example: CZQREjLokgY"}
+            - {label: "image url", name: "image_url", widget: "string", required: false, hint: "Image - ex. https://borisfx-com-res.cloudinary.com/image/upload/q_auto,f_auto/v1628680021/products/Mad_Scientist_03.png"}
+            - {label: "single image url", name: "single_image_url", widget: "string", required: false, hint: "Image - ex. https://borisfx-com-res.cloudinary.com/image/upload/q_auto,f_auto/v1628680021/products/Mad_Scientist_03.png"}
+            - {label: "video inline url", name: "video_inline_url", widget: "string", required: false, hint: "MP4 files - https://borisfx-com-res.cloudinary.com/video/upload/q_auto/v1652733766/Marketing/Sapphire%202022.5/Walk_into_the_Light.mp4"}
+            - {label: "thumbnail url", name: "thumbnail_url", widget: "string", required: false, hint: "Thumbnail for popup videos - either cloudinary or youtube image"}
+      - name: specs
+        label: Specs
+        widget: object
+        required: false
+        fields:
+         - {label: "title", name: "title", widget: "string", required: false}        
+         - {label: "type", name: "type", widget: "string", required: false}
+         - {label: "content", name: "content", widget: "markdown", required: false}
+      - name: versions
+        label: Versions
+        widget: object
+        required: false
+        fields:
+         - {label: "background", name: "background", widget: "string", required: false}
+         - {label: "title", name: "title", widget: "string", required: false }
+         - {label: "content", name: "content", widget: "markdown", required: false }        
+         - {label: "image url", name: "image_url", widget: "string", required: false, "hint": "Cloudinary image URL - for single images next to content"}        
+
+  - name: company
+    label: Company
+    folder: "content/company"
+    slug: "{{slug}}"
+    create: true
+    format: json-frontmatter
+    preview_path: company/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: body
+        label: Body
+        widget: markdown 
+        
+  - name: livestream
+    label: Livestream
+    folder: "content/livestream"
+    slug: "{{slug}}"
+    create: true
+    format: json-frontmatter
+    preview_path: livestream/{{slug}}
+    widget: object
+    fields:
+      - name: values
+        label: Values
+        widget: object
+        fields:
+         - {label: "livestream title", name: "livestream_title", widget: "string"}
+         - {label: "content", name: "content", widget: "markdown"}
+         - {label: "table", name: "table", widget: "markdown"}
+         
+  - name: customer-stories
+    label: Customer Stories
+    folder: "content/customer-stories"
+    format: json-frontmatter    
+    slug: "{{slug}}"
+    create: true
+    preview_path: customer-stories/{{slug}}    
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: image_url
+        label: Image
+        widget: image
+      - name: body
+        label: Body
+        widget: markdown
+
+  - name: events
+    label: Events
+    format: json-frontmatter
+    folder: "content/events"
+    slug: "{{slug}}"
+    create: true
+    preview_path: events/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: image_url
+        label: Image
+        widget: image
+      - name: body
+        label: Body
+        widget: markdown
+
+  - name: faq
+    label: FAQ
+    folder: "content/faq"
+    format: json-frontmatter
+    slug: "{{slug}}"
+    create: true
+    preview_path: faq/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: image_url
+        label: Image
+        widget: image
+      - name: body
+        label: Body
+        widget: markdown
+
+  - name: news
+    label: News
+    folder: "content/news"
+    format: json-frontmatter
+    slug: "{{slug}}"
+    create: true
+    preview_path: news/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text         
+      - name: adjust_title
+        label: Adjust Title
+        widget: boolean 
+        default: false    
+      - name: blurb
+        label: Blurb
+        widget: text       
+      - name: excerpt
+        label: Excerpt
+        widget: text      
+      - name: artist
+        label: Artist
+        widget: text
+      - name: image_url
+        label: Image
+        widget: image
+      - name: body
+        label: Body
+        widget: markdown    
+
+  - name: press-releases
+    label: Press Releases
+    format: json-frontmatter
+    folder: "content/press-releases"
+    slug: "{{slug}}"
+    create: true
+    preview_path: press-releases/{{slug}}        
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text         
+      - name: adjust_title
+        label: Adjust Title
+        widget: boolean 
+        default: false    
+      - name: blurb
+        label: Blurb
+        widget: text       
+      - name: excerpt
+        label: Excerpt
+        widget: text      
+      - name: artist
+        label: Artist
+        widget: text
+      - name: image_url
+        label: Image
+        widget: image
+      - name: body
+        label: Body
+        widget: markdown
+
+  - name: reviews
+    label: Reviews
+    format: json-frontmatter
+    folder: "content/reviews"
+    slug: "{{slug}}"
+    create: true
+    preview_path: reviews/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: image_url
+        label: Image
+        widget: image
+      - name: body
+        label: Body
+        widget: markdown
+        
+  - name: release-notes
+    label: Release Notes
+    format: json-frontmatter
+    folder: "content/release-notes"
+    slug: "{{slug}}"
+    create: true
+    preview_path: release-notes/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: excerpt
+        label: Excerpt
+        widget: string
+        required: false           
+      - name: image_url
+        label: Image
+        widget: image
+        required: false        
+      - name: body
+        label: Body
+        widget: markdown
+
+
+  - name: videos
+    label: Videos
+    format: json-frontmatter
+    folder: "content/videos"
+    slug: "{{slug}}"
+    create: true
+    preview_path: videos/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime      
+      - name: PublishDate
+        label: PublishDate
+        required: false 
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: video_url
+        label: Video URL
+        widget: string     
+      - name: video_id
+        label: Video ID
+        widget: string      
+      - name: thumbnail_url
+        label: Thumbnail URL
+        widget: string
+      - name: tagging
+        label: Tagging
+        widget: object
+        fields:
+        - name: product
+          label: product
+          widget: select
+          multiple: true
+          required: false 
+          options:
+            - { label: "Boris FX Suite", value: "Boris FX Suite" }
+            - { label: "Continuum", value: "Continuum" }
+            - { label: "Mocha AE", value: "Mocha AE" }
+            - { label: "Mocha Pro", value: "Mocha Pro" }
+            - { label: "Optics", value: "Optics" }
+            - { label: "Other Products", value: "Other Products" }
+            - { label: "Particle Illusion", value: "Particle Illusion" }
+            - { label: "Sapphire", value: "Sapphire" }
+            - { label: "Silhoutte", value: "Silhouette" }
+            - { label: "Title Studio", value: "Title Studio" }        
+        - name: series
+          label: series
+          widget: select
+          multiple: true
+          required: false 
+          options:
+            - { label: "Creating Trendy 8o's Graphics", value: "Creating Trendy 8o's Graphics" }
+            - { label: "Getting Started", value: "Getting Started" }
+            - { label: "Live Replays", value: "Live Replays" }
+            - { label: "Mastering Continuum", value: "Mastering Continuum" }
+            - { label: "Mocha Essentials", value: "Mocha Essentials" }
+            - { label: "Pro Series", value: "Pro Series" }
+            - { label: "Quick Tips", value: "Quick Tips" }
+            - { label: "What's New", value: "What's New" }        
+        - name: feature
+          label: feature
+          widget: select
+          required: false 
+          multiple: true
+          options:
+            - { label: "360 / VR", value: "360 / VR" }
+            - { label: "3D Objects Unit", value: "3D Objects Unit" }
+            - { label: "Adjust Unit", value: "Adjust Unit" }
+            - { label: "AdjustTrack Module", value: "AdjustTrack Module" }
+            - { label: "Art Looks Unit", value: "Art Looks Unit" }
+            - { label: "BCC Lite", value: "BCC Lite" }
+            - { label: "Beat Reactor", value: "Beat Reactor" }
+            - { label: "Beauty / Beauty Studio", value: "Beauty / Beauty Studio" }
+            - { label: "Builder", value: "Builder" }
+            - { label: "Camera Solve Module", value: "Camera Solve Module" }
+            - { label: "Color and Tone Unit", value: "Color and Tone Unit" }
+            - { label: "Distort Unit", value: "Distort Unit" }
+            - { label: "FX Browser", value: "FX Browser" }
+            - { label: "Film Style Unit", value: "Film Style Unit" }
+            - { label: "Image Restoration Unit", value: "Image Restoration Unit" }
+            - { label: "Insert Module", value: "Insert Module" }
+            - { label: "Key and Blend Unit", value: "Key and Blend Unit" }
+            - { label: "Keyboard Shortcuts", value: "Keyboard Shortcuts" }
+            - { label: "Keying and Blend Unit", value: "Keying and Blend Unit" }
+            - { label: "Lens Flare", value: "Lens Flare" }
+            - { label: "Lens Module", value: "Lens Module" }
+            - { label: "Licensing", value: "Licensing" }
+            - { label: "Lights / Lighting Unit", value: "Lights / Lighting Unit" }
+            - { label: "Match Move Unit", value: "Match Move Unit" }
+            - { label: "Mega Plate Module", value: "Mega Plate Module" }
+            - { label: "Mocha Tracking", value: "Mocha Tracking" }
+            - { label: "Mocha in Sapphire/Continuum", value: "Mocha in Sapphire/Continuum" }
+            - { label: "Morph / Warp", value: "Morph / Warp" }
+            - { label: "Paint", value: "Paint" }
+            - { label: "Particle Illusion", value: "Particle Illusion" }
+            - { label: "Particles Unit", value: "Particles Unit" }
+            - { label: "Perspective Unit", value: "Perspective Unit" }
+            - { label: "PixelChooser", value: "PixelChooser" }
+            - { label: "PowerMesh", value: "PowerMesh" }
+            - { label: "Primatte", value: "Primatte" }
+            - { label: "Python Scripting", value: "Python Scripting" }
+            - { label: "Remove Module", value: "Remove Module" }
+            - { label: "Render Unit", value: "Render Unit" }
+            - { label: "Retouching", value: "Retouching" }
+            - { label: "Roto and Masking", value: "Roto and Masking" }
+            - { label: "Stabilize Module", value: "Stabilize Module" }
+            - { label: "Stereo 3D", value: "Stereo 3D" }
+            - { label: "Stylize Unit", value: "Stylize Unit" }
+            - { label: "Time Unit", value: "Time Unit" }
+            - { label: "Transitions Unit", value: "Transitions Unit" }        
+        - name: host
+          label: host
+          widget: select
+          required: false 
+          multiple: true
+          options:
+            - { label: "Adobe After Effects", value: "Adobe After Effects" }
+            - { label: "Adobe Photoshop/Lightroom", value: "Adobe Photoshop/Lightroom" }
+            - { label: "Adobe Premiere Pro", value: "Adobe Premiere Pro" }
+            - { label: "After Effects", value: "After Effects" }
+            - { label: "All", value: "All" }
+            - { label: "Any Host", value: "Any Host" }
+            - { label: "Apple FCPX / Motion", value: "Apple FCPX / Motion" }
+            - { label: "Avid Media Composer", value: "Avid Media Composer" }
+            - { label: "Blackmagic DaVinci Resolve", value: "Blackmagic DaVinci Resolve" }
+            - { label: "Blackmagic Fusion", value: "Blackmagic Fusion" }
+            - { label: "Corel Studio Pro", value: "Corel Studio Pro" }
+            - { label: "Foundry Nuke", value: "Foundry Nuke" }
+            - { label: "HitFilm", value: "HitFilm" }
+            - { label: "Other Hosts", value: "Other Hosts" }
+            - { label: "VEGAS Pro", value: "VEGAS Pro" }            
+        - name: Language
+          label: language
+          widget: select
+          required: false 
+          multiple: true
+          options:
+            - { label: "English", value: "English" }
+            - { label: "French", value: "French" }
+            - { label: "German", value: "German" }
+            - { label: "Japanese", value: "Japanese" }
+            - { label: "Korean", value: "Korean" }
+            - { label: "Spanish", value: "Spanish" }
+      - name: body
+        label: Body
+        widget: markdown
+        
+  - name: store
+    label: Store
+    format: json-frontmatter
+    folder: "content/store"
+    slug: "{{slug}}"
+    create: true
+    preview_path: store/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text
+      - name: excerpt
+        label: Excerpt
+        widget: string
+        required: false          
+      - name: image_url
+        label: Image
+        widget: image
+        required: false          
+      - name: body
+        label: Body
+        widget: markdown  
+
+  - name: training
+    label: Training
+    format: json-frontmatter
+    folder: "content/training"
+    slug: "{{slug}}"
+    create: true
+    preview_path: training/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: description
+        label: Description
+        widget: text          
+      - name: body
+        label: Body
+        widget: markdown  
+        
+  - name: documentation
+    label: Documentation
+    format: json-frontmatter
+    folder: "content/documentation/continuum"
+    slug: "{{slug}}"
+    create: true
+    preview_path: documentation/continuum/{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+        required: false 
+      - name: category
+        label: Category
+        widget: string
+      - name: link
+        label: Link
+        widget: string        
+      - name: body
+        label: Body
+        widget: markdown
+        required: false  
+  - name: home
+    label: Home
+    format: json-frontmatter
+    folder: "content/"
+    slug: "{{slug}}"
+    create: true
+    preview_path: /{{slug}}
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+        required: false 
+      - name: category
+        label: Category
+        widget: string
+      - name: link
+        label: Link
+        widget: string        
+      - name: body
+        label: Body
+        widget: markdown
+        required: false

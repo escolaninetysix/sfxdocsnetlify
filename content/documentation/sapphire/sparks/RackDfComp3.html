@@ -1,0 +1,654 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: RackDfComp3",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/RackDfComp3.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="RackDfComp3">
+     <h2>
+      RackDfComp3
+     </h2>
+    </a>
+    Composites the Foreground, Middle, and Background
+  while defocusing each layer by different amounts.  The Foreground
+  alpha channel is used as the matte.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Front:
+      </b>
+      The clip to use as foreground.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Back:
+      </b>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      Specifies the opacities of the Front clip.  Only the
+  red channel of this input is used.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Middle:
+      </b>
+      The clip to composite between the Foreground and Background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       MidMatte:
+      </b>
+      The alpha channel of this input specifies the opacities of the Middle
+  input.  This input can be affected by the Invert Mattes parameter.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/RackDfComp3.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus Front:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount to defocus the Foreground and its Matte.  This parameter can be adjusted using the Fg Defocus Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus Middle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount to defocus the Middle and its Matte.  This parameter can be adjusted using the Mid Defocus Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Defocus Back:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount to defocus the Background.  This parameter can be adjusted using the Bg Defocus Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative height of the iris shape.  If it
+  is not 1, circles become ellipses, etc.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Values above 1 cause highlights in the source clip to
+  keep their brightness after the defocus is applied.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Matte Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The gamma value to use for the defocus of the Matte.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shape:
+   </b>
+   <i>
+    Popup menu,  Default: Circle
+   </i>
+   .
+   <br/>
+   Determines the shape of the simulated camera iris.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Circle:
+      </i>
+     </b>
+     round.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        3 sides:
+       </i>
+      </b>
+      triangle.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         4 sides:
+        </i>
+       </b>
+       square.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          5 sides:
+         </i>
+        </b>
+        pentagon.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           6 sides:
+          </i>
+         </b>
+         hexagon.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            7 sides:
+           </i>
+          </b>
+          etc.
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Roundness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Modifies the shape of the simulated camera iris.  A
+  value of 1 produces a circle; 0 gives a flat-sided polygon with a
+  number of sides given by the Shape parameter.  Less than 0 causes
+  the sides to squeeze inward giving a star shape, while a value greater
+  than 1 causes the corners to squeeze inward, giving a flowery
+  shape. Has no effect if the Shape is set to Circle.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the iris shape.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bokeh:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Softens the outer edge of the iris shape, which gives a
+  softer look to the defocused highlights. A negative value darkens
+  the center of the iris shape, producing a ring-like defocus shape.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Boost Highlights:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount to increase the luma of the highlights in the source clip.
+  Increase this parameter to blow out the highlights without affecting the darks or mid-tones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hilite Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.9,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The minimum luma value for highlights. Pixels brighter than this will be brightened according to the Boost Highlights parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Comp Premult:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Enable this for a better composite if the
+  Foreground pixel values have been pre-multiplied by the Matte pixel
+  values.  This is also known as an 'additive' composite.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mattes:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the matte
+are inverted before use.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Edge Mode:
+   </b>
+   <i>
+    Popup menu,  Default: REFLECT
+   </i>
+   .
+   <br/>
+   Determines the behavior when accessing areas outside the source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       BLACK:
+      </i>
+     </b>
+     Areas outside the source image are treated as black, which can produce
+                     dark areas around the edges of the image.
+             Select this for fastest rendering.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        REPEAT:
+       </i>
+      </b>
+      Repeats the last pixel outside the border of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         REFLECT:
+        </i>
+       </b>
+       Reflects the image outside the border.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lens Noise:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to add noise to the iris shape, dirtying up the defocus a little.  Can make the result more realistic.  Turn up past 1 for a more stylistic result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   40,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The frequency of the added noise.  Ignored if Lens Noise is zero.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Freq Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The relative horizontal frequency of the
+  added iris noise.  Increase to stretch it vertically or decrease to
+  stretch it horizontally.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Noise Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The seed value for the added noise.  To make the noise
+  appear different on each frame, animate this to be different on each
+  frame.  The actual value doesn't matter; only that it's different.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../rackdefocus">
+       RackDefocus
+      </a>
+      <br/>
+      <a href="../defocusprism">
+       DefocusPrism
+      </a>
+      <br/>
+      <a href="../blur">
+       Blur
+      </a>
+      <br/>
+      <a href="../convolve">
+       Convolve
+      </a>
+      <br/>
+      <a href="../convolvecomp">
+       ConvolveComp
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

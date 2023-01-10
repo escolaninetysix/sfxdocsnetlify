@@ -1,0 +1,20 @@
+var pairs =
+{
+"correspondence":{"lines":1,"points":1,"point":1}
+,"sets":{"number":1,"correspondence":1,"size":1,"default":1}
+,"number":{"phantom":1}
+,"phantom":{"lines":1}
+,"lines":{"correspondence":1,"color":1}
+,"points":{"useful":1,"color":1}
+,"useful":{"visualizing":1}
+,"visualizing":{"various":1}
+,"various":{"parts":1}
+,"parts":{"shapes":1}
+,"shapes":{"warping":1}
+,"point":{"color":1,"size":1}
+,"size":{"correspondence":1}
+,"default":{"target":1,"color":1}
+,"target":{"color":1,"shapes":1}
+,"color":{"target":1}
+}
+;Search.control.loadWordPairs(pairs);

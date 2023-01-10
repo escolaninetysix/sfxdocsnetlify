@@ -1,0 +1,12 @@
+{
+  "date": "2014-07-01T18:40:00-04:00",
+  "tags": [
+    "Mocha Pro",
+    "Support FAQ"
+  ],
+  "title": "Why is my track slipping?",
+  "description": "",
+  "excerpt": "",
+  "image_url": ""
+}
+It may be because you do not notice an occlusion that Mocha DOES see; moving objects or people that slowly move in front of the area you are trying to track need to be avoided. Also look out for obvious or even “barely there,” consistently moving reflections or shadows; Mocha will notice them even if you don’t! But it could also be that you are not tracking enough or the right area of an object. When tracking surfaces you will usually get a much better track if you include the edges and not just the interior of an object. This is because Mocha can define the difference between the background and the foreground and lock on better. You also may need to make your shape larger or track a better area of texture. Remember, Mocha is a texture tracker. So if there is no pattern, Mocha doesn’t know what to track. Finally, make sure your layer order isn’t occluding tracks you are trying to make. When you track a layer, the mattes of any active layers above the layer itself are subtracted from the matte of the layer and hence influence the area being tracked. To keep your tracking predictable, it is recommended that you keep your tracking layers on the top of the stack unless you specifically wish to use other layers to subtract from the tracking area of layers beneath it. To monitor what the tracker “sees” as a tracking area, select the Track Matte button in the view control. With this layer order, as long as your track objects from the foreground to the background, you will always have holdouts for the tracks behind them.

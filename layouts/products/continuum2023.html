@@ -1,0 +1,2727 @@
+{{ define "content" }} 
+<script>
+var videos = [
+  {{ range (.Site.GetPage "section" "effect-examples").Pages }}
+
+  {{ if or (not (isset $.Params "unit")) (eq .Params.unit $.Params.unit) }}
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "{{ .Title }}",
+    "url": "{{ .Permalink }}",
+    "thumbnail_url": "{{ .Params.thumbnail_url }}",
+    "video_id": "{{ .Params.video_id }}",
+    "poster": "{{ .Params.poster }}",
+    "tagging": {
+      {{ if isset .Params "unit" }}
+      "unit": {{ .Params.unit }},
+      {{ end }}
+      {{ if isset .Params "effect" }}
+      "effect": {{ .Params.effect }},
+      {{ end }}
+	  
+    },
+    "content": "{{ .Content | plainify }}",
+  },
+  {{ end }}
+
+  {{ end }}
+];
+</script>
+<style>
+.textContainer { position:relative; }
+.video { filter: brightness(75%); }
+.textContainer video {
+    position:relative;
+    z-index:0;
+}
+.txtOVERLAY1 {
+    position:absolute;
+    top:70%;
+    left:0;
+		width:100%;
+		text-align:center;
+    /* z-index:1; */
+	
+}
+.txtOVERLAYTitle {
+    position:absolute;
+    top:40%;
+    left:0;
+    text-align:center;
+    width:100%;
+    z-index:1;
+}
+
+/* sm */
+@media (min-width: 768px) {
+    img#price {
+        width: 150px;
+    }
+}
+</style>
+  <meta content="The best plugins for Final Cut Pro users including color correction, transitions, titles, Award-winning Mocha Pro tracking & masking tools, and more!" name="description">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400,600&amp;display=swap" rel="stylesheet" type="text/css">
+  <style>
+   .bee-row,
+		.bee-row-content {
+			position: relative
+		}
+
+		.bee-row-1,
+		.bee-row-10,
+		.bee-row-11,
+		.bee-row-12,
+		.bee-row-13,
+		.bee-row-14,
+		.bee-row-15,
+		.bee-row-16,
+		.bee-row-17
+		.bee-row-2,
+		.bee-row-3,
+		.bee-row-4,
+		.bee-row-5,
+		.bee-row-6,
+		.bee-row-7,
+		.bee-row-8,
+		.bee-row-9 {
+			background-repeat: no-repeat
+		}
+
+		.bee-button .content {
+			text-align: center
+		}
+
+		body {
+			background-color: #0c1116;
+			color: #000;
+
+		}
+
+		a {
+			color: #0068a5
+		}
+
+		* {
+			box-sizing: border-box
+		}
+
+		body,
+		p {
+			margin: 0
+		}
+
+		.bee-row-content {
+			max-width: 1140px;
+			margin: 0 auto;
+			display: flex
+		}
+
+		.bee-row-content .bee-col-w1 {
+			flex-basis: 8%
+		}
+
+		.bee-row-content .bee-col-w2 {
+			flex-basis: 17%
+		}
+
+		.bee-row-content .bee-col-w4 {
+			flex-basis: 33%
+		}
+
+		.bee-row-content .bee-col-w5 {
+			flex-basis: 42%
+		}
+
+		.bee-row-content .bee-col-w6 {
+			flex-basis: 50%
+		}
+
+		.bee-row-content .bee-col-w7 {
+			flex-basis: 58%
+		}
+
+		.bee-row-content .bee-col-w8 {
+			flex-basis: 67%
+		}
+
+		.bee-row-content .bee-col-w10 {
+			flex-basis: 83%
+		}
+
+		.bee-row-content .bee-col-w12 {
+			flex-basis: 100%
+		}
+
+		.bee-button a {
+			text-decoration: none
+		}
+
+
+		.bee-image .bee-center {
+			margin: 0 auto
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-1,
+		.bee-row-1 .bee-col-2 .bee-block-2,
+		.bee-row-14 .bee-col-1 .bee-block-2,
+		.bee-row-3 .bee-col-1 .bee-block-1,
+		.bee-row-5 .bee-col-1 .bee-block-2,
+		.bee-row-5 .bee-col-3 .bee-block-2 {
+			width: 100%
+		}
+
+		.bee-image img {
+			display: block;
+			width: 100%
+		}
+
+		.bee-text {
+			overflow-wrap: anywhere
+		}
+		.desktop_hide {
+			display: none
+		}
+		
+		@media (min-width: 769px) {
+		.bee-row-10,
+		.bee-row-11,
+		.bee-row-7, 
+		.bee-row-8 {
+			background-color:#444648 !important;
+		}
+       }
+		
+		@media (max-width:768px) {
+			.desktop_hide {
+				display: block !important
+			}
+
+			.mobile_hide {
+				display: none
+			}
+
+			.bee-row-content:not(.no_stack) {
+				display: block
+			}
+		.bee-row-10,
+		.bee-row-11,
+		.bee-row-7, 
+		.bee-row-8 {
+			background-color: #000 !important;
+		 }
+		}
+		
+		
+		.bee-row-1 .bee-row-content,
+		.bee-row-10 .bee-row-content,
+		.bee-row-11 .bee-row-content,
+		.bee-row-12 .bee-row-content,
+		.bee-row-13 .bee-row-content,
+		.bee-row-14 .bee-row-content,
+		.bee-row-15 .bee-row-content,
+		.bee-row-16 .bee-row-content,
+		.bee-row-17 .bee-row-content,
+		.bee-row-2 .bee-row-content,
+		.bee-row-3 .bee-row-content,
+		.bee-row-4 .bee-row-content,
+		.bee-row-5 .bee-row-content,
+		.bee-row-6 .bee-row-content,
+		.bee-row-7 .bee-row-content,
+		.bee-row-8 .bee-row-content,
+		.bee-row-9 .bee-row-content {
+			background-repeat: no-repeat;
+			color: #000
+		}
+
+		.bee-row-1 .bee-col-1 {
+			padding-bottom: 5px;
+			padding-left: 5px;
+			padding-top: 35px
+		}
+
+		.bee-row-1 .bee-col-2,
+		.bee-row-10 .bee-col-2,
+		.bee-row-12 .bee-col-2,
+		.bee-row-13 .bee-col-1,
+		.bee-row-14 .bee-col-1,
+		.bee-row-15 .bee-col-1,
+		.bee-row-16 .bee-col-1,
+		.bee-row-17 .bee-col-1,
+		.bee-row-1 .bee-col-1,
+		.bee-row-2 .bee-col-1,
+		.bee-row-4 .bee-col-1,
+		.bee-row-5 .bee-col-1,
+		.bee-row-5 .bee-col-2,
+		.bee-row-5 .bee-col-3,
+		.bee-row-6 .bee-col-1,
+		.bee-row-8 .bee-col-2 {
+			padding-bottom: 5px;
+			padding-top: 5px
+		}
+
+		.bee-row-2 .bee-col-1 .bee-block-1,
+		.bee-row-4 .bee-col-1 .bee-block-1 {
+			padding: 20px
+		}
+
+		.bee-row-3 {
+			background-color: #464646
+		}
+
+		.bee-row-3 .bee-col-1 {
+			padding-bottom: 5px;
+			padding-left: 5px;
+			padding-top: 30px
+		}
+
+		.bee-row-10 .bee-col-1,
+		.bee-row-12 .bee-col-1,
+		.bee-row-3 .bee-col-2,
+		.bee-row-8 .bee-col-1 {
+			padding-bottom: 5px;
+			padding-left: 10px;
+			padding-top: 5px
+		}
+
+		.bee-row-3 .bee-col-2 .bee-block-1 {
+			padding: 20px 20px 10px
+		}
+
+		.bee-row-3 .bee-col-2 .bee-block-2 {
+			padding-left: 20px;
+			padding-top: 5px
+		}
+
+		.bee-row-13,
+		.bee-row-4 {
+			background-color: #fff
+		}
+
+		.bee-row-5,
+		.bee-row-6 {
+			background-color: #1f1f1f
+		}
+
+		.bee-row-5 .bee-col-2 .bee-block-2 {
+			padding: 10px;
+			width: 100%
+		}
+
+		.bee-row-6 .bee-col-1 .bee-block-1 {
+			padding: 10px 20px
+		}
+
+		.bee-row-14 .bee-col-1 .bee-block-1,
+		.bee-row-14 .bee-col-1 .bee-block-3,
+		.bee-row-6 .bee-col-1 .bee-block-2 {
+			padding: 10px
+		}
+
+		.bee-row-11 .bee-col-1,
+		.bee-row-11 .bee-col-2,
+		.bee-row-7 .bee-col-1,
+		.bee-row-7 .bee-col-2,
+		.bee-row-9 .bee-col-1,
+		.bee-row-9 .bee-col-2 {
+			padding-bottom: 10px
+		}
+
+		.bee-row-11 .bee-col-1 .bee-block-2,
+		.bee-row-11 .bee-col-1 .bee-block-3,
+		.bee-row-11 .bee-col-1 .bee-block-4,
+		.bee-row-7 .bee-col-1 .bee-block-2,
+		.bee-row-7 .bee-col-1 .bee-block-3,
+		.bee-row-7 .bee-col-1 .bee-block-4,
+		.bee-row-9 .bee-col-1 .bee-block-2,
+		.bee-row-9 .bee-col-1 .bee-block-4,
+		.bee-row-9 .bee-col-1 .bee-block-5 {
+			padding-bottom: 10px;
+			padding-left: 5px;
+			padding-top: 5px;
+			width: 100%
+		}
+
+		.bee-row-7 .bee-col-1 .bee-block-5,
+		.bee-row-9 .bee-col-1 .bee-block-3 {
+			padding-bottom: 5px;
+			padding-left: 5px;
+			padding-top: 5px;
+			width: 100%
+		}
+
+		.bee-row-10 .bee-col-2 .bee-block-2,
+		.bee-row-11 .bee-col-2 .bee-block-2,
+		.bee-row-12 .bee-col-2 .bee-block-2,
+		.bee-row-7 .bee-col-2 .bee-block-2,
+		.bee-row-8 .bee-col-2 .bee-block-2,
+		.bee-row-9 .bee-col-2 .bee-block-2 {
+			padding-bottom: 5px;
+			width: 100%
+		}
+
+		.bee-row-11 .bee-col-3,
+		.bee-row-7 .bee-col-3,
+		.bee-row-9 .bee-col-3 {
+			padding-bottom: 5px;
+			padding-left: 10px
+		}
+
+		.bee-row-11 .bee-col-3 .bee-block-2,
+		.bee-row-11 .bee-col-3 .bee-block-3,
+		.bee-row-7 .bee-col-3 .bee-block-2,
+		.bee-row-7 .bee-col-3 .bee-block-3,
+		.bee-row-9 .bee-col-3 .bee-block-2,
+		.bee-row-9 .bee-col-3 .bee-block-3 {
+			padding-bottom: 10px;
+			padding-left: 20px;
+			padding-top: 10px
+		}
+
+		.bee-row-10 .bee-col-1 .bee-block-2,
+		.bee-row-8 .bee-col-1 .bee-block-2 {
+			padding: 10px 10px 10px 5px
+		}
+
+		.bee-row-10 .bee-col-1 .bee-block-3,
+		.bee-row-12 .bee-col-1 .bee-block-3,
+		.bee-row-8 .bee-col-1 .bee-block-3 {
+			padding: 5px 20px 5px 5px
+		}
+
+		.bee-row-10 .bee-col-3,
+		.bee-row-12 .bee-col-3,
+		.bee-row-8 .bee-col-3 {
+			padding-bottom: 10px;
+			padding-top: 5px
+		}
+
+		.bee-row-10 .bee-col-3 .bee-block-2,
+		.bee-row-10 .bee-col-3 .bee-block-3,
+		.bee-row-10 .bee-col-3 .bee-block-4,
+		.bee-row-12 .bee-col-3 .bee-block-2,
+		.bee-row-12 .bee-col-3 .bee-block-3,
+		.bee-row-12 .bee-col-3 .bee-block-4,
+		.bee-row-12 .bee-col-3 .bee-block-5,
+		.bee-row-8 .bee-col-3 .bee-block-2,
+		.bee-row-8 .bee-col-3 .bee-block-3,
+		.bee-row-8 .bee-col-3 .bee-block-4 {
+			padding-bottom: 10px;
+			padding-right: 5px;
+			padding-top: 5px;
+			width: 100%
+		}
+
+		.bee-row-8 .bee-col-3 .bee-block-5 {
+			padding-bottom: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			width: 100%
+		}
+
+		.bee-row-12 .bee-col-1 .bee-block-2 {
+			padding-bottom: 10px;
+			padding-right: 10px;
+			padding-top: 10px
+		}
+
+		.bee-row-14 {
+			background-color: #000
+		}
+
+		.bee-row-14 .bee-col-1 .bee-block-4 {
+			padding: 10px;
+			text-align: center
+		}
+  </style>
+
+
+-<style>
+.carousel-indicators li{display:none;}
+</style>
+{{ if .Params.carousel }}
+<div style="background-color: black;">
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {{ range $index, $item := .Params.carousel }}
+      <li data-target="#carousel" data-slide-to="{{ $index }}"{{ if eq $index 0 }} class="active"{{ end }}></li>
+      {{ end }}
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      {{ range $index, $item := .Params.carousel }}
+      <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+        <div class="inner">
+          {{ if $item.video_url }}
+          <video autoplay loop muted playsinline poster="{{ $item.image_url }}" class="img-fluid">
+            <source src="{{ $item.video_url }}">
+          </video>
+          {{ else }}
+		  {{ partial "imagehandlecarousel.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+
+          {{ end }}
+          {{ if $item.content }}
+          <div class="content" style="text-align: center;">
+            <div>
+              <p class="mb-0" style="line-height: 1; font-size: 47px; font-weight: 900;">{{ $item.title }}</p>
+              <p>
+                {{ $item.content | markdownify }}
+              </p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}  
+<div class="product-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-12">
+        <nav>
+          <span class="product-links">
+            <a href="#overview">Overview</a>		
+            <a href="#whats-new">What's New</a>
+            <a href="#features">Features</a>
+            <a href="#gallery">Effects</a>			
+            <a href="#hosts">Hosts</a>				
+            <a href="#videos">Videos</a>
+            <a href="#versions">Versions</a>
+            <a href="#techspecs">Tech Specs</a>
+           <!-- <a href="#videos">Videos</a> -->
+          </span>
+        </nav>
+	  </div>	
+      <div class="col-lg-3 col-md-12">
+        <span class="float-lg-right product-btns">
+          <a href="{{ if .Params.download_url }}{{ .Params.download_url }}{{ else }}/downloads{{ end }}" class="btn btn-{{ .Params.key_color }}">FREE TRIAL</a>
+          <a href="{{ .Params.buy_now_url }}" class="btn btn-{{ .Params.key_color }}">BUY NOW</a>
+        </span>
+      </div>
+      </div>
+      </div>
+      </div>
+<div class="product-nav-placeholder"></div>
+<script>
+$(function () {
+  $(document).ready(function () {
+    var nav = $('.product-nav');
+    var navPosition = nav.offset().top;
+    navPosition -= $('header').height();
+    function update() {
+      if ($(this).scrollTop() > navPosition) {
+        nav.addClass("fixed");
+      } else {
+        nav.removeClass("fixed");
+      }
+    }
+    $(window).scroll(update);
+    update();
+  });
+});
+</script>
+  <div class="bee-page-container">
+         <div class="bee-text-content" style="font-size: 14px; line-height: 120%; color: #393d47; font-family: inherit;padding-top:20px;background-color:#0c1116 !important;" >
+        <p style="font-size: 14px; line-height: 16px; text-align: center;" >
+         <span style="color: #ffffff; line-height: 14px;">
+          <strong style="">
+           <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:white">        
+           {{ .Params.overview.title }}
+           </h1>
+          </strong>
+         </span>
+        </p>
+       </div>	  
+   <div class="bee-row bee-row-1" style="background-color:#0c1116 !important;">
+    <div class="bee-row-content">
+     <div class="bee-col bee-col-1 bee-col-w8" style="padding-top:3%;">
+      <div class="bee-block bee-block-1 mobile_hide">
+	  <div id="overview"></div>
+    <!--   <img alt="" class="bee-center bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642543923/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/16x9/Baseball_Play.jpg" style="max-width:755px;"> -->  
+  {{ if in  .Params.overview.video_url "https://youtu.be/" }}
+  	    <div class="embed-responsive" style="padding-right:25px;"><a data-fancybox href="https://www.youtube.com/watch?v={{ .Params.overview.video_id }}"><img class="img-fluid" src="{{ .Params.overview.thumbnail_url}}"></a></div>
+  {{ end }}
+	  </div>
+	   <div class="bee-block bee-block-1 desktop_hide">
+	    <div class="embed-responsive" style="padding:15px;"><a data-fancybox href="{{ .Params.overview.video_url }}">
+			<img src="{{ .Params.overview.thumbnail_url }}" class="img-fluid"></a></div>
+	   </div>
+	  <div class="bee-block bee-block-2 bee-text mobile_hide">
+	         <div class="bee-text-content" style="font-size: 14px; line-height: 120%; font-family: inherit; color: #393d47;padding-bottom:15px;">
+        <p style="font-size: 16px; line-height: 19px;padding-top:25px;">
+         <span style="color: #ffffff; font-size: 16px; line-height: 19px;">
+           {{ .Params.overview.content_block_a | markdownify }}
+		   </span>
+        </p>
+       </div>
+     </div>
+	 <div class="bee-block bee-block-2 bee-text desktop_hide">
+	         <div class="bee-text-content" style="font-size: 14px; line-height: 120%; font-family: inherit; color: #393d47;padding:15px;">
+        <p style="font-size: 16px; line-height: 19px;padding-top:25px;">
+         <span style="color: #ffffff; font-size: 16px; line-height: 19px;">
+           {{ .Params.overview.content_block_a | markdownify }}
+		   </span>
+        </p>
+       </div>
+     </div>
+     </div>
+     <div class="bee-col bee-col-2 bee-col-w4" style="padding-left:25px;">
+    <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:60px;">
+       </div>
+      </div> -->
+      {{ .Scratch.Set "purchaseCollection" "Continuum" }}
+      {{ partial "react/purchase-applet.html" . }}
+     </div>
+    </div>
+   </div>
+   <!-- <div class="bee-row bee-row-2" style="margin-top:-2%;">
+    <div class="bee-row-content">
+     <div class="bee-col bee-col-1 bee-col-w12">
+      <div class="bee-block bee-block-1 bee-text">
+       <div class="bee-text-content" style="font-size: 14px; line-height: 120%; font-family: inherit; color: #393d47;">
+        <p style="font-size: 16px; line-height: 19px;">
+         <span style="color: #ffffff; font-size: 16px; line-height: 19px;">
+           {{ .Params.overview.content_block_a | markdownify }}
+		   </span>
+        </p>
+        <p style="font-size: 16px; line-height: 19px;">
+         &nbsp;
+        </p>
+        <p style="font-size: 16px; line-height: 19px;">
+         <span style="color: #ffffff; font-size: 16px; line-height: 19px;">
+           {{ .Params.overview.content_block_b | markdownify }}
+         </span>
+        </p>
+        <p style="font-size: 16px; line-height: 19px;">
+         <br style="">
+         <span style="color: #ffffff; font-size: 16px; line-height: 19px;">
+			{{ .Params.overview.content_block_c | markdownify }} 
+         </span>
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div> -->
+ 
+   <!-- <div class="bee-row bee-row-4">
+    <div class="bee-row-content">
+     <div class="bee-col bee-col-1 bee-col-w12">
+      <div class="bee-block bee-block-1 bee-text">
+       <div class="bee-text-content" style="font-size: 14px; line-height: 120%; font-family: inherit; color: #0c1116;">   -->
+  <!-- <div class="row" style="background-color:white !important;background:white !important;margin-top:0rem !important;margin-bottom:0rem !important;padding:30px;">
+   <div class="col-12 col-md-3">
+   &nbsp;
+   </div>
+   <div class="col-12 col-md-6 text-center">		  
+	      <script type="text/javascript" src="/slick.min.js"></script>     
+        <div class="review-carousel">
+		{{ range .Params.sections }}
+		{{ range .items }}
+		<p style="font-size: 20px; line-height: 24px; text-align: center; letter-spacing: normal;">
+         <em style="">
+          <span style="font-size: 20px; line-height: 24px;">
+           <span style="color: #000000; line-height: 14px;">
+            {{ .quote }}
+			<br>
+		<strong style="">
+           {{ .author }}
+          </strong>
+           </span>
+          </span>
+         </em>
+        </p>	
+        {{ end }}		
+		{{ end }}
+		</div>
+        </div>
+<style>
+.slick-prev:before {
+  color: #f6f8f9;
+}
+.slick-next:before {
+  color: #f6f8f9;
+}
+</style>		
+   <script>
+$(document).ready(function(){
+  $('.review-carousel').slick({
+  dots: false,
+  prevArrow: false,
+  nextArrow: false,
+  infinite: true,  
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 8000,
+  });
+});
+</script> 
+ <div class="col-12 col-md-3">
+   &nbsp;
+   </div>
+</div>   -->
+		
+        <!-- </div>
+      </div>
+     </div>
+    </div>
+   </div>  -->
+
+<div class="section gray" style="padding-top:0% !important;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <center><h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;" id="whats-new"><b>{{ .Params.whats_new.title | markdownify }}</b></h1></center>
+       </div>
+    </div>
+	 <div class="row">
+		<div class="col-12 col-md-7">
+		<div class="mobile_hide">
+	    {{ partial "video-play-mfp-20225-new.html" (dict "thumbnail_url" .Params.whats_new.thumbnail_url "video_url" .Params.whats_new.video_url "video_id" .Params.whats_new.video_id) }}
+	    </div>
+		<div class="desktop_hide">
+	    <div class="embed-responsive"><a data-fancybox href="{{ .Params.whats_new.video_url }}">
+			<img src="{{ .Params.whats_new.thumbnail_url }}" class="img-fluid"></a></div>
+		</div>
+	   </div>
+		<div class="col-12 col-md-5 mobile_hide" style="padding-left:2.5%;">
+		<p><h2 style="font-style: normal;font-weight: 100;letter-spacing:0em;color:black;"><b>New for 2023</b></h2></p>
+		{{ .Params.whats_new.content | markdownify }}
+		</div>
+		<div class="col-12 col-md-5 desktop_hide" style="padding-left:2.5%;">
+		<p><h2 style="font-style: normal;font-weight: 100;letter-spacing:0em;color:black;"><b>New for 2023</b></h2></p>
+		<p>{{ .Params.whats_new.content | markdownify }}</p>
+		</div>
+	 </div>	
+   </div>
+</div>
+ 
+    <div class="row" style="background-color:black !important;background:black !important;margin-top:0rem !important;margin-bottom:0rem !important;padding:30px;color:white !important;">
+   <div class="col-12 col-md-3">
+   &nbsp;
+   </div>
+   <div class="col-12 col-md-6 text-center">		  
+	      <script type="text/javascript" src="/slick.min.js"></script>     
+        <div class="review-carousel">
+		{{ range .Params.sections }}
+		{{ range .items }}
+		<p style="font-size: 20px; line-height: 24px; text-align: center; letter-spacing: normal;">
+         <em style="">
+          <span style="font-size: 20px; line-height: 24px;">
+           <span style="color: white; line-height: 14px;">
+            {{ .quote }}
+			<br>
+	    	<strong style="">
+           {{ .author | markdownify }}
+          </strong>
+           </span>
+          </span>
+         </em>
+        </p>	
+        {{ end }}		
+		{{ end }}
+		</div>
+        </div>
+<style>
+.slick-prev:before {
+  color: #f6f8f9;
+}
+.slick-next:before {
+  color: #f6f8f9;
+}
+</style>		
+   <script>
+$(document).ready(function(){
+  $('.review-carousel').slick({
+  dots: false,
+  prevArrow: false,
+  nextArrow: false,
+  infinite: true,  
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 12000,
+  });
+});
+</script> 
+ <div class="col-12 col-md-3">
+   &nbsp;
+   </div>
+</div>   
+		
+
+   <div class="bee-row bee-row-7" style="background-color:#444648;">
+    <div class="bee-row-content" style="padding-top:15px;">
+     <div class="bee-col bee-col-1 bee-col-w2">
+      <div class="bee-block bee-block-1 bee-spacer mobile_hide">
+       <div class="spacer" style="height:14px;">
+       </div>
+      </div>
+	  {{ range .Params.section_video }}
+	  {{ range .videos }} 
+	  	  	  <div class="mobile_hide">
+      <div class="bee-block bee-block-{{ .id }} bee-image" style="padding: 0px 20% 15px 0px !important;">
+       <img id="play" alt="" class="bee-center bee-fixedwidth" src="{{ .thumbnail_url }}" vid="{{ .video_url }}" style="border:1px solid white;max-width:123px;cursor:pointer;">
+      </div>
+      </div>
+     <!-- <div class="bee-block bee-block-3 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642716732/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Ben_Sunset_Split.jpg" style="max-width:123px;">
+      </div>
+      <div class="bee-block bee-block-4 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544014/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Forest_Hiker_After.jpg" style="max-width:123px;">
+      </div>
+      <div class="bee-block bee-block-5 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642717608/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Clouds_Split.jpg" style="max-width:123px;">
+      </div> -->
+
+	 {{ end }}
+	 {{ end }}
+     </div>
+   
+     <div class="bee-col bee-col-2 bee-col-w6 mobile_hide">
+      <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:15px;">
+       </div>
+      </div>
+	  {{ range .Params.section_video }}
+	  {{ range first 1 .videos }}	  
+      <div class="bee-block bee-block-2 bee-image" style="">
+	  <div id="videochange">
+     <!--  <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544003/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Rainy_Road_After.jpg" > -->
+		 <a id="popVideo" data-fancybox href="{{ .video_url }}" ><div class="textContainer">
+          <div class="video">
+		  <video muted loop playsinline autoplay preload="none" width="100%" height="100%" poster="{{ .thumbnail_url }}" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid white;">
+            <source src="{{ .video_url }}">
+          </video>
+		  </div></div> </a>     
+	 </div>
+
+	 </div>
+	 {{ end }}
+	 {{ end }}
+	 <script>
+	 $('img#play').click(function() {
+
+	 var src = $(this).attr('src'); 
+	 var vid = $(this).attr('vid'); 
+	 $('div#videochange').html('<a id="popVideo" data-fancybox href="' + vid + '"><div class="video"><video muted loop autoplay playsinline width="100%" height="100%" poster="' + src + '" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid #26a9e0;"><source src="' + vid + '"></video></div> </a>"');	 
+	 });	 
+	 
+	 $('img#play').hover(function() {
+		var src = $(this).attr('src'); 
+		var vid = $(this).attr('vid'); 
+		$(this).attr('style', 'border:1px solid #26a9e0;max-width:123px;cursor:pointer;');	 
+	 }, function() {
+	 	$(this).attr('style', 'border:1px solid white;max-width:123px;cursor:pointer;');
+	 });
+	 </script>
+      <div class="bee-block bee-block-3 bee-spacer mobile_hide">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+     </div>
+     <div class="bee-col bee-col-3 bee-col-w4">
+      <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:20px;">
+       </div>
+      </div> -->
+      <div class="bee-block bee-block-2 bee-text mobile_hide" style="line-height:20px !important;padding-top:15px !important;">
+       <div class="bee-text-content" style="font-size: 12px; color: #ffffff; ">
+        <p style="font-size: 12px;">
+         <span style="background-color: transparent; font-size: 28px;">
+          <span style="font-size: 26px;line-height:20px !important;">
+		  {{  range .Params.section_video }}
+		  {{ .title | markdownify }}
+		  {{ end }}
+          </span>
+          &nbsp;&nbsp;
+         </span>
+        </p>
+       </div>
+      </div>
+      <div class="bee-block bee-block-2 bee-text desktop_hide" style="line-height:20px !important;padding:10px !important;">
+       <div class="bee-text-content" style="font-size: 12px; color: #ffffff; ">
+        <p style="font-size: 12px;">
+         <span style="background-color: transparent; font-size: 28px;">
+          <span style="font-size: 26px;line-height:20px !important;">
+		  {{  range .Params.section_video }}
+		  {{ .title | markdownify }}
+		  {{ end }}
+          </span>
+          &nbsp;&nbsp;
+         </span>
+        </p>
+       </div>
+      </div>
+     <div class="bee-col bee-col-2 bee-col-w6 desktop_hide">
+
+	  {{ range .Params.section_video }}
+	  {{ range first 1 .videos }}	  
+      <div class="bee-block bee-block-2 bee-image" style="padding:10px !important;">
+	  <div id="videochange">
+     <!--  <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544003/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Rainy_Road_After.jpg" > -->
+		 <a id="popVideo" data-fancybox href="{{ .video_url }}" ><div class="textContainer">
+          <div class="video">
+		  <video muted loop playsinline autoplay preload="none" width="100%" height="100%" poster="{{ .thumbnail_url }}" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid white;">
+            <source src="{{ .video_url }}">
+          </video>
+		  </div></div> </a>     
+	 </div>
+
+	 </div>
+	 {{ end }}
+	 {{ end }}
+	 <script>
+	 $('img#play').click(function() {
+
+	 var src = $(this).attr('src'); 
+	 var vid = $(this).attr('vid'); 
+	 $('div#videochange').html('<a id="popVideo" data-fancybox href="' + vid + '"><div class="video"><video muted loop autoplay playsinline width="100%" height="100%" poster="' + src + '" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid #26a9e0;"><source src="' + vid + '"></video></div> </a>"');	 
+	 });	 
+	 
+	 $('img#play').hover(function() {
+		var src = $(this).attr('src'); 
+		var vid = $(this).attr('vid'); 
+		$(this).attr('style', 'border:1px solid #26a9e0;max-width:123px;cursor:pointer;');	 
+	 }, function() {
+	 	$(this).attr('style', 'border:1px solid white;max-width:123px;cursor:pointer;');
+	 });
+	 </script>
+
+     </div>
+      <div class="bee-block bee-block-3 bee-text mobile_hide" style="padding-bottom:2%;padding-top:15px !important;">
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; font-family: inherit; color: #ffffff;">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; color: #ffffff; line-height: 24px;">
+          {{  range .Params.section_video }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+      <div class="bee-block bee-block-3 bee-text desktop_hide" style="padding:10px !important;">
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; font-family: inherit; color: #ffffff;">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; color: #ffffff; line-height: 24px;">
+          {{  range .Params.section_video }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+ 
+     <div class="bee-row bee-row-11" style="background-color:#444648;padding-top:2%;padding-bottom:2%;">
+    <div class="bee-row-content">
+	<hr style="background-color:white;" class="desktop_hide">
+     <div class="bee-col bee-col-1 bee-col-w5">
+      <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+      <div class="bee-block bee-block-2 bee-text" style="padding-right:20px;">
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; color: #ffffff; ">
+        <p style="font-size: 12px; line-height: 18px; text-align: left;">
+         <span style="font-size: 26px;line-height:20px !important;">
+		  {{  range .Params.section_video_d }}
+		  {{ .title | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     <div class="bee-col bee-col-2 bee-col-w6 desktop_hide">
+      <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+      <div class="bee-block bee-block-2 bee-image" style="padding:10px;">
+       <!-- <img alt="" class="bee-center bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642721091/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Wonderwoman_Alt.jpg" style="max-width:570px;"> -->
+	  {{ range .Params.section_video_d }}
+      {{ range .videos }}
+  <a data-fancybox href="https://www.youtube.com/watch?v={{ .video_id }}"><img class="img-fluid" src="{{ .thumbnail_url }}"></a>
+	  {{ end }}
+	 {{ end }}
+      </div>
+      <div class="bee-block bee-block-3 bee-spacer mobile_hide">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+     </div>	  
+      <div class="bee-block bee-block-3 bee-text mobile_hide" style="padding-right:20px !important;padding-top:10px !important;padding-bottom:2% !important;">
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; color: #ffffff; ">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; line-height: 24px;">
+          {{  range .Params.section_video_d }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+      <div class="bee-block bee-block-3 bee-text desktop_hide" style="padding-top:10px !important;padding-bottom:2% !important;padding-left:10px !important;">
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; color: #ffffff; ">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; line-height: 24px;">
+          {{  range .Params.section_video_d }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="bee-col bee-col-2 bee-col-w7 mobile_hide" style="padding-top:0px !important;padding-left:3% !important;overflow:none !important;">
+      <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+      <div class="bee-block bee-block-2 bee-image">
+	  <!-- <img alt="" class="bee-center bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642721091/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Wonderwoman_Alt.jpg" style="max-width:570px;"> -->
+	  {{ range .Params.section_video_d }}
+      {{ range .videos }}
+  <a data-fancybox href="https://www.youtube.com/watch?v={{ .video_id }}"><img class="img-fluid" src="{{ .thumbnail_url}}"></a>
+	  {{ end }}
+	 {{ end }}
+
+      </div>
+      <div class="bee-block bee-block-3 bee-spacer">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+     </div>
+   </div>   
+   </div>
+
+   <div class="bee-row bee-row-10" style="background-color:#444648;">
+    <div class="bee-row-content">
+	<hr style="background-color:white;" class="desktop_hide">	
+     <div class="bee-col bee-col-1 bee-col-w2">
+      <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:14px;">
+       </div>
+      </div> -->
+	  	  {{ range .Params.section_video_b }}
+	  {{ range .videos }}
+	  	  	  <div class="mobile_hide">
+      <div class="bee-block bee-block-{{ .id }} bee-image" style="padding: 0px 20% 15px 0px !important;">
+       <img id="playcc" alt="" class="bee-center bee-fixedwidth" src="{{ .thumbnail_url }}" vid="{{ .video_url }}" style="border:1px solid white;max-width:123px;cursor:pointer;">
+      </div>
+      </div>
+	  
+	  {{ end }}
+	  {{ end }}
+      <!--<div class="bee-block bee-block-2 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544012/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/EzMask_Before.jpg" style="max-width:123px;">
+      </div>
+      <div class="bee-block bee-block-3 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544012/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/EzMask_Matte.jpg" style="max-width:123px;">
+      </div>
+      <div class="bee-block bee-block-4 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642718513/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/EZMask_Interface.jpg" style="max-width:123px;">
+      </div> -->
+     </div>
+     <div class="bee-col bee-col-2 bee-col-w6 mobile_hide">
+	 
+      <div class="bee-block bee-block-2 bee-image">
+    <!--   <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544012/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/EzMask_After.jpg" style="max-width:570px;"> -->
+      	  {{ range .Params.section_video_b }}
+	  {{ range first 1 .videos }}	  
+      <div class="bee-block bee-block-2 bee-image" style="">
+	  <div id="videochangec">
+     <!--  <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544003/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Rainy_Road_After.jpg" > -->
+		 <a id="popVideo" data-fancybox href="{{ .video_url }}" >
+          <div class="video">
+		  <video muted loop playsinline autoplay width="100%" height="100%" poster="{{ .thumbnail_url }}" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid white;">
+            <source src="{{ .video_url }}">
+          </video>
+		  </div> </a>     
+	 </div>
+	 </div>
+	 {{ end }}
+	 {{ end }}
+	  </div>
+	 	 <script>
+	 $('img#playcc').click(function() {
+	 var src = $(this).attr('src'); 
+	 var vid = $(this).attr('vid'); 
+	 $('div#videochangec').html('<a id="popVideo" data-fancybox href="' + vid + '"><div class="video"><video muted loop autoplay playsinline width="100%" height="100%" poster="' + src + '" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid #26a9e0;"><source src="' + vid + '"></video></div> </a>"');	 
+	 });	 
+	 
+	 $('img#playcc').hover(function() {
+		var src = $(this).attr('src'); 
+		var vid = $(this).attr('vid'); 
+		$(this).attr('style', 'border:1px solid #26a9e0;max-width:123px;cursor:pointer;');	 
+	 }, function() {
+	 	$(this).attr('style', 'border:1px solid white;max-width:123px;cursor:pointer;');
+	 });
+	 </script>  	  	  
+      <div class="bee-block bee-block-3 bee-spacer">
+       <div class="spacer" style="height:15px;">
+       </div>
+      </div>
+     </div>
+     <div class="bee-col bee-col-3 bee-col-w4">
+      <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:20px;">
+       </div>
+      </div> -->
+      <div class="bee-block bee-block-2 bee-text mobile_hide" style="padding-left:30px !important;padding-top:0px !important;">
+       <div class="bee-text-content" style="font-size: 12px; color: #ffffff; ">
+        <p style="font-size: 12px;">
+         <span style="font-size: 26px;line-height:20px !important;">
+		  {{ range .Params.section_video_b }}
+		  {{ .title | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+      <div class="bee-block bee-block-2 bee-text desktop_hide" style="padding-left:10px !important;">
+       <div class="bee-text-content" style="font-size: 12px; color: #ffffff; ">
+        <p style="font-size: 12px;">
+         <span style="font-size: 26px;line-height:20px !important;">
+		  {{ range .Params.section_video_b }}
+		  {{ .title | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     <div class="bee-col bee-col-2 bee-col-w6 desktop_hide">
+      <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>	 
+      <div class="bee-block bee-block-2 bee-image">
+    <!--   <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544012/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/EzMask_After.jpg" style="max-width:570px;"> -->
+      	  {{ range .Params.section_video_b }}
+	  {{ range first 1 .videos }}	  
+      <div class="bee-block bee-block-2 bee-image" style="padding:10px !important;">
+	  <div id="videochangec">
+     <!--  <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544003/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Rainy_Road_After.jpg" > -->
+		 <a id="popVideo" data-fancybox href="{{ .video_url }}" >
+          <div class="video">
+		  <video muted loop playsinline autoplay width="100%" height="100%" poster="{{ .thumbnail_url }}" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid white;">
+            <source src="{{ .video_url }}">
+          </video>
+		  </div> </a>     
+	 </div>
+	 </div>
+	 {{ end }}
+	 {{ end }}
+	  </div>
+	 	 <script>
+	 $('img#playcc').click(function() {
+	 var src = $(this).attr('src'); 
+	 var vid = $(this).attr('vid'); 
+	 $('div#videochangec').html('<a id="popVideo" data-fancybox href="' + vid + '"><div class="video"><video muted loop autoplay playsinline width="100%" height="100%" poster="' + src + '" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid #26a9e0;"><source src="' + vid + '"></video></div> </a>"');	 
+	 });	 
+	 
+	 $('img#playcc').hover(function() {
+		var src = $(this).attr('src'); 
+		var vid = $(this).attr('vid'); 
+		$(this).attr('style', 'border:1px solid #26a9e0;max-width:123px;cursor:pointer;');	 
+	 }, function() {
+	 	$(this).attr('style', 'border:1px solid white;max-width:123px;cursor:pointer;');
+	 });
+	 </script>  	  	  
+      <div class="bee-block bee-block-3 bee-spacer mobile_hide">
+       <div class="spacer" style="height:15px;">
+       </div>
+      </div>
+     </div>	  
+      <div class="bee-block bee-block-3 bee-text mobile_hide" style="padding-left:30px !important;padding-top:10px !important;padding-bottom:2% !important;">
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; font-family: inherit; color: #ffffff;">
+        <p style="font-size: 16px !important; line-height: 24px;">
+         <span style="font-size: 16px !important; line-height: 24px;color:white;">
+          {{ range .Params.section_video_b }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>     
+	  <div class="bee-block bee-block-3 bee-text desktop_hide" style="padding-left:10px !important;padding-bottom:2% !important;">
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; font-family: inherit; color: #ffffff;">
+        <p style="font-size: 16px !important; line-height: 24px;">
+         <span style="font-size: 16px !important; line-height: 24px;color:white;">
+          {{ range .Params.section_video_b }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   
+      <div class="bee-row bee-row-8" style="background-color:#444648;padding-top:2%;">
+    <div class="bee-row-content">
+	<hr style="background-color:white;" class="desktop_hide">
+     <div class="bee-col bee-col-1 bee-col-w4">
+      <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:20px;">
+       </div>
+      </div> -->
+      <div class="bee-block bee-block-2 bee-text">
+       <div class="bee-text-content" style="font-size: 12px;color: #ffffff; ">
+        <p style="font-size: 12px;text-align: left;">
+         <span style="font-size: 26px;line-height:20px !important;">
+		  {{  range .Params.section_video_cc }}
+		  {{ .title | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     <div class="bee-col bee-col-2 bee-col-w6 desktop_hide">
+      <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+    <!--   <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544012/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/EzMask_After.jpg" style="max-width:570px;"> -->
+      {{ range .Params.section_video_cc }}
+	  {{ range first 1 .videos }}	  
+      <div class="bee-block bee-block-2 bee-image" style="padding:10px !important;">
+	  <div id="videochangecc">
+     <!--  <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544003/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Rainy_Road_After.jpg" > -->
+		 <a id="popVideo" data-fancybox href="{{ .video_url }}" >
+          <div class="video">
+		  <video muted loop playsinline autoplay width="100%" height="100%" poster="{{ .thumbnail_url }}" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid white;">
+            <source src="{{ .video_url }}">
+          </video>
+		  </div> </a>     
+	 </div>
+	 </div>
+	 {{ end }}
+	 {{ end }}
+      <div class="bee-block bee-block-3 bee-spacer mobile_hide">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+     </div>
+      <div class="bee-block bee-block-3 bee-text" style="padding-bottom:1%;padding-top:10px !important;">
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; color: #ffffff; ">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; line-height: 24px;">
+          {{  range .Params.section_video_cc }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="bee-col bee-col-2 bee-col-w7 mobile_hide" style="margin-bottom:1%;margin-left:2% !important;">
+      <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+      <div class="bee-block bee-block-2 bee-image">
+       <!-- <img alt="" class="bee-center bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642721091/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Wonderwoman_Alt.jpg" style="max-width:570px;"> -->
+<center>
+       <!-- <img alt="" class="bee-center bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642721091/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Wonderwoman_Alt.jpg" style="max-width:570px;"> -->
+	  {{ range .Params.section_video_cc }}
+	  {{ range first 1 .videos }}	  
+      <div class="bee-block bee-block-2 bee-image" style="">
+	  <div id="videochangecc">
+     <!--  <img alt="" class="bee-center bee-fullwidthOnMobile bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544003/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Rainy_Road_After.jpg" > -->
+		 <a id="popVideo" data-fancybox href="{{ .video_url }}" >
+          <div class="video">
+		  <video muted loop playsinline autoplay width="100%" height="100%" poster="{{ .thumbnail_url }}" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid white;">
+            <source src="{{ .video_url }}">
+          </video>
+		  </div> </a>  
+	 </div>
+	 </div>
+	 {{ end }}
+	 {{ end }}
+</center>
+	
+      </div>
+      <div class="bee-block bee-block-3 bee-spacer">
+       <div class="spacer" style="height:10px;">
+       </div>
+      </div>
+     </div>
+    <div class="bee-col bee-col-3 bee-col-w2">
+      <div class="bee-block bee-block-1 bee-spacer">
+ 
+      </div>
+	  {{ range .Params.section_video_cc }}
+	  {{ range .videos }}
+	  <div class="mobile_hide">
+      <div class="bee-block bee-block-{{ .id }} bee-image" style="padding: 10px 0% 5px 0px !important;">
+       <img id="playccc" alt="" class="bee-center bee-fixedwidth" src="{{ .thumbnail_url }}" vid="{{ .video_url }}" style="border:1px solid white;max-width:123px;cursor:pointer;">
+      </div>
+      </div>
+   <!--   <div class="bee-block bee-block-2 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544012/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Dracorubio_Steampunk.jpg" style="max-width:123px;">
+      </div>
+      <div class="bee-block bee-block-3 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544012/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/FantasySword_Split.jpg" style="max-width:123px;">
+      </div>
+      <div class="bee-block bee-block-4 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544008/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Cat_Sprites_After.jpg" style="max-width:123px;">
+      </div>
+      <div class="bee-block bee-block-5 bee-image">
+       <img alt="" class="bee-center bee-fixedwidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642544003/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Nemanja_Lightning_Split.jpg" style="max-width:123px;">
+      </div> -->
+     {{ end }}
+	 {{ end }}
+	 </div>
+    </div>
+   </div>
+
+	 <script>
+	 $('img#playccc').click(function() {
+
+	 var src = $(this).attr('src'); 
+	 var vid = $(this).attr('vid'); 
+	 $('div#videochangecc').html('<a id="popVideo" data-fancybox href="' + vid + '"><div class="video"><video muted loop autoplay playsinline width="100%" height="100%" poster="' + src + '" class="bee-center bee-fullwidthOnMobile bee-autowidth" style="max-width:570px;border:1px solid #26a9e0;"><source src="' + vid + '"></video></div> </a>"');	 
+	 });	 
+	 
+	 $('img#playccc').hover(function() {
+		var src = $(this).attr('src'); 
+		var vid = $(this).attr('vid'); 
+		$(this).attr('style', 'border:1px solid #26a9e0;max-width:123px;cursor:pointer;');	 
+	 }, function() {
+	 	$(this).attr('style', 'border:1px solid white;max-width:123px;cursor:pointer;');
+	 });
+	 </script>
+	 
+<!-- {{ range .Params.section_video_f }}
+
+<div class="section gray" style="padding-top:0% !important;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <center><h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;"><b>{{ .title | markdownify }}</b></h1></center>
+       </div>
+    </div>
+	 <div class="row">
+		<div class="col-12">
+		{{ range .videos }}	 
+       <center><img alt="" class="img-fluid" src="{{ .thumbnail_url }}" style="max-width:570px;"></center>
+	   {{ end }}	 
+	   </div>
+	 </div>
+	 <div class="row">
+		<div class="col-12" style="padding-left:5%;">
+		{{ .content | markdownify }}
+		</div>
+	 </div>	
+   </div>
+</div>	 
+{{ end }} -->
+
+   <div class="bee-row bee-row-12" style="margin-top:2% !important;">	 
+    <div class="bee-row-content">
+	<hr style="background-color:white;" class="desktop_hide">
+     <div class="bee-col bee-col-2 bee-col-w7 mobile_hide" style="padding-top:0px !important;padding-right:3% !important;overflow:none !important;">
+       <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="width:3%;">
+       </div>
+      </div>  -->
+	  <div class="bee-block bee-block-2 bee-image" style="overflow:none !important;padding:5px;">
+       <!-- <img alt="" class="bee-center bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642721091/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Wonderwoman_Alt.jpg" style="max-width:570px;"> -->
+	  {{ range .Params.section_video_e }}
+      {{ range .videos }}
+	    {{ partial "video-play-mfp-20225-new.html" (dict "thumbnail_url" .thumbnail_url "video_url" .video_url "video_id" .video_id) }}
+	  {{ end }}
+	 {{ end }}
+
+      </div>
+     </div>		
+     <div class="bee-col bee-col-1 bee-col-w5" style="padding-top:0px !important;">
+      <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:20px;">
+       </div>
+      </div> --> 
+      <div class="bee-block bee-block-2 bee-text">
+       <div class="bee-text-content" style="font-size: 12px; color: #ffffff; ">
+        <p style="font-size: 12px; text-align: left;">
+         <span style="font-size: 26px;line-height:20px !important;">
+		  {{  range .Params.section_video_e}}
+		  {{ .title | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     <div class="bee-col bee-col-2 bee-col-w7 desktop_hide" style="padding-top:0px !important;overflow:none !important;">
+       <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="width:3%;">
+       </div>
+      </div>  -->
+	  <div class="bee-block bee-block-2 bee-image" style="overflow:none !important;">
+	  {{ range .Params.section_video_e }}
+      {{ range .videos }}
+	    <div class="embed-responsive" style="padding:15px;"><a data-fancybox href="{{ .video_url }}">
+			<img src="{{ .thumbnail_url }}" class="img-fluid"></a></div>
+	  {{ end }}
+	  {{ end }}
+      </div>
+     </div>	  
+      <div class="bee-block bee-block-3 bee-text mobile_hide" style="padding-bottom:1%;padding-left:0px !important;" >
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; color: #ffffff; ">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; line-height: 24px;">
+          {{  range .Params.section_video_e }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+      <div class="bee-block bee-block-3 bee-text desktop_hide" style="padding-left:5px !important;padding-bottom:2% !important;padding-top:1% !important;" >
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; color: #ffffff; ">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; line-height: 24px;">
+          {{  range .Params.section_video_e }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+</div>
+
+   <div class="bee-row bee-row-15" style="margin-top:2.5% !important;margin-bottom:2.5% !important;">	 
+    <div class="bee-row-content">
+	<hr style="background-color:white;" class="desktop_hide">	
+     <div class="bee-col bee-col-1 bee-col-w5" style="padding-top:0px !important;">
+      <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="height:20px;">
+       </div>
+      </div> -->
+      <div class="bee-block bee-block-1 bee-text mobile_hide">
+       <div class="bee-text-content" style="font-size: 12px;color: #ffffff;padding-bottom:2%;">
+        <p style="font-size: 12px;text-align: left;">
+         <span style="font-size: 26px;line-height:20px !important;">
+		  {{  range .Params.section_video_f}}
+		  {{ .title | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+      <div class="bee-block bee-block-1 bee-text desktop_hide">
+       <div class="bee-text-content" style="font-size: 12px;color: #ffffff;padding-bottom:2%;padding-left: 15px;padding-top:1%;">
+        <p style="font-size: 12px;text-align: left;">
+         <span style="font-size: 26px;line-height:20px !important;">
+		  {{  range .Params.section_video_f}}
+		  {{ .title | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     <div class="bee-col bee-col-2 bee-col-w7 desktop_hide" style="padding-top:0px !important;overflow:none !important;">
+       <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="width:3%;">
+       </div>
+      </div>  -->
+	  <div class="bee-block bee-block-2 bee-image" style="overflow:none !important;padding:15px;">
+       <!-- <img alt="" class="bee-center bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642721091/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Wonderwoman_Alt.jpg" style="max-width:570px;"> -->
+	  {{ range .Params.section_video_f }}
+      {{ range .videos }}
+<div id="container2">
+  <img class="img-fluid" src="{{ .image_before }}">
+  <img class="img-fluid" src="{{ .image_after }}">
+</div>
+	  {{ end }}
+	 {{ end }}
+      </div>
+     </div>		  
+      <div class="bee-block bee-block-3 bee-text mobile_hide" style="padding-bottom:1%;padding-right:25px !important;" >
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; color: #ffffff; ">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; line-height: 24px;">
+          {{  range .Params.section_video_f }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+      <div class="bee-block bee-block-3 bee-text desktop_hide" style="padding-left:15px !important;padding-bottom:2% !important;padding-top:2% !important;" >
+       <div class="bee-text-content" style="font-size: 12px; line-height: 150%; color: #ffffff; ">
+        <p style="font-size: 16px; line-height: 24px;">
+         <span style="font-size: 16px; line-height: 24px;">
+          {{  range .Params.section_video_f }}
+		  {{ .content | markdownify }}
+		  {{ end }}
+         </span>
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="bee-col bee-col-2 bee-col-w7 mobile_hide" style="padding-top:0px !important;overflow:none !important;">
+       <!-- <div class="bee-block bee-block-1 bee-spacer">
+       <div class="spacer" style="width:3%;">
+       </div>
+      </div>  -->
+	  <div class="bee-block bee-block-2 bee-image" style="overflow:none !important;padding:5px;">
+       <!-- <img alt="" class="bee-center bee-autowidth" src="https://borisfx-com-res.cloudinary.com/image/upload/v1642721091/Optics%20Product%20Page/Optics%202022%20Product%20Page%20Images/5x7/Wonderwoman_Alt.jpg" style="max-width:570px;"> -->
+	  {{ range .Params.section_video_f }}
+      {{ range .videos }}
+<div id="container1">
+  <img class="img-fluid" src="{{ .image_before }}">
+  <img class="img-fluid" src="{{ .image_after }}">
+</div>
+
+	  {{ end }}
+	 {{ end }}
+      </div>
+     </div>	 
+    </div>
+</div>
+	 
+<style>
+  .mask_black {
+    position:absolute;
+    background-color: #000;
+    opacity: 0;
+    width:100%;
+    height:100%;
+    display: table;
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+  }
+
+  .textContainer1:hover .mask_black {
+    opacity: 0.5;
+  }
+
+  .textContainer2:hover .mask_black {
+    opacity: 0.5;
+  }
+
+  .textContainer3:hover .mask_black {
+    opacity: 0.5;
+  }
+
+  .textContainer4:hover .mask_black {
+    opacity: 0.5;
+  }
+
+  .textContainer5:hover .mask_black {
+    opacity: 0.5;
+  }
+
+  .textContainer6:hover .mask_black {
+    opacity: 0.5;
+  }  
+  
+  .textContainer7:hover .mask_black {
+    opacity: 0.5;
+  }
+
+  .textContainer8:hover .mask_black {
+    opacity: 0.5;
+  }
+
+  .textContainer1:hover #animTitle1 {
+    transform: translateY(-150%);
+  }
+
+  .textContainer2:hover #animTitle2 {
+    transform: translateY(-150%);
+  }
+
+  .textContainer3:hover #animTitle3 {
+    transform: translateY(-150%);
+  }
+
+  .textContainer4:hover #animTitle4 {
+    transform: translateY(-150%);
+  }
+
+  .textContainer5:hover #animTitle5 {
+    transform: translateY(-150%);
+  }
+
+  .textContainer6:hover #animTitle6 {
+    transform: translateY(-150%);
+  }
+  .textContainer7:hover #animTitle7 {
+    transform: translateY(-150%);
+  }
+
+  .textContainer8:hover #animTitle8 {
+    transform: translateY(-150%);
+  }
+
+  .textContainer1:hover #anim1 {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  .textContainer2:hover #anim {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  .textContainer3:hover #anim2 {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  .textContainer4:hover #anim3 {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  .textContainer5:hover #anim4 {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  .textContainer6:hover #anim5 {
+    transform: translateY(-50%);
+    opacity: 1;
+  }  
+  .textContainer7:hover #anim6 {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  .textContainer8:hover #anim7 {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+  
+  .textContainer1:hover .mask_white_border {
+    -ms-transform: scale(0.8)!important; /* IE 9 */
+    -webkit-transform: scale(0.8)!important; /* Safari 3-8 */
+    transform: scale(0.9)!important; 
+    opacity: 1!important;
+  }
+
+  .textContainer2:hover .mask_white_border {
+    -ms-transform: scale(0.8)!important; /* IE 9 */
+    -webkit-transform: scale(0.8)!important; /* Safari 3-8 */
+    transform: scale(0.9)!important; 
+    opacity: 1!important;
+  }
+
+  .textContainer3:hover .mask_white_border {
+    -ms-transform: scale(0.8)!important; /* IE 9 */
+    -webkit-transform: scale(0.8)!important; /* Safari 3-8 */
+    transform: scale(0.9)!important; 
+    opacity: 1!important;
+  }
+
+  .textContainer4:hover .mask_white_border {
+    -ms-transform: scale(0.8)!important; /* IE 9 */
+    -webkit-transform: scale(0.8)!important; /* Safari 3-8 */
+    transform: scale(0.9)!important; 
+    opacity: 1!important;
+  }
+
+  .textContainer5:hover .mask_white_border {
+    -ms-transform: scale(0.8)!important; /* IE 9 */
+    -webkit-transform: scale(0.8)!important; /* Safari 3-8 */
+    transform: scale(0.9)!important; 
+    opacity: 1!important;
+  }
+
+  .textContainer6:hover .mask_white_border {
+    -ms-transform: scale(0.8)!important; /* IE 9 */
+    -webkit-transform: scale(0.8)!important; /* Safari 3-8 */
+    transform: scale(0.9)!important; 
+    opacity: 1!important;
+  }
+  .textContainer7:hover .mask_white_border {
+    -ms-transform: scale(0.8)!important; /* IE 9 */
+    -webkit-transform: scale(0.8)!important; /* Safari 3-8 */
+    transform: scale(0.9)!important; 
+    opacity: 1!important;
+  }
+  .textContainer8:hover .mask_white_border {
+    -ms-transform: scale(0.8)!important; /* IE 9 */
+    -webkit-transform: scale(0.8)!important; /* Safari 3-8 */
+    transform: scale(0.9)!important; 
+    opacity: 1!important;
+  }
+
+  .mask_white_border {
+    transition: all .5s;
+    width:100%;
+    height:100%;
+    background-color:none;
+    border: 2px solid #fff;
+    position:absolute;
+    opacity: 0;
+    z-index: 99;
+    display: table;
+  }
+
+  #animTitle1, #animTitle2, #animTitle3, #animTitle4, #animTitle5, #animTitle6, #animTitle7, #animTitle8 {
+    transition: all .5s;
+  }
+
+  #anim1, #anim2, #anim3, #anim4, #anim5, #anim6, #anim7, #anim {
+    transition: all .5s;
+    font-weight:bold;
+    opacity: 0;
+  }
+  .py-2 {
+    padding: 0!important;
+  }
+
+  .gallerySpace {
+    padding-top: 0.5rem!important;
+    padding-bottom: 0.5rem!important;
+  }
+
+  
+  
+</style>
+
+{{ if .Params.units }}
+<div class="section" id="content" style="padding-top:0px !important;">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <center><h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;" id="features">
+          <b>{{ if .Params.units_title }}
+          {{ .Params.units_title }}
+          {{ else }}
+          UNITS
+          {{ end }}</b>
+        </h1></center>
+      </div>
+    </div>
+	<div class="row">
+	<div class="col">
+	{{ .Params.section_content | markdownify }}
+	</div>
+	</div>
+ <div class="row">
+      <div class="col">
+        {{ $items := .Params.units }}
+        {{ range $index, $item := .Params.units }}
+        <div class="row"> 
+		{{ if $item.gallery_image }}
+          <div class="col-12 col-md-6 gallerySpace">
+            <div class="textContainer1" id="textContainer1">
+              <div class="video">
+                <div class="mask_black"></div>
+                <div class="mask_white_border"></div>
+                <img src="{{ $item.gallery_image }}" class="img-fluid">
+              </div>
+              <div class="txtOVERLAYTitle" id="titleAnim1" style="font-weight:bold;    position:absolute;
+                top:41.5%;
+                left:0;
+                text-align:center;
+                width:100%;">
+                <h2 style="color:white;" id="animTitle1">{{ $item.gallery_title | markdownify }}</h2>
+              </div>
+              <div class="txtOVERLAY1" id="anim1">
+                <p id="contentM" style="color:white;padding:10px 50px;line-height:1.5;">{{ $item.content | markdownify }}</p> 
+              </div>
+            </div>
+          </div>     
+		 {{ end }}  
+		{{ if $item.gallery_image2 }}
+          <div class="col-12 col-md-6 gallerySpace">
+            <div class="textContainer2" >
+              <div class="video">
+                <div class="mask_black"></div>
+                <div class="mask_white_border"></div>
+                <img src="{{ $item.gallery_image2 }}" class="img-fluid">
+              </div>
+              <div class="txtOVERLAYTitle" id="titleAnim2" style="font-weight:bold;    position:absolute;
+                top:41.5%;
+                left:0;
+                text-align:center;
+                width:100%;">
+                <h2 style="color:white;" id="animTitle2">{{ $item.gallery_title2 | markdownify }}</h2>
+              </div>
+              <div class="txtOVERLAY1" id="anim">
+                <p id="contentM" style="color:white;padding:10px 50px;line-height:1.5;">{{ $item.content2 | markdownify }}</p> 
+              </div>
+            </div>
+          </div>
+		{{ end }}
+        </div>		
+		<div class="row  py-2"> 
+		{{ if $item.gallery_image3 }}
+          <div class="col-12 col-md-6 gallerySpace">
+            <div class="textContainer3" >
+              <div class="video">
+                <div class="mask_black"></div>
+                <div class="mask_white_border"></div>
+                <img src="{{ $item.gallery_image3 }}" class="img-fluid">
+              </div>
+              <div class="txtOVERLAYTitle" id="titleAnim3" style="font-weight:bold;    position:absolute;
+                top:41.5%;
+                left:0;
+                text-align:center;
+                width:100%;">
+                <h2 style="color:white;" id="animTitle3">{{ $item.gallery_title3 | markdownify }}</h2>
+              </div>
+              <div class="txtOVERLAY1" id="anim2">
+                <p id="contentM" style="color:white;padding:10px 50px;line-height:1.5;">{{ $item.content3 | markdownify }}</p> 
+              </div>
+            </div>
+          </div> 
+		{{ end }}		
+		{{ if $item.gallery_image4 }}
+          <div class="col-12 col-md-6 gallerySpace">
+		  <div class="textContainer4">
+
+          <div class="video">
+            <div class="mask_black"></div>
+            <div class="mask_white_border"></div>
+            <img src="{{ $item.gallery_image4 }}" class="img-fluid">
+		  </div>
+		  <div class="txtOVERLAYTitle" id="titleAnim4" style="font-weight:bold;    position:absolute;
+    top:41.5%;
+    left:0;
+	text-align:center;
+	width:100%;
+    z-index:1;">
+		  <h2 style="color:white;" id="animTitle4">{{ $item.gallery_title4 | markdownify }}</h2>
+		  </div>
+		  <div class="txtOVERLAY1" id="anim3">
+		   <p id="contentM" style="color:white;padding:10px 50px;line-height:1.5;">{{ $item.content4 | markdownify }}</p> 
+		  </div>
+		  </div>
+
+          </div> 
+		{{ end }}
+	     </div>			
+		 <div class="row  py-2"> 
+		{{ if $item.gallery_image5 }}
+          <div class="col-12 col-md-6 gallerySpace">
+		  <div class="textContainer5" >
+          <div class="video">
+            <div class="mask_black"></div>
+            <div class="mask_white_border"></div>
+            <img src="{{ $item.gallery_image5 }}" class="img-fluid">
+		  </div>
+		  <div class="txtOVERLAYTitle" id="titleAnim5" style="font-weight:bold;    position:absolute;
+    top:41.5%;
+    left:0;
+	text-align:center;
+	width:100%;
+    z-index:1;">
+		  <h2 style="color:white;" id="animTitle5">{{ $item.gallery_title5 | markdownify }}</h2>
+		  </div>
+		  <div class="txtOVERLAY1" id="anim4">
+		   <p id="contentM" style="color:white;padding:10px 50px;line-height:1.5;">{{ $item.content5 | markdownify }}</p> 
+		  </div>
+		  </div>
+          </div> 
+		{{ end }}		
+		{{ if $item.gallery_image6 }}
+          <div class="col-12 col-md-6 gallerySpace">
+		  <div class="textContainer6" >
+          <div class="video">
+            <div class="mask_black"></div>
+            <div class="mask_white_border"></div>
+            <img src="{{ $item.gallery_image6 }}" class="img-fluid">
+		  </div>
+		  <div class="txtOVERLAYTitle" id="titleAnim6" style="font-weight:bold;    position:absolute;
+    top:41.5%;
+    left:0;
+	text-align:center;
+	width:100%;
+    z-index:1;">
+		  <h2 style="color:white;" id="animTitle6">{{ $item.gallery_title6 | markdownify }}</h2>
+		  </div>
+		  <div class="txtOVERLAY1" id="anim5">
+		   <p id="contentM" style="color:white;padding:10px 50px;line-height:1.5;">{{ $item.content6 | markdownify }}</p> 
+		  </div>
+		  </div>
+          </div> 
+		{{ end }}		
+	     </div>			
+
+		 <div class="row  py-2"> 
+		{{ if $item.gallery_image7 }}
+          <div class="col-12 col-md-6 gallerySpace">
+		  <div class="textContainer7" >
+          <div class="video">
+            <div class="mask_black"></div>
+            <div class="mask_white_border"></div>
+            <img src="{{ $item.gallery_image7 }}" class="img-fluid">
+		  </div>
+		  <div class="txtOVERLAYTitle" id="titleAnim7" style="font-weight:bold;    position:absolute;
+    top:41.5%;
+    left:0;
+	text-align:center;
+	width:100%;
+    z-index:1;">
+		  <h2 style="color:white;" id="animTitle7">{{ $item.gallery_title7 | markdownify }}</h2>
+		  </div>
+		  <div class="txtOVERLAY1" id="anim6">
+		   <p id="contentM" style="color:white;padding:10px 50px;line-height:1.5;">{{ $item.content7 | markdownify }}</p> 
+		  </div>
+		  </div>
+          </div> 
+		{{ end }}		
+		{{ if $item.gallery_image8 }}
+          <div class="col-12 col-md-6 gallerySpace">
+		  <div class="textContainer8" >
+          <div class="video">
+            <div class="mask_black"></div>
+            <div class="mask_white_border"></div>
+            <img src="{{ $item.gallery_image8 }}" class="img-fluid">
+		  </div>
+		  <div class="txtOVERLAYTitle" id="titleAnim8" style="font-weight:bold;    position:absolute;
+    top:41.5%;
+    left:0;
+	text-align:center;
+	width:100%;
+    z-index:1;">
+		  <h2 style="color:white;" id="animTitle8">{{ $item.gallery_title8 | markdownify }}</h2>
+		  </div>
+		  <div class="txtOVERLAY1" id="anim7">
+		   <p id="contentM" style="color:white;padding:10px 50px;line-height:1.5;">{{ $item.content8 | markdownify }}</p> 
+		  </div>
+		  </div>
+          </div> 
+		{{ end }}		
+	     </div>	
+
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+$("p#contentM").attr('style', 'font-size:0.55rem;color:white;padding-left:35px;padding-right:35px;');
+
+$("div#anim1").attr('style', 'font-weight:bold;display:block');
+$("div#titleAnim1").attr('style', 'color:white;font-weight:bold;position:absolute;top:41.5%;left:0;z-index:1;');
+
+
+
+
+$("div#titleAnim2").attr('style', 'color:white;font-weight:bold;position:absolute;top:41.5%;left:0;z-index:1;');
+$("div#anim").attr('style', 'font-weight:bold;display:block');
+
+
+$("div#titleAnim3").attr('style', 'color:white;font-weight:bold;position:absolute;top:41.5%;left:0;z-index:1;');
+$("div#anim2").attr('style', 'font-weight:bold;display:block');
+
+
+$("div#titleAnim4").attr('style', 'color:white;font-weight:bold;position:absolute;top:41.5%;left:0;z-index:1;');
+$("div#anim3").attr('style', 'font-weight:bold;display:block');
+
+
+$("div#titleAnim5").attr('style', 'color:white;font-weight:bold;position:absolute;top:41.5%;left:0;z-index:1;');
+$("div#anim4").attr('style', 'font-weight:bold;display:block');
+
+
+$("div#titleAnim6").attr('style', 'color:white;font-weight:bold;position:absolute;top:41.5%;left:0;z-index:1;');
+$("div#anim5").attr('style', 'font-weight:bold;display:block');
+
+$("div#titleAnim7").attr('style', 'color:white;font-weight:bold;position:absolute;top:41.5%;left:0;z-index:1;');
+$("div#anim6").attr('style', 'font-weight:bold;display:block');
+
+
+$("div#titleAnim8").attr('style', 'color:white;font-weight:bold;position:absolute;top:41.5%;left:0;z-index:1;');
+$("div#anim7").attr('style', 'font-weight:bold;display:block');
+
+} else $(window).resize(function() {
+
+
+if ($(".textContainer1").width() == '330') {
+  // $("div#titleAnim1").velocity({ top: 80 });
+  $("div#titleAnim1").attr('style', 'font-size:1rem !important;font-weight:bold;');
+} /*else if ($(".textContainer1").width() == '450') {
+  $("div#titleAnim1").velocity({ top: 100 });
+} else if ($(".textContainer1").width() == '406.8') {
+  $("div#titleAnim1").velocity({ top: 100 });
+} else if ($(".textContainer1").width() == '510') {
+  $("div#titleAnim1").velocity({ top: 129.5 }); 
+} else if ($(".textContainer1").width() == '540') {
+  $("div#titleAnim1").velocity({ top: 129.5 }); 
+} else if ($(".textContainer1").width() >= '450' && $(".textContainer1").width() <= '509') {
+  $("div#titleAnim1").velocity({ top: 129.5 }); 
+}*/
+
+
+if ($(".textContainer2").width() == '330') {
+// $("div#titleAnim2").velocity({ top: 80 });
+$("div#titleAnim2").attr('style', 'font-size:1rem !important;font-weight:bold;');
+} /*else if ($(".textContainer2").width() == '450') {
+$("div#titleAnim2").velocity({ top: 100 });
+} else if ($(".textContainer2").width() == '406.8') {
+$("div#titleAnim2").velocity({ top: 100 });
+} else if ($(".textContainer2").width() == '510') {
+$("div#titleAnim2").velocity({ top: 129.5 }); 
+} else if ($(".textContainer2").width() == '540') {
+$("div#titleAnim2").velocity({ top: 129.5 }); 
+}  else if ($(".textContainer2").width() >= '450' && $(".textContainer2").width() <= '509') {
+$("div#titleAnim2").velocity({ top: 129.5 }); 
+}*/
+
+
+if ($(".textContainer3").width() == '330') {
+// $("div#titleAnim3").velocity({ top: 80 });
+$("div#titleAnim3").attr('style', 'font-size:1rem !important;font-weight:bold;');
+} /*else if ($(".textContainer3").width() == '450') {
+$("div#titleAnim3").velocity({ top: 100 });
+} else if ($(".textContainer3").width() == '406.8') {
+$("div#titleAnim3").velocity({ top: 100 });
+} else if ($(".textContainer3").width() == '510') {
+$("div#titleAnim3").velocity({ top: 129.5 }); 
+} else if ($(".textContainer3").width() == '540') {
+$("div#titleAnim3").velocity({ top: 129.5 }); 
+} else if ($(".textContainer3").width() >= '450' && $(".textContainer3").width() <= '509') {
+$("div#titleAnim3").velocity({ top: 129.5 }); 
+}*/
+
+if ($(".textContainer4").width() == '330') {
+// $("div#titleAnim4").velocity({ top: 80 });
+$("div#titleAnim4").attr('style', 'font-size:1rem !important;font-weight:bold;');
+} /*else if ($(".textContainer4").width() == '450') {
+$("div#titleAnim4").velocity({ top: 100 });
+} else if ($(".textContainer4").width() == '406.8') {
+$("div#titleAnim4").velocity({ top: 100 });
+} else if ($(".textContainer4").width() == '510') {
+$("div#titleAnim4").velocity({ top: 129.5 }); 
+} else if ($(".textContainer4").width() == '540') {
+$("div#titleAnim4").velocity({ top: 129.5 }); 
+}  else if ($(".textContainer4").width() >= '450' && $(".textContainer4").width() <= '509') {
+$("div#titleAnim4").velocity({ top: 129.5 }); 
+}*/
+
+if ($(".textContainer5").width() == '330') {
+$("div#titleAnim5").attr('style', 'font-size:1rem !important;font-weight:bold;');
+// $("div#titleAnim5").velocity({ top: 80 });
+} /*else if ($(".textContainer5").width() == '450') {
+$("div#titleAnim5").velocity({ top: 100 });
+} else if ($(".textContainer5").width() == '406.8') {
+$("div#titleAnim5").velocity({ top: 100 });
+} else if ($(".textContainer5").width() == '510') {
+$("div#titleAnim5").velocity({ top: 129.5 }); 
+} else if ($(".textContainer5").width() == '540') {
+$("div#titleAnim5").velocity({ top: 129.5 }); 
+} else if ($(".textContainer5").width() >= '450' && $(".textContainer5").width() <= '509') {
+$("div#titleAnim5").velocity({ top: 129.5 }); 
+}*/
+
+if ($(".textContainer6").width() == '330') {
+if ($(window).width() <= '970' ) {
+$("div#titleAnim6").attr('style', 'font-size:1rem !important;font-weight:bold;');
+}
+// $("div#titleAnim6").velocity({ top: 80 });
+} /*else if ($(".textContainer6").width() == '450') {
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($(".textContainer6").width() == '406.8') {
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($(".textContainer6").width() == '510') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+} else if ($(".textContainer6").width() == '540') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+} else if ($(".textContainer6").width() >= '450' && $(".textContainer6").width() <= '509') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+}
+});*/
+
+if ($(".textContainer7").width() == '330') {
+if ($(window).width() <= '970' ) {
+$("div#titleAnim7").attr('style', 'font-size:1rem !important;font-weight:bold;');
+}
+// $("div#titleAnim6").velocity({ top: 80 });
+} /*else if ($(".textContainer6").width() == '450') {
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($(".textContainer6").width() == '406.8') {
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($(".textContainer6").width() == '510') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+} else if ($(".textContainer6").width() == '540') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+} else if ($(".textContainer6").width() >= '450' && $(".textContainer6").width() <= '509') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+}
+});*/
+
+if ($(".textContainer8").width() == '330') {
+if ($(window).width() <= '970' ) {
+$("div#titleAnim8").attr('style', 'font-size:1rem !important;font-weight:bold;');
+}
+// $("div#titleAnim6").velocity({ top: 80 });
+} /*else if ($(".textContainer6").width() == '450') {
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($(".textContainer6").width() == '406.8') {
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($(".textContainer6").width() == '510') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+} else if ($(".textContainer6").width() == '540') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+} else if ($(".textContainer6").width() >= '450' && $(".textContainer6").width() <= '509') {
+$("div#titleAnim6").velocity({ top: 129.5 }); 
+}
+});*/
+
+$(".textContainer1").hover(function() {
+  if ($( this ).width() == '330') {
+    $("div#anim1").attr('style', 'font-weight:bold;font-size:0.60rem;');
+    // $("div#anim1").velocity({ opacity: 1 }, { display: "block" });
+    // $("div#titleAnim1").velocity({ top: 52 });
+  } else if ($( this ).width() == '406.8') {
+    // $("div#anim1").velocity({ opacity: 1 }, { display: "block" });
+    $("div#anim1").attr('style', 'font-weight:bold;font-size:0.70rem;');
+    // $("div#titleAnim1").velocity({ top: 50 });
+  } else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+    // $("div#anim1").velocity({ opacity: 1 }, { display: "block" });
+    $("div#anim1").attr('style', 'font-weight:bold;font-size:0.80rem;');
+    // $("div#titleAnim1").velocity({ top: 50 });
+  } else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+    // $("div#anim1").velocity({ opacity: 1 }, { display: "block" });
+    $("div#anim1").attr('style', 'font-weight:bold;font-size:0.90rem;');
+    // $("div#titleAnim1").velocity({ top: 80 });
+  } else if ($( this ).width() <= '442') {
+    // $("div#anim1").velocity({ opacity: 1 }, { display: "block" });
+    $("div#anim1").attr('style', 'font-weight:bold;font-size:0.80rem;');
+    // $("div#titleAnim1").velocity({ top: 50 });
+  } else if ($( this ).width() == '540') {
+    $("div#anim1").attr('style', 'font-weight:bold;font-size:1em;'); 
+    // $("div#anim1").velocity({ opacity: 1 }, { display: "block" });
+    // $("div#titleAnim1").velocity({ top: 80 });
+  } else if ($( this ).width() >= '510') {
+    $("div#anim1").attr('style', 'font-weight:bold;font-size:1em;');
+    // $("div#anim1").velocity({ opacity: 1 }, { display: "block" });
+    // $("div#titleAnim1").velocity({ top: 80 });
+  }
+}, function() {
+  // if ($( this ).width() == '330') {
+  //   $("div#anim1").velocity({ opacity: 0 }, { display: "none" });
+  //   $("div#titleAnim1").velocity({ top: 80 });
+  // } else if ($( this ).width() == '406.8') {
+  //   $("div#anim1").velocity({ opacity: 0 }, { display: "none" });
+  //   $("div#titleAnim1").velocity({ top: 100 });
+  // } else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+  //   $("div#anim1").velocity({ opacity: 0 }, { display: "none" });
+  //   $("div#titleAnim1").velocity({ top: 100 });
+  // } else if ($( this ).width() <= '442') {
+  //   $("div#anim1").velocity({ opacity: 0 }, { display: "none" });
+  //   $("div#titleAnim1").velocity({ top: 80 });
+  // } else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+  //   $("div#anim1").velocity({ opacity: 0 }, { display: "none" });
+  //   $("div#titleAnim1").velocity({ top: 129.5 });
+  // } else if ($( this ).width() == '540') {
+  //   $("div#anim1").velocity({ opacity: 0 }, { display: "none" });
+  //   $("div#titleAnim1").velocity({ top: 129.5 }); 
+  // } else if ($( this ).width() >= '510') {
+  //   $("div#anim1").velocity({ opacity: 0 }, { display: "none" });
+  //   $("div#titleAnim1").velocity({ top: 129.5 });
+  // }
+});
+
+
+$(".textContainer2").hover(function() {
+if ($( this ).width() == '330') {
+ $("div#anim").attr('style', 'font-weight:bold;font-size:0.60rem;');
+//  $("div#anim").velocity({ opacity: 1 }, { display: "block" });
+//  $("div#titleAnim2").velocity({ top: 52 });
+} else if ($( this ).width() == '406.8') {
+//  $("div#anim").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim").attr('style', 'font-weight:bold;font-size:0.70rem;');
+//  $("div#titleAnim2").velocity({ top: 50 });
+ } else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+//  $("div#anim").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim2").velocity({ top: 50 });
+ }   else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+//  $("div#anim").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim").attr('style', 'font-weight:bold;font-size:0.90rem;');
+//  $("div#titleAnim2").velocity({ top: 80 });
+ } else if ($( this ).width() <= '442') {
+//  $("div#anim").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim2").velocity({ top: 50 });
+ } else if ($( this ).width() == '540') {
+ $("div#anim").attr('style', 'font-weight:bold;font-size:1em;');
+// $("div#anim").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim2").velocity({ top: 80 });
+} else if ($( this ).width() >= '510') {
+// $("div#anim").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim2").velocity({ top: 80 });
+ $("div#anim").attr('style', 'font-weight:bold;font-size:1em;');
+} 
+}, function() {
+/*if ($( this ).width() == '330') {
+$("div#anim").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim2").velocity({ top: 80 });
+} else if ($( this ).width() == '406.8') {
+$("div#anim").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim2").velocity({ top: 100 });
+} else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+$("div#anim").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim2").velocity({ top: 100 });
+} else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+$("div#anim").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim2").velocity({ top: 129.5 });
+} else if ($( this ).width() <= '442') {
+$("div#anim").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim2").velocity({ top: 100 });
+} else if ($( this ).width() == '428.4') {
+$("div#anim").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim2").velocity({ top: 100 });
+} else if ($( this ).width() == '540') {
+$("div#anim").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim2").velocity({ top: 129.5 });
+
+} else if ($( this ).width() >= '510') {
+$("div#anim").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim2").velocity({ top: 129.5 });
+
+}*/
+});
+
+
+
+$(".textContainer3").hover(function() {
+if ($( this ).width() == '330') {
+ $("div#anim2").attr('style', 'font-weight:bold;font-size:0.60rem;');
+//  $("div#anim2").velocity({ opacity: 1 }, { display: "block" });
+//  $("div#titleAnim3").velocity({ top: 52 });
+} else if ($( this ).width() == '406.8') {
+//  $("div#anim2").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim2").attr('style', 'font-weight:bold;font-size:0.70rem;');
+//  $("div#titleAnim3").velocity({ top: 50 });
+ } else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+//  $("div#anim2").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim2").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim3").velocity({ top: 50 });
+ }  else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+//  $("div#anim2").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim2").attr('style', 'font-weight:bold;font-size:0.90rem;');
+//  $("div#titleAnim3").velocity({ top: 80 });
+ } else if ($( this ).width() <= '442') {
+//  $("div#anim2").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim2").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim3").velocity({ top: 50 });
+ } else if ($( this ).width() == '540') {
+$("div#anim2").attr('style', 'font-weight:bold;font-size:1em;'); 
+// $("div#anim2").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim3").velocity({ top: 80 });
+} else if ($( this ).width() >= '510') {
+$("div#anim2").attr('style', 'font-weight:bold;font-size:1em;');  
+// $("div#anim2").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim3").velocity({ top: 80 });
+}
+}, function() {
+/*if ($( this ).width() == '330') {
+$("div#anim2").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim3").velocity({ top: 80 });
+} else if ($( this ).width() == '406.8') {
+$("div#anim2").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim3").velocity({ top: 100 });
+}  else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+$("div#anim2").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim3").velocity({ top: 129.5 });
+} else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+$("div#anim2").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim3").velocity({ top: 100 });
+} else if ($( this ).width() <= '442') {
+$("div#anim2").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim3").velocity({ top: 100 });
+} else if ($( this ).width() == '540') {
+$("div#anim2").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim3").velocity({ top: 129.5 });
+
+} else if ($( this ).width() >= '510') {
+$("div#anim2").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim3").velocity({ top: 129.5 });
+
+}*/
+});
+
+
+
+$(".textContainer4").hover(function() {
+if ($( this ).width() == '330') {
+
+ $("div#anim3").attr('style', 'font-weight:bold;font-size:0.60rem;');
+//  $("div#anim3").velocity({ opacity: 1 }, { display: "block" });
+//  $("div#titleAnim4").velocity({ top: 52 });
+} else if ($( this ).width() == '406.8') {
+//  $("div#anim3").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim3").attr('style', 'font-weight:bold;font-size:0.70rem;');
+//  $("div#titleAnim4").velocity({ top: 50 });
+ }  else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+//  $("div#anim3").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim3").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim4").velocity({ top: 80 });
+ } else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+//  $("div#anim3").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim3").attr('style', 'font-weight:bold;font-size:0.90rem;');
+//  $("div#titleAnim4").velocity({ top: 80 });
+ } else if ($( this ).width() <= '442') {
+//  $("div#anim3").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim3").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim4").velocity({ top: 50 });
+ } else if ($( this ).width() == '540') {
+$("div#anim3").attr('style', 'font-weight:bold;font-size:1em;'); 
+// $("div#anim3").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim4").velocity({ top: 80 });
+} else if ($( this ).width() >= '510') {
+$("div#anim3").attr('style', 'font-weight:bold;font-size:1em;'); 
+// $("div#anim3").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim4").velocity({ top: 80 });
+}
+}, function() {
+/*if ($( this ).width() == '330') {
+$("div#anim3").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim4").velocity({ top: 80 });
+} else if ($( this ).width() == '406.8') {
+$("div#anim3").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim4").velocity({ top: 100 });
+} else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+$("div#anim3").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim4").velocity({ top: 100 });
+} else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+$("div#anim3").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim4").velocity({ top: 129.5 });
+} else if ($( this ).width() <= '442') {
+$("div#anim3").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim4").velocity({ top: 100 });
+} else if ($( this ).width() == '540') {
+$("div#anim3").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim4").velocity({ top: 129.5 });
+
+} else if ($( this ).width() >= '510') {
+$("div#anim3").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim4").velocity({ top: 129.5 });
+
+}*/
+});
+
+
+
+$(".textContainer5").hover(function() {
+if ($( this ).width() == '330') {
+ $("div#anim4").attr('style', 'font-weight:bold;font-size:0.60rem;');
+//  $("div#anim4").velocity({ opacity: 1 }, { display: "block" });
+//  $("div#titleAnim5").velocity({ top: 52 });
+} else if ($( this ).width() == '406.8') {
+//  $("div#anim4").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim4").attr('style', 'font-weight:bold;font-size:0.70rem;');
+//  $("div#titleAnim5").velocity({ top: 50 });
+ } else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+//  $("div#anim4").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim4").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim5").velocity({ top: 50 });
+ } else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+//  $("div#anim4").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim4").attr('style', 'font-weight:bold;font-size:0.90rem;');
+//  $("div#titleAnim5").velocity({ top: 80 });
+ } else if ($( this ).width() <= '442') {
+//  $("div#anim4").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim4").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim5").velocity({ top: 50 });
+ } else if ($( this ).width() == '540') {
+$("div#anim4").attr('style', 'font-weight:bold;font-size:1em;'); 
+// $("div#anim4").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim5").velocity({ top: 80 });
+} else if ($( this ).width() >= '510') {
+$("div#anim4").attr('style', 'font-weight:bold;font-size:1em;');  
+// $("div#anim4").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim5").velocity({ top: 80 });
+} 
+}, function() {
+if ($( this ).width() == '330') {/*
+$("div#anim4").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim5").velocity({ top: 80 });
+} else if ($( this ).width() == '406.8') {
+$("div#anim4").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim5").velocity({ top: 100 });
+} else if ($( this ).width() >= '442' && $( this ).width() <= '450') {
+$("div#anim4").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim5").velocity({ top: 100 });
+} else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+$("div#anim4").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim5").velocity({ top: 129.5 });
+} else if ($( this ).width() <= '442') {
+$("div#anim4").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim5").velocity({ top: 100 });
+} else if ($( this ).width() == '540') {
+$("div#anim4").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim5").velocity({ top: 129.5 });*/
+
+} else if ($( this ).width() >= '510') {
+$("div#anim4").attr('style', 'font-weight:bold;font-size:1em;');  
+// $("div#anim4").velocity({ opacity: 0 }, { display: "none" });
+// $("div#titleAnim5").velocity({ top: 129.5 });
+
+}
+
+});
+
+
+
+$(".textContainer6").hover(function() {
+if ($( this ).width() == '330') {
+ $("div#anim5").attr('style', 'font-weight:bold;font-size:0.60rem;');
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+//  $("div#titleAnim6").velocity({ top: 52 });
+} else if ($( this ).width() == '406.8') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim5").attr('style', 'font-weight:bold;font-size:0.70rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim5").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim5").attr('style', 'font-weight:bold;font-size:0.90rem;');
+//  $("div#titleAnim6").velocity({ top: 80 });
+ } else if ($( this ).width() <= '442') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim5").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() == '540') {
+$("div#anim5").attr('style', 'font-weight:bold;font-size:1em;'); 
+// $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim6").velocity({ top: 80 });
+} else if ($( this ).width() >= '510') {
+$("div#anim5").attr('style', 'font-weight:bold;font-size:1em;');  
+// $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim6").velocity({ top: 80 });
+} 
+}, function() {
+/*if ($( this ).width() == '330') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 80 });
+} else if ($( this ).width() == '406.8') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+}  else if ($( this ).width() >= '442' && $( this ).width() <= '450') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+} else if ($( this ).width() <= '442') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($( this ).width() == '540') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+
+} else if ($( this ).width() >= '510') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+
+}*/
+
+
+});
+
+$(".textContainer7").hover(function() {
+if ($( this ).width() == '330') {
+ $("div#anim6").attr('style', 'font-weight:bold;font-size:0.60rem;');
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+//  $("div#titleAnim6").velocity({ top: 52 });
+} else if ($( this ).width() == '406.8') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim6").attr('style', 'font-weight:bold;font-size:0.70rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim6").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim6").attr('style', 'font-weight:bold;font-size:0.90rem;');
+//  $("div#titleAnim6").velocity({ top: 80 });
+ } else if ($( this ).width() <= '442') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim6").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() == '540') {
+$("div#anim6").attr('style', 'font-weight:bold;font-size:1em;'); 
+// $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim6").velocity({ top: 80 });
+} else if ($( this ).width() >= '510') {
+$("div#anim6").attr('style', 'font-weight:bold;font-size:1em;');  
+// $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim6").velocity({ top: 80 });
+} 
+}, function() {
+/*if ($( this ).width() == '330') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 80 });
+} else if ($( this ).width() == '406.8') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+}  else if ($( this ).width() >= '442' && $( this ).width() <= '450') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+} else if ($( this ).width() <= '442') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($( this ).width() == '540') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+
+} else if ($( this ).width() >= '510') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+
+}*/
+
+
+});
+
+
+$(".textContainer8").hover(function() {
+if ($( this ).width() == '330') {
+ $("div#anim7").attr('style', 'font-weight:bold;font-size:0.60rem;');
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+//  $("div#titleAnim6").velocity({ top: 52 });
+} else if ($( this ).width() == '406.8') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim7").attr('style', 'font-weight:bold;font-size:0.70rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() >= '442' && $( this ).width() <= '450' ) {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim7").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim7").attr('style', 'font-weight:bold;font-size:0.90rem;');
+//  $("div#titleAnim6").velocity({ top: 80 });
+ } else if ($( this ).width() <= '442') {
+//  $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+  $("div#anim7").attr('style', 'font-weight:bold;font-size:0.80rem;');
+//  $("div#titleAnim6").velocity({ top: 50 });
+ } else if ($( this ).width() == '540') {
+$("div#anim7").attr('style', 'font-weight:bold;font-size:1em;'); 
+// $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim6").velocity({ top: 80 });
+} else if ($( this ).width() >= '510') {
+$("div#anim7").attr('style', 'font-weight:bold;font-size:1em;');  
+// $("div#anim5").velocity({ opacity: 1 }, { display: "block" });
+// $("div#titleAnim6").velocity({ top: 80 });
+} 
+}, function() {
+/*if ($( this ).width() == '330') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 80 });
+} else if ($( this ).width() == '406.8') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+}  else if ($( this ).width() >= '442' && $( this ).width() <= '450') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($( this ).width() >= '450' && $( this ).width() <= '509') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+} else if ($( this ).width() <= '442') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 100 });
+} else if ($( this ).width() == '540') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+
+} else if ($( this ).width() >= '510') {
+$("div#anim5").velocity({ opacity: 0 }, { display: "none" });
+$("div#titleAnim6").velocity({ top: 129.5 });
+
+}*/
+
+
+});
+});
+</script>
+{{ end }}	  
+
+   <div class="bee-row bee-row-16" style="background-color:white;" >
+    <div class="bee-row-content">
+     <div class="bee-col bee-col-1 bee-col-w12">
+	       <div class="bee-block bee-block-1 bee-text">
+       <div class="bee-text-content" style="font-size: 14px; line-height: 120%; color: black; font-family: inherit;padding-top:15px;"  >
+        <p style="font-size: 14px; line-height: 16px; text-align: center;" id="gallery">
+         <span style="color: black; line-height: 14px;">
+          <strong style="">
+           <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;">
+EFFECTS
+           </h1>
+          </strong>
+         </span>
+        </p>
+       </div>
+      </div>	 
+      <div class="bee-block bee-block-2 bee-text" style="padding:15px;">
+       <div class="bee-text-content" style="font-size: 14px; line-height: 120%; color: #393d47; font-family: inherit;">
+
+{{ partial "video-gallery-hover-play.html" . }}
+
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+{{ if .Params.hosts.content }}
+<div style="font-style: normal;font-weight: 300;padding-top:0% !important;" class="section white text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+<h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;" id="hosts"><b>HOSTS</b></h1>
+	  </div>	
+	</div>
+	<div class="row">
+	<div class="col-12">
+       {{ .Params.hosts.content | markdownify }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+<div class="bee-row bee-row-17" style="background-color:#d6d6d6;">
+	       <div class="bee-block bee-block-1 bee-text" >
+       <div class="bee-text-content" style="font-size: 14px; line-height: 120%; color: black; font-family: inherit;padding-bottom:15px;padding-top:25px;"  >
+        <p style="font-size: 14px; line-height: 16px; text-align: center;">
+         <span style="color: black; line-height: 14px;">
+          <strong style="">
+           <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;"  id="videos">
+VIDEOS
+           </h1>
+          </strong>
+         </span>
+        </p>
+       </div>
+      </div>	   
+    <div class="bee-row-content">	  
+   {{ range .Params.videos }}	
+   {{ range .content_row_1 }}   
+		<div class="bee-col bee-col-{{ .id }} bee-col-w3" style="padding:15px;">
+	    <div class="bee-block bee-block-{{ .id }} bee-text">
+		<p>
+          <a href="{{ .video_url }}">
+            <img class="img-fluid" loading="lazy" src="{{ .image_url }}" />
+          </a>
+        </p>
+        <p style="font-size: 16px; line-height: 28px;color:black;">
+          <a style="color:black;" href="{{ .video_url }}">{{ .title }}</a>
+        </p>
+      </div>
+      </div>
+  	  	  
+
+	{{ end }}
+	{{ end }}
+    </div>	
+    <div class="bee-row-content">	
+	{{ range .Params.videos }}	
+    {{ range .content_row_2 }}   
+		<div class="bee-col bee-col-{{ .id }} bee-col-w3" style="padding:15px;">
+	    <div class="bee-block bee-block-{{ .id }} bee-text">
+		<p>
+          <a href="{{ .video_url }}">
+            <img class="img-fluid" loading="lazy" src="{{ .image_url }}" />
+          </a>
+        </p>
+        <p style="font-size: 16px; line-height: 28px;color:black;">
+          <a style="color:black;" href="{{ .video_url }}">{{ .title }}</a>
+        </p>
+      </div>
+      </div>
+	{{ end }}
+	{{ end }}
+    </div>	
+   </div>
+
+{{ if .Params.versions }}
+<div style="font-style: normal;font-weight: 300;padding-top:0% !important;" class="section text-center">
+  <div class="container">
+	  	{{ range .Params.versions.items }}  
+    <div class="row">
+      <div class="col-12">
+        <center><h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;" id="versions"><b>{{ .title }}</b></h1></center>
+	  </div>	
+	 </div>
+	 <div class="row">
+	 <div class="col-12">
+          {{ .content | markdownify }}
+
+     </div>
+    </div>
+        {{ end }}	
+   </div>
+</div>
+{{ end }}
+	 
+   <div class="bee-row bee-row-13">
+    <div class="bee-row-content">
+     <div class="bee-col bee-col-1 bee-col-w12">
+      <div class="bee-block bee-block-1 bee-text">
+       <div class="bee-text-content" style="font-size: 14px; line-height: 120%; color: black; font-family: inherit;padding-bottom:30px;padding-top:30px;">
+        <p style="font-size: 14px; line-height: 16px; text-align: center;">
+         <span style="color: black; line-height: 14px;">
+          <strong style="">
+           <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;color:black;" id="techspecs">
+	   {{ .Params.specs.title | markdownify }}     
+           </h1>
+          </strong>
+         </span>
+        </p>
+       </div>
+      </div>	 
+      <div class="bee-block bee-block-2 bee-text">
+	   {{ .Params.specs.content | markdownify }}
+      </div>
+     </div>
+    </div>
+   </div>  
+  </div>
+ <script>
+  var handleMouseOver = function (event) {
+    var video = event.target;
+    video.load();
+    video.play()
+      .then(function () { })
+      .catch(function (err) {
+        if (err instanceof DOMException && err.name == 'AbortError') { console.warn('Playback Failed. ' + (err.message || '')); }
+        else console.error(err);
+      })
+  }
+
+  var handleMouseOut = function (event) {
+    event.target.load();
+  }
+  var videos = document.querySelectorAll('.hover-video');
+  for (var v of videos) {
+    v.addEventListener('mouseover', handleMouseOver);
+    v.addEventListener('mouseout', handleMouseOut);
+  }
+</script> 
+
+      <script>
+$(window).on('load',function() {
+		$("#container1").twentytwenty();
+		$("#container2").twentytwenty();
+      });
+	  </script>
+{{ end }}

@@ -1,0 +1,2354 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: PrismLens",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/PrismLens.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="PrismLens">
+     <h2>
+      S_PrismLens
+     </h2>
+    </a>
+    Emulates recording footage through prismatic lenses with various different shapes.
+    <p>
+     In the Sapphire Stylize category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The clip to combine the gradient image with.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Reflection:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to use for the reflection.  If no input is connected, the source will be used for the reflection.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Composites the Source and gradient over this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Optional.
+      </i>
+      If provided, the mask may control one of two things.  By default, the mask will control the area affected by
+PrismLens.  If 'Use Mask For' is changed to 'Shape', then the mask will be used on calculating the shape used for the
+Reflections.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/PrismLens.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mode:
+   </b>
+   <i>
+    Popup menu,  Default: PrismLensSingle
+   </i>
+   .
+   <br/>
+   The clip to combine the gradient image with.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       PrismLensSingle:
+      </i>
+     </b>
+     Generates a single reflection.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        PrismLensLinear:
+       </i>
+      </b>
+      Generates a line of reflections similar to what would be generated from a straight prism.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         PrismLensRadial:
+        </i>
+       </b>
+       Generates several circles of reflections similar to what would be generated from a round prism.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Use Mask For:
+   </b>
+   <i>
+    Popup menu,  Default: Effect
+   </i>
+   .
+   <br/>
+   Specify whether the mask should be used to control the shape of the reflection or the region affected
+ by the output of the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Shape:
+      </i>
+     </b>
+     uses the mask for the reflection shape.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Effect:
+       </i>
+      </b>
+      uses the mask for the reflection output.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shape Source:
+   </b>
+   <i>
+    Popup menu,  Default: Shape Only
+   </i>
+   .
+   <br/>
+   What input should be used to specify the reflection shape.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Shape Only:
+      </i>
+     </b>
+     use the shape parameters and ignore the mask inputs.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Shape and Mask:
+       </i>
+      </b>
+      combine the shape generated from the parameters and the mask inputs.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mask Only:
+        </i>
+       </b>
+       use the mask inputs to control the reflection shape and ignore the shape parameters.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          None:
+         </i>
+        </b>
+        don't restrict the borders of the reflection.
+        <br/>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show:
+   </b>
+   <i>
+    Popup menu,  Default: Result
+   </i>
+   .
+   <br/>
+   Selects the type of output
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Result:
+      </i>
+     </b>
+     show the final result.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Source:
+       </i>
+      </b>
+      show the input image being used as the source.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflection:
+        </i>
+       </b>
+       show the input image being used for the reflection.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Shape Mask:
+         </i>
+        </b>
+        show the results of the shape parameters.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           All Masks:
+          </i>
+         </b>
+         show all masks combined.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Gradient:
+           </i>
+          </b>
+          show the gradient alone before applying to the reflection.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Single Reflection:
+            </i>
+           </b>
+           show a single reflection after its extracted.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              All Reflections:
+             </i>
+            </b>
+            show the reflection with no post processing.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Final Reflections:
+              </i>
+             </b>
+             show the reflection with all post processing before the final composite step.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Lights Only:
+               </i>
+              </b>
+              show the lights without the source or reflection.
+              <br/>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine With Source:
+   </b>
+   <i>
+    Popup menu,  Default: Composite
+   </i>
+   .
+   <br/>
+   Determines how the reflection is combined with the Source.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Composite:
+      </i>
+     </b>
+     composites the reflection over the source clip.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Add:
+       </i>
+      </b>
+      the reflection color is added to the source clip.  This
+ will have no effect if the vignette color is black.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Screen:
+        </i>
+       </b>
+       the reflection color is combined with the source
+ clip using a screen operation.  This will have no effect if the
+ reflection color is black.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Reflections Only:
+         </i>
+        </b>
+        shows the reflection pattern without the
+ source clip. The output will be white where the amount of reflections
+ are greatest (e.g. where the source clip would be darkened
+ completely).
+        <br/>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Geometry:
+   </b>
+   <i>
+    Popup menu,  Default: Polygon
+   </i>
+   .
+   <br/>
+   Specifies which shape to use for the reflection.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Polygon:
+      </i>
+     </b>
+     set reflection to be a polygonal shape.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Ellipse:
+       </i>
+      </b>
+      set the reflection to be an ellipse.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Sides:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   3 or greater.
+   <br/>
+   The number of points in the reflection shape.  Unless Pointiness is zero,
+ the shape will have this many points around the edge.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.724,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The overall size of a single reflection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.42,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to make the reflection wider.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Position:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   Location of the center of the reflection or reflection pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Position Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Use mocha to control the position of the reflection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Position Mocha Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offset the position data out of mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   -33,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the whole reflection around its center.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to blur the reflection by.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Copies:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   1 to 10.
+   <br/>
+   Number of reflections in each line.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Angle of the line of reflections.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Distance:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0.01 to 1.
+   <br/>
+   Distance between reflections.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Distance between center and first reflection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bias:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   Size of spacing between reflections on the left and right lines.  0 means the spacing is equal, wheras a negative
+ value will skew the spacing towards one side of the center and a positive value will skew the other direction.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Opacity Fade:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Scale the transparency of the reflection as they get farther from the center.  The larger the value,
+ the more transparent the reflection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Size Fade:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -3 to 3.
+   <br/>
+   Scale the size of the reflections as they get farther from the center.  A positive value
+ causes the size to decrease and a negative value causes the size to increase.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Reflect Both Directions:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Whether to draw a line of reflections on both sides of the center.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Radial Copies:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   6,
+   <i>
+    Range:
+   </i>
+   0 to 10.
+   <br/>
+   How many reflections should be generated in a single ring.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   15,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Angle of the first reflection in the rings.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Total Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   360,
+   <i>
+    Range:
+   </i>
+   0 to 360.
+   <br/>
+   The total angle coverage of the reflection rings.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rows:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 to 3.
+   <br/>
+   How many rings to generate around the center of the reflection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Row Distance:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The distance between the rows of reflections.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Row Start Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The distance between the center and the first row of reflections.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Radial Opacity Fade:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Change the transparency of the reflections around the circle.  A positive value makes the size
+ shrink and a negative value makes the size grow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Radial Size Fade:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -3 to 3.
+   <br/>
+   Change the size of the reflections around the circle.  A positive value makes the size
+ shrink and a negative value makes the size grow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Row Opacity Fade:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Change the transparency of the reflections radiating out from the center.  A positive value makes the size
+ shrink and a negative value makes the size grow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Row Size Fade:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -3 to 3.
+   <br/>
+   Change the size of the reflections radiating out from the center.  A positive value makes the size
+ shrink and a negative value makes the size grow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Reflection Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.9,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the transparency of each individual reflection before combined with the other reflections.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Position:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   Location of the source to use for the reflection image.  Note, this should be used to specify the center
+of the reflection source, regardless of what method is used to specify the Reflection shape.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Pos Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Use mocha to control the position to extract the reflection from the reflection input.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Pos Mocha Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offset the source position data out of mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Z Dist:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the 'distance' of the reflection.  Values greater than 1.0
+ move it farther away and make it smaller.  Values less then 1.0 move
+ the image closer and enlarge it.  Note that Scale X and Y also scale
+ the size of the image, but in an inverse way and on each axis.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   -2,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the reflection by the specified angle in
+  counter-clockwise degrees.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Tilt:
+   </b>
+   <i>
+    Default:
+   </i>
+   -10,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the reflection up or down in 3D about the horizontal
+ axis.  You can use Swivel and Tilt together to rotate about
+ arbitrary diagonal axes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Swivel:
+   </b>
+   <i>
+    Default:
+   </i>
+   -12,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates left or right in 3D about a vertical axis.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flip Horizontal:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Flip the source within the reflection horizontally.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flip Vertical:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Flip the source within the reflection vertically.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Source:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.0084,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blur the source within the reflection only.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Reflection is generated from locations in the Reflection input that are
+ greater than the source threshold.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Threshold Softness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blur the reflection after it has been thresholded for softer edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Source Wrap:
+   </b>
+   <i>
+    Popup menu,  Default: Reflect
+   </i>
+   .
+   <br/>
+   Determines the method for accessing outside the borders of the
+source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       No:
+      </i>
+     </b>
+     gives black beyond the borders.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Tile:
+       </i>
+      </b>
+      repeats a copy of the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Reflect:
+        </i>
+       </b>
+       repeats a mirrored copy.  Edges are often less
+visible with this method.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    CC Mix With Source:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Interpolates between the color corrected reflection and the original reflection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    CC Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the color saturation of the reflection.  Increase
+ for more intense colors.  Set to 0 for monochrome.  You can also
+ invert the chroma of the result by making this negative.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the color saturation of the reflection.  Increase
+ for more intense colors.  Set to 0 for monochrome.  You can also
+ invert the chroma of the result by making this negative.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   Shifts the hue of the reflection, in revolutions from red to green to blue to red.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds this gray value to the darker regions of
+the result.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the overall amount of warping by scaling
+  the transformations. Setting this to zero disables both
+  transforms and leaves the image unchanged.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chromatic Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the gradient image (both the Start
+  Color and End Color).
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chromatic Steps:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   12,
+   <i>
+    Range:
+   </i>
+   3 to 100.
+   <br/>
+   The number of spectrum samples to include in the chromatic abberation on the reflection.
+ More steps give a smoother result, but require more time to process.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chromatic Shift:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Controls the direction of the chromatic abberation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chromatic Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The rotation angle of the chromatic abberation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chromatic Z Dist:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0.001 or greater.
+   <br/>
+   The distance or scale of the chromatic abberation.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chromatic Color1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0 0].
+   <br/>
+   The color at the start point in the chromatic distortion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chromatic Color2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 1 0].
+   <br/>
+   The color at the midway point between the start and end chromatic distortion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Chromatic Color3:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 1].
+   <br/>
+   The color at the end point in the chromatic distortion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.56,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the gradient image (both the Start
+  Color and End Color).
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Prisms are generated from locations in the source clip
+  that are brighter than this value.  A value of 0.9 causes prisms at
+  only the brightest spots.  A value of 0 causes prisms for every
+  non-black area.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the glow distance.  This and all the width
+  parameters can be adjusted using the Width Widget.  Note that a zero
+  glow width still enhances the bright areas; set the brightness
+  parameter to zero if you want to pass the Source through unchanged.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the red glow width.  If the red, green,
+  and blue widths are equal, the glows will match the color of the
+  source clip.  If they are not equal, the glows will vary in color with
+  distance.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the green glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Width Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the blue glow width.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Gradient Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Control the transparency of the gradient before combined with the reflection.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color 1:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0 0].
+   <br/>
+   Color of the first control point of the gradient.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point 1:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   Location of the first control point of the gradient.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color 2:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 1 0].
+   <br/>
+   Color of the second control point of the gradient.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point 2:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   Location of the second control point of the gradient.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Color 3:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0 1].
+   <br/>
+   Color of the third control point of the gradient.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point 3:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   Location of the third control point of the gradient.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Screen
+   </i>
+   .
+   <br/>
+   Determines how the gradient is combined with the source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Grad Only:
+      </i>
+     </b>
+     gives the gradient image alone with no source.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Mult:
+       </i>
+      </b>
+      the source is multiplied by the gradient.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Add:
+        </i>
+       </b>
+       the source is added to the gradient.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Screen:
+         </i>
+        </b>
+        the source is blended with the gradient using a
+  screen operation.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Difference:
+          </i>
+         </b>
+         the result is the difference between the source
+  and gradient.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Overlay:
+           </i>
+          </b>
+          combines gradient and source using an overlay function.
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The type of lens flare to apply to generate a light pattern.  Custom lens flare types
+ can also be made, or existing types modified, by editing the flare with the Flare Designer.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lights Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scale the brightness of the lights.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lights Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   2.25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scale the size of the lights.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lights Start Position:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen lower left.
+   <br/>
+   The starting location of the hotspot of the lights pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lights Pos Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Use the mocha track to control the position of the lights.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Speed:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.167 -0.178],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   How fast the hotspot should move across the clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Lights Pivot:
+   </b>
+   <i>
+    X &amp; Y,  Default:
+   </i>
+   screen upper right.
+   <br/>
+   The location of the center of the lights pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Pivot Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Use the mocha track to control the pivot of the lights.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Mask input channels are used to make a
+monochrome mask.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used, or if there is no
+valid Alpha channel the Red channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.  It has no effect unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.  This has no effect
+unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Affect Alpha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this value is positive the output Alpha channel will
+  include some opacity from the prisms.  The maximum of the red, green,
+  and blue prism brightness is scaled by this value and combined with
+  the background Alpha at each pixel.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#title-key">
+  Apply To Title/Key
+ </a>
+ ,
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../gradient">
+       Gradient
+      </a>
+      <br/>
+      <a href="../gradientradial">
+       GradientRadial
+      </a>
+      <br/>
+      <a href="../gradientmulti">
+       GradientMulti
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../blur">
+       Blur
+      </a>
+      <br/>
+      <a href="../glow">
+       Glow
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

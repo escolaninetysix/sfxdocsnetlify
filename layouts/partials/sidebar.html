@@ -1,0 +1,78 @@
+<script>
+$(document).ready(function() {
+
+if (window.location.pathname == "/events/virtual-ibc-2020/") {	  
+
+$("div#sb").html("");
+
+}
+
+});
+</script>
+<div id="sb">
+<form method="post" id="newsletter-form" class="mb-3">
+  <h3>
+    PRODUCT UPDATES & SPECIAL OFFERS
+  </h3>
+  <p>Join our email newsletter and keep up to date</p>
+  <div>
+    <div class="form-group"><input id="newsletter-email" class="form-control" type="email" placeholder="GET EMAIL UPDATES"></div>
+    <div id="newsletter-hidden">
+      <div class="form-group"><input id="newsletter-first" class="form-control" type="text" placeholder="First Name"></div>
+      <div class="form-group"><input id="newsletter-last" class="form-control" type="text" placeholder="Last Name"></div>
+      <p id="newsletter-consent">You can unsubscribe from the Boris FX newsletter at any time by clicking a link we include in every message. We use a third-party service, Pardot, to deliver our newsletters, please see our <a href="/privacy#e-newsletter" target="_blank">privacy policy</a> for more information.
+      </p>
+      <div class="form-group" id="newsletter-submit"><button class="btn btn-lg btn-block" type="submit">Subscribe</button></div>
+  </div>
+  <script>
+    $('#newsletter-hidden').hide();
+    $('#newsletter-email').focus(function() {
+      $('#newsletter-email').attr('placeholder', 'Email Address');
+      $('#newsletter-hidden').show(500);
+    });
+    $('#newsletter-form').submit(function(e) {
+      e.preventDefault();
+      payload = {
+        email: $('#newsletter-email').val(),
+        firstName: $('#newsletter-first').val(),
+        lastName: $('#newsletter-last').val(),
+      }
+      axios.post('https://backend.borisfx.com/newsletter', payload)
+      .then(function (data) {
+        alert('Successfully registered for the Boris FX Newsletter.');
+      })
+      .catch(function (error) {
+        alert('There was an error registering for the Boris FX Newsletter');
+      });
+    });
+    </script>
+  </div>
+</form>
+
+<br>
+
+{{ with $.Site.GetPage "home" }}
+<div class="sidebar-lower">
+  <img class="img-fluid w-100 mb-3 " src="" alt="" />
+  <h3></h3>
+  <p></p>
+</div>
+<script>
+var carousel_items = [
+  {{ range .Params.carousel }}
+  {
+    "title": "{{ .title }}",
+    "image_url": "{{ .image_url }}",
+    "image_alt": "{{ .image_alt }}",
+    "content": "{{ .content | markdownify }}",
+  },
+  {{ end }}
+];
+const carousel_item = carousel_items[Math.floor(Math.random()*carousel_items.length)];
+$('.sidebar-lower img').attr('src', carousel_item.image_alt);
+$('.sidebar-lower h3').html(carousel_item.title);
+$('.sidebar-lower p').html(carousel_item.content);
+</script>
+{{ end }}
+
+</div>

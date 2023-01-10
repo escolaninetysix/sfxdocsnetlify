@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4.1. Global functions &mdash; mocha 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mocha 1.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="4. mocha.tools" href="index.html" />
+    <link rel="next" title="4.2. AbstractTool" href="AbstractTool.html" />
+    <link rel="prev" title="4. mocha.tools" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="AbstractTool.html" title="4.2. AbstractTool"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="4. mocha.tools"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">4. mocha.tools</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.tools"></span><div class="section" id="global-functions">
+<h1>4.1. Global functions<a class="headerlink" href="#global-functions" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="#mocha.tools.mocha.tools.register_custom_tool_type" title="mocha.tools.mocha.tools.register_custom_tool_type"><tt class="xref py py-func docutils literal"><span class="pre">mocha.tools.register_custom_tool_type()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.tools.mocha.tools.tool_instance" title="mocha.tools.mocha.tools.tool_instance"><tt class="xref py py-func docutils literal"><span class="pre">mocha.tools.tool_instance()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.tools.mocha.tools.registered_tool_types" title="mocha.tools.mocha.tools.registered_tool_types"><tt class="xref py py-func docutils literal"><span class="pre">mocha.tools.registered_tool_types()</span></tt></a></li>
+<li><a class="reference internal" href="#mocha.tools.mocha.tools.set_overlay_renderer" title="mocha.tools.mocha.tools.set_overlay_renderer"><tt class="xref py py-func docutils literal"><span class="pre">mocha.tools.set_overlay_renderer()</span></tt></a></li>
+</ul>
+<div class="section" id="detailed-description">
+<h2>4.1.1. Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mocha.tools.mocha.tools.register_custom_tool_type">
+<tt class="descclassname">mocha.tools.</tt><tt class="descname">register_custom_tool_type</tt><span class="sig-paren">(</span><em>tool_type</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.mocha.tools.register_custom_tool_type" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tool_type</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PyTypeObject</span></tt>) &#8211; Custom tool type that must inherit from <a class="reference internal" href="AbstractTool.html#mocha.tools.AbstractTool" title="mocha.tools.AbstractTool"><tt class="xref py py-class docutils literal"><span class="pre">AbstractTool</span></tt></a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Registers a custom tool type.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.tools.mocha.tools.tool_instance">
+<tt class="descclassname">mocha.tools.</tt><tt class="descname">tool_instance</tt><span class="sig-paren">(</span><em>tool_type</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.mocha.tools.tool_instance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PyObject</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tool_type</strong> (<tt class="xref py py-class docutils literal"><span class="pre">PyTypeObject</span></tt>) &#8211; Custom tool type that must inherit from <a class="reference internal" href="AbstractTool.html#mocha.tools.AbstractTool" title="mocha.tools.AbstractTool"><tt class="xref py py-class docutils literal"><span class="pre">AbstractTool</span></tt></a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns either None or a tool instance if it was created.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.tools.mocha.tools.registered_tool_types">
+<tt class="descclassname">mocha.tools.</tt><tt class="descname">registered_tool_types</tt><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.mocha.tools.registered_tool_types" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">PyObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Returns a list of registered tool types.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mocha.tools.mocha.tools.set_overlay_renderer">
+<tt class="descclassname">mocha.tools.</tt><tt class="descname">set_overlay_renderer</tt><span class="sig-paren">(</span><em>arg__1</em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.tools.mocha.tools.set_overlay_renderer" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+<p>Sets the callback function which is called each time when canvas rendering.
+The callback must accept 3 positional arguments (QGLWidget instance, X Scale, Y Scale).</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.1. Global functions</a><ul>
+<li><a class="reference internal" href="#detailed-description">4.1.1. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">4. mocha.tools</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="AbstractTool.html"
+                        title="next chapter">4.2. AbstractTool</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/mocha/tools/GlobalFunctions.txt"
+            >Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="AbstractTool.html" title="4.2. AbstractTool"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="4. mocha.tools"
+             >previous</a> |</li>
+        <li><a href="../../index.html">mocha 1.1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >4. mocha.tools</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3a0.
+    </div>
+  </body>
+</html>

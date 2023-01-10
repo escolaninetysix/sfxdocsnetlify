@@ -1,0 +1,108 @@
+{
+    "title": "Boris FX Knowledgebase",
+    "layout": "single",
+    "date": "2021-04-15T00:00:00-00:00"
+}
+
+<div id="app" class="container">
+    <div class="row">
+        <div class="col-8">
+            <div class="branded-box my-3" v-for="a in articles" v-if="isFiltered(a)">
+                <h2><a v-html="stripTags(a.question)" style="color: #576a76;" :href="`/knowledgebase/` + a.urlName.toLowerCase()"></a></h2>
+                <hr />
+                <p>${a.summary}</p>
+                <p><a :href="`/knowledgebase/` + a.urlName.toLowerCase()">View More. . .</a></p>
+                </div>
+        </div>
+        <div class="col-4">
+            <input id="search" placeholder="Search" class="form-control mb-3" v-model="filters.search" />
+            <div v-for="key in Object.keys(categories)" v-if="categories[key].length > 0" class="my-3 branded-box">
+                <h5>${capitalize(key)}</h5>
+                <div v-for="cat in categories[key]">
+                    <input type="checkbox" :value="cat" v-model="filters[key]" /> ${cat} 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            articles : [],
+            filters: {
+                products : [],
+                hosts : [],
+                types: [],
+                search: ''
+            },
+            categories: {
+                products : [],
+                hosts : [],
+                types: []
+            }
+        },
+        mounted: function(){
+            var self = this;
+            axios.get('/knowledgebase.json')
+            .then(function(res){
+                self.articles = res.data;
+                self.compileCategories();
+            });
+        },
+        methods: {
+            compileCategories: function(){
+                var compiled = {products: [], hosts: [], types: []};
+                for (var a of this.articles){
+                    for (var p of a.products){
+                        if (!compiled.products.includes(p)) compiled.products.push(p);
+                    }
+                    for (var h of a.hosts){
+                        if (!compiled.hosts.includes(h), compiled.hosts.push(h));
+                    }
+                    for (var t of a.types){
+                        if (!compiled.types.includes(t)) compiled.types.push(t);
+                    }
+                }
+                this.categories = compiled;
+            },
+            isFiltered: function(a){
+                var filters = this.filters;
+
+                var matches = { product: false, host: false, type: false }
+                for (var prod of a.products) {
+                    if (filters.products.includes(prod)) { matches.product = true; break; }
+                }
+                if (filters.products.length > 0 && !matches.product) return false;;
+
+                for (var host of a.hosts) {
+                    if (filters.hosts.includes(host)) { matches.host = true; break; }
+                }
+                if (filters.hosts.length > 0 && !matches.host) return false;
+
+                for (var type of a.types) {
+                    if (filters.types.includes(type)) { matches.type = true; break; }
+                }
+                if (filters.types.length > 0 && !matches.type) return false;
+                if (!this.matchSearch(a)) return false;
+                
+                return true;
+            },
+            matchSearch : function(a){
+                var search = this.filters.search.toLowerCase();
+                if (search == '') return true;
+                questionMatch = a.question.toLowerCase().includes(search);
+                summaryMatch = a.summary != null && a.summary.toLowerCase().includes(search);
+                return (questionMatch || summaryMatch);
+            },
+            stripTags: function(str){
+                return str.replace(/(<([^>]+)>)/gi, "");
+            },
+            capitalize: function(str){
+                return str[0].toUpperCase() + str.slice(1);
+            }
+        }
+    })
+</script>

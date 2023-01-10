@@ -1,9 +1,16 @@
 [build]
-  command = "hugo"
+  command = "python3 scripts/import-knowledgebase.py && cd react && npm run deploy && cd .. && hugo && python3 scripts/algolia-update.py"
   publish = "public"
+  environment = { RUBY_VERSION = "2.4.0" }
 [context.production.environment]
-  HUGO_VERSION = "0.89.4"
+  HUGO_VERSION = "0.109.0"
+  NODE_VERSION = "16.17.0"
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.89.4"
+  HUGO_VERSION = "0.109.0"
+  NODE_VERSION = "16.17.0"
 [context.branch-deploy.environment]
-  HUGO_VERSION = "0.89.4"
+  HUGO_VERSION = "0.109.0"
+  NODE_VERSION = "16.17.0"
+
+#[context.staging]
+#  command = "make staging"

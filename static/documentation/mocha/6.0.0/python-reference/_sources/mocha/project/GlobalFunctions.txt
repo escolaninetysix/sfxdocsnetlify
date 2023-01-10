@@ -1,0 +1,69 @@
+.. module:: mocha.project
+
+Global functions
+****************
+
+.. container:: function_list
+
+*   :func:`mocha.project.set_license_search_path`
+*   :func:`mocha.project.get_license_path`
+*   :func:`mocha.project.get_current_project`
+*   :func:`mocha.project.register_custom_tool_type`
+*   :func:`mocha.project.tool_instance`
+*   :func:`mocha.project.registered_tool_types`
+*   :func:`mocha.project.set_overlay_renderer`
+
+
+Detailed Description
+--------------------
+
+.. function:: mocha.project.set_license_search_path(path)
+
+      :type path: unicode
+
+
+      
+      :param path: New license search path.
+      
+      Sets the current license directory path. By default it equals to installed mocha license path.
+      
+
+.. function:: mocha.project.get_license_path()
+
+      :rtype: unicode
+
+
+      
+      Returns the current license directory path. By default it equals to installed mocha license path.
+      
+
+.. function:: mocha.project.get_current_project()
+
+      :rtype: :class:`mocha.project.Project`
+
+
+      
+      Returns the current open project. Use it only in init.py script to get the current open project.
+      
+
+.. function:: mocha.project.register_custom_tool_type(tool_type)
+
+      :type tool_type: :class:`PyTypeObject`
+
+
+.. function:: mocha.project.tool_instance(tool_type)
+
+      :type tool_type: :class:`PyTypeObject`
+      :rtype: :class:`PyObject`
+
+
+.. function:: mocha.project.registered_tool_types()
+
+      :rtype: :class:`PyObject`
+
+
+.. function:: mocha.project.set_overlay_renderer(arg__1)
+
+      :type arg__1: :class:`PyObject`
+
+

@@ -1,0 +1,218 @@
+{
+    "title": "Apply For Credit Terms"
+}
+
+<style>
+    .form-control{
+        font-size: 1rem;
+        padding: .25rem .75rem;
+    }
+    select.form-control{
+        height: unset!important;
+        padding: .35rem .75rem;
+    }
+    .form-group{
+        margin-bottom: .5rem;
+    }
+    .form-group label{
+        margin-bottom: .25rem;
+    }
+</style>
+
+<div id="app">
+    <div class="branded-box">
+        <form id="credit-terms-form" @submit.prevent="handleSubmit">
+            <div class="row">
+                <div class="col">
+                    <h4>Contact Details</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 form-group">
+                    <label>First Name</label>
+                    <input class="form-control" name="firstName" v-model="formData.firstName" required />
+                </div>
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" name="lastName" v-model="formData.lastName" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Email Address</label>
+                    <input class="form-control" name="email" v-model="formData.email" required />
+                </div>
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Phone Number</label>
+                    <input class="form-control" name="phone" v-model="formData.phone" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>Company Details</h4>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Company Name</label>
+                    <input class="form-control" name="company" v-model="formData.company" required />
+                </div>
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Company Size</label>
+                    <select class="form-control" name="companySize" v-model="formData.companySize" required>
+                        <option>Less Than 10 Employees</option>
+                        <option>10-49 Employees</option>
+                        <option>50-249 Employees</option>
+                        <option>More than 250 Employees</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Address Line 1</label>
+                    <input class="form-control" name="address1" v-model="formData.billing.address1" required />
+                </div>
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Address Line 2 (optional)</label>
+                    <input class="form-control" name="address2" v-model="formData.billing.address2"  />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 form-group">
+                    <label>City</label>
+                    <input class="form-control" name="city" v-model="formData.billing.city" required />
+                </div>
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Zip/Postal Code</label>
+                    <input class="form-control" name="postalCode" v-model="formData.billing.postalCode" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Country</label>
+                    <select class="form-control grouped-input" id="billing-country"
+                        v-model="formData.billing.country"
+                        @change="renderStates($event, $event.target.selectedIndex);" required>
+                        <option value="">-- Select Country --</option>
+                        <option v-for="c in countries" :value="c.code">${ c.name }</option>
+                    </select>
+                </div>
+                <div class="col-lg-6 col-12 form-group">
+                    <div v-if="states">
+                        <label>State</label>
+                        <select class="form-control grouped-input" id="billing-state" 
+                            v-model="formData.billing.state" required>
+                            <option value="">-- Select State --</option>
+                            <option v-for="s in states" :value="s.code">${ s.name }</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div><h4>Accounts Payable</h4></div>
+                    <div class="form-check" style="padding-left: 1.25rem;">
+                        <input id="matchCheck" type="checkbox" class="form-check-input" name="accountsPayableMatches" v-model="formData.accPayableMatches" @change="handleMatchCheckboxChange" />
+                        <label class="" for="matchCheck">I am my business's Accounts Payable Contact.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 form-group">
+                    <label>First Name</label>
+                    <input class="form-control" name="firstName" v-model="formData.accPayableFirst" :disabled="formData.accPayableMatches" required />
+                </div>
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" name="lastName" v-model="formData.accPayableLast" :disabled="formData.accPayableMatches" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Email Address</label>
+                    <input class="form-control" name="email" v-model="formData.accPayableEmail" :disabled="formData.accPayableMatches" required />
+                </div>
+                <div class="col-lg-6 col-12 form-group">
+                    <label>Phone Number</label>
+                    <input class="form-control" name="phone" v-model="formData.accPayablePhone" :disabled="formData.accPayableMatches" required />
+                </div>
+            </div>
+            <button class="btn" type="submit" :disabled="submitting">${submitting ? 'Please Wait. . .' : 'Submit'}</button>
+        </form>
+    </div>
+</div>
+{{% country-state-json %}}
+<script>
+    new Vue({
+        el : '#app',
+        delimiters: ['${', '}'],
+        data: {
+            countries: countryJson,
+            states: null,
+            submitting: false,
+            formData: {
+                firstName: '',
+                lastName: '',
+                company: '',
+                companySize: 'Less Than 10 Employees',
+                email : '',
+                phone: '',
+                accPayableEmail: '',
+                accPayableFirst: '',
+                accPayableLast: '',
+                accPayablePhone: '',
+                accPayableMatches: false,
+                billing: {
+                    address1: '',
+                    address2: '',
+                    city: '',
+                    state: '',
+                    country: '',
+                    zip: ''
+                }
+            }
+        },
+        methods: {
+            renderStates: function (event, index) {
+                var i = index - 1;
+                var selectedCountry = this.countries[i];
+                this.states = selectedCountry.states;
+                this.formData.billing.state = '';
+            },
+            handleMatchCheckboxChange: function(){
+                if (!this.formData.accPayableMatches){
+                    this.formData.accPayableFirst = '';
+                    this.formData.accPayableLast = '';
+                    this.formData.accPayableEmail = '';
+                    this.formData.accPayablePhone = '';
+                }
+            },
+            handleSubmit: function(){
+                var self = this;
+                self.submitting = true;
+                var payload = self.formData;
+                axios.post('https://backend.borisfx.com/credit-application', payload)
+                .then(function(res){
+                    window.location.href='/support/credit-terms-success/?case=' + res.data.caseNumber;
+                })
+                .catch(function(err){
+                    alert('There was a problem submitting your application. Please review your information and try again.');
+                    self.submitting = false;
+                })
+            }
+        },
+        watch: {
+            formData: {
+                handler: function(newData, oldData){
+                    if (newData.accPayableMatches){
+                        this.formData.accPayableFirst = this.formData.firstName;
+                        this.formData.accPayableLast = this.formData.lastName;
+                        this.formData.accPayableEmail = this.formData.email;
+                        this.formData.accPayablePhone = this.formData.phone;
+                    }
+                },
+                deep: true
+            }
+        }
+    })
+</script>

@@ -1,0 +1,271 @@
+
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
+
+<div id="app" v-cloak>
+  <div class="row">
+    <div class="col-lg-3 mb-3">
+      <input v-model="searchText" type="search" placeholder="Search" class="form-control mb-1" />
+      <div class="mb-3">
+        <p style="font-size: 10px; font-weight: bold">
+          ${ filtered_videos.length } VIDEO<template v-if="filtered_videos.length != 1">S</template> FOUND.
+          ${ selected_tag_count } TAG<template v-if="selected_tag_count != 1">S</template> SELECTED.
+        </p>
+      </div>
+      <div id="tagging">
+        <template v-for="category in categories">
+          <h4>
+            <a data-toggle="collapse" data-parent="#tagging" :href="'#' + category">
+              ${ category | capitalize } <i class="fa fa-caret-down"></i>
+            </a>
+          </h4>
+          <div :id="category" class="collapse" :class="{ show: (categories.length == 1) || (selectedTags[category].length != 0) }">
+            <div v-for="tag in tags[category]" class="form-check">
+              <label class="form-check-label ml-3" style="font-size: 16px">
+                <input v-model="selectedTags[category]" :value="tag" type="checkbox" class="form-check-input" /> ${ tag }
+              </label>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="col-lg-9 mb-3">
+      <template v-if="filtered_videos.length == 0">
+        <p class="text-center">
+          No videos found.
+        </p>
+      </template>
+      <template v-else>
+	  	   <div style="width:100%; height:500px; overflow-x:hidden;overflow-y:scroll;padding-right:10px;padding-left:10px;">
+           <div class="row">
+          <template v-for="(video, index) in filtered_videos">
+            <div class="col-md-4">
+              <div class="img-16x9" :id="video.video_name">
+                <a :href="video.url">
+				<div id="imgContainer" style="position:relative;height:100%;width:100%;">
+                  <img :id="video.video_name" class="img-fluid w-100 h-100" loading="lazy" :src="video.thumbnail_url" />
+                  <img id="play" class="img-fluid" style="display:none;" loading="lazy" :name="video.video_name" src="https://borisfx-com-res.cloudinary.com/image/upload/w_50,h_50/v1600811322/blue_button._pause.png" />
+                </div>
+				</a>
+                <a :href="video.url" class="w-100 h-100">
+                  <div class="w-100 h-100 video-rollover">
+                    <p class="p-3" v-html="$options.filters.truncate(video.content)">
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <p style="font-size: 14px">
+                ${ video.title } 
+              </p>              
+			  <input type="hidden" :value="video.video_name" style="font-size: 14px" :id="video.video_name" state="" :sid="video.video_id">
+            </div>
+          </template>
+        </div>
+		</div>
+      </template>
+    </div>
+  </div>
+</div>
+
+<script>
+
+var categories = [];
+var tags = {};
+var selectedTags = {};
+
+for (var v in videos) {
+  var video = videos[v];
+  if (!video.tagging) {
+    continue;
+  }
+  for (var c in Object.keys(video.tagging)) {
+    var category = Object.keys(video.tagging)[c];
+    if (!tags[category]) {
+      categories.push(category);
+      tags[category] = [];
+      selectedTags[category] = [];
+    }
+    if (typeof video.tagging[category] == 'string') {
+      var tag = video.tagging[category];
+      if (tag != '' && tags[category].indexOf(tag) == -1) {
+        tags[category].push(tag);
+      }
+    }
+    else {
+      for (var t in video.tagging[category]) {
+        var tag = video.tagging[category][t];
+        if (tag != '' && tags[category].indexOf(tag) == -1) {
+          tags[category].push(tag);
+        }
+      }
+    }
+  }
+}
+
+for (var c in Object.keys(tags)) {
+  var category = Object.keys(tags)[c];
+  tags[category].sort();
+}
+categories.sort();
+
+// HACK force ordering of categories in videos section
+if (window.location.pathname == '/videos/') {
+  categories = [
+    'product',
+    'series',
+    'feature',
+    'host',
+    'language',
+  ];
+}
+
+// set search and select tags from query params
+var queryParamTags = getQueryParameter('tags') || '';
+queryParamTags = queryParamTags.split(',');
+for (var q in queryParamTags) {
+  var category = queryParamTags[q].split(':')[0];
+  var tag = queryParamTags[q].split(':')[1];
+  if (category && tag) {
+    selectedTags[category].push(tag);
+  }
+}
+var queryParamSearch = getQueryParameter('search') || '';
+var searchText = queryParamSearch;
+
+function updateQuery() {
+  var selectedTagsString = '';
+  var values = [];
+  var firstTag = true;
+  for (var c in Object.keys(this.selectedTags)) {
+    var category = Object.keys(this.selectedTags)[c];
+    for (var t in this.selectedTags[category]) {
+      var tag = this.selectedTags[category][t];
+      if (!firstTag)
+        selectedTagsString += ',';
+      else
+        firstTag = false;
+      selectedTagsString += category + ':' + tag;
+    }
+  }
+  var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?tags=' + selectedTagsString + '&search=' + this.searchText;
+  window.history.pushState({path:newurl},'',newurl);
+}
+
+new Vue({
+
+  el: '#app',
+  delimiters: ['${', '}'],
+
+  data: {
+    searchText: searchText,
+    categories: categories,
+    tags: tags,
+    selectedTags: selectedTags,
+    offset: 0,
+    videos: videos,
+	watched: true
+  },
+
+  computed: {
+
+    filtered_videos: function () {
+
+      this.offset = 0;
+
+      function formatSearchText(searchText) {
+        return searchText.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+      }
+      var searchText = formatSearchText(this.searchText);
+
+      var result = [];
+      for (var v in this.videos) {
+        var video = this.videos[v];
+
+        var matches_tags = true;
+        for (var c in Object.keys(this.selectedTags)) {
+          var category = Object.keys(this.selectedTags)[c];
+          var matches_category = false;
+          if (this.selectedTags[category].length == 0) {
+            matches_category = true;
+          }
+          for (var t in this.selectedTags[category]) {
+            var tag = this.selectedTags[category][t];
+            if (
+              video.tagging &&
+              video.tagging[category] &&
+              (
+                video.tagging[category].indexOf(tag) != -1 ||
+                video.tagging[category] == tag
+              )
+            ) {
+              matches_category = true;
+            }
+          }
+          if (!matches_category) {
+            matches_tags = false;
+            break;
+          }
+        }
+
+        var matches_search = (
+          video.title.search(new RegExp(searchText, 'i')) != -1 ||
+          video.content.search(new RegExp(searchText, 'i')) != -1
+        );
+
+        if (matches_tags && matches_search) {
+          result.push(video);
+        }
+
+      }
+
+      result.sort(function (a, b){
+        a = new Date(a.date),
+        b = new Date(b.date);
+        if (a < b) return 1;
+        if (a > b) return -1;
+        return 0;
+      });
+
+      return result;
+
+    },
+
+    selected_tag_count: function() {
+      var values = [];
+      for (var c in Object.keys(this.selectedTags)) {
+        var category = Object.keys(this.selectedTags)[c];
+        Array.prototype.push.apply(values, this.selectedTags[category]);
+      }
+      return [].concat.apply([], values).length;
+    },
+
+  },
+
+  watch: {
+
+    selectedTags: {
+      handler: updateQuery,
+      deep: true,
+    },
+    searchText: {
+      handler: updateQuery,
+      deep: true,
+    },
+
+  },
+
+
+  filters: {
+    capitalize: function (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+    truncate: function(string) {
+      return string.substring(0, 150) + '...';
+    },    
+  },
+
+});
+</script>

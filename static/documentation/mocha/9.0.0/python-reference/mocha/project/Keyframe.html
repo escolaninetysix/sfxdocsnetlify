@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.8. Keyframe &#8212; mocha 9.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.9. Keyframes" href="Keyframes.html" />
+    <link rel="prev" title="2.7. ImageData" href="ImageData.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Keyframes.html" title="2.9. Keyframes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ImageData.html" title="2.7. ImageData"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 9.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="keyframe">
+<span id="id1"></span><h1><span class="section-number">2.8. </span>Keyframe<a class="headerlink" href="#keyframe" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.8.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.8.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.Keyframe.__eq__" title="mocha.project.Keyframe.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Keyframe.__gt__" title="mocha.project.Keyframe.__gt__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__gt__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Keyframe.__lt__" title="mocha.project.Keyframe.__lt__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__lt__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Keyframe.__ne__" title="mocha.project.Keyframe.__ne__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__ne__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Keyframe.__repr__" title="mocha.project.Keyframe.__repr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__repr__</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Keyframe.get_time" title="mocha.project.Keyframe.get_time"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_time</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Keyframe.get_value" title="mocha.project.Keyframe.get_value"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_value</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Keyframe.get_view" title="mocha.project.Keyframe.get_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_view</span></code></a> ()</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.8.1.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.Keyframe.time" title="mocha.project.Keyframe.time"><code class="xref py py-attr docutils literal notranslate"><span class="pre">time</span></code></a> [read-only] of float</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Keyframe.value" title="mocha.project.Keyframe.value"><code class="xref py py-attr docutils literal notranslate"><span class="pre">value</span></code></a> [read-only] of object</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Keyframe.view" title="mocha.project.Keyframe.view"><code class="xref py py-attr docutils literal notranslate"><span class="pre">view</span></code></a> [read-only] of float</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.8.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>Keyframe instance holding the target time, view and value fields.</p>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.project.Keyframe">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">Keyframe</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">time</em><span class="optional">[</span>, <em class="sig-param">view=View{ 0 }</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">Keyframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Keyframe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Keyframe.__repr__">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Keyframe.get_time">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">get_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe.get_time" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>double</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Keyframe.get_value">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">get_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Keyframe.get_view">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">get_view</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe.get_view" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="View.html"><span class="doc">View</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Keyframe.__ne__">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Keyframe.__lt__">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">__lt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe.__lt__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Keyframe.__eq__">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Keyframe.__gt__">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">__gt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Keyframe.__gt__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Keyframe.time">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">time</code><a class="headerlink" href="#mocha.project.Keyframe.time" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to the time field.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Keyframe.view">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">view</code><a class="headerlink" href="#mocha.project.Keyframe.view" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to the view field.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Keyframe.value">
+<code class="sig-prename descclassname">Keyframe.</code><code class="sig-name descname">value</code><a class="headerlink" href="#mocha.project.Keyframe.value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to the value field.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.8. Keyframe</a><ul>
+<li><a class="reference internal" href="#synopsis">2.8.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.8.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.8.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.8.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ImageData.html"
+                        title="previous chapter"><span class="section-number">2.7. </span>ImageData</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Keyframes.html"
+                        title="next chapter"><span class="section-number">2.9. </span>Keyframes</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Keyframes.html" title="2.9. Keyframes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ImageData.html" title="2.7. ImageData"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 9.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2021, Boris FX, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

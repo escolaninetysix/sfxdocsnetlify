@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2.15. Project &#8212; mocha  documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.16. RenderInsertOperation" href="RenderInsertOperation.html" />
+    <link rel="prev" title="2.14. ProgressWatcher" href="ProgressWatcher.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="RenderInsertOperation.html" title="2.16. RenderInsertOperation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ProgressWatcher.html" title="2.14. ProgressWatcher"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="project">
+<span id="id1"></span><h1><span class="section-number">2.15. </span>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2><span class="section-number">2.15.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">2.15.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.project.Project.__eq__" title="mocha.project.Project.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.__ne__" title="mocha.project.Project.__ne__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__ne__</span></code></a> (rhs)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.add_clip" title="mocha.project.Project.add_clip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_clip</span></code></a> (detached_clip, clip_name)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.add_group" title="mocha.project.Project.add_group"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_group</span></code></a> ([name=Project.tr( “New group” )[, layers=list()]])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.add_layer" title="mocha.project.Project.add_layer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_layer</span></code></a> (clip[, name=Project.tr( “New layer” )[, frame_number=0[, view=0]]])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.export_rendered_shapes" title="mocha.project.Project.export_rendered_shapes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">export_rendered_shapes</span></code></a> (layers, colorizeOutput, directory, extension, prefix, suffix, index_start, index_finish[, index_width=1[, views=list()[, separate_streams=false[, offset=0]]]])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.find_groups" title="mocha.project.Project.find_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_groups</span></code></a> (name)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.find_layers" title="mocha.project.Project.find_layers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_layers</span></code></a> (name)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.get_output_dir" title="mocha.project.Project.get_output_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_output_dir</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.layer" title="mocha.project.Project.layer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layer</span></code></a> (layer_index)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.new_output_clip" title="mocha.project.Project.new_output_clip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">new_output_clip</span></code></a> (input_clip, clip_name)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.parameter" title="mocha.project.Project.parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parameter</span></code></a> (name_components)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.parameter_set" title="mocha.project.Project.parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parameter_set</span></code></a> ([name_components=list()])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.render" title="mocha.project.Project.render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render</span></code></a> (operation, start_index, stop_index[, layers=list()[, view=View(0)[, step=0]]])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.save" title="mocha.project.Project.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.save_as" title="mocha.project.Project.save_as"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_as</span></code></a> (file)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.set_output_dir" title="mocha.project.Project.set_output_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_output_dir</span></code></a> (path[, validate=false])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.track_layers" title="mocha.project.Project.track_layers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">track_layers</span></code></a> ([start_index=0[, stop_index=UINT_MAX[, layers=list()[, views=list()]]]])</p></li>
+<li><p>def <a class="reference internal" href="#mocha.project.Project.undo_group" title="mocha.project.Project.undo_group"><code class="xref py py-meth docutils literal notranslate"><span class="pre">undo_group</span></code></a> ()</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">2.15.1.2. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.project.Project.clips" title="mocha.project.Project.clips"><code class="xref py py-attr docutils literal notranslate"><span class="pre">clips</span></code></a> [read-only] of dict of {unicode: <a class="reference internal" href="Clip.html#mocha.project.Clip" title="mocha.project.Clip"><code class="xref py py-class docutils literal notranslate"><span class="pre">Clip</span></code></a>}</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.default_hero_view" title="mocha.project.Project.default_hero_view"><code class="xref py py-attr docutils literal notranslate"><span class="pre">default_hero_view</span></code></a> [read-write] of View</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.default_trackable_clip" title="mocha.project.Project.default_trackable_clip"><code class="xref py py-attr docutils literal notranslate"><span class="pre">default_trackable_clip</span></code></a> [read-only] of Clip</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.first_frame_offset" title="mocha.project.Project.first_frame_offset"><code class="xref py py-attr docutils literal notranslate"><span class="pre">first_frame_offset</span></code></a> [read-write] of int</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.frame_rate" title="mocha.project.Project.frame_rate"><code class="xref py py-attr docutils literal notranslate"><span class="pre">frame_rate</span></code></a> [read-write] of float</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.groups" title="mocha.project.Project.groups"><code class="xref py py-attr docutils literal notranslate"><span class="pre">groups</span></code></a> [read-only] of list of <a class="reference internal" href="LayerGroup.html#mocha.project.LayerGroup" title="mocha.project.LayerGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">LayerGroup</span></code></a>’s</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.in_out_range" title="mocha.project.Project.in_out_range"><code class="xref py py-attr docutils literal notranslate"><span class="pre">in_out_range</span></code></a> [read-write] of 2-values tuple of long</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.interlace_mode" title="mocha.project.Project.interlace_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">interlace_mode</span></code></a> [read-only] of InterlaceMode</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.layers" title="mocha.project.Project.layers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">layers</span></code></a> [read-only] of list of <a class="reference internal" href="Layer.html#mocha.project.Layer" title="mocha.project.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a>’s</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.length" title="mocha.project.Project.length"><code class="xref py py-attr docutils literal notranslate"><span class="pre">length</span></code></a> [read-write] of int</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.notes" title="mocha.project.Project.notes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">notes</span></code></a> [read-write] of unicode</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.playback_in_point" title="mocha.project.Project.playback_in_point"><code class="xref py py-attr docutils literal notranslate"><span class="pre">playback_in_point</span></code></a> [read-write] of uint</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.playback_out_point" title="mocha.project.Project.playback_out_point"><code class="xref py py-attr docutils literal notranslate"><span class="pre">playback_out_point</span></code></a> [read-write] of uint</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.progress_watcher" title="mocha.project.Project.progress_watcher"><code class="xref py py-attr docutils literal notranslate"><span class="pre">progress_watcher</span></code></a> [read-only] of ProgressWatcher</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.project_file" title="mocha.project.Project.project_file"><code class="xref py py-attr docutils literal notranslate"><span class="pre">project_file</span></code></a> [read-only] of unicode</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.psets" title="mocha.project.Project.psets"><code class="xref py py-attr docutils literal notranslate"><span class="pre">psets</span></code></a> [read-only] of ParameterSet</p></li>
+<li><p>property <a class="reference internal" href="#mocha.project.Project.views" title="mocha.project.Project.views"><code class="xref py py-attr docutils literal notranslate"><span class="pre">views</span></code></a> [read-write] of list of <a class="reference internal" href="ViewInfo.html#id2" title="mocha.project.ViewInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewInfo</span></code></a>’s</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">2.15.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>Main project class. Provides methods and properties for general project management
+of layers, groups, rendering and output directories.</p>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.project.Project">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">Project</code><span class="sig-paren">(</span><em class="sig-param">detached_clip</em><span class="optional">[</span>, <em class="sig-param">interlace_mode=NotInterlaced</em><span class="optional">[</span>, <em class="sig-param">parent=NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>detached_clip</strong> (<a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a>) – Detached clip instance.</p></li>
+<li><p><strong>interlace_mode</strong> (<code class="xref any docutils literal notranslate"><span class="pre">InterlaceMode</span></code>) – Interlace mode for creating clip.</p></li>
+<li><p><strong>parent</strong> (<code class="xref any docutils literal notranslate"><span class="pre">QObject</span></code>) – Parent QObject or None.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates a new mocha project from existing clip.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.project.</code><code class="sig-name descname">Project</code><span class="sig-paren">(</span><em class="sig-param">project_file</em><span class="optional">[</span>, <em class="sig-param">parent=NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_file</strong> (<em>str</em>) – Path to mocha project file.</p></li>
+<li><p><strong>parent</strong> (<code class="xref any docutils literal notranslate"><span class="pre">QObject</span></code>) – Parent QObject or None.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Opens existing mocha project.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.add_clip">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">add_clip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">detached_clip</span></em>, <em class="sig-param"><span class="n">clip_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.add_clip" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>detached_clip</strong> (<a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a>) – Detached clip instance.</p></li>
+<li><p><strong>clip_name</strong> (<em>str</em>) – New clip name to register.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates a copy of <code class="docutils literal notranslate"><span class="pre">detached_clip</span></code> and add this to the project. Returns the copy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.add_group">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">add_group</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">name=Project.tr( &quot;New group&quot; )</em><span class="optional">[</span>, <em class="sig-param">layers=list()</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.add_group" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="LayerGroup.html"><span class="doc">LayerGroup</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name for creating group.</p></li>
+<li><p><strong>layers</strong> (<em>list of Layer</em>) – Layers which will be added to new group.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates and adds a new group of given <code class="docutils literal notranslate"><span class="pre">layers</span></code>. New group will get the new <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">add_group</span><span class="p">(</span><span class="s1">&#39;new_group&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">layer1</span><span class="p">,</span> <span class="n">layer2</span><span class="p">))</span>
+<span class="go">&lt;project.LayerGroup object at 0x25263b0&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.add_layer">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">add_layer</code><span class="sig-paren">(</span><em class="sig-param">clip</em><span class="optional">[</span>, <em class="sig-param">name=Project.tr( &quot;New layer&quot; )</em><span class="optional">[</span>, <em class="sig-param">frame_number=0</em><span class="optional">[</span>, <em class="sig-param">view=0</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.add_layer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Layer.html"><span class="doc">Layer</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>clip</strong> (<a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a>) – Clip instance which will contain new layer.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name for creating layer.</p></li>
+<li><p><strong>frame_number</strong> (<em>uint</em>) – Number of frame where new layer is going to be added.</p></li>
+<li><p><strong>view_index</strong> – View index.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>New Layer</p>
+</dd>
+</dl>
+<p>Creates a new layer with <code class="docutils literal notranslate"><span class="pre">name</span></code> and attaches it to <code class="docutils literal notranslate"><span class="pre">clip</span></code> starting from <code class="docutils literal notranslate"><span class="pre">frame_number</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="s1">&#39;new_layer&#39;</span><span class="p">)</span>
+<span class="go">&lt;project.Layer object at 0x25263b0&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.export_rendered_shapes">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">export_rendered_shapes</code><span class="sig-paren">(</span><em class="sig-param">layers</em>, <em class="sig-param">colorizeOutput</em>, <em class="sig-param">directory</em>, <em class="sig-param">extension</em>, <em class="sig-param">prefix</em>, <em class="sig-param">suffix</em>, <em class="sig-param">index_start</em>, <em class="sig-param">index_finish</em><span class="optional">[</span>, <em class="sig-param">index_width=1</em><span class="optional">[</span>, <em class="sig-param">views=list()</em><span class="optional">[</span>, <em class="sig-param">separate_streams=false</em><span class="optional">[</span>, <em class="sig-param">offset=0</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.export_rendered_shapes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>layers</strong> (<em>list of Layer</em>) – Layers which will be exported.</p></li>
+<li><p><strong>colorize_output</strong> – Colorize output option.</p></li>
+<li><p><strong>directory</strong> (<em>str</em>) – Output directory for rendered clip.</p></li>
+<li><p><strong>extension</strong> (<em>str</em>) – File extension for rendered clip.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – File prefix for rendered clip.</p></li>
+<li><p><strong>suffix</strong> (<em>str</em>) – File suffix for rendered clip.</p></li>
+<li><p><strong>index_start</strong> (<em>uint</em>) – Start frame number.</p></li>
+<li><p><strong>index_finish</strong> (<em>uint</em>) – Stop frame number.</p></li>
+<li><p><strong>index_width</strong> (<em>uint</em>) – Digits count in clip index.</p></li>
+<li><p><strong>views</strong> (<em>list of View</em>) – Views to export.</p></li>
+<li><p><strong>offset</strong> (<em>uint</em>) – Frame offset for the exported image sequence.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Exports matte clip to file system <code class="docutils literal notranslate"><span class="pre">directory</span></code>.
+This method represents mocha <strong>File - Export Rendered Shapes…</strong> dialog.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.find_groups">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">find_groups</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.find_groups" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of LayerGroup</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>name</strong> (<em>str</em>) – Group name for searching.</p>
+</dd>
+</dl>
+<p>Returns all groups with the given name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.find_layers">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">find_layers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.find_layers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of Layer</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>name</strong> (<em>str</em>) – Layer name for searching.</p>
+</dd>
+</dl>
+<p>Returns all layers with the given name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.get_output_dir">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">get_output_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.get_output_dir" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p>Returns path to the current output directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.layer">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">layer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">layer_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.layer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Layer.html"><span class="doc">Layer</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>layer_index</strong> (<em>uint</em>) – Layer index.</p>
+</dd>
+</dl>
+<p>Access a <a class="reference internal" href="Layer.html#mocha.project.Layer" title="mocha.project.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a> by <code class="docutils literal notranslate"><span class="pre">layer_index</span></code>.
+Layers are indexed by their position in a flattened depth sorted list.
+If <code class="docutils literal notranslate"><span class="pre">layer_index</span></code> is out of range, <a class="reference internal" href="#mocha.project.Project.layer" title="mocha.project.Project.layer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layer()</span></code></a> should return <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">proj</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&lt;project.Layer object at 0x2514d40&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mocha.project.Project.find_layers" title="mocha.project.Project.find_layers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_layers()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#mocha.project.Project.layers" title="mocha.project.Project.layers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">layers</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.new_output_clip">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">new_output_clip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_clip</span></em>, <em class="sig-param"><span class="n">clip_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.new_output_clip" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>input_clip</strong> (<a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a>) – Input clip instance.</p></li>
+<li><p><strong>clip_name</strong> (<em>str</em>) – New clip name to register.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates a new output clip.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.__ne__">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.__eq__">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.parameter">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name_components</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.parameter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Parameter.html"><span class="doc">Parameter</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>name_components</strong> (<em>list of strings</em>) – Fully qualified name for a requested parameter.</p>
+</dd>
+</dl>
+<p>Returns <a class="reference internal" href="Parameter.html#mocha.project.Parameter" title="mocha.project.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> instance bound with given name path. The project instance is a root of
+the parameter system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.parameter_set">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">parameter_set</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">name_components=list()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.parameter_set" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ParameterSet.html"><span class="doc">ParameterSet</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>name_components</strong> (<em>list of strings</em>) – Fully qualified name for a requested parameter set.</p>
+</dd>
+</dl>
+<p>Returns <a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> instance bound with given name path. The project instance is a root of
+the parameter system. Pass an empty list <code class="docutils literal notranslate"><span class="pre">[]</span></code> to get access to the root.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.render">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param">operation</em>, <em class="sig-param">start_index</em>, <em class="sig-param">stop_index</em><span class="optional">[</span>, <em class="sig-param">layers=list()</em><span class="optional">[</span>, <em class="sig-param">view=View(0)</em><span class="optional">[</span>, <em class="sig-param">step=0</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.render" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Clip.html"><span class="doc">Clip</span></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>render_operation</strong> – instance of some render operation.</p></li>
+<li><p><strong>start_index</strong> (<em>int</em>) – Start frame number.</p></li>
+<li><p><strong>stop_index</strong> (<em>int</em>) – Stop frame number.</p></li>
+<li><p><strong>layers</strong> (<em>list of Layer</em>) – Layers to render.</p></li>
+<li><p><strong>views</strong> – Views to render.</p></li>
+<li><p><strong>step</strong> (<em>int</em>) – Step value.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Renders given render operation, e.g. <a class="reference internal" href="RenderRemoveOperation.html#mocha.project.RenderRemoveOperation" title="mocha.project.RenderRemoveOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderRemoveOperation</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.save">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the project to a file with the name specified in the <a class="reference internal" href="#mocha.project.Project.project_file" title="mocha.project.Project.project_file"><code class="xref py py-attr docutils literal notranslate"><span class="pre">project_file</span></code></a> property.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.save_as">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">save_as</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.save_as" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_name</strong> – Path to new project file.</p>
+</dd>
+<dt class="field-even">Raise</dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> - on failure.</p>
+</dd>
+</dl>
+<p>Saves the project to a file with the given <code class="docutils literal notranslate"><span class="pre">file_name</span></code>.
+On success, changes the <a class="reference internal" href="#mocha.project.Project.project_file" title="mocha.project.Project.project_file"><code class="xref py py-attr docutils literal notranslate"><span class="pre">project_file</span></code></a> property value to <code class="docutils literal notranslate"><span class="pre">file_name</span></code> value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.set_output_dir">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">set_output_dir</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="optional">[</span>, <em class="sig-param">validate=false</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.set_output_dir" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to new output directory.</p></li>
+<li><p><strong>validate</strong> (<em>bool</em>) – validate given path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raise</dt>
+<dd class="field-even"><p><strong>AssertionError</strong> - if validate was set as True and path does not exist or is not writable.</p>
+</dd>
+</dl>
+<p>Changes this project output directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.track_layers">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">track_layers</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">start_index=0</em><span class="optional">[</span>, <em class="sig-param">stop_index=UINT_MAX</em><span class="optional">[</span>, <em class="sig-param">layers=list()</em><span class="optional">[</span>, <em class="sig-param">views=list()</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.track_layers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_index</strong> (<em>uint</em>) – Index of the first frame to track. If not passed, tracking starts from the beginning.</p></li>
+<li><p><strong>stop_index</strong> (<em>uint</em>) – Index of the last frame to track. If not passed, tracking processed till the end.</p></li>
+<li><p><strong>layers</strong> (<em>list of Layer</em>) – List of layers to track. If not passed, cogged and not locked layers are processed.</p></li>
+<li><p><strong>views</strong> (<em>list of View</em>) – List of views to track. If not passed, default views is processed.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Performs tracking process for the project.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.project.Project.undo_group">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">undo_group</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.project.Project.undo_group" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="UndoGroup.html"><span class="doc">UndoGroup</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.notes">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">notes</code><a class="headerlink" href="#mocha.project.Project.notes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>unicode</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to <strong>project notes</strong> which are available via mocha <strong>View - Project Notes</strong> menu.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">notes</span> <span class="o">=</span> <span class="s2">&quot;Foo&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">notes</span>
+<span class="go">Foo</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.project_file">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">project_file</code><a class="headerlink" href="#mocha.project.Project.project_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>unicode</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to absolute project file path.</p>
+</dd>
+</dl>
+<p>If the project wasn’t saved before, should return an empty string.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">project_file</span>
+<span class="go">/home/jc/Imagineer/mocha_projects/test_project.mocha</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.clips">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">clips</code><a class="headerlink" href="#mocha.project.Project.clips" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict of {unicode: <a class="reference internal" href="Clip.html#mocha.project.Clip" title="mocha.project.Clip"><code class="xref py py-class docutils literal notranslate"><span class="pre">Clip</span></code></a>}</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code> of clip names and appropriate <a class="reference internal" href="Clip.html#mocha.project.Clip" title="mocha.project.Clip"><code class="xref py py-class docutils literal notranslate"><span class="pre">Clip</span></code></a>’s.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">clips</span>
+<span class="go">{u&#39;Ceremony&#39;: &lt;project.Clip object at 0x1a30b90&gt;, u&#39;Logo&#39;: &lt;project.Clip object at 0x25211b8&gt;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">clips</span><span class="p">[</span><span class="s1">&#39;Ceremony&#39;</span><span class="p">]</span>
+<span class="go">&#39;Ceremony&#39; clip object</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.in_out_range">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">in_out_range</code><a class="headerlink" href="#mocha.project.Project.in_out_range" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>2-values tuple of long</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to project in and out points.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">in_out_range</span>
+<span class="go">(0L, 6L)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">in_out_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">in_out_range</span>
+<span class="go">(0L, 5L)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.frame_rate">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">frame_rate</code><a class="headerlink" href="#mocha.project.Project.frame_rate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to project frame rate. Reflects mocha <strong>File - Project settings… - Frame rate</strong>.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">frame_rate</span>
+<span class="go">24.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">frame_rate</span> <span class="o">=</span> <span class="mf">30.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">frame_rate</span>
+<span class="go">30.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.interlace_mode">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">interlace_mode</code><a class="headerlink" href="#mocha.project.Project.interlace_mode" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>InterlaceMode</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to project interlace mode.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">interlace_mode</span>
+<span class="go">project.InterlaceMode.NotInterlaced</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.layers">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">layers</code><a class="headerlink" href="#mocha.project.Project.layers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="Layer.html#mocha.project.Layer" title="mocha.project.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a>’s</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to all project layers ordered from front to rear.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">layers</span>
+<span class="go">[&lt;project.Layer object at 0x2522c68&gt;, &lt;project.Layer object at 0x2522cb0&gt;, &lt;project.Layer object at 0x2522d88&gt;, &lt;project.Layer object at 0x2522cf8&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="go">branch</span>
+</pre></div>
+</div>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mocha.project.Project.find_layers" title="mocha.project.Project.find_layers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_layers()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#mocha.project.Project.layer" title="mocha.project.Project.layer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layer()</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.groups">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">groups</code><a class="headerlink" href="#mocha.project.Project.groups" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="LayerGroup.html#mocha.project.LayerGroup" title="mocha.project.LayerGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">LayerGroup</span></code></a>’s</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to all project layers ordered from front to rear.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">groups</span>
+<span class="go">[&lt;project.LayerGroup object at 0x42ab098&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">groups</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="go">my group</span>
+</pre></div>
+</div>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mocha.project.Project.find_groups" title="mocha.project.Project.find_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_groups()</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.first_frame_offset">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">first_frame_offset</code><a class="headerlink" href="#mocha.project.Project.first_frame_offset" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to project first frame offset. Reflects mocha <strong>File - Project settings… - First frame offset</strong>.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">first_frame_offset</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">first_frame_offset</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">first_frame_offset</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.length">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">length</code><a class="headerlink" href="#mocha.project.Project.length" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to project length. Reflects mocha <strong>File - Project settings… - Length (frames)</strong>.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">length</span>
+<span class="go">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">length</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.views">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">views</code><a class="headerlink" href="#mocha.project.Project.views" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="ViewInfo.html#id2" title="mocha.project.ViewInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewInfo</span></code></a>’s</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    :raises RuntimeError: if trying to set stereo/multi-view project without appropriate license feature.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – if names or abbreviations of given <a class="reference internal" href="ViewInfo.html#id2" title="mocha.project.ViewInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewInfo</span></code></a>’s are not unique.</p>
+</dd>
+</dl>
+<p>Provides access to project <a class="reference internal" href="ViewInfo.html#id2" title="mocha.project.ViewInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewInfo</span></code></a> objects. It contains a single instance
+for mono projects and may contain more instances for stereo/multi-view ones.
+To make the project multi-view (if the active license allows),
+assign a list of several <a class="reference internal" href="ViewInfo.html#id2" title="mocha.project.ViewInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewInfo</span></code></a> instances.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">views</span>
+<span class="go">[mocha.project.ViewInfo(&quot;mono&quot;, &quot;M&quot;, (1, 0.3, 0.3))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">views</span> <span class="o">=</span> <span class="p">[</span><span class="n">ViewInfo</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="n">ViewInfo</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">views</span>
+<span class="go">[mocha.project.ViewInfo(&quot;left&quot;, &quot;L&quot;, (0, 0, 0)), mocha.project.ViewInfo(&quot;right&quot;, &quot;R&quot;, (0, 0, 0))]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.default_hero_view">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">default_hero_view</code><a class="headerlink" href="#mocha.project.Project.default_hero_view" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="View.html#id0" title="mocha.project.View">View</a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    :raises: <strong>AssertionError</strong> – if the project does not contain a given view.</p>
+</dd>
+</dl>
+<p>Provides access to project default hero view.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">default_hero_view</span>
+<span class="go">View(0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">default_hero_view</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">default_hero_view</span>
+<span class="go">View(0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">default_hero_view</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">proj</span><span class="o">.</span><span class="n">default_hero_view</span>
+<span class="go">View(1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">default_hero_view</span> <span class="o">=</span> <span class="n">View</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proj</span><span class="o">.</span><span class="n">default_hero_view</span>
+<span class="go">View(1)</span>
+</pre></div>
+</div>
+<p>See also:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#mocha.project.Project.views" title="mocha.project.Project.views"><code class="xref py py-attr docutils literal notranslate"><span class="pre">views</span></code></a></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.playback_in_point">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">playback_in_point</code><a class="headerlink" href="#mocha.project.Project.playback_in_point" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>uint</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to the valid project <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">point</span></code> value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.playback_out_point">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">playback_out_point</code><a class="headerlink" href="#mocha.project.Project.playback_out_point" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>uint</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-write    Provides access to the valid project <code class="docutils literal notranslate"><span class="pre">out</span> <span class="pre">point</span></code> value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.progress_watcher">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">progress_watcher</code><a class="headerlink" href="#mocha.project.Project.progress_watcher" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ProgressWatcher.html#mocha.project.ProgressWatcher" title="mocha.project.ProgressWatcher">ProgressWatcher</a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to the current progress watcher object of exporting operations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.default_trackable_clip">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">default_trackable_clip</code><a class="headerlink" href="#mocha.project.Project.default_trackable_clip" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Clip.html#mocha.project.Clip" title="mocha.project.Clip">Clip</a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to default trackable clip of the project.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.project.Project.psets">
+<code class="sig-prename descclassname">Project.</code><code class="sig-name descname">psets</code><a class="headerlink" href="#mocha.project.Project.psets" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="ParameterSet.html#mocha.project.ParameterSet" title="mocha.project.ParameterSet">ParameterSet</a></p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Provides access to the root parameter set.</p>
+</dd>
+</dl>
+<p>Mimics parameter_set() call.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.15. Project</a><ul>
+<li><a class="reference internal" href="#synopsis">2.15.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">2.15.1.1. Functions</a></li>
+<li><a class="reference internal" href="#properties">2.15.1.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">2.15.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ProgressWatcher.html"
+                        title="previous chapter"><span class="section-number">2.14. </span>ProgressWatcher</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="RenderInsertOperation.html"
+                        title="next chapter"><span class="section-number">2.16. </span>RenderInsertOperation</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="RenderInsertOperation.html" title="2.16. RenderInsertOperation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ProgressWatcher.html" title="2.14. ProgressWatcher"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>mocha.project</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2021, Boris FX, Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

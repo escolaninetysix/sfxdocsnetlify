@@ -1,0 +1,10 @@
+{
+   "date": "2014-07-01T18:44:00-04:00",
+   "tags": [
+      "Mocha Pro",
+      "Support FAQ"
+   ],
+   "title": "Why does my surface tool disappear halfway through my track or why does my shape twist in on itself or scale off screen when I track?"
+}
+
+If you using perspective when you track, it may be that your surface is going behind the camera in <b>Mocha</b> and corrupting the data. In <b>Mocha</b>, problem splines can occur when the tracking data has become so skewed it goes off or “behind” camera, the keyframes the tracking data generates can throw the shape information out of order. You may need to re-track the shape using only translation, scale, rotation, and shear instead of perspective. This is especially true for complex roto of an object that is turning away from screen or tracking an object that is turning.

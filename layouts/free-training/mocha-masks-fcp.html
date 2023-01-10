@@ -1,0 +1,282 @@
+{{ define "content" }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+<script>
+var videos = [
+{{ range .Site.Data.mocha_masks_fcp.mocha_masks_fcp }}
+  {
+    {{ range .chpt1 }}
+    "title": "{{ .title }}",
+    "stor_title": "{{ .stor_title }}",
+	"section_title": "{{ .section_title }}",
+	"section_title_id": "{{ .section_title_id }}",
+	"video_id": "{{ .video_id }}",	
+	"duration": "{{ .duration }}",	
+	"download_source_url": "{{ .download_source_url }}",	
+	"transcript_url": "{{ .transcript_url }}",	
+    "content": "{{ .content }}",
+	{{ end }}    	  	   	   	   
+  },
+  {{ end }}
+];
+
+</script>
+<style>
+i.bi bi-check {
+background-color: white !important;
+color: rgb(255, 255, 255);
+}
+button {
+background-color:black !important;
+color: white !important;
+}
+button:hover {
+background-color:black !important;
+color: #26a9e0 !important;
+}
+</style>
+<div class="section" style="margin-top:-2%;">
+<div class="container">
+	<div class="row">
+	<div class="col-12 col-md-4">
+<h2 style="font-style: normal;font-weight: 500;letter-spacing:0em;color:black;"><b>{{ .Title }}</b></h2>
+
+
+        {{ range .Site.Data.mocha_masks_fcp.mocha_masks_fcp }}
+            {{ range .chpt1 }}  
+			{{ if .section_title }} 
+	  	
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}" storTitle="{{ .stor_title }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .stor_title }}{{ .video_id }}" style="display:none;"></i></span></button>     	
+		    {{ end }}				
+			{{ if eq .section_02 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}" storTitle="{{ .stor_title }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .stor_title }}{{ .video_id }}" style="display:none;"></i></span></button>        
+             {{ end }}				
+			 {{ if eq .section_03 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}" storTitle="{{ .stor_title }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .stor_title }}{{ .video_id }}" style="display:none;"></i></span></button>        
+             {{ end }}			
+			 {{ if eq .section_04 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}" storTitle="{{ .stor_title }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .stor_title }}{{ .video_id }}" style="display:none;"></i></span></button>        
+             {{ end }}			
+			 {{ if eq .section_05 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}" storTitle="{{ .stor_title }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .stor_title }}{{ .video_id }}" style="display:none;"></i></span></button>        	
+             {{ end }}
+			 {{ if eq .section_06 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}" storTitle="{{ .stor_title }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .stor_title }}{{ .video_id }}" style="display:none;"></i></span></button>        	
+             {{ end }}
+			 {{ if eq .section_07 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}" storTitle="{{ .stor_title }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .stor_title }}{{ .video_id }}" style="display:none;"></i></span></button>        
+             {{ end }}
+			 {{ if eq .section_08 true }}
+				  <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="{{ .video_id }}" storTitle="{{ .stor_title }}"><span>{{ .title }} <i class="bi bi-check-circle-fill" id="{{ .stor_title }}{{ .video_id }}" style="display:none;"></i></span></button>        
+	
+             {{ end }}
+			 {{ end }}
+        {{ end }}</div>
+	<div class="col-12 col-md-8"><h2 style="font-style: normal;font-weight: 500;letter-spacing:0em;color:black;"><b>{{ .Params.lesson_title }}</b></h2><div>{{ .Params.description | markdownify }}</div><input name="vidID" type="hidden" id=""> <!-- <div id="start" style="display:block;">Click a chapter on the left to get started.</div> --> <div style="" id="player" vid="CwCF_o0sLrs" state="" storTitle="isolating-continuum-effects"></div>
+
+
+	<script>
+	  const urlParams = new URLSearchParams(window.location.search);
+	  const myParam = urlParams.get('vid');	
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      
+      var player;
+      var videotime = 0;
+  	  vidID = $("#player").attr('vid');
+      function onYouTubeIframeAPIReady() {
+	
+        player = new YT.Player('player', {
+          height: '400px',
+          width: '100%',
+          videoId: vidID,
+		  playerVars: {
+            'modestbranding': 1
+          },		  
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+function onPlayerReady(event) {
+      // read frontmatter from video files
+	  var id = $("#player").attr('vid');
+	 // var vidPath = '{{ .Params.video_name }}';
+	  // find storage keys with prefix 'videos_', if ID exists play from duration
+  for (var i=0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (/^freetraining_/.test(key)) {
+        var item = localStorage.getItem(key);
+		var objValue = JSON.parse(item);
+    if (objValue.id == id) {
+	  	player.cueVideoById({ videoId: id, startSeconds: objValue.duration});
+	  if (objValue.state == '0') { $("button i#" + objValue.storTitle + objValue.id).toggle(true); }			
+     } else if (objValue.state == '-1' || "" ) {
+		 player.stopVideo();
+		 $("button i#" + objValue.storTitle + objValue.id).toggle(false);
+	    }
+	  }
+	 } 
+        function updateTime() {
+		var overallTime = player.getDuration();
+	//	$("#dur").html("<b>Duration:</b> " + Math.floor(overallTime / 60) + ":" + (overallTime % 60 ? overallTime % 60 : '00'));
+          var oldTime = videotime;
+          if(player && player.getCurrentTime) {
+            videotime = player.getCurrentTime();
+          //  console.log(videotime);
+          }
+          if(videotime !== oldTime) {
+            onProgress(videotime);
+          }
+        }
+        timeupdater = setInterval(updateTime, 100);
+		
+		     //   event.target.playVideo();
+				
+      }
+
+      var done = false;
+      function onPlayerStateChange(event) {
+
+      
+      var vidID = $("#player").attr('vid');
+      var storTitle = $("#player").attr('storTitle');
+	  var arr = {"id": vidID, "state": event.data, "duration": videotime, "storTitle": storTitle}    
+      var items = localStorage.getItem('freetraining_' + storTitle);
+if (items === undefined || items === null || items.length === 0) {	  
+       localStorage.setItem("freetraining_" + storTitle, JSON.stringify(arr));
+	   localStorage.removeItem('videos_undefined');
+	   localStorage.removeItem('undefined');
+} else {
+       localStorage.setItem("freetraining_" + storTitle, JSON.stringify(arr));
+	   localStorage.removeItem('videos_undefined');
+	   localStorage.removeItem('undefined');
+}
+		if (event.data == YT.PlayerState.PLAYING && !done) {  
+          done = true;  
+        }		
+		
+		if (event.data == YT.PlayerState.ENDED) {  
+	  var vidID = $("#player").attr('vid');
+	  var storTitle = $("#player").attr('storTitle');
+	  		 $("button i#" + storTitle + vidID).toggle(true);	
+        }
+	 
+
+	  }
+	  
+function onProgress(currentTime) {
+        if(currentTime > 3) {
+        }
+      }
+	  
+      function stopVideo() {
+        player.pauseVideo();
+      }
+    </script>
+	<br>
+	<div id="title"></div>
+	<div id="dur"></div>
+	<!-- <div id="dl"></div> -->
+	<div id="content"></div>
+</div>
+	</div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+const urlParams = new URLSearchParams(window.location.search);
+const myParam = urlParams.get('vid');
+{{ range .Site.Data.mocha_masks_fcp.mocha_masks_fcp }}
+{{ range .chpt1 }}  
+{{ if .section_title }} 
+	var videoIDLoad = $("#player").attr('vid');
+     if  (videoIDLoad == 'CwCF_o0sLrs') {  
+		$("#title").html("<b>Title:</b> " + {{ .title }});
+		$("#dur").html("<b>Runtime:</b> " + {{ .duration }});
+		// $("#dl").html('<b>Downloads: </b> <a href="{{ .download_source_url }}">Source Files</a> <a href="{{ .transcript_url }}">Transcription</a>');
+		$("#content").html("<b>Description:</b> " + {{ .content }});
+     }
+{{ end }}
+{{ end }}
+{{ end }}
+
+	$.each(videos , function(index, val) { 
+
+	   $("button#" + val.video_id).click(function() {
+		$("#player").attr('vid', val.video_id);
+		$("#player").attr('storTitle', val.stor_title);
+		var vid = $(this).attr('id');     
+		var storTitle = $(this).attr('storTitle');     
+		var id = $("#player").attr('vid');
+		var items = localStorage.getItem('freetraining_' + storTitle);
+		if (!items) {
+		player.cueVideoById({ videoId: vid });
+		}
+     			  
+	for (var i=0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (/^freetraining_/.test(key)) {
+        var item = localStorage.getItem(key);
+        if (JSON.parse(item)) {
+		var objValue = JSON.parse(item);
+    if (objValue.id == id) {
+	player.cueVideoById({ videoId: vid, startSeconds: objValue.duration});
+     } else if (objValue.state == '-1' || "" ) {
+		 player.stopVideo();
+		} 
+	if (objValue.state == '0') {  
+		 $("button i#" + objValue.storTitle + objValue.id).toggle(true);	
+        }
+	   }
+	  }
+	 } 
+		 $("#title").html("<b>Title:</b> " + val.title);
+		$("#dur").html("<b>Runtime:</b> " + val.duration);
+		// $("#dl").html('<b>Downloads: </b> <a href="' + val.download_source_url + '">Source Files</a> <a href="' + val.transcript_url + '">Transcription</a>');
+		$("#content").html("<b>Description:</b> " + val.content);
+		});
+	});
+});
+</script>
+
+<script>
+$(window).on('load',function() {
+$("div#collapse4").attr('class', 'collapse show');
+  localStorage.removeItem('videos_undefined');
+  localStorage.removeItem('undefined');    
+  for (var i=0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (/^freetraining_/.test(key)) {
+        var item = localStorage.getItem(key);
+        if (JSON.parse(item)) {
+		var objValue = JSON.parse(item);
+	if (objValue.state == '0') {  
+		 $("button i#" + objValue.storTitle + objValue.id).toggle(true);	
+        } else if (objValue.state == '-1' || "" ) {
+		 $("button i#" + objValue.storTitle + objValue.id).toggle(false);
+
+	   }
+	  }
+	 } 
+	}
+ if (window.location.search) {
+ // alert(window.location.search);
+ setTimeout(function(){ 
+ $("button#" + myParam).trigger('click');
+ window.history.pushState({}, '', window.location.pathname);
+ }, 500);
+ } 	
+});
+
+</script>
+
+
+{{ end }}

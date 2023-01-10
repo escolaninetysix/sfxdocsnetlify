@@ -1,0 +1,45 @@
+.. module:: mocha.project
+.. _ProgressWatcher:
+
+ProgressWatcher
+***************
+
+.. inheritance-diagram:: ProgressWatcher
+    :parts: 2
+
+Detailed Description
+--------------------
+
+
+    
+    Progress indication class for different complex operations which might take a long time
+    (e.g. rendering, exporting, etc.).
+    
+    There are 4 main Qt signals:
+    
+    * `started()`: The signal being emitted when operation starts.
+    * `progress_status(int)`: The signal being emitted during operation.
+    * `progress_message(unicode)`: Verbose signal being emitted during operation.
+    * `finished()`: The signal being emitted when operation ends.
+    
+
+
+.. class:: ProgressWatcher([parent=NULL])
+
+
+    :type parent: :class:`PySide.QtCore.QObject`
+
+
+
+    
+    Create a global progress watcher instance which reflects the mocha progress bar behaviour.
+    
+
+
+
+
+    :type parent: :class:`PySide.QtCore.QObject`
+
+
+
+

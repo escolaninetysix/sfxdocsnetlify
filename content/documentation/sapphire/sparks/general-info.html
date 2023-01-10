@@ -1,0 +1,1287 @@
+{
+   "title": "General Info: Sapphire Plug-ins for Autodesk systems",
+   "date": "2018-12-13T00:00:00"
+}
+ <font size="1">
+ </font>
+ <h2>
+  Sapphire Plug-ins for Autodesk systems, General User Info
+ </h2>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="whats-new">
+   What's New In This Version
+  </a>
+ </h3>
+ <p>
+  <b>
+   New Effects:
+  </b>
+ </p>
+ <ul>
+  <li>
+  <!-- <a href="../pixelsort"> -->
+    S_PixelSort
+   </a>
+   is a damage effect
+    that sorts the pixels in the image along different paterns of lines.
+    There are three modes: Linear sorts along parallel lines, Radial sorts
+    along lines radiating from a controllable center point, and Circular
+    sorts along concentric circles.  PixelSort sorts the pixels based on
+    the relative values of the pixels. PixelSort sorts pixels in groups that are
+    over or under the specified threshold.
+  </li>
+  <li>
+   <a href="../whiplash">
+    S_WhipLash
+   </a>
+   is a new transition
+    that is a 2D version of Swish3D.  It pans between frames of the transition
+    input clips while applying motion blur as well as allowing the RGB channels
+    to be split for a chromatic abberation look.
+  </li>
+ </ul>
+ <p>
+  <b>
+   New Features:
+  </b>
+ </p>
+ <ul>
+  <li>
+   LensFlare Improvements:
+   <ul>
+    <li>
+     More than 25 new LensFlare presets added.
+    </li>
+    <li>
+     New workflow with the preset browser embedded in the Flare Designer.
+    </li>
+    <li>
+     New controls and features on the Gradient controls in side the Flare Designer.
+    </li>
+    <li>
+     New components - special complex elements to make creating flares easier.
+    </li>
+    <li>
+     New MultiStreak element.
+    </li>
+    <li>
+     Several new controls for MultiStreak and MultiSpot.
+    </li>
+   </ul>
+  </li>
+  <li>
+   Simplified Mocha UI.
+  </li>
+ </ul>
+ <p>
+  <b>
+   Known Issues:
+  </b>
+ </p>
+ <ul>
+  <li>
+   Circular mode in PixelSort does not take the aspect ratio of the pixel format into account.
+  </li>
+ </ul>
+ <p>
+  New in 2019.01:
+ </p>
+ <ol>
+  <li>
+   New Components in the Flare Designer
+  </li>
+  <li>
+   Fixed a bug on OSX in the Flare Designer where clicking cancel could cause the Flare Designer to fail to open
+      on subsequent launches.
+  </li>
+  <li>
+   Fixed a bug on OSX in the Preset Browser and Builder where clicking cancel could generate a corrupt preset
+      error back in the host.
+  </li>
+ </ol>
+ <h3>
+  <a name="load-spark">
+   Loading a Spark
+  </a>
+ </h3>
+ To load a Spark, select the "Effects" menu in your Autodesk
+systems product, hold down the 'Alt' key, and click on any Spark
+button.  Select the "Titles" button and navigate to the
+ <tt>
+  sapphire_2019
+ </tt>
+ directory.  Use the "Proxies" option to view the different Spark proxy
+images.  Select a Spark and the name should now appear on the button.
+Click again on the button to initialize the Spark.  Select the source
+and destination reels and the Spark interface window should be
+displayed.
+ <p>
+  To load a Spark in Batch, drag from the
+"Spark" button onto the batch tree instead.  Navigate to the
+  <tt>
+   sapphire_2019
+  </tt>
+  directory and choose a Spark.  Edit the Spark node to
+bring up the Spark interface window.
+ </p>
+ <p>
+  Most Sapphire Sparks include several different effect variations.  For
+example the S_Wipes Spark contains 17 different kinds of Wipe
+transitions.  For these Sparks there is always a popup menu in the
+upper left hand corner of the "Params" or "Ctrl1" page, which allows
+selecting between the different effect options.
+ </p>
+ <p>
+  Multiple versions of some Sparks are provided with different input
+combinations.  For example, Glows takes just a Source input,
+Glows
+  <b>
+   Mask
+  </b>
+  takes Source and Mask inputs, Glows
+  <b>
+   Comp
+  </b>
+  takes
+Source, Back and Matte, and Glows
+  <b>
+   MaskCmp
+  </b>
+  takes Source, Back, and Mask.
+Autodesk systems don't allow plug-ins with optional inputs, so this
+lets you to pick the appropriate version of the plug-in for the input
+clips you want to provide or not provide.
+ </p>
+ <p>
+  Some parameters are "shared" across the different effect options
+within a plug-in.  If you modify the value of a shared parameter and
+then switch to a different effect, you will also see the new value
+there.  Other parameters are not shared and can retain different
+values between the effect options, even though they may have the same
+name.  The on-line documentation indicates which parameters are
+shared.  The Wipe Amt parameter in S_Wipes is an example of a shared
+parameter.  It is shared because you would probably want the same
+transition value regardless of the specific wipe pattern selected
+later.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="preset-browser">
+   Browsing and Selecting Presets
+  </a>
+ </h3>
+ You can load and save presets for effects using the
+ <b>
+  Load Preset
+ </b>
+ and
+ <b>
+  Save Preset
+ </b>
+ buttons in the Crop/Help Panel (page 4).
+ <h4>
+  Loading:
+ </h4>
+ In the preset browser you'll see all the presets available for the
+current plug-in, both GenArts-supplied presets and the ones you've
+created yourself.  You can filter by tags on the left side to quickly
+find the look you're interested in.
+ <p>
+  The main top window shows the preset on your footage (unless the
+plug-in can't access the AE layer for some reason, in which case
+you'll see a poster frame) and various information about the preset.
+ </p>
+ <p>
+  At the bottom you see all the presets; you can enlarge or shrink them
+with the slider at the bottom.  You can also switch to a table view
+there, as well as viewing the preset on your source, over black, or
+over the sample footage.  You can also see the source all by itself
+for comparison.
+ </p>
+ <h4>
+  Saving:
+ </h4>
+ Clicking
+ <b>
+  Save Preset
+ </b>
+ brings up the Save Preset dialog.  Here
+you can name the preset, and add various other information.
+Particularly important is the tagging system; you can apply as many
+tags as you want to your presets.  You can even create new tags.  Tags
+are grouped into categories, so all the color names appear under
+Colors, for instance.
+ <p>
+  You can create new categories as well, by typing into the Category
+drop-down menu after clicking Add New Tag....  GenArts recommends
+sticking to the shipped categories when possible, for compatibility.
+But adding your own tags within categories (new color names, for
+example) is encouraged.
+ </p>
+ <h4>
+  More Info:
+ </h4>
+ <p>
+  While the preset browser, save dialog, or flare designer are open, the
+main AE window will be unresponsive.  This is normal.  Close the
+preset browser or flare designer and AE will wake up again.
+ </p>
+ <p>
+  Certain parameters, like Lens Flare hotspot, are not saved in presets;
+we thought it would be less than useful for the flares to jump around
+as you load presets.
+ </p>
+ <p>
+  It may take a few seconds to load the preset browser if a plug-in has
+many presets.  Be patient.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="flare-editor">
+   Editing and Designing Lens Flares and
+other elements
+  </a>
+ </h3>
+ Clicking
+ <b>
+  Edit Lens
+ </b>
+ in LensFlare, or
+ <b>
+  Edit Style
+ </b>
+ in Glare
+or Flashbulbs, opens up the Lens Flare Designer.
+ <p>
+  The Flare Designer lets you completely customize a lens flare.  You
+can add or remove elements, copy them, customize how each element
+looks, and even how it reacts to the center or edge of the image.  You
+can also interactively move the flare around to see how it will look
+as it moves.
+ </p>
+ <p>
+  All the panels of the Flare Designer are movable, so you can adjust
+the user interface itself to suit your work flow.  The main panels are
+the view window, where you see the flare you're working on, the
+Elements panel which lists all the elements of the flare, and the
+Properties panel, which lets you adjust the properties of the
+currently selected element (or elements).  There's also a toolbar of
+element templates at the top.
+ </p>
+ <h4>
+  View Panel
+ </h4>
+ The main view window is where you see how your flare will look; you
+can click and drag to move the flare around.  You can see it over the
+background or just over black, adjust the gamma, and Solo only the
+selected elements.
+ <b>
+  Use Plug-in Settings
+ </b>
+ makes the flare
+designer import the plug-in settings currently active in the host
+app.  If you have that selected, the flare will look the same back in
+the host app when you're done designing it.  On the other hand, if you
+want to create a "reusable" flare preset, it's probably a good idea to
+un-check Use Plug-in Settings so the flare will look good with default
+settings in the plug-in.
+ <h4>
+  Elements Panel
+ </h4>
+ The Elements panel shows you all the elements, with thumbnails.  If
+you mouse over them, an overlay shows where they are in the main view
+window.  When you click on an element to select it, it also flashes
+brighter in the main window to help you find the element you're
+looking for.  Clicking
+ <b>
+  Identify
+ </b>
+ in the Properties panel does
+the same flashing.
+ <p>
+  To add new elements, just click the element template picture in the
+top toolbar.  You can then rename the element, move it in the list by
+dragging and dropping, or hide it by un-checking the checkbox.
+ </p>
+ <p>
+  To delete an elements, select it and click the trash can icon at the
+bottom of the Elements panel, or click Delete.  There is full undo, so
+feel free to experiment!
+ </p>
+ <p>
+  You can also duplicate an element using standard copy/paste
+operations, or select it and click the two pages icon at the bottom of
+the Elements panel.  You can then adjust the copy's parameters in the
+Parameters panel.
+ </p>
+ <p>
+  The gear-looking element is the "advanced element" type; it has lots
+of controls and is very customizable, but it's recommended for
+advanced users only.  The other types get you most of the same looks
+with simpler parameters.
+ </p>
+ <p>
+  Along with all the standard element types, you can import your own
+images to use as elements.  Click the picture frame to import an image
+file.  The image data will become part of the flare, so it doesn't
+need to keep a reference to the original file.
+ </p>
+ <p>
+  To combine two flares into one, or add many elements at once, you can
+import another flare into your current flare; this will add all the
+other flare's elements to your current flare.  You can also just open
+that flare, which replaces your current flare with that one.  To
+import and add to your flare, use Insert Flare (down-right pointing
+arrow in the toolbar), or File... Insert Flare.  To import and
+replace, use Open Flare (folder icon in the toolbar), or use
+File... Open Flare.
+ </p>
+ <h4>
+  Parameters Panel
+ </h4>
+ The Parameters panel is where you adjust all the details of a single
+element -- or multiple elements together, if you select multiple
+elements in the Elements panel.  (Use Shift-click or Control-click to
+select multiple elements.)
+ <p>
+  There are a few common control types.  Sliders with numbers to the
+left control numeric params; you can drag the slider thumb, but you
+can also drag in the number text field to increase or decrease the
+value.  You can also click in the number field and type any value you
+want.
+ </p>
+ <p>
+  Color controls are just a swatch of color; click to bring up a
+standard color picker.
+ </p>
+ <p>
+  Some elements have a Gradient; there's a special gradient control to
+adjust those.  The stops are below the color swatch; you can drag them
+left and right to move them.  Drag down to delete.  Click in the color
+gradient to add a stop there.  Control-drag to "stretch" neighboring
+colors, and shift-drag to push neighboring colors.  The triangles
+above the color gradient allow you to control the interpolation of the
+colors between stops.  Ring Thickness lets you easily turn a spot or
+fan of rays into a ring; turning Ring Thickness down from 1 hollows
+out the center.  This lets you still have fine control of the colors
+within the ring, even if it's very thin.
+ </p>
+ <p>
+  Different element types will have various parameters you can adjust,
+but here are some common ones:
+ </p>
+ <dl>
+  <dt>
+   Position
+  </dt>
+  <dd>
+   Where the element occurs, along the line between the hotspot and
+  pivot point.  Position 1.0 is at the hotspot, 0.0 is at the pivot.
+  Note that you don't have to stay in that range; you can use any
+  value you like.  Bigger than 1 will be past the hotspot, and less
+  than zero will look like a reflection because it's on the other side
+  of the pivot point.
+  </dd>
+  <dt>
+   Size
+  </dt>
+  <dd>
+   How big the image is.
+  </dd>
+  <dt>
+   Rel Width, Rel Height
+  </dt>
+  <dd>
+   Use these to squash and stretch.
+  </dd>
+  <dt>
+   Rotate
+  </dt>
+  <dd>
+   Rotates the element around, in degrees.
+  </dd>
+ </dl>
+ There's a Reset button at the bottom of the Parameters panel to reset
+the current element(s) to all default settings.  That's undoable too.
+ <h4>
+  More Information
+ </h4>
+ If you open the flare designer from the plug-in, you can just click OK
+to close the window when you're done; your current flare will be used
+in your project and saved with it.  But you can do more than that; you
+can save the flare definition to disk separately, so you can recall it
+later, or use it in other flares.  You can also open the flare
+designer directly from the Start menu or Applications folder to create
+flares independent of your host product.  In this case, use
+File...Save Lens As... to save the flare definition.   That dialog
+will allow you to name the lens and tag it so it's easy to find later.
+ <p>
+  Note that saving a lens this way does
+  <i>
+   not
+  </i>
+  save your plug-in
+settings; it only saves the lens flare definition itself (the things
+you can change in the flare designer).  You can save a preset in the
+host application to save everything -- the flare and all the regular
+plug-in parameters.
+ </p>
+ <p>
+  While the preset browser, save dialog, or flare designer are open, the
+main AE window will be unresponsive.  This is normal.  Close the
+preset browser or flare designer and AE will wake up again.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="mocha">
+   Using Mocha in Sapphire
+  </a>
+ </h3>
+ <h4>
+  What is Mocha?
+ </h4>
+ <p>
+  Mocha is a planar tracking and masking utility that can save time on
+the most difficult motion tracking and masking shots. It tracks the
+entire area of the mask, not just individual points, to significantly
+reduce the tedium of manual keyframing.
+ </p>
+ <p>
+  Mocha looks for 3-d planes in the image: pixels that move together.
+Screens and signs are clear candidates, but Mocha can also track
+faces. It can handle objects obscured by foreground elements, and can
+track unlimited layers all at once.
+ </p>
+ <p>
+  There's a lot more to Mocha than we can explain here; there are plenty
+of tutorials online at http://borisfx.com.
+ </p>
+ <p>
+  In Sapphire, Mocha works as a mask for the effect, similarly to the
+mask input, but with all the tracking features of Mocha. For instance,
+in S_DistortRGB, the mask affects the amount of RGB distortion. In
+S_Glow, the mask masks out the areas you want to emit glowing light,
+without chopping off the smooth edges of the glow.
+ </p>
+ <h4>
+  How to use it
+ </h4>
+ <ol>
+  <li>
+   Apply a Sapphire effect
+  </li>
+  <p>
+   Most Sapphire effects now feature Mocha planar tracking integrated
+within the effect. Certain effects were omitted because utilizing a
+mask made no logical sense; for example, none of the S_Transition
+effects incorporate S_Mocha, and the Z_effects which require a Z_depth
+matte to work were also skipped.
+  </p>
+  <li>
+   Click
+   <b>
+    Edit Mocha
+   </b>
+   to launch Mocha
+  </li>
+  <p>
+   When you click the
+   <b>
+    Edit Mocha
+   </b>
+   button, you will launch the Mocha UI,
+which will allow you to create and track a mask for use back with the
+selected Sapphire effect in your host application.
+  </p>
+  <li>
+   Create a spline
+  </li>
+  <p>
+   You can create a shape to track within Mocha utilizing either an
+X-spline or Bezier splines. X-splines are recommended for most uses.
+  </p>
+  <p>
+   Draw one or more splines around the planar areas you would like to
+track.
+  </p>
+  <li>
+   Track it
+  </li>
+  <p>
+   You can use backwards and forward tracking from whatever frame you're
+parked on. You can often get a great result with default settings, but
+if you're getting a lot of drifts, try increasing the
+   <b>
+    Min K Pixels Used
+   </b>
+   .
+  </p>
+  <li>
+   Save and exit back to host
+  </li>
+  <p>
+   For your mask to appear back in your host application, YOU MUST SAVE
+AND EXIT. If you exit without saving, all you current work will
+be lost. Always save and exit!
+  </p>
+  <li>
+   Adjust in Sapphire
+  </li>
+  <p>
+   You can make additional fine tuning adjustments after tracking in
+Mocha by opening the "Mocha" pulldown in your selected Sapphire
+effect. Additional softness and position/scale paramters can be
+found here, as well as checkboxes for soloing/hiding/inverting the
+Mocha mask.
+  </p>
+  <li>
+   Moving masks between effects
+  </li>
+  <p>
+   Sometimes you track a shot with Mocha in one Sapphire effect and would
+like to reuse the track in a different effect. The simplest way is to
+export it from the first effect and re-import into the second effect.
+  </p>
+  <ol>
+   <li>
+    go into Mocha with
+    <b>
+     Edit Mocha
+    </b>
+    , then File &gt; Export to
+  export the Mocha project to a file.
+   </li>
+   <li>
+    Exit Mocha and delete the old effect.
+   </li>
+   <li>
+    Apply the new effect,
+    <b>
+     Edit Mocha
+    </b>
+    , and File &gt; Merge the
+  project from the file you saved.
+   </li>
+  </ol>
+  <p>
+  </p>
+  <p>
+   Alternatively, if you want to share a Mocha mask with several effects,
+track the mask in a simple Sapphire effect such as S_HueSatBright. In
+there, select
+   <b>
+    Show Mocha Only
+   </b>
+   . Then use that as the Mask input
+to the effects where you want the mask used. This is easiest to do in
+Batch. Since the Mocha mask acts just like a regular mask input, this
+will allow you to update the mask once and all the other effects will
+use it.
+  </p>
+  <li>
+   S_Mocha spark
+  </li>
+  <p>
+   Sapphire 11 introduces a new S_Mocha spark which just runs Mocha and
+outputs the Mocha matte. It can be very useful in batch to share a
+tracked mask between several effects. It includes options to resize
+and shift the mask, which the other effects that include Mocha don't
+have room for.
+  </p>
+ </ol>
+ <h3>
+  <a name="res-options">
+   Resolution options
+  </a>
+ </h3>
+ Every Spark includes a "Res" factor popup menu in the far right just
+below the "Pan" button.  The resolution options allow trading off
+between result quality and speed.  Lower Res factors can be helpful
+for faster testing of parameter values.  The Res factor defaults to
+FULL.  Field processing options will not output useful fields at lower
+resolutions.  If you modify the Res factor, make sure you remember to
+set it back to FULL for the best quality during final processing!
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="on-fields">
+   On Fields options
+  </a>
+ </h3>
+ All Sparks include an On Fields popup button on the right hand edge of
+the first Control page (except Temporal and FieldTool which do
+special field processing).  This can be useful for processing
+interlaced video frames.  When enabled, the two fields, the odd and
+even lines of each frame, are assumed to represent different time
+samples, and are processed independently.  When the second field is
+processed, the values of all animated parameters are found at the
+current frame + .5.  The Res factor should be set to FULL for useful
+field outputs.  Four options for field processing are available:
+ <blockquote>
+  AUTO: the scan format is automatically detected, and field rendering is enabled or
+      disabled as necessary. This is the default
+  <br/>
+  NO:  field rendering is disabled.
+  <br/>
+  YES, 1DOM:  field rendering is enabled with field 1 first in time.
+  <br/>
+  YES, 2DOM:  field rendering is enabled with field 2 first in time.
+  <br/>
+ </blockquote>
+ <br/>
+ <h3>
+  <a name="redraw-modes">
+   Redraw modes
+  </a>
+ </h3>
+ Each Spark includes a popup button in the right hand side of each
+Control page that allows selecting from the following Redraw modes.
+The default redraw mode is DRAG AUTO RES.
+ <ol>
+  <p>
+  </p>
+  <li>
+   Redraw: DRAG AUTO RES.  This output is relcaulated during the adjustment of
+any parameter or widget. The resolution is automatically reduced to preserve interactive
+performance. When the parameter is released, the output is rendered at the resolution
+given by the Res Factor parameter.
+   <p>
+   </p>
+  </li>
+  <li>
+   Redraw: DRAG.  This output is recalculated during the
+adjustment of any parameter or widget.
+   <p>
+   </p>
+  </li>
+  <li>
+   Redraw: PENUP.  The output is recalculated after any parameter
+is adjusted or a widget is moved.
+   <p>
+   </p>
+  </li>
+  <li>
+   Redraw: PROCESS.  Spark rendering is performed only when a
+Process is performed.  Adjustments to the frame number or total frames
+will also perform a Process of the current frame (in the current Spark
+API).
+   <p>
+   </p>
+  </li>
+  <li>
+   Redraw: NEVER.  Spark rendering is disabled, and black frames
+are shown instead.  This can be used for quickly setting up parameter
+values and curves without ever taking the time to re-render any
+result.  On-screen widgets can still be used in this mode.
+  </li>
+ </ol>
+ <br/>
+ <h3>
+  <a name="undo">
+   Undo &amp; Load Defaults
+  </a>
+ </h3>
+ Each Spark also includes two buttons in the lower right hand corner of
+each Control page for undoing previous parameter changes and loading
+default values for all parameters.
+ <p>
+  Pushing the Undo button removes changes made to the parameters of the
+current effect.  You can undo as many changes back in time as you want
+until it signals that there is nothing to undo.  Undo can undo a Load
+Defaults, however it can not currently undo a loaded setup file.  Undo
+records are not remembered when you switch to a different Spark.
+ </p>
+ <p>
+  Pushing the Load Defaults button returns each parameter value of the
+current effect to its default setting.  If additional parameters exist
+on the "Params2" or "Ctrl2" page, it will also reset their values.
+Load Defaults does not change Widget Enables, Res Factors, or Redraw
+Modes, and it does not change parameter values of other effect options
+within the same Spark except for the parameters that are shared.  It
+also will not reset the special "AutoTransition" parameters Wipe Amt
+or Dissolve Amt.  The Crop/Help page has its own Load Page Defaults
+button which sets all the parameters on that page to their default
+values.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="cropping">
+   Cropping
+  </a>
+ </h3>
+ Each Spark includes cropping parameters on the "Crop/Help" or "Ctrl3"
+page which allow selecting a crop rectangle for processing a
+subsection of the result.  This can be used for faster testing or for
+comparison of the processed result with the original.
+ <ol>
+  <p>
+  </p>
+  <li>
+   Enable Crop.  Turns on or off cropping and the crop widget.
+   <p>
+   </p>
+  </li>
+  <li>
+   Crop Widget.  Turns on or off the crop screen interface widget
+for adjusting the crop rectangle.  This is normally set by Enable Crop
+to agree with its state, but it can also be adjusted independently.
+   <p>
+   </p>
+  </li>
+  <li>
+   Surround.  Selects the method for filling the areas beyond
+the crop rectangle, either with a given color or with any of the unprocessed
+Source inputs.
+   <p>
+   </p>
+  </li>
+  <li>
+   Crop Top, Left, Right, Bottom.  Specifies the values for the
+borders of the crop rectangle.  These parameters are most easily
+adjusted using the Crop Widget.
+   <p>
+   </p>
+  </li>
+  <li>
+   Crop Input. When this option is turned on, the input is cropped
+before performing the effect.  For effects such as Warps, this
+allows you to distort the shape of the cropped image, or remove
+unwanted black borders on the input that may otherwise become more
+visible after they are warped or wrapped.  This parameter is not
+available for all effects.
+   <p>
+   </p>
+  </li>
+  <li>
+   Set Crop Defaults.  When pushed, sets the crop rectangle to full frame.
+  </li>
+ </ol>
+ Not all plug-ins render faster when the crop area is reduced.  Effects
+that require processing beyond the crop area, such as the Blurs,
+Glows, Glints, and Glares, require nearly the same processing whether
+cropped or not.  However, other effects such as RackDefocus, EdgeRays,
+BlurMotion, Streaks, MathOps and Color Operations, should render
+faster when the crop area is reduced.
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="add-noise">
+   Adding Noise
+  </a>
+ </h3>
+ Each spark has an Add
+Noise parameter on the Crop/Help parameter page.  If this parameter is
+greater than zero, a corresponding amount of color noise is added to
+the result.  This can be used to reduce banding due to quantization,
+or create a grainy effect.  Set this to 1.0 or slightly higher to
+enable appropriate debanding for 8bit images.
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="colorspace">
+   Colorspace Controls
+  </a>
+ </h3>
+ Each spark has two parameters that control the colorspace: Use Gamma
+and a LUT popup.  The Use Gamma parameter applies a gamma correction
+before performing the effect, then reverses the gamma correction
+before displaying the processed frame.  This allows linear processing
+of gamma-corrected images, can help preserve highlights when
+blurring, and sometimes gives more correct results when compositing.
+ <p>
+  The LUT popup allows you to select custom LUT files for working in log or other non-linear
+colorspaces. You can add your own options to the popup by installing LUT files in
+  <tt>
+   /usr/discreet/sparks/luts
+  </tt>
+  , with the names &lt;lut-name&gt;-in.lut for the input LUT and
+&lt;lut-name&gt;-out.lut for the corresponding output LUT.
+ </p>
+ <p>
+  Sparks that take a Mask, Matte or other input clip that is apt to be
+monochromatic also include a parameter that specifies which input
+clips should
+  <i>
+   not
+  </i>
+  be affected by the Gamma and LUT settings.  Those
+clips are assumed to already be in linear colorspace.  For example, the
+S_GlowMaskComp spark has options for Linear Matte Mask, Linear Matte,
+Linear Mask, or Gamma/LUT All.  The default Linear Matte Mask setting
+causes the Use Gamma and LUT parameters to only affect the Front and
+Back clips.  The Linear Matte setting causes these colorspace controls
+to affect the Front, Back and Mask but not the Matte clip, and the
+Gamma/LUT All setting causes all input clips to be affected.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="gpu">
+   GPU Acceleration
+  </a>
+ </h3>
+ Many effects can use the GPU to speed up rendering. This requires an
+NVIDIA graphics card which supports CUDA, such as a Quadro FX 5600 or
+5800. If a suitable GPU is found, a GPU Enable button will appear on
+the Crop/Help parameter page, and the message "GPU Accelerated" will
+be printed to the shell when the Spark is loaded. GPU acceleration is
+enabled by default if it's available, but if you experience
+performance or stability problems, you can turn it off by deselected
+the GPU Enable button.
+ <h4>
+  Troubleshooting GPU Problems
+ </h4>
+ If a Spark is unable to render on the GPU, it will automatically fall
+back to the CPU and continue processing. The text of the GPU Enable
+button will change to indicate the problem.
+ <h4>
+  GPU Selection
+ </h4>
+ On machines with more than one GPU that supports CUDA, you can select which
+GPU Sapphire Plug-ins will use by changing the value of use_gpu in the
+ <tt>
+  s_config.text
+ </tt>
+ file.
+ <blockquote>
+  No GPU: no CUDA-capable graphics card was found.
+  <br/>
+  GPU Out of Memory: there is not enough memory on the GPU to render
+this effect
+  <br/>
+  GPU Disable: GPU processing is disabled in the
+  <tt>
+   s_config.text
+  </tt>
+  file.
+  <br/>
+  GPU Error: an error occurred while rendering on the GPU. This may be
+due to a bug in Sapphire
+  <br/>
+ </blockquote>
+ <h4>
+  GPU Rendering on Burn
+ </h4>
+ By default, Burn nodes will ignore the value of the GPU Enable button,
+and always use the GPU if available. You can override this behavior by
+changing the value of the "use_gpu_on_burn" setting in the
+ <tt>
+  s_config.text
+ </tt>
+ file.
+ <blockquote>
+  yes: Burn nodes always use the GPU if available. This is the
+default.
+  <br/>
+  no: Burn nodes never use the GPU.
+  <br/>
+  button: Burn nodes check the GPU Enable button to decide whether the
+render on the GPU.
+  <br/>
+ </blockquote>
+ <h3>
+  <a name="doc">
+   Online documentation
+  </a>
+ </h3>
+ An online "Help" button is accessible via the "Crop/Help" or "Ctrl3"
+page for each plug-in and gives easy access to HTML documentation via
+your browser.  The "Help" button loads locally installed
+documentation for the current effect with information about each input
+and parameter.  The "Sapphire Intro" button loads the Sapphire
+plug-ins introduction page with links to the other documents and
+example pictures.  The "GenArts Web Site" button connects to the home
+page of Boris FX, Inc. if your workstation is on the Internet, for
+current information and updates.
+ <p>
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="abort">
+   Aborting a Spark process
+  </a>
+ </h3>
+ Any Spark process can be aborted by holding down the pointer for a few
+seconds.  Some effects have combinations of parameter settings that
+can cause unacceptably long process times.  This feature provides a
+way to abort a render mid-frame, so the parameters can then be reset
+to acceptable values, without waiting for the frame to finish.
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="pixel-aspect">
+   Pixel aspect ratios
+  </a>
+ </h3>
+ For some image formats, the digital form of the image is scaled
+non-uniformly to produce the final viewed picture.  For example NTSC
+resolution is normally 720x486 with an aspect ratio of 1.481.
+However, the final NTSC picture has an aspect ratio of 1.333.  Thus
+the original digital image is scaled in the horizontal direction by a
+factor of 0.9 and shapes rendered as circles can end up squashed
+slightly into ovals.  The original pixels are effectively rectangular
+shaped instead of squares, and have an aspect ratio of 1.48/1.333 =
+1.111.
+ <p>
+  To compensate for this, all Sapphire Plug-ins pre-stretch or shrink
+their effect in the vertical direction by the inverse of this
+  <i>
+   pixel
+aspect ratio
+  </i>
+  which is normally read from the meta-data of the
+input clip.  You can override this for
+  <i>
+   all
+  </i>
+  effects by changing
+the value of force_pixel_aspect_ratio in the
+  <tt>
+   s_config.text
+  </tt>
+  file.  A
+value of 1.111 is usually right for NTSC resolution, 0.916 is often
+appropriate for PAL resolution, and 1.0 will always give square
+pixels.
+ </p>
+ <p>
+  Most plug-ins also have a parameter for adjusting the relative width
+or height of the effect, which can be used to stretch the effect as
+needed on a case by case basis.
+ </p>
+ <p>
+  The pixel aspect ratio makes no difference for basic pixel processing
+effects such as MathOps and color processing.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="custom">
+   Customizing Sparks
+  </a>
+ </h3>
+ <p>
+  A facility is included with Sapphire Plug-ins that allows users with
+some programming experience to define and customize new effects.  A
+number of parameters are also available that can be adjusted to
+customize the behavior of all Sapphire plug-ins.  The
+load_save_channel_setups parameter can be enabled to save animation
+curves in the channel editor between uses of the same Spark.  Lookup
+tables can be specified for more accurate Spark processing of log
+format images. For additional information on these, or to modify a
+parameter, see the
+  <tt>
+   s_config.text
+  </tt>
+  file.
+ </p>
+ <p>
+  On Linux the config file is located at
+  <tt>
+   /usr/discreet/sparks/sapphire_2019/s_config.text
+  </tt>
+ </p>
+ <p>
+  On Mac the config file is located at
+  <tt>
+   /Applications/GenArtsSapphireSparks2019/config/s_config.text
+  </tt>
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="update-setups">
+   Updating v11 Setups to v2019
+  </a>
+ </h3>
+ <p>
+  Some Spark parameters have changed between Sapphire version 11 and 2019,
+so we have provided an
+  <tt>
+   update_setups
+  </tt>
+  unix command to
+automatically convert 11.0 (or 11.x) setup files to 2019.0 (or 2019.x).
+ </p>
+ <blockquote>
+  <b>
+   update_setups
+  </b>
+  [ -backup ] [ -recurse ] file1 [file2 ...]
+ </blockquote>
+ This converts Spark setup files and/or Batch setup files to use
+Sapphire 11.  It can accept multiple file names separated by spaces,
+and wildcards (*) can be used.  It ignores anything that doesn't look
+like a setup file with Sapphire Plug-ins, so you can use wildcards
+or directories that include extraneous files.  If you convert the
+Spark setup files for a Batch setup, you must also convert the
+corresponding .batch file and vice versa.  If "sapphire_11" is
+included in the setup file name, update_setups will also rename the
+file to say "2019" to allow Batch setup conversions to work properly.
+ <p>
+  The
+  <b>
+   -recurse
+  </b>
+  or
+  <b>
+   -r
+  </b>
+  option allows
+  <tt>
+   update_setups
+  </tt>
+  to recurse into directory trees and convert all setup files within
+that directory (but it does not follow symlinks).  It will also cause
+any sapphire_9 setup directories to be renamed to sapphire_2019.  Use
+the
+  <b>
+   -r
+  </b>
+  flag with care, because it could search and update a
+large number of files.
+ </p>
+ <p>
+  The
+  <b>
+   -backup
+  </b>
+  or
+  <b>
+   -b
+  </b>
+  option causes a 'v11' backup file to be
+made for each setup file before it is modified.  This will not replace
+existing 'v11' backups, so if you run it twice the backup should still
+be the original.  If you need to access a backup of a Spark setup, you
+can load the 'v11' setup file directly into Sapphire 11.0.  If you need
+to revert to a backup of a Batch setup, you should rename the 'v11'
+backup files to their original names.  If you are converting many
+files, it is often better to first backup the entire directory
+yourself instead.
+ </p>
+ <p>
+  In some effects we have fixed long-standing bugs or made improvements that will
+significantly change the results of old projects in ways that update_setups can't correct
+for. These exceptions are noted below:
+ </p>
+ <ul>
+  No changes in Sapphire 2019
+ </ul>
+ <p>
+  <b>
+   Example 1:
+  </b>
+  If you want to convert a single setup file for S_Clouds
+called
+  <tt>
+   TestSetup
+  </tt>
+  which you have stored in
+  <tt>
+   /tmp
+  </tt>
+  , you
+could open a shell window and type:
+ </p>
+ <p>
+  <tt>
+   %  cd /usr/discreet/sparks/sapphire_2019
+  </tt>
+  <br/>
+  <tt>
+   %  ./update_setups -backup /tmp/TestSetup.S_Clouds
+  </tt>
+ </p>
+ <p>
+  This will replace
+  <tt>
+   /tmp/TestSetup.S_Clouds
+  </tt>
+  with a version that
+uses Sapphire 2019.  The
+  <b>
+   -backup
+  </b>
+  flag causes the original file
+to be saved first as
+  <tt>
+   /tmp/TestSetup.v11.S_Clouds
+  </tt>
+  .
+ </p>
+ <p>
+  <b>
+   Example 2:
+  </b>
+  If you want to make a backup copy of your batch
+directory and then convert all the setups in it to Sapphire 2019
+format, you could type:
+ </p>
+ <p>
+  <tt>
+   %  cd /usr/discreet/flame_9.5
+  </tt>
+  <br/>
+  <tt>
+   %  cp -r batch batch-backup
+  </tt>
+  <br/>
+  <tt>
+   %  /usr/discreet/sparks/sapphire_2019/update_setups -r batch
+  </tt>
+  <br/>
+ </p>
+ <p>
+  <b>
+   Example 3:
+  </b>
+  If you want to convert all the setups in an entire
+project, you could type:
+ </p>
+ <p>
+  <tt>
+   %  cd /usr/discreet/project/effects
+  </tt>
+  <br/>
+  <tt>
+   %  /usr/discreet/sparks/sapphire_2019/update_setups -r your-project
+  </tt>
+  <br/>
+ </p>
+ <p>
+  This will apply
+  <tt>
+   update_setups
+  </tt>
+  to all files anywhere in the
+  <i>
+   your-project
+  </i>
+  directory, and rename any
+  <tt>
+   sapphire_11
+  </tt>
+  setup
+directories and files to
+  <tt>
+   sapphire_2019
+  </tt>
+  .  Make sure your project
+directory is somehow backed up first!
+ </p>
+ <p>
+  On Mac,
+  <tt>
+   update_setups
+  </tt>
+  is located in
+  <tt>
+   /Applications/GenArtsSapphireSparks2019/config
+  </tt>
+  .
+ </p>
+ <p>
+  Note to system administrators:
+  <tt>
+   update_setups
+  </tt>
+  is a Perl
+script, and requires Perl 5. You don't need to be root to run the
+script, but you do need write permission in the setup directory.
+ </p>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  <a name="known-probs">
+   Known Problems
+  </a>
+ </h3>
+ <ol>
+  <p>
+  </p>
+  <li>
+   Trimming clips from the head may invalidate the Mocha track.
+   <p>
+   </p>
+  </li>
+  <li>
+   Tracking data exported from Mocha when using proxies may be incorrect.
+Always switch to full resolution before exporting tracking data.
+   <p>
+   </p>
+  </li>
+  <li>
+   On CentOS 5, saving shape data from Mocha may cause Mocha or
+Flame to hang.
+   <p>
+   </p>
+  </li>
+  <li>
+   On Flame or Smoke on CentOS 7 and later, the Sapphire preset browser
+or flare editor may appear to hang. This will be addressed in an
+upcoming Autodesk release, but in the meantime users can either make
+the preset browser and flare editor full-screen and work as usual, or
+on the Linux machine go to System Settings &gt; Workspace Appearance and
+Behaviors &gt; Window Behavior &gt; Window Behavior &gt; Focus &gt; Policy and
+change to "Click To Focus".
+   <p>
+   </p>
+  </li>
+  <li>
+   Temporal effects in Batch that access frames other than the single
+current frame may not process efficiently.  It is recommended that you
+make the input to temporal effects in Batch be a clip or a cached node
+rather than a tree of other nodes.  These effects include S_Temporal,
+S_FieldTool, S_FieldRemove, and S_Feedback:TimeAverage.  Also in
+Batch, the Feedback effects will not work properly if they are
+upstream of any temporal effect.  For Autodesk releases prior to
+4.0/7.0 the temporal effects do not work in Batch at all.
+   <p>
+   </p>
+  </li>
+  <li>
+   Only one set of keyframes is kept for a given Spark.  Some Sparks
+contain multiple effect options, and the names of parameters can
+change when you switch between them.  If you set some keyframe values,
+and then switch to a different effect option in the same Spark, the
+old keyframes will continue to affect the new parameter values.
+Sometimes this can give inappropriate values.  If this occurs, use
+Reset All in the channel editor to clear any existing keyframes, and
+use Load Defaults to set the new parameters to reasonable values.
+   <p>
+   </p>
+  </li>
+  <li>
+   Autodesk-certified NVidia driver 346.35 is required for GPU acceleration,
+but on Linux this disables GPU acceleration in older versions of Sapphire.
+We hope a future update from NVidia will resolve this problem.
+  </li>
+ </ol>
+ <p>
+  <br/>
+  <a href="../intro">
+   To Sapphire Plug-ins Introduction
+  </a>
+ </p>

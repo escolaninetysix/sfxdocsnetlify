@@ -1,0 +1,32 @@
+{{ define "content" }}
+
+<div class="container" id="app">
+    <div class="row">
+        <div class="col-md-12" style="min-height: 250px;">
+            <h1>{{ .Title }}</h1>
+            {{ .Content }}
+            <p v-if="emailSent">A verification email has been sent to ${email}. Please click the link contained in this email to 
+                complete your registration and activate your license.
+            </p>
+            <p v-else>Your license has now been activated. Please view your <a href="/account/manage">Account Page</a> to manage your licenses.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el : '#app',
+        delimiters : ['${', '}'],
+        data : {
+            emailSent : false,
+            email : ''
+        },
+        created : function (){
+            var urlParams = new URLSearchParams(window.location.search);
+            this.emailSent = urlParams.get('verification_required');
+            this.email = urlParams.get('email');
+        }
+    })
+</script>
+
+{{ end }}

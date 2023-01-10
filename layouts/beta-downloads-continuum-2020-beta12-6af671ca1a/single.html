@@ -1,0 +1,44 @@
+{{ define "content" }}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>{{ .Title }}</h1>
+      <ul class="list-unstyled">
+        <li>Product: {{ .Params.product }}</li>
+        <li>Version: {{ .Params.version }}</li>
+        <li>Host: {{ .Params.host }}</li>
+        <li>Platform: {{ .Params.platform }}</li>
+		<li>Release Notes: {{ if (not (isset .Params "release_notes")) }}  {{ print "N/A" }} {{ else if (isset .Params "release_notes") }} <a href="{{ .Params.release_notes }}" title="{{ .Params.title }} Release Notes">{{ .Params.title }} Release Notes</a> {{ end }}</li>
+      </ul>
+      <p>
+        <a id="download-button" class="btn btn-lg">Download Now</a>
+      </p>
+    </div>
+  </div>
+  {{ if .Content }}
+  <div class="row">
+    <div class="col">
+      <div id="article">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+<script>
+$('#download-button').click(function() {
+    $.post('https://backend.borisfx.com/track', {
+      email: Cookies.getJSON('bfx-login').email,
+      product: "{{ .Params.download_url }}",
+    })
+    .done(function (data) {
+      window.location = "{{ .Params.download_url }}";
+    })
+    .fail(function (error) {
+    });
+});
+</script>
+
+{{ end }}

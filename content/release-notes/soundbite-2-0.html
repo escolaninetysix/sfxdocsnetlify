@@ -1,0 +1,89 @@
+{
+   "date": "2013-01-04T15:21:32-05:00",
+   "tags": [
+      "Media 100",
+      "Soundbite"
+   ],
+   "title": "Soundbite - 2.0"
+}
+
+<p>
+ <b>
+  Workgroup
+ </b>
+</p>
+<p>
+ Soundbite can be used in a Workgroup, meaning that you can have a shared library of material that is accessed by multiple workstations. To do so, you must change the indexing location. This location is where the index (.pat) files for your media are stored. Note that this is usually a different location from where your actual media files are stored on disk; this directory is only used by Soundbite. By default, this location is /Library/Application Support/Soundbite.
+</p>
+<p>
+ If you wish to use Soundbite in a Workgroup, you must go to File -&gt; Preferences. In the general tab, find where it states the Indexing Location, and click the change button next to it. Choose a shared directory where you would like to store the indices (most likely on a server). This will require a restart of the Soundbite application.
+</p>
+<p>
+ There are two types of Soundbite instances that can connect to a shared location: indexing machines and searching machines. Indexing machines can index watch folders and create new .pat files; searching machines can only search pre-existing pat files. To switch between the two functionalities, check the “Set as indexing machine (requires restart)” checkbox. Switching between the two functionalities also requires a restart of the application.
+</p>
+<p>
+ Each shared indexing location can only have one machine designated as the indexing machine for that location. This machine is determined by which instance of Soundbite is the first to connect to (and thus create all the necessary sub-folders) for that particular location. This will be the only machine that can index new media files to that location. However, any number of other machines can connect to the shared indexing location as “search machines” and use the indexed pat files to search media and export data. You must be connected to the server in order to index to the shared location, as well as search files that have been indexed to that location.
+</p>
+<p>
+ To set up an instance of Soundbite as a “search machine” for a shared location, go to Files -&gt; Preferences, change the Indexing Location to the shared location, and uncheck “Set as indexing machine (requires restart)” (by default, this is on). If configured as a “searching machine”, Soundbite will not allow you to index any files, even locally, however you will be able to safely use the shared location.
+</p>
+<p>
+ When set as a searching machine, Soundbite will synchronize with the shared indexing location upon launch. If the Index Machine adds, removes, or updates watched folders, searching machines for that location will not immediately see the changes. To do so, they must either restart the application, or click on the synchronize button in the preferences.
+</p>
+<p>
+ If you use Soundbite locally (with the Index Location pointed to “/Library/Application Support/Soundbite”), and you switch the indexing location to something else, you will notice upon relaunch that your watched folders and projects will no longer be seen. This is because only one indexing location can be active at a time. You should however, see the watched folders that have been indexed to the new indexing location and search those. Your local data is not lost however. If you switch your indexing location back to your local folder (/Library/Application Support/Soundbite), your old watched folders and projects will reappear.
+</p>
+<p>
+</p>
+<p>
+ <b>
+  Known Issues:
+ </b>
+</p>
+<ul>
+ <li>
+  Because Soundbite handles indexed media differently now, any media you have indexed with a version of Soundbite prior to 2.0 may need to be re-indexed in order to be searchable.
+ </li>
+</ul>
+<p>
+</p>
+<p>
+ <b>
+  Bug Fixes:
+ </b>
+</p>
+<ul>
+ <li>
+  Fixed bug where audio was not being exported properly to XML.
+ </li>
+</ul>
+<ul>
+ <li>
+  Fixed bug where only one audio lane was being written to FCPXML
+ </li>
+</ul>
+<ul>
+ <li>
+  Fixed bug where markers were not being exported properly for some media files
+ </li>
+</ul>
+<ul>
+ <li>
+  Timecodes written to XML will now be stored with greater precision, avoiding issues where the audio would end a few seconds before the end of a clip
+ </li>
+</ul>
+<ul>
+ <li>
+  Added FCPXML exporting support for files that do not have a timecode track
+ </li>
+</ul>
+<ul>
+ <li>
+  Fixed bug where uninstaller didn't remove soundbite preferences, allowing for clean uninstall
+ </li>
+</ul>
+<ul>
+ <li>
+  Renamed "Enable Indexing" menu item to "Pause Indexing" to better reflect its functionality.
+ </li>
+</ul>

@@ -1,0 +1,206 @@
+.. module:: mocha.project
+.. _BezierControlPoint:
+
+BezierControlPoint
+******************
+
+.. inheritance-diagram:: BezierControlPoint
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*   def :meth:`__eq__<BezierControlPoint.__eq__>` (rhs)
+*   def :meth:`get_point_data<BezierControlPoint.get_point_data>` (time[, view=View()])
+*   def :meth:`parameter<BezierControlPoint.parameter>` (name_components)
+*   def :meth:`parameter_set<BezierControlPoint.parameter_set>` ([name_components=list()])
+*   def :meth:`remove<BezierControlPoint.remove>` ()
+*   def :meth:`set_master_point<BezierControlPoint.set_master_point>` (arg__1[, time=0.f[, view=View(0)[, lock_tangents=false]]])
+*   def :meth:`set_point_data<BezierControlPoint.set_point_data>` (time, bcpd[, view=View()])
+*   def :meth:`update_point_data<BezierControlPoint.update_point_data>` (time, bcpd[, view=View()])
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*   property :attr:`master_point<BezierControlPoint.master_point>` [read-only] of :class:`BezierControlPoint` or :class:`XControlPoint`
+
+
+Detailed Description
+--------------------
+
+
+   
+   Bezier control point class. Provides access to Bezier contour control points.
+   
+
+
+.. class:: BezierControlPoint(BezierControlPoint)
+
+
+   :type BezierControlPoint: :class:`mocha.project.BezierControlPoint`
+
+
+
+
+
+
+
+   :type BezierControlPoint: :class:`mocha.project.BezierControlPoint`
+
+
+
+.. method:: BezierControlPoint.get_point_data(time[, view=View()])
+
+
+   :type time: :class:`PySide2.QtCore.float`
+   :type view: :class:`mocha.project.View`
+   :rtype: :class:`mocha.project.BezierControlPointData`
+
+
+
+   
+   :param time: Keyframe time.
+   :param view: Keyframe view.
+   
+   Returns control point data by time and view.
+   
+
+
+
+.. method:: BezierControlPoint.__eq__(rhs)
+
+
+   :type rhs: :class:`mocha.project.BezierControlPoint`
+   :rtype: :class:`PySide2.QtCore.bool`
+
+
+
+
+
+
+.. method:: BezierControlPoint.parameter(name_components)
+
+
+   :type name_components: list of strings
+   :rtype: :class:`mocha.project.Parameter`
+
+
+
+   
+   :param name_components: Relative name for a requested parameter.
+   
+   :rtype: :class:`Parameter`
+   
+   Returns :class:`Parameter` instance bound with given name path.
+   
+
+
+
+.. method:: BezierControlPoint.parameter_set([name_components=list()])
+
+
+   :type name_components: list of strings
+   :rtype: :class:`mocha.project.ParameterSet`
+
+
+
+   
+   :param name_components: Relative name for a requested parameter set.
+   
+   :rtype: :class:`ParameterSet`
+   
+   Returns :class:`ParameterSet` instance bound with given name path.
+   Pass an empty list ``[]`` to get access to the Bezier control point parameters set.
+   
+
+
+
+.. method:: BezierControlPoint.remove()
+
+
+
+
+
+   
+   Removes the this control point.
+   
+
+
+
+.. method:: BezierControlPoint.set_master_point(arg__1[, time=0.f[, view=View(0)[, lock_tangents=false]]])
+
+
+   :type arg__1: :class:`PyObject`
+   :type time: :class:`PySide2.QtCore.float`
+   :type view: :class:`mocha.project.View`
+   :type lock_tangents: :class:`PySide2.QtCore.bool`
+
+
+
+   
+   :param time: Keyframe time.
+   :param view: Keyframe view.
+   :param lock_tangents: If True then Lock Tangents mode will be enabled, otherwise disabled.
+   
+   Set the given point as constraining one for the point.
+   Set None value to break the constraint.
+   
+
+
+
+.. method:: BezierControlPoint.set_point_data(time, bcpd[, view=View()])
+
+
+   :type time: :class:`PySide2.QtCore.float`
+   :type bcpd: :class:`mocha.project.BezierControlPointData`
+   :type view: :class:`mocha.project.View`
+
+
+
+   
+   :param time: Keyframe time.
+   :param xcpd: keyframe data reflected in BezierControlPointData instance
+   :param view: Keyframe view.
+   
+   Sets keyframe data for given time and view erasing all old keyframe data.
+   
+
+
+
+.. method:: BezierControlPoint.update_point_data(time, bcpd[, view=View()])
+
+
+   :type time: :class:`PySide2.QtCore.float`
+   :type bcpd: :class:`mocha.project.BezierControlPointData`
+   :type view: :class:`mocha.project.View`
+
+
+
+   
+   :param time: Keyframe time.
+   :param xcpd: Keyframe data reflected in BezierControlPointData instance
+   :param view: Keyframe view.
+   
+   Updates keyframe data for given time and view.
+   
+
+
+
+.. attribute:: BezierControlPoint.master_point
+
+
+   :type: :class:`BezierControlPoint` or :class:`XControlPoint`
+   :access: read-only   
+   Provides access to constraining point.
+   Set None value to break the constraint.
+   
+
+
+
+

@@ -1,0 +1,317 @@
+
+== Tracking Basics [[tracking_basics]]
+
+
+
+=== The Planar Tracker
+
+Imagineer's Planar Tracker technology provides 2D tracking data by tracking planes rather than points.
+
+The key to getting the most out of the Planar Tracker is to learn to find planes of movement in your shot which coincide with the object that you want to track or roto. Sometimes it will be obvious - other times you may have to break your object into different planes of movement. For instance if you were tracking a tabletop, you would want to draw the spline to avoid the flower arrangement in the center of the table — it is not on the same plane and will make your track less accurate.
+
+To select a plane you simply draw a spline around it. You can be fairly loose with your spline — the Planar Tracker is intelligent enough to discard the pixel movement that doesn't conform to the movement of the majority of the pixels within the shape.
+
+Mocha features two spline types, X splines and Bézier splines:
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_XSplines_001.jpg["ICON_XSplines_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_XSplines_001.jpg"] image://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/XSpline_001.jpg["XSpline_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/XSpline_001.jpg"]
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_BezSplines_001.jpg["ICON_BezSplines_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_BezSplines_001.jpg"] image://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/BezierSpline_001.jpg["BezierSpline_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/BezierSpline_001.jpg"]
+
+In general X splines work better for tracking, especially with perspective motion. However we also provide Bezier Splines as they can be versatile and is the industry spline standard.
+
+==== CPU vs GPU Tracking
+
+You can choose between a GPU or a CPU tracker in Preferences. By default, GPU is selected, but will fall back to CPU if an operation is not supported by the GPU version.
+
+The GPU option allows you to select any supported graphics card on your system to take on the brunt of the tracking process. The resulting speed improvement is especially noticeable on high resolution footage or when tracking large areas.
+
+
+=== The Relationship Between Splines and Tracking Data
+
+One of the most important concepts to understand with the Mocha planar tracking system is that the spline movement is not the tracking data.
+
+It's best to think of the splines you draw around objects as search areas.  Here's a breakdown of how the tracking works:
+
+. By default, any spline you draw is linked to the tracking data of the layer it is currently in. In hierarchical terms, the spline is the child of the track, even if there is no tracking data.
+. When you begin to track a layer, the area of detail contained within the spline(s) you have drawn will be searched for in the next frame.
+. If the planar tracker finds the same area in a following frame, it will tell the tracker  to move to that point.  Because the spline is linked to the track by default, it will also move along with it and the search begins again for the next frame.
+
+To see this relationship, turn on your surface and/or grid in the viewer after you have tracked something. Scrub the timeline and you will see that the grid and surface move with the spline.
+
+Now select all the points of your spline and move it around the viewer.   You will notice that the surface/grid will stay in the same place.
+
+This is because the spline is linked to the track, but the track is not linked to the spline.  The spline is merely a search area to tell the track where to go next.  It is a common misconception that moving the spline while tracking is affecting the movement of the tracking data.  It is not.  Moving the spline is only telling the tracker to look in a different place and will not directly affect the motion of the tracking.
+
+This makes the tracker very powerful, as you can move and manipulate your spline area around while tracking to avoid problem areas or add more detail for the search.
+
+You can even unlink the spline from the track entirely so that any planar surface passing under the stationary spline area is tracked and you don't have to move the spline if tracking starts to go off screen.
+
+
+=== Selecting an Area to Track
+
+With the Planar Tracker you simply draw a spline around something, as shown with the screen below.
+
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_001.jpg["IPAD_Screen_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_001.jpg"]
+
+. Select one of the spline tools to create a shape around the outside edge of the area you wish to track.
+. Start creating your shape by clicking onto the screen.
+. After the third point, the shape will auto-close, but you can continue to add points.
+. When drawing splines it is best to keep the shape not tight on the edge, but actually give a little space to allow for the high contrast edges to show through, as these provide good tracking data.
+. Right-click to finish drawing.
+. If you are using the X-Spline tool you can adjust the handles at each point by pulling them out to create a straight cornered edge, or pull them in to make them more curved.  Right clicking a handle will adjust all the handles in the spline at once.
+
+=== Dealing With Obstructions or Reflective Surfaces
+
+In some cases there are parts of an image that can interfere with the effectiveness of the Planar Tracker. To handle this, you can create an exclusion zone in the area you are tracking.
+
+For instance, in the phone example we are using, there are frames where there are strong reflections on the screen. These reflections can make the track jump. So we need to isolate that area so the tracker ignores it.  Here's how this is done:
+
+
+`1.` Select the initial layer you created.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/LayerView_Selected_001.jpg["LayerView_Selected_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/LayerView_Selected_001.jpg"]
+
+`2.` Select the add shape tool to add an additional shape to the current layer, which selects the area you want the tracker to ignore.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_XSplines_001.jpg[role=img-small]
+
+`3.` Draw this second shape inside the original shape. Note that both splines have the same color, which is an indication that they belong to the same layer. Also you will notice in the Layer Controls panel that you only have a single layer.
+
+image://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_002.jpg["IPAD_Screen_002",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_002.jpg"]
+
+`4.` By turning on the Mattes button under View Controls you can see the area that will be tracked.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_003.jpg["IPAD_Screen_003",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_003.jpg"]
+
+
+=== Tracking Parameters
+
+Various tracking parameters can be accessed by selecting the Track tab. On the left hand side of the Track tab, you will see two sections: Motion and Search Area.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/TrackOptions_001.jpg["TrackOptions_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/TrackOptions_001.jpg"]
+
+
+Understanding the parameters section of the Track tab is vitally important for obtaining good tracks.  Here we provide a breakdown of each parameter and how to use it effectively.
+
+
+*Input Clip*
+
+This is the clip you are going to track.  By default it is the one currently in the viewer.
+
+
+*Input Channel*
+
+When tracking, Mocha looks at contrast for detail.  The input channel determines where to look for that contrast.
+. Luminance looks for contrast in the light and dark of the image
+. Auto Channel looks for contrast in one of the color channels.
+
+By default, Luminance does a good job.  If you have low-luminance footage or you are not getting a good track, try Auto Channel.
+
+
+
+*Min % Pixels Used*
+
+One of the most important parameters to look at for tracking.
+
+By default, the minimum percentage of pixels used is dynamic.  When you draw a shape, Mocha tries to determine the optimal amount of pixels to look for in order to speed up tracking.  If you draw a very large shape, the percentage will be low.  If you draw a small shape, the percentage will be high.
+
+In many cases, the cause of a drifting or slipping track is a low percentage of pixels.  If you want a more solid and accurate track, try setting the Min % Pixels Used value to a higher amount.  Keep in mind however that a larger percentage of pixels can mean a slower track.
+
+
+*Smoothing Level*
+
+This value blurs the input clip before it is tracked.  This can be useful when there is a lot of severe noise in the clip.  It is left at zero by default.
+
+
+*Motion*
+
+These parameters control what motion you are looking for when you track:
+
+* Translation: The position of the object
+* Scale: Whether the object gets larger or smaller
+* Rotation: The angle of rotation of the object
+* Shear: How the object is skewing  relative to the camera
+* Perspective: How the object is moving in perspective relative to the camera
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/TrackMotion_001.jpg["TrackMotion_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/TrackMotion_001.jpg"]
+
+The main difference between shear and perspective is the relative motion.  Shear is defined as the object warping in only two corners, whereas perspective is most often needed where the object is rotating away from the viewer significantly in space.
+
+As an example, if someone is walking towards you, their torso would be showing shear as it rotates slightly back and forth from your point of view.
+
+The front of a truck turning a corner in front of you would be showing significant perspective change.
+
+* Large Motion: This is the default.  It searches for motion and optimizes the track as it goes.  Small Motion is also applied when you choose Large Motion.
+* Small Motion: This only optimizes.  You would use Small Motion if there were very subtle changes in the movement of the object you are tracking.
+* Manual Tracking: This is only necessary to use when the object you are tracking is completely obscured or becomes untrackable.  Usually used when you need to make some adjustments to complete the rest of the automated tracking successfully.
+
+
+*Search Area*
+
+This defines ranges for the tracker to search within
+
+* Horizontal/Vertical: The distance of pixels in the footage to search for the next object position.  This is set to Auto by default.
+* Angle: If you have a fast rotating object, like a wheel, you can set an angle of rotation to help the tracker to lock onto the detail correctly. The tracker will handle a small amount of rotation, less than 10º per frame, with Angle set to zero.
+* Zoom: If you have a fast zoom, you can add a percentage value here to help the tracker. Again, the tracker will still handle a small amount of zoom with this set to zero.
+
+
+=== Tracking the Spline
+
+Before performing the actual track,  adjust the settings depending on the movement in the clip.
+
+Track the plane selected by pressing the Track Forwards button on the right- hand side of the transport controls section.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_TrackPlaybar_001.jpg["ICON_TrackPlaybar_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_TrackPlaybar_001.jpg"]
+
+Stop the track and adjust the shape if it doesn't seem to be tracking properly. You may keyframe the spline shape so that it tracks only the planar region of a shape by adjusting the shape and hitting Add Key in the keyframe controls menu. Keep in mind that no initial keyframe is set until you first hit Add Key or move a point with Auto-Key turned on.
+
+=== Checking Your Track
+
+The spline should be tracked in addition to the clip being cached to RAM. You can play it back and get an idea as to how the track went. Feel free to change the playback mode in the transport controls to loop or ping-pong your track.
+
+Another trick you can do to check your track is hit the Stabilize button in the View Controls.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_Stabilize_001.jpg["ICON_Stabilize_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/ICON_Stabilize_001.jpg"]
+
+Turning on Stabilize will lock the tracked item in place, moving the image to compensate. In the track module, stabilize view is a preview mode to check your track. Actual stabilization output is handled by the Stabilize Module, explained in the Stabilize Overview chapter.
+
+You can check the accuracy of your planar track by turning on the Surface and Grid overlay in the View Control panel. Drag the corners of the Surface overlay (the dark blue rectangle) to match the perspective of your tracked plane. If you play the clip, you should see the surface or grid line up perfectly with the plane you tracked.
+
+
+IMPORTANT: *The Surface and Grid have no keyframes; they are simply guides that let you check the accuracy of your track. Note that the position of the Surface WILL affect the exported tracking data, so you MUST position the corners of the Surface before exporting tracking data.*
+
+Next click on the Surface button under View Controls.
+
+When you turn on the surface you will see the blue box that represents the 4 points of the corner-pin. Right now you will see that it is not lined up with the screen.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_004.jpg["IPAD_Screen_004",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_004.jpg"]
+
+By selecting each corner one at a time you can adjust the surface area to cover the area of the screen.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_005.jpg["IPAD_Screen_005",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_005.jpg"]
+
+The Grid overlay should line up with the plane you're tracking and move with it as you cycle through the clip. You can change the density of the grid by adjusting the X and Y grid values in View | Viewer Preferences:
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/GRIDDividers_001.jpg["GRIDDividers_001",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/GRIDDividers_001.jpg"]
+
+The grid overlay can give you a quick representation of the accuracy of the track.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_006.jpg["IPAD_Screen_006",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_006.jpg"]
+
+The Trace feature allows you to see the position of the planar corners over time. Skip allows you to work with only every nth frame, useful on particularly long roto shots where the movement is predictable.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_007.jpg["IPAD_Screen_010",link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/IPAD_Screen_007.jpg"]
+
+
+IMPORTANT: *When you track a layer, the mattes of any active layers above the layer itself are subtracted from the matte of the layer and hence influence the area being tracked. To keep your tracking predictable, it is recommended that you keep your tracking layers on the top of the stack unless you specifically wish to use other layers to subtract from the tracking area of layers beneath it.*
+
+To monitor what the tracker "sees" as a tracking area, select the Track Matte button in the view control.
+
+=== Importing Mattes
+
+There may be instances where you have already created mattes for one or more objects in the shot, for example using a keyer or another roto tool that would help you isolate areas to track. You can import such mattes by creating a new layer and then using the Matte Clip setting under Layer Properties to assign it to the layer.
+
+
+=== Stereo Tracking
+
+NOTE: Please note that stereo features are only available in Mocha Pro and Mocha VR.
+
+Tracking in Stereo is very similar to tracking in Mono. In fact we've designed it specifically to be as transparent as possible to those used to the standard Mono workflow.
+
+.To track a stereo clip automatically:
+. Select your hero view (By default this is the Left view)
+. Draw your shape as you would normally in mono mode (See Mocha User Guide for an introduction to mono Mocha tracking techniques)
+. Press the "Operate in all views" button on the right side of the tracking buttons. 
+. Select your tracking parameters as normal
+. Track forwards (and/or backwards if required).
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/4.0.0_Operate_All_Views.png["Operate on All Views",width=320,link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/4.0.0_Operate_All_Views.png"]
+
+If you now switch between Left and Right views you will see the Right view has automatically been tracked and offset from the Left view.
+
+If you would prefer to only track and work with the Hero view initially then offset your data manually, you can also do this using the Stereo Offset tab in Track.
+
+.To track and manually offset a view:
+. Select your hero view (By default this is the Left view)
+. Draw your shape as you would normally in mono mode (See Mocha User Guide for an introduction to mono Mocha tracking techniques)
+. Make sure the "Track in all views" button on the right side of the tracking buttons is switched off.
+. Select your tracking parameters as normal
+. Track forwards (and/or backwards if required).
+
+This will only track the current view you are on.  If you switch to the other view you will see the layer still moves with the track, but is not offset like when you do an all-views track.
+
+You can then use the Stereo Offset parameters in the Track module to offset your view.
+
+image:://borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/4.0.0_Stereo_Offset.png["Stereo Offset",width=320,link="//borisfx-com-res.cloudinary.com/image/upload/v1531784263/documentation/mocha/images/5.6.0/4.0.0_Stereo_Offset.png"]
+
+If you decide later that you want to track the non-hero view, you can do so by selecting the non-tracked view then track as normal.
+
+You have the following options in the Stereo Offset tab (see above) when tracking another view based on the hero view:
+
+* *Track from other views:* This will reference the existing track to help track and correctly offset the current view.
+* *Track this view:* This will reference the current view to get the tracking information.
+
+Note that by default these are both selected to give best results.  If you only use *Track this view* and not *Track from other views*, the current view will be tracked independently of the hero view and will not offset.
+
+You can also open existing mono projects that have additional views and track them without having to manually offset.  Just set the mono project to Multiview in the Project Settings and add the additional footage streams to the clip.
+
+
+
+=== Tips for Tracking
+
+
+*Scrub your timeline*
+
+When starting a new project, go through your footage a few times to see what your best options are for tracking. You will save yourself a lot of time by making note of obstructions and possible problem areas in advance.
+
+
+
+*Use edges*
+
+When tracking surfaces you will usually get a much better track if you include the edges and not just the interior of an object.  This is because Mocha can define the difference between the background and the foreground and lock on better.
+
+For example, if you are tracking a greenscreen, it is better to draw your shape around the entire screen rather than just the internal tracking markers.  In some cases this means you can avoid tracking markers altogether and save time on cleanup later.
+
+
+
+*When in doubt, ramp up your pixels*
+
+You can quite often get a great result with default settings, but if you're getting a lot of drift, try setting the Min % Pixels Used value higher.  The processing can be slower, but you will usually get a much more solid track.
+
+
+
+*Draw more shapes*
+
+Remember you are not limited to one shape in a layer.  Use a combination of shapes to add further areas or cut holes in existing areas to maximize your search.  If necessary, make an additional layer to track and mask out foreground obstructions before tracking the object you need.
+
+
+
+*Use the grid while tracking*
+
+It's common to use the surface and the grid to line up your corners after you track, but it can be much more advantageous to set up your surface before you track and leave the grid on to watch for any subtle drift while you are tracking.  This way you can stop your track early to fix any issues and spend less time trying to find them later.
+
+
+
+*Track from the largest, clearest point*
+
+In order for Mocha to keep the best possible track, it is usually best to scrub through the timeline and find the largest and clearest area to begin tracking from, draw your shape there, then use backwards and forward tracking from that point.
+
+For example, if you have a shot of sign coming toward you down a freeway, it is usually better to start at the end of the clip where the sign is largest, draw your shape and track backwards, rather than start from the beginning of the clip.
+
+
+
+*A planar surface does not necessarily have to be flat*
+
+We have a Planar Tracker which specifically tracks planes of motion, but this is not limited to tables, walls and other flat objects.
+
+Distant background is considered flat by the camera where there is no parallax.  Faces can be tracked very successfully around the eyes and bridge of the nose.  Rocky ground, rumpled cushions, clumps of bushes, human torsos and curved car bodies are all good candidates.  The key is low parallax or no obvious moving depth.
+
+When in doubt, try quickly tracking an area to see if it will work, as you can quite often trick the planar tracker into thinking something is planar.
+
+
+
+*In the end, there is no magic bullet*
+
+Mocha is a very flexible tracker and will save a lot of time, but you will eventually run into a piece of footage that just will not track. Large or continuous obstructions, extreme blur, low contrast details and sudden flashes can all cause drift or untrackable situations.
+
+If something just isn't tracking no matter what you try, consider using Mocha to track as much as possible then move to manual work.  You can often get a lot more done fixing shots by hand or using AdjustTrack in Mocha rather than trying to tweak your shapes and parameters over and over again to get everything done automatically.

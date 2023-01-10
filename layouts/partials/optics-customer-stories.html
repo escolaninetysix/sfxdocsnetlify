@@ -1,0 +1,116 @@
+<script type="text/javascript" src="/slick.min.js"></script>
+<script>
+$(document).ready(function() {
+$('.slider').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+});
+</script>
+<style>
+.slick-slide {
+    margin: 0 10px;
+}
+.slick-list {
+    margin: 0 -10px;
+}
+.slick-prev:before {
+  color: #f6f8f9;
+}
+.slick-next:before {
+  color: #f6f8f9;
+}
+
+</style>
+
+
+	  <div class="slider" style="max-width:750px;width:100%;">
+  {{ range  (.Site.GetPage "Section" "news").Pages }} 
+  {{ if .Params.optics_stories }}
+<div class="col-12 col-md-6 sapphire-stories" style="background-color:white;padding-right:5px;padding-left:15px;font-size:1em;font-weight:normal;text-align:left;border:2px solid black;border-radius:0.5%;">
+   <div class="row">
+		 <!-- <div class="txtOVERLAY" style="color:white;margin-left:15px;font-weight:bold;">
+		    <p>${ video.title }</p>
+		  </div> -->
+         <div class="col-md-7">
+		 {{ if .Params.adjust_title }}
+		 <h5 style="padding-left:20px;padding-top:20px;">"{{ .Params.blurb | markdownify }}"</h5>
+		 {{ else }}
+		 <h3 style="padding-left:20px;padding-top:20px;">"{{ .Params.blurb | markdownify }}"</h3>
+		 {{ end }}
+		 {{ if .Params.adjust_title }}
+		 <p style="padding-left:20px;font-size:1em;">{{ .Params.artist | markdownify }}</p><br>
+		 {{ else }}
+		 <p style="padding-left:20px;font-size:1em;">{{ .Params.artist | markdownify }}</p>
+         {{ end }}
+		 <br><br><a href="{{ .Params.news_url }}" target="_blank" style="padding-left:20px;padding-bottom:20px;"><button class="learn-more-cs">Read More</button></a>
+         </div>
+		 <div class="col-md-5">
+          <div class="video" style="padding-right:20px;padding-left:0px;padding-top:20px;padding-bottom:20px;">
+		  <a href="{{ .Params.news_url }}" target="_blank"><img src="{{ .Params.image_url }}" width="100%" height="100%" class="img-fluid" style="border-radius: 2%;border:2px solid black;"></a>
+		  </div>
+		  </div>
+    </div>		  
+</div>
+ {{ end }}
+ {{ end }}
+
+ {{ range  (.Site.GetPage "Section" "customer-stories").Pages }} 
+  {{ if .Params.optics_cs }}
+<div class="col-12 col-md-6 sapphire-stories" style="background-color:white;padding-right:5px;padding-left:15px;font-size:1em;font-weight:normal;text-align:left;border:2px solid black;border-radius:0.5%;">
+   <div class="row">
+		 <!-- <div class="txtOVERLAY" style="color:white;margin-left:15px;font-weight:bold;">
+		    <p>${ video.title }</p>
+		  </div> -->
+         <div class="col-md-7">
+		 {{ if .Params.adjust_title }}
+		 <h5 style="padding-left:20px;padding-top:20px;">"{{ .Params.blurb | markdownify }}"</h5>
+		 {{ else }}
+		 <h3 style="padding-left:20px;padding-top:20px;">"{{ .Params.blurb | markdownify }}"</h3>
+		 {{ end }}
+		 {{ if .Params.adjust_title }}
+		 <p style="padding-left:20px;font-size:1em;">{{ .Params.artist | markdownify }}</p><br>
+		 {{ else }}
+		 <p style="padding-left:20px;font-size:1em;">{{ .Params.artist | markdownify }}</p>
+         {{ end }}
+		 <br><br><a href="{{ .Params.news_url }}" target="_blank" style="padding-left:20px;padding-bottom:20px;"><button class="learn-more-cs">Read More</button></a>
+         </div>
+		 <div class="col-md-5">
+          <div class="video" style="padding-right:20px;padding-left:0px;padding-top:20px;padding-bottom:20px;">
+		  <a href="{{ .Params.news_url }}" target="_blank"><img src="{{ .Params.image_url }}" width="100%" height="100%" class="img-fluid" style="border-radius: 2%;border:2px solid black;"></a>
+		  </div>
+		  </div>
+    </div>		  
+</div>
+ {{ end }}
+ {{ end }}
+
+	 </div>

@@ -1,0 +1,19 @@
+{
+   "date": "2015-05-27T11:04:00-04:00",
+   "tags": [
+      "Continuum"
+   ],
+   "title": "BCC AVX Crashes Avid on launch with Segmentation Fault Error"
+}
+
+<div id="CUDADriver" class="hidden-faq">
+<p><strong> Subject </strong> :  BCC AVX crashes Avid on launch with Segmentation Fault error</p>
+<p><strong> Issue </strong> :  When launching Avid Media Composer after installing BCC AVX, Avid crashes with the following error: <br> error while trying to \Initialize AVX2 Host\ pop up appears and reads: \Segmentation faut\ in thread \MainThread\, at address 0x0</p>
+<p><strong> Cause </strong> :  This would be due to BCC attempting to load a hardware asset that is no longer present -- the most common reason would be if CUDA-based hardware was removed from the system, but the drivers for this hardware were not uninstalled.</p>
+<p>Steps to work around the issue:</p>
+<ol>
+<li>With all possible programs closed, delete the file called “libcudart.dylib” from this location -Macintosh HD :: Library :: Application Support :: BorisFX :: Lib :: BCC9BitDepthSupport*</li>
+<li>- If Avid crashes, search for these following files, and if you find them, delete them as well -Macintosh HD :: System :: Library :: Extensions -- Filename: ʻCUDAʼ (if folder, delete) <br> Macintosh HD :: System :: Library :: StartupItems -- Filename: ʻCUDAʼ (if folder, delete) <br> Macintosh HD :: Library :: Frameworks -- Filename:  “CUDA.framework” <br> Macintosh HD :: Library :: PreferencePanes -- Filename:  “CUDA Preferences.prefPane <br> Macintosh HD :: Library :: LaunchAgents -- Filename: “com.nvidia.CUDASoftwareUpdate.plist”</li>
+<li>Once these files have been removed, Restart the Macintosh and try re-launching Avid Media Composer.</li>
+</ol>
+</div>

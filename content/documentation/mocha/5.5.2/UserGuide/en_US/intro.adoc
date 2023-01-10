@@ -1,0 +1,101 @@
+
+== Introduction
+Welcome to mocha®, tracking and rotoscoping tools that make your tracking and rotoscoping work much easier.
+
+Our tools are based on our proprietary Planar Tracking technology, an awesome approach to 2D tracking which will help you to generate accurate corner-pins and track and transform your roto splines in a powerful way.
+
+NOTE: This manual covers all products in the mocha family. Export and interface features may differ between _mocha VR_, _mocha Pro_, the _mocha Pro Plugin_, _mocha HitFilm_, or _mocha AE_. Legacy applications such as mokey and monet will have significant interface difference to the current versions. Please refer to their offline manuals.
+
+=== The Art of Tracking
+Tracking and rotoscoping are part of almost any visual effects project. For 2D tracking, point trackers are most commonly used, but to get good point tracks requires a mix of experience and luck. You often have to &ldquo;prime&rdquo; a clip for optimum tracking using color correctors and other image manipulations. If the point being tracked exits frame, you get into offset tracking, which presents its own set of challenges. If it all fails, you are into hand tracking, which is time consuming and very hard to get accurate.
+
+Mocha is a 2D tracker that requires less experience and luck to be successful with, does not require the image to be primed and is less likely to require a lot of tricks or hand tracking on difficult shots.
+
+=== There Are No Point Trackers
+In mocha splines are used for both tracking and rotoscoping. This is a different method from standard 1-point or multi-point tracking tools.
+
+Traditional tracking tools require that you locate &ldquo;points&rdquo; that remain consistent throughout the entire shot in order to track movement. This is itself a difficult task, especially when tracking a shot that was not originally designed to be tracked. If you wish to also track rotation, perspective and shear you need even more clear and consistent points to track.
+
+Traditional roto methodology would have you outline a shape with the minimum number of points necessary then either manually move the control points or track the shape with a point tracker to &ldquo;get it close&rdquo;. Even when using multi-point trackers to impart rotation and scale to the roto spline, the results are often unusable if there is any perspective change during the shot.
+
+Instead, Imagineer's Planar Tracker tracks an object's translation, rotation and scaling data based on the movement of a user-defined plane.
+A plane is any flat surface having only two dimensions, such as a table top, a wall, or a television screen. Planes provide much more detail to the computer about an object's translation, rotation and scaling than is possible with point-based tracking tools. Even as an object leaves and enters a frame, there is usually enough information for the Planar Tracker to maintain a solid track of the object.
+When you work with the mocha tools, you will need to look for planes in the clip. More specifically, you will need to look for planes that coincide with movements you want to track. If someone is waving goodbye, you can break their arm into two planes - the upper and lower limbs. Although not all of the points on the arm sections actually lie on the same two-dimensional surface, the apparent parallax will be minimal.
+
+
+=== New features in mocha 5.5.2
+* *Support for Vegas Pro:* The OFX plugin is now officially supported in Vegas Pro
+* *Support for multi-core CPUs:* Mocha now takes advantage of multiple cores when tracking with the CPU
+* *Auto Step for Remove:* You can now have the Remove module calculate Step automatically
+* *Support for non 2:1 VR footage in mocha VR:* You no longer require a 2:1 PAR for footage in mocha VR
+* *Speed improvements to Reorient:* We’ve added additional speed increases to render and playback of the Reorient module in mocha VR
+* *Python can now access the playhead:* Provided API to get the playhead position with Python, which makes it easier to control keyframe setting
+* *Python can now read/write image data in clips:* Provided API to be able to read pixel data from any clip frame and create new output clips with image data. See the Python Guide for more details.
+
+=== New features in mocha 5.5.1
+* *Tracking search areas are optimized:* mocha now adjusts the initial ‘Auto’ search area based on the image size. This also scales with proxies.
+* *Rendering is faster in Media Composer:* We have added several improvements to the AVX rendering speed.
+* *Reorient preview render is faster:* Reorient preview speed for mocha VR should be increased significantly.
+
+=== New features in mocha 5.5.0
+
+This version introduces the new *mocha VR* product:
+
+* *360° Planar Tracking:* Imagineer’s award-winning planar tracking solution has been improved to support equirectangular footage delivering the world's most robust 360 tracking solution for post-production.
+* *360° Workspace:* Optimized workspace and toolset works simultaneously in rectilinear and lat/long views bringing 360 capability to a variety of applications. Artists can easily track and roto without worrying about equirectangular seams or distorted pixels.
+* *360° Masking Tools:* Unlimited X-Spline tools for articulate shape creation and masking, saves hours of time versus traditional keyframing techniques. Roto-masks can be rendered back to host or exported to most editing and compositing systems.
+* *360° Object Removal:* mocha’s famous Remove Module now works on 360 video by analyzing temporal frames and “automatically removing” unwanted camera rigs, shadows, crew members and more for massive time savings.
+* *Horizon Stabilization:* Designed to reduce unstable motion, the new Reorient Module can drastically improve nausea inducing VR experiences by smoothing or stabilizing shaky, handheld and drone captured footage. Driven by robust planar tracking, a user can even track and stabilize out of focus and most difficult footage.
+* *Lens Distort Workflow for 360 Compositing:* Plug-in based lens correction workflow converts between lat/long and rectilinear for a simple workflow to add titles, graphics, patches and non 360 enabled filters to your 360 project.
+* *Plug-in & Standalone workflows:* Running inside industry standard editing and effects applications, provides an immediate bridge for systems that do not currently support 360/VR. Render finished shots to your timeline OR export tracking and roto data in a variety of formats for flexibility and project sharing.
+
+See <<mochavr_workflow, mocha VR: Using mocha for 360 workflow>> for more details.
+
+Additionally, mocha 5.5.0 includes:
+
+* *Improved Memory Handling:* Memory performance and stability has been greatly improved.
+* *Improved performance for large amounts of layers:* There is significantly less slow down when working on large amounts of layers.
+
+=== New features in mocha 5.2.1
+* *OFX Support for Silhouette:* You can now run the mocha Pro OFX Plugin in Silhouette v6.
+* *Step and Range control in mocharender.py:* You can now control various frame ranges and step values with the mocha Pro command line render. See the Python Guide for more details (not available in the plugin).
+* *EXR and R3D import for mocha Pro Plugin:* The plugin can now import R3D and EXR files.
+
+=== New features in mocha 5.2.0
+* *Floating license support for plugins and standalone:* You can now run floating licenses for the plugins and the standalone mocha. There is no need to used mocha FL.
+* *Render license support for plugins and standalone:* You can now use render (i.e. non-interactive) licenses to expand rendering to other machines.
+* *Apply Export for mocha Pro Plugin in After Effects:* You no longer have to rely on the clipboard, you can generate and apply tracking data directly in the plugin interface.
+* *Improved GPU Tracker:* Additional improvements speed, stability and accuracy.
+
+=== New features in mocha 5.1.1
+* *Improved Remove Performance:* Improved remove performance, especially when using clean plates.
+* *Improved GPU Tracker:* Support for Lens calibration. Additional improvements to card support, speed, stability and accuracy.
+* *Customize Preferences with Python:* You can now set preferences with Python using a Settings API (mocha Pro Standalone only)
+* *Python Frame Buffer Control:* Python mocharender.py and mochaexport.py scripts now accept arguments to turn on and off frame buffers (mocha Pro Standalone only)
+* *Other Python API improvements:* (see Python Guide and mocha Python reference. mocha Pro Standalone only)
+
+=== New features in mocha 5.1.0
+
+* *OFX Version:* The first release of the OFX version of the mocha Pro Plugin.
+* *Export Shapes to Blackmagic Fusion from Plugin:* You can now export Fusion shapes from the plugin.
+
+=== New features in mocha 5.0.0
+
+mocha V5.0.0 is a major overhaul for performance and architecture, the key features being GPU tracking and plugin versions of the standalone software.
+
+New features include:
+
+* *Plugin Version:* You can now load mocha Pro as a plugin into Adobe After Effects, Adobe Premiere and Avid Media Composer and OFX.
+* *GPU Tracking:* Our advanced planar tracking is now even faster, utilizing the speed of top end graphics cards.
+* *Export Shapes to Blackmagic Fusion:* You can now export shape data to the clipboard and paste it directly into Fusion.
+* *Export Shapes to Silhouette:* You can now export shape data and import it directly into a Silhouette session.
+* *Import shapes to Silhouette:* You can also import Silhouette projects to mocha to make round-tripping between software easier.
+* *Export tracking data to HitFilm 4 Pro:* Previously you could only do this directly in mocha HitFilm, now you can export from mocha Pro.
+* *Massive Python API updates:* Don't have an exporter you need? Make your own! Python now supports custom exporters and importers, as well as custom tool creation (mocha Pro standalone only)
+* *Built-in Python script editor:* You can now experiment inside mocha or load fully operational scripts into the GUI using our script editor.
+* *Command line rendering and exporting:* Utilizing the Python API you can now render and export outside of the mocha GUI on the command line, taking the load off while you get back to work.
+* *Redesigned Insert Module:* We have overhauled the insert module to make it easier to navigate and control, including full layer matting.
+* *Copy and paste layers and contours to different layers or other projects:* Now rather than having to recreate roto elements you can simply copy and paste them inside the layer or outside to a new project.
+* *Improved export for Adobe After Effects shapes:* Shape exports for After Effects has been modified to paste directly to the playhead like tacking data, without the addtional padding.
+* *Manual cache clearing tools for easier disk space management:* Using the Clear Cache tools under the edit menu, you can clear global or project caches manually without needing to close the project.
+* *Option to choose Marquee or Lasso for selection:* Now holding down the mouse button over the selection tool shows you the option of using a marquee or a lasso tool, for easier point selection.

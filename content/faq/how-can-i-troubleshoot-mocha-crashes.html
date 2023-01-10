@@ -1,0 +1,67 @@
+{
+   "date": "2014-07-01T18:49:00-04:00",
+   "tags": [
+      "Mocha Pro",
+      "Support FAQ"
+   ],
+   "title": "How can I troubleshoot Mocha crashes?"
+}
+
+<strong>Troubleshooting suggestions:</strong>
+<ul>
+<li>Restart your machine, usually a simple restart is enough to get any piece of software back on track.</li>
+<li>Make sure you have enough memory dedicated to <strong>Mocha</strong> in File&gt;Preferences.</li>
+<li>Turn hardware rendering ON or OFF in File&gt;Preferences, depending on your settings.</li>
+<li>Make sure your video card driver is up to date.</li>
+<li>Try running Mocha in 32-bit mode by using “Get Info” on the app and checking the 32-bit box.</li>
+</ul>
+<ul>
+<li>If you have already tried <strong>Mocha</strong> troubleshooting, and all else fails, it may be that you have some Library problems on your machine.
+<ul>
+<li>Uninstall your <strong>Mocha</strong> software.</li>
+<li>Find any Preferences (or .plist) files:
+<ul>
+<li>On <strong>pre-mavericks MAC</strong> this will be under /Users/*YOURUSERNAME*/Library/Preferences/</li>
+<li>On <strong>Windows</strong>, open the command prompt as an administrator, type regedit in the window, and hit enter. Navigate to HKEY_CURRENT_USER/Software/Imagineer Systems Ltd/Mocha</li>
+<li>On <strong>Linux</strong>, simply navigate to~/.config/Imagineer Systems Ltd/Mocha Pro 4.conf</li>
+</ul>
+</li>
+<li>
+<span style="font-size: 13px;">Delete your preferences files:</span>
+<ul>
+<li>On<strong>pre-mavericks MAC</strong> Delete the files that begin with com.imagineersystems.Mocha</li>
+<li>On <strong>Windows</strong>, Delete the contents of any folder inHKEY_CURRENT_USER/Software/Imagineer Systems Ltd/Mocha</li>
+<li>On <strong>Linux</strong>, delete only theMocha Pro 4.conf file</li>
+</ul>
+</li>
+<li>Re-install the software from scratch by <a title="Current Version Downloads" href="http://www.imagineersystems.com/download/current-version-downloads/" target="_blank">downloading</a> a new <strong>Mocha</strong> installer off of our downloads section.</li>
+</ul>
+<ul>
+<li>
+<strong><em>If you are on Mavericks</em></strong>, you will need to try something else to delete your preferences because you will not be able to access and delete your .plist files the way you can on older systems. You may try one of the following techniques:
+<ul>
+<li>Use friendly solution:
+<ul>
+<li>Quit the app, and make sure it isnotset to run at login.</li>
+<li>Delete the app’s prefs file (typically in ~/Library/Preferences/Imagineer Systems Ltd/Mocha.</li>
+<li>Logout.</li>
+<li>Login.</li>
+<li>Launch the app.Follow Mocha's instructions to reset preferences.</li>
+</ul>
+</li>
+<li>Preferred solution:
+<ul>
+<li>Quit the app.</li>
+<li>Open Terminal, paste the following, and press Return:
+<pre>defaults delete <span style="color: #222222;">com.</span><wbr style="color: #222222;"></wbr><span style="color: #222222;">imagineersystems.*.</span><span class="il" style="color: #222222;">plist</span></pre>
+</li>
+</ul>
+<ul>
+<li>Launch the app. Follow Mocha's instructions to reset preferences.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>

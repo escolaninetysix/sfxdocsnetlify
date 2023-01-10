@@ -1,0 +1,420 @@
+
+== The Mega Plate Module [[megaplate_module]]
+
+NOTE: This section only relates to *Mocha Pro*. This feature is not available in *Mocha HitFilm* or *Mocha AE*. For a full comparison of features, please refer to the comparison chart online.
+
+
+=== Overview
+
+The Mega Plate module is designed to build complete scenes from your footage to create large clean plates for the purpose of inserting and removing.
+
+Once rendered, Mega Plates can be used as a regular oversized clean plate in the Remove module (otherwise known as a Mega Clean Plate), or exported to be used as a background insert.
+
+Much of the workflow is similar to the <<remove_module, Remove Module>> in that you track areas of the scene and can also remove foreground objects,
+but the main goal is to make a full picture of the scene from the moving camera.
+
+IMPORTANT: The Mega Plate module is GPU optimised. Make sure you have GPU processing turned on in the 'GPU' page of Preferences for optimal results.
+
+=== The Mega Plate Building Process
+
+Mega Plates require a few simple steps to work correctly. The key to a good Mega Plate is a series of one or more tracked backgrounds and masked foreground objects.
+
+The final rendered plate will be centred on the original source frame you rendered from, in order to line up the plate correctly for further work.
+
+IMPORTANT: Since the final mega plate is centred on the frame you rendered on, there may be a large amount of alpha padding to one side of your resulting render. To reduce this, aim to render from a frame that is approximately in the middle of the camera motion.
+
+*1. Identify your foreground and background planes*
+
+First of all, scrub through your timeline and identify the planes of depth within your shot.
+Background often consists of multiple planes of motion, and there can also be obstructing foreground material.
+For example, in the shot below, the snowboarder is in front of the mountains.
+
+image:UserGuide/en_US/images/megaplates_shot_001.jpg[]
+
+
+*2. Track and roto your foreground elements*
+
+We handle the foreground first as we need to mask them off from the background plane and from each other.
+You don't actually need to worry too much about tracking the foreground:
+If the object is untrackable for whatever reason, just hand-animate a spline around it.
+
+You absolutely must track an object if it is going to be used to build the actual Mega Plate.
+For more information on effective tracking, please refer to the tracking section of the documentation.
+
+In the example below, we have tracked and rotoscoped the snowboarder which would otherwise obscure the mountains.
+
+image:UserGuide/en_US/images/megaplates_shot_002.jpg[]
+
+
+*3. Make sure your layer order is correct*
+
+Layer order matters in Mocha. The closer to the camera an object is, the higher in the layer stack it should be. Far background should be on the bottom layer, foreground objects should be on top, in order of closeness.
+
+In the example here, we show the snowboarder layer is above the mountains layer
+
+image:UserGuide/en_US/images/megaplates_shot_003.jpg[]
+
+
+*4. Track your background planes*
+
+Once you have your foreground objects masked out across the timeline, draw as big a shape as possible. Make sure the background layer is under the foreground layers, and track.
+For multiple planes of background, such as a floor and a wall, you will have to track two separate planes of motion. You must specifically _track_ the background layer in order for the Mega Plate build to work.
+
+Here we can see the background mountains tracked at the bottom of the layer stack, covering the large area of mountains in the distance:
+
+image:UserGuide/en_US/images/megaplates_shot_004.jpg[]
+
+*5. Adjust the size of your Mega Plate layer mattes*
+
+Once tracked, Mega Plates will only build the plate within the confines of the layers you want to use.
+
+Because of this, you want to expand the size of your matte to accommodate the final render.
+
+In the image below, we expand out the matte to approximate the size of the final built plate.
+
+image:UserGuide/en_US/images/megaplates_shot_005.jpg[]
+
+IMPORTANT: Don't make your layer TOO big! If there is a widely distorting perspective track, the matte may become too distorted and Mega Plates will not be able to build a full plate.
+
+*6. Turn on the cogs of the background layers you want to build from and adjust your parameters*
+
+Switch to the Mega Plate tab and adjust your parameters (see <<megaplate_parameters, Mega Plate Parameters>> below).
+
+Key things to focus on are:
+
+* Your search range
+* Whether to autoscale based on the data or define a final mega plate size
+* If you need to use an illumination model.
+
+We recommend trying to build a Mega Plate with Illumination modelling set to None first. This is the fastest setting for rendering, and can quite often be all you need if there is not much light difference in the background over time.
+
+*7. Render*
+
+Once your layers are ready and the parameters are set, click the render button.
+
+This will generate a large plate either based on your own dimensions, or autoscaled if you have set Autoscale on:
+
+image:UserGuide/en_US/images/megaplates_shot_006.jpg[]
+
+Depending on what frame you render your plate, there may be a large amount of alpha padding to one side of the plate.
+To avoid this, try rendering from the middle of the overall camera motion.
+
+For example, in a simple left-to-right pan, render on the frame that is in the centre of the pan to fill out more the detail to either side of the centred frame.
+
+NOTE: Building a Mega Plate can be a slow process depending on the resolution of the footage and the amount of frames you are building from. You can optimize your search range (see <<megaplate_parameters, Mega Plate Parameters>> below) but keep in mind that build quality can vary.
+
+*8. Remove foreground objects (optional)*
+
+When you have rendered your plate, you can then try to remove the foreground object from the resulting image:
+
+. Select the foreground objects by turning on their cogs
+. Click "Remove foreground" to initiate the removal.
+
+Note that standard rules for removing foreground apply. See <<remove_module, The Remove Module>> for more information on removing foreground objects.
+The background layers you generated the Mega Plate with must be encompassing the foreground layers in order to remove them.
+In the image below, we see the snowboarder layer is sitting over the mountain layer and can there fore be removed:
+
+image:UserGuide/en_US/images/megaplates_shot_007.jpg[]
+
+*9. Create a Mega Clean Plate*
+
+Now that you have rendered a final image, with or without removing the foreground objects from the plate, you can then turn it into a clean plate clip and save it to disk.
+
+To do this:
+
+. Scrub to the frame you rendered a Mega Plate
+. Click the "Create" button under the Clean Plate clip settings in the bottom left of the module parameters
+. Save the Mega Clean Plate to your preferred place on disk
+
+This will create a Mega Clean Plate clip which can now be referenced by the Remove module.
+
+image:UserGuide/en_US/images/megaplates_shot_008.jpg[]
+
+image:UserGuide/en_US/images/create_megacleanplate.jpg[]
+
+=== Mega Plate vs Mega Clean Plate - What is the difference?
+
+With all these "Mega" terms floating around let's clarify what we mean by the two terms:
+
+==== Mega Plate
+
+The Mega Plate is the large scene generated by the Mega Plate module. This is essentially using parameters similar to the Remove module to make a full representation of the entire tracked footage.
+
+==== Mega Clean Plate
+
+This is a frame or series of frames that are saved to disk from the Mega Plate render for the purpose of painting or "cleaning up" (thus the term "Clean Plate").
+
+The Mega Clean Plate clip created from Mega Clean Plates is what is referenced by the Mocha Remove module to help replace pixels.
+
+==== The Mega Plate makes the Mega Clean Plate
+
+To distinguish the three steps clearly:
+
+. You generate a Mega Plate from the tracked scene
+. You create a Mega Clean Plate from the generated Mega Plate and save it to disk for further editing/cleaning
+. The Remove module can use the Mega Clean Plate for further work.
+
+
+=== Mega Plate Troubleshooting
+
+One or more background layers must be defined that include all areas that the foreground object moves across during the shot.
+
+To get the result you expect you should observe the following rules:
+
+* If you are getting a large amount of alpha padding to one side of the plate, try rendering from the middle of the camera motion. For example, in a simple left-to-right pan, render on the frame that is in the centre of the pan to render the detail to either side of the centred frame.
+* As the tracker computes the motion of planar objects in the scene, you get the best results if the background is planar, or it has been subdivided into planar elements. Otherwise you might see artifacts.
+* If Mocha Pro cannot track the background accurately you will probably get artifacts. If your selection of the background includes objects that move differently to the background this can reduce the accuracy of the computed motion.
+* If your selection of the background includes parts of the foreground objects then this can cause problems for the tracker as it will compute a motion for the background that is influence by the movement of the foreground. This may also cause artifacts when the Mega Plate render is performed.
+* If the background contains e.g. a waterfall or another object that changes appearance from frame to frame, you will most likely get artifacts if you try to build a plate or remove an object that moves across such a background. Mocha Pro will not know how to handle the changes. Another cause of such artifacts is moving specular reflections.
+
+
+=== Mega Plate Parameters [[megaplate_parameters]]
+
+Here we provide a breakdown of each Mega Plate parameter and how to use it effectively.
+
+image:UserGuide/en_US/images/megaplate_tabfull.jpg[]
+
+When changing parameters in Mocha Pro the change only affects the currently selected layer. To change the parameters of a layer other than the currently selected layer that layer must first be selected.
+
+*Input Tab*
+
+Here you specify the input clip for the mega plate process and any cleanplates you wish to import.
+
+image:UserGuide/en_US/images/megaplate_input.jpg[pdfwidth="40%", width="40%"]
+
+*Input Clip*
+
+You can choose from any of the Mocha Pro result clips to be used as the source clip to fill the requested layers, instead of the default, which is to use the originally imported clip as the input clip. This can be useful if you have to do multiple passes to get an effective plate.
+
+*Cleanplates*
+
+Here you can import Mega Clean Plates to replace frames in your footage via the Remove module. Note that in order to tell Mocha the plate is oversized (i.e doesn't match the original project source dimensions), import the plate from the Mega Plates module rather than the Remove module.
+
+If you import the Mega Plate via the Remove module, Mocha will ask you if you want to create a Mega Clean Plate clip.
+
+To import one or more cleanplates:
+
+. Click on Import. This pops up the Cleanplates window.
+. Click on the file Import... button to specify the file(s) you want to use. If they are numbered in the same way as the input clip, they will be given corresponding frame numbers. Otherwise, edit the Frame Number field for each cleanplate to set up the correct frame number. The entries for two cleanplates will look like this:
++
+image:UserGuide/en_US/images/remove_cleanplates.jpg[]
++
+. By default the Preview option is switched on. This means that the selected (highlighted) cleanplate will be shown in the display window. The current frame viewed on the timeline is also changed to the selected cleanplate frame. When Preview is switched off, the view switches back to the clip you are viewing.
+. Click on the File name or Frame Number for any cleanplate to change the selection. The Preview option allows you to select the correct frame number for your cleanplate(s). If you import a single cleanplate, the frame number will be listed as "All". This means that the cleanplate will be used for all the frames of the clip. Use this option if the camera is locked off. Change "All" to a particular frame if want to change this behavior and track the cleanplate from the specified frame into the other frames.
+
+NOTE: The All option only applies when you are using a single cleanplate.
+
+If you import two or more cleanplates, Mocha Pro will try to guess the frame numbers from any numbering in the file name. When using the cleanplates between those frame numbers, Mocha Pro will blend the nearest two cleanplates to produce a smooth transition through the clip.
+
+If you want to change the cleanplate settings after exiting the cleanplate window, click on Edit... You would need to do this if you are using the frames on a new machine where the cleanplates are stored in a different location, or just to add new cleanplates. If you re-import files with the same name but different directory to existing cleanplate files, Mocha Pro will update the file to the new directory.
+
+
+*Create (Mega Clean Plate)*
+
+Once you have rendered a Mega Plate within Mocha Pro you can create a Mega Clean Plate from the currently viewed frame.
+
+To do this, make sure you are viewing a frame you have rendered and click on the `Create` button. This will create a clip containing the rendered frame you are viewing, and set the Cleanplates clip to the new clip. You can then touch up this Mega Clean Plate from your saved folder.
+
+When you save your edits, it will automatically be updated in Mocha Pro to be used in the Mega Clean Plate list.
+
+IMPORTANT: Creating a Mega Clean Plate in the Mega Plate module does NOT use that clean plate for subsequent renders in the Mega Plate module. To use a Mega Clean Plate, switch to the Remove module.
+
+*Output Tab*
+
+This assigns an output clip for the render. You can create new output clips if needed here.
+
+==== Search Range
+
+Used to specify which frames should be used when building a Mega Plate. The First Frame, Last Frame, # Frames Before and# Frames After settings can be keyframed.
+
+* First Frame and Last Frame specify an absolute range in the input clip
+* # Frames Before and # Frames After settings specify the range relative to the currently rendered frame. If both options are used the intersection of the two frame ranges is used.
+
+image:UserGuide/en_US/images/search_range.jpg[pdfwidth="60%", width="60%"]
+
+
+*Step*
+
+With this option you can specify that not every frame in the reference range is to be used.
+
+Setting it to three, for instance, means that only every third frame will be accessed.
+This feature can speed up the removal process for large projects, especially film projects, which are very memory intensive.
+
+IMPORTANT: Setting a step value can skip over clean plates for specific frames causing them to not be used in the Mega Plate calculation.
+
+*Auto Step*
+
+This is an automatically calculated version of the manual Step field. If you're not quite sure what step is optimal,
+Auto Step will look at the motion of the layers and try to determine the best step to use.
+
+
+==== Illumination Model
+
+This specifies how to model changes in illumination.
+
+image:UserGuide/en_US/images/illumination.jpg[pdfwidth="60%", width="60%"]
+
+* The None option will not model changes, giving you a result very quickly.
+* Linear will model global changes and should hence be used if the brightness change between frames are caused by e.g. changes in aperture.
+* Interpolated will model global and local changes and is often useful when there are erratic lighting changes or a clean plate is used.
+
+
+*Smoothing Level*
+
+This controls the amount of smoothing applied in the Interpolated model. Increase the value if there are artifacts which might be resolved with more smoothing, either spatial variations or temporal variations.
+
+==== Blend Interior
+
+This option causes pixels from different frames to be blended into each other to avoid tearing artifacts inside the Mega Plate.
+
+*Blend Amount*
+
+Select either Blend or Randomize and increase the value to reduce artifacts which sometimes can be seen when illumination modelling fails.
+
+* Blend uses alpha blending from the replaced areas to either the original pixels or the recently replaced areas.
+* Randomize mixes original and replaced pixels in a random way to achieve a similar effect.
+
+
+*3D Compensation*
+
+3D compensation can be switched on to try to remove artifacts due to the background layer not being planar.
+
+For example, if you have tracked a background that has subtle parallax it can cause removal in other frames to look incorrect. 3D compensation attempts to model the parallax change in the target frame.
+
+
+*Flood Fill*
+
+If part of the missing background has not been found anywhere in the clip, and the plate cannot be completely built, Flood Fill can be switched on to fill the remaining region using a flood fill method.
+
+==== Mega Cleanplates
+
+*Remove Foreground*
+
+This button will remove any foreground objects in the Mega Plate.
+
+To remove foreground layers in a mega plate:
+
+. Render the mega plate first using your background layers by selecting the layer processing cogs and pressing the render button
+. Switch on the cogs of the foreground layers you want to remove
+. Press `Remove Foreground`
+
+Any layers selected will then remove the underlying foreground objects from the mega plate, providing they have removable background behind them.
+
+See the Remove Module documentation for more information on how foreground objects are removed with background data.
+
+*Autoscale*
+On by default, this option will automatically calculate the required size of the plate. If unselected, the dimensions in the fields below the autoscale option will be used.
+
+IMPORTANT: If you don't have enough memory to build the autoscaled plate, Mocha will automatically reduce the size of the plate to fit the available memory.
+
+=== Tips for Mega Plates
+
+*Some of the foreground object is still visible after using Remove Foreground.*
+
+* Remember that you can only remove an object if the background behind it is also tracked. Track the background layer(s) before removing a foreground object.
+* Check that the object is inside the selection contour in every frame. If it isn't, move the control points outwards as necessary to completely enclose the object. Use linking forwards/backwards to apply changes to the contour in multiple frames.
+* Check whether the relative motion of the foreground and background layers is sufficient to see "behind" the whole of the foreground object. Mocha Pro only needs to see the background in one frame to achieve good results. If more images are available in the clip, track the selections over a few more images. This may provide Mocha Pro with the extra information it needs.
+* Try pulling the selection contour closer to the edge of the object. This will provide Mocha Pro with extra background pixels.
+
+*The built Mega Plate is brighter/darker in sections rather than being evenly lit.*
+
+* Changes in illumination or camera aperture will change the overall brightness of the image, making direct replacement of pixels inappropriate. Select the Linear illumination model to compensate for the brightness changes and repeat the render.
+* If the variation is more complex than a simple brightness change, try the Interpolated illumination model, which will compute and compensate for changes in apparent brightness and color that vary across the region being built.
+
+*Some Mega Plate sections don't line up with the rest of the image.*
+
+* This may be due to inaccurate tracking of the background. If you think this is possible, see the above hints on improving the tracking.
+* If the tracking accuracy cannot be improved, increase the `Blend amount`. This will dissolve the plate sections into the original image and reduce the tearing artifacts.
+* For small foreground objects such as wires, in front of a non-planar background, switch on 3D Compensation. This will attempt to model the effect of the varying 3D depth of the background.
+* If there is more than one background selection, special treatment of the boundary between them is often required. If the background layers are joined, such as a wall and floor selection, use the Attach Layers tool to join them together and avoid artifacts at the boundary. If they are moving independently, you need to adjust the boundary in the front background selection to accurately delineate the boundary between the two background selections.
+
+*Render is slow.*
+
+If you have a long clip, especially working with high resolution footage, Mega Plate renders can be slow because Mocha has to search over a large number of images with a large memory footprint.
+
+Before you change any settings in the Mega Plate parameters, it is worthwhile checking to see if GPU Processing is turned on in Preferences under the GPU page.
+
+GPU Processing can have a significant impact on your render times.
+
+Mega Plate and Remove are the most memory intensive modules in *Mocha Pro*, and it will always benefit the performance to add more memory.
+If *Mocha Pro* can fit all the images it needs in memory, performance will be dramatically accelerated when rendering Mega Plates with multiple frames, because it will minimize the amount of disk accesses.
+
+Your aim should be where possible to change the settings to achieve this:
+
+* Change the First Frame and Last Frame in Range to a smaller range of frames. Experiment by reducing the range of frames searched.
+* Increase the Step in Range to sample less frames.
+* Create clean plates on key frames (such as the start, middle and end of the shot, or wherever there is significant change) and check "Use Cleanplates Exclusively" to reduce the need to look for other frames.
+
+
+== Using Mega Clean Plates in the Remove Module
+
+Ultimately once you have created a Mega Clean Plate, it can be used as a single clean plate for your scene.
+
+This means you can paint on one large plate and then reference only this clean plate in remove, by turning on "Use cleanplates exclusively".
+
+To use the Mega Clean Plate in the Remove module:
+
+. Follow the Mega Plate rendering procedure listed above
+. Create the Mega Plate (step 9 of the process)
+. Make any changes to the clean plate you need in your image editor
+. Switch to the remove module in Mocha
+. Create a foreground layer if one doesn't exist yet then select the foreground
+. Choose the Mega Clean Plate clip from the "Cleanplate Clip" section
+. Select "Use Cleanplates Exclusively"
+. Render forwards
+
+Any changes you have painted into the clean plate will then be applied across the whole timeline.
+
+For more details on how to use clean plates in the Remove module, see <<remove_module, The Remove Module>> section.
+
+=== Examples of Using Mega Clean Plates in compositors
+
+You can also import the rendered Mega Plate into a compositor and use the Mocha tracking data to align the plate.
+
+Below are some basic examples of how to do this.
+
+==== Inserting a Mega Clean Plate into an After Effects Composition
+
+You can insert a Mega Plate into an After Effect composition the same way as you do with a regular insert.
+
+However, since the Mega plate will always be larger than your original composition, you need to do some extra steps to set up the plate:
+
+. Export the mega plate to disk, either by creating a clean plate in the Mega Plates module or exporting the single frame in Export Rendered Clips.
+. Align your Surface to the frame you used to create the mega plate. For example, if you rendered a Mega Plate on frame 200, align the surface to frame 200.
+image:UserGuide/en_US/images/AlignSurface_2x.jpg[]
+. Go to `Export Tracking Data` and export `After Effects CC Power Pin` (or Use Create Track Data in the Mocha Adobe Plugin)
+. Import the mega plate into After Effects and drag it to your composition
+. Precompose the mega plate and select the `Leave All Attributes` option
++
+image:UserGuide/en_US/images/megaplates_ae_precomp.jpg[]
++
+. Turn on `Collapse Transformations` on the new precomp layer
+image:UserGuide/en_US/images/megaplates_ae_collapsetransforms.jpg[]
+. Apply the CC Power Pin track data to the mega plate precomp layer, either by pasting from the clipboard or using "Apply Export" in the Mocha Pro Adobe plugin.
+
+Now the corner pin will be applied to the precomped layer, but with the `Collapse Transformations` option set, the whole plate will be distorted in place.
+
+==== Inserting a Mega Clean Plate into a Nuke node graph
+
+You can insert a Mega Plate into Nuke the same way as you do with a regular insert.
+
+However, since the Mega plate will always be larger than your original composition, you need change to do some extra steps to set up the plate:
+
+. Export the mega plate to disk, either by creating a clean plate in the Mega Plates module or exporting the single frame in Export Rendered Clips.
+. Align your Surface to the frame you used to create the mega plate. For example, if you rendered a Mega Plate on frame 200, align the surface to frame 200.
+image:UserGuide/en_US/images/AlignSurface_2x.jpg[]
+. Go to `Export Tracking Data` and export `Nuke Corner Pin`
+. In Nuke, import your original footage to a read node
+. Paste the corner pin into the node graph. If the "From" fields in your corner pin are not set to the original footage size, set them now.
++
+image:UserGuide/en_US/images/megaplates_nuke_cornerpin_from.jpg[]
++
+. Import the mega plate to a new read node
+. Apply a Reformat node to the mega plate to fit to the project size, but set the Resize type to "None"
++
+image:UserGuide/en_US/images/megaplates_nuke_reformat.jpg[]
++
+. Cut and paste the corner pin to mega plate or just hook up the inputs
+. Merge the mega plate over the top of your original footage.
+
+image:UserGuide/en_US/images/megaplates_nuke_cornerpin.jpg[]

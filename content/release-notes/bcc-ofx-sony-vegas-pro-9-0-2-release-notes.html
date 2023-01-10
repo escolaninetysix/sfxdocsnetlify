@@ -1,0 +1,174 @@
+{
+   "date": "2014-06-03T14:40:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC OFX (Sony Vegas Pro) - 9.0.2 Release Notes"
+}
+
+<p>BCC 9.0.2 for Sony Vegas was released on 6/03/2014.</p>
+<p><strong> Registration: </strong> <br> <a href="/account/manage/" target="_blank"> Make sure to register your product in order to receive the latest technical and upgrade information. </a></p>
+<p>BCC 9 for Sony Vegas supports the following host environments:</p>
+<p>Windows 7 64, Windows 8 64:</p>
+<ul>
+<li>Sony Vegas 11 (version 595 or higher) - 64 bit only</li>
+<li>Sony Vegas 12</li>
+<li>Sony Vegas 13</li>
+<li>Sony Movie Studio Platinum 13</li>
+</ul>
+<p><strong> What's New in BCC 9 for Sony Vegas (Summary of major changes since BCC8): </strong> <!--more--></p>
+<ul>
+<li>FX Browser™ - our best-in-class new graphical preset browser. Preview your preset library over moving host video, not just static frames, with two different workflows. The Integrated FX Browser™ is available inside every effect and allows intuitive preview of all presets for that effect. The Standalone FX Browser™ is applied as a separate standalone effect and allows browsing presets from EVERY effect in the full BCC library.</li>
+<li>10 new effects and 25 new transitions for a total of 35 new filters:</li>
+</ul>
+<p>Effects:</p>
+<table border="0" width="600" cellspacing="1" cellpadding="1">
+<tbody>
+<tr>
+<td>2-Strip Color</td>
+<td>Grunge</td>
+<td>Magic Sharp</td>
+</tr>
+<tr>
+<td>Chroma Key Studio</td>
+<td>Laser Beam</td>
+<td>Pan &amp; Zoom - now 3D</td>
+</tr>
+<tr>
+<td>Edge Grunge</td>
+<td>Lens Correction</td>
+<td>Vignette</td>
+</tr>
+</tbody>
+</table>
+<p>Transitions:</p>
+<table border="0" width="600" cellspacing="1" cellpadding="1">
+<tbody>
+<tr>
+<td>Blobs Wipe</td>
+<td>Lens Distortion Wipe</td>
+<td>Rings Wipe</td>
+</tr>
+<tr>
+<td>Blur Dissolve</td>
+<td>Lens Flare Dissolve</td>
+<td>Ripple Dissolve</td>
+</tr>
+<tr>
+<td>Checker Wipe</td>
+<td>Lens Flare Round</td>
+<td>Tile Wipe</td>
+</tr>
+<tr>
+<td>Composite Dissolve</td>
+<td>Lens Flare Spiked</td>
+<td>Tritone Dissolve</td>
+</tr>
+<tr>
+<td>Damaged TV Dissolve</td>
+<td>Lens Flash</td>
+<td>Twister</td>
+</tr>
+<tr>
+<td>Film Glow Dissolve</td>
+<td>Light Wipe</td>
+<td>Vector Blur Dissolve</td>
+</tr>
+<tr>
+<td>Flutter Cut</td>
+<td>Rays Dissolve</td>
+<td>Vignette Wipe</td>
+</tr>
+<tr>
+<td>Grid Wipe</td>
+<td>Ribbon Wipe</td>
+<td>Water Waves Dissolve</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>New Pan and Zoom features:</li>
+</ul>
+<ol>
+<li>3D Moves</li>
+<li>Built in Cropping</li>
+<li>Vignette</li>
+<li>Action/Title Safe guide enhancements</li>
+</ol>
+<ul>
+<li>New HTML-based help system offering richer and more dynamic learning guides.</li>
+<li>Improved 4K rendering support in OpenGL accelerated filters.</li>
+<li>GPU acceleration of important filters such as Film Glow and Film Process.</li>
+<li>Major performance improvements in some OpenGL filters such as Damanged TV, Scanlines, and Glint.</li>
+<li>New Gradient feature in many BCC Wipe transitions.</li>
+<li>Swish Pan Colored Background control allows compositing over a solid colored background when using the Separation controls.</li>
+<li>Improved Motion Tracker Data Import Process (including Mocha tracker data)</li>
+<li>Substantial performance improvements were made to Lens Flare 3D.</li>
+<li>Major upgrade to Stage Light yielding improved render quality and faster performance.</li>
+<li>Note that due to the many improvements in the rendering details you may notice some differences in the final render when opening projects created prior to this release.</li>
+<li>Major upgrade to Depth of Field rendering in the new particle filters offering improved render quality and substantial performance improvements.</li>
+<li>OpenGL transfer speed improvements in all of our OpenGL accelerated filters.</li>
+<li>Particle Emitter 3D has two new blend modes (Lighten and Screen) in addition to the previous Normal and Add modes for inter-particle compositing.</li>
+<li>The Motion Tracker has been removed from all BCC transition filters to improve usability.</li>
+<li>The valid range for the Shadow slider in Page Turn has been expanded to allow for more visually prominent shadows.</li>
+<li>Preset loading was improved so that loading presets which don't reference all parameters will now reset any unreferenced parameters to default values. This resolves occasional unexpected parameter values (depending on the order in which presets were loaded) when sharing some presets between hosts or when loading some older presets in newer versions of the plugins.</li>
+<li>Numerous bug fixes.</li>
+</ul>
+<p><strong> BCC 9.x for Sony Vegas - Compatibility Notes: </strong></p>
+<p>While in general your previously saved projects should render identically in the newer version, bug fixes and quality improvements can sometimes change the look of older projects. While every effort is made to ensure project compatibility, the following notable areas may see some change to the look of previously saved projects.</p>
+<ul>
+<li>In all wipe-style transitions which contain Border options, the opacity of the border elements fades automatically at the start/end of transitions (except in manual mode) to fix potential jumps in the renders at the start and end of the transitions when border offsets were non-zero.</li>
+<li>The largely unnecessary Hold In / Hold Out parameters were removed from the Animation Tuning group in all transitions which could cause changes in the transition timing in the unlikely event these parameters had been changed from their defaults.</li>
+<li>As part of the major performance optimizations implemented in Damaged TV for BCC9, some details such as the randomization patterns can render differently although the overall feel of the effect should remain the same.</li>
+<li>The Pixel Chooser and Motion Tracker were removed from Swish Pan since they did not make sense in the context of a transition. In the unlikely event that these controls were used in previously saved projects, the pixel chooser and motion tracker settings would be ignored in new renders.</li>
+<li>Numerous quality improvements and bug fixes were made to new particle filters (Particle Emitter, Particle Array 3D, Pin Art 3D, Organic Strands, and Wild Cards) which may result in appearance changes in some saved projects.</li>
+<li>Stage Light has undergone major upgrades to its render quality which may result in appearance changes in some saved projects.</li>
+<li>Fixes to the way the Motion Tracker Offset is applied to Oval or Rectangle Pixel Chooser shapes may require manually re-tweaking the Offset parameters in saved projects.</li>
+<li>The Motion Tracker has been removed from all BCC transitions for improved clarity and usability. In the unlikely event that a transition was used with the Motion Tracker in a saved project, the motion path will need to be reconfigured manually.</li>
+</ul>
+<p><strong> BCC 9.0.0 for Sony Vegas - Known Issues and Limitations </strong> :</p>
+<ul>
+<li>30200 - When Vegas is in preview mode on a dual monitor system and the FX Browser is launched it may be hidden behind the video preview which can make the UI appear to be inactive.</li>
+<li>29745 - Grunge can render with missing textures on Radeon cards in 8 or 16 bit color depth on Windows when using driver versions prior to 14.x. The filter will work in 32 bit float color depth (in hosts that offer 32-bit color) even with older drivers.</li>
+<li>26878 - In BCC particle filters if you change a keyframe for a parameter whose full animation history affects the particle rendering (such as the keyframed history of the particle emitter location), any previously cached frames that are more than one keyframe away from the changed keyframe will not be automatically recalculated. This only happens if the keyframe in question is edited in the lanes or curves view of the animation timeline. If the parameter value is changed with the parameter control directly then this stale cache problem does not occur. To force cached frames to be recalculated you can make a tiny change to some parameter in the effect which will refresh all frames without changing the overall look of the effect.</li>
+<li>26847 - In Optical Stabilizer incorrect stabilization can result if a clip's trim points are edited after the clip has been partially or completely analyzed. As a temporary workaround you can adjust the trim points prior to analyzing the clip or you can force re-analyzation after changing the trim points by increasing the Stabilization Samples parameter in the Optical Flow group by a small amount.</li>
+<li>26750 - The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. Use lower values near the default setting of 32 as a workaround.</li>
+<li>26659 - In Vegas 11 only - The Beat Reactor audio graph shifts by a noticeable amount when resolution is less than full. Set the preview resolution to full when setting up Beat Reactor clips to avoid any discrepancies between preview and final renders or switch to a newer version of Vegas.</li>
+<li>30360 - Page Turn does not work as when applied as a one sided transitions to the front of a clip. This can generally be worked around by applying the effect as a VideoFx transition with media separated on different tracks if necessary rather than applying as a true transition.</li>
+<li>23519 - If a project is saved after loading a preset in the BCC effect controls and this preset is removed from the system (or the project is copied to another system that doesn't contain this preset), then when the project is reopened the UI for the effect does not appear correctly. This can be worked around by reinstating the missing preset and relaunching vegas or by saving the current filter settings as a Vegas preset, deleting the filter, and loading that vegas preset in a new instance of the filter.</li>
+<li>26796 - BCC Stars will occasionally exhibit horizontal bands of artifacts in the star field and galaxy controls.</li>
+<li>27975 - In order to workaround a problem with parameters being incorrectly disabled in Vegas 11.683, all enabling/disabling of parameters has been turned off in that specific version of Vegas and parameters remain enabled at all times.</li>
+<li>27362 - Filters in the 3D Objects category can show clipping or shifting when applied to layers larger than HD, and if such clipping is observed it may be necessary to apply the effects to HD or smaller sized clips.</li>
+<li>26068 - In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.</li>
+<li>27591 - As part of the new Motion Tracker workflow, if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must now reset the tracker data with the reset button in the tracker banner before starting a second tracker pass. (This extra step is not necessary if the tracker point picker location has changed.)</li>
+<li>25867 - In BCC Type On Text the Line Leading in the text entry preview window does not accurately match up with the leading in the rendered result, and the leading may need to be adjusted to generate the desired final render.</li>
+<li>28774 - When using a video track to define a texture in the 3D Objects filters, the scaling of that texture can vary incorrectly when changing resolutions so effects that use layers as textures should be set up in full resolution.</li>
+<li>29533 - The apply modes Boost Expo 1, 2, and 50/50 mix do not give the expected result in Grunge.</li>
+<li>29777 - In Grunge the Edge Offset control in the Chromatic Aberration group is not working as designed.</li>
+<li>30261 - In some but not all BCC effects the UI may not accurately reflect which parameters should be enabled and disabled when an effect is first applied, but toggling any checkbox or menu parameter will force the UI state to refresh.</li>
+</ul>
+<p>Usage Tip - Applying BCC Effects as "2 to 1 Transforms" or "Custom Composite Modes": <br> In Vegas Pro for an effect to be able to access an alternate video layer (a layer other than the layer the effect is applied to) for processing it needs to be applied on a per track basis as a "2 to 1 Transform" or "Custom Composite Mode". Boris Continuum for Sony Vegas Pro currently offers the following filters as 2 to 1 Transforms:</p>
+<p>Chroma keying and advanced compositing for combining key/alpha clips:</p>
+<ul>
+<li>Chroma Key Studio</li>
+<li>Light Wrap</li>
+</ul>
+<p>Composite effects (combine layers according to blend modes, allow for mixing multiple blend modes, using user defined regions and image based channels to define blend area etc.):</p>
+<ul>
+<li>Boost Blend</li>
+<li>Composite</li>
+<li>RGB Blend</li>
+</ul>
+<p>Displacement effects (can be used to access the layer below the filter layer as a displacement map):</p>
+<ul>
+<li>Displacement Map</li>
+<li>Polar Displacement</li>
+<li>Vector Displacement</li>
+</ul>
+<p>Two-Image effects (allows accessing the layer below as an alternate foreground/background layer when compositing or as an alternate particle face):</p>
+<ul>
+<li>Corner Pin</li>
+<li>Match Move</li>
+<li>Wild Cards</li>
+</ul>
+<p><img class="alignnone" src="//www.borisfx.com/borisfxwiki/images/a/a8/Vegasrn700blendmodes.png" alt="Sony Vegas Pro &amp; BCC 9 OFX Blend Modes" width="356" height="388"></p>

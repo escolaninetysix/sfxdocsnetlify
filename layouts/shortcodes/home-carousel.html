@@ -1,0 +1,42 @@
+
+<div style="background-color: black;">
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {{ range $index, $item := .Page.Params.carousel }}
+      <li data-target="#carousel" data-slide-to="{{ $index }}"{{ if eq $index 0 }} class="active"{{ end }}></li>
+      {{ end }}
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      {{ range $index, $item := .Page.Params.carousel }}
+      <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+        <div class="inner">
+          {{ if $item.video_url }}
+          <video autoplay loop muted playsinline poster="{{ $item.image_url }}">
+            <source src="{{ $item.video_url }}">
+          </video>
+          {{ else }}
+         		  {{ partial "imagehandlecarousel.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+          {{ end }}
+          {{ if $item.content }}
+          <div class="content" style="text-align: center;">
+            <div>
+              <p class="mb-0" style="line-height: 1; font-size: 47px; font-weight: 900; color: {{ $item.color }};">{{ $item.title }}</p>
+              <p style="color: {{ $item.color }};">
+                {{ $item.content | markdownify }}
+              </p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+<script>
+
+$('.carousel').carousel({
+  interval: 20000
+})
+
+</script>

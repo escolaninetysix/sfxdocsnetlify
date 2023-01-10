@@ -1,0 +1,39 @@
+
+== New features in Mocha Pro 2020 v7.5.0
+* *Better wide-perspective track handling:* Now you can track longer and at further angles without getting distorted track planes or flipped mattes.
+* *Flame Gmask Tracer Support:* Mocha now exports Gmask tracer nodes with axis transforms. Tracking data is converted to 3d Axis nodes.
+* *Improved Motion Blur performance:* Motion blur in mattes now renders up to 4x faster.
+* *Area brush size mouse controls:* You can now adjust the size of the Area Brush by holding down the CMD or Ctrl key and dragging the mouse.
+* *Area Brush Fill Gaps:* We now have a new field in the area brush toolbar to help fill gaps based on a threshold.
+* *Multi-point drag edge-snap:* Drag-snapping now snaps the entire selection, rather than individual points
+* *Avid interlaced support:* We now support tracking and rendering back interlaced footage in Media Composer.
+* *OCIO support:* Mocha has new expansive OCIO settings for managing color spaces in Mocha.
+* *GStreamer Media Support:* Imported clips can now be handled by GStreamer instead of QuickTime. Not all media types are supported at this stage.
+* *Pan/Zoom Matching:* Rendered clips the same size as the original source clip will now match panning and zooming on other clips so everything lines up
+* *Original frame render view:* You can now view the source frame if a module has not rendered the current frame
+* *macOS Catalina support:* Mocha is now supported on macOS Catalina.
+* *Remove Render performance increases for some codecs:* Some codecs provide higher decoding performance when the frames are accessed sequentially. We’ve now changed the order of frame requests in the Remove Render to utilize this property.
+* *Thread-limiter:* You can now adjust the number of threads per thread pool in preferences. This is important for restricting machines that try to utilise too many cores which can cause Mocha to crash.
+* *Clean plate folders:* When saving a clean plate the last used folder is used as the destination.
+* *Tablet Pressure:* Tablet pressure sensitivity can be disabled via preferences
+
+== New features in Mocha Pro 2020 v7.0.4
+There were no new features for Mocha Pro 2020 v7.0.4. This was a maintenance release to fix several defects.
+
+== New features in Mocha Pro 2020 v7.0.3
+* *Centos 8 Support:* Mocha Pro now supports Centos 8
+
+== New features in Mocha 2020 v7.0.2
+* *Silhouette 2020 Support:* The Mocha Pro OFX plugin is now optimised to run in Silhouette 2020
+* *Silhouette Shapes Export Support:* The Mocha Pro Plugin now supports Silhouette shape exports to disk (and to clipboard in Silhouette 2020.0.1)
+* *Silhouette Corner Pin Export Support:* The Mocha Pro Plugin now exports Silhouette tracking data to disk (and to clipboard in Silhouette 2020.0.1)
+* *Silhouette/Mocha Bundle license support:* Bundles of Mocha Pro and Silhouette can now be purchased and activated with a single license key
+* *Silhouette 2020 OCIO Support:* Mocha OFX plugins now sync to the Silhouette OCIO color profiles
+* *OCIO viewer preferences are now saved:* OCIO viewer preferences are now saved with the project.
+
+== New features in Mocha 2020 v7.0.0
+* *Mega Plates Module:* Generate large plates of the whole scene based on tracked planes
+* *Area Brush:* Quickly paint areas to turn into splines
+* *OCIO Support:* Load OCIO configs directly into Mocha
+* *Python 3 Support:* Mocha now uses Python 3.7
+* *Updated Python API:* New tools to modify and create keyframes, along with a streamlined parameter system.

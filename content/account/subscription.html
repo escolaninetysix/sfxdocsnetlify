@@ -1,0 +1,626 @@
+{
+"title" : "Your Subscription"
+}
+
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+<style>
+    .content {
+        overflow-x: auto;
+        background-color: white;
+        border: 3px solid #26A9E0;
+        border-radius: 10px;
+        min-height: 50px;
+        max-height: 0px;
+        max-width: 900px;
+        overflow-y: hidden;
+    }
+    .content-show{
+        max-height: 9999px;
+        transition: max-height 4s;
+    }
+
+    .content-error{
+        border: 3px solid #900000;
+        transition: border .5s ease;
+    }
+
+    tbody tr td{
+        border-bottom: 1px solid rgb(236, 238, 239)!important;
+        margin: 0;
+    }
+
+    tfoot tr td{
+        border-top: 0!important;
+        margin: 0;
+        padding: .05rem .75rem!important;
+    }
+
+    #payment-form-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        max-width: 550px;
+        height: 100%;
+        background-color: white;
+        border: solid .5px #26A9E0;
+        margin: 1rem auto;
+        box-sizing: border-box;
+    }
+
+    /*
+    .payment-form-content {
+        margin: 0 auto;
+    }
+    */
+
+    .branded-box{
+        padding: 0;
+    }
+</style>
+{{% spinner/md/style %}}
+
+<div id="app">
+    <div class="modal fade" tabindex="-1" role="dialog" id="billing-country-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enter Billing Address</h5>
+            </div>
+            <div class="modal-body">
+                <p>Please provide your billing country to continue. If you are subscribed on behalf 
+                    of a business, please enter your business's billing country.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <select class="form-control" v-model="billingCountry">
+                            <option value="">-- Select Country --</option>
+                            <option v-for="c in countries" :key="c.code" :value="c.code">${c.name}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="success-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Success!</h5>
+                </div>
+                <div class="modal-body">
+                    <p v-if="subscription.expiredMonthly">
+                        Your subscription is now active. You may need to reactivate your license to continue using your product.
+                    </p>
+                    <p v-else>
+                        Your subscription is now active, and will renew automatically. If you wish to select a new payment method,
+                        please visit your <a href="/acccount/manage">Account Page.</a>
+                    </p>
+        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" data-target="#success-modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content" v-bind:class="{'content-show': !loading, 'content-error': error}" style="min-height: 100px;">
+        <div class="d-flex justify-content-center" v-show="loading">
+            <div v-show="loading">{{% spinner/md/element %}}</div>
+        </div>
+        <div class="mx-3" v-show="!loading && error" style="margin:1rem">
+            <h3>${error}</h3>
+        </div>
+        <div v-show="!loading && !error" style="padding:1rem">
+            <p v-if="subscription.expiredMonthly && !subscription.paymentMethodId">
+                Welcome back! To renew your subscription and claim your free first month, please select the payment method you'd like us to use for future renewals.
+                More details about your subscription can be found below:
+            </p>
+            <p v-else-if="subscription.expiredMonthly && subscription.paymentMethodId">
+                Thank you for using our Boris FX Products! Your subscription is currently active. More details about your subscription can be found below:
+            </p>
+            <p v-else-if="!subscription.expiredMonthly && !subscription.paymentMethodId">
+                In order to ensure your subscription renews properly, please enter the payment method you'd like us to use for your renewal.
+                More details about your subscription can be found below: 
+            </p>
+            <p v-else>
+                Thank you for using our Boris FX Products! Your subscription is currently active, and will renew automatically. If you wish to select a new payment method, 
+                please visit your <a href="/acccount/manage">Account Page.</a>
+                More details about your subscription can be found below:
+            </p>
+            <hr />
+            <div class="mb-3" v-if="subscription.scheduleId">
+                <strong>Renewal Date:</strong> ${subscription.renewalDate} (Renews ${subscription.renewalFrequency})<br />
+                <strong>Total Renewal Cost: ${subscription.currencyCode} ${subscription.subtotal.toFixed(2)}</strong>
+            </div>
+            <h3>Licenses</h3>
+            <template v-if="subscription.scheduleId">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Product SKU</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Renewal Price</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="lic in subscription.licenses" key="lic.serial">
+                            <td>${lic.serial}</td>
+                            <td>${lic.productSku}</td>
+                            <td>${lic.productName}</td>
+                            <td class="text-center">${lic.quantity}</td>
+                            <td>${subscription.currencyCode} ${lic.renewalCost.toFixed(2)}</td>
+                            <td>${subscription.currencyCode} ${(lic.renewalCost * lic.quantity).toFixed(2)}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="text-right"><strong>Subtotal:</strong></td>
+                            <td>${subscription.currencyCode} ${subscription.subtotal.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="text-right"><strong>Taxes:</strong></td>
+                            <td>${subscription.currencyCode} ${subscription.totalTaxes.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="text-right"><strong>Total:</strong></td>
+                            <td>${subscription.currencyCode} ${subscription.totalDue.toFixed(2)}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </template>
+           
+
+            <div id="payment-form-container" v-if="!subscription.paymentMethodId">
+                <div class="payment-form-content w-100 pb-2">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item"><a href="#new-payment-card" v-bind:class="{'nav-link': true, active: (!stripe.customer.hasSavedCards)}"
+                                data-toggle="tab">Credit
+                                Card</a></li>
+                        <li class="nav-item"><a href="#new-payment-ach" class="nav-link" data-toggle="tab">Bank Account
+                                (ACH)</a></li>
+                        <li class="nav-item"><a href="#saved-payment" v-bind:class="{'nav-link': true, active: (stripe.customer.hasSavedCards)}" data-toggle="tab"
+                                v-if="stripe.customer.hasSavedCards">Saved Payment Method</a></li>
+                    </ul>
+                    <div class="tab-content mt-2">
+                        <div id="new-payment-card" v-bind:class="{'tab-pane': true, active: (!stripe.customer.hasSavedCards)}">
+                            <div class="d-flex justify-content-center flex-column align-items-center">
+                                <div>
+                                    <form name="new-card-form" v-on:submit.prevent="handleSubmit">
+
+                                        <div class="form-group">
+                                            <h6>Full Name (as written on card)</h6>
+                                            <input class="form-control" name="holderName" />
+                                        </div>
+                                        <div class="form-group">
+                                            <h6>Card Info</h6>
+                                            <!--Container for Stripe Card Element-->
+                                            <div class="form-control" id="card-container"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h6>Billing Address</h6>
+                                            <input class="form-control mb-1" name="address" placeholder="Address" />
+                                            <input class="form-control mb-1" name="address2"
+                                                placeholder="Address 2 (Optional)" />
+                                            <input class="form-control mb-1" name="city" placeholder="City" />
+                                            <input class="form-control mb-1" name="zip" placeholder="Zip/Postal Code" />
+                                            {{% country-state-dropdown %}}
+
+                                            </select>
+                                        </div>
+                                        <div class="mt-1">
+                                            <button type="submit" class="btn btn-primary" :disabled="submitting">Save Payment Method</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="new-payment-ach" class="tab-pane">
+                            <!-- For New ACH Bank Account -->
+                            <div name="ach" class="d-flex justify-content-center flex-column align-items-center">
+                                <form name="new-ach-form" v-on:submit.prevent="handleSubmit">
+                                    <div class="btn" v-show="!plaid.plaidToken"
+                                        @click="launchPlaid">
+                                        Connect to Your Bank</div>
+                                    <div name="account-select" v-show="plaid.plaidToken">
+                                        <h4>Connected: ${ plaid.institution.name }</h4>
+                                        <h5>Select an Account</h5>
+                                        <div class="radio" v-for="account in plaid.accounts">
+                                            <label><input type="radio" name="account" v-model="plaid.selectedAccountId"
+                                                    :value="account.id">
+                                                <span class="ml-1">${ account.name } (${ account.mask })</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 py-2 text-center">
+                                        <button type="submit" class="btn btn-primary"
+                                            :disabled="!plaid.selectedAccountId">Save Payment Method</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="saved-payment" v-bind:class="{'tab-pane': true, active: (stripe.customer.hasSavedCards)}">
+                            <div id="payment-info-section" class="d-flex justify-content-center flex-column align-items-center">
+                                <form @submit.prevent='handleSubmit' class="w-75">
+                                    <div class="payment-selection-container">
+                                        <!-- For Existing Saved Payment Methods -->
+                                        <div class="form-group" v-show="stripe.customer.hasSavedCards">
+                                            <h5>Select Payment Method</h5>
+                                            <hr />
+                                            <div class="radio">
+                                                <template v-for="card in stripe.customer.cards">
+                                                    <label v-if="card.type == 'card'"><input type="radio"
+                                                            name="paymentmethod" v-model="savedPM"
+                                                            :value="card">
+                                                        <span class="ml-1 font-weight-normal">**** **** **** ${
+                                                            card.lastFour }
+                                                            - ${
+                                                            card.brand } - Expires ${ card.endDate }</span>
+                                                    </label>
+                                                    <label v-if="card.type == 'ach'"><input type="radio"
+                                                            name="paymentmethod" v-model="savedPM"
+                                                            :value="card">
+                                                        <span class="ml-1 font-weight-normal">${ card.bankName } -
+                                                            Account
+                                                            Ending in
+                                                            ${ card.lastFour }</span>
+                                                    </label>
+                                                </template>
+                                            </div>
+                                        </div>
+
+                                        <div v-if="!stripe.customer.hasSavedCards">
+                                            <h5>You have no saved payment methods.</h5>
+                                        </div>
+                                        <div>
+                                            <a href="/account/payment-methods?ref=checkout">Manage Payment Methods</a>
+                                        </div>
+                                        <div><button class="btn" type="submit" :disabled="submitting || !savedPM">Select Payment Method</button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{% country-state-json %}}
+<script>
+    var vm = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+            user: Cookies.getJSON('bfx-login'),
+            loading: true,
+            error: null,
+            countries: countryJson,
+            subscription: {},
+            billingCountry: '',
+            savedPM: null,
+            paymentMethod: null,
+            stripe: {
+                stripeJs: undefined,
+                elements: undefined,
+                cardElement: undefined,
+                gatewayKey: '',
+                gatewayId: '',
+                token : {},
+                customer: {
+                    hasSavedCards: false,
+                    hasSavedAddress: false,
+                    address: {}
+                }
+            },
+            plaid: {
+                handler: undefined,
+                publicKey: 'fa31534ec9f4ae2a91ed0cef838fea',
+                plaidToken: undefined,
+                selectedAccountId: '',
+                accounts: [],
+                institution: {}
+            },
+            submitting: false
+        },
+        created : function (){
+        },
+        mounted: function () {
+            var self = this;
+            if (!self.user || !self.user.email_verified){
+                Cookies.set('redirect_url', window.location.href);
+                window.location.href = '/account/login?source=subscription';
+                return;
+            }
+            var urlParams = new URLSearchParams(window.location.search);
+            self.subId = urlParams.get('id');
+            if (self.subId == null){
+                window.location.href = '/account/manage';
+                return;
+            }
+            self.fetchSubscription(self.subId)
+            .then(function (res){
+                self.stripe.gatewayKey = res.gatewayKey;
+                self.stripe.gatewayId = res.gatewayId;
+            })
+            .then(self.getCustomer)
+            .then(self.initializePaymentProcessers)
+            .then(function(){
+                self.loading = false;
+            })
+            .catch(function (err) {
+                if (err.response != null && err.response.status == 401){
+                    self.error = 'You Are Not Authorized to View This Subscription';
+                    self.loading = false;
+                }
+                else if (self.error == null){
+                    alert('There was an error locating your subscription. Please contact us at customerservice@borisfx.com for assistance.');
+                    window.location.href = '/account/manage';
+                    return;
+                }
+                else{
+                    self.loading = false;
+                }
+            })
+        },
+        methods: {
+           initializePaymentProcessers : function(){
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    if (self.subscription.paymentMethodId != null){resolve();}
+                    Promise.all([self.initializeStripe(), self.initializePlaid()])
+                    .then(function(results){
+                        resolve(results);
+                    })
+                    .catch(function(err){
+                        reject(err)
+                    })
+                })
+            },
+            initializeStripe : function() {
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    var stripe = self.stripe;
+
+                    stripe.stripeJs = Stripe(stripe.gatewayKey);
+                    stripe.elements = stripe.stripeJs.elements();
+                    stripe.cardElement = stripe.elements.create('card', {
+                        fields: {
+                            billingDetails: {
+                                postalCode: 'never',
+                            }
+                        }
+                    });
+                    stripe.cardElement.mount('#card-container');
+                    resolve();
+                })
+            },
+            initializePlaid: function () {
+                var self = this,
+                    plaid = self.plaid;
+                return new Promise(function(resolve, reject){
+                    plaid.handler = Plaid.create({
+                        env: 'production',
+                        clientName: 'Boris FX',
+                        key: plaid.publicKey,
+                        product: ['auth'],
+                        onLoad: function () {
+                            resolve();
+                        },
+                        onSuccess: function (token, metadata) {
+                            self.plaid.accounts = metadata.accounts;
+                            self.plaid.institution = metadata.institution;
+                            self.plaid.plaidToken = token;
+                        }
+                    })
+                })
+            },
+            launchPlaid: function () {
+                this.plaid.handler.open();
+            },
+            getCustomer: function () {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    if (!self.user) reject('no user');
+                    axios.get('https://backend.borisfx.com/stripe_customer', {auth:{'username' : self.user.email, 'password' : self.user.token}})
+                    .then(function(res){
+                        if (res == null) {
+                            resolve();
+                            return;
+                        }
+                        result = res.data;
+                        self.stripe.customer = result;
+                        self.stripe.customer.hasSavedCards = result.cards.length > 0;
+                        resolve(result);
+                    })
+                    .catch(function(err){
+                        reject(err);
+                    })
+                });
+            },
+            fetchSubscription: function(id){
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    if (!self.user) reject('no user');
+                    axios.get('https://backend.borisfx.com/subscription/repair/fetch/' + id, { auth: { 'username': self.user.email, 'password': self.user.token } })
+                        .then(function (res) {
+                            self.subscription = res.data;
+                            resolve(res.data);
+                        })
+                        .catch(function (err) {
+                            reject(err);
+                        })
+                });
+            },
+            handleSubmit: function (event) {
+                this.submitting = true;
+                var self = this;
+                var paymentType = '';
+                switch(event.currentTarget.name){
+                    case 'new-card-form': paymentType = 'card'; break; 
+                    case 'new-ach-form': paymentType = 'ach'; break;
+                }
+                self.getPaymentMethod(paymentType)
+                .then(function (result) {
+                    var payload = {subscription: self.subscription, paymentMethodId: self.paymentMethod.id}
+                    axios.post('https://backend.borisfx.com/subscription/repair', payload, { auth: { username: self.user.email, password: self.user.token } })
+                    .then(function(res){
+                        self.fetchSubscription(self.subscription.scheduleId)
+                        .then(function(res){
+                            window.scrollTo(0, 0);
+                            $('#success-modal').modal('show');
+                        })
+                        self.submitting = false;
+                    })
+                    .catch(function(err){
+                        console.error(err);
+                        if (err.response != null && err.response.status == 403) {
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else{
+                            alert('We were unable to submit your payment method. Please review your information and try again.');
+                            self.submitting = false;
+                        }
+                    });
+                })
+                .catch(function(error){
+                    console.error(error);
+                    alert('We were unable to validate the payment information you have provided. Please review your information and try again.\m error: ' + error);
+                    self.submitting = false;
+                });
+            },
+            getPaymentMethod: function(paymentType) {
+                var self = this;
+                return new Promise(function(resolve, reject){
+                    if (self.savedPM != null){
+                        self.paymentMethod = {id : self.savedPM.pmId, stripeId : self.savedPM.stripeId, type: self.savedPM.type};
+                        resolve();
+                    };
+                    if (paymentType == 'card') token = self.getCardToken().then(function (result) {
+                        if (result.error) reject('rejected');
+                        self.createPaymentMethod(result)
+                        .then(function(createResult){
+                            self.paymentMethod = {id : createResult.id, stripeId: createResult.stripeId, type: 'card'};
+                            resolve();
+                        })
+                        .catch(function(err){
+                            reject(err);
+                        })
+                    });
+                    else if (paymentType == 'ach') token = self.getBankToken().then(function (result) {
+                        if (result.error) reject('rejected');
+                        self.createPaymentMethod(result)
+                        .then(function(createResult){
+                            self.paymentMethod = {id : createResult.id, stripeId: createResult.stripeId, type: 'ach'};
+                            resolve();
+                        })
+                        .catch(function(err){
+                            reject(err);
+                        })
+                    });
+                })
+            },
+            createPaymentMethod : function(token) {
+                var self = this;
+                var payload = {}
+                return new Promise(function(resolve, reject){
+                    payload.token = token.id;
+                    payload.customerId = self.stripe.customer.customerId;
+                    payload.gatewayId = self.stripe.gatewayId;
+                    axios.post('https://backend.borisfx.com/payment_method/add', payload, { auth: { username: self.user.email, password: self.user.token } })
+                    .then(function(res){
+                        resolve(res.data);
+                    })
+                    .catch(function(err){
+                        if (err.response && err.response.status == 403){
+                            Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                            Cookies.set('redirect_url', window.location.href);
+                            window.location.href = '/account/login?session_expired=true';
+                        }
+                        else reject(err)
+                    })
+                })
+            },
+            getCardToken: function () {
+                var self = this;
+                return new Promise(function (resolve, reject) {
+                    self.stripe.stripeJs.createToken(self.stripe.cardElement, self.getCardTokenData()).then(function (result) {
+                        if (result.error) {
+                            alert('Could not process your order. Please verify your info.\n\nerror: ' + result.error.message)
+                            self.submitting = false;
+                            reject('rejected');
+                        }
+                        var tokenData = result.token.card;
+                        tokenData.id = result.token.id;
+                        resolve(tokenData)
+                    })
+                });
+            },
+            getCardTokenData: function () {
+                var form = document.getElementsByName('new-card-form')[0];
+                var tokenData = {};
+                tokenData.address_line1 = form.address.value;
+                tokenData.address_line2 = form.address2.value;
+                tokenData.address_city = form.city.value;
+                tokenData.address_zip = form.zip.value;
+                tokenData.address_country = form.country.value;
+                if (form.state != null) tokenData.address_state = form.state.value;
+                tokenData.name = form.holderName.value;
+                tokenData.type = 'card';
+                return tokenData;
+            },
+            getBankToken: function () {
+                var self = this;
+                var payload = {
+                    publicToken: self.plaid.plaidToken,
+                    accountId: self.plaid.selectedAccountId
+                }
+                return new Promise(function (resolve, reject) {
+                    $.ajax('https://backend.borisfx.com/payment/bank_token', {
+                        type: 'POST',
+                        data: JSON.stringify(payload),
+                        contentType: 'application/json',
+                        success: function (res, status) {
+                            payload = {id : res, card: {}}
+                            resolve(payload);
+                        },
+                        error: function (err) {
+                            alert('Error collecting payment information. Please try again or contact us at customerservice@borisfx.com for assistance.');
+                            self.submitting = false;
+                            reject('rejected');
+                        }
+                    });
+                });
+            }
+        }
+    })
+</script>

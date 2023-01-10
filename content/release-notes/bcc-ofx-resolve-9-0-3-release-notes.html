@@ -1,0 +1,86 @@
+{
+   "date": "2014-10-03T18:00:00-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC OFX (Resolve) - 9.0.3 Release Notes"
+}
+
+<p>Welcome to Boris Continuum Complete (BCC) - the world's most comprehensive visual effects plug-in collection.  BCC contains over two hundred effects spanning 17 effects categories including plug-ins for 3D text, chroma keying, image restoration, glows, lens flares, volumetric lighting, transitions, and much more.  BCC ships with thousands of free presets and includes the BCC FX Browser for quickly previewing presets applied to your source footage. <span>For a full introduction to BCC for Resolve including video highlights, filter galleries, and a wealth of online tutorials please visit </span><a class="external free" title="https://borisfx.com" href="/">https://borisfx.com.</a></p>
+<p>Boris Continuum Complete OFX 9.0.3 for Blackmagic's DaVinci Resolve was released on 10/3/2014 and is an update to:</p>
+<ul>
+<li>Boris Continuum Complete OFX 9.0.2 for ( <a title="BCC 9 OFX – 9.0.2 Release Notes" href="/release-notes/bcc-ofx-resolve-9-0-2-release-notes/" target="_blank"> BCC OFX 9.0.2 Release Notes </a> )</li>
+</ul>
+<p> </p>
+<p><strong> Feature Enhancements in <b> BCC OFX 9.0.3 </b> : </strong></p>
+<ul>
+<li>Enable features/effects which require access to secondary layers which is a newly supported feature of Resolve 11.1
+<ul>
+<li>Enable Light Wrap controls in Chroma Key Studio</li>
+<li>Enable 3 new filters:
+<ul>
+<li>BCC Boost Blend</li>
+<li>BCC Composite</li>
+<li>BCC RGB Blend</li>
+</ul>
+</li>
+<li>Layer selection menus now properly permit selecting alternate layers in Resolve</li>
+</ul>
+</li>
+</ul>
+<p>Tip: Working with Secondary Layers in Resolve 11.1: <br> 1. In the media tab's file browser, select the clip to be used as a secondary layer, right click, and select 'Add as Matte' <br> 2. In the color tab, apply the desired BCC filter to your primary media's node <br> 3. Right click the node, and select 'Add OFX Input' <br> 4. Right click the node again, go to 'Add Matte,' and select the name of the clip you previously imported as a matte <br> 5. Select the Key Input (the dotted line between the blue triangle on each node) and delete it <br> 6. Select the Source Bar (gray rectangle on the left of the node window) and connect it to the RGB Input (top grey circle) of your primary node <br> 7. Select the RGB Output (bottom grey circle) of the matte node, and connect it by dragging to the OFX input (middle grey circle) of your primary node.  The secondary layer option should now be working.</p>
+<p> </p>
+<p><strong> Bug Fixes In <b> BCC OFX 9.0.3 </b> : </strong></p>
+<ul>
+<li>Incorrect main menu bar entries when launching the Preferences or License control windows on mac.</li>
+</ul>
+<p> </p>
+<p><strong> BCC 9 OFX for Davinci Resolve - Supported Host Environments: </strong></p>
+<p>Mac OSX 10.8, and 10.9:</p>
+<ul>
+<li>DaVinci Resolve 11.1 and Resolve 11.1 Lite</li>
+</ul>
+<p>Windows 7, Windows 8:</p>
+<ul>
+<li>DaVinci Resolve 11.1 and Resolve 11.1 Lite</li>
+</ul>
+<p> </p>
+<p><strong> Registration: </strong> <br> <a href="/account/manage/" target="_blank"> Make sure to register your product in order to receive the latest technical and upgrade information. </a></p>
+<p> </p>
+<p><strong>Training:</strong></p>
+<p> Numerous resources are available for helping you get the most out of Boris Continuum Complete.</p>
+<ul>
+<li>Help documents for individual BCC effects are accessible directly from each plug-in’s UI.  The entire <a href="/documentation/continuum/bcc-effects-list/" title="BCC Help Documentation">BCC Help Documention</a> library is also available on the BorisFX website, including access to a downloadable version for browsing <a href="https://cdn.borisfx.com/borisfx/store/BCC10Documentation.zip" title="Offline Downloadable BCC Help Documentation">offline BCC Help Documentation</a>.</li>
+<li>
+<a href="/videos/?tags=category:Continuum%20TV&search=">BorisTV</a> video tutorials cover a huge range of topics from introductions to the Fundamentals, to deep training Webinar Replays, to in-depth looks at  key effects and techniques.</li>
+</ul>
+<p> </p>
+<p><strong style="line-height: 1.4;">BCC 9.0.3 for DaVinci Resolve - Known Issues and Limitations </strong><span style="line-height: 1.4;"> :</span></p>
+<ul>
+<li>26750 - The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. Use lower values near the default setting of 32 as a workaround.</li>
+<li>30360 - Page Turn does not work as when applied as a one sided transitions to the front of a clip.</li>
+<li>26796 - BCC Stars will occasionally exhibit horizontal bands of artifacts in the star field and galaxy controls.</li>
+<li>26068 - In BCC Particle Emitter 3D, changing the Blend Mode in the Spawn group can unexpectedly affect the main particle compositing.</li>
+<li>25867 - In BCC Type On Text the Line Leading in the text entry preview window does not accurately match up with the leading in the rendered result, and the leading may need to be adjusted to generate the desired final render.</li>
+<li>29533 - The apply modes Boost Expo 1, 2, and 50/50 mix do not give the expected result in Grunge.</li>
+<li>29777 - In Grunge the Edge Offset control in the Chromatic Aberration group is not working as designed.</li>
+<li>30613 - Flicker Fixer - When using the Key/Mask controls the intensity of the flicker correction is only half as strong as it should be, even in regions that should be fully corrected.</li>
+<li>30351 - Pan and Zoom - Preview Mode rectangle widgets don’t match the final result exactly when using 3D Mode with non-square PAR comps.  Settings which tend to produce more exaggerated 3D perspective will increase the relative amount of difference between the preview widget and the final result.</li>
+<li>30395 - Combining 3D Objects filters with other OpenGL accelerated BCC filters such as Lens Flare 3D or Grunge can occasionally cause render errors or instability due to lack of hardware resources depending on host resource use, graphics card capabilities, and BCC 4K preference settings.</li>
+<li>28732 - BCC Extruded Text and BCC Type On Text use a custom text entry window and some of the changes that can be made through in this window are not reflected in the preview within the text window on Mac OS (although they will be apparent in the effect when previewed/rendered back in the host). The following text attributes do not preview within the text window:/li&gt;
+<ul>
+<li>Justification (when Word Wrap is not enabled)</li>
+<li>Top Down Text</li>
+<li>Right to Left Reading</li>
+<li>Negative Line Leading</li>
+<li>Italics (for fonts that don't include an italic typeface)</li>
+<li>Superscript and Subscript</li>
+</ul>
+</li>
+<li>30397 - When using the FX Browser to preview filters in the Transitions category in Resolve, the layer information for the incoming video clip is missing so the result will appear to transition to black instead of to the incoming clip data.</li>
+<li>30419 - Changing the preview resolution in the FX Browser to 1:16 and then back to full again will sometimes continue to show lower resolution preview images.</li>
+<li>30457 - Perspective filters such as DVE Basic do not show Motion Blur when keyframing geometric properties.</li>
+<li>30489 - The UI may not accurately reflect which parameters should be enabled/disabled when an effect is first applied, but toggling any checkbox or menu parameter will force the UI state to refresh and correctly indicate the proper parameter state.</li>
+<li>30672 - OFX filters in Resolve are unable to expand the alpha channel boundary of a clip with pre-existing alpha or to stack multiple filters which modify the alpha channel.  This is a universal restriction in Resolve 11 (not specific to BCC) and we are working with the Resolve team to improve the alpha channel pipeline in future versions.</li>
+<li>29596 and 30417 - OFX filters in Resolve are not currently able to access layer data from more than +/-5 frames away from the current frame.  This is a universal restriction in Resolve 11 (not specific to BCC) and we are working with the Resolve team to improve time based frame access in future versions. Due to this limitation some BCC filters which fundamentally rely on access to frame information at alternate time such as Optical Stabilizer, Optical Flow, or Velocity Remap do not appear when running in Resolve at this time. Additionally some BCC effects may contain time based parameters which would indicate they can access frames at widely spaced points in time but in reality they will currently be limited to the nearest +/-5 frames.  Additionally the Fx Browser does not have access to frame data to permit preview of effects over moving video and thus the effects will for the time being preview over a static frame when using the Fx Browser in Resolve.</li>
+</ul>

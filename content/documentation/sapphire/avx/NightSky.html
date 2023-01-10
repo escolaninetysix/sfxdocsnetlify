@@ -1,0 +1,1673 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: NightSky",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/NightSky.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="NightSky">
+     <h2>
+      S_NightSky
+     </h2>
+    </a>
+    Generates a realistic starry night sky as viewed from a major city
+ or a specified longitude and latitude.  The stars are generated using a
+ star database so that major constellations are visible where expected.
+ Adjust magnitude limit to see more stars. Animate the Minute param to
+ make the stars move realistically over time.
+    <p>
+     In the Sapphire Render category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      <i>
+       The current track.
+      </i>
+      The input clip that determines the night locations and
+  colors.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Optional.
+      </i>
+      The clip to combine the nights with.  If no background is
+  given, the Source is also used as the Background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Mask:
+      </b>
+      <i>
+       Optional.
+      </i>
+      Defines the area where stars should be rendered.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/NightSky.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Night Sky
+   </i>
+   .
+   <br/>
+   Controls how the location is determined.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Night Sky:
+      </i>
+     </b>
+     location is set by adjusting Latitude, Longitude, and GMT Offset parameters.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Night Sky Locations:
+       </i>
+      </b>
+      location is set by choosing a city from the Location list.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Latitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   42.3,
+   <i>
+    Range:
+   </i>
+   -90 to 90.
+   <br/>
+   Latitude for specifying the location of the camera.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Longitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   -71.1,
+   <i>
+    Range:
+   </i>
+   -180 to 180.
+   <br/>
+   Longitude for specifying location of the camera.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    GMT Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   -5,
+   <i>
+    Range:
+   </i>
+   -12 to 12.
+   <br/>
+   Number of hours the specified time is offset from
+ Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Location:
+   </b>
+   <i>
+    Popup menu,  Default: Boston
+   </i>
+   .
+   <br/>
+   Specifies which city to use to determine position on the Earth's surface.
+ Available cities are scattered around each of the continents.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Anchorage:
+      </i>
+     </b>
+     Anchorage, Alaska, United States, North America.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Astana:
+       </i>
+      </b>
+      Astana, Kazakhstan, Asia.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Beijing:
+        </i>
+       </b>
+       Beijing, China, Asia.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Boston:
+         </i>
+        </b>
+        Boston, Massachusetts, United States, North America.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Cairo:
+          </i>
+         </b>
+         Cairo, Egypt, Africa.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Caracas:
+           </i>
+          </b>
+          Caracas, Venezuela, South America.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Chicago:
+            </i>
+           </b>
+           Chicago, Illinois, United States, North America.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Hong Kong:
+             </i>
+            </b>
+            Hong Kong, China, Asia.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Istanbul:
+              </i>
+             </b>
+             Istanbul, Turkey, Asia/Europe.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Johannesburg:
+               </i>
+              </b>
+              Johannesburg, South Africa, Africa.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Lagos:
+                </i>
+               </b>
+               Lagos, Nigeria, Africa.
+               <br/>
+               <dd>
+                <b>
+                 <i>
+                  Lima:
+                 </i>
+                </b>
+                Lima, Peru, South America.
+                <br/>
+                <dd>
+                 <b>
+                  <i>
+                   London:
+                  </i>
+                 </b>
+                 Longon, England, Europe.
+                 <br/>
+                 <dd>
+                  <b>
+                   <i>
+                    Los Angeles:
+                   </i>
+                  </b>
+                  Los Angeles, California, United States, North America.
+                  <br/>
+                  <dd>
+                   <b>
+                    <i>
+                     Madrid:
+                    </i>
+                   </b>
+                   Madrid, Spain, Europe.
+                   <br/>
+                   <dd>
+                    <b>
+                     <i>
+                      Mexico City:
+                     </i>
+                    </b>
+                    Mexico City, Mexico, North America.
+                    <br/>
+                    <dd>
+                     <b>
+                      <i>
+                       Moscow:
+                      </i>
+                     </b>
+                     Moscow, Russia, Europe.
+                     <br/>
+                     <dd>
+                      <b>
+                       <i>
+                        Mumbai:
+                       </i>
+                      </b>
+                      Mumbai, India, Asia.
+                      <br/>
+                      <dd>
+                       <b>
+                        <i>
+                         Nairobi:
+                        </i>
+                       </b>
+                       Nairobi, Kenya, Africa.
+                       <br/>
+                       <dd>
+                        <b>
+                         <i>
+                          New York City:
+                         </i>
+                        </b>
+                        New York City, New York, United States, North America.
+                        <br/>
+                        <dd>
+                         <b>
+                          <i>
+                           Nuuk:
+                          </i>
+                         </b>
+                         Nuuk, Greenland, North America.
+                         <br/>
+                         <dd>
+                          <b>
+                           <i>
+                            Perth:
+                           </i>
+                          </b>
+                          Perth, Australia, Australia.
+                          <br/>
+                          <dd>
+                           <b>
+                            <i>
+                             Punta Arenas:
+                            </i>
+                           </b>
+                           Punta Arenas, Chile, South America.
+                           <br/>
+                           <dd>
+                            <b>
+                             <i>
+                              Rio de Janeiro:
+                             </i>
+                            </b>
+                            Rio de Janeiro, Brazil, South America.
+                            <br/>
+                            <dd>
+                             <b>
+                              <i>
+                               Central Siberia:
+                              </i>
+                             </b>
+                             Siberia, Russia, Europe.
+                             <br/>
+                             <dd>
+                              <b>
+                               <i>
+                                Stockholm:
+                               </i>
+                              </b>
+                              Stockholm, Sweeden, Europe.
+                              <br/>
+                              <dd>
+                               <b>
+                                <i>
+                                 Sydney:
+                                </i>
+                               </b>
+                               Sydney, Australia, Australia.
+                               <br/>
+                               <dd>
+                                <b>
+                                 <i>
+                                  Tokyo:
+                                 </i>
+                                </b>
+                                Tokyo, Japan, Asia.
+                                <br/>
+                                <dd>
+                                 <b>
+                                  <i>
+                                   Vancouver:
+                                  </i>
+                                 </b>
+                                 Vancouver, Canada, North America.
+                                 <br/>
+                                 <dd>
+                                  <b>
+                                   <i>
+                                    Yellowknife:
+                                   </i>
+                                  </b>
+                                  Yellowknife, Canada, North America.
+                                  <br/>
+                                  <dd>
+                                   <b>
+                                    <i>
+                                     Warsaw:
+                                    </i>
+                                   </b>
+                                   Warsaw, Poland, Europe.
+                                   <br/>
+                                  </dd>
+                                 </dd>
+                                </dd>
+                               </dd>
+                              </dd>
+                             </dd>
+                            </dd>
+                           </dd>
+                          </dd>
+                         </dd>
+                        </dd>
+                       </dd>
+                      </dd>
+                     </dd>
+                    </dd>
+                   </dd>
+                  </dd>
+                 </dd>
+                </dd>
+               </dd>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Star Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The size of magnitude zero stars in pixels.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Star Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The overall brightness of the stars.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Altitude:
+   </b>
+   <i>
+    Default:
+   </i>
+   30,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Camera rotation up and down.  An altitude of 0 points
+ out towards the horizon.  90 degrees points straight up. 180 looks
+ backwards (and upside down).
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Azimuth:
+   </b>
+   <i>
+    Default:
+   </i>
+   -12,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Camera rotation left and right.  An azimuth of zero points
+ North and positive values rotate East (right).
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Field Of View:
+   </b>
+   <i>
+    Default:
+   </i>
+   90,
+   <i>
+    Range:
+   </i>
+   0.5 to 179.
+   <br/>
+   Camera field of view.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Year:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   2.02e+03,
+   <i>
+    Range:
+   </i>
+   1900 to 2295.
+   <br/>
+   Which year to use to look up star locations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Month:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   12,
+   <i>
+    Range:
+   </i>
+   1 to 12.
+   <br/>
+   Which month to use to look up star locations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Day:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   1 to 31.
+   <br/>
+   Which day of the month to use to look up star locations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Hour:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   16,
+   <i>
+    Range:
+   </i>
+   0 to 23.
+   <br/>
+   The hour portion of the time to use to look up star locations.
+ This should be specified in military (24 hour) format.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Minute:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The minute portion of the time to use to look up star locations.
+ Animate this parameter if you want to animate the stars over a period of
+ real world time.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Magnitude Limit:
+   </b>
+   <i>
+    Default:
+   </i>
+   6.5,
+   <i>
+    Range:
+   </i>
+   -2 to 10.
+   <br/>
+   This controls which stars are currently visible based on
+ their apparent magnitude.
+   <p>
+    Brighter stars have smaller magnitudes and dimmer
+ stars have smaller magnitudes, opposite from what you might think.
+ The brightest stars in the sky have magnitude 0 or even -1.  With the naked
+ eye you can see stars up to magnitude 5 or 6, but a backyard telescope
+ can see much fainter stars, up to 12 or more.
+   </p>
+   <p>
+    The larger Magnitude Limit, the more stars visible on screen.
+ Increasing this parameter will add stars dimmer than the
+ currently visible ones.  Stars near the magnitude limit parameter value will
+ fade so that this parameter can be animated.
+   </p>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Size By Mag:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Make brighter stars larger and dimmer stars smaller so that brighter
+ stars appear brighter and smaller stars appear dimmer.  A value of zero
+ will make all stars the same size while a value of 1 will approximate the apparent size
+ differences naturally occuring in the sky.  Magnitude 0 stars will remain the same size
+ regardless of the value of this parameter.  Negative magnitude stars (very bright stars)
+ will grow with an increased parameter value.  Positive magnitude stars (dim stars) will
+ shrink with an increased parameter value.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Star Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the color saturation of the star.  Set to 0 for all white
+ stars.  Increase for more intense colors.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glare:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The style of glare to apply.  Custom glare types can also be
+  made, or existing types modified, by editing the "s_glares.text"
+  file.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glare Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The overall brightness of the glares.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glare Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.12,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the size of the glares.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the vertical dimension of the glares, making
+  them elliptical instead of circular.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glare Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the glares.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glare Rotate:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotates the ray elements of the glares, if any, in
+  degrees.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Rays Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the length of the rays without changing their thickness.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glare Star Mag:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.8,
+   <i>
+    Range:
+   </i>
+   -2 to 10.
+   <br/>
+   Specify which stars should be glared based on magnitude.
+ Stars brighter than this (i.e. lower magnitude) will get glares.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Streak Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.02,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Length of streaks or rays radiating out from the brightest stars.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Streak Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brightness of streaks radiating out from the brightest stars.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Streak Number:
+   </b>
+   <i>
+    Default:
+   </i>
+   8,
+   <i>
+    Range:
+   </i>
+   0 to 8.
+   <br/>
+   Number of streaks radiating out from the brightest stars.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Streak Rotation:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Rotation of the streaks emenating from the stars.
+ A 0 value means that the first streak will be vertical from the star if
+ Streak Symmetry is set to 1.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Streak Symmetry:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.8,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   How symmetrically the rays are drawn.  This affects both spacing
+ and length.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Streak Star Mag:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   -2 to 10.
+   <br/>
+   Specify which stars should have streaks based on magnitude.
+ Stars brighter than this (i.e. lower magnitude) will get streaks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Twinkle Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   How dim stars should get when they twinkle.  Twinkle is meant to
+ simulate infrequent, intense changes in the brightness of a star (such as from
+ a cloud passing in front of it).
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Twinkle Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   5,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   Frequency at which stars twinkle.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Twinkle Always:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   What percentage of the time a star will twinkle on average.
+ Set to 1 to twinkle constantly.  Set to a smaller value to make the twinkle more
+ intermittent.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   How dim stars should get when they flicker. Flicker is meant to
+ simulate frequent, subtle changes in brightness, such as that caused by atmospheric
+ distortion.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Flicker Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   30,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   Frequency at which stars flicker.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the background.  This parameter
+  only has an effect if the background input is provided, and is
+  visible due to a partially transparent Source image or a reduced Source
+  Opacity parameter value.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Screen
+   </i>
+   .
+   <br/>
+   Determines how the stars are combined with the source image.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Stars Only:
+      </i>
+     </b>
+     gives only the stars with no source.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Mult:
+       </i>
+      </b>
+      the stars are multiplied by the source.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Add:
+        </i>
+       </b>
+       the stars are added to the source.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Screen:
+         </i>
+        </b>
+        the stars are blended with the source using a screen operation.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Difference:
+          </i>
+         </b>
+         the result is the difference between the stars and source.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Overlay:
+           </i>
+          </b>
+          the stars are combined with the source using an overlay function.
+          <br/>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mask:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mask input by this amount before using.  This
+can provide a smoother transition between the masked and unmasked
+areas.  It has no effect unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mask:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the mask input so the effect is applied
+to areas where the Mask is black instead of white.  This has no effect
+unless the Mask input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mask Type:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   This setting is ignored unless the Mask input is provided.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     uses the luminance of the Mask input to scale the brightness of the lights.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Color:
+       </i>
+      </b>
+      uses the RGB channels of the Mask input to scale the colors of the lgiths.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Alpha:
+        </i>
+       </b>
+       uses the alpha channel of the Mask input to scale the
+ brightness of the lights.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#title-key">
+  Apply To Title/Key
+ </a>
+ ,
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#motion-blur">
+  Motion Blur
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../aurora">
+       Aurora
+      </a>
+      <br/>
+      <a href="../clouds">
+       Clouds
+      </a>
+      <br/>
+      <a href="../zap">
+       Zap
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../glint">
+       Glint
+      </a>
+      <br/>
+      <a href="../glow">
+       Glow
+      </a>
+      <br/>
+      <a href="../lensflare">
+       LensFlare
+      </a>
+      <br/>
+      <a href="../convolve">
+       Convolve
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

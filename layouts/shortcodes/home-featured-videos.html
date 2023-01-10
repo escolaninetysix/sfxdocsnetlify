@@ -1,0 +1,31 @@
+
+<div class="section dark-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>FEATURED VIDEOS</h1>
+        <h5>TUTORIALS & TIPS FOR USING BORISFX TOOLS</h5>
+      </div>
+    </div>
+    <div class="row">
+      {{ range .Page.Params.videos }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .url }}">
+            <img class="img-fluid" src="{{ .thumbnail_url }}" alt />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .url }}">{{ .title }}</a>
+        </p>
+
+      </div>
+      {{ end }}
+
+    </div>
+    <div class="row">
+        <a href="/videos/" class="btn">VIEW MORE</a>
+    </div>
+
+  </div>
+</div>

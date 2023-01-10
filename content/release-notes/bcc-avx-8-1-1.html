@@ -1,0 +1,396 @@
+{
+   "date": "2013-06-25T12:48:59-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC AVX - 8.1.1"
+}
+
+<p>
+ <b>
+  Boris Continuum Complete AVX 8 supports the following Avid host applications:
+ </b>
+</p>
+<p>
+ <b>
+  Macintosh:
+ </b>
+</p>
+<p>
+ Avid Media Composer 5.5 running Macintosh OS™ X 10.6.7 and 10.7.
+</p>
+<p>
+ Avid Media Composer 6 and 6.5 running Macintosh OS™ X 10.7 and 10.8.
+</p>
+<p>
+ Avid Symphony 6 and 6.5 running Macintosh OS™ X 10.7 and 10.8.
+</p>
+<p>
+ <b>
+  Windows:
+ </b>
+</p>
+<p>
+ Avid Media Composer Media Composer 5.5, 6, and 6.5 running Windows Professional OS™ 7x64.
+</p>
+<p>
+ Avid Symphony 5.5, 6, and 6.5 running Windows Professional OS™ 7x64.
+</p>
+<p>
+ Avid NewsCutter 9.5, 10, and 10.5 running Windows Professional OS™ 7x64.
+</p>
+<p>
+ <b>
+  What's new in BCC 8 AVX (Summary of major changes since BCC7):
+ </b>
+</p>
+<p>
+ • Support for 64bit Avid Media Composer, Avid Symphony, and Avid NewsCutter hosts.
+</p>
+<p>
+ • 8 New filters: Film Glow, Flicker Fixer, Lens Flare 3D, Organic Strands, Particle Emitter 3D, Stage Light, Videoscope, and Wild Cards.
+</p>
+<p>
+ • Addition of the Integrated Beat Reactor to many filters.
+</p>
+<p>
+ • New/Revised Filter Categories.
+</p>
+<p>
+ <b>
+  BCC AVX 8.1.1 – What's New:
+ </b>
+</p>
+<p>
+ • Fixed sporadic instability when first applying filters from the 3D Objects category in a new session.
+</p>
+<p>
+ • Fixed improper clipping to safe levels in OpenGL accelerated BCC filters.
+</p>
+<p>
+ • Fixed render differences between 8 and 16bit renders of BCC Snow and sporadic animation jumps in 16bit Snow.
+</p>
+<p>
+ • Fixed problem in the new particle filters with all built in lights using the same spot/point setting as Light 1 regardless of the setting for the individual light.
+</p>
+<p>
+ • Fixed incorrect renders on the last frame/field of Pan and Zoom animations when Ease Out is set to 0.
+</p>
+<p>
+ • Improved render quality of the outer portions of Lens Flare 3d gradients.
+</p>
+<p>
+ • Fixed problem where objects were never fully in focus when using Depth of Field in the new particle filters.
+</p>
+<p>
+ • Fixed support for 24bit AIF files in the Beat Reactor.
+</p>
+<p>
+ • Fixed problem in Organic Strands with getting only a single strand when using Accelerated Sprites as the particle shape.
+</p>
+<p>
+ • Fixed problem in the new particle filters whereby the Spawn Particle Opacity control would sometimes have no effect.
+</p>
+<p>
+ • Added support for 16bit tiff files (without alpha channels) in Pan and Zoom.
+</p>
+<p>
+ • Fixed rendering of the Lines options in Damaged TV
+</p>
+<p>
+ • Improved render quality in Stage Light when using the Reach functionality and when using multiple overlapping lights.
+</p>
+<p>
+ • Fixed uneven animation when keyframing the Smoke Speed parameter in Stage Light.
+</p>
+<p>
+ • Improved responsiveness of Depth of Field rendering in the new particle filters on Quadro FX 3700 cards.
+</p>
+<p>
+ • Fixed incorrect results for several filters in the Textures group when unchecking Lock to X Scale controls.
+</p>
+<p>
+ • Fixed memory leak in Particle Emitter 3D.
+</p>
+<p>
+ • Numerous additional bug fixes.
+</p>
+<p>
+ <b>
+  BCC AVX 8.1.1 - Known Issues and Limitations:
+ </b>
+</p>
+<p>
+ <b>
+  Known issues that are specific to Mac OS:
+ </b>
+</p>
+<p>
+ • When taking an Avid project that uses BCC 3D Objects created on Mac MC 5.5, and opening that project in MC 6 (Mac or Windows) Texture Files or Bump Files referenced in the 3D Objects' materials will not be found by the plugins and will need to be manually reset to get the effect to appear as expected. (In this case a warning is displayed.)
+</p>
+<p>
+ • When using the 3D Objects category of effects on Mac OS, enabling the "Transparent Object" checkbox will result in the object becoming fully transparent (so this feature is not useful on Mac).
+</p>
+<p>
+ • In Media Composer 5.5 on Mac only, the new particle filters can render black on some video cards when antialiasing is set too high. As a temporary workaround you can reduce or turn off antialiasing.
+</p>
+<p>
+ <b>
+  Known issues that are specific to Windows OS:
+ </b>
+</p>
+<p>
+ • BCC Pan and Zoom supports 16 bit TIFF files on windows now, but it does not properly preserve alpha if the TIFF files contain embedded alpha channels. TIFF files containing alpha should be converted to 8 bit before being loaded into Pan and Zoom.
+</p>
+<p>
+ <b>
+  Known issues that apply to both Mac OS and Windows OS:
+ </b>
+</p>
+<p>
+ • In Media Composer 6.5 only you may find the alpha channel failing to propagate from the first effect to the second effect in a stacked multi-filter start/end setup. This only happens when the first effect is an 8 bit effect and when you are rendering in 16bit. We are working with Avid to resolve this issue. As a temporary workaround you can render in 8bit instead of 16bit or render in Media Composer 6.0.
+</p>
+<p>
+ • When using a host image layer as the particle type in Particle Emitter 3D, the particles can appear squished/stretched in projects with non-square pixel aspect ratios.
+</p>
+<p>
+ • The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. As a temporary workaround use low values near the default setting of 32.
+</p>
+<p>
+ • In filters with more than one Motion Tracker point (e.g. BCC Witness Protection), saving/loading the motion tracker data only works for the first tracker point.
+</p>
+<p>
+ • BCC LED shows occasional mis-colored dots on Quadro FX 3500 cards.
+</p>
+<p>
+ • When stacked BCC filters including a 3D Objects filter are applied to a track over the top of another track containing a 3D Objects filter, occasional flicker can be seen in final render if all tracks are rendered together. As a temporary workaround, render the bottom track first and then render the top track as a separate step.
+</p>
+<p>
+ • Lens Flare 3D will occasionally generate an incorrect result on the first frame viewed after applying the filter. Forcing a refresh will eliminate the issue, and it does not subsequently recur.
+</p>
+<p>
+ • The Beat Reactor propagation options generate unexpected results in Organic Strands. Use non-propagation modes which work as expected as a temporary workaround.
+</p>
+<p>
+ • Glyph fonts such as IMG Extreme or HolidayPi BT will sometimes render incorrectly or cause unexpected behavior in Extruded Text or Type On Text.
+</p>
+<p>
+ • Gaps in text characters in Extruded Text and Type on Text will sometimes jump between filled and unfilled states while animating with changing geometry such as text on a path or jittering text. Increasing the Polygon Count or adjusting the font or font size my provide a temporary workaround.
+</p>
+<p>
+ • When stacking multiple effects on a track and then rearranging the order of those effects, parameter errors may occur such as button parameters functioning as simple checkboxes instead of true buttons. We are working with Avid to resolve this issue.
+</p>
+<p>
+ • Effect stacks will occasionally display an error stating "Connect failed to connect" when preview at less than full resolution. This error does not affect final render and can be worked around by switching to full green/green preview resolution. We are working with Avid to resolve this issue.
+</p>
+<hr>
+<p>
+ <br>
+ <b>
+  Supported Real-Time Systems:
+ </b>
+</p>
+<p>
+ The filters in the BCC AVX RT category play back in real-time on Avid systems with Nitris hardware. BCC AVX RT filters apply, render and use presets the same way that BCC AVX filters do. The real-time filters are a subset of the existing filters.
+</p>
+<p>
+ <br>
+ <b>
+  Supported Real-Time Avid Hosts:
+ </b>
+</p>
+<p>
+ Supported real-time systems include Media Composer 4.0 or later, and systems with Nitris hardware. Real-time playback is largely determined by the speed of the system hardware. These filters are intended to provide real-time Draft-Quality previews. You should render these filters before outputting to tape, even on systems with Nitris hardware. You do not have to replace the real-time filters with the corresponding non-real-time filter. Simply render the real-time filter.
+</p>
+<p>
+ <br>
+ <b>
+  Important Notes on the BCC Real-time Effects:
+ </b>
+</p>
+<p>
+ The real-time effect playback is largely determined by the speed of the system hardware. Additionally, real-time playback depends on the settings you adjust in the effect. If you adjust multiple parameters, it is likely the effect will not play back in realtime. For example, if you apply blur and choke to a PixelChooser matte, the filter may require rendering. When you work with the real-time filters, the Fields menu only applies when you render the effect. It does not affect previews and playback. Although some real-time filters may include the Motion Tracker parameter groups, you should not use the real- time version of a filter to motion track. Use the non-real-time version.
+</p>
+<p>
+ BCC AVX RT filters are not fast enough to apply to Avid titles and play back in real time. Therefore, the real-time version of BCC AVX filters do not include a Title Matte parameter group. Use the non-real-time version to apply to a title or matte. To achieve real-time playback of BCC AVX RT plug-ins without dropped frames, make sure that your system meets the following requirements:
+</p>
+<p>
+ • Set your Avid to real-time Playback mode (green dot in the Timeline, not blue dot).
+</p>
+<p>
+ • Open your project’s Video Display settings and set Real-time Effect Quality to High Performance (more simultaneous effects). This increases the system’s ability to process effects at the expense of reducing image quality.
+</p>
+<p>
+ • Use the Expert Render command on parts of the sequence where the system has difficulties during playback. The system marks these sections of the sequence in the Timeline. For more information, see your Avid documentation.
+</p>
+<p>
+ • If possible, start playback earlier in the sequence, before the effects that cause difficulties. This allows the system to process some of the effect frames before displaying them, decreasing the chance of playback difficulties.
+</p>
+<p>
+ • If you still experience dropped frames, open your project’s Video Display settings and set a Video Pre-Fill amount of a few seconds. This preloads the specified amount of video and can help if the system has trouble maintaining real-time playback.
+</p>
+<p>
+ • Some BCC AVX RT effects can play in real time with Real-time Effect Quality set to High Quality within the Video Display Settings. Experiment with combinations of the Real-time Effect Quality and Pre-Filled Frames settings to find the settings that best suit your project and workflow.
+</p>
+<p>
+ Some aspects of BCC AVX RT effects appear a bit different during real-time preview than non-real-time preview and final render. This is particularly true of effects using geometric distortions (Scale, Tumble, Spin, Rotate) and effects that blur and choke edges. While fine-tuning these parameters, it is recommended to toggle to non-real-time mode to check the quality of the final render. To do this, click the green dot in the Timeline and step to another frame or change a parameter to force the Composer window to update. In non-real-time mode you can also check the output on an external (NTSC or PAL) monitor.
+</p>
+<p>
+ <br>
+ <b>
+  Copying Presets from Earlier Versions of BCC AVX:
+ </b>
+</p>
+<p>
+ To use presets created in earlier versions of BCC AVX, you need to copy the older presets from their previous preset location to the new BCC AVX 8 preset folder location. The folder name for presets made in previous versions of BCC AVX did not contain the suffix “8,” although the path was the same. Filter presets are located in individual effect folders inside the BCC Presets 8 folder.
+</p>
+<p>
+ <br>
+ <b>
+  Applying BCC Effects
+ </b>
+</p>
+<p>
+ Some effects can be applied as either a transition or a filter. If an effect can be applied as a transition, it appears in the BCC Two-Input Effects category. For example, to apply a Gaussian Blur as a filter, choose BCC Gaussian Blur from the BCC Blur &amp; Sharpen category. However, to apply a Gaussian Blur as a transition, you would choose BCC TR Gaussian Blur from the BCC Two-Input Effects category. You can also apply BCC effects to titles created in the Avid Title tool or to imported mattes:
+</p>
+<p>
+ 1. Choose Effect Palette from the Tools menu .
+</p>
+<p>
+ 2. Click to select the appropriate Boris Continuum Complete effect category on the left. Choose the appropriate effect on the right.
+</p>
+<p>
+ 3. Drag the icon for the desired effect onto a clip or transition.
+</p>
+<p>
+ 4. Enter Effects mode and adjust the effect parameters in the Effect Editor window.
+</p>
+<p>
+ <br>
+ <b>
+  Applying BCC Effects as Transitions:
+ </b>
+</p>
+<p>
+ BCC provides two methods to use effects as transitions. The first method is to apply a BCC Two-Input effect to the transition between two clips. The second method is to overlap two clips and apply a BCC filter effect to each layer. Each method offers advantages. BCC Two-Input effects offer the convenience of an Avid transition. For example, trimming and duration changes are easily made and you only have to render a single effect. However, to create a wider range of transition effects, you can use the second method: overlap two clips and apply a filter to each layer. This method provides greater control over parameters.
+</p>
+<p>
+ <br>
+ <b>
+  Applying BCC Effects to Titles and Mattes:
+ </b>
+</p>
+<p>
+ To apply a BCC effect to a title or to an imported matte, drag the effect onto the title. If you Option /Alt-drag to the effect, the effect is applied to the title as well as to any tracks beneath the title in the timeline. For example, to apply a Pyramid Blur to a title, drag the BCC Pyramid Blur effect onto the title. To apply a Pyramid Blur to a title and the background video, Option-drag the BCC Pyramid Blur effect to the title.
+</p>
+<p>
+ <br>
+ <b>
+  Applying Multiple Filters to Avid Titles and Mattes:
+ </b>
+</p>
+<p>
+ BCC AVX allows you to apply two or more effects to an Avid title or matte without affecting the background. For example, you could apply a BCC Emboss to a title and then blur it. The Title Matte parameter group’s Multi-Filter controls can also be used to apply multiple effects to existing keys, such as chroma keys, without applying them to the entire image.
+</p>
+<p>
+ <br>
+ <b>
+  Working with the RT Static Textures Category:
+ </b>
+</p>
+<p>
+ BCC 8 contains a RT Static Textures category. This category contains filters that you may want to use as a static background. When you apply these filters, they do not animate, but they will play in real time. You can also apply these filters to use clips in the timeline as textures. For example, apply BCC Emboss RT to a clip to create a static backdrop. The frame where the position indicator was when you applied the filter to the clip is used as the static texture; the clip no longer plays back. If you apply a RT Static Textures filter to a clip, make sure you are on the appropriate frame of the clip when you apply the filter.
+</p>
+<p>
+ <br>
+ <b>
+  Rendering Boris Continuum Complete Effects:
+ </b>
+</p>
+<p>
+ Boris effects render exactly the same as native Avid effects. Render effects individually or render in to out. In addition, if you re-digitize material, you simply re-render any effects; all parameters are preserved. For more information, consult your Avid documentation.
+</p>
+<p>
+ <br>
+ <b>
+  OpenGL Acceleration Requirements:
+ </b>
+</p>
+<p>
+ The first time you apply any of the Open GL filters, BCC AVX performs a fast, automatic test to look for specific OpenGL capabilities. If your configuration passes this internal test, the filter opens with OpenGL enabled. If your configuration does not pass, an error message displays in the Composer window and OpenGL is disabled. However, depending on the error message, you may elect to enable OpenGL manually.
+</p>
+<p>
+ When using BCC AVX on an Avid system on the Mac platform, the 3D Objects filters in BCC 8 are not only dependent on specific Open GL capable video hardware and software but also, on specific operating systems. On the Macintosh platform, OS 10.6 (Snow Leopard) is the minimum.
+</p>
+<p>
+ <br>
+ <b>
+  Working with Unsupported Configurations:
+ </b>
+</p>
+<p>
+ If your system does not pass the OpenGL test, the Composer window displays an error message. Clicking the OpenGL Prefs checkbox in the General Controls parameter group displays a dialog box. Click Yes to view the results of the internal OpenGL test. This is the recommended method for examining your system’s configuration. A window displays information about your system, including the graphics card, OpenGL version, driver, texture memory and OS version. Two types of error messages can display in this window. The first type of message indicates an unsupported configuration. In this case, you can try manually enabling OpenGL by selecting the Enabled checkbox in the dialog box. In many instances, unsupported hardware can correctly render the OpenGL filters. If you enable this option and your system displays distorted frames, you will not be able to use the OpenGL filters. The second type of error is a critical error. In this case, you cannot manually enable OpenGL and you will not be able to use the OpenGL filters. When you finish with the OpenGL dialog box, click OK to close the window.
+</p>
+<p>
+ <br>
+ <b>
+  Working with Presets and Effect Templates:
+ </b>
+</p>
+<p>
+ After you apply and adjust a BCC AVX filter, you can save the parameter settings by pressing the Preset menu and choosing Save. A dialog box allows you to name and save the file. Presets are only compatible with the filter in which they were created. For example, if you attempt to load a Cartooner preset into a Blur filter, the preset is ignored. However, you can also save PixelChooser parameters as presets. Boris Continuum Complete AVX includes a selection of preset effects for each filter. These presets are an excellent way to learn the capabilities of a filter.
+</p>
+<p>
+ <br>
+ <b>
+  Resetting Effects:
+ </b>
+</p>
+<p>
+ The Preset menu allows you to save filter settings independently of the media or project. You can return to the Boris Continuum Complete default settings or to a custom default that you create yourself.
+</p>
+<p>
+ <br>
+ <b>
+  Loading Preset Effects:
+ </b>
+</p>
+<p>
+ To load a previously saved filter settings file, you must first apply the same filter to your media. A list of existing presets also appears in the menu.
+</p>
+<p>
+ <br>
+ <b>
+  Saving Effects as Presets:
+ </b>
+</p>
+<p>
+ You can save favorite filter settings as presets and apply them to multiple projects.
+</p>
+<p>
+ <br>
+ <b>
+  Saving Effect Templates in a Bin:
+ </b>
+</p>
+<p>
+ You can save parameter settings in a bin as an Effect template, just as you save other Avid effects. Effect templates allow you to save effect parameters and use them again to create or modify other effects. Effect templates save parameters set at multiple keyframes.
+</p>
+<p>
+ <br>
+ <b>
+  Applying Effect Templates from a Bin:
+ </b>
+</p>
+<p>
+ To apply all the values from the template, drag the Effect template from the bin to either the Timeline or the Effect Preview monitor in the Effect Editor window.
+</p>
+<p>
+ <br>
+ <b>
+  Saving BCC AVX Effects as Custom Transitions:
+ </b>
+</p>
+<p>
+ You can now save custom transitions to the Avid Quick Transition menu for easy access. This means that custom BCC AVX transitions appear in the Quick Transitions dialog box.
+</p>

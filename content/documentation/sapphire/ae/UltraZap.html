@@ -1,0 +1,2838 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: UltraZap",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/UltraZap.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="UltraZap">
+     <h2>
+      S_UltraZap
+     </h2>
+    </a>
+    Generates lightning bolts along a spline and renders them over a
+  background.  Increase Vary Endpoint to spread out the ends of the bolts.
+  Adjust the Glow Color for differently colored results.  Adjust the Loop Speed
+  parameter to make it traverse the spline over time.
+    <p>
+     In the Sapphire Render effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      The clip to combine the glows with.  If no background is
+  given, the Source is also used as the Background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      If provided, defines the region where the lightning should be rendered.
+  The glow on the lightning will bleed into areas with no lightning
+  for a natural look.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/UltraZap.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mode:
+   </b>
+   <i>
+    Popup menu,  Default: UltraZap
+   </i>
+   .
+   <br/>
+   Selects between following the Sapphire spline tool, the AE paths, or the Mocha outlines.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       UltraZap:
+      </i>
+     </b>
+     Creates a zap along a spline.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        UltraZapAEPath:
+       </i>
+      </b>
+      Creates a zap along a single AE Path, all AE Paths, or the current AE text layer.  This mode is not available in Premiere.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         UltraZapMocha:
+        </i>
+       </b>
+       Creates a zap along a single Mocha mask outline or all Mocha mask outlines.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Project:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Point:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-0.5 0.5],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The starting point of the bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point 1 Enable:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Turns on or off the first control point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Control Point 1:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [-0.34 0.304],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   First spline control point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point 2 Enable:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Turns on or off the second control point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Control Point 2:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.1 0.2],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Second spline control point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point 3 Enable:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the third control point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Control Point 3:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.4 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Third spline control point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point 4 Enable:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Turns on or off the fourth control point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Control Point 4:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.45 -0.25],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Fourth spline control point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    End Point:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0.5 -0.5],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The end point of the bolts.  This parameter can be adjusted using
+  the End Widget.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the staring point is controlled by the Start parameter or follows
+  the Start point track from Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Start Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point1 Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether point 1 is controlled by the Control Point 1 parameter or follows
+  the Control Point 1 track from Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Point1 Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point2 Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether point 2 is controlled by the Control Point 2 parameter or follows
+  the Control Point 2 track from Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Point2 Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point3 Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether point 3 is controlled by the Control Point 3 parameter or follows
+  the Control Point 3 track from Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Point3 Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Point4 Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether point 4 is controlled by the Control Point 4 parameter or follows
+  the Control Point 4 track from Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Point4 Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    End Uses Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Controls whether the end point is controlled by the End parameter or follows
+  the End point track from Mocha.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth End Track:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Controls how many points to average when stabilizing the Mocha point track.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Follow Selection:
+   </b>
+   <i>
+    Popup menu,  Default: text
+   </i>
+   .
+   <br/>
+   Specify what the zap should trace.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       selected path:
+      </i>
+     </b>
+     Follows a single AE path specified in the
+     <br/>
+     <dd>
+      <b>
+       <i>
+        all paths:
+       </i>
+      </b>
+      Follows all AE Masks applied to the current layer.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         text:
+        </i>
+       </b>
+       If UltraZap is applied to an AE text layer, this selection
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Path To Follow:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   AE path for the lightning to follow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bolts:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 500.
+   <br/>
+   The number of lightning bolts to draw, each between
+the Start and End location.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bolt Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.06,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the lightning bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bolt Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The length of the bolts, beginning at Start Offset.  If
+less than 1, the bolts will not be drawn all the way from start to end.
+This can be useful for animating a lightning strike.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wrinkle Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of wrinkles in the bolts.  Decrease
+for straighter smoother bolts or increase for more kinky bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Curve Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Similar to Wrinkle Amp but affects the general path of
+the bolt.  If decreased, the bolt will stay closer to the line between
+the Start and End points.  If increased it can wander further away
+from this line.  This differs from the Wrinkle Amp parameter in that
+it can be used to make straighter bolts while still keeping the
+wrinkles at the detailed level.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Taper Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.025,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Determines how pointed the start of the bolts are.
+If 0, the entire bolt will have equal width.  If 1, the bolts will
+thin out along their entire length for a pointed end.  If it is .5,
+the bolts will start thin and grow to the width parameter at the center
+of the bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Taper End:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Determines how pointed the end of the bolts are.
+If 0, the entire bolt will have equal width.  If 1, the bolts will
+thin out along their entire length for a pointed end.  If it is .5,
+the bolts will start thinning out half way between the start and
+end points.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Feather Bolt:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Add softness to the bolt before glowing.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Zap Edge Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Only blur the edges of the zap - useful if there is noise on the zap.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Zap Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the lightning bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.87 0.969 1].
+   <br/>
+   The color at the start of the main bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    End Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0 0.333 1].
+   <br/>
+   The color at the tip of the main bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Bolt Hue:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   This varies the start and end color between multiple
+ bolts. This does not change the color along a single bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The amount of random variation in the width of the
+bolts along their lengths.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Endpoint:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Offsets the End location by a random amount within
+  a circle of this radius.  If Bolts is greater than 1, this can be
+  useful to spread out the different End points.  For example, you can
+  create multiple radiating bolts by increasing this radius and
+  placing the End point near the Start point.  This parameter can also
+  be adjusted using the End Widget, after it is made positive.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Random Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The
+actual seed value is not significant, but different seeds give
+different random lightning bolts, and the same value should give a
+repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Start Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The offset from the start point to begin drawing the
+bolts.  This can be useful for animating a lightning strike.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Loop Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   How fast to animate where the zap starts along the spline.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Loop Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Where along the spline the zap starts for animation purposes.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Loop Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   This varies where multiple bolts start along the spline from
+ one another.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Zap Direction:
+   </b>
+   <i>
+    Popup menu,  Default: all same
+   </i>
+   .
+   <br/>
+   Control which direction along the spline the zap renders.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       all same:
+      </i>
+     </b>
+     Normal zap direction for all splines.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        all reverse:
+       </i>
+      </b>
+      Flip the direction of all splines.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         even reverse:
+        </i>
+       </b>
+       Reverse the direction of even splines.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          odd reverse:
+         </i>
+        </b>
+        Reverse the direction of odd splines.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           random reverse:
+          </i>
+         </b>
+         Randomly pick normal or reverse for each spline.
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wiggle Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   By default the bolts automatically wiggle over time.
+This parameter provides a starting offset for these bolt
+perturbations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Wiggle Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The speed at which the bolts are perturbed
+automatically over time.  To animate changes in speed, set this
+to zero and animate the Wiggle Start parameter instead.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Jitter Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this is 0, the same random lightning will be
+used for every frame processed.  If it is 1, different random
+lightning is used for each frame.  If it is 2, new random lightning is
+used for every other frame, and so on.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bolt Noise:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Apply a noise pattern to the bolt before the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bolt Noise Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The frequency of the bolt noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bolt Noise Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The speed of the bolt noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branches Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Hide the core bolt and only show the branches.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branchiness:
+   </b>
+   <i>
+    Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   0 to 20.
+   <br/>
+   Scales the number of additional bolts that branch
+from the main bolt.  Set this to 0 for basic bolts with no extra
+branches.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branch Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   45,
+   <i>
+    Range:
+   </i>
+   0 to 180.
+   <br/>
+   The maximum angle of the random branches relative to
+the bolt they are branching off of.  If this is 0 the branches will be
+more lined up with the main bolt.  With larger values the branches will
+be more perpendicular to the main bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branch Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 3.
+   <br/>
+   The scaled length of the branches relative to the
+distance between the Start and End points.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branch Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.8 0.867 1].
+   <br/>
+   The color at the tips of the branches.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vary Branch Hue:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   This varies the end color between multiple
+ branches.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branch Style:
+   </b>
+   <i>
+    Popup menu,  Default: width uses dist
+   </i>
+   .
+   <br/>
+   Specify how the branch width should be calculated.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       width uses dist:
+      </i>
+     </b>
+     Brandh width is calculated based on
+ how far along the bolt the branch splits off.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        width uses bolt width:
+       </i>
+      </b>
+      Brandh width is calculated based on
+ how wide the bolt is as the point where the branch splits off.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Branch Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Width of branches relative to the main bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Bolts:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The number of independent forked lightning bolts to draw
+  for the secondary zap.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Bolt Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the secondary bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The length of the secondary bolts, beginning at Start Offset.  If
+less than 1, the bolts will not be drawn all the way from start to end.
+This can be useful for animating a lightning strike.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Wrinkle Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of wrinkles in the secondary bolts.  Decrease
+for straighter, smoother bolts or increase for more kinky bolts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Curve Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.35,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Similar to Wrinkle Amp but affects the general path of
+the secondary bolt.  If decreased, the bolt will stay closer to the line between
+the Start and End points.  If increased it can wander further away
+from this line.  This differs from the Wrinkle Amp parameter in that
+it can be used to make straighter bolts while still keeping the
+wrinkles at the detailed level.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Taper Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Determines how pointed the start of the secondary bolts are.
+If 0, the entire bolt will have equal width.  If 1, the bolts will
+thin out along their entire length for a pointed end.  If it is .5,
+the bolts will start thin and grow to the width parameter at the center
+of the bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Taper End:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Determines how pointed the end of the secondary bolts are.
+If 0, the entire bolt will have equal width.  If 1, the bolts will
+thin out along their entire length for a pointed end.  If it is .5,
+the bolts will start thinning out half way between the start and
+end points.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the seoncary zap.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Start Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   The color at the start of the secondary bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary End Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.557 0 0.557].
+   <br/>
+   The color at the tip of the secondary bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Vary Bolt Hue:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   This varies the color between multiple secondary
+ bolts. This does not change the color along a single bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Vary Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The amount of random variation in the width of the
+secondary bolts along their lengths.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Vary Endpoint:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Offsets the End location by a random amount within
+  a circle of this radius.  If Bolts is greater than 1, this can be
+  useful to spread out the different End points.  For example, you can
+  create multiple radiating bolts by increasing this radius and
+  placing the End point near the Start point.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.456,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   A separate random seed for the secondary bolt so that it moves
+ differently from the primary bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Start Offset:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The offset from the start point to begin drawing the
+bolts.  This can be useful for animating a lightning strike.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Loop Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   How fast to animate where the secondary zap
+starts along the spline.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Loop Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Where along the spline the zap starts.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Vary Loop Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   This varies where multiple bolts start along
+the spline from one another.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Direction:
+   </b>
+   <i>
+    Popup menu,  Default: all same
+   </i>
+   .
+   <br/>
+   Control which direction along the secondary spline
+  the zap renders.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       all same:
+      </i>
+     </b>
+     Normal zap direction for all secondary splines.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        all reverse:
+       </i>
+      </b>
+      Flip the direction of all secondary splines.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         even reverse:
+        </i>
+       </b>
+       Reverse the direction of even secondary splines.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          odd reverse:
+         </i>
+        </b>
+        Reverse the direction of odd secondary splines.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           random reverse:
+          </i>
+         </b>
+         Randomly pick normal or reverse for each secondary spline.
+         <br/>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Wiggle Start:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   By default the bolts automatically wiggle over time.
+This parameter provides a starting offset for these bolt
+perturbations.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Wiggle Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The speed at which the bolts are perturbed
+automatically over time.  To animate changes in speed, set this
+to zero and animate the Wiggle Start parameter instead.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Jitter Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this is 0, the noise texture will remain the same
+for every frame processed.  If it is 1, a new noise texture is used
+for each frame.  If it is 2, a new noise texture is used for every
+other frame, and so on.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Branchiness:
+   </b>
+   <i>
+    Default:
+   </i>
+   4,
+   <i>
+    Range:
+   </i>
+   0 to 20.
+   <br/>
+   Scales the number of additional bolts that branch
+from the main bolt.  Set this to 0 for basic bolts with no extra
+branches.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Branch Angle:
+   </b>
+   <i>
+    Default:
+   </i>
+   45,
+   <i>
+    Range:
+   </i>
+   0 to 180.
+   <br/>
+   The maximum angle of the random branches relative to
+the bolt they are branching off of.  If this is 0 the branches will be
+more lined up with the main bolt.  With larger values the branches will
+be more perpendicular to the main bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Branch Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Width of secondary branches compared to the secondary bolt.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Branch Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.7,
+   <i>
+    Range:
+   </i>
+   0 to 3.
+   <br/>
+   The scaled length of the secondary branches relative to the
+distance between the Start and End points.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Branch Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 0.8 1].
+   <br/>
+   The color at the tips of the secondary branches.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Secondary Vary Branch Hue:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   -1 to 1.
+   <br/>
+   This varies the end color between multiple
+ branches.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the glow applied to the lightning.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Threshold:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Threshold for what colors are glowed from the zap.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [0.97 0.87 1].
+   <br/>
+   The color of the glow applied to the lightning.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.3,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the glow applied to the lightning.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative red width of the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative green width of the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative blue width of the glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Falloff:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   -2 to 2.
+   <br/>
+   Boost or cut the distance that the glow extends.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Bias:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   -3 to 3.
+   <br/>
+   Amount to grow the outskirts of the thresholded result, or shrink if negative.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    After Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the glow distance for the secondary glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    After Glow Color:
+   </b>
+   <i>
+    Default rgb:
+   </i>
+   [1 1 1].
+   <br/>
+   Scales the color of the secondary glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Highlights:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Enables highlights using an electrical plasma texture.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Highlights Frequency:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.2,
+   <i>
+    Range:
+   </i>
+   0.01 or greater.
+   <br/>
+   The spatial frequency of the highlights.  Increase to zoom
+  out, decrease to zoom in.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Highlights Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Phase speed of the highlights.  If non-zero, the lines
+  are automatically animated to undulate at this rate.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Atmosphere:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Turn atmoosphere on and off.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Atmosphere Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Atmosphere gives the effect of rays shining through
+  a dusty atmosphere and picking up light or getting shadowed.
+  This parameter adjusts the amount, or amplitude, of the atmospheric
+  effect.  Zero gives smooth rays, higher values give more dusty look.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Atmosphere Freq:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Controls the frequency of the atmospheric noise.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Atmosphere Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   The cloudy noise in the atmosphere evolves over
+  time like real dust clouds; this parameter controls how fast the
+  cloud pattern changes over time.  Set to zero for a static pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Affect Alpha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this value is positive the output Alpha channel will
+  include some opacity from the lightning and its glow.  The maximum
+  of the red, green, and blue brightness is scaled by this value and
+  combined with the background Alpha at each pixel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine:
+   </b>
+   <i>
+    Popup menu,  Default: Screen
+   </i>
+   .
+   <br/>
+   Determines how the lightning and glow are combined with the Background.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Screen:
+      </i>
+     </b>
+     performs a blend function which can help prevent
+  overly bright results.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Add:
+       </i>
+      </b>
+      causes the lightning to be added to the background.  This gives
+  brighter glows over light backgrounds.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Zap Only:
+        </i>
+       </b>
+       displays the lightning over black, ignoring the source image.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Opacity:
+   </b>
+   <i>
+    Popup menu,  Default: Normal
+   </i>
+   .
+   <br/>
+   Determines the method used for dealing with
+opacity/transparency.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       All Opaque:
+      </i>
+     </b>
+     Use this option to render slightly faster when
+the input image is fully opaque with no transparency (alpha=1).
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Normal:
+       </i>
+      </b>
+      Process opacity normally.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         As Premult:
+        </i>
+       </b>
+       Process as if the image is already in
+premultiplied form (colors have been scaled by opacity).  This option
+also renders slightly faster than Normal mode, but the results will
+also be in premultiplied form, which is sometimes less correct.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the brightness of the background before
+combining with the lightning.  If 0, the result will contain only the
+lightning image over black.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Matte:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.05,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Matte input by this amount before using.  This
+can provide a smoother transition between the matted and unmatted
+areas.  It has no effect unless the Matte input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Matte:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If on, inverts the Matte input so the effect is applied
+to areas where the Matte is black instead of white.  This has no effect
+unless the Matte input is provided.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Matte Use:
+   </b>
+   <i>
+    Popup menu,  Default: Luma
+   </i>
+   .
+   <br/>
+   Determines how the Matte input channels are used to make
+a monochrome matte.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Spline:
+   </b>
+   <i>
+    Check-box, Default:
+   </i>
+   on.
+   <br/>
+   Turns on or off the screen user interface for adjusting the
+Start Point parameter.This parameter only appears on AE and Premiere,
+where on-screen widgets are supported.
+  </dd>
+ </dl>
+ See general info for
+ <a href="../general-info#motion-blur">
+  Motion Blur
+ </a>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../glow">
+       Glow
+      </a>
+      <br/>
+      <a href="../glowdist">
+       GlowDist
+      </a>
+      <br/>
+      <a href="../glowrainbow">
+       GlowRainbow
+      </a>
+      <br/>
+      <a href="../glowaura">
+       GlowAura
+      </a>
+      <br/>
+      <a href="../glowrings">
+       GlowRings
+      </a>
+      <br/>
+      <a href="../glowdarks">
+       GlowDarks
+      </a>
+      <br/>
+      <a href="../gloworthicon">
+       GlowOrthicon
+      </a>
+      <br/>
+      <a href="../glowedges">
+       GlowEdges
+      </a>
+      <br/>
+      <a href="../glownoise">
+       GlowNoise
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../zap">
+       Zap
+      </a>
+      <br/>
+      <a href="../zapto">
+       ZapTo
+      </a>
+      <br/>
+      <a href="../zapfrom">
+       ZapFrom
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

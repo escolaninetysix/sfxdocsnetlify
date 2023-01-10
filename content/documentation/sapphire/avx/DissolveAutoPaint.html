@@ -1,0 +1,475 @@
+{
+   "title": "Sapphire Plug-ins for AVX2: DissolveAutoPaint",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/DissolveAutoPaint.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="DissolveAutoPaint">
+     <h2>
+      S_DissolveAutoPaint
+     </h2>
+    </a>
+    Fade in a 'paint-brushed' version of the starting clip.  Decrease the complexity
+  of the painting until it is just a few colors, then transition to a 'paint-brushed' version of the second clip
+  which then grows in color and complexity until the second clip fades in.
+    <p>
+     In the Sapphire Transitions category.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       From:
+      </b>
+      Starts the transition with this clip.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       To:
+      </b>
+      Ends the transition with this clip.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/DissolveAutoPaint.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Amount:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The transition ratio between the From and To inputs.
+  A value of 0 gives only the From input and a value of 1 gives only
+  the To input.  By default this parameter automatically animates from
+  0 to 1 to perform a complete transition.  The curve controlling this
+  parameter can be adjusted for more detailed control over the timing
+  of the dissolve.  In the AVX1 version, Auto Trans must be disabled
+  for this parameter to be used.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Dissolve Speed:
+   </b>
+   <i>
+    Default:
+   </i>
+   3,
+   <i>
+    Range:
+   </i>
+   1 or greater.
+   <br/>
+   The speed of the dissolve between the From and To clips.
+  When set to 1, the dissolve takes place over the entire duration of
+  the effect. When set higher, the dissolve is
+  shorter, although the glow ramp-up and ramp-down still takes the
+  entire duration.  Setting this to 10 can make the transition
+  snappier and more like a flash-frame cut.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Paint Fade:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.25,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   How much time the transition should take at the ends of the transition to fade the painted look in over the starting clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Style:
+   </b>
+   <i>
+    Popup menu,  Default: Van Gogh
+   </i>
+   .
+   <br/>
+   Selects the style of brush strokes.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Van Gogh:
+      </i>
+     </b>
+     the stroke directions align with the edges found within the image.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Hairy Paint:
+       </i>
+      </b>
+      the strokes are perpendicular to the edges within the image.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Pointalize:
+        </i>
+       </b>
+       the strokes are cellular pointy shapes with no direction.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Min Brush Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.04,
+   <i>
+    Range:
+   </i>
+   0.0025 to 1.
+   <br/>
+   The size of the paint brush in the middle of the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Max Brush Size:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.4,
+   <i>
+    Range:
+   </i>
+   0.0025 to 1.
+   <br/>
+   The size of the paint brush at the beginning and end of the transition.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stroke Length:
+   </b>
+   <i>
+    Default:
+   </i>
+   2,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Determines the length of the brush strokes along
+  the directions of edges in the source clip.  If this is negative
+  you can switch from VanGogh to HairyPaint styles and vice versa.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Stroke Align:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Increase to smooth out the directions of the strokes
+  so nearby strokes are more parallel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Smooth Colors:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the source by this amount before generating
+  the brush strokes.  Increase to cause the colors of nearby strokes
+  to be more consistent.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Used to initialize the random number generator.  The actual
+seed value is not significant, but different seeds give different
+results and the same value should give a repeatable result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Jitter Frames:
+   </b>
+   <i>
+    Integer,  Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If this is 0, the locations of the strokes will
+  remain the same for every frame processed.  If it is 1, the
+  locations of the stokes are re-randomized for each frame.  If it is
+  2, they are re-randomized every second frame, and so on.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Sharpen:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The amount of post-process sharpening applied.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Sharpen Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width at which to apply the post-process
+  sharpening filter, relative to the stroke sizes.  Higher values
+  affect wider areas from the edges, lower values only affect
+  areas near sharp edges.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#transform">
+  Crop/Transform
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Resolution
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Clamp Output To Legal
+ </a>
+ ,
+ <a href="../general-info#other-params">
+  Bypass Effect
+ </a>
+ , and
+ <a href="../general-info#reset-defaults">
+  Reset
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+      <a href="../autopaint">
+       AutoPaint
+      </a>
+      <br/>
+      <a href="../sketch">
+       Sketch
+      </a>
+      <br/>
+      <a href="../cartoonpaint">
+       CartoonPaint
+      </a>
+      <br/>
+      <a href="../etching">
+       Etching
+      </a>
+      <br/>
+      <a href="../halftone">
+       HalfTone
+      </a>
+      <br/>
+      <a href="../halftonecolor">
+       HalfToneColor
+      </a>
+      <br/>
+      <a href="../mosaic">
+       Mosaic
+      </a>
+      <br/>
+      <a href="../flyseyehex">
+       FlysEyeHex
+      </a>
+      <br/>
+      <a href="../sharpen">
+       Sharpen
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

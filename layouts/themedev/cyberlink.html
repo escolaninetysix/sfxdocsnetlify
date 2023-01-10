@@ -1,0 +1,2262 @@
+{{ define "content" }}
+
+{{ $.Scratch.Set "video_count" 0 }}
+
+<style>
+@media only screen and (min-width: 1200px) {
+.image {
+display: inline;
+}
+}
+</style>
+
+{{ if .Params.carousel }}
+<div style="background-color: black;">
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {{ range $index, $item := .Params.carousel }}
+      <li data-target="#carousel" data-slide-to="{{ $index }}"{{ if eq $index 0 }} class="active"{{ end }}></li>
+      {{ end }}
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      {{ range $index, $item := .Params.carousel }}
+      <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+        <div class="inner">
+          {{ if $item.video_url }}
+          <video autoplay loop muted playsinline poster="{{ $item.image_url }}">
+            <source src="{{ $item.video_url }}">
+          </video>
+          {{ else }}
+		  {{ partial "imagehandlecarousel.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+
+          {{ end }}
+          {{ if $item.title }}
+          <div class="content" style="text-align: center;">
+            <div>
+              <p class="mb-0" style="line-height: 1; font-size: 47px; font-weight: 900;">{{ $item.title }}</p>
+              <p>
+                {{ $item.content | markdownify }}
+              </p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
+
+<div class="product-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        <nav>
+          <span class="product-links">
+            {{ if .Params.overview.content }}
+            <a href="#overview">Overview</a>
+            {{ end }}
+            {{ if .Params.whats_new }}
+            <a href="#whats-new">
+              {{ if .Params.whats_new_title }}
+              {{ .Params.whats_new_title }}
+              {{ else }}
+              What's New
+              {{ end }}
+            </a>
+            {{ end }}
+            {{ if .Params.videos }}
+            <a href="#videos">Videos</a>
+            {{ end }}
+            {{ if .Params.features.content }}
+            <a href="#features">Features</a>
+            {{ end }}
+            {{ if .Params.presets }}
+            <a href="#presets">Presets</a>
+            {{ end }}
+            {{ if .Params.hosts.content }}
+            <a href="#hosts">Hosts</a>
+            {{ end }}
+
+            {{ range .Params.sections }}
+            <a href="#{{ .title | urlize }}">{{ .title }}</a>
+            {{ end }}
+			{{ if .Params.price_list }}
+			<a href="#pricelist">Price List</a>
+			{{ end }}
+            {{ if gt ($.Scratch.Get "video_count") 0 }}
+            <a href="#effects">Effects</a>
+            {{ end }}            
+			{{ if .Params.unit_film_style }}
+            <a href="#filmstyle">Film Style</a>
+            {{ end }}
+			{{ if .Params.unit_stylize }}
+            <a href="#stylize">Stylize</a>
+            {{ end }}			
+			{{ if .Params.unit_lights }}
+            <a href="#lights">Lights</a>
+            {{ end }}			
+			{{ if .Params.unit_image_resto }}
+            <a href="#image_resto">Image Restoration</a>
+            {{ end }}
+          </span>
+        </nav>
+      </div>
+
+      <div class="col-lg-4 col-md-12">
+        <span class="float-lg-right product-btns">
+          <a href="{{ if .Params.download_url }}{{ .Params.download_url }}{{ else }}/downloads{{ end }}" class="btn btn-{{ .Params.key_color }}" id="ft">FREE TRIAL</a>
+          <a href="{{ .Params.buy_now_url }}" class="btn btn-{{ .Params.key_color }}">BUY NOW</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product-nav-placeholder"></div>
+<script>
+$(function () {
+  $(document).ready(function () {
+    var nav = $('.product-nav');
+    var navPosition = nav.offset().top;
+    navPosition -= $('header').height();
+    function update() {
+      if ($(this).scrollTop() > navPosition) {
+        nav.addClass("fixed");
+      } else {
+        nav.removeClass("fixed");
+      }
+    }
+    $(window).scroll(update);
+    update();
+  });
+});
+</script>
+
+{{ if .Params.overview.content }}
+<div style="font-style: normal;font-weight: 300;" class="section white text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-lg-pull">
+	  <div id="overview"></div>
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>{{ .Params.overview.title }}</b></h1><br>
+		
+		</div>
+      </div>
+      <div style="font-size:14pt;" class="col-lg-12 col-lg-push">
+
+        {{ if .Params.overview.video_url }}
+	    {{ partial "video-play.html" (dict "thumbnail_url" .Params.overview.thumbnail_url "video_url" .Params.overview.video_url) }}
+		{{ end }}
+		
+		
+		{{ if not (.Params.overview.image_url2) }}
+      
+					  {{ partial "imagehandlewithdir.html" (dict "image_url" .Params.overview.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ else }}
+		<div id="container1">
+        <img class="img-fluid" src="{{ .Params.overview.image_url1 }}" />
+		<img class="img-fluid" src="{{ .Params.overview.image_url2 }}" />
+		</div>
+        {{ end }}
+		
+		<div class="text-left">
+          <br>{{ .Params.overview.content | markdownify }}
+      </div>
+    </div>
+  
+</div>
+</div>
+{{ end }}
+
+{{ if .Params.features.content }}
+<div style="font-style: normal;font-weight: 300;" class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col" style="font-size:14pt;">
+        <h2 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;" id="features">Features</h2>
+        {{ .Params.features.content | markdownify }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+<script>
+$(function(){
+  $("#container1").twentytwenty();
+});
+</script>
+
+
+{{ if .Params.whats_new }}
+<div  style="font-style: normal;font-weight: 300;" class="section text-center">
+  <div class="container">
+    <div class="row">
+
+      <div class="col">
+        {{ $items := .Params.whats_new }}
+        {{ range $index, $item := .Params.whats_new }}
+
+          <div class="col-md-12" style="font-size:14pt;">
+		        <div id="whats-new"></div>
+                       <br><h2 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;">{{ $item.title }}</h2>
+					   		
+			{{ if $item.image_url }}
+ <br>{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+            
+
+            {{ else if $item.video_url }}
+	    <br>{{ partial "video-play.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}
+            {{ end }}
+			
+
+
+            {{ if $item.content }}
+            <div class="text-left">
+              <br>{{ $item.content | markdownify }}
+            </div>
+            {{ end }}
+ 
+        </div>
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+      </div>
+  </div>
+  </div>
+</div>
+
+
+{{ end }}
+
+{{ if .Params.videos }}
+<div style="font-style: normal;font-weight: 300;" class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;" id="videos"><b>Videos</b></h1>
+      </div>
+    </div>
+    <div class="row">
+      {{ range .Params.videos }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .Params.url }}">
+            <img class="img-fluid" src="{{ .thumbnail_url }}" />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .Params.url }}">{{ .title }}</a>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+    {{ if .Params.video_see_more_url }}
+    <div class="row">
+      <div class="col">
+        <p>
+          <a href="{{ .Params.video_see_more_url }}">See More Videos</a>
+        </p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+
+
+{{ if .Params.presets }}
+<div  style="font-style: normal;font-weight: 300;" class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 id="presets">Presets</h3>
+        <div class="row">
+          {{ range .Params.presets }}
+          <div class="col-md-12">
+            <img class="img-fluid" src="{{ .thumbnail_url }}" />
+            <p>
+              {{ .title }}
+            </p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.hosts.content }}
+<div style="font-style: normal;font-weight: 300;" class="section text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col" style="font-size:14pt;">
+        <h2 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;" id="hosts">Hosts</h2>
+        <center>{{ .Params.hosts.content | markdownify }}</center>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ range .Params.sections }}
+<div style="font-style: normal;font-weight: 300;font-size:14pt;" class="section {{ if (eq .background "Gray") }}gray{{ else }}white{{ end }}">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;" id="{{ .title | urlize }}"><b>{{ .title }}</b></h1>
+      </div>
+    </div>
+    {{ if (eq .type "Two Up") }}
+    {{ $items := .items }}
+    {{ range $index, $item := .items }}
+    
+      <div class="col-md-12">
+	  <br><h2 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;">{{ $item.title }}</h2><br>
+        {{ if $item.single_image_url }}
+
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+
+		{{ end }}
+		
+        {{ if $item.single_image_url2 }}
+
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url2 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+
+		{{ end }}		
+		
+		{{ if $item.single_image_url3 }}
+
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url3 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+
+		{{ end }}			
+		
+		{{ if $item.single_image_url4 }}
+
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url4 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+
+		{{ end }}			
+		
+		{{ if $item.single_image_url5 }}
+
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url5 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+
+		{{ end }}		
+		
+		{{ if $item.single_image_url07 }}
+
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.single_image_url07 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+
+		{{ end }}	
+		
+		{{ if and ($item.image_url1) ($item.image_url2)  }}
+		<div id="container">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url1 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url2 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}
+		
+		{{ if and ($item.image_url3) ($item.image_url4)  }}
+		<div id="container1">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url3 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url4 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}		
+		
+		{{ if and ($item.image_url5) ($item.image_url6)  }}
+		<div id="container2">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url5 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url6 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}		
+		{{ if and ($item.image_url7) ($item.image_url8)  }}
+		<div id="container3">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url7 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url8 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}		
+		{{ if and ($item.image_url9) ($item.image_url10)  }}
+		<div id="container4">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url9 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url10 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}		
+		{{ if and ($item.image_url11) ($item.image_url12)  }}
+		<div id="container5">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url11 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url12 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}
+		{{ if and ($item.image_url13) ($item.image_url14)  }}
+		<div id="container6">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url13 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url14 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}
+		{{ if and ($item.image_url15) ($item.image_url16)  }}
+		<div id="container7">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url15 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url16 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}
+		{{ if and ($item.image_url17) ($item.image_url18)  }}
+		<div id="container8">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url17 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url18 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}	
+		{{ if and ($item.image_url19) ($item.image_url20)  }}
+		<div id="container9">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url19 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url20 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}	
+		{{ if and ($item.image_url21) ($item.image_url22)  }}
+		<div id="container10">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url21 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url22 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}	
+		{{ if and ($item.image_url23) ($item.image_url24)  }}
+		<div id="container11">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url23 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url24 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}		
+		{{ if and ($item.image_url25) ($item.image_url26)  }}
+		<div id="container12">
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url25 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+		{{ partial "imagehandlewithdir.html" (dict "image_url" $item.image_url26 "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}<br>
+		</div>
+		{{ end }}
+		
+        {{ if $item.video_url }}
+	    {{ partial "video-play.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}
+        {{ end }}
+		
+      </div>
+     
+        
+        {{ if $item.content }}
+        <div class="text-left">
+          <br>{{ $item.content | markdownify }}
+        </div>
+        {{ end }}
+
+    
+    {{ if (ne $index (add (len $items) -1)) }}
+    <hr class="hidden-sm-down"/>
+    {{ end }}
+    {{ end }}
+    {{ else if (eq .type "Thumbnails") }}
+    <div class="row">
+      {{ range .items }}
+      <div class="col-lg-3">
+        <p>
+          <a href="{{ .video_url }}">
+            <img class="img-fluid" src="{{ .image_url }}" />
+          </a>
+        </p>
+        <p>
+          <a href="{{ .video_url }}">{{ .title }}</a>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ if .content }}
+    <div class="row">
+      <div class="col">
+        {{ .content | markdownify }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+{{ if .Params.unit_film_style }}
+<div id="filmstyle"></div>
+<script>
+var videos = [
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "Fast Film Glow",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-fast-film-glow\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/bqs1j-TVnkA\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Film Style",
+      
+    },
+    "content": "The BCC Fast Film Glow filter is a 100% GPU accelerated filter&nbsp;which uses\nOpenCL to deliver the same look and features of the original BCC Film Glow but\nwith dramatically improved performance.\nBCC Fast Film Glow generates a traditional film glow look where the frame is\nsubjected to a strong light source causing the image to bloom.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  }, 
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "Fast Film Process",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-fast-film-process\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/uhw78hpMP68\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Film Style",
+      
+    },
+    "content": "The BCC Fast Film Process filter is a 100% GPU accelerated version of the original BCC Film Process filter which uses OpenCL to deliver the same look and features as the original but with dramatically improved performance. Fast Film Process allows you to give video footage the appearance of having been shot on film.\nThis filter allows you to integrate different types of media in a single project. For example, match computer-generated animations with archival film stock, make video appear like color-pushed film, infrared film, or color reversal film or make images appear warmer or cooler.\nYou may want to combine this filter with the BCC Deinterlace, BCC Film Grain, BCC Film Damage and BCC Match Grain filters for the most realistic results.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "Film Damage",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-film-damage\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/7PodczBIQbQ\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Film Style",
+      
+    },
+    "content": "The BCC Film Damage filter simulates the appearance of old film stock,\nallowing you to create a wide variate of age related damage.\nAmong some of the features of the filter, you can add:\n Scratches Grain Particles Hair or Fibers Dirt Dust Water Spots  BCC Film Damage also allows you to simulate camera shake and a flickering\nimage.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "Film Grain",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-film-grain\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/XnuJcILp0UE\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Film Style",
+      
+    },
+    "content": "The** BCC Film Grain** filter generates an auto-animated noise effect designed\nto simulate the appearance of grain particles in the emulsion of movie or\nphoto film.\nBuilt in filter parameters provide the ability to fine tune:\n Film Tinting Grain size Monochromatic or&nbsp;RGB grain amount  The built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "Two Strip Color",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-two-strip-color\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/duvx2nTElTc\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Film Style",
+      
+    },
+    "content": "The BCC&nbsp;Two Strip Color filter simulates the look of vintage two strip or\nthree strip film color processes. It allows for greater control over the\nmixing of color through additive and suptractive processes to simulate a look\nsimilar to Technicolor.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  
+  {
+    "x": {{ $.Scratch.Set "video_count" 1 }},
+    "title": "Vignette",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-vignette\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/64JJ6gkaW10\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Film Style",
+      
+    },
+    "content": "The BCC Vignette filter provides a convenient way to darken and \/ or blur the outer region of the input clip. Built-in controls allow for the vignette shape to be anything between an oval and a square, with hard or completely smooth feathered edges and the built-in apply modes offer the ability to generate truly unique and interesting vignette effects.\n",
+  },
+  
+];
+</script>
+{{ if gt ($.Scratch.Get "video_count") 0 }}
+<div style="font-style: normal;font-weight: 300;" class="section gray text-left">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>FILM STYLE</b></h1>
+	  </div>
+     </div>
+    <div class="row">
+      <div class="col">
+ 				  {{ partial "imagehandlewithdir.html" (dict "image_url" .Params.unit_film_style_image "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+      </div>
+    </div>   
+	<div class="row">
+      <div class="col">
+ 				  <p style="font-size:14pt;">{{ .Params.unit_film_style_content }}</p>
+      </div>
+    </div>
+	<div class="row">
+	<div class="col">
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
+
+<div id="app12" v-cloak>
+  <div class="row">
+    <div class="col-lg-3 mb-3">
+      <input v-model="searchText" type="search" placeholder="Search" class="form-control mb-1" />
+      <div class="mb-3">
+        <p style="font-size: 10px; font-weight: bold">
+          ${ filtered_videos.length } VIDEO<template v-if="filtered_videos.length != 1">S</template> FOUND.
+          ${ selected_tag_count } TAG<template v-if="selected_tag_count != 1">S</template> SELECTED.
+        </p>
+      </div>
+      <div id="tagging">
+        <template v-for="category in categories">
+          <h4>
+            <a data-toggle="collapse" data-parent="#tagging" :href="'#' + category">
+              ${ category | capitalize } <i class="fa fa-caret-down"></i>
+            </a>
+          </h4>
+          <div :id="category" class="collapse" :class="{ show: (categories.length == 1) || (selectedTags[category].length != 0) }">
+            <div v-for="tag in tags[category]" class="form-check">
+              <label class="form-check-label ml-3" style="font-size: 16px">
+                <input v-model="selectedTags[category]" :value="tag" type="checkbox" class="form-check-input" /> ${ tag }
+              </label>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="col-lg-9 mb-3">
+      <template v-if="filtered_videos.length == 0">
+        <p class="text-center">
+          No videos found.
+        </p>
+      </template>
+      <template v-else>
+	  	   <div style="width:100%; height:500px; overflow-x:hidden;overflow-y:scroll;padding-right:10px;padding-left:10px;">
+           <div class="row">
+          <template v-for="(video, index) in filtered_videos">
+            <div class="col-md-4">
+              <div class="img-16x9" :id="video.video_name">
+                <a :href="video.url">
+				<div id="imgContainer" style="position:relative;height:100%;width:100%;">
+                  <img :id="video.video_name" class="img-fluid w-100 h-100" loading="lazy" :src="video.thumbnail_url" />
+                  <img id="play" class="img-fluid" style="display:none;" loading="lazy" :name="video.video_name" src="https://borisfx-com-res.cloudinary.com/image/upload/w_50,h_50/v1600811322/blue_button._pause.png" />
+                </div>
+				</a>
+                <a :href="video.url" class="w-100 h-100">
+                  <div class="w-100 h-100 video-rollover">
+                    <p class="p-3" v-html="$options.filters.truncate(video.content)">
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <p style="font-size: 14px">
+                ${ video.title } 
+              </p>              
+			  <input type="hidden" :value="video.video_name" style="font-size: 14px" :id="video.video_name" state="" :sid="video.video_id">
+            </div>
+          </template>
+        </div>
+		</div>
+      </template>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+
+var categories = [];
+var tags = {};
+var selectedTags = {};
+
+
+
+for (var v in videos) {
+  var video = videos[v];
+  if (!video.tagging) {
+    continue;
+  }
+  for (var c in Object.keys(video.tagging)) {
+    var category = Object.keys(video.tagging)[c];
+    if (!tags[category]) {
+      categories.push(category);
+      tags[category] = [];
+      selectedTags[category] = [];
+    }
+    if (typeof video.tagging[category] == 'string') {
+      var tag = video.tagging[category];
+      if (tag != '' && tags[category].indexOf(tag) == -1) {
+        tags[category].push(tag);
+      }
+    }
+    else {
+      for (var t in video.tagging[category]) {
+        var tag = video.tagging[category][t];
+        if (tag != '' && tags[category].indexOf(tag) == -1) {
+          tags[category].push(tag);
+        }
+      }
+    }
+  }
+}
+
+for (var c in Object.keys(tags)) {
+  var category = Object.keys(tags)[c];
+  tags[category].sort();
+}
+categories.sort();
+
+// HACK force ordering of categories in videos section
+if (window.location.pathname == '/videos/') {
+  categories = [
+    'product',
+    'series',
+    'feature',
+    'host',
+    'language',
+  ];
+}
+
+// set search and select tags from query params
+var queryParamTags = getQueryParameter('tags') || '';
+queryParamTags = queryParamTags.split(',');
+for (var q in queryParamTags) {
+  var category = queryParamTags[q].split(':')[0];
+  var tag = queryParamTags[q].split(':')[1];
+  if (category && tag) {
+    selectedTags[category].push(tag);
+  }
+}
+var queryParamSearch = getQueryParameter('search') || '';
+var searchText = queryParamSearch;
+
+function updateQuery() {
+  var selectedTagsString = '';
+  var values = [];
+  var firstTag = true;
+  for (var c in Object.keys(this.selectedTags)) {
+    var category = Object.keys(this.selectedTags)[c];
+    for (var t in this.selectedTags[category]) {
+      var tag = this.selectedTags[category][t];
+      if (!firstTag)
+        selectedTagsString += ',';
+      else
+        firstTag = false;
+      selectedTagsString += category + ':' + tag;
+    }
+  }
+  var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?tags=' + selectedTagsString + '&search=' + this.searchText;
+  window.history.pushState({path:newurl},'',newurl);
+}
+
+new Vue({
+
+  el: '#app12',
+  delimiters: ['${', '}'],
+
+  data: {
+    searchText: searchText,
+    categories: categories,
+    tags: tags,
+    selectedTags: selectedTags,
+    offset: 0,
+    videos: videos,
+	watched: true
+  },
+
+  computed: {
+
+    filtered_videos: function () {
+
+      this.offset = 0;
+
+      function formatSearchText(searchText) {
+        return searchText.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+      }
+      var searchText = formatSearchText(this.searchText);
+
+      var result = [];
+      for (var v in this.videos) {
+        var video = this.videos[v];
+
+        var matches_tags = true;
+        for (var c in Object.keys(this.selectedTags)) {
+          var category = Object.keys(this.selectedTags)[c];
+          var matches_category = false;
+          if (this.selectedTags[category].length == 0) {
+            matches_category = true;
+          }
+          for (var t in this.selectedTags[category]) {
+            var tag = this.selectedTags[category][t];
+            if (
+              video.tagging &&
+              video.tagging[category] &&
+              (
+                video.tagging[category].indexOf(tag) != -1 ||
+                video.tagging[category] == tag
+              )
+            ) {
+              matches_category = true;
+            }
+          }
+          if (!matches_category) {
+            matches_tags = false;
+            break;
+          }
+        }
+
+        var matches_search = (
+          video.title.search(new RegExp(searchText, 'i')) != -1 ||
+          video.content.search(new RegExp(searchText, 'i')) != -1
+        );
+
+        if (matches_tags && matches_search) {
+          result.push(video);
+        }
+
+      }
+
+      result.sort(function (a, b){
+        a = new Date(a.date),
+        b = new Date(b.date);
+        if (a < b) return 1;
+        if (a > b) return -1;
+        return 0;
+      });
+
+      return result;
+
+    },
+
+    selected_tag_count: function() {
+      var values = [];
+      for (var c in Object.keys(this.selectedTags)) {
+        var category = Object.keys(this.selectedTags)[c];
+        Array.prototype.push.apply(values, this.selectedTags[category]);
+      }
+      return [].concat.apply([], values).length;
+    },
+
+  },
+
+  watch: {
+
+    selectedTags: {
+      handler: updateQuery,
+      deep: true,
+    },
+    searchText: {
+      handler: updateQuery,
+      deep: true,
+    },
+
+  },
+
+
+  filters: {
+    capitalize: function (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+    truncate: function(string) {
+      return string.substring(0, 150) + '...';
+    },    
+  },
+
+});
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ end }}
+
+
+{{ if .Params.unit_stylize }}
+<div id="stylize"></div>
+<script>
+var videos = [
+  {
+    "x": "",
+    "title": "Mosaic",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-mosaic\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/Ej5WDHoQgHc\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "BCC Mosaic allows you to pixelate images to achieve a range of mosaic effects using a few simple parameters and a PixelChooser.\n",
+  },
+  {
+    "x": "",
+    "title": "Emboss",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-emboss\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/2WENHLoHvb8\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "BCC Emboss simulates the appearance of an embossed or raised image by converting the source to a solid color and lighting the edges in the source’s luma channel.\n",
+  },
+  {
+    "x": "",
+    "title": "Color Choker",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-color-choker\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/EnVqAK_sQzI\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Color Choker filter posterizes and blurs colors in an image clip\nfor creative and artistic results. The media clip colors that the filter is\napplied to can be attenuated or remapped individually through the many filter\nparameters or together as an RGB group. Included in the filter is a checkbox\ncontrol to convert image to monochrome before applying the built in color blur\nor choke.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Colorize Glow",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-colorize-glow\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/sW-TR3QdL_I\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Colorize Glow filter is similar to the Glow filter but it generates\nthe glow from a single channel and then applies a gradient to the glow. The\nColorized Glow can be composited with the original image or viewed by itself.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Damaged TV",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-damaged-tv\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/xuTV8p2W88k\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The** BCC Damaged TV** filter&nbsp;is designed to emulate the appearance of a CRT\nstyle television set that is receiving a bad antenna signal or is in need of\nrepair.\nThe filter allows users to fine tune a number of effects such as:\n Gun offset Distorted edges Image roll Noise Scan lines Interference lines  This powerful filter features both fully automatic or manual modes of\noperation. When using the filter in automatic mode, the filter will\nautomatically animate image roll, scan lines, noise or any other visible\nparameter – and even though the filter is being used in automatic mode, the\nuser retains full control over every parameter.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Drop Shadow",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-drop-shadow\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/yFif0rsNkro\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Drop Shadow filter allows you to apply an animatable drop shadow\nto titles or&nbsp;clips in the timeline.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Edge Grunge",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-edge-grunge\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/8IPTV0cOQgc\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Edge Grunge filter can be used to create&nbsp;stylized titles that\nglow, burn and disappear over time.\nAt default settings it is designed to be applied to titles or other moderately\nsized alpha objects. When applied to large alpha objects or non-alpha video\nit can produce overly blown out levels by default. This can be moderated by\ndisabling the glow group to permit adding erosion to just the edges of the\nthese larger objects. The primary use of this filter is with text and other\nalpha objects.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Glow Alpha Edges",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-glow-alpha-edges\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/OtlI22Vew9s\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Glow Alpha Edges filter applies a glow that adheres closely to the\ncontours of the image clip’s alpha channel or mask. This filter is designed for\nuse with masks or images that have an alpha channel.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Grunge",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-grunge\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/2QeTYRU1Vfk\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Grunge filter combines procedural algorithmic methods with real\nphotographic image textures that can be used on titles to create unique\ngrungy, degraded, torn-up, or melting looks. These same effects can be\napplied to background plates.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "LED",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-led\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/rmWy_EBjcUo\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC LED filter was designed to make an image, clip or text element with alpha appear as though it was constructed out of an array of blinking or solid LED lights similar to the display boards that we see in todays sports stadiums.\nBy default, the lights take their color from the clip to which it was applied and can be set to either square or round diodes or “bulbs”.&nbsp;Alternately the filter can apply a tint of color over the media element to which it was applied.\nThis filter uses OpenGL to benefit from hardware acceleration. All of the processing is done by the GPU of the graphics card instead of the CPU, which greatly improves performance while working with these filters within the host system and significantly reduces render times.\nThe built in PixelChooser, with integrated mocha planar tracking allows for greater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls, please click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Misalignment",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-misalignment\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/0zAMLYkA6UQ\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Misalignment filter simulates the effect of misaligned RGB color\nchannels by seperating the RGB channels.\nIn addition, the integrated Beat Reactor control suite allows the user to\ndrive the effect properties based on the contents of an audio track.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Prism",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-prism\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/eaUhnn-1kLI\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Prism filter can be used to simulate the photographic effect of\nchromatic aberration, where a bad lens can create prismatic color fringing\nalong edges of contrast within the image.\nThe filter can also be used to create&nbsp;wipe or blur effects, and includes\ncontrols for image rotation along 2 points of one axis within the image, which\nwith some settings leads to a pleasant twisting blurred effect.\nThis filter uses OpenGL to benefit from hardware acceleration. All of the\nprocessing is done by the GPU of the graphics card instead of the CPU, which\ngreatly improves performance while working with these filters within the host\nsystem and significantly reduces render times.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "RGB Edges",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-rgb-edges\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/r_iwGbrQwb4\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC RGB Edges filter finds edges in each RGB channel independently,\ncreates a new RGB image from these edges, and applies the new image to the\nsource using the chosen Apply Mode and Apply Mix.\nThe results obtained with the edge filters vary depending on the media to which\nthe filter is applied and the exact settings used. Because they create edge\neffects by emphasizing differences between adjacent pixels, edge filters are\nvery sensitive to parameter adjustments. Often a small change in a parameter\nsetting can dramatically affect the result.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "RGB Pixel Noise",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-rgb-pixel-noise\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/wXhMTH93ydo\/hqdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC RGB Pixel Noise filter applies noise to each of the RGB color\nchannels independently. Alternately, you can use this filter to apply noise to\nthe source image’s luminance channel without changing the pixels’ colors.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Scanline",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-scanline\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/eBqyt9blrHU\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Scanline&nbsp;filter is designed to generate rolling RGB scanlines over\nthe source image clip, emulating the effect of a computer monitor that has\nbeen&nbsp;was shot on video tape or film.\nThe RGB bars rolling scan lines that the filter generates can be offset from\neach other in yx space and time to generate photorealistic effects. The filter\nalso includes a user controlled noise generator function for added realism.\nThis filter uses OpenGL to benefit from hardware acceleration. All of the\nprocessing is done by the GPU of the graphics card instead of the CPU, which\ngreatly improves performance while working with these filters within the host\nsystem and significantly reduces render times.\nThe built in PixelChooser, with integrated mocha planar tracking, allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Scatterize",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-scatterize\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/Vt8r78NQb5g\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Scatterize filter shuffles the pixels in the source image, creating\na scattered effect.\nThe built in PixelChooser, with integrated mocha planar tracking, allows for\ngreater control over which areas of the image the filter should affect.&nbsp;In\naddition, the integrated Beat Reactor control suite allows the user to drive\nthe effect properties based on the contents of an audio track.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Video Glitch",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-video-glitch\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/2_MfJup_xRE\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Stylize",
+      
+    },
+    "content": "The BCC Video Glitch filter is an auto-animating filter effect for simulating some of the kinds of errors and artifacts that can be apparent during digital video playback. It’s useful as a style element on video or titles to create a sense of energy and&nbsp;movement.\nIt makes use of auto-animation so it requires little or no keyframing, and it also includes an integrated Beat&nbsp;Reactor for allowing its animation to be directly driven by audio.\nBCC Video Glitch allows a single glitch to last for more than one frame with controls over how that glitch grows and fades over its lifetime, thus allowing more dynamic and&nbsp;realistic glitch behavior that&nbsp;can be achieved with glitches that last only a single frame. A special Curves preview mode allows visualizing the relative locations of the glitches over time.\nTo learn more about this filter, and see a breakdown of the various controls, please click here.\n",
+  },
+
+];
+</script>
+{{ if gt ($.Scratch.Get "video_count") 0 }}
+<div style="font-style: normal;font-weight: 300;" class="section white text-left">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>STYLIZE</b></h1>
+	  </div>
+     </div>
+    <div class="row">
+      <div class="col">
+ 				  {{ partial "imagehandlewithdir.html" (dict "image_url" .Params.unit_stylize_image "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+      </div>
+    </div>   
+	<div class="row">
+      <div class="col">
+ 				  <p style="font-size:14pt;">{{ .Params.unit_stylize_content }}</p>
+      </div>
+    </div>
+	<div class="row">
+	<div class="col">
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
+
+<div id="app122" v-cloak>
+  <div class="row">
+    <div class="col-lg-3 mb-3">
+      <input v-model="searchText" type="search" placeholder="Search" class="form-control mb-1" />
+      <div class="mb-3">
+        <p style="font-size: 10px; font-weight: bold">
+          ${ filtered_videos.length } VIDEO<template v-if="filtered_videos.length != 1">S</template> FOUND.
+          ${ selected_tag_count } TAG<template v-if="selected_tag_count != 1">S</template> SELECTED.
+        </p>
+      </div>
+      <div id="tagging">
+        <template v-for="category in categories">
+          <h4>
+            <a data-toggle="collapse" data-parent="#tagging" :href="'#' + category">
+              ${ category | capitalize } <i class="fa fa-caret-down"></i>
+            </a>
+          </h4>
+          <div :id="category" class="collapse" :class="{ show: (categories.length == 1) || (selectedTags[category].length != 0) }">
+            <div v-for="tag in tags[category]" class="form-check">
+              <label class="form-check-label ml-3" style="font-size: 16px">
+                <input v-model="selectedTags[category]" :value="tag" type="checkbox" class="form-check-input" /> ${ tag }
+              </label>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="col-lg-9 mb-3">
+      <template v-if="filtered_videos.length == 0">
+        <p class="text-center">
+          No videos found.
+        </p>
+      </template>
+      <template v-else>
+	  	   <div style="width:100%; height:500px; overflow-x:hidden;overflow-y:scroll;padding-right:10px;padding-left:10px;">
+           <div class="row">
+          <template v-for="(video, index) in filtered_videos">
+            <div class="col-md-4">
+              <div class="img-16x9" :id="video.video_name">
+                <a :href="video.url">
+				<div id="imgContainer" style="position:relative;height:100%;width:100%;">
+                  <img :id="video.video_name" class="img-fluid w-100 h-100" loading="lazy" :src="video.thumbnail_url" />
+                  <img id="play" class="img-fluid" style="display:none;" loading="lazy" :name="video.video_name" src="https://borisfx-com-res.cloudinary.com/image/upload/w_50,h_50/v1600811322/blue_button._pause.png" />
+                </div>
+				</a>
+                <a :href="video.url" class="w-100 h-100">
+                  <div class="w-100 h-100 video-rollover">
+                    <p class="p-3" v-html="$options.filters.truncate(video.content)">
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <p style="font-size: 14px">
+                ${ video.title } 
+              </p>              
+			  <input type="hidden" :value="video.video_name" style="font-size: 14px" :id="video.video_name" state="" :sid="video.video_id">
+            </div>
+          </template>
+        </div>
+		</div>
+      </template>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+
+var categories = [];
+var tags = {};
+var selectedTags = {};
+
+
+
+for (var v in videos) {
+  var video = videos[v];
+  if (!video.tagging) {
+    continue;
+  }
+  for (var c in Object.keys(video.tagging)) {
+    var category = Object.keys(video.tagging)[c];
+    if (!tags[category]) {
+      categories.push(category);
+      tags[category] = [];
+      selectedTags[category] = [];
+    }
+    if (typeof video.tagging[category] == 'string') {
+      var tag = video.tagging[category];
+      if (tag != '' && tags[category].indexOf(tag) == -1) {
+        tags[category].push(tag);
+      }
+    }
+    else {
+      for (var t in video.tagging[category]) {
+        var tag = video.tagging[category][t];
+        if (tag != '' && tags[category].indexOf(tag) == -1) {
+          tags[category].push(tag);
+        }
+      }
+    }
+  }
+}
+
+for (var c in Object.keys(tags)) {
+  var category = Object.keys(tags)[c];
+  tags[category].sort();
+}
+categories.sort();
+
+// HACK force ordering of categories in videos section
+if (window.location.pathname == '/videos/') {
+  categories = [
+    'category',
+    'product',
+    'feature',
+    'host',
+    'level',
+    'unit',
+    'language',
+  ];
+}
+
+// set search and select tags from query params
+var queryParamTags = getQueryParameter('tags') || '';
+queryParamTags = queryParamTags.split(',');
+for (var q in queryParamTags) {
+  var category = queryParamTags[q].split(':')[0];
+  var tag = queryParamTags[q].split(':')[1];
+  if (category && tag) {
+    selectedTags[category].push(tag);
+  }
+}
+var queryParamSearch = getQueryParameter('search') || '';
+var searchText = queryParamSearch;
+
+function updateQuery() {
+  var selectedTagsString = '';
+  var values = [];
+  var firstTag = true;
+  for (var c in Object.keys(this.selectedTags)) {
+    var category = Object.keys(this.selectedTags)[c];
+    for (var t in this.selectedTags[category]) {
+      var tag = this.selectedTags[category][t];
+      if (!firstTag)
+        selectedTagsString += ',';
+      else
+        firstTag = false;
+      selectedTagsString += category + ':' + tag;
+    }
+  }
+  var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?tags=' + selectedTagsString + '&search=' + this.searchText;
+  window.history.pushState({path:newurl},'',newurl);
+}
+
+new Vue({
+
+  el: '#app122',
+  delimiters: ['${', '}'],
+
+  data: {
+    searchText: searchText,
+    categories: categories,
+    tags: tags,
+    selectedTags: selectedTags,
+    offset: 0,
+    videos: videos,
+	watched: true
+  },
+
+  computed: {
+
+    filtered_videos: function () {
+
+      this.offset = 0;
+
+      function formatSearchText(searchText) {
+        return searchText.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+      }
+      var searchText = formatSearchText(this.searchText);
+
+      var result = [];
+      for (var v in this.videos) {
+        var video = this.videos[v];
+
+        var matches_tags = true;
+        for (var c in Object.keys(this.selectedTags)) {
+          var category = Object.keys(this.selectedTags)[c];
+          var matches_category = false;
+          if (this.selectedTags[category].length == 0) {
+            matches_category = true;
+          }
+          for (var t in this.selectedTags[category]) {
+            var tag = this.selectedTags[category][t];
+            if (
+              video.tagging &&
+              video.tagging[category] &&
+              (
+                video.tagging[category].indexOf(tag) != -1 ||
+                video.tagging[category] == tag
+              )
+            ) {
+              matches_category = true;
+            }
+          }
+          if (!matches_category) {
+            matches_tags = false;
+            break;
+          }
+        }
+
+        var matches_search = (
+          video.title.search(new RegExp(searchText, 'i')) != -1 ||
+          video.content.search(new RegExp(searchText, 'i')) != -1
+        );
+
+        if (matches_tags && matches_search) {
+          result.push(video);
+        }
+
+      }
+
+      result.sort(function (a, b){
+        a = new Date(a.date),
+        b = new Date(b.date);
+        if (a < b) return 1;
+        if (a > b) return -1;
+        return 0;
+      });
+
+      return result;
+
+    },
+
+    selected_tag_count: function() {
+      var values = [];
+      for (var c in Object.keys(this.selectedTags)) {
+        var category = Object.keys(this.selectedTags)[c];
+        Array.prototype.push.apply(values, this.selectedTags[category]);
+      }
+      return [].concat.apply([], values).length;
+    },
+
+  },
+
+  watch: {
+
+    selectedTags: {
+      handler: updateQuery,
+      deep: true,
+    },
+    searchText: {
+      handler: updateQuery,
+      deep: true,
+    },
+
+  },
+
+
+  filters: {
+    capitalize: function (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+    truncate: function(string) {
+      return string.substring(0, 150) + '...';
+    },    
+  },
+
+});
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+{{ end }}
+
+{{ if .Params.unit_lights }}
+<div id="lights"></div>
+<script>
+var videos = [
+  {
+    "x": "",
+    "title": "Glare",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-glare\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/EsWjJizNdjA\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Glare filter creates an effect producing a sharp reflection. A luminance map creates the glare based on bright areas in the image.\n",
+  },
+  {
+    "x": "",
+    "title": "Spotlight",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-spotlight\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/x2xpvyvvD3k\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "BCC Spotlight generates a realistic spotlight that can be placed and aimed at a target point on the image using on-screen position points. A range of parameters provide full control over the shape, width, color, and elevation of the light; offer edge lighting capabilities; and even allow you to place gels over the light source.\n",
+  },
+  {
+    "x": "",
+    "title": "Glint",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-glint\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/HlUOjrDdd5Q\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Glint filter creates a sparkle or ray burst effect. A luminance map creates the glints based on bright areas in the image.\n",
+  },
+  {
+    "x": "",
+    "title": "Edge Lighting",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-edge-lighting\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/KiZ4OTPWUyY\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Edge Lighting filter finds edges based on pixel-to-pixel differences\nin any chosen channel in the source image or in the Edge Source Track and\napplies light to these edges. Highlights and Shadows are independently\ncomputed and can be blurred and applied separately to the source.\n|\n         Source Layer Filtered Effect    The built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Glitter",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-glitter\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/BW9fa0HBUAU\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Glitter filter creates a glittering or sparkling light effect. A\nluminance map creates the glitter based on bright areas in the image.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Laser Beam",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-laser-beam\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/qgdyPAj40m0\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Laser Beam filter creates multiple strobing lights to a scene with\nbuilt-in fog generator which can be used to create light sword effects or to\nsimulate and array of light beams. This filter is hardware accelerated for\nenhanced performance. BCC Laser Beam&nbsp;can be driven by either the filter’s own\nbuilt-in 3D camera and lighting system or, when running in After Effects, by\nintegration with the&nbsp;native host camera and lights.\nThe built in motion tracking allows&nbsp;you to track the motion of an object, then\nuse the motion path to drive other geometric properties of the effect without\nthe need for keyframing.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Lens Flare 3D",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-lens-flare-3d\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/ln2J44vLBso\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Lens Flare 3D&nbsp;filter is a highly sophisticated lens flare visual\neffect generator that can produce many different styles and looks, from the\ntraditional lens flare that occurs when a point light source is turned toward\na camera lens to the more spectacular special effects that are often seen in\nscience fiction movies.\nA base requirement for the generation of Lens Flares is a point light source,\nand the BCC Lens Flare 3D includes a built-in light source, with parameters to\ncontrol the position of the light in 3D space and in addition to this, the\nfilter is aware of any After Effects native lights that have been added to the\nscene and can set to use any or all of these lights as source lights for the\ngeneration of single or multiple Lens Flares.\nAs the case with all filters in the Continuum filter set, the BCC Lens Flare\n3D filter includes a preset pop-up selector that can be used to load any of\nthe factory installed preset looks, which can be used as-is or can serve as a\nuseful starting point in generating a customized look which can be saved and\nreused on future projects and comps.\nAt the bottom of the Lens Flare filter control list you will find both a\nmotion tracker control group and a beat reactor group. Both groups are used to\ncontrol the movement of the Lens Flare in the image clip. The Motion Tracker\ncan be used to automatically lock or track the Lens Flare to a specific scene\nelement. The beat reactor can be used to lock the movement or the visibility\nof the Lens Flare in syncopation with the beat of an audio track.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Light Leaks",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-light-leaks\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/THY_OoYKSMQ\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Light Leaks filter simulates the visual effect of light leaking\nthrough gaps in a camera and partially exposing the film\/sensor. The light\nelements are animated over time to create stylized looks ranging from subtle,\ndiffuse glows to bright and\/or rapidly flickering flares. The BCC Light Leaks\nfilter builds its pattern of leaks by layering up to four separate leak\ngenerators on top of each other with additional controls over the scaling,\nintensity, and apply mode of the combined leak elements.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.&nbsp;In\naddition, the integrated Beat Reactor control suite allows the user to drive\nthe effect properties based on the contents of an audio track.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Light Sweep",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-light-sweep\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/keT3Wx4qaJU\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Light Sweep filter creates a linear beam of light that sweeps\nacross your image. The filter is physically modeled after a light that is\ninfinitely far away. The light is infinitely wide in one direction, and falls\noff in the other. Light Sweep also has some very useful edge detection and\nedge lighting features.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Lightning",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-lightning\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/WYJNxFUyFxk\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Lightning filter is designed to generate photo-realistic lightning\nbolts and plasma streams that will automatically flash or move over the image\nto which the filter was applied.\nThis filter is based on OpenGL hardware assisted rendering technology and will\ndeliver a high level of performance when paired with a supported graphics\ncard. The filter included parameters to control and shape the overall\nappearance of the bolt as well as the bolt type and how it will flash or move\non the viewer screen. The filter includes many presets that make fast work of\nsetting up the filter; each of the factory installed settings can be modified\nby the user and then saved as a custom preset, which can be used on any\nproject and from within any supported host.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Rays Cartoon",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-rays-cartoon\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/0YSKdy8C9II\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Rays Cartoon filter creates the light out of the Cartoon edges of\nthe filter. Using it is the same as using one of the other Rays filters with the\nLight From channel set to one of the Cartoon Edges choices.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Rays Puffy",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-rays-puffy\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/QZeM7RySu_Y\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Rays Puffy filter light which spreads from a source point creating\na soft, “puffy” appearance. The light is generated from a chosen channel in\nthe source image.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Rays Radiant Edges",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-rays-radiant-edges\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/fYiTaEbP-Nw\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Rays Radiant Edges filter creates light from the edges of the\nimage. This filter includes similar controls to the BCC Rays Cartoon filter.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Rays Streaky",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-rays-streaky\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/ZoDMCuo62EI\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "The BCC Rays Streaky filter produces a light that contains streaks. The\nresulting light is generated from a chosen channel in the source image, and\nspreads from a source point in all directions.\nThe built in PixelChooser, with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Reverse Spotlight",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-reverse-spotlight\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/vLJFKgkEg5Y\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Lights",
+      
+    },
+    "content": "Using the Spotlight filter to precisely light a specific area can sometimes be\ndifficult. The BCC Reverse Spotlight filter allows you to define the lit\nregion and computes the Light Source, Target, and Cone Width from this region.\nThe Near Corner, Far Corner and Light Squeeze controls in Reverse Spotlight\nreplace the Light Source, Target, and Cone Width controls in the Spotlight\nfilter.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  }
+];
+</script>
+{{ if gt ($.Scratch.Get "video_count") 0 }}
+<div style="font-style: normal;font-weight: 300;" class="section gray text-left">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>LIGHTS</b></h1>
+	  </div>
+     </div>
+    <div class="row">
+      <div class="col">
+ 				  {{ partial "imagehandlewithdir.html" (dict "image_url" .Params.unit_lights_image "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+      </div>
+    </div>   
+	<div class="row">
+      <div class="col">
+ 				  <p style="font-size:14pt;">{{ .Params.unit_lights_content }}</p>
+      </div>
+    </div>
+	<div class="row">
+	<div class="col">
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
+
+<div id="app1221" v-cloak>
+  <div class="row">
+    <div class="col-lg-3 mb-3">
+      <input v-model="searchText" type="search" placeholder="Search" class="form-control mb-1" />
+      <div class="mb-3">
+        <p style="font-size: 10px; font-weight: bold">
+          ${ filtered_videos.length } VIDEO<template v-if="filtered_videos.length != 1">S</template> FOUND.
+          ${ selected_tag_count } TAG<template v-if="selected_tag_count != 1">S</template> SELECTED.
+        </p>
+      </div>
+      <div id="tagging">
+        <template v-for="category in categories">
+          <h4>
+            <a data-toggle="collapse" data-parent="#tagging" :href="'#' + category">
+              ${ category | capitalize } <i class="fa fa-caret-down"></i>
+            </a>
+          </h4>
+          <div :id="category" class="collapse" :class="{ show: (categories.length == 1) || (selectedTags[category].length != 0) }">
+            <div v-for="tag in tags[category]" class="form-check">
+              <label class="form-check-label ml-3" style="font-size: 16px">
+                <input v-model="selectedTags[category]" :value="tag" type="checkbox" class="form-check-input" /> ${ tag }
+              </label>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="col-lg-9 mb-3">
+      <template v-if="filtered_videos.length == 0">
+        <p class="text-center">
+          No videos found.
+        </p>
+      </template>
+      <template v-else>
+	  	   <div style="width:100%; height:500px; overflow-x:hidden;overflow-y:scroll;padding-right:10px;padding-left:10px;">
+           <div class="row">
+          <template v-for="(video, index) in filtered_videos">
+            <div class="col-md-4">
+              <div class="img-16x9" :id="video.video_name">
+                <a :href="video.url">
+				<div id="imgContainer" style="position:relative;height:100%;width:100%;">
+                  <img :id="video.video_name" class="img-fluid w-100 h-100" loading="lazy" :src="video.thumbnail_url" />
+                  <img id="play" class="img-fluid" style="display:none;" loading="lazy" :name="video.video_name" src="https://borisfx-com-res.cloudinary.com/image/upload/w_50,h_50/v1600811322/blue_button._pause.png" />
+                </div>
+				</a>
+                <a :href="video.url" class="w-100 h-100">
+                  <div class="w-100 h-100 video-rollover">
+                    <p class="p-3" v-html="$options.filters.truncate(video.content)">
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <p style="font-size: 14px">
+                ${ video.title } 
+              </p>              
+			  <input type="hidden" :value="video.video_name" style="font-size: 14px" :id="video.video_name" state="" :sid="video.video_id">
+            </div>
+          </template>
+        </div>
+		</div>
+      </template>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+
+var categories = [];
+var tags = {};
+var selectedTags = {};
+
+
+
+for (var v in videos) {
+  var video = videos[v];
+  if (!video.tagging) {
+    continue;
+  }
+  for (var c in Object.keys(video.tagging)) {
+    var category = Object.keys(video.tagging)[c];
+    if (!tags[category]) {
+      categories.push(category);
+      tags[category] = [];
+      selectedTags[category] = [];
+    }
+    if (typeof video.tagging[category] == 'string') {
+      var tag = video.tagging[category];
+      if (tag != '' && tags[category].indexOf(tag) == -1) {
+        tags[category].push(tag);
+      }
+    }
+    else {
+      for (var t in video.tagging[category]) {
+        var tag = video.tagging[category][t];
+        if (tag != '' && tags[category].indexOf(tag) == -1) {
+          tags[category].push(tag);
+        }
+      }
+    }
+  }
+}
+
+for (var c in Object.keys(tags)) {
+  var category = Object.keys(tags)[c];
+  tags[category].sort();
+}
+categories.sort();
+
+// HACK force ordering of categories in videos section
+if (window.location.pathname == '/videos/') {
+  categories = [
+    'category',
+    'product',
+    'feature',
+    'host',
+    'level',
+    'unit',
+    'language',
+  ];
+}
+
+// set search and select tags from query params
+var queryParamTags = getQueryParameter('tags') || '';
+queryParamTags = queryParamTags.split(',');
+for (var q in queryParamTags) {
+  var category = queryParamTags[q].split(':')[0];
+  var tag = queryParamTags[q].split(':')[1];
+  if (category && tag) {
+    selectedTags[category].push(tag);
+  }
+}
+var queryParamSearch = getQueryParameter('search') || '';
+var searchText = queryParamSearch;
+
+function updateQuery() {
+  var selectedTagsString = '';
+  var values = [];
+  var firstTag = true;
+  for (var c in Object.keys(this.selectedTags)) {
+    var category = Object.keys(this.selectedTags)[c];
+    for (var t in this.selectedTags[category]) {
+      var tag = this.selectedTags[category][t];
+      if (!firstTag)
+        selectedTagsString += ',';
+      else
+        firstTag = false;
+      selectedTagsString += category + ':' + tag;
+    }
+  }
+  var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?tags=' + selectedTagsString + '&search=' + this.searchText;
+  window.history.pushState({path:newurl},'',newurl);
+}
+
+new Vue({
+
+  el: '#app1221',
+  delimiters: ['${', '}'],
+
+  data: {
+    searchText: searchText,
+    categories: categories,
+    tags: tags,
+    selectedTags: selectedTags,
+    offset: 0,
+    videos: videos,
+	watched: true
+  },
+
+  computed: {
+
+    filtered_videos: function () {
+
+      this.offset = 0;
+
+      function formatSearchText(searchText) {
+        return searchText.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+      }
+      var searchText = formatSearchText(this.searchText);
+
+      var result = [];
+      for (var v in this.videos) {
+        var video = this.videos[v];
+
+        var matches_tags = true;
+        for (var c in Object.keys(this.selectedTags)) {
+          var category = Object.keys(this.selectedTags)[c];
+          var matches_category = false;
+          if (this.selectedTags[category].length == 0) {
+            matches_category = true;
+          }
+          for (var t in this.selectedTags[category]) {
+            var tag = this.selectedTags[category][t];
+            if (
+              video.tagging &&
+              video.tagging[category] &&
+              (
+                video.tagging[category].indexOf(tag) != -1 ||
+                video.tagging[category] == tag
+              )
+            ) {
+              matches_category = true;
+            }
+          }
+          if (!matches_category) {
+            matches_tags = false;
+            break;
+          }
+        }
+
+        var matches_search = (
+          video.title.search(new RegExp(searchText, 'i')) != -1 ||
+          video.content.search(new RegExp(searchText, 'i')) != -1
+        );
+
+        if (matches_tags && matches_search) {
+          result.push(video);
+        }
+
+      }
+
+      result.sort(function (a, b){
+        a = new Date(a.date),
+        b = new Date(b.date);
+        if (a < b) return 1;
+        if (a > b) return -1;
+        return 0;
+      });
+
+      return result;
+
+    },
+
+    selected_tag_count: function() {
+      var values = [];
+      for (var c in Object.keys(this.selectedTags)) {
+        var category = Object.keys(this.selectedTags)[c];
+        Array.prototype.push.apply(values, this.selectedTags[category]);
+      }
+      return [].concat.apply([], values).length;
+    },
+
+  },
+
+  watch: {
+
+    selectedTags: {
+      handler: updateQuery,
+      deep: true,
+    },
+    searchText: {
+      handler: updateQuery,
+      deep: true,
+    },
+
+  },
+
+
+  filters: {
+    capitalize: function (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+    truncate: function(string) {
+      return string.substring(0, 150) + '...';
+    },    
+  },
+
+});
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+{{ end }}
+
+{{ if .Params.unit_image_resto }}
+<div id="image_resto"></div>
+<script>
+var videos = [
+  {
+    "x": "",
+    "title": "Beauty Studio",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-beauty-studio\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/bNy2ArYZW_k\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Image Restoration",
+      
+    },
+    "content": "Quite often, in these days of cameras equipped with ultra sharp lenses and highly sensitive light sensors, we’re seeing more detail than ever before in images on screen. Akin to digital make-up, the Continuum Beauty Studio filter was designed to automate the process of eliminating wrinkles, pores and other undesirable blemishes from the skin-tones in a close up shot of a person’s face.\nThere are two stages to the filter:\n Building an isolation matte for the skin-tone Smoothing the skin-tone.  Additionally, you can use the integrated color correction tools to modify the hue, saturation and brightness of the image. The color correction can be applied to the entire image or confined to the masked skin-tone.\nThe built in PixelChooser with integrated Mocha planar tracking allows for greater control over which areas of the image the filter should affect. Unlike many Continuum filters, Beauty Studio has the PixelChooser enabled by default with a color key&nbsp;enabled to begin isolating skin tones. It is critical for&nbsp;optimum results in Beauty Studio to review and if necessary fine tune the skin isolation matte\/mask generated by the PixelChooser.\nSee more at the Beauty Studio page.\n",
+  },
+  {
+    "x": "",
+    "title": "Dust and Scratches",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-dust-and-scratches\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/jX-D1iv-6lI\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Image Restoration",
+      
+    },
+    "content": "The BCC Dust and Scratches filter removes unwanted dust and scratches from\nan image to help restore old and damaged footage.\nThe built in PixelChooser with integrated mocha planar tracking allows for\ngreater control over which areas of the image the filter should affect.\n&nbsp;To learn more about this filter, and see a breakdown of the various\ncontrols, please click here.\n",
+  },
+  {
+    "x": "",
+    "title": "DV Fixer",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-dv-fixer\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/6LNX4EwPmB8\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Image Restoration",
+      
+    },
+    "content": "The BCC DV Fixer&nbsp;filter is designed to remove diagonal stair-caseing (also\nknown as aliasing or jaggies) that are apparent in images or clips that have\nbeen subject to DV compression, while maintaining the overall sharpness of the\noriginal&nbsp;image.\nThe built in PixelChooser allows for greater control over which areas of the\nimage the filter should affect.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  }, 
+  {
+    "x": "",
+    "title": "Lens Correction",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-lens-correction\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/9pjhNkYtmBY\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Image Restoration",
+      
+    },
+    "content": "The **BCC Lens Correction&nbsp;**filter is&nbsp;designed to reduce or remove image\ndistortion in source clips that were shot using a wide angle or fish-eye lens.\nIt can also be used to make simple perspective corrections.\nBCC Lens Correction includes a number of&nbsp;presets specifically designed for go-\npro cameras.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  }, 
+  {
+    "x": "",
+    "title": "Magic Sharp",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-magic-sharp\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/GrVopES_Y0I\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Image Restoration",
+      
+    },
+    "content": "The Continuum Magic Sharp filter uses algorithms to enhance image detail while minimizing artifacts associated with traditional sharpening tools.\nThe core sharpening algorithm performs up to four passes labeled:\n Fine Small Medium Course.  Each pass targets physical details that have wider and wider pixel dimensions with each stage focusing on details of roughly twice the pixel dimensions as the previous stage.\nAdditional controls allow fine tuning the amount of sharpening applied to individual color channels and to independent luma ranges along with the ability to suppress noise or grit introduced during the sharpening process.\nLearn more about Magic Sharp.\n",
+  },
+  {
+    "x": "",
+    "title": "Pixel Fixer",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-pixel-fixer\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/DX5kA9O02Es\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Image Restoration",
+      
+    },
+    "content": "The primary purpose of the BCC Pixel Fixer filter is to fix bad pixels\ncaused by bad pixels on the sensor in digital video and still cameras.&nbsp;The\nfilter may also be used to fix bad spots on digital still images caused by\ndust on the sensor.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+  {
+    "x": "",
+    "title": "Wire Remover",
+    "url": "https:\/\/borisfx.com\/effects\/continuum-wire-remover\/",
+    "thumbnail_url": "https:\/\/img.youtube.com\/vi\/KODFYXtihJI\/maxresdefault.jpg",
+    "tagging": {
+      
+      "unit": "Image Restoration",
+      
+    },
+    "content": "The BCC Wire Remover filter removes wires and unwanted objects from still\nor moving images by either cloning or blending pixels together from\nsurrounding areas. This filter has several uses. When working with blue or\ngreen screen shots, use this filter to remove wires or eliminate unwanted rigs\nor objects prior to keying. You can also use this filter to blend replacement\npixels over video dropouts or film scratches.\nThe Wire Remover filter also includes two motion tracker parameter groups. This\nallows you to track the ends of the wire if the ends move.\nTo learn more about this filter, and see a breakdown of the various controls,\nplease click here.\n",
+  },
+];
+</script>
+{{ if gt ($.Scratch.Get "video_count") 0 }}
+<div style="font-style: normal;font-weight: 300;" class="section white text-left">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 style="font-style: normal;font-weight: 500;text-align:center; letter-spacing:0em;"><b>IMAGE RESTORATION</b></h1>
+	  </div>
+     </div>
+    <div class="row">
+      <div class="col">
+ 				  {{ partial "imagehandlewithdir.html" (dict "image_url" .Params.unit_image_resto_image "baseURL" $.Site.Params.cloudinary_base_url "baseDIR" $.Site.Params.cloudinary_base_dir) }}
+      </div>
+    </div>   
+	<div class="row">
+      <div class="col">
+ 				  <p style="font-size:14pt;">{{ .Params.unit_image_resto_content }}</p>
+      </div>
+    </div>
+	<div class="row">
+	<div class="col">
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
+
+<div id="app12210" v-cloak>
+  <div class="row">
+    <div class="col-lg-3 mb-3">
+      <input v-model="searchText" type="search" placeholder="Search" class="form-control mb-1" />
+      <div class="mb-3">
+        <p style="font-size: 10px; font-weight: bold">
+          ${ filtered_videos.length } VIDEO<template v-if="filtered_videos.length != 1">S</template> FOUND.
+          ${ selected_tag_count } TAG<template v-if="selected_tag_count != 1">S</template> SELECTED.
+        </p>
+      </div>
+      <div id="tagging">
+        <template v-for="category in categories">
+          <h4>
+            <a data-toggle="collapse" data-parent="#tagging" :href="'#' + category">
+              ${ category | capitalize } <i class="fa fa-caret-down"></i>
+            </a>
+          </h4>
+          <div :id="category" class="collapse" :class="{ show: (categories.length == 1) || (selectedTags[category].length != 0) }">
+            <div v-for="tag in tags[category]" class="form-check">
+              <label class="form-check-label ml-3" style="font-size: 16px">
+                <input v-model="selectedTags[category]" :value="tag" type="checkbox" class="form-check-input" /> ${ tag }
+              </label>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="col-lg-9 mb-3">
+      <template v-if="filtered_videos.length == 0">
+        <p class="text-center">
+          No videos found.
+        </p>
+      </template>
+      <template v-else>
+	  	   <div style="width:100%; height:500px; overflow-x:hidden;overflow-y:scroll;padding-right:10px;padding-left:10px;">
+           <div class="row">
+          <template v-for="(video, index) in filtered_videos">
+            <div class="col-md-4">
+              <div class="img-16x9" :id="video.video_name">
+                <a :href="video.url">
+				<div id="imgContainer" style="position:relative;height:100%;width:100%;">
+                  <img :id="video.video_name" class="img-fluid w-100 h-100" loading="lazy" :src="video.thumbnail_url" />
+                  <img id="play" class="img-fluid" style="display:none;" loading="lazy" :name="video.video_name" src="https://borisfx-com-res.cloudinary.com/image/upload/w_50,h_50/v1600811322/blue_button._pause.png" />
+                </div>
+				</a>
+                <a :href="video.url" class="w-100 h-100">
+                  <div class="w-100 h-100 video-rollover">
+                    <p class="p-3" v-html="$options.filters.truncate(video.content)">
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <p style="font-size: 14px">
+                ${ video.title } 
+              </p>              
+			  <input type="hidden" :value="video.video_name" style="font-size: 14px" :id="video.video_name" state="" :sid="video.video_id">
+            </div>
+          </template>
+        </div>
+		</div>
+      </template>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+
+var categories = [];
+var tags = {};
+var selectedTags = {};
+
+
+
+for (var v in videos) {
+  var video = videos[v];
+  if (!video.tagging) {
+    continue;
+  }
+  for (var c in Object.keys(video.tagging)) {
+    var category = Object.keys(video.tagging)[c];
+    if (!tags[category]) {
+      categories.push(category);
+      tags[category] = [];
+      selectedTags[category] = [];
+    }
+    if (typeof video.tagging[category] == 'string') {
+      var tag = video.tagging[category];
+      if (tag != '' && tags[category].indexOf(tag) == -1) {
+        tags[category].push(tag);
+      }
+    }
+    else {
+      for (var t in video.tagging[category]) {
+        var tag = video.tagging[category][t];
+        if (tag != '' && tags[category].indexOf(tag) == -1) {
+          tags[category].push(tag);
+        }
+      }
+    }
+  }
+}
+
+for (var c in Object.keys(tags)) {
+  var category = Object.keys(tags)[c];
+  tags[category].sort();
+}
+categories.sort();
+
+// HACK force ordering of categories in videos section
+if (window.location.pathname == '/videos/') {
+  categories = [
+    'category',
+    'product',
+    'feature',
+    'host',
+    'level',
+    'unit',
+    'language',
+  ];
+}
+
+// set search and select tags from query params
+var queryParamTags = getQueryParameter('tags') || '';
+queryParamTags = queryParamTags.split(',');
+for (var q in queryParamTags) {
+  var category = queryParamTags[q].split(':')[0];
+  var tag = queryParamTags[q].split(':')[1];
+  if (category && tag) {
+    selectedTags[category].push(tag);
+  }
+}
+var queryParamSearch = getQueryParameter('search') || '';
+var searchText = queryParamSearch;
+
+function updateQuery() {
+  var selectedTagsString = '';
+  var values = [];
+  var firstTag = true;
+  for (var c in Object.keys(this.selectedTags)) {
+    var category = Object.keys(this.selectedTags)[c];
+    for (var t in this.selectedTags[category]) {
+      var tag = this.selectedTags[category][t];
+      if (!firstTag)
+        selectedTagsString += ',';
+      else
+        firstTag = false;
+      selectedTagsString += category + ':' + tag;
+    }
+  }
+  var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?tags=' + selectedTagsString + '&search=' + this.searchText;
+  window.history.pushState({path:newurl},'',newurl);
+}
+
+new Vue({
+
+  el: '#app12210',
+  delimiters: ['${', '}'],
+
+  data: {
+    searchText: searchText,
+    categories: categories,
+    tags: tags,
+    selectedTags: selectedTags,
+    offset: 0,
+    videos: videos,
+	watched: true
+  },
+
+  computed: {
+
+    filtered_videos: function () {
+
+      this.offset = 0;
+
+      function formatSearchText(searchText) {
+        return searchText.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+      }
+      var searchText = formatSearchText(this.searchText);
+
+      var result = [];
+      for (var v in this.videos) {
+        var video = this.videos[v];
+
+        var matches_tags = true;
+        for (var c in Object.keys(this.selectedTags)) {
+          var category = Object.keys(this.selectedTags)[c];
+          var matches_category = false;
+          if (this.selectedTags[category].length == 0) {
+            matches_category = true;
+          }
+          for (var t in this.selectedTags[category]) {
+            var tag = this.selectedTags[category][t];
+            if (
+              video.tagging &&
+              video.tagging[category] &&
+              (
+                video.tagging[category].indexOf(tag) != -1 ||
+                video.tagging[category] == tag
+              )
+            ) {
+              matches_category = true;
+            }
+          }
+          if (!matches_category) {
+            matches_tags = false;
+            break;
+          }
+        }
+
+        var matches_search = (
+          video.title.search(new RegExp(searchText, 'i')) != -1 ||
+          video.content.search(new RegExp(searchText, 'i')) != -1
+        );
+
+        if (matches_tags && matches_search) {
+          result.push(video);
+        }
+
+      }
+
+      result.sort(function (a, b){
+        a = new Date(a.date),
+        b = new Date(b.date);
+        if (a < b) return 1;
+        if (a > b) return -1;
+        return 0;
+      });
+
+      return result;
+
+    },
+
+    selected_tag_count: function() {
+      var values = [];
+      for (var c in Object.keys(this.selectedTags)) {
+        var category = Object.keys(this.selectedTags)[c];
+        Array.prototype.push.apply(values, this.selectedTags[category]);
+      }
+      return [].concat.apply([], values).length;
+    },
+
+  },
+
+  watch: {
+
+    selectedTags: {
+      handler: updateQuery,
+      deep: true,
+    },
+    searchText: {
+      handler: updateQuery,
+      deep: true,
+    },
+
+  },
+
+
+  filters: {
+    capitalize: function (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+    truncate: function(string) {
+      return string.substring(0, 150) + '...';
+    },    
+  },
+
+});
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+{{ end }}
+
+
+{{ end }}

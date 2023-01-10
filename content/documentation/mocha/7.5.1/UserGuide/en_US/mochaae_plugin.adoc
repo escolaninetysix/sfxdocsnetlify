@@ -1,0 +1,87 @@
+
+== Using the Mocha AE Plugin [[mocha_plugin]]
+
+The *Mocha AE* plugin can be applied as an effect directly onto layers in After Effects.
+
+This reduces the need to swap out of your application and streamlines getting data in and out of Mocha.
+
+The biggest advantage is you can set up layers and module settings in Mocha as normal, and then have the results render directly to the host timeline without having to export.
+
+=== Applying the Mocha Plugin for Adobe After Effects
+
+The Mocha AE Plugin for Adobe appears in the Effects menu like any other effect. You can find it in the *Boris FX Mocha* sub menu.
+
+Alternatively, you can choose *Track in Boris FX Mocha* from the After Effects Animation menu.
+
+Simply select the layer you want to work with and apply the effect to the layer.
+
+image:UserGuide/en_US/images/mochaaecc_plugin_full_interface.jpg[width="60%"]
+
+The general workflow for the Mocha Adobe Plugin is as follows:
+
+. Select the layer you want to track or rotoscope
+. Select the Mocha effect from Effects | Mocha | Mocha AE or optionally choose "Track in Boris FX Mocha" from the Animation menu.
+. Launch Mocha. This will load a full version of the Mocha interface that you can use just like the standalone version.
+. Use Mocha as required and then close and save. No rendering is required inside Mocha.
+. Choose whether you want to use mattes or tracking data from Mocha back in the plugin interface.
+
+==== Using the Mocha GUI
+
+Once you have applied the Mocha AE effect, you can click on the Mocha button to launch the main interface.
+
+image:UserGuide/en_US/images/mochaaecc_plugin_launch_mocha.jpg[width="60%"]
+
+This then becomes exactly like working in the standalone version of Mocha, with a few exceptions.
+First, you will notice you don't need to set up a project like in the standalone version. The source layer is automatically loaded and ready to track in the view.
+Secondly you don't need to save out a project file (unless you want to export it). You just close and save the Mocha view when done and the project is saved inside the Effect like any other Adobe effect.
+
+For further details on how to track and roto inside the Mocha GUI, see the rest of the User Guide:
+
+* <<tracking_basics, Mocha Tracking Basics>>
+* <<roto_basics, Mocha Rotoscoping Basics>>
+
+NOTE: The  Mocha AE Plugin interface is almost exactly the same as the standalone interface, so most of the usual guide and video tutorials can be applied to the plugin.
+
+==== Controlling Mattes
+
+Once you have <<tracking_basics, tracked layers>> in Mocha, you can then control the mattes for these layers back in the plugin interface.
+
+image:UserGuide/en_US/images/mochapro_ae_plugin_matte_section.jpg[width="60%"]
+
+* *View Matte:* Show the black and white matte from the Mocha layers chosen. This is very useful if you want to just see any problems with the matte, or you want to use the output as a track matte.
+* *Apply Matte:* Applies the chosen mattes to the current layer,
+* *Visible Layers:* This button launches the Visible Layers dialog so you can select the layers you want visible as mattes.
+* *Shape:* This drop down lets you switch between All Visible and All mattes. All Visible mattes are controlled by the Visible Layers dialog.
+* *Feather:* Applies a blur to the matte. This feathering is independent of the feathering of the individual layers inside Mocha.
+* *Invert Mask:* Inverts the currently visible mattes.
+* *Create AE Mask:* Creates native AE splines on the effect layer just like "Paste Mocha mask". This function is only available in After Effects.
+
+==== Controlling Tracking Data
+
+If you have a <<tracking_basics, tracked layer>> in Mocha you can see the output of its surface back in the After Effects interface.
+Each point in the Tracking Data section is a point from the layer surface that automatically updates when you modify it inside Mocha.
+
+To choose a layer to create tracking data from, click the 'Create Track Data' button in the Tracking Data section of the plugin.
+
+image:UserGuide/en_US/images/mochapro_ae_plugin_tracking_data_section.jpg[width="60%"]
+
+Then choose the layer you want to read tracking data from in the dialog that appears. You can only choose one layer at a time.
+
+image:UserGuide/en_US/images/mochapro_ae_plugin_tracking_data_dialog.jpg[width="60%"]
+
+Once you click OK, the plugin will generate keyframes to populate the tracking parameters in the plugin. You can then use this data to copy to other layers, or link via expressions.
+
+WARNING: Generating keyframe data can take some time for very long shots. You can cancel generation at any time when the progress bar appears.
+
+==== Applying Tracking Data Exports to Other layers
+
+The plugin interface also allows you to apply tracking data to other layers without needing to export from the Mocha GUI.
+Do do this, you generate the tracking data from a layer, as described above in Controlling Tracking Data.
+
+You can then choose an export option at the bottom of the Tracking Data section:
+
+* *Corner Pin:* A standard corner pin effect
+* *Corner Pin (Support Motion Blur)*: A corner pin distortion with separate scale, rotation and position.
+* *Transform:* Scale, position and rotation
+
+Clicking 'Apply Export' then copies the information to the specified layer.

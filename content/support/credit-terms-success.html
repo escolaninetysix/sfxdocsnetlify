@@ -1,0 +1,19 @@
+{
+    "title" : "Your Application Has Been Sent!"
+}
+
+<p>Thank you for submitting your credit terms application. <span id="case-number"></span></p>
+
+<p>If your application is accepted, you will receive an email within one business day. Your account manager may contact you for additional information.</p>
+
+<p>If you have any additional questions, please contact us as sales@borisfx.com</p>
+
+<script>
+    $(document).ready(function(){
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('case')){
+            document.getElementById('case-number').innerHTML = 
+                'For your reference, your application number is ' + params.get('case');
+        }
+    })
+</script>

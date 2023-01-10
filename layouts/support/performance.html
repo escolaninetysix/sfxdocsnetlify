@@ -1,0 +1,531 @@
+{{ define "content" }}
+
+<div class="col-md-12">
+
+<style>
+.ui-tabs .ui-tabs-nav {
+    display: flex;
+	border:none;
+	background-color:white;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    flex: auto;
+    display: flex;
+    white-space: normal;
+	color:#00aeef;
+
+
+}
+
+.ui-tabs .ui-tabs-nav li a {
+    flex: auto;
+    text-align: center;
+
+
+}
+</style>
+	        
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+</script>
+
+
+<div align="center" style="margin-left:15%;font-size:12pt; width:75%;">
+<br><br>
+<h1 style="letter-spacing:0px;"><b>SAPPHIRE PERFORMANCE</b></h1><br>
+<br>
+<h3 style="letter-spacing:0px;">2019.5 vs 2020</h3>
+<div id="tabs" style="width:100%; height:50%;">
+  <ul style="">
+    <li><a href="#tabs-1">Windows 10</a></li>
+    <li><a href="#tabs-2">macOS 10.14</a></li>
+  </ul>
+  <div id="tabs-1">
+
+<div class="table-responsive">
+<center><h2>Playback in After Effects</h2></center><br>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>HOST</th>
+<th>Sapphire Plug-in</th>
+<th>GPU Percentage Improvement</th>
+<th>GPU X Times Faster</th>
+<th>CPU Percentage Improvement</th>
+<th>CPU X Times Faster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">AE</th>
+<td>S_BlurMotion</td>
+<td>36.89%</td>
+<td>1.45</td>
+<td>8.84%</td>
+<td>1.09</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>EdgeRays</td>
+<td>65.59%</td>
+<td>1.98</td>
+<td>52.41%</td>
+<td>1.71</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Rays</td>
+<td>72.05%</td>
+<td>2.13</td>
+<td>37.65%</td>
+<td>1.46</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Streaks</td>
+<td>43.58%</td>
+<td>1.56</td>
+<td>73.41%</td>
+<td>2.16</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveEdgeRays</td>
+<td>41.61%</td>
+<td>1.53</td>
+<td>40.06%</td>
+<td>1.50</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveRays</td>
+<td>70.14%</td>
+<td>2.08</td>
+<td>35.80%</td>
+<td>1.44</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-responsive">
+<center><h2>Playback in Avid</h2></center><br>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>HOST</th>
+<th>Sapphire Plug-in</th>
+<th>GPU Percentage Improvement</th>
+<th>GPU X Times Faster</th>
+<th>CPU Percentage Improvement</th>
+<th>CPU X Times Faster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">AVID</th>
+<td>S_BlurMotion</td>
+<td>22.22%</td>
+<td>1.25</td>
+<td>30.00%</td>
+<td>1.35</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>EdgeRays</td>
+<td>53.24%</td>
+<td>1.73</td>
+<td>53.16%</td>
+<td>1.72</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>S_Rays</td>
+<td>56.60%</td>
+<td>1.79</td>
+<td>55.77%</td>
+<td>1.77</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>S_Streaks</td>
+<td>6.45%</td>
+<td>1.07</td>
+<td>2.90%</td>
+<td>1.03</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>S_DissolveEdgeRays</td>
+<td>30.30%</td>
+<td>1.36</td>
+<td>30.93%</td>
+<td>1.37</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>S_DissolveRays</td>
+<td>42.04%</td>
+<td>1.53</td>
+<td>38.96%</td>
+<td>1.48</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-responsive">
+<center><h2>Playback in Resolve</h2></center><br>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>HOST</th>
+<th>Sapphire Plug-in</th>
+<th>GPU Percentage Improvement</th>
+<th>GPU X Times Faster</th>
+<th>CPU Percentage Improvement</th>
+<th>CPU X Times Faster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">RESOLVE</th>
+<td>S_BlurMotion</td>
+<td>0.00%</td>
+<td>1.00</td>
+<td>6.90%</td>
+<td>1.07</td>
+</tr>
+<tr>
+<th scope="row">RESOLVE</th>
+<td>EdgeRays</td>
+<td>9.09%</td>
+<td>1.10</td>
+<td>27.98%</td>
+<td>1.33</td>
+</tr>
+<tr>
+<th scope="row">RESOLVE</th>
+<td>S_Rays</td>
+<td>0.00%</td>
+<td>1.00</td>
+<td>59.09%</td>
+<td>1.84</td>
+</tr>
+<tr>
+<th scope="row">RESOLVE</th>
+<td>S_Streaks</td>
+<td>4.65%</td>
+<td>1.05</td>
+<td>53.97%</td>
+<td>1.74</td>
+</tr>
+<tr>
+<th scope="row">RESOLVE</th>
+<td>S_DissolveEdgeRays</td>
+<td>12.50%</td>
+<td>1.13</td>
+<td>71.37%</td>
+<td>2.11</td>
+</tr>
+<tr>
+<th scope="row">RESOLVE</th>
+<td>S_DissolveRays</td>
+<td>9.84%</td>
+<td>1.10</td>
+<td>88.14%</td>
+<td>2.58</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-responsive">
+<center><h2>Render to Disk with ProRes422</h2></center><br>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>HOST</th>
+<th>Sapphire Plug-in</th>
+<th>GPU Percentage Improvement</th>
+<th>GPU X Times Faster</th>
+<th>CPU Percentage Improvement</th>
+<th>CPU X Times Faster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">AE</th>
+<td>S_BlurMotion</td>
+<td>27.88%</td>
+<td>1.32</td>
+<td>70.55%</td>
+<td>2.09</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>EdgeRays</td>
+<td>56.56%</td>
+<td>1.79</td>
+<td>71.02%</td>
+<td>2.10</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Rays</td>
+<td>60.54%</td>
+<td>1.87</td>
+<td>47.47%</td>
+<td>1.62</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Streaks</td>
+<td>36.29%</td>
+<td>1.44</td>
+<td>66.97%</td>
+<td>2.01</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveEdgeRays</td>
+<td>21.43%</td>
+<td>1.24</td>
+<td>15.41%</td>
+<td>1.17</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveRays</td>
+<td>64.09%</td>
+<td>1.94</td>
+<td>44.45%</td>
+<td>1.57</td>
+</tr>
+</tbody>
+</table>
+</div><br>
+<center><p>TEST SPECS:<br><br>Windows 10<br>CPU: 860 @ 2.80GHz<br>Ram: 16GB<br>GPU: Geforce GTX 690</p></center>
+</div>
+   <div id="tabs-2">
+
+<div class="table-responsive">
+<center><h2>Playback in After Effects</h2></center><br>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>HOST</th>
+<th>Sapphire Plug-in</th>
+<th>CPU Percentage Improvement</th>
+<th>CPU X Times Faster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">AE</th>
+<td>S_BlurMotion</td>
+<td>80.18%</td>
+<td>2.34</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>EdgeRays</td>
+<td>82.45%</td>
+<td>2.40</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Rays</td>
+<td>1.26%</td>
+<td>1.01</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Streaks</td>
+<td>67.52%</td>
+<td>2.02</td>
+
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveEdgeRays</td>
+<td>84.97%</td>
+<td>2.48</td>
+
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveRays</td>
+<td>18.29%</td>
+<td>1.20</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-responsive">
+<center><h2>Playback in Avid</h2></center><br>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>HOST</th>
+<th>Sapphire Plug-in</th>
+<th>CPU Percentage Improvement</th>
+<th>CPU X Times Faster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">AVID</th>
+<td>S_BlurMotion</td>
+<td>27.03%</td>
+<td>1.31</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>EdgeRays</td>
+<td>56.57%</td>
+<td>1.79</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>S_Rays</td>
+<td>58.82%</td>
+<td>1.83</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>S_Streaks</td>
+<td>6.06%</td>
+<td>1.06</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>S_DissolveEdgeRays</td>
+<td>33.66%</td>
+<td>1.40</td>
+</tr>
+<tr>
+<th scope="row">AVID</th>
+<td>S_DissolveRays</td>
+<td>41.51%</td>
+<td>1.52</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-responsive">
+<center><h2>Playback in Resolve</h2></center><br>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>HOST</th>
+<th>Sapphire Plug-in</th>
+<th>CPU Percentage Improvement</th>
+<th>CPU X Times Faster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">AE</th>
+<td>S_BlurMotion</td>
+<td>77.59%</td>
+<td>2.27</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>EdgeRays</td>
+<td>55.89%</td>
+<td>1.78</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Rays</td>
+<td>43.96%</td>
+<td>1.56</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Streaks</td>
+<td>51.72%</td>
+<td>1.70</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveEdgeRays</td>
+<td>73.75%</td>
+<td>2.17</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveRays</td>
+<td>57.83%</td>
+<td>1.81</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="table-responsive">
+<center><h2>Render to Disk with ProRes422</h2></center><br>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>HOST</th>
+<th>Sapphire Plug-in</th>
+<th>CPU Percentage Improvement</th>
+<th>CPU X Times Faster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">AE</th>
+<td>S_BlurMotion</td>
+<td>76.20%</td>
+<td>2.23</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>EdgeRays</td>
+<td>60.38%</td>
+<td>1.86</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Rays</td>
+<td>54.24%</td>
+<td>1.74</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_Streaks</td>
+<td>98.99%</td>
+<td>2.96</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveEdgeRays</td>
+<td>48.16%</td>
+<td>1.63</td>
+</tr>
+<tr>
+<th scope="row">AE</th>
+<td>S_DissolveRays</td>
+<td>42.06%</td>
+<td>1.53</td>
+</tr>
+</tbody>
+</table>
+</div><br>
+<center><p>TEST SPECS:<br><br>Mac OSX 10.14<br>CPU:  3.7Ghz<br>Ram:  12GB<br>GPU:  -<br></p></center>
+  
+</div>
+</div>
+</div>
+</div>
+
+{{ end }}

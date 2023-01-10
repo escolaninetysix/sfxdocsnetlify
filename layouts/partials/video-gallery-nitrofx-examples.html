@@ -1,0 +1,323 @@
+<script>
+var videos = [
+  {{ range (.Site.GetPage "section" "nitrofx-examples").Pages }}
+  {
+    "title": "{{ .Title }}",
+    "date": "{{ .Date }}",
+    "url": "{{ .Permalink }}",
+    "thumbnail_url": "{{ .Params.thumbnail_url }}",
+    "content": "{{ .Content | plainify }}",
+    "video_id": "{{ .Params.video_id }}",
+	"tags": "{{ .Params.tags }}",
+    {{ if .Params.tagging }}"tagging": {{ .Params.tagging }},{{ end }}
+	"poster": "{{ .Params.poster }}"
+  },
+  {{ end }}
+];
+</script>
+
+<style>
+[v-cloak] {
+  display: none;
+}
+
+.textContainer { position:relative; }
+.textContainer video {
+    position:relative;
+    z-index:0;
+}
+.txtOVERLAY {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+	
+}
+</style>
+<!-- <script>
+function play() {
+    $(".video").hover(function () {
+        var real = $(this).children("video")[0];
+		real.load();
+		real.play();
+    }, function () {
+        var hoverEl = $(this).children("video")[0];
+        hoverEl.pause();
+        hoverEl.currentTime = 0;
+	    hoverEl.onpause = function() {
+		hoverEl.load();
+		}
+    });
+}
+</script> -->
+<div id="app" v-cloak>
+  <div class="row">
+    <div class="col-lg-12 mb-3">
+	<!-- <input v-model="searchText" type="search" placeholder="Search" class="form-control mb-1" /> -->
+      <template v-if="filtered_videos.length == 0">
+        <p class="text-center">
+          No videos found.
+        </p>
+      </template>
+      <template v-else>
+          <div class="row">
+		  <template v-for="(video, index) in filtered_videos">
+	            <div class="col-12 col-md-4">
+         
+		 <a data-fancybox :href="video.video_id"><div class="textContainer">
+          <div class="video">
+		  <video class="hover-video" loop muted playsinline width="100%" height="100%" :poster="video.poster">
+            <source :src="video.video_id">
+          </video>
+		  </div>
+		  <div class="txtOVERLAY" style="color:white;margin-left:15px;font-weight:bold;">
+		  <!--  <p>${ video.title }</p> -->
+		  </div>
+		 </div> </a>
+            </div>
+          </template>
+        </div>
+	        <!-- <div class="row m-3">
+          <div class="col">
+            <nav class="pagination justify-content-center">
+              <div class="page-item">
+                <a class="page-link" href="" @click="prev"><i class="fa fa-arrow-left"></i></a>
+              </div>
+              <div class="page-item disabled">
+                <a class="page-link" href="#">
+                  Page ${ (offset + page_size) / page_size } of ${ Math.max(Math.ceil(filtered_videos.length / page_size), 1) }
+                </a>
+              </div>
+              <div class="page-item">
+                <a class="page-link" href="" @click="next"><i class="fa fa-arrow-right"></i></a>
+              </div>
+            </nav>
+          </div>
+        </div> -->
+    </template>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+var categories = [];
+var tags = {};
+var selectedTags = {};
+
+for (var v in videos) {
+  var video = videos[v];
+  if (!video.tagging) {
+    continue;
+  }
+  for (var c in Object.keys(video.tagging)) {
+    var category = Object.keys(video.tagging)[c];
+    if (!tags[category]) {
+      categories.push(category);
+      tags[category] = [];
+      selectedTags[category] = [];
+    }
+    if (typeof video.tagging[category] == 'string') {
+      var tag = video.tagging[category];
+      if (tag != '' && tags[category].indexOf(tag) == -1) {
+        tags[category].push(tag);
+      }
+    }
+    else {
+      for (var t in video.tagging[category]) {
+        var tag = video.tagging[category][t];
+        if (tag != '' && tags[category].indexOf(tag) == -1) {
+          tags[category].push(tag);
+        }
+      }
+    }
+  }
+}
+
+for (var c in Object.keys(tags)) {
+  var category = Object.keys(tags)[c];
+  tags[category].sort();
+}
+categories.sort();
+
+// HACK force ordering of categories in videos section
+if (window.location.pathname == '/videos/') {
+  categories = [
+    'product',
+    'series',
+    'feature',
+    'host',
+    'language',
+  ];
+}
+
+// set search and select tags from query params
+var queryParamTags = getQueryParameter('tags') || '';
+queryParamTags = queryParamTags.split(',');
+for (var q in queryParamTags) {
+  var category = queryParamTags[q].split(':')[0];
+  var tag = queryParamTags[q].split(':')[1];
+  if (category && tag) {
+    selectedTags[category].push(tag);
+  }
+}
+var queryParamSearch = getQueryParameter('search') || '';
+var searchText = queryParamSearch;
+
+function updateQuery() {
+  var selectedTagsString = '';
+  var values = [];
+  var firstTag = true;
+  for (var c in Object.keys(this.selectedTags)) {
+    var category = Object.keys(this.selectedTags)[c];
+    for (var t in this.selectedTags[category]) {
+      var tag = this.selectedTags[category][t];
+      if (!firstTag)
+        selectedTagsString += ',';
+      else
+        firstTag = false;
+      selectedTagsString += category + ':' + tag;
+    }
+  }
+
+}
+
+
+
+new Vue({
+
+  el: '#app',
+  delimiters: ['${', '}'],
+
+  data: {
+    searchText: searchText,
+    categories: categories,
+    tags: tags,
+    selectedTags: selectedTags,
+    offset: 0,
+	page_size: 100,
+    videos: videos,
+  },
+
+  computed: {
+
+    filtered_videos: function () {
+
+      this.offset = 0;
+
+      function formatSearchText(searchText) {
+        return searchText.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+      }
+      var searchText = formatSearchText(this.searchText);
+
+      var result = [];
+      for (var v in this.videos) {
+        var video = this.videos[v];
+
+        var matches_tags = true;
+        for (var c in Object.keys(this.selectedTags)) {
+          var category = Object.keys(this.selectedTags)[c];
+          var matches_category = false;
+          if (this.selectedTags[category].length == 0) {
+            matches_category = true;
+          }
+          for (var t in this.selectedTags[category]) {
+            var tag = this.selectedTags[category][t];
+            if (
+              video.tagging &&
+              video.tagging[category] &&
+              (
+                video.tagging[category].indexOf(tag) != -1 ||
+                video.tagging[category] == tag
+              )
+            ) {
+              matches_category = true;
+            }
+          }
+          if (!matches_category) {
+            matches_tags = false;
+            break;
+          }
+        }
+
+        var matches_search = (
+          video.title.search(new RegExp(searchText, 'i')) != -1
+
+        );
+
+        if (matches_search) {
+          result.push(video);
+        }
+
+      }
+
+      result.sort(function (a, b){
+        a = new Date(a.date),
+        b = new Date(b.date);
+        if (a < b) return 1;
+        if (a > b) return -1;
+        return 0;
+      });
+
+      return result;
+
+    },
+
+    selected_tag_count: function() {
+      var values = [];
+      for (var c in Object.keys(this.selectedTags)) {
+        var category = Object.keys(this.selectedTags)[c];
+        Array.prototype.push.apply(values, this.selectedTags[category]);
+      }
+      return [].concat.apply([], values).length;
+    },
+
+  },
+
+  watch: {
+
+    selectedTags: {
+      handler: updateQuery,
+      deep: true,
+    },
+    searchText: {
+      handler: updateQuery,
+      deep: true,
+    },
+
+  },
+
+  filters: {
+    capitalize: function (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+    truncate: function(string) {
+      return string.substring(0, 150) + '...';
+    },    
+  },
+
+});
+</script>
+
+<script>
+  var handleMouseOver = function (event) {
+    var video = event.target;
+    video.load();
+    video.play()
+      .then(function () { })
+      .catch(function (err) {
+        if (err instanceof DOMException && err.name == 'AbortError') { console.warn('Playback Failed. ' + (err.message || '')); }
+        else console.error(err);
+      })
+  }
+
+  var handleMouseOut = function (event) {
+    event.target.load();
+  }
+  var videos = document.querySelectorAll('.hover-video');
+  for (var v of videos) {
+    v.addEventListener('mouseover', handleMouseOver);
+    v.addEventListener('mouseout', handleMouseOut);
+  }
+</script>

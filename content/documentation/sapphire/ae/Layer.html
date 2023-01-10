@@ -1,0 +1,1101 @@
+{
+   "title": "Sapphire Plug-ins for After Effects: Layer",
+   "date": "2022-11-17T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/Layer.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="Layer">
+     <h2>
+      S_Layer
+     </h2>
+    </a>
+    Layers the Foreground image over the Background using one of a variety of
+  blending operations.  The colors of each input can also be adjusted using
+  the lights, darks, and saturation parameters.
+    <p>
+     In the Sapphire Composite effects submenu.
+    </p>
+    <p>
+     <br/>
+    </p>
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Foreground:
+      </b>
+      <i>
+       The current layer.
+      </i>
+      The clip to use as foreground.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Background:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      The clip to use as background.
+     </dd>
+    </dl>
+    <p>
+    </p>
+    <dl>
+     <dd>
+      <b>
+       Matte:
+      </b>
+      <i>
+       Defaults to None.
+      </i>
+      Specifies the opacities of the Foreground clip.  If this
+  input is not provided the Foreground alpha is used instead.  These
+  values are scaled by the Fg Opacity parameter before being used.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#303030" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/Layer.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mode:
+   </b>
+   <i>
+    Popup menu,  Default: Normal
+   </i>
+   .
+   <br/>
+   Determines which blending method is used to combine the
+  foreground and background pixel colors.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Normal:
+      </i>
+     </b>
+     a normal composite.  This will just give
+  the foreground as the result unless the Opacity is below 1.0
+  or an alpha channel is given.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Dissolve:
+       </i>
+      </b>
+      randomly replaces background pixels with
+  foreground.  The opacity determines the probability, so the
+  foreground is more likely to replace the background for higher
+  values of Opacity.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Multiply:
+        </i>
+       </b>
+       this can be used as an 'intersection' operation
+  on matte images.  White is the identity for Multiply, where one
+  image contains white the other is not affected, so the result only
+  contains white where both inputs are white.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Screen:
+         </i>
+        </b>
+        this can be useful for combining the bright areas
+  of two clips.  It can also be used as a 'union' operation on matte
+  images.  Black is the identity for Screen, where one image contains
+  black the other is not affected, so the result is white where either
+  of the input images is white.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Overlay:
+          </i>
+         </b>
+         combines foreground and background using an
+  overlay function.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Soft Light:
+           </i>
+          </b>
+          darkens or lightens the background depending on
+  the foreground.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Hard Light:
+            </i>
+           </b>
+           similar to overlay but with foreground and
+  background swapped.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Color Dodge:
+             </i>
+            </b>
+            brightens the background depending on the foreground.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Color Burn:
+              </i>
+             </b>
+             darkens the background depending on the foreground.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Darken:
+               </i>
+              </b>
+              the minimum of foreground and background.  This can
+  also be used as an 'intersection' operation with slightly different
+  results than Multiply.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Lighten:
+                </i>
+               </b>
+               the maximum of foreground and background.  This
+  can also be used as a 'union' operation with slightly different
+  results than Screen.
+               <br/>
+               <dd>
+                <b>
+                 <i>
+                  Add:
+                 </i>
+                </b>
+                adds the foreground to the background.
+                <br/>
+                <dd>
+                 <b>
+                  <i>
+                   Subtract:
+                  </i>
+                 </b>
+                 subtracts the foreground from the background.
+                 <br/>
+                 <dd>
+                  <b>
+                   <i>
+                    Difference:
+                   </i>
+                  </b>
+                  similar to Subtract but the absolute value of
+  the result is used, which tends to give more resulting colors in
+  bounds.  This can be used to select the regions of two matte
+  images where one or the other is white, but not both.
+                  <br/>
+                  <dd>
+                   <b>
+                    <i>
+                     Exclusion:
+                    </i>
+                   </b>
+                   similar to Difference but with smoother results.
+                   <br/>
+                   <dd>
+                    <b>
+                     <i>
+                      Hue:
+                     </i>
+                    </b>
+                    combines the hue of the foreground with the saturation
+  and luminance of the background.
+                    <br/>
+                    <dd>
+                     <b>
+                      <i>
+                       Saturation:
+                      </i>
+                     </b>
+                     combines the saturation of the foreground with
+  the hue and luminance of the background.
+                     <br/>
+                     <dd>
+                      <b>
+                       <i>
+                        Chroma:
+                       </i>
+                      </b>
+                      combines the hue and saturation of the foreground
+  with the luminance of the background.
+                      <br/>
+                      <dd>
+                       <b>
+                        <i>
+                         Luminance:
+                        </i>
+                       </b>
+                       combines the luminance of the foreground with
+  the hue and saturation of the background.
+                       <br/>
+                       <dd>
+                        <b>
+                         <i>
+                          Linear Dodge:
+                         </i>
+                        </b>
+                        adds foreground and background and clamps the
+  result at white.
+                        <br/>
+                        <dd>
+                         <b>
+                          <i>
+                           Linear Burn:
+                          </i>
+                         </b>
+                         adds foreground and background but offsets to
+  make the result darker.  Similar to multiply in that combining with
+  white gives no change and combining with black gives black.
+                         <br/>
+                         <dd>
+                          <b>
+                           <i>
+                            Linear Light:
+                           </i>
+                          </b>
+                          performs a linear burn or linear dodge
+  depending on if the foreground is more or less than 50 percent gray.
+                          <br/>
+                          <dd>
+                           <b>
+                            <i>
+                             Vivid Light:
+                            </i>
+                           </b>
+                           performs a color burn or color dodge
+  depending on if the foreground is more or less than 50 percent gray.
+                           <br/>
+                           <dd>
+                            <b>
+                             <i>
+                              Pin Light:
+                             </i>
+                            </b>
+                            performs a lighten or darken depending on if the
+  foreground is more or less than 50 percent gray.
+                            <br/>
+                           </dd>
+                          </dd>
+                         </dd>
+                        </dd>
+                       </dd>
+                      </dd>
+                     </dd>
+                    </dd>
+                   </dd>
+                  </dd>
+                 </dd>
+                </dd>
+               </dd>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Project:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   Scales the Mocha Mask.  1.0 is the original size.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel X:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative horizontal size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Resize Rel Y:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 2.
+   <br/>
+   The relative vertical size of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Shift Mocha:
+   </b>
+   <i>
+    X &amp; Y,   Default:
+   </i>
+   [0 0],
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the position of the Mocha Mask.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Combine Masks:
+   </b>
+   <i>
+    Popup menu,  Default: Union
+   </i>
+   .
+   <br/>
+   Determines how to combine the Mocha Mask and Input
+  Mask when both are supplied to the effect.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Union:
+      </i>
+     </b>
+     Uses the area covered by both masks together.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Intersect:
+       </i>
+      </b>
+      Uses the area that overlaps between the two masks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Mocha Only:
+        </i>
+       </b>
+       Ignore the Input Mask and only use the
+  Mocha Mask.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Swap Inputs:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, effectively swaps the Background and
+  Foreground inputs, and can be helpful for non-commutative operations
+  like subtract.  Note that this also causes parameters labeled 'Front' to
+  affect the 'Back' input instead, and vice versa.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fg Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Scales the opacity of the effect.  When this is decreased
+  the result approaches the background.  At zero, the result will
+  equal the background.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fg Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the Foreground before performing the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fg Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the darker regions of the Foreground before
+  performing the effect.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fg Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the color saturation of the Foreground before
+  performing the effect.  0.0 makes it monochromatic, 1.0 has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fg Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the hue of the colors in the Front clip, in revolutions
+  from red to green to blue to red.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fg Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to blur the foreground.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the Background before performing the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the darker regions of the Background before
+  performing the effect.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the color saturation of the Background before
+  performing the effect.  0.0 makes it monochromatic, 1.0 has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the hue of the colors in the Back clip, in revolutions
+  from red to green to blue to red.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bg Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Amount to blur the background.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Result Lights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the result after performing the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Result Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Offsets the darker regions of the result after
+  performing the effect.  This can be negative to increase contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Result Saturation:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Scales the color saturation of the result after
+  performing the effect.  0.0 makes it monochromatic, 1.0 has no effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Result Hue Shift:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Shifts the hue of the colors in the result, in revolutions
+  from red to green to blue to red.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Matte Use:
+   </b>
+   <i>
+    Popup menu,  Default: Alpha
+   </i>
+   .
+   <br/>
+   Determines how the Matte input channels are used to make
+a monochrome matte.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Luma:
+      </i>
+     </b>
+     the luminance of the RGB channels is used.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Alpha:
+       </i>
+      </b>
+      only the Alpha channel is used.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         All Opaque:
+        </i>
+       </b>
+       an alpha of 1.0 is used as if the Matte were fully opaque.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Subpixel:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Enables blurring by subpixel amounts.  Use this for
+  smoother animation of the Blur Front and Blur Back parameters.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Soft Borders:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   If enabled, transparent borders are added to the
+input image before processing.  This allows the result to include soft
+edges beyond the original image size.  When off, the effect only
+occurs within the frame and the result will retain an edge
+at the borders.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Comp Premult:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   on.
+   <br/>
+   Disable this if you have provided a separate Matte input
+  and the Foreground pixel values have not been pre-multiplied by this Matte.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Opacity:
+   </b>
+   <i>
+    Popup menu,  Default: Normal
+   </i>
+   .
+   <br/>
+   Determines the method used for dealing with
+opacity/transparency.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       All Opaque:
+      </i>
+     </b>
+     Use this option to render slightly faster when
+the input image is fully opaque with no transparency (alpha=1).
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Normal:
+       </i>
+      </b>
+      Process opacity normally.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         As Premult:
+        </i>
+       </b>
+       Process as if the image is already in
+premultiplied form (colors have been scaled by opacity).  This option
+also renders slightly faster than Normal mode, but the results will
+also be in premultiplied form, which is sometimes less correct.
+       <br/>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../mathops">
+       MathOps
+      </a>
+      <br/>
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

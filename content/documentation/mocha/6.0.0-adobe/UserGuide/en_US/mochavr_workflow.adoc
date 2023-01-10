@@ -1,0 +1,144 @@
+
+== Mocha VR: Using Mocha for 360 workflow [[mochavr_workflow]]
+
+NOTE: This section applies specifically to *Mocha VR* and not other versions of Mocha such as *Mocha Pro*, *Mocha AE* or *Mocha HitFilm*.
+
+The Mocha VR product is specifically designed to work on 360 equirectangular shots, however it also has all the features of regular Mocha Pro.
+
+To use Mocha VR on a 360 equirectangular shot you need to first set up the 360 image. You can then begin using Mocha just like you would any other footage.
+
+=== Using Equirectangular footage in Mocha VR
+
+==== 1. Load Equirectangular footage into Mocha and set the Lens type
+
+The first step for working in VR mode is to import and define you are working in Equirectangular space.
+
+Mocha VR should calibrate this by default, but just in case it doesn't:
+
+. Create a project with your footage (either by starting a new project in the Mocha VR standalone or just applying the Mocha VR plugin effect and opening the Mocha GUI in the plugin)
+. Go to the Lens module
+. In the “Calibrate” section, choose “Equirectangular” from the drop down.
+
+image:UserGuide/en_US/images/calibratedropdown.jpg[]
+
+WARNING: VR footage with an odd pixel width may not wrap correctly and you could see artifacts.
+
+And that’s it! You’re now ready to work in VR lens space. If at any time you want to adjust the 360 view numerically, the fields Longitude, Latitude and Field of View are available to adjust in the Lens page.
+
+==== 2. Switch to the Track module and view your footage in 360 mode
+
+As soon as you have set the Equirectangular lens type, a new “360” button will appear in the view controls. Switch over to the Track module and click on this button to immediately jump to 360 Rectilinear space.
+
+image:UserGuide/en_US/images/5.5.0_mochavr_360_button.jpg[]
+
+If you press and hold the 360 button, you can also jump to a specific 360 view, such as Zenith, Nadir, Front, etc.
+
+To navigate in the 360 view:
+
+* The Pan tool (X by default) pans the view in all directions
+* The Zoom tool (Z by default) changes the Field of View (FOV). You can reset the FOV in the Lens module
+
+You can change the Pan and Zoom shortcut keys in preferences.
+
+NOTE: Panning and Zooming in 360 mode also updates the Latitude, Longitude and FOV parameters in the Lens module. Panning and Zooming outside of 360 mode just zooms and pans the image as normal.
+
+==== 3. Draw a layer and start tracking
+
+You can draw layers in either 360 view or Equirectangular mode.
+
+We recommend working in 360 view, as this is the intended workflow and is much more natural because you don’t have to consider seams or poles.
+
+image:UserGuide/en_US/images/5.5.0_mochavr_360_vs_equi_view.jpg[]
+
+See the <<tracking_basics, Tracking Basics>> chapter for more details on how to set up layers for optimal tracking.
+
+(Images courtesy of Makoto Hirose, SeaPics Japan)
+
+==== 4. Rotoscope in 360 mode
+
+Like tracking, we recommend doing all roto in 360 mode. Roto will automatically warp, cross over poles and seams and create seam duplicates to make it easier for rendering and export.
+
+image:UserGuide/en_US/images/5.5.0_mochavr_360_vs_equi_view_seams.jpg[]
+
+Feathering is also handled in 360 mode using the inner and outer edges.
+
+You can preview the flattened version of the roto at any time by simply toggling off the 360 button.
+
+See the <<roto_basics, Rotoscoping Basics>> section for more details on Rotoscoping effectively.
+
+(Images courtesy of Makoto Hirose, SeaPics Japan)
+
+==== 5. Work in Insert, Remove and Reorient modules
+
+The <<insert_module, Insert module>> and <<remove_module, Remove module>> work exactly like regular Mocha Pro. See their respective chapters in the user guide for more details.
+
+You still draw the layers and set up renders in the same way, and they are rendered across the 360 seams correctly.
+
+For Reorienting and stabilzing the horizon of a VR shot, you will need to use the Reorient module, which is only available in Mocha VR.
+See <<reorient_module, Mocha VR: The Reorient Module>> for more details on how to Reorient a VR shot.
+
+See other relevant module sections of this user guide for more details on each module use.
+
+NOTE: The Camera Solve and Stabilize module are presently unsupported in VR mode.
+
+
+==== 6. Render and Export
+
+*Rendering*
+
+Renders work in the same way as they do in the standard Mocha Pro workflow. You can either render them to file, or render via the plugin host.
+
+You can render the current 360 view from the Lens tab, as panning and zooming in 360 mode is a lens calibration. In the standalone, this is controlled via the Lens tab.
+
+In the plugin, you can control and render the lens directly from the Mocha VR plugin interface. See <<vr_lens_workflow, Mocha VR Lens Plugin Rendering Workflow>> below for more details.
+
+For everything else, such as Remove and Insert, renders are rendered into Equirectangular space.
+
+*Exporting*
+
+Currently export of tracking data is unsupported. Tracking data will paste to the correct location in your equirectangular view,
+but will not be corrected for Lens distortion due to most editors and compositors not correctly supporting pole or seam splitting of tracking data.
+It is best to use the Insert module render process to get what tracking data you need out of Mocha.
+
+Shape export data presently exports as duplicate splines. This means that any roto shape that crosses the seam will automatically be duplicated into two separate splines on either side of the Equirectangular view.
+Split VR shape data is presently supported for:
+
+* After Effects and Premiere shapes
+* Nuke Roto and RotoPaint
+* SSF
+
+For other compositors and editors you can either use the matte rendering in the Mocha VR plugin, or render matte clips from Mocha directly.
+
+See <<mocha_plugin, Using the Mocha Pro and Mocha VR Plugins>> for more details on controlling mattes in the plugin interface and <<rendered_shapes,  Exporting Rendered Shapes>> for how to render mattes to file.
+
+=== Mocha VR Plugin Lens Rendering Workflow [[vr_lens_workflow]]
+
+You can use the *Lens: Undistort* and *Lens: Distort* options in Mocha VR Plugins to render out 360 patches for easier paint and effect work back in the host.
+
+The patch workflow is a one-way control system in the plugin interface independent of the Mocha GUI, which means you don't need to open Mocha to control the lens view.
+
+image:UserGuide/en_US/images/5.5.0_mochavr_360_adobe_lens_section.jpg[]
+
+By choosing *Lens: Undistort* from the render options in the plugin, you can then control the view by adjusting three controls:
+
+* VR Lens Latitude
+* VR Lens Longitude
+* VR Lens FOV
+
+Alternatively you can pick a view using the Views dropdown option.
+This replicates the 360 views in the Mocha GUI, allowing you to choose between specific angles such as Zenith, Nadir, Front, etc.
+
+The lens distortion workflow for the plugin is:
+
+. Click *Render* in the 'Module Renders' section of the plugin interface and choose *Lens: Undistort* from the 'Module' drop down. You should see the view change to a rendered 360 view.
+. If you don't see the view change after choosing *Lens: Undistort*:
+.. Open the Mocha GUI and set your footage to Equirectangular mode in the Lens module.
+.. Close and save Mocha
+. Set your view using the VR lens parameters in the plugin interface
+. Copy the current Mocha effect
+. If necessary, Nest/precomp the rendered lens patch. You must precomp in After Effects for the next steps to work correctly.
+. Paste the original effect back on top of the nested comp.
+. Choose *Lens: Distort* from the 'Module' drop down in the pasted effect to restore the warp back to its original position
+. Merge/layer the final result back on top of your original footage.
+
+You can then perform any paint or effect work on the lens-distorted version of the footage and it will be re-distorted correctly on top of the original footage.

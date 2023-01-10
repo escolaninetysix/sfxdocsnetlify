@@ -1,0 +1,548 @@
+
+== Exporting Tracks
+
+NOTE: Some sections only relate to *Mocha Pro*. Some export features are not available in *Mocha HitFilm* or *Mocha AE*.  For a full comparison of features, please refer to the comparison chart online.
+
+WARNING: Tracking data is not supported across 360 seams and poles when using VR features and may not export as expected.
+
+Exporting data is the most useful way to get your tracks out to other applications.
+
+In all cases below, you can export either from:
+
+* The Essentials Panel:
+image:UserGuide/en_US/images/export_tracking_data_essentials.jpg[]
+* The Export buttons in the Track and AdjustTrack Modules:
+image:UserGuide/en_US/images/export_tracking_data_trackmodule.jpg[]
+* Or the file menu:
+image:UserGuide/en_US/images/export_tracking_data_filemenu.jpg[]
+
+
+=== Exporting Tracks to Adobe After Effects
+
+IMPORTANT: It is important that the clip length, frame rate, frame size, interlace mode, pulldown mode and pixel aspect ratio in the project match the corresponding settings in the After Effects project where you plan to use the data. You can change the frame rate and pixel aspect ratio settings in the Film and Time sections of the Clip tab.
+
+To export tracking data to After Effects, press the *Export Tracking Data* button.
+
+Then choose either:
+
+* After Effects Corner Pin
+* After Effects CC Power Pin
+* After Effects Transform Data.
+
+
+image:UserGuide/en_US/images/export_ae_CornerPin_001.jpg[]
+
+*After Effects Corner Pin:*
+
+The corner pin data records and exports the 4 point x, y information from either the adjusted track or the raw track.
+There are three different types of corner pin exports – two for recent After Effects versions and one for CS3 and older versions of After Effects.
+
+*After Effects CC Power Pin:*
+
+The Power pin data is very much like corner pin, but the exported effect gives you more control over the results in After Effects.
+See the After Effects help for more information on how to use CC Power Pin.
+
+*After Effects Transform Data:*
+
+The transform data exports x and x positions as well as the scale and rotation for the whole surface.
+
+If you click _Save_, this will display a file browser for saving the tracking data for use later. By default, the files will take the name of the layer, so for a layer name Track_Layer the export will create a file named "Track_Layer.txt".
+
+If you don't need to save the export, you can press *Copy to Clipboard*, and then go straight to After Effects and paste the data. If you are saving to file you will need to open the text file you saved with the data, select the entire body of text and copy it.
+
+
+In After Effects, load the footage you tracked and the footage/image/composition you wish to apply the transform or corner pin data to.
+
+image:UserGuide/en_US/images/export_ae_Timeline_001.jpg[]
+
+Select the item on the timeline that is the insert object. Paste the data to the selected layer. You can do this by selecting the ‘paste' option in the edit menu or by typing 'command- v' (Mac) or 'ctrl-v' (Windows).
+
+image:UserGuide/en_US/images/export_ae_Timeline_002.jpg[]
+
+With the layer's information expanded you can see either the 4-point tracking data for the corner pin, or the position, rotation and scale information from the tracking is now applied to the insert layer.
+
+If you are pasting transform data rather than corner pin data then you will need to delete the anchor point keyframes to see a result. We export both position and anchor point keyframes so that stabilization or tracking can be achieved. See below.
+
+
+==== Applying Corner Pin for Layers with different dimensions
+
+If your insert is not the same size as the dimensions of the composition in After Effects, you will need to take a few further steps to make sure your corner pin data fits correctly. The reason for this is that tracking data is basing itself on the relative size and aspect ratio of the footage, whereas After Effects treats the corner pin data relative to the size of the layer you are applying it to.
+
+To get around this, you can take the following steps to modify the insert layer in After Effects:
+
+
+. Precompose the layer and move all attributes into the new composition.
++
+image:UserGuide/en_US/images/precompose_ae.jpg[]
++
+. Open the Precomp you just made and fit the layer to the composition dimensions (Layer | Transform | Fit to Comp).
++
+image:UserGuide/en_US/images/fittocomp_ae.jpg[]
++
+. Go back to the original composition, select the precomposed layer and paste the data.
+
+Alternatively you can use Align Surface in Mocha to define the full dimensions:
+
+. Apply a manual corner pin to your insert layer in After Effects and place it in the desired position for any frame.
+. On this frame, Precompose the layer and make sure all attributes are inside it.
+. You will now have a precomposed layer that is the same dimensions as the tracked footage.
+. In Mocha, go to the same frame in the footage you applied the corner pin to in After Effects and select the track.
+. On this frame, turn on your surface and click "Align Surface" in the Layer Properties panel.
+. You will see the surface fit to the full dimensions of the footage.
+. Export this newly aligned track to After Effects corner pin.
+. Back in After Effects, select the precomposed layer and paste the data.
+
+This will apply the tracking data relative to the full dimensions of the footage instead. If you need to adjust the insert, just open the precomposed layer and tweak the manual corner pin you made.
+
+
+==== Using Tracks For Stabilizing In After Effects
+
+You can use the tracking data created to stabilize a shot in After Effects.
+
+. Track your footage as normal, then turn on the Surface button and center the surface box on the area you wish to use as the stabilize center.
++
+image:UserGuide/en_US/images/export_005.jpg[]
++
+. Export the tracking data in the After Effects Transform format. Select the *Invert* checkbox option
++
+image:UserGuide/en_US/images/export_ae_transform_inverted_001.jpg[]
++
+. Switch to After Effects, select the layer you wish to apply the stabilize data to and paste it to that layer.
+
+You should now have a stabilized image.
+
+Alternatively you can also use the After Effect Corner Pin export using *Invert* in the same way to get a correctly warped stabilized image.
+
+
+
+=== Exporting Tracks to Final Cut Pro or Final Cut Express
+
+This example illustrates how to export Basic Motion data to Final Cut Pro or Final Cut Express, and use it to matchmove one clip to another, with translation, rotation and scale.
+
+Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately before export.
+
+Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Next, choose either the Final Cut Basic Motion or the Final Cut Distort options.
+
+image:UserGuide/en_US/images/export_FCP_basicmotion_001.jpg[]
+
+
+*Final Cut Distort:*
+
+The distort option exports the 4 point x, y information from either the adjusted track or the raw track. The points exported are the four corners of the surface.
+
+*Final Cut Basic Motion:*
+
+The basic motion option exports x and y positions as well as the scale and rotation for the whole surface. The position exported is the center  of the surface.
+
+Now click Save. This will display a file browser; you need to select a filename and directory for the files to be saved. By default, the files will take the name of the layer, so for a layer name Track_Layer this export produced a file named:
+
+Track_Layer.xml
+
+Now open the Final Cut project where you want to use the tracking data. To import the XML file in Final Cut Pro, click File | Import | XML.... In Final Cut Express, click File | Import | FCP XML from iMovie...
+
+You will now see a new clip in your bin, named 'Mocha distort – layer_name' or 'Mocha basic motion – layer_name'. If your original footage was a QuickTime file, then the new clip in Final Cut will point to this footage. If it was an image sequence, the clip will be connected to the first frame of the sequence, stretched to the duration of the whole clip.
+
+In most situations, you want to apply the tracking data to a different clip in your timeline. To do this, you can copy and paste the data from the imported clip onto any other.
+
+Drop your imported clip into the timeline, then select it and press Cmd-C to copy it to the clipboard. Now select the clip you want to apply the tracking data to and press Opt-V (Paste Attributes). You will see a dialog asking you to choose which data to paste.
+
+image:UserGuide/en_US/images/export_009.jpg[]
+
+Depending on the kind of data you exported, tick either 'Basic Motion' or 'Distort' and untick all the other boxes.
+
+You should now see the clip following you tracked.
+
+
+
+
+==== Using Tracks for Stabilizing in Final Cut
+
+To use our tracking data for stabilization in Final Cut, follow the same procedure as for a basic motion export, but tick the Invert checkbox in the export dialog.
+
+Now when you import the XML file into Final Cut, you should have a fully stabilized clip. You can also copy the stabilized data onto another clip using Copy and Paste Attributes as before.
+
+
+==== Troubleshooting Tracking Export to Final Cut
+
+Many issues of track misalignment can be corrected by choosing the right film type, frame rate and interlacing settings in our software. These controls are on the Clip page in the Film, Interlaced and Time tabs.
+
+
+===== The layer doesn't line up in Final Cut
+
+If the layer doesn't line up but the overall motion looks right, the most likely problem is mismatched pixel aspect ratio (PAR). In Final Cut, check the sequence settings to confirm the correct PAR for the clip, then use the equivalent setting when tracking in our software. If you have already tracked with the wrong film type setting, you will need to re-track after changing it. The table on the next page shows the corresponding settings between Final Cut and Boris FX products.
+
+Although film types are included in our software for anamorphic HD sizes (DVCPRO HD and HDV), you are unlikely to need to use them as QuickTime will normally apply the anamorphic scaling and our software will treat the video as full HD.
+
+*The layer lines up on the first frame, but then it drifts*
+
+This is usually caused by a frame rate mismatch. Check that the frame rate and interlacing settings match between final Cut and our software.
+
+*The layer appears much wider or thinner than it should*
+
+This can be caused by a mismatch in the Final Cut Anamorphic setting. If you are working with anamorphic footage, ensure that you have the 'Anamorphic' setting checked in your Final Cut sequence settings, and in the clip properties. You also need to use one of the anamorphic film types when tracking: any of the film types with 'Anamorphic' in the name should give correct results when importing the data into Final Cut.
+
+
+=== Exporting Tracks to Apple Motion
+
+Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately.
+
+Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Next, choose 'Motion basic transform(*.motn)' or 'Motion corner pin (*.motn)' and click 'Save' to save the file.
+
+
+Inside Motion, you can either choose to open the exported file as a new project or drag it into an existing project. You will see a Group containing the footage you tracked as well as a blue solid called "Surface".
+
+
+
+image:UserGuide/en_US/images/export_motion5_timeline.jpg[]
+
+
+Then take the following steps to insert your footage:
+
+. Drag the desired footage or image to the group, above the surface
+. Go to Motion Tracking in Behaviors and drag the Match Move behavior onto your insert
+. If the surface layer does not automatically apply to the behavior, drag the surface layer onto the Match Move behavior
+. If you are just using transform, Match Move defaults to this option and you can set transform, scale and rotation
+. If you are using corner pin, select the 'Four Corners' option from the 'Type' drop down.
+
+image:UserGuide/en_US/images/export_motion5_timeline_complete.jpg[]
+
+==== Troubleshooting Tracking Export to Apple Motion
+
+Many issues of track misalignment can be corrected by choosing the right film type, frame rate and interlacing settings in our software. These controls are on the Clip page in the Film, Interlaced and Time tabs.
+
+*The layer lines up on the first frame, but then it drifts*
+
+This is usually caused by a frame rate mismatch. Check that the frame rate settings match between Motion and Mocha.
+
+*The layer tracks correctly but is offset or scaled oddly*
+
+This is normally due to the layer you are inserting not being the same frame size as your project media. You can fix this by either changing the insert to fit the dimensions, or scaling the insert inside motion to match the dimensions. If you are going to scale the layer to fit, you should do this step before you apply Match Move.
+
+
+=== Exporting Tracks to Apple Shake
+
+This section explains how to export tracking data in a format readable by Apple Shake, how to import the data into Shake and how to use it for match move, corner pinning and stabilization tasks.
+
+Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately.
+
+Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Next, choose 'Shake Script (*.shk) and click 'Save' to save the script to disk or 'Copy to Clipboard' to simply copy-and-paste the data into Shake.
+
+image:UserGuide/en_US/images/export_shake_001.jpg[]
+
+
+Now let's use that data in Shake. To load the tracking data in a file into an existing Shake Script follow these steps:
+
+In the File menu, select ‘Add script'.
+
+image:UserGuide/en_US/images/export_011.jpg[]
+
+Navigate to the Shake script file you exported and select it.
+
+If you have the data on your clipboard, simply press Ctrl/Cmd+V or right-click and choose 'Paste'.
+
+Three nodes will now appear in your script: Stabilizer, MatchMoveLayer, and CornerPinLayer.
+
+
+image:UserGuide/en_US/images/export_012.jpg[]
+
+At this point you have successfully imported your tracking data from Mocha into Shake. But what exactly did you import? Let's start with the MatchMoveLayer layer.
+
+
+image:UserGuide/en_US/images/export_013.jpg[]
+
+The MatchMoveLayer is used to apply the tracking data to a foreground element that you wish to matchmove to a background. It consists of two inputs, the background and the foreground. The foreground element will be the element you wish to apply the match moving data to. The foreground is connected to the left side input of the node while the original tracked background element goes into the right hand side.
+
+
+image:UserGuide/en_US/images/export_014.jpg[]
+
+
+The next node is the CornerPinLayer node. This node has a single input and works just like the left input of the MatchMoveNode.
+
+
+image:UserGuide/en_US/images/export_015.jpg[]
+
+It takes your foreground element and applies the scaling, rotation, and translation data to it and prepares it for compositing into your next layer.
+
+The last exported node is the Stabilizer Node. Just as the name implies, it takes all of the exported tracking data and uses that data to stabilize your input clip.
+
+With this node, for example, you may apply this data to the background element you tracked to make for an easier composite.
+
+Now that you have successfully exported and imported your data into Shake you are ready to continue working on your project.
+
+
+image:UserGuide/en_US/images/export_016.jpg[]
+
+
+=== Exporting Tracks to Nuke
+
+This section explains how to export tracking data in a format readable by Nuke, how to import the data into Nuke and how to use it for match move, corner pinning and stabilization tasks.
+
+Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately.
+
+Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Next, choose Nuke Ascii (*.txt)' and click 'Save' to save the script to disk.
+
+image:UserGuide/en_US/images/EXPORT_nuke_ascii.jpg[]
+
+In Nuke, append a tracker to the background clip, e.g. by selecting the node and pressing tab, then typing 'tracker' and finally selecting the 'Tracker' node in the list of nodes.
+
+
+image:UserGuide/en_US/images/EXPORT_nuke_ascii02.jpg[]
+
+In the tracker properties window, select the animation submenu button for Tracker 1, then choose File | Import Ascii... in the menu.
+
+image:UserGuide/en_US/images/EXPORT_nuke_ascii03.jpg[]
+
+On the import Ascii dialog, press the folder button next to the file name, browse to the file you exported, select it, click 'Open' and then click 'OK'.
+
+Repeat these steps for tracker 2, 3 and 4.
+
+==== Exporting to Nuke 7 Tracker Node
+
+If you're in Nuke 7 or above and you don't want to go through the process of exporting out your ascii files, you can instead export to the Nuke 7 Tracker node.
+
+image:UserGuide/en_US/images/export_nuke_tracker.jpg[]
+
+If you choose Copy to Clipboard you can immediately switch over to Nuke and Paste the data. Alternatively you can import your saved Nuke Script from the File menu.
+
+==== Exporting Corner Pin tracks to Nuke Corner Pin Node
+
+You can export a Corner Pin straight to the clipboard or to a .nk script by choosing Nuke Corner Pin (*.nk) from the Export Tracking Data dialog.
+
+If you choose Copy to Clipboard you can immediately switch over to Nuke, select the node you wish to apply the corner pin to and Paste the data. Alternatively you can import your saved Nuke Script from the File menu.
+
+image:UserGuide/en_US/images/export_020.jpg[]
+
+
+=== Exporting Tracks to Blackmagic Fusion
+
+This section explains how to export tracking data in a format readable by Fusion, how to import the data into Fusion and how to use it for match move, corner pinning and stabilization tasks.
+
+Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately.
+
+Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Next, choose 'Blackmagic Fusion COMP Data (*.comp)' and click 'Save' to save the script to disk.
+
+In Fusion, open the .comp file, then drag the tracker node into the right view.
+
+
+image:UserGuide/en_US/images/export_021.jpg[]
+
+Now import the clip that you want composited onto the background and tie the output of the clip to the input of the tracker node.
+
+image:UserGuide/en_US/images/export_022.jpg[]
+
+In the settings of the tracker node, select the 'Operation' tab and select either 'Corner Positioning' or 'Match Move' to composite the insert clip on top of the background. Notice that you can switch 'Position', 'Rotation' and 'Scaling' on and off for different effects.
+
+
+image:UserGuide/en_US/images/export_023.jpg[]
+
+=== Exporting Tracks to Inferno, Flame, Flint, Smoke and Combustion
+
+This section explains how to export tracking data in a format readable by Autodesk Inferno, Flame, Flint, Smoke and Combustion.
+
+Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately.
+
+Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Select 'Autodesk IFFFSE Point Tracker Data (*.ascii)' as the format, and save this to a file. Next select the 'Autodesk IFFFSE Stabilizer Data (*.ascii)' export and save this to another file.
+
+image:UserGuide/en_US/images/export_autodesk_ascii_001.jpg[]
+
+*Importing into Combustion*
+
+Let's look at how we use the data. In Combustion, create a layer with the foreground graphic and set the layer shape to 'Four-Corner'.
+
+
+image:UserGuide/en_US/images/export_025.jpg[]
+
+Now select all four corners of your layer, enable the 'Tracker' tab and select 'Import Tracking Data.'
+
+Import the single Ascii file with the stabilizer tracking data.
+
+Activate the insert layer visibility and you will see that the insert layer is now tracked to the background element, even though the image is not sized correctly yet. Select all trackers and set the mode to 'Absolute' to resolve this.
+
+If you prefer to import your data one point at a time you can instead select one track point and import the Ascii file with the corresponding tracking data. Remember to switch to 'Absolute' mode once all data has been imported.
+
+
+*Importing into Inferno, Flame, Flint or Smoke for Corner Pinning*
+
+Firstly, we will set-up a corner-pin composite in the Action module, to reproduce the basic compositing operation.
+
+Enter Action and delete the default Axis and Image nodes.
+
+Create a new Bilinear Surface. Tap on bilinear1 then press ~ to view its settings. Go to Surface then click the S button next to Track.
+
+
+image:UserGuide/en_US/images/export_027.jpg[]
+
+You should now be in the familiar stabilizer module. For this example we are doing a corner-pin so we will need to use all four trackers.
+
+Tap Tracker 1 then press 'Imp' under 'Track Y'.
+
+image:UserGuide/en_US/images/export_028.jpg[]
+
+Now browse to the corresponding file, e.g. xxxx_top_left.ascii. The files correspond to trackers as shown below.
+
+You should see the marker for Tracker 1 move into the correct position.
+
+Repeat the process for the other three trackers, making sure that you use the correct files as shown in above. You should also mark each tracker as Active if it is not already.
+
+Tap Return to return to Action, and you should now see your finished corner pin.
+
+*Importing into Inferno, Flame, Flint or Smoke for Stabilization*
+
+An alternative use for the tracking data is for stabilization. You can use the Stabilizer module to do 1-, 2-, 3- or 4-point stabilization. In this example, we will do a 1-point stabilization to stabilize for position only, using the center  point.
+
+Enter the Stabilizer module. Click the Imp button under Track Y, as for the Corner Pin.
+
+Select the _center file, in my example this is PDA_center.ascii. You should now see the key-frames loaded and be able to process
+
+If you want to use more points to stabilize zoom, rotation, affine and perspective moves, just load the corner tracks as described in the Corner Pin section.
+
+
+=== Exporting Tracks to Assimilate SCRATCH
+
+*To import data into SCRATCH requires SCRATCH v7 or later.*
+
+To import the data into Assimilate, do the following:
+
+. Enter the SCRATCH player with the background shot
++
+image:UserGuide/en_US/images/export_scratch_001.jpg[]
++
+. Create a scaffold with a the image you want to insert (Make it a bicubic since you want a 4-corner pin deformation)
+. Either load the background shot into Mocha and track or send the shot from SCRATCH to Mocha by creating a custom command
++
+image:UserGuide/en_US/images/export_scratch_002.jpg[]
++
+. Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately.
+. Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Select 'Assimilate SCRATCH (*.txt)' as the format, and save this to a file or copy to clipboard
++
+image:UserGuide/en_US/images/export_scratch_003.jpg[]
++
+. Switch back to SCRATCH, select the scaffold with the bicubic and click on TRACK.
++
+image:UserGuide/en_US/images/export_scratch_004.jpg[]
++
+. Once on the TRACKING interface you will see "Paste Mocha data" highlighted, which is detecting that you have Mocha data on the clipboard.
+. Click on "Paste Mocha data" and the data will be applied to the element.
++
+image:UserGuide/en_US/images/export_scratch_005.jpg[]
+
+
+=== Exporting Tracks to Boris FX Plugins
+
+You can export either Corner Pin or Center  Point data out to any Boris FX plugin that supports motion tracking data. These include effects such as the BCC Corner Pin effect and Witness Protection.
+
+The files are import only, so you can't copy them to the clipboard. You can save the data as a text file and import it.
+
+image:UserGuide/en_US/images/boris_avidmediacomposer_sml.jpg[]
+
+Importing the track is as simple as locating the Motion Tracker section of your BCC plugin and clicking either the "L" button or selecting "Load..." from the Import-Export dropdown, depending on the plugin you are using.
+
+
+=== Exporting Tracks to Avid DS
+
+IMPORTANT: It is important that the clip length, frame rate, frame size, interlace mode, pulldown mode and pixel aspect ratio in the project match the corresponding settings in Avid DS project where you plan to use the data. You can change the frame rate and pixel aspect ratio settings in the Film and Time sections of the Clip tab.
+
+This section explains how to export tracking data in a format readable by Avid DS.
+
+Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately.
+
+Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Select 'Avid DS Tracking Data (*.fraw)' as the format, and save this to a file. This stores the x/y coordinates of the four surface points defining the track in eight .fraw text files using the following naming convention:
+
+
+...._R1x.fraw Lower left X coordinate
+
+...._R1y.fraw Lower left Y coordinate
+
+
+...._R2x.fraw Lower right X coordinate
+
+...._R2y.fraw Lower right Y coordinate
+
+
+...._R3x.fraw Upper left X coordinate
+
+...._R3y.fraw Upper left Y coordinate
+
+
+...._R4x.fraw Upper right X coordinate
+
+...._R4y.fraw Upper right Y coordinate
+
+
+
+Where "...." is replaced by the name of the exported layer.
+
+
+On your DS v10.x system, create a Tracker node and open the Animation Editor for it. In the left window check the little Blue Animation box to the left of R1x, R1y, R2x, R2y, R3x, R3y, R4x, and R4y. Now right-click "R1 Tracker Y" and select "Import tracking coordinates". Navigate to the folder containing the eight FRAW files that Mocha created and DS will load them. If you have an older version of DS then you will have to load each of the eight FRAW files individually.
+
+
+=== Exporting Tracks to HitFilm
+
+From HitFilm 4 onwards we have introduced Mocha transform and corner pin support, so you can now export Mocha tracking data directly to a HitFilm Composite Shot file.
+
+Exporting tracks to HitFilm 4 is very similar to exporting HitFilm Camera solves or Shapes:
+
+. Select a layer and go to "Export Tracking Data..."
+. Choose *HitFilm Corner Pin [supports motion blur]* or *HitFilm Transform Data [postion, scale and rotation]*
+. Click Save and choose a file name
+
+image:UserGuide/en_US/images/4.1.0_Export_HitFilm_Track_Data.jpg[]
+
+Importing is done via the Compositing section in HitFilm 4:
+
+. In HitFilm 4 go to your Composite section
+. Choose Import > Composite Shot
+. Select the saved HFCS file from Mocha
+. HitFilm will then load the Composite Shot with the footage you tracked in Mocha and layers with either a Quad Warp (for corner pin) or the layer with transform animation applied (for Transform).
+. You can then either relink the media in the composite file to the desired insert, or copy the Effect or Keyframes to the desired media in your existing composite.
+
+
+=== Exporting Tracks to Quantel generationQ systems
+
+*To import data into the Quantel requires Boris FX's TrackImport plug-in for Quantel.*
+
+You can import tracking data into Quantel systems by using Boris FX's TrackImport plug-in.
+
+Track an object in the usual way, and use AdjustTrack to correct for any drift if necessary. The exported tracking points will be the four corner points of the Surface, so you should position these appropriately.
+
+Press the Export Tracking Data button on either the Track or AdjustTrack tabs. Select 'Quantel Corner Pin Data (*.xml)' as the format, and save this to a file.
+
+In the Quantel system, select the TrackImport plug-in, and use the plug-ins file browser interface to select the tracking data file to import. Then click 'Settings' and choose 'Tracker' in the settings window and click 'Save'.
+
+The tracking data can now be used in a manner identical to tracking data generated within the Quantel system.
+
+=== Exporting Tracks to MochaBlend
+
+To export tracking data to the Good Spirit Graphics MochaBlend plugin, click the *Export Tracking Data...* button on the Track module, AdjustTrack module or from the File menu.
+
+You can export the tracking data by either saving it to file, or copying to the clipboard:
+
+image:UserGuide/en_US/images/4.1.3_Export_MochaBlend_Track_Data.jpg[]
+
+To import the tracking data into the plugin, you start by selecting an available Data slot and then either paste from the clipboard or open the exported file:
+
+image:UserGuide/en_US/images/4.1.3_Paste_MochaBlend_Track_Data.jpg[]
+
+Once imported, you can then adjust your scene to fit the data. It is important to make sure you check the warnings and correct any relevant items before setting up your rig:
+
+image:UserGuide/en_US/images/4.1.3_Imported_MochaBlend_Track_Data.jpg[]
+
+.Adjusting the data to fit with MochaBlend:
+. If there is a warning about format mismatch, click the green "Import Format" link in the MochaBlend window
+. If there is a warning about no camera rig, click the green "Create Rig" or "Set Active Rig" according to your needs
+. Finally make sure that you click the "Set Timeline to Data" if your project timeline is different from the frame range you tracked in Mocha
+
+You can then go ahead and tweak individual settings in the MochaBlend plugin. See MochaBlend documentation for further information on working with tracking data in the plugin.
+
+
+=== Exporting Stereo Tracking Data
+
+Exporting stereo Track data from Mocha is the same as exporting in mono mode, however when you are in multiview mode you can choose the view you want to export.
+
+.To export stereo tracking data from Mocha:
+. Select a layer
+. Click "Export Tracking Data..." from the Track module or choose the option from the file menu (File | Export Tracking Data...)
+. Select the Application you wish to export to
+. Select the view you want to export (or check "Export all views" if it is available for that export format)
+. Choose whether you want to export the currently selected layer, all visible layers or all layers
+. Click "Copy to Clipboard" or "Save" depending on your preference. Note that some exports only allow you to save the data.

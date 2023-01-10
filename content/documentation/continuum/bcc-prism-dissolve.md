@@ -1,0 +1,158 @@
+{
+"date": "2019-06-12",
+"title": "BCC Prism Dissolve",
+"category": "BCC Transitions",
+"link": "bcc-prism-dissolve/"
+}
+
+ 
+![](https://borisfx-com-res.cloudinary.com/image/upload//documentation/continuum/uploads/2019/10/BCC-Prism-Dissolve-1024x576.jpg)
+### Overview
+
+
+BCC Prism Dissolve can be used to simulate the photographic effect of chromatic aberration that automatically animates as your transition progresses to obscure the underlying dissolve between clips.
+
+
+### Parameter Controls
+
+
+**Presets and Common Controls**
+
+
+BCC filters come with a library of factory installed presets plus the ability to create your own custom presets and preview them with the BCC FX Browser™.
+
+
+BCC filters also include common controls that configure global effect preferences and other host-specific effect settings. For more information about working with presets and other common controls, [Click Here](/documentation/continuum/bcc-common-controls/)
+
+
+#### Main Transition Group
+
+
+**Layer to Reveal** – This layer selection popup is not relevant when you have applied the filter as a true NLE-style transition and it will be hidden or disabled in that context.  When applied as a normal “effect” as opposed to a transition, however, this menu is used to select the “Incoming” or “Reveal” layer for the transition.
+
+
+**Animation:** Menu controlling what drives the animation of the transition.
+
+
+* *Auto* – automatically generates a transition based on the transition length (when used as a transition) or the clip length (when used as a filter).
+* *Percent Done* – requires the user to set keyframes to control the transition progression.  Can be useful in customizing the exact timing of the transition or when applying the filter as a stylized effect as opposed to a direct NLE-style transition.
+
+
+**Percent Done:**  Disabled/Hidden by default.  When the Animation menu is changed to Percent Done then this slider can be manually keyframed to control the transition progression.
+
+
+#### Prism Parameters
+
+
+**Depth Delta**: Sets the overall change in depth between the start and end points.
+
+
+**Starting/Ending** Sets the Start and End points for rotation along the Z Axis.
+
+
+**Angle Delta:** Sets the overall change in clockwise angle for the image spin. 
+
+
+**Rotation Center**: Sets the center point around which the image will spin along the XY axis. 
+
+
+**Sample Count**: Sets the amount of copies of the original used to create the effect. the upper limit of 100 generates a smooth result. Starting- sets the start point of the zoom effect.
+
+
+**Starting Angle**: Sets the counter clockwise angle for the image spin.
+
+
+**Short Color**: Sets the color of the short color waves. The default is blue.
+
+
+**Mid Color**: Sets the color of the medium color waves. The default is green.
+
+
+**Long Color**: Sets the color of the long color waves. The default is red.
+
+
+**Outside Pattern**: Pop-up options for the outside area of the image include:
+
+
+* *No* (does nothing)
+* *Tile* (tiles the image to fill the gap)
+* *Reflect* (reflects the outer edges to fill the gap)
+
+
+**Mix With Original**: Blends the effect back with the original unfiltered clip.
+
+
+**Reverse Depth on Reveal:** Reverses the depth settings on the reveal clip so that the effect naturally animates out.
+
+
+**Reverse Angle on Reveal:** Reverses the angle settings on the reveal clip so that the effect naturally animates out. 
+
+
+**Apply Prism To:** Sets which layer the Prism effect is applied to. 
+
+
+* *Dissolve* applies prism to the transition effect directly
+* *Source Layer* will apply prism to the outgoing source layer only.
+* *Reveal Layer* will apply prism to the incoming reveal layer only
+* *Source and Reveal* will apply brism to both the outgoing and incoming layers, but not the transition.
+
+
+#### Region Animation Group
+
+
+**Region Animation** allows you to fine tune the style and direction of the transition effect with various settings. These settings are disabled by default until an animation type is selected.
+
+
+**Animation Type** sets the direction of the transition animation.
+
+
+* *None* will set the transition animation to affect the entire image at once. This is the default setting.
+* *Out:* the transition will begin at a central point and move outwards towards a edges.
+* *In:* the transition will begin along the outer edge and move inwards towards a central point.
+* *Out & In:* The transition will animate outwards and then rebound inwards over the course of the animation.
+* *In & Out:* The transition will animate inwards and then rebound outwards over the course of the animation.
+
+
+**Region Type:** determines the shape of the transition effect. 
+
+
+* *Circle* will cause the effect to appear as a circular wipe over the dissolve.  
+*Line* will cause the transition to appear as a letterbox wipe over the dissolve.
+
+
+**Direction:** Sets the angle of the transition. Only available when the Region Type is set to Line.
+
+
+**Softness:** sets the edge feathering of the transition region. Lower values will produce a sharper edge.
+
+
+**Center Point:** Sets the XY position of the transition’s animation.
+
+
+**Color** settings allow you to set the brightness and contrast values of the transition at it’s peak point. Values will increase as the effect transitions in and then decrease as the new layer is revealed.
+
+
+**Brightness Peak:** Sets the maximum brightness value for the transition.
+
+
+**Contrast Peak:** Sets the maximum contrast value for the transition.
+
+
+#### **Animation Tuning Group**
+
+
+These parameters control the overall timing of the transition.  On hosts which permit on-screen heads up display widgets (such as AE, Premiere, and Avid), you should never need to modify these sliders directly since they can be configured in a more convenient and intuitive manner by manipulating the widgets directly in your comp/preview pane.  On hosts without heads up display widgets you can use these sliders directly to fine tune your animation timing, taking advantage of the View Ease Curve option to help visualize the animation rates.
+
+
+**Ease In:**Controls how quickly or slowly the glitch intensity increases at the beginning of the transition.
+
+
+**Ease Mid:**Controls the rate of change of the glitch intensity (how quickly it reaches its peak amount and how long it holds there) during the middle of the transition.
+
+
+**Ease Out:**  Controls how quickly or slowly the glitch intensity decreases at the end of the transition.
+
+
+**Dissolve Duration:**  Controls the timing of the underlying dissolve relative to the timing of the rest of the transition.null
+
+

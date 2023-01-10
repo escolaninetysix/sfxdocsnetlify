@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>3.3. AbstractTrackingDataExporter &#8212; mocha 7.5.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.4. CameraSolveExporter" href="CameraSolveExporter.html" />
+    <link rel="prev" title="3.2. AbstractShapeDataExporter" href="AbstractShapeDataExporter.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="CameraSolveExporter.html" title="3.4. CameraSolveExporter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="AbstractShapeDataExporter.html" title="3.2. AbstractShapeDataExporter"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 7.5.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">3. </span>mocha.exporters</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-mocha.exporters"></span><div class="section" id="abstracttrackingdataexporter">
+<span id="id1"></span><h1><span class="section-number">3.3. </span>AbstractTrackingDataExporter<a class="headerlink" href="#abstracttrackingdataexporter" title="Permalink to this headline">¶</a></h1>
+<p><strong>Inherited by:</strong> <a class="reference internal" href="TrackingDataExporter.html#trackingdataexporter"><span class="std std-ref">TrackingDataExporter</span></a></p>
+<div class="section" id="synopsis">
+<h2><span class="section-number">3.3.1. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><span class="section-number">3.3.1.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.register" title="mocha.exporters.AbstractTrackingDataExporter.register"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register</span></code></a> ()</p></li>
+<li><p>def <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.unregister" title="mocha.exporters.AbstractTrackingDataExporter.unregister"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unregister</span></code></a> ()</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="virtual-functions">
+<h3><span class="section-number">3.3.1.2. </span>Virtual functions<a class="headerlink" href="#virtual-functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.do_export" title="mocha.exporters.AbstractTrackingDataExporter.do_export"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_export</span></code></a> (project, layer, tracking_file_path, time, view, options)</p></li>
+<li><p>def <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.error_string" title="mocha.exporters.AbstractTrackingDataExporter.error_string"><code class="xref py py-meth docutils literal notranslate"><span class="pre">error_string</span></code></a> ()</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="static-functions">
+<h3><span class="section-number">3.3.1.3. </span>Static functions<a class="headerlink" href="#static-functions" title="Permalink to this headline">¶</a></h3>
+<div class="function-list docutils container">
+<ul class="simple">
+<li><p>def <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.registered_exporters" title="mocha.exporters.AbstractTrackingDataExporter.registered_exporters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registered_exporters</span></code></a> ()</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="properties">
+<h3><span class="section-number">3.3.1.4. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>property <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.exports_interlaced" title="mocha.exporters.AbstractTrackingDataExporter.exports_interlaced"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exports_interlaced</span></code></a> [read-only] of bool</p></li>
+<li><p>property <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.exports_multiple_views" title="mocha.exporters.AbstractTrackingDataExporter.exports_multiple_views"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exports_multiple_views</span></code></a> [read-only] of bool</p></li>
+<li><p>property <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.exports_removed_lens_distortion" title="mocha.exporters.AbstractTrackingDataExporter.exports_removed_lens_distortion"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exports_removed_lens_distortion</span></code></a> [read-only] of bool</p></li>
+<li><p>property <a class="reference internal" href="#mocha.exporters.AbstractTrackingDataExporter.registered" title="mocha.exporters.AbstractTrackingDataExporter.registered"><code class="xref py py-attr docutils literal notranslate"><span class="pre">registered</span></code></a> [read-only] of bool</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2><span class="section-number">3.3.2. </span>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<blockquote id="more">
+<div><p>Abstract tracking data exporter class. Inherit the class to create own exporter formats.
+Method do_export must be overloaded.</p>
+</div></blockquote>
+<dl class="py class">
+<dt id="mocha.exporters.AbstractTrackingDataExporter">
+<em class="property">class </em><code class="sig-prename descclassname">mocha.exporters.</code><code class="sig-name descname">AbstractTrackingDataExporter</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">extension</em><span class="optional">[</span>, <em class="sig-param">number_of_data_streams=1</em><span class="optional">[</span>, <em class="sig-param">export_interlaced=false</em><span class="optional">[</span>, <em class="sig-param">remove_lens_distortion=false</em><span class="optional">[</span>, <em class="sig-param">export_multiple_views=false</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>unicode</em>) – name of the exporter which will be displayed in the Export Tracking Data dialog drop-down list. Should contain a file mask in brackets e.g. Foo (<a href="#id2"><span class="problematic" id="id3">*</span></a>.bar)</p></li>
+<li><p><strong>extension</strong> (<em>unicode</em>) – additional extension.</p></li>
+<li><p><strong>number_of_data_streams</strong> (<em>uint</em>) – number of result files. If it equals to 1 then the Copy to Clipboard button will be enabled.</p></li>
+<li><p><strong>remove_lens_distortion</strong> (<em>bool</em>) – whether the exporter supports removing of a lens distortion.</p></li>
+<li><p><strong>export_multiple_views</strong> (<em>bool</em>) – whether the exporter supports multiple views.</p></li>
+<li><p><strong>export_interlaced</strong> (<em>bool</em>) – whether the exporter supports interlaced footage.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create an exporter instance. The instance ownership is delegated to Python. To register the exporter inside
+mocha exporters system, call <cite>register()</cite> method. Before deleting the object unregisters itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.do_export">
+<code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">do_export</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project</span></em>, <em class="sig-param"><span class="n">layer</span></em>, <em class="sig-param"><span class="n">tracking_file_path</span></em>, <em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">view</span></em>, <em class="sig-param"><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.do_export" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary with keys of type QString and values of type QByteArray.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>project</strong> (<a class="reference internal" href="../project/Project.html#id0" title="mocha.project.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.Project</span></code></a>) – mocha project instance.</p></li>
+<li><p><strong>layer</strong> (<a class="reference internal" href="../project/Layer.html#mocha.project.Layer" title="mocha.project.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.Layer</span></code></a>) – layer instance.</p></li>
+<li><p><strong>tracking_file_path</strong> (<em>unicode</em>) – absolute file path to save which has been chosen by a user in a file dialog.</p></li>
+<li><p><strong>time</strong> (<em>double</em>) – frame index.</p></li>
+<li><p><strong>view</strong> (<a class="reference internal" href="../project/View.html#id0" title="mocha.project.View"><code class="xref py py-class docutils literal notranslate"><span class="pre">mocha.project.View</span></code></a>) – view.</p></li>
+<li><p><strong>options</strong> (<em>Dictionary with keys of type QString and values of type bool.</em>) – <code class="docutils literal notranslate"><span class="pre">dict</span></code> of options {string_option: bool}.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> of {file_name: QByteArray}</p>
+</dd>
+</dl>
+<p>Performs main exporter operations. Must return a map (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) of absolute file path and appropriate contents.
+The exporter should not create those files.</p>
+<p>There are 3 available <code class="docutils literal notranslate"><span class="pre">options</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Invert</span></code> - whether the Invert checkbox is checked.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Stabilize</span></code> - whether the exporter will be called from the Stabilize page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RemoveLensDistortion</span></code> - whether the Remove lens distortion checkbox is checked.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.error_string">
+<code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">error_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.error_string" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>unicode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.register">
+<code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">register</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers the exporter instance inside mocha exporters system. The exporter will be registered as a stabilize one as well.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.registered_exporters">
+<em class="property">static </em><code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">registered_exporters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.registered_exporters" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary with keys of type QString and values of type TrackingDataExporter.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> of {str: <code class="xref py py-class docutils literal notranslate"><span class="pre">TrackingDataExporter</span></code>}</p>
+</dd>
+</dl>
+<p>Returns a dict of registered exporters including custom user exporters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.unregister">
+<code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">unregister</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.unregister" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unregisters the exporter instance inside mocha exporters system.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.exports_multiple_views">
+<code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">exports_multiple_views</code><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.exports_multiple_views" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Whether the exporter supports multiple views.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.exports_interlaced">
+<code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">exports_interlaced</code><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.exports_interlaced" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Whether the exporter supports interlaced footage.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.exports_removed_lens_distortion">
+<code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">exports_removed_lens_distortion</code><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.exports_removed_lens_distortion" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Whether the exporter supports removing of a lens distortion.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="mocha.exporters.AbstractTrackingDataExporter.registered">
+<code class="sig-prename descclassname">AbstractTrackingDataExporter.</code><code class="sig-name descname">registered</code><a class="headerlink" href="#mocha.exporters.AbstractTrackingDataExporter.registered" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Access</dt>
+<dd class="field-even"><p>read-only    Whether the exporter registered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.3. AbstractTrackingDataExporter</a><ul>
+<li><a class="reference internal" href="#synopsis">3.3.1. Synopsis</a><ul>
+<li><a class="reference internal" href="#functions">3.3.1.1. Functions</a></li>
+<li><a class="reference internal" href="#virtual-functions">3.3.1.2. Virtual functions</a></li>
+<li><a class="reference internal" href="#static-functions">3.3.1.3. Static functions</a></li>
+<li><a class="reference internal" href="#properties">3.3.1.4. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">3.3.2. Detailed Description</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="AbstractShapeDataExporter.html"
+                        title="previous chapter"><span class="section-number">3.2. </span>AbstractShapeDataExporter</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="CameraSolveExporter.html"
+                        title="next chapter"><span class="section-number">3.4. </span>CameraSolveExporter</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="CameraSolveExporter.html" title="3.4. CameraSolveExporter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="AbstractShapeDataExporter.html" title="3.2. AbstractShapeDataExporter"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mocha 7.5.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">3. </span>mocha.exporters</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2020, Imagineer Systems Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

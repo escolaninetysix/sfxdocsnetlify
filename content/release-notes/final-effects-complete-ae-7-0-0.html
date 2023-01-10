@@ -1,0 +1,192 @@
+{
+   "date": "2012-09-04T15:32:50-04:00",
+   "tags": [
+      "Final Effects Complete"
+   ],
+   "title": "Final Effects Complete AE - 7.0.0",
+   "description": "Final Effects Complete 7.0.0 for AE release notes"
+}
+
+FEC AE 7 supports the following host applications:
+
+Mac OSX 10.6, 10.7, and 10.8:
+<ul>
+ <li>
+   Adobe After Effects and Premiere Pro CS4, CS5, CS5.5, and CS6
+ </li>
+</ul>
+Windows 7 64, Windows 8 64:
+<ul>
+ <li>
+  Adobe After Effects and Premiere Pro CS4, CS5, CS5.5, and CS6
+ </li>
+</ul>
+<strong>
+ What's New in FEC AE 7 (Summary of feature changes since FEC 6):
+</strong>
+Ten new filters including an array of unique new transitions:
+<ol>
+ <li>
+  Difference Blend
+ </li>
+ <li>
+  Difference Wipe
+ </li>
+ <li>
+  Glow Dissolve
+ </li>
+ <li>
+  Spiral Blur Dissolve
+ </li>
+ <li>
+  Toner Dissolve
+ </li>
+ <li>
+  Threshold Dissolve
+ </li>
+ <li>
+  Threshold RGB Dissolve
+ </li>
+ <li>
+  Turbulence Dissolve
+ </li>
+ <li>
+  Vector Blur Dissolve
+ </li>
+ <li>
+  Water Waves Dissolve
+ </li>
+</ol>
+<ul>
+ <li>
+  32 bit float processing in After Effects.
+ </li>
+ <li>
+  AE host mask path integration in five filters providing easy animation along mask paths such as text outlines:
+ </li>
+</ul>
+<ol>
+ <li>
+  Ball Action
+ </li>
+ <li>
+  Glass
+ </li>
+ <li>
+  Glue Gun
+ </li>
+ <li>
+  Hair
+ </li>
+ <li>
+  Mr. Mercury
+ </li>
+</ol>
+<ul>
+ <li>
+  The Beat Reactor is now available for many filters in Premiere Pro via the new external audio mechanism.
+ </li>
+ <li>
+  Motion Tracker workflow improvements benefiting AE and Premiere including a much simpler workflow in Premiere which no longer requires rendering to generate the tracker data. Additionally a Clear Render Cache button was added allowing a more convenient method to clear the host cache of frames containing rendered tracker messages. See the Motion Tracker help docs for AE and Premiere for more details on the new workflow.
+ </li>
+ <li>
+  View Displacement option added to Water Waves allowing for interesting self-animating gradients.
+ </li>
+ <li>
+  Numerous bug fixes and render quality improvements.
+ </li>
+</ul>
+<strong>
+ FEC AE 7.0.0 Bug Fixes - (Summary of major fixes since FEC 6):
+</strong>
+<ul>
+ <li>
+  Vector Blur used an edge treatment mechanism that allowed unexpected transparency to creep in around the edges of the image.
+ </li>
+ <li>
+  Using the integrated Beat Reactor to control the vertical blur amount in FEC Blur did not generate the proper vertical blur amounts.
+ </li>
+ <li>
+  On Mac OS, FEC filters could not open presets that used names with non-ASCII text characters, and saving a preset named with non-ASCII characters resulted in a file with unexpected garbage characters in the name.
+ </li>
+ <li>
+  On Mac OS, loading Pixel Chooser subpresets did not update the values of the pixel chooser parameters.
+ </li>
+ <li>
+  Light Wipe generated artifacts for moderately high values of Intensity.
+ </li>
+ <li>
+  The Beat Reactor did not properly drive the threshold parameters in ThresholdRGB.
+ </li>
+ <li>
+  Mr. Mercury did not properly adjust for non-square pixel aspect ratios.
+ </li>
+ <li>
+  The Mr. Mercury emitter location was shifted by half the image dimension away from the correct point when using the Motion tracker to define the position.
+ </li>
+ <li>
+  Mr. Mercury showed very sporadic instability when scrubbing parameters or scrubbing in the timeline.
+ </li>
+ <li>
+  When the density parameter was low in Glue Gun (i.e when distinct blobs were visible) the blobs were rendered in the wrong location when field rendering leading to potentially jittery playback.
+ </li>
+ <li>
+  FEC Sphere showed aliasing artifacts at some settings.
+ </li>
+ <li>
+  Bulge showed sporadic instability when the height parameter was less than 0.
+ </li>
+ <li>
+  In some filters the Compare Mode did not preview correctly when using the Pixel Chooser.
+ </li>
+ <li>
+  Rain Wipe did not properly handle images with non-opaque alpha channels
+ </li>
+ <li>
+  When selecting a single channel in the integrated Beat Reactor the audio levels would sometimes flicker unexpectedly.
+ </li>
+</ul>
+<strong>
+ FEC AE 7.0.0 - Known Issues and Limitations:
+</strong>
+<ul>
+ <li>
+  The Motion Tracker has been removed from all filters in the Transition category.
+ </li>
+ <li>
+  As part of the new Motion Tracker workflow, if you change the tracker search width, target width, color space, or accuracy after an initial tracking pass, you must now reset the tracker data with the reset button in the tracker banner before starting a second tracker pass. (This is not necessary if tracker point picker location has changed.)
+ </li>
+ <li>
+  When using the new AE mask integration feature to follow complicated mask shapes over a short number of frames you may notice the mask path "cutting corners" instead of following the outlines exactly. Adjusting the particle birth rate or density may help as well as increasing the frame rate or overall duration of the animation.
+ </li>
+ <li>
+  On windows if you install the 32bit FEC AE installer (for CS4 hosts) and 64bit installer (for CS5, CS5.5, or CS6 hosts) and then uninstall one of those two installers, you may need to run a repair install on the remaining version to ensure it operates properly.
+ </li>
+ <li>
+  The Beat Reactor audio graph becomes less accurate as the Frequency Resolution is increased to high values. As a temporary workaround you can lower the Smoothing amount to preserve accuracy when the Frequency Resolution is high or you can use lower values of Frequency Resolution such as the default setting of 32.
+ </li>
+ <li>
+  In wipe transitions that contain a Drop Shadow parameter group, the drop shadow causes inconsistent animation when the wipe is applied to footage with a non-opaque alpha channel. When using alpha footage in a wipe transition the drop shadow should remain disabled.
+ </li>
+ <li>
+  In filters which integrate with the AE host lights, the Cast Shadows option does not render properly for AE spotlights when it is enabled in the host light properties and should remain disabled.
+ </li>
+ <li>
+  When the emitter position in Mr. Mercury is animated or mapped to a motion tracker, the use of the Prestart parameter causes the emitter position to prematurely travel the emitter path. As a workaround for using the prestart parameter when the emitter position is animated, you can apply the tracker to a slightly longer clip which can be faded/cut in to give the particles time to develop before the desired beginning point of the animation.
+ </li>
+ <li>
+  The 3D Relief filter does not preview accurately at less than full resolution and this effect should be set up at full resolution.
+ </li>
+ <li>
+  Versions of Premiere Pro prior to CS6 have problems getting the correct frame with filters that access layers at alternate times when applied to trimmed clips. Adobe resolved this issue in Premiere Pro CS6 but in prior versions of Premiere Pro you may need to export trimmed sections and re-import them as untrimmed in order for time based features such as the Motion Tracker or Wide Time to work properly.
+ </li>
+ <li>
+  Preset banner popup menus do not work in Premiere Pro on Windows. Presets must be loaded with the Load (L) button instead.
+ </li>
+ <li>
+  Features that make reference to host cameras, lights, or mask paths are relevant only when running in After Effects and should be ignored in Premiere Pro hosts.
+ </li>
+ <li>
+  Stacking multiple FEC filters on a single clip when one of those filters accesses frames at other times can lead to performance degradation or pseudo-hanging. It is recommended that FEC filters which access frames at alternate times should be applied singly.
+ </li>
+</ul>

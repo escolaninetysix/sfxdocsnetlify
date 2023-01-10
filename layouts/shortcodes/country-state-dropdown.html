@@ -1,0 +1,53 @@
+      <!-- Country -->
+      <div class="form-group">
+        <label>Country</label>
+        <select id="country" name="country" class="form-control" required >
+        	<option value="">-- Select a Country --</option>
+        </select>
+      </div>
+
+      <!-- Country -->
+      <div id="stateDiv" class="form-group" hidden>
+        <label>State</label>
+        <select id="state" name="state" class="form-control" >
+
+        </select>
+      </div>
+
+		<script>
+		$(function() {
+		  $(document).ready(function() {
+		  	var $countryField = $('#country');
+		  	$.each(countryStateJSON, function(index,value) {
+		  		$countryField.append('<option value=' + value.code + '>' + value.name + '</option>');
+		  	});
+		  });
+
+		  $('#country').change(function() {
+		  	var matchedCountry;
+		  	for (var i = 0; i < countryStateJSON.length; i++){
+		  		if (countryStateJSON[i].code === this.value){
+		  			matchedCountry = countryStateJSON[i];
+		  			break;
+		  		}
+		  	}
+		  	var $stateField = $('#state');
+		  	var $stateDiv = $('#stateDiv');
+		  	if (matchedCountry.states != undefined && matchedCountry.states.length > 0){
+		  		$stateField.empty();
+		  		$.each(matchedCountry.states, function(index, value){
+		  			$stateField.append('<option value=' + value.code + '>' + value.name + '</option>');
+		  		});
+		  		$stateDiv.attr('hidden', false);
+		  		$stateField.attr('required', true);
+		  	}
+		  	else{
+		  		$stateDiv.attr('hidden', true);
+		  		$stateField.attr('required', false);
+		  		$stateField.empty('');
+		  	}
+		  });
+
+		})
+			var countryStateJSON = {{ $.Site.Data.CountriesAndStates }};
+		</script>

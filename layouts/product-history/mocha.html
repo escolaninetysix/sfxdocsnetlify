@@ -1,0 +1,344 @@
+{{ define "content" }}
+
+<div class="product-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-12">
+        <nav>
+          <span class="product-links">
+            <a href="#2021">Mocha Pro 2021</a>            
+            <a href="#20205">Mocha Pro 2020.5</a>            
+			<a href="#2020">Mocha Pro 2020</a>            
+			<a href="#20195">Mocha Pro 2019.5</a>
+			<a href="#2019">Mocha Pro 2019</a>
+			<a href="#5">Mocha Pro 5</a>
+			<a href="#4">Mocha Pro 4</a>
+          </span>
+        </nav>
+      </div>
+      <div class="col-lg-3 col-md-12">
+        <span class="float-lg-right product-btns">
+          <a href="{{ if .Params.download_url }}{{ .Params.download_url }}{{ else }}/downloads{{ end }}" class="btn btn-{{ .Params.key_color }}">FREE TRIAL</a>
+          <a href="{{ .Params.buy_now_url }}" class="btn btn-{{ .Params.key_color }}">BUY NOW</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product-nav-placeholder"></div>
+<script>
+$(function () {
+  $(document).ready(function () {
+    var nav = $('.product-nav');
+    var navPosition = nav.offset().top;
+    navPosition -= $('header').height();
+    function update() {
+      if ($(this).scrollTop() > navPosition) {
+        nav.addClass("fixed");
+      } else {
+        nav.removeClass("fixed");
+      }
+    }
+    $(window).scroll(update);
+    update();
+  });
+});
+</script>
+
+
+<script>
+$(window).on('load',function() {
+  $("#container1").twentytwenty();
+  
+  $("#container2").twentytwenty();  
+  
+  $("#container3").twentytwenty();
+  
+  $("#container4").twentytwenty();
+  
+  $("#container5").twentytwenty();
+  
+});
+</script>
+
+{{ if .Params.whats_new_2021 }}
+<div style="font-style: normal;font-weight: 300;"  class="section">
+  <div class="container">
+	<div class="row">
+
+	    <div style="font-size:14pt;">
+		<div id="2021"></div>
+        {{ $items := .Params.whats_new_2021 }}
+        {{ range $index, $item := .Params.whats_new_2021 }}
+
+          <div class="col-md-12">
+		  		        {{ if $item.title_section }}
+						<h1 style="font-style: normal;font-weight: 500;text-align:center;letter-spacing:0em;"><b>{{ $item.title_section }}</b></h1><br>
+						{{ end }}
+		                {{ if $item.title }}
+ 			            <h2 style="font-style: normal;font-weight: 300;text-align:center;"><b>{{ $item.title }}</b></h2><br>
+						{{ end }}
+
+
+            {{ if $item.video_url }}
+	    {{ partial "video-play.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}<br>
+            {{ end }}
+
+            {{ if $item.content }}
+            <div class="text-left">
+              <p style="font-style: normal;font-weight: 300;">{{ $item.content | markdownify }}</p><br>
+            </div>
+            {{ end }}
+          </div>
+
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+
+    </div>
+	</div>
+  </div>
+</div>
+
+{{ end }}
+
+{{ if .Params.whats_new_20205 }}
+<div style="font-style: normal;font-weight: 300;"  class="section">
+  <div class="container">
+	<div class="row">
+
+	    <div style="font-size:14pt;">
+		<div id="20205"></div>
+        {{ $items := .Params.whats_new_20205 }}
+        {{ range $index, $item := .Params.whats_new_20205 }}
+
+          <div class="col-md-12">
+		  		        {{ if $item.title_section }}
+						<h1 style="font-style: normal;font-weight: 500;text-align:center;letter-spacing:0em;"><b>{{ $item.title_section }}</b></h1><br>
+						{{ end }}
+		                {{ if $item.title }}
+ 			            <h2 style="font-style: normal;font-weight: 300;text-align:center;"><b>{{ $item.title }}</b></h2><br>
+						{{ end }}
+
+
+            {{ if $item.video_url }}
+	    {{ partial "video-play.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}<br>
+            {{ end }}
+
+            {{ if $item.content }}
+            <div class="text-left">
+              <p style="font-style: normal;font-weight: 300;">{{ $item.content | markdownify }}</p><br>
+            </div>
+            {{ end }}
+          </div>
+
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+
+    </div>
+	</div>
+  </div>
+</div>
+
+{{ end }}
+
+{{ if .Params.whats_new_2020 }}
+<div style="font-style: normal;font-weight: 300;"  class="section">
+  <div class="container">
+  	<h1 id="whats-new"></h1>
+	<div class="row">
+
+	    <div style="font-size:14pt;">
+		<div id="2020"></div>
+        {{ $items := .Params.whats_new_2020 }}
+        {{ range $index, $item := .Params.whats_new_2020 }}
+
+          <div class="col-md-12">
+		                {{ if $item.title_section }}
+						<h1 style="font-style: normal;font-weight: 500;text-align:center;letter-spacing:0em;"><b>{{ $item.title_section }}</b></h1><br>
+						{{ end }}	               
+						{{ if $item.title }}
+ 			            <h2 style="font-style: normal;font-weight: 300;text-align:center;"><b>{{ $item.title }}</b></h2><br>
+						{{ end }}
+
+
+
+
+            {{ if $item.video_url }}
+	    {{ partial "video-play.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}<br>
+            {{ end }}
+
+            {{ if $item.content }}
+            <div class="text-left">
+              <p style="font-style: normal;font-weight: 300;">{{ $item.content | markdownify }}</p><br>
+            </div>
+            {{ end }}
+          </div>
+
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+
+    </div>
+	</div>
+  </div>
+</div>
+
+{{ end }}
+
+{{ if .Params.whats_new_20195 }}
+  <div class="section">
+  <div class="container" style="font-style: normal;font-weight: 300;font-size:14pt;" >
+		<div id="20195"></div>
+	<div class="row">
+
+
+        {{ $items := .Params.whats_new_20195 }}
+        {{ range $index, $item := .Params.whats_new_20195 }}
+
+          <div class="col-md-12">
+		                {{ if $item.title_section }}
+						<h1 style="font-style: normal;font-weight: 500;text-align:center;letter-spacing:0em;"><b>{{ $item.title_section }}</b></h1><br>
+						{{ end }}	               
+						{{ if $item.title }}
+ 			            <h2 style="font-style: normal;font-weight: 300;text-align:center;"><b>{{ $item.title }}</b></h2><br>
+						{{ end }}
+            {{ if $item.video_url }}
+	    {{ partial "video-play-new.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}<br>
+            {{ end }}
+
+            {{ if $item.content }}
+            <div class="text-left">
+              <p style="font-style: normal;font-weight: 300;">{{ $item.content | markdownify }}</p><br>
+            </div>
+            {{ end }}
+          </div>
+
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+
+	</div>
+  </div>
+  </div>
+{{ end }}
+
+
+{{ if .Params.whats_new_2019 }}
+<div style="font-style: normal;font-weight: 300;"  class="section">
+  <div class="container">
+	<div class="row">
+
+	    <div style="font-size:14pt;">
+		<div id="2019"></div>
+        {{ $items := .Params.whats_new_2019 }}
+        {{ range $index, $item := .Params.whats_new_2019 }}
+
+          <div class="col-md-12">
+		                {{ if $item.title_section }}
+						<h1 style="font-style: normal;font-weight: 500;text-align:center;letter-spacing:0em;"><b>{{ $item.title_section }}</b></h1><br>
+						{{ end }}	               
+						{{ if $item.title }}
+ 			            <h2 style="font-style: normal;font-weight: 300;text-align:center;" id="vr"><b>{{ $item.title }}</b></h2><br>
+						{{ end }}
+            {{ if $item.video_url }}
+	    {{ partial "video-play.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}<br>
+            {{ end }}
+
+            {{ if $item.content }}
+            <div class="text-left">
+              <p style="font-style: normal;font-weight: 300;">{{ $item.content | markdownify }}</p><br>
+            </div>
+            {{ end }}
+          </div>
+
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+
+    </div>
+	</div>
+  </div>
+</div>
+
+{{ end }}
+
+{{ if .Params.whats_new_5 }}
+  <div class="section">
+  <div class="container" style="font-style: normal;font-weight: 300;font-size:14pt;">
+  	<div id="5"></div>
+	<div class="row">
+
+        {{ $items := .Params.whats_new_5 }}
+        {{ range $index, $item := .Params.whats_new_5 }}
+
+          <div class="col">
+		    {{ if $item.title }}
+			<h1 style="font-style: normal;font-weight: 500;text-align:center;letter-spacing:0em;"><b>{{ $item.title }}</b></h1><br>
+			{{ end }}	               
+            {{ if $item.video_url }}
+	    {{ partial "video-play.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}<br>
+            {{ end }}
+
+            {{ if $item.content }}
+            <div class="text-left">
+              <p style="font-style: normal;font-weight: 300;">{{ $item.content | markdownify }}</p><br>
+            </div>
+            {{ end }}
+          </div>
+
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+
+
+	</div>
+  </div>
+  </div>
+
+{{ end }}
+
+{{ if .Params.whats_new_4 }}
+  <div class="section">
+  <div class="container" style="font-style: normal;font-weight: 300;font-size:14pt;">
+  	<div id="4"></div>
+	<div class="row">
+
+        {{ $items := .Params.whats_new_4 }}
+        {{ range $index, $item := .Params.whats_new_4 }}
+
+          <div class="col">
+		    {{ if $item.title }}
+			<h1 style="font-style: normal;font-weight: 500;text-align:center;letter-spacing:0em;"><b>{{ $item.title }}</b></h1><br>
+			{{ end }}	               
+            {{ if $item.video_url }}
+	    {{ partial "video-play.html" (dict "thumbnail_url" $item.thumbnail_url "video_url" $item.video_url) }}<br>
+            {{ end }}
+
+            {{ if $item.content }}
+            <div class="text-left">
+              <p style="font-style: normal;font-weight: 300;">{{ $item.content | markdownify }}</p><br>
+            </div>
+            {{ end }}
+          </div>
+
+        {{ if (ne $index (add (len $items) -1)) }}
+        <hr class="hidden-sm-down"/>
+        {{ end }}
+        {{ end }}
+
+
+	</div>
+  </div>
+  </div>
+
+{{ end }}
+
+{{ end }}

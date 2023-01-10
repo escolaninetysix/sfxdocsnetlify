@@ -1,0 +1,194 @@
+.. module:: mocha.project
+.. _ParameterSet:
+
+ParameterSet
+************
+
+.. inheritance-diagram:: ParameterSet
+    :parts: 2
+
+Synopsis
+--------
+
+Functions
+^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`__eq__<ParameterSet.__eq__>` (rhs)
+*    def :meth:`__mgetitem__<ParameterSet.__mgetitem__>` ()
+*    def :meth:`__ne__<ParameterSet.__ne__>` (rhs)
+*    def :meth:`get_parameters<ParameterSet.get_parameters>` ()
+*    def :meth:`get_subsets<ParameterSet.get_subsets>` ()
+
+
+Virtual functions
+^^^^^^^^^^^^^^^^^
+.. container:: function_list
+
+*    def :meth:`isNull<ParameterSet.isNull>` ()
+
+
+Properties
+^^^^^^^^^^
+.. container:: property_list
+
+*    property :attr:`display_name<ParameterSet.display_name>` [read-only] of str
+*    property :attr:`keyframes<ParameterSet.keyframes>` [read-only] of list of 2-value tuples
+*    property :attr:`name_components<ParameterSet.name_components>` [read-only] of list of str
+*    property :attr:`parameters<ParameterSet.parameters>` [read-only] of list of :class:`Parameter`
+*    property :attr:`script_name<ParameterSet.script_name>` [read-only] of str
+*    property :attr:`subsets<ParameterSet.subsets>` [read-only] of list of :class:`ParameterSet`
+
+
+Detailed Description
+--------------------
+
+
+    
+    Parameter set instance associated with some data object of the project.
+    
+
+
+.. class:: ParameterSet(ParameterSet)
+
+
+    :type ParameterSet: :class:`mocha.project.ParameterSet`
+
+
+
+
+
+
+
+    :type ParameterSet: :class:`mocha.project.ParameterSet`
+
+
+
+.. method:: ParameterSet.__mgetitem__()
+
+
+
+
+
+    
+    If the key is string value object, returns child parameter set or parameter given its name.
+    If the key is a sequence of string values, traverses it down the hierarchy tree and returns the
+    last parameter/-set item.
+    Note: can be chained.
+    
+
+
+
+.. method:: ParameterSet.get_parameters()
+
+
+    :rtype: list of Parameter
+
+
+
+
+
+
+.. method:: ParameterSet.get_subsets()
+
+
+    :rtype: list of ParameterSet
+
+
+
+
+
+
+.. method:: ParameterSet.isNull()
+
+
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: ParameterSet.__ne__(rhs)
+
+
+    :type rhs: :class:`mocha.project.ParameterSet`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. method:: ParameterSet.__eq__(rhs)
+
+
+    :type rhs: :class:`mocha.project.ParameterSet`
+    :rtype: :class:`PySide.QtCore.bool`
+
+
+
+
+
+
+.. attribute:: ParameterSet.name_components
+
+
+    :type: list of str
+    :access: read-only    
+    Provides access to the full parameter set name list.
+    
+
+
+
+.. attribute:: ParameterSet.parameters
+
+
+    :type: list of :class:`Parameter`
+    :access: read-only    
+    Provides access to list of the parameters.
+    
+
+
+
+.. attribute:: ParameterSet.subsets
+
+
+    :type: list of :class:`ParameterSet`
+    :access: read-only    
+    Provides access to list of the parameter subsets.
+    
+
+
+
+.. attribute:: ParameterSet.keyframes
+
+
+    :type: list of 2-value tuples
+    :access: read-only    
+    Provides access to list of unique keyframes for the parameter set.
+    
+
+
+
+.. attribute:: ParameterSet.display_name
+
+
+    :type: str
+    :access: read-only    
+    Provides access to a display name.
+    
+
+
+
+.. attribute:: ParameterSet.script_name
+
+
+    :type: str
+    :access: read-only    
+    Provides access to a script name.
+    
+
+
+
+

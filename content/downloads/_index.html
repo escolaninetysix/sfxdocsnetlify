@@ -1,0 +1,533 @@
+{
+    "date": "2021-07-12T00:00:00-04:00",
+    "description": "Looking to download Sapphire, Continuum, or any of the Boris FX products? Click here ",
+    "title": "Downloads",
+    "layout": "home"
+    }
+    <style>
+        .table td {
+            vertical-align: middle;
+            padding: .5rem .75rem;
+        }
+
+        @media screen and (max-width: 1200px){
+            h4{
+                font-size: 1.2rem;
+            }
+            .container{
+                width: 95%!important;
+            }
+            .branded-box{
+                padding: .5rem;
+            }
+        }
+    
+        @media screen and (min-width: 992px) and (min-height: 600px){
+            .host-finder-modal {
+                bottom: 25px;
+                right: 25px;
+                top: unset;
+                left: unset;
+                width:250px;
+                height: 550px;
+                overflow-y: hidden!important;
+            }
+            .host-finder-modal li{
+                font-size: .9rem
+            }
+            .host-finder-modal h5{
+                font-size: 1rem;
+                margin: .3rem 0;
+            }
+            .host-finder-modal h4{
+                font-size: 1.2rem;
+            }
+            .host-finder-modal .modal-dialog{
+                height: 100%;
+                border: 2px solid black;
+                background-color: #ffffff;
+                margin: 0;
+                border-radius:5px;
+            }
+            .host-finder-modal .modal-content{
+                max-height: 550px;
+                overflow-y: auto;
+            }
+            .modal-open{
+                overflow: auto!important;
+            }
+        }
+    </style>
+    
+    
+    <div id="app">
+        <h1>Downloads</h1>
+	<div class="row py-4">
+		<div class="col-12">
+		<a href="/legacy-downloads/" title="Legacy Downloads">Legacy Downloads</a>
+	</div>
+	</div>
+        <div class="row w-100">
+            <div v-for="filter in filters" key="filter.name" v-bind:class="filter.classes">
+                <div class="branded-box h-100">
+                    <h4>${filter.label}</h4>
+                    <div class="row">
+                        <template v-for="o in filter.options">
+                            <div v-bind:class="{'col-6': filter.name != 'os', 'col-12': filter.name == 'os'}"><input type="checkbox" key="o.name" :value="o"
+                                    v-model="selectedFilters[filter.name]" /> <label>${o.name}</label></div>
+                        </template>
+                    </div>
+                    <div class="row mt-auto">
+                        <div class="col" style="font-size: .8rem;">
+                            <span v-if="filter.name == 'host'">Not sure? Use our <a href="#" @click="finder.show">Host Finder</a></span>
+                            <span v-else>&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5" v-show="error">
+                <h2>There was a problem retrieving downloads. Please reload this page to try again.</h2>
+            </div>
+            <div class="col-12" v-show="downloads.length == 0 && !error">
+                <h2 class="mt-5">Loading Downloads. . .</h2>
+            </div>
+            <div class="col-12" v-show="downloads.length > 0">
+                <table class="table table-responsive table-striped w-100">
+                    <colgroup>
+                        <col style="width:22.5%">
+                        <col style="width:20%">
+                        <col style="width:10%">
+                        <col style="width:12.5%">
+                        <col style="width:15%">
+                        <col style="width:10%">
+                        <col style="width:10%">
+                    </colgroup>
+                    <thead class="w-100">
+                        <tr>
+                            <th>Product Family</th>
+                            <th>Host</th>
+                            <th>Version Number</th>
+                            <th>Operating System</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody class="w-100">
+                        <tr v-for="(d, index) in getMatches()">
+                            <template key="d.title">
+                                <td>${d.product}</td>
+                                <td>${d.host}</td>
+                                <td>${d.version}</td>
+                                <td>${d.platform}</td>
+                                <td><a :href="d.release_notes">Release Notes</a></td>
+                                <td><a :href="d.permalink">More Info</a></td>
+                                <td><button class="btn m-0" @click="handleDownload(index)">Download</button></td>
+                            </template>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <div class="modal host-finder-modal" tabindex="-1" role="dialog" id="host-finder-modal" data-backdrop="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content h-100">
+                    <div class="modal-header p-2">
+                        <h4 class="modal-title">Host Finder</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            data-target="host-finder-modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <select v-model="finder.selectedProduct">
+                                    <option value="sapphire">Sapphire</option>
+                                    <option value="continuum">Continuum</option>
+                                    <option value="mocha pro">Mocha Pro</option>
+                                    <option value="silhouette">Silhouette</option>
+                                    <option value="optics">Optics</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="my-3">${formatProductTitle(finder.selectedProduct)} Supports:</h4>
+                                <div v-for="api in hosts[finder.selectedProduct]">
+                                    <h5>${api.api}</h5>
+                                    <hr class="m-0" />
+                                    <ul style="list-style-type: none; margin:0;">
+                                        <li v-for="host in api.supported">
+                                            ${host}
+                                        </li>
+                                    </ul>
+                                </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-start">
+                        <a style="font-size:.8rem;" href="#">View Host Compatibility Matrix</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            delimiters: ['${', '}'],
+            data: {
+                login: Cookies.getJSON('bfx-login'),
+                downloads: [],
+                matches: [],
+                error: false,
+                finder: {
+                    selectedProduct : 'sapphire',
+                    show : function(){$('#host-finder-modal').modal('show');},
+                    hide : function(){$('#host-finder-modal').modal('hide');}
+                },
+                filters: {
+                    family: {
+                        name: 'family',
+                        label: 'Product Families',
+                        classes: 'col-lg-5 col-12',
+                        options: {
+                            'boris fx suite': {key:'boris fx suite', name: 'Boris FX Suite', variants: ['Continuum', 'Sapphire', 'Mocha Pro', 'Mocha', 'Silhouette', 'Optics'] },
+                            'continuum': {key:'continuum', name: 'Continuum', variants: ['Title Studio 3D Models', 'Particle Illusion Particle Emitters'] },
+                            'sapphire': {key:'sapphire', name: 'Sapphire', variants: [] },
+                            'mocha': {key:'mocha', name: 'Mocha Pro', variants: ['Mocha', 'Mocha Lens Importer', 'Mocha Shape Importer', 'Mocha 3D Track Importer'] },
+                            'silhouette': {key:'silhouette', name: 'Silhouette', variants: [] },
+                            'optics': {key:'optics', name: 'Optics', variants: ['Particle Illusion Particle Emitters'] },
+                            'rlm server': {key:'rlm server', name: 'RLM Server', variants: ['RLM License Server'] },
+                            'app manager': {key:'app manager', name: 'App Manager', variants: ['Application Manager'] },
+                            'particle illusion': {key:'particle illusion', name: 'Particle Illusion', variants: ['Particle Illusion Standalone', 'Particle Illusion Particle Emitters'] }
+                        }
+                    },
+                    host: {
+                        name: 'host',
+                        label: 'Host Products',
+                        classes: 'col-lg-5 col-12',
+                        options: {
+                            'adobe': { key: 'adobe', name: 'Adobe AE + PR', variants: ['Adobe'] },
+                            'photoshop/lightroom': {key: 'photoshop/lightroom', name: 'Adobe PS + LR', variants: ['Photoshop', 'Lightroom', 'Photoshop/Lightroom']},
+                            'avid': {key: 'avid', name: 'Avid', variants: ['Media Composer'] },
+                            'apple': {key: 'apple', name: 'Final Cut', variants: ['Apple (FCP)'] },
+                            'resolve': {key: 'resolve', name: 'Resolve / Fusion', variants: ['Resolve', 'Davinci Resolve', 'Fusion']},
+                            'flame': {key: 'flame', name: 'Flame', variants: ['Autodesk Flame']},
+                            'nuke': {key: 'nuke', name: 'Nuke', variants: ['Foundry Nuke']},
+                            'vegas': {key: 'vegas', name: 'Vegas Pro', variants: ['Vegas', 'Vegas Pro Studio']},
+                            'ofx': {key: 'ofx', name: 'All OFX Hosts', variants: ['OFX'] },
+                            'standalone': {key: 'standalone', name: 'Standalone Apps', variants: ['Title Studio', 'Particle Illusion', 'RLM Floating License Manager', 'Standalone'] }
+                        }
+                    },
+                    os: {
+                        name: 'os',
+                        label: 'Operating System',
+                        classes: 'col-lg-2 col-12',
+                        options: {
+                            'windows': { name: 'Windows', variants: ['Windows 64-Bit', 'Windows 32-Bit', 'Multiplatform'] },
+                            'mac os': { name: 'macOS', variants: ['Mac 64-Bit', 'Mac 32-Bit', 'Multiplatform'] },
+                            'linux': { name: 'Linux', variants: ['Linux 64-Bit .deb', 'Linux 64-Bit .rpm', 'Linux 64-Bit .tgz', 'Linux 64-Bit', 'Multiplatform'] }
+                        }
+                    }
+                },
+                hosts: {
+                    'sapphire': [
+                        { api: 'Adobe', supported: ['After Effects', 'Premiere Pro', 'Photoshop'] },
+                        { api: 'Avid', supported: ['Media Composer'] },
+                        { api: 'OFX', supported: ['Autodesk Flame', 'Davinci Resolve', 'Fusion', 'Nuke', 'Vegas Pro Studio', 'Filmlight Baselight', 'Toonboom Harmony', 'Grass Valley Rio', 'Edius Pro'] }
+                    ],
+                    'continuum': [
+                        { api: 'Adobe', supported: ['After Effects', 'Premiere Pro'] },
+                        { api: 'Avid', supported: ['Media Composer'] },
+                        { api: 'OFX', supported: ['Davinci Resolve', 'Vegas Pro', 'Nuke'] },
+                        {api: 'FxPlug', supported: ['Final Cut Pro']}
+                    ],
+                    'mocha pro': [
+                        { api: 'Adobe', supported: ['After Effects', 'Premiere Pro'] },
+                        { api: 'Avid', supported: ['Media Composer'] },
+                        { api: 'OFX', supported: ['HitFilm', 'Flame', 'Vegas Pro', 'Nuke', 'Fusion'] },
+                        { api: 'Standalone', supported: ['Standalone App'] }
+                    ],
+                    'silhouette': [
+                        { api: 'Adobe', supported: ['After Effects', 'Premiere Pro'] },
+                        { api: 'OFX', supported: ['Nuke', 'Davinci Resolve', 'Fusion', 'Autodesk Flame', 'Vegas Pro'] },
+                        { api: 'Standalone', supported: ['Standalone App'] }
+                    ],
+                    'optics': [
+                        { api: 'Adobe', supported: ['Photoshop', 'Lightroom'] },
+                        { api: 'Standalone', supported: ['Standalone App'] }
+                    ]
+                },
+                selectedFilters: { family: [], host: [], os: [] }
+            },
+            created: function () {
+                Cookies.set('redirect_url', window.location.href);		
+                var self = this;
+                window.location.hash = '#'
+            },
+            mounted: function () {
+                this.setParams();
+                axios.get('https://backend.borisfx.com/downloads')
+                    .then(function (res) {
+                        vm.downloads = res.data;
+                    })
+                    .catch(function (err) {
+                        console.error(err);
+                        vm.error = true;
+                    })
+            },
+            methods: {
+                setParams: function () {
+                    var params = new URLSearchParams(window.location.search);
+                    var filters = this.filters;
+                    var selected = this.selectedFilters;
+                    if (params.get('product') != null) {
+                        var families = params.get('product').split('+');
+                        for (var f of families) {
+                            var fam = this.getLegacyParam(f);
+                            var filter = filters.family.options[fam];
+                            if (filter != null) selected.family.push(filter);
+                        }
+                    }
+    
+                    if (params.get('host') != null) {
+                        var hosts = params.get('host').split('+');
+                        for (var h of hosts) {
+                            var filter = filters.host.options[h];
+                            if (filter != null) selected.host.push(filter);
+                        }
+                    }
+    
+                    var os = window.navigator.platform.toLowerCase();
+                    if (os.includes('win')) this.selectedFilters.os.push(this.filters.os.options['windows'])
+                    else if (os.includes('mac')) this.selectedFilters.os.push(this.filters.os.options['mac os'])
+                },
+                getLegacyParam: function (param){
+                    var p = param.toLowerCase();
+                    switch(p){
+                        //Continuum
+                        case 'continuum 2019':
+                        case 'boris continuum 2019':
+                        case 'boris continuum 2019.5':
+                        case 'boris continuum 2020':
+                        case 'boris continuum 2020.5':
+                        case 'boris continuum 2021':
+                        case 'boris continuum 2021.5':
+                        case 'boris continuum 2022':
+                        case 'continuum 11 apple fxplug final cut x':
+                        case 'boris continuum 2021 final cut pro public beta':
+                        case 'boris continuum 2021.5': return 'continuum'; break;
+                        //Particle Illusion
+                        case 'continuum 2019 particle emitters library':
+                        case 'continuum 2019.5 particle emitters library':
+                        case 'boris continuum 2019.5 particle emitter':
+                        case 'continuum 2020 particle emitters library':
+                        case 'continuum 2020.5 particle emitters library':
+                        case 'boris particle illusion 2020.5 standalone':
+                        case 'boris particle illusion 2021 standalone':
+                        case 'boris particle illusion 2021.5 standalone':
+                        case 'boris particle illusion particle emitters': return 'particle illusion'; break;
+                        //Sapphire
+                        case 'sapphire 2019':
+                        case 'boris sapphire 2019':
+                        case 'boris sapphire 2019.5':
+                        case 'boris sapphire 2020':
+                        case 'boris sapphire 2020.5':
+                        case 'boris sapphire 2021':
+                        case 'boris sapphire 2021.5':
+                        case 'boris sapphire 2022': return 'sapphire'; break;
+                        //Mocha Pro
+                        case 'mocha pro':
+                        case 'mocha pro 2019':
+                        case 'boris mocha pro 2019':
+                        case 'boris mocha pro 2020':
+                        case 'boris mocha pro 2020.5':
+                        case 'boris mocha pro 2021':
+                        case 'boris mocha pro 2022': return 'mocha'; break;
+                        //Optics
+                        case 'boris optics 2021': return 'optics'; break;
+                        //Silhouette
+                        case 'boris silhouette 2020':
+                        case 'boris silhouette 2020.5':
+                        case 'boris silhouette 2021':
+                        case 'silhouette 2021':
+                        case 'boris silhouette paint 2020':
+                        case 'boris silhouette paint 2020.5':
+                        case 'boris silhouette 2021': return 'silhouette'; break;
+                        default: return p; break; 
+                    }
+                },
+                getMatches: function () {
+                    var matches = [];
+                    for (var d of this.downloads) {
+                        if (this.isMatch(d)) matches.push(d);
+                    }
+                    matches.sort(this.sortMatches);
+                    this.matches = matches;
+                    return matches;
+                },
+                isMatch: function (product) {
+                    if (product.legacy) return false;
+                    return this.familyMatches(product) && this.hostMatches(product) && this.osMatches(product);
+                },
+                familyMatches: function (product) {
+                    var families = this.selectedFilters.family;
+                    var productFamily = product.product_line == '' ? product.product : product.product_line;
+                    if (families.length == 0) return true;
+                    var matches = false;
+                    for (var f of families) {
+                        if (f.name == productFamily || f.variants.includes(productFamily)) {
+                            matches = true;
+                            break;
+                        }
+                    }
+                    return matches;
+                },
+                hostMatches: function (product) {
+                    var ignoreHostProducts = [
+                        'RLM License Server', 'Application Manager',
+                        'Particle Illusion Particle Emitters'
+                    ];
+                    var family = product.product_line == '' ? product.product : product.product_line;
+                    if (ignoreHostProducts.includes(family)) return true;
+                    var productHosts = product.host.split(',');
+                    if (product.host_products != null){
+                        var supportedProducts = product.host_products.split(',');
+                        for (var sp of supportedProducts) productHosts.push(sp.trim());
+                    }
+    
+                    var hosts = this.selectedFilters.host;
+                    if (hosts.length == 0) return true;
+                    var matches = false;
+                    for (var h of hosts) {
+                        var variants = h.variants;
+                        for (var ph of productHosts) {
+                            if (h.name == ph.trim() || h.variants.includes(ph.trim())) {
+                                matches = true;
+                                break;
+                            }
+                        }
+                    }
+                    return matches;
+                },
+                osMatches: function (product) {
+                    var selected = this.selectedFilters.os;
+                    if (selected.length == 0) return true;
+                    var matches = false;
+                    for (var o of selected) {
+                        if (o.name == product.platform || o.variants.includes(product.platform)) {
+                            matches = true;
+                            break;
+                        }
+                    }
+                    return matches;
+                },
+                handleDownload: function (index) {
+                    if (!this.login) {
+                        Cookies.set('redirect_url', window.location.href);
+                        window.location = '/account/login?source=download';
+                        return;
+                    }
+                    
+                    var d = this.matches[index];
+                    var uri = d.download_url;
+                    payload = {
+                        email: this.login.email,
+                        product: d.download_url,
+                        platform: d.platform,
+                        version: d.version,
+                        permalink: d.permalink
+                    }
+                    try {
+                        _hsq.push(["trackCustomBehavioralEvent", {
+                           name: "pe21305637_customerdownloadevent",
+                           properties: {
+                               product: d.product_line,
+                               host: d.host,
+                               platform: d.platform,
+                               hs_file_url: d.download_url
+                           }}]);
+                    }
+                    catch(err) {
+                        console.error(err);
+                    }
+                    axios.post('https://backend.borisfx.com/track', payload, {auth: {username: this.login.email, password: this.login.token}})
+                        .then(function (res) {
+                            window.location = uri;
+                        })
+                        .catch(function (err) {
+                            if (err.response != null && err.response.status == 403){
+                                Cookies.set('bfx-login', '', { domain: window.location.hostname == 'localhost' ? 'localhost' : '.' + window.location.hostname , expires: -1});
+                                Cookies.set('redirect_url', window.location.href);
+                                window.location.href = '/account/login?session_expired=true';
+                                return;
+                            }
+                            else{
+                                console.error(err);
+                                window.location = uri;
+                            }
+                        })
+                },
+                sortMatches: function (a, b) {
+                    var familyOrder = { 'Continuum': 1, 'Sapphire': 2, 'Mocha': 3, 'Silhouette': 4, 'Optics': 5, 'Particle Illusion Standalone' : 6};
+                    var aProd = a.product_line == '' ? a.product : a.product_line;;
+                    var bProd = b.product_line == '' ? b.product : b.product_line;;
+    
+                    let aFamily = familyOrder[aProd] != null ? familyOrder[aProd] : aProd;
+                    let bFamily = familyOrder[bProd] != null ? familyOrder[bProd] : bProd;
+    
+                    let aHost = a.host;
+                    let bHost = b.host;
+    
+                    let comparison = 0;
+    
+                    if (typeof aFamily == 'number' && typeof bFamily != 'number') {
+                        comparison = -1;
+                    } else if (aFamily === bFamily && aHost > bHost) {
+                        comparison = 1;
+                    } else if (typeof aFamily != 'number' && typeof bFamily == 'number') {
+                        comparison = 1;
+                    } else if (aFamily === bFamily && aHost < bHost) {
+                        comparison = -1;
+                    } else if (aFamily > bFamily) {
+                        comparison = 1;
+                    } else if (aFamily < bFamily) {
+                        comparison = -1;
+                    }
+                    return comparison;
+                },
+                formatProductTitle : function(product){
+                    const words = product.split(" ");
+                    return words.map(function (word){ 
+                        return word[0].toUpperCase() + word.substring(1); 
+                    }).join(" ");
+                }
+            },
+            watch: {
+                matches: function(){
+                    var families = this.selectedFilters.family;
+                    var familyNames = [];
+                    for (var f of families) familyNames.push(f.key.toLowerCase());
+                    var familyString = familyNames.join('%2b'); //UTF-8 code for +
+    
+                    var hosts = this.selectedFilters.host;
+                    var hostNames = [];
+                    for (var h of hosts) hostNames.push(h.key.toLowerCase());
+                    var hostString = hostNames.join('%2b');
+    
+                    var url ='/downloads/?';
+                    var params = [];
+                    if (families.length > 0) params.push('product=' + familyString);
+                    if (hosts.length > 0) params.push('host=' + hostString);
+                    if (params.length > 0) url += params.join('&');
+                    window.history.replaceState({}, '', url);
+                }
+            }
+        })
+    </script>

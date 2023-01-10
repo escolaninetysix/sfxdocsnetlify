@@ -1,0 +1,1553 @@
+{
+   "title": "Sapphire Plug-ins for Autodesk: FilmEffect",
+   "date": "2018-12-13T00:00:00",
+   "thumbnail_url": "//cdn.borisfx.com/documentation/sapphire/FilmEffect.jpg"
+}
+ <font size="1">
+ </font>
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+   <td valign="top">
+    <a name="FilmEffect">
+     <h2>
+      FilmEffect
+     </h2>
+    </a>
+    Provides a physically accurate model of film exposure
+  and processing to make your video footage look like it was shot on
+  particular film stocks.  It can remove field artifacts, perform
+  color correction for specific film types, add film grain, and apply
+  glow or soft focus effects.  The color correction and grain can be
+  selectively disabled using the Scale CC and Grain Amp parameters.
+    <h3>
+     Inputs:
+    </h3>
+    <dl>
+     <dd>
+      <b>
+       Source:
+      </b>
+      The clip to be processed.
+     </dd>
+    </dl>
+   </td>
+   <td>
+   </td>
+   <td align="right" valign="top" width="244">
+    <table border="0" cellpadding="2" cellspacing="0">
+     <tr>
+      <td bgcolor="#404040" height="162" valign="center" width="240">
+       <img align="center" alt="" height="162" src="//cdn.borisfx.com/documentation/sapphire/FilmEffect.jpg" valign="bottom" width="240"/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <p>
+ </p>
+ <h3>
+  Parameters:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Load Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Browser to browse all available presets for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Save Preset:
+   </b>
+   <i>
+    Push-button
+   </i>
+   .
+   <br/>
+   Brings up the Preset Save dialog to save a preset for this effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Neg Film:
+   </b>
+   <i>
+    Popup menu,  Default: Kodak 5245
+   </i>
+   .
+   <br/>
+   Selects the negative film stock.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       None:
+      </i>
+     </b>
+     Ignore any effect of negative film.  This is not
+  normally useful unless you also select None for the print film to
+  disable both.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Kodak 5245:
+       </i>
+      </b>
+      Eastman EXR 50D, low speed, daylight
+  balanced, very fine grain.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Kodak 5246:
+        </i>
+       </b>
+       Kodak VISION 250D, higher contrast, medium
+  speed, daylight balanced, fine grain.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Kodak 5248:
+         </i>
+        </b>
+        Eastman EXR 100T, medium speed, tungsten
+  light balanced, very fine grain.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Kodak 5274:
+          </i>
+         </b>
+         Kodak VISION 200T, medium speed, tungsten
+  light balanced, fine grain.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Kodak 5277:
+           </i>
+          </b>
+          Kodak VISION 320T, lower contrast, medium
+  speed, tungsten light balanced, medium-fine grain.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Kodak 5279:
+            </i>
+           </b>
+           Kodak VISION 500T, high speed, tungsten light
+  balanced, somewhat grainy.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              Kodak 5284:
+             </i>
+            </b>
+            Kodak VISION Expression 500T, lower contrast,
+  high speed, tungsten light balanced, medium grain.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               Kodak 5289:
+              </i>
+             </b>
+             Kodak VISION 800T, very fast, tungsten light
+  balanced, grainy.
+             <br/>
+             <dd>
+              <b>
+               <i>
+                Kodak 5293:
+               </i>
+              </b>
+              Eastman EXR 200T, reduced
+  contrast, tungsten light balanced, medium grain.
+              <br/>
+              <dd>
+               <b>
+                <i>
+                 Kodak 5298:
+                </i>
+               </b>
+               Eastman EXR 500T, high speed, tungsten light
+  balanced, grainy.
+               <br/>
+               <dd>
+                <b>
+                 <i>
+                  K SFX200T:
+                 </i>
+                </b>
+                Special effects film, medium grain.
+                <br/>
+                <dd>
+                 <b>
+                  <i>
+                   Kodak 5217:
+                  </i>
+                 </b>
+                 Kodak Vision2 200T, tungsten light
+  balanced, fine grain.
+                 <br/>
+                 <dd>
+                  <b>
+                   <i>
+                    Kodak 5218:
+                   </i>
+                  </b>
+                  Kodak Vision2 500T, tungsten light
+  balanced, fine grain.
+                  <br/>
+                 </dd>
+                </dd>
+               </dd>
+              </dd>
+             </dd>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Print Film:
+   </b>
+   <i>
+    Popup menu,  Default: Kodak 2383
+   </i>
+   .
+   <br/>
+   Selects the print film stock.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       None:
+      </i>
+     </b>
+     Ignore any effect of the print film.  This causes
+  the negative to be output directly.  If the negative film is also
+  set to None, the color correction and grain are disabled.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Kodak 2383:
+       </i>
+      </b>
+      Kodak VISION Color Print Film, rich blacks.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Kodak 2393:
+        </i>
+       </b>
+       Kodak VISION Premier Color Print Film, rich
+  blacks, some grain.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Kodak 2395:
+         </i>
+        </b>
+        Kodak VISION Color Teleprint Film, low
+  contrast.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           Kodak 5386:
+          </i>
+         </b>
+         Eastman EXR Color Print Film
+  (discontinued by Kodak, replaced by 2383).
+         <br/>
+         <dd>
+          <b>
+           <i>
+            Kodak 5285 Rev:
+           </i>
+          </b>
+          Ektachrome 100D Reversal film,
+  daylight balanced, high contrast and grainy.
+  Note that the negative film is ignored when using reversal film.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             Kodak 7270 Rev:
+            </i>
+           </b>
+           Kodachrome 40 Movie Film,
+  tungsten balanced reversal film, high contrast and somewhat grainy.
+  Note that the negative film is ignored when using reversal film.
+           <br/>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale CC:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amount of color correction performed due to
+  the film types, gamma values, and exposure values.  Set to 0 to
+  disable color correction.  If you increase this above 1.0 it
+  exaggerates the color correction, which normally increases the
+  contrast.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Input Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   2.2,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The gamma that your original clip was shot for.  For
+  video this is normally 2.2; for synthetic computer graphics it may
+  be less.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Output Gamma:
+   </b>
+   <i>
+    Default:
+   </i>
+   2.2,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   The intended viewing gamma of the output.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Input:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The input is smoothed by this amount.  This can be
+  used to remove video noise or compression artifacts before
+  processing.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Neg Exposure:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adjusts the simulated exposure of the negative film,
+  in stops.  Increase for over-exposed and brighter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Print Exposure:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adjusts the simulated exposure of the print film,
+  in stops.  Increase for over-exposed and darker.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Print Lights R:
+   </b>
+   <i>
+    Default:
+   </i>
+   25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the red exposure of the print film, in
+  printer light points.  1 light point is 1/12 stop.  Increase to
+  over-expose red and give a more cyan result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Print Lights G:
+   </b>
+   <i>
+    Default:
+   </i>
+   25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the green exposure of the print film, in
+  printer light points.  1 light point is 1/12 stop.  Increase to
+  over-expose green and give a more magenta result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Print Lights B:
+   </b>
+   <i>
+    Default:
+   </i>
+   25,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Adjusts the blue exposure of the print film, in
+  printer light points.  1 light point is 1/12 stop.  Increase to
+  over-expose blue and give a more yellow result.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Scale Brights:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the bright areas of the final result after
+  the other color correction, glow, and grain are applied.  (This
+  parameter is not affected by Scale CC.)
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Offset Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   any.
+   <br/>
+   Adds this gray value to the darker regions of the
+  final result after the other color correction, glow, and grain are
+  applied.  This can be negative to increase contrast.  (This
+  parameter is not affected by Scale CC.)
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Amp:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the amplitude of the film grain that is added to
+  the result.  Set this to 0 to disable all grain.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Blur:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The grain is smoothed by this amount.  Increase for
+  coarser grain.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Hold:
+   </b>
+   <i>
+    Popup menu,  Default: Frame
+   </i>
+   .
+   <br/>
+   Indicates how often a new grain pattern should be
+  generated.  You will probably only notice a difference between these
+  options if Grain Blur is positive to make the grain size larger than
+  one pixel.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       Field:
+      </i>
+     </b>
+     holds the grain pattern for one field.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Frame:
+       </i>
+      </b>
+      holds the grain pattern for one frame (2
+fields).
+      <br/>
+      <dd>
+       <b>
+        <i>
+         3:2 Pulldown at 0:
+        </i>
+       </b>
+       holds the grain in a 3:2 pulldown
+  pattern with the first pulldown frame at 0.  These options are
+  appropriate if your clip was created at 24 fps but is now in 30 fps
+  pulldown form.  They will not make sense if your clip is 24P.  A 3:2
+  pulldown pattern repeats every 5 frames, so if frame 1:00:23 is the
+  first frame with field artifacts after three normal frames, then you
+  should specify 3 as the first pulldown frame.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          3:2 Pulldown at 1:
+         </i>
+        </b>
+        holds the grain in a 3:2 pulldown
+  pattern with the first pulldown frame at 1.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           3:2 Pulldown at 2:
+          </i>
+         </b>
+         holds the grain in a 3:2 pulldown
+  pattern with the first pulldown frame at 2.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            3:2 Pulldown at 3:
+           </i>
+          </b>
+          holds the grain in a 3:2 pulldown
+  pattern with the first pulldown frame at 3.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             3:2 Pulldown at 4:
+            </i>
+           </b>
+           holds the grain in a 3:2 pulldown
+  pattern with the first pulldown frame at 4.
+           <br/>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Brightness:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   If positive, the image is combined with a blurred
+  version of itself to give a glowing look.  Increase for a brighter
+  glow.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Soft Focus:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   If positive, the image is mixed with a blurred
+  version of itself to give a soft focus look.  The effect of this
+  parameter is similar to Glow Brightness, but this does not brighten
+  the overall result.  Increase this to mix in more of the blurred
+  version and less of the original.  If this is 1 and Glow Brightness
+  is 0 you will get only the blurred version.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the blur used by the glow and/or soft focus.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Fields:
+   </b>
+   <i>
+    Popup menu,  Default: As Is
+   </i>
+   .
+   <br/>
+   Allows removing field artifacts from the input clip.
+  This is useful if you want the clip to look like it was shot on
+  frames instead of fields.  You can show a single field, merge the
+  two together, or simulate a 3:2 pulldown stutter pattern.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       As Is:
+      </i>
+     </b>
+     leaves the fields unchanged.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        Keep Lower Only:
+       </i>
+      </b>
+      shows the lower field only, removes the upper field.
+      <br/>
+      <dd>
+       <b>
+        <i>
+         Keep Upper Only:
+        </i>
+       </b>
+       shows the upper field only, removes the lower field.
+       <br/>
+       <dd>
+        <b>
+         <i>
+          Merge Fields:
+         </i>
+        </b>
+        blends both fields together to remove interlacing artifacts.
+        <br/>
+        <dd>
+         <b>
+          <i>
+           3:2 Stutter at 0:
+          </i>
+         </b>
+         Simulates a temporal stutter effect as if
+  the clip had been transferred from 24P to NSTC video using 3:2
+  pulldown, with the first pulldown frame at 0.  If you are using this
+  option with non-zero Grain Blur, you may want to also set Grain Hold to
+  the corresponding value.
+         <br/>
+         <dd>
+          <b>
+           <i>
+            3:2 Stutter at 1:
+           </i>
+          </b>
+          Simulates a 3:2 pulldown effect
+  with the first pulldown frame at 1.
+          <br/>
+          <dd>
+           <b>
+            <i>
+             3:2 Stutter at 2:
+            </i>
+           </b>
+           Simulates a 3:2 pulldown effect
+  with the first pulldown frame at 2.
+           <br/>
+           <dd>
+            <b>
+             <i>
+              3:2 Stutter at 3:
+             </i>
+            </b>
+            Simulates a 3:2 pulldown effect
+  with the first pulldown frame at 3.
+            <br/>
+            <dd>
+             <b>
+              <i>
+               3:2 Stutter at 4:
+              </i>
+             </b>
+             Simulates a 3:2 pulldown effect
+  with the first pulldown frame at 4.
+             <br/>
+            </dd>
+           </dd>
+          </dd>
+         </dd>
+        </dd>
+       </dd>
+      </dd>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Field Dominance:
+   </b>
+   <i>
+    Popup menu,  Default: 1
+   </i>
+   .
+   <br/>
+   Specifies which field should come first in time
+  when simulating 3:2 pulldown patterns.  This is only used if a 3:2 stutter
+  option is selected in the Fields and/or the Grain Hold options.
+   <br/>
+   <dl>
+    <dd>
+     <b>
+      <i>
+       1:
+      </i>
+     </b>
+     Field 1 occurs first in time, then field 2.
+     <br/>
+     <dd>
+      <b>
+       <i>
+        2:
+       </i>
+      </b>
+      Field 2 occurs first in time, then field 1.
+      <br/>
+     </dd>
+    </dd>
+   </dl>
+  </dd>
+ </dl>
+ <h3>
+  Params2:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Amp Darks:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative amount of grain applied to the darkest
+  regions of the image, per channel.  This defaults to less than 1.0
+  because dark areas usually have less grain than midtones.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    GrainAmpBrights:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative amount of grain applied to the
+  brightest regions of the image, per channel.  This defaults to zero
+  because bright areas usually have less grain than midtones.  Note
+  that highly saturated colors can be affected by both Grain Amp Darks
+  and Grain Amp Brights because they are dark in some color channels
+  and bright in others.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Midtone Pos R:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The position of the midtones in the red channel
+  that will normally receive the maximum amount of grain.  The red
+  grain amplitude is interpolated from Grain Amp Darks at black, up to
+  1.0 at this midtone position, then down to Grain Amp Brights at
+  white.  This whole curve is then scaled by the Grain Amp Red
+  parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Midtone Pos G:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The position of the midtones in the green channel
+  that will normally receive the maximum amount of grain.  The green
+  grain amplitude is interpolated from Grain Amp Darks at black, up to
+  1.0 at this midtone position, then down to Grain Amp Brights at
+  white.  This whole curve is then scaled by the Grain Amp Green
+  parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Midtone Pos B:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   The position of the midtones in the blue channel
+  that will normally receive the maximum amount of grain.  The blue
+  grain amplitude is interpolated from Grain Amp Darks at black, up to
+  1.0 at this midtone position, then down to Grain Amp Brights at
+  white.  This whole curve is then scaled by the Grain Amp Blue
+  parameter.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Amp Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.9,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the red grain amplitude.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Amp Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the green grain amplitude.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Amp Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.6,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Scales the blue grain amplitude.  Note that grain is
+  added and subtracted from the image, so for example, increasing
+  Grain Amp Blue will amplify both the blue and yellow speckles.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Mono:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off.
+   <br/>
+   When enabled, the same grain pattern is used for the
+  red, green, and blue channels.  To make truly monochrome grain you
+  should also set Grain Amp Red/Green/Blue equal to each other, make
+  sure Midtone Pos Red/Green/Blue are equal, and if GrainBlur is
+  positive also set Grain Blur Red/Green/Blue equal
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Seed:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.123,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Initializes the random number generator for the grain
+  generation.  The actual seed value is not significant, but different
+  seeds give different grain patterns and the same value should give a
+  repeatable pattern.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Blur Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative blur amount for the red grain.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Blur Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.9,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative blur amount for the green grain.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Grain Blur Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1.2,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative blur amount for the blue grain.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Red:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative glow width for the red channel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Green:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative glow width for the green channel.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Glow Width Blue:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The relative glow width for the blue channel.
+  </dd>
+ </dl>
+ <h3>
+  Params3:
+ </h3>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignette Dark:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 to 1.
+   <br/>
+   Vignetting is darkening of the image towards the
+  corners and sides of the image.  This parameter controls how much
+  the outer corners of the screen should be darkened (vignetted).  0
+  gives no vignetting, 1 gives maximum darkening.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignt Radius:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   Distance from the center to apply the vignette.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignt Edge Soft:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.5,
+   <i>
+    Range:
+   </i>
+   0 or greater.
+   <br/>
+   The width of the vignette's soft edge.  Larger values
+  give softer, less visible edges.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Vignt Rel Height:
+   </b>
+   <i>
+    Default:
+   </i>
+   0.75,
+   <i>
+    Range:
+   </i>
+   0.1 or greater.
+   <br/>
+   Controls the aspect ratio of the vignette
+  ellipse.  This should normally be set to the aspect ratio of the
+  image, e.g. .75 for NTSC.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Brings up the Mocha window for tracking footage and
+  generating masks.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Blur Mocha:
+   </b>
+   <i>
+    Default:
+   </i>
+   0,
+   <i>
+    Range:
+   </i>
+   0 or greater,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Blurs the Mocha Mask by this amount before using.
+  This can be used to soften the edges or quantization artifacts of
+  the mask, and smooth out the time displacements.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Mocha Opacity:
+   </b>
+   <i>
+    Default:
+   </i>
+   1,
+   <i>
+    Range:
+   </i>
+   0 to 1,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Controls the strength of the Mocha mask.
+  Lower values reduce the intensity of the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Invert Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   If enabled, the black and white of the Mocha Mask
+  are inverted before applying the effect.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Show Mocha Only:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Bypass the effect and show the Mocha Mask itself.
+  </dd>
+ </dl>
+ <p>
+ </p>
+ <dl>
+  <dd>
+   <b>
+    Bypass Mocha:
+   </b>
+   <i>
+    Check-box,  Default:
+   </i>
+   off,
+   <i>
+    Shared
+   </i>
+   .
+   <br/>
+   Ignore the Mocha Mask and apply the effect to the
+  entire source clip.
+  </dd>
+ </dl>
+ See general info for:
+ <a href="../general-info#res-options">
+  Res
+ </a>
+ ,
+ <a href="../general-info#on-fields">
+  On Fields
+ </a>
+ ,
+ <a href="../general-info#redraw-modes">
+  Redraw
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Undo
+ </a>
+ ,
+ <a href="../general-info#undo">
+  Load Defaults
+ </a>
+ ,
+ <a href="../general-info#cropping">
+  Crop
+ </a>
+ ,
+ <a href="../general-info#add-noise">
+  Add Noise
+ </a>
+ , and
+ <a href="../general-info#colorspace">
+  Use Gamma
+ </a>
+ .
+ <p>
+  <br/>
+ </p>
+ <h3>
+  See Also:
+ </h3>
+ <dl>
+  <dd>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td valign="top">
+     </td>
+     <td valign="top">
+     </td>
+     <td valign="top">
+      <a href="../filmdamage">
+       FilmDamage
+      </a>
+      <br/>
+      <a href="../fieldremove">
+       FieldRemove
+      </a>
+      <br/>
+      <a href="../bleachbypass">
+       BleachBypass
+      </a>
+      <br/>
+      <a href="../vintagecolor2strip">
+       VintageColor2Strip
+      </a>
+      <br/>
+      <a href="../grainmono">
+       GrainMono
+      </a>
+      <br/>
+      <a href="../graincolor">
+       GrainColor
+      </a>
+      <br/>
+      <a href="../staticmono">
+       StaticMono
+      </a>
+      <br/>
+      <a href="../staticcolor">
+       StaticColor
+      </a>
+      <br/>
+      <a href="../diffuse">
+       Diffuse
+      </a>
+      <br/>
+     </td>
+     <td width="40">
+     </td>
+     <td valign="top">
+      <a href="../intro">
+       Sapphire Plug-ins Introduction
+      </a>
+     </td>
+    </tr>
+   </table>
+  </dd>
+ </dl>

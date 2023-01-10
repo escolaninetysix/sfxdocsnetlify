@@ -1,0 +1,271 @@
+{
+   "date": "2012-03-16T15:28:12-04:00",
+   "tags": [
+      "Continuum Complete"
+   ],
+   "title": "BCC OFX (Sony Vegas Pro) - 8.0.0"
+}
+
+<p>
+ <b>
+  BCC 8 for Sony Vegas supports the following host environments:
+ </b>
+</p>
+<p>
+ • Windows 7 32/64
+</p>
+<p>
+ • Sony Vegas 10.e - 32 and 64 bit
+</p>
+<p>
+ • Sony Vegas 11 (version 594/595 or higher) - 32 and 64 bit
+</p>
+<p>
+ <b>
+  What's new in BCC 8 for Sony Vegas:
+ </b>
+</p>
+<p>
+ • True 32bit float processing support
+</p>
+<p>
+ • Integrated Beat Reactor added to many filters enabling audio driven animation
+</p>
+<p>
+ • New/Revised filter categories
+</p>
+<p>
+ • 32 new filters:
+</p>
+<p>
+      -3D Extruded Image Shatter
+</p>
+<p>
+      -Brick
+</p>
+<p>
+      -Burnt Film
+</p>
+<p>
+      -Cloth
+</p>
+<p>
+      -Fire
+</p>
+<p>
+      -Film Glow
+</p>
+<p>
+      -Flicker Fixer
+</p>
+<p>
+      -Fractal Noise
+</p>
+<p>
+      -Glow Matte
+</p>
+<p>
+      -Granite
+</p>
+<p>
+      -Lens Flare 3D
+</p>
+<p>
+      -Mixed Colors
+</p>
+<p>
+      -Noise Map 2
+</p>
+<p>
+      -Organic Strands
+</p>
+<p>
+      -Particle Array
+</p>
+<p>
+      -Particle Emitter 3D
+</p>
+<p>
+      -Particle Systems
+</p>
+<p>
+      -Pin Art
+</p>
+<p>
+      -Premult
+</p>
+<p>
+      -Reptilian
+</p>
+<p>
+      -Rock
+</p>
+<p>
+      -Stage Light
+</p>
+<p>
+      -Star Matte
+</p>
+<p>
+      -Stars
+</p>
+<p>
+      -Steel Plate
+</p>
+<p>
+      -Tile Mosaic
+</p>
+<p>
+      -Veined Marble
+</p>
+<p>
+      -Videoscope
+</p>
+<p>
+      -Weave
+</p>
+<p>
+      -Wild Cards
+</p>
+<p>
+      -Wood
+</p>
+<p>
+      -Wood Planks
+</p>
+<hr>
+<p>
+ <b>
+  BCC 8.0.0 for Sony Vegas - Known Issues and Limitations:
+ </b>
+</p>
+<p>
+ • In BCC particle filters if you change a keyframe for a parameter whose full animation history affects the particle rendering (such as the keyframed history of the particle emitter location), any previously cached frames that are more than one keyframe away from the changed keyframe will not be automatically recalculated. This only happens if the keyframe in question is edited in the lanes or curves view of the animation timeline. If the parameter value is changed with the parameter control directly then this stale cache problem does not occur. To force cached frames to be recalculated you can make a tiny change to some paremeter in the effect which will refresh all frames without changing the overall look of the effect.
+</p>
+<p>
+ • In Particle Emitter 3D, keyframing the Wind X/Y/Z sliders can yield unexpected movement of the particles and as a temporary workaround these parameters should remain static.
+</p>
+<p>
+ • BCC Optical Stabilizer does not appear in the initial 8.0.0 release. It will be reinstated in an update release in the near future.
+</p>
+<p>
+ • The Beat Reactor audio graph becomes less accurate as the Freqeuncy Resolution is increased to high values. As a temporary workaround use low values near the default setting of 32.
+</p>
+<p>
+ • The Beat Reactor audio graph shifts by a noticable amount when resoltuion is less than full. Set the preview resolution to full when setting up Beat Reactor clips to avoid any discrepancies between preview and final renders.
+</p>
+<p>
+ • Some BCC transitions do not work as when applied as one sided transitions to the front of a clip or when applied to clips with alpha channels. This can generally be worked around by applying the effect as a VideoFx transiton with media separated on different tracks if necessary rather than applying as a true transition.
+</p>
+<p>
+ • If a project is saved after loading a preset in the BCC effect controls and this preset is removed from the system (or the project is copied to another system that doesn't contain this preset), then when the project is reopened the UI for the effect does not appear correctly. This can be worked around by reinstating the missing preset and relaunching vegas or by saving the settings as a Vegas preset, deleting the filter, and loading that vegas preset in a new instance of the filter.
+</p>
+<p>
+ • In filters with more than one Motion Tracker point (e.g. BCC Witness Protection), saving/loading the motion tracker data only works for the first tracker point.
+</p>
+<p>
+ • Filters which access frames at alternate times such as the Time category filters can produce unexpected jitter when applied to clips that have more horizontal frame aspect than the project's frame aspect.
+</p>
+<p>
+ • The Mix with Original control in several filters produces results in float bitdepth projects that don't match the results in 8 bit projects.
+</p>
+<p>
+ • BCC Posterize Time can show interlacing artifacts when applied in interlaced projects. As a workaround you can prerender Posterize Time clips in progressive projects which will produce correctly posterized frames when reimported into interlaced projects.
+</p>
+<p>
+ • BCC Stars will occasionally exhibit horizontal bands of artifacts in the star field and galaxy controls.
+</p>
+<p>
+ • In BCC Particle Systems (but not in Particle Emitter 3D), particles are rendered as if progressive even when in interlaced projects thus yielding less fluid motion in fast moving particle animations.
+</p>
+<p>
+ • BCC LED shows occasional mis-colored dots on Quadro FX 3500 cards.
+</p>
+<p>
+ • The Boost Exponention apply modes can show artifacts in Velocity remap. Other apply modes should be used as a temporary workaround.
+</p>
+<p>
+ • Using Image Collection shapes to define particle shapes in Particle Array and Pin Art can show clipping artifacts if the particle size is large and the apply mode is normal. Use alternate particle shapes, smaller particle sizes, and/or the Add apply mode as a temporary workaround.
+</p>
+<p>
+ • If one of the Preview Ease Curve checkboxes is enabled in Particle Array, it will still be displayed even if the Control Map Graph is changed to None or the Apply To control is set to Unused. The checkbox for the Preview Ease Curve controls must be explicitly disabled when not in use.
+</p>
+<hr>
+<p>
+ Using
+ <b>
+  BCC 2 to 1 Transforms
+ </b>
+ :
+</p>
+<ul>
+ <li>
+  In Vegas Pro
+  <b>
+   for an effect to be able to access an alternate video layer
+  </b>
+  (a layer other than the layer the effect is applied to)
+  <b>
+   for processing it needs to be applied on a per track basis as a 2 to 1 Transform.
+  </b>
+  Boris Continuum for Sony Vegas Pro currently offers the following filters as 2 to 1 Transforms:
+ </li>
+</ul>
+<p>
+ Edge treatment for keying and alpha effects (uses a softened area of the background to composite on foreground):
+</p>
+<ul>
+ <li>
+  Light Wrap
+ </li>
+</ul>
+<p>
+ Composite effects (combine layers according to blend modes, allow for mixing multiple blend modes, using user defined regions and image based channels to define blend area etc.):
+</p>
+<ul>
+ <li>
+  Boost Blend
+ </li>
+ <li>
+  Composite
+ </li>
+ <li>
+  RGB Blend
+ </li>
+</ul>
+<p>
+ Displacement effects (can be used to access the layer below the filter layer as a displacement map):
+</p>
+<ul>
+ <li>
+  Displacement Map
+ </li>
+ <li>
+  Polar Displacement
+ </li>
+ <li>
+  Vector Displacement
+ </li>
+</ul>
+<p>
+ Two-Image effects (allows accessing the layer below as an alternate foreground/background layer when compositing or as an alternate particle face):
+</p>
+<ul>
+ <li>
+  Corner Pin
+ </li>
+ <li>
+  Match Move
+ </li>
+ <li>
+  Wild Cards
+ </li>
+</ul>
+<p>
+ <a class="image" title="File:vegasrn700blendmodes.png" href="https://borisfx-com-res.cloudinary.com/image/upload/v1532616387/borisfxwiki/Vegasrn700blendmodes.png">
+  <img src="https://borisfx-com-res.cloudinary.com/image/upload/v1532616387/borisfxwiki/Vegasrn700blendmodes.png" alt="File:vegasrn700blendmodes.png" width="356" height="388" border="0">
+ </a>
+ <a class="image" title="File:vegasrn700composite.png" href="//borisfx-com-res.cloudinary.com/image/upload/v1532616389/borisfxwiki/Vegasrn700composite.png">
+  <img src="//borisfx-com-res.cloudinary.com/image/upload/v1532616389/borisfxwiki/Vegasrn700composite.png" alt="File:vegasrn700composite.png" width="444" height="338" border="0">
+ </a>
+</p>
